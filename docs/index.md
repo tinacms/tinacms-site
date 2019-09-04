@@ -1,6 +1,6 @@
 ---
 id: index
-title: Home
+title: Docs Intro
 prev: null
 next: null
 ---

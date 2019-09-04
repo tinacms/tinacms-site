@@ -2,11 +2,11 @@
 
 module.exports = {
   siteMetadata: {
-    title: 'Grundgesetz',
-    sidebarTitle: 'Grundgesetz',
-    description: 'Zero-configuration documentation builder, powered by Gatsby.',
-    siteUrl: 'https://grundgesetz-skeleton.netlify.com',
-    keywords: 'gatsbyjs, gatsby, documentation, sample project',
+    title: 'TinaCMS',
+    sidebarTitle: 'TinaCMS',
+    description: 'A site editor for the modern web',
+    siteUrl: 'https://tinacms.org',
+    keywords: 'gatsbyjs, gatsby, react, cms, next',
     author: {
       name: 'Resi Respati',
       url: 'https://resir014.xyz',
@@ -72,7 +72,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://grundgesetz-skeleton.netlify.com'
+        siteUrl: 'https://tinacms.org'
       }
     },
     'gatsby-plugin-styled-components',

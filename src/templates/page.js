@@ -20,30 +20,7 @@ import { TocWrapper, TocFloatingButton } from 'components/docs/TableOfContents';
 import IndexLayout from 'layouts';
 import renderAst from 'utils/renderAst';
 
-interface PageTemplateProps extends RouteComponentProps {
-  data: {
-    site: {
-      siteMetadata: SiteMetadata;
-    };
-    sectionList: {
-      edges: Edge<MenuNode>[];
-    };
-    markdownRemark: {
-      htmlAst: any;
-      tableOfContents: string;
-      excerpt: string;
-      frontmatter: {
-        id: string;
-        title: string;
-        description?: string;
-        prev?: string;
-        next?: string;
-      };
-    };
-  };
-}
-
-const PageTemplate: React.SFC<PageTemplateProps> = ({ data }) => {
+const PageTemplate = ({ data }) => {
   const [tocIsOpen, setTocIsOpen] = React.useState(false);
   const { markdownRemark, sectionList, site } = data;
   const { prev, next } = markdownRemark.frontmatter;
@@ -77,7 +54,7 @@ const PageTemplate: React.SFC<PageTemplateProps> = ({ data }) => {
               <Footer />
             </FooterWrapper>
           </Container>
-          <TocFloatingButton tocIsOpen={tocIsOpen} onClick={() => setTocIsOpen(!tocIsOpen)} />
+          {/* //this button floats over the tina button ---> <TocFloatingButton tocIsOpen={tocIsOpen} onClick={() => setTocIsOpen(!tocIsOpen)} /> */}
         </DocsWrapper>
       </Page>
     </IndexLayout>

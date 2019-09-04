@@ -68,7 +68,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   allMarkdown.data.allMarkdownRemark.edges.forEach(({ node }) => {
     const { slug, layout } = node.fields;
-
+    console.log(node.fields)
     createPage({
       path: slug,
       // This will automatically resolve the template to a corresponding
@@ -80,7 +80,7 @@ exports.createPages = async ({ graphql, actions }) => {
       // template.
       //
       // Note that the template has to exist first, or else the build will fail.
-      component: path.resolve(`./src/templates/${layout || 'page'}.tsx`),
+      component: path.resolve(`./src/templates/${layout || 'page'}.js`),
       context: {
         // Data passed to context is available in page queries as GraphQL variables.
         slug

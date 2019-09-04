@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
-import { RouteComponentProps } from '@reach/router';
+import { remarkForm } from '@tinacms/react-tinacms-remark'
 
 import { Page } from 'components/layout/Page';
 
@@ -10,44 +10,15 @@ import { DocsWrapper } from 'components/docs/DocsWrapper';
 import { DocsHeader } from 'components/docs/DocsHeader';
 import MarkdownContent from 'components/page/Markdown/MarkdownContent';
 
-import { MenuNode, Edge } from 'interfaces/nodes';
 import { Footer, FooterWrapper } from 'components/layout/Footer';
 import IndexLayout from 'layouts';
 import renderAst from 'utils/renderAst';
 // import FooterWrapper from 'components/old-layout/FooterWrapper';
 // import Footer from 'components/old-layout/Footer';
 
-interface PageTemplateProps extends RouteComponentProps {
-  data: {
-    site: {
-      siteMetadata: {
-        title: string;
-        description: string;
-        author: {
-          name: string;
-          url: string;
-        };
-      };
-    };
-    sectionList: {
-      edges: Edge<MenuNode>[];
-    };
-    markdownRemark: {
-      htmlAst: any;
-      excerpt: string;
-      frontmatter: {
-        id: string;
-        title: string;
-        prev?: string;
-        next?: string;
-      };
-    };
-  };
-}
-
-const PageTemplate: React.SFC<PageTemplateProps> = ({ data }) => {
+const PageTemplate = ({ data }) => {
   const { markdownRemark } = data;
-
+  console.log(markdownRemark)
   return (
     <IndexLayout>
       <Page docsPage>
@@ -68,7 +39,23 @@ const PageTemplate: React.SFC<PageTemplateProps> = ({ data }) => {
   );
 };
 
-export default PageTemplate;
+const PageTemplateForm = () => {
+  fields: [
+    {
+      label: 'Title',
+      name: 'frontmatter.title',
+      component: 'text'
+    },
+    {
+      label: 'body',
+      name: 'rawMarkdownBody',
+      component: 'textarea',
+    }
+  ]
+}
+
+export default remarkForm(PageTemplate, PageTemplateForm);
+
 
 export const query = graphql`
   query HomeTemplateQuery($slug: String!) {
@@ -86,6 +73,11 @@ export const query = graphql`
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
+      id
+      fields {
+        fileRelativePath
+      }
+      rawMarkdownBody
       htmlAst
       excerpt
       frontmatter {
