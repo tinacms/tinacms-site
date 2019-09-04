@@ -1,12 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
-import { RouteComponentProps } from '@reach/router';
-import { remarkForm } from '@tinacms/react-tinacms-remark'
-
+import { remarkForm, createRemarkButton } from '@tinacms/react-tinacms-remark';
 import { getPageById } from 'utils/helpers';
-import { MenuNode, Edge } from 'interfaces/nodes';
-import { SiteMetadata } from 'interfaces/gatsby';
 
 import { Page } from 'components/layout/Page';
 import { Container } from 'components/layout/Container';
@@ -16,7 +12,7 @@ import { MarkdownContent } from 'components/page/Markdown';
 
 import { FooterWrapper, Footer } from 'components/layout/Footer';
 import { Pagination } from 'components/ui/Pagination';
-import { TocWrapper, TocFloatingButton } from 'components/docs/TableOfContents';
+import { TocWrapper } from 'components/docs/TableOfContents';
 import IndexLayout from 'layouts';
 import renderAst from 'utils/renderAst';
 
@@ -61,7 +57,35 @@ const PageTemplate = ({ data }) => {
   );
 };
 
-export default remarkForm(PageTemplate);
+const PageTemplateForm = {
+  fields: [
+    {
+      label: 'Title',
+      name: 'frontmatter.title',
+      component: 'text'
+    },
+    {
+      label: 'Post Body',
+      name: 'rawMarkdownBody',
+      component: 'textarea',
+    }
+  ]
+}
+
+const CreatePostButton = createRemarkButton({
+  label: 'Add New Doc',
+  filename: name => {
+  let slug = name.replace(/\s+/, '-').toLowerCase()
+
+  return `content/blog/${slug}/index.md`
+  },
+  frontmatter: title => ({
+  title,
+  body: () => `New doc, who dis?`
+  })
+})
+
+export default remarkForm(PageTemplate, PageTemplateForm);
 
 export const query = graphql`
   query PageTemplateQuery($slug: String!) {
@@ -108,3 +132,6 @@ export const query = graphql`
     }
   }
 `;
+
+
+

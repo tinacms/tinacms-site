@@ -39,21 +39,6 @@ const PageTemplate = ({ data }) => {
   );
 };
 
-const PageTemplateForm = () => {
-  fields: [
-    {
-      label: 'Title',
-      name: 'frontmatter.title',
-      component: 'text'
-    },
-    {
-      label: 'body',
-      name: 'rawMarkdownBody',
-      component: 'textarea',
-    }
-  ]
-}
-
 export default remarkForm(PageTemplate, PageTemplateForm);
 
 
@@ -89,3 +74,20 @@ export const query = graphql`
     }
   }
 `;
+
+//TinaCMS data
+const PageTemplateForm = {
+  fields: [
+    {
+      label: 'Title',
+      name: 'frontmatter.title',
+      component: 'text'
+    },
+    {
+      label: 'Body Content',
+      name: 'rawMarkdownBody',
+      component: 'textarea',
+    }
+  ]
+}
+
