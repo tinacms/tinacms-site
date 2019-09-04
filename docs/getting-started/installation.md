@@ -1,6 +1,7 @@
 ---
 id: installation
 title: Installation
+prev: null
 next: development-server
 ---
 

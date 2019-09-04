@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import { RouteComponentProps } from '@reach/router';
+import { remarkForm } from '@tinacms/react-tinacms-remark'
 
 import { getPageById } from 'utils/helpers';
 import { MenuNode, Edge } from 'interfaces/nodes';
@@ -83,7 +84,7 @@ const PageTemplate: React.SFC<PageTemplateProps> = ({ data }) => {
   );
 };
 
-export default PageTemplate;
+export default remarkForm(PageTemplate);
 
 export const query = graphql`
   query PageTemplateQuery($slug: String!) {
@@ -113,6 +114,11 @@ export const query = graphql`
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
+      id
+      fields {
+        fileRelativePath
+      }
+      rawMarkdownBody
       htmlAst
       tableOfContents
       excerpt
