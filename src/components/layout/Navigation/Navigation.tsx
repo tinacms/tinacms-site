@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
+import { createRemarkButton } from '@tinacms/react-tinacms-remark';
+import { withPlugin } from '@tinacms/react-tinacms'
 
 import { MenuNode, Edge, HeaderMenuItem } from 'interfaces/nodes';
 import { determineFontDimensions, Heading } from 'components/foundations';
@@ -218,4 +220,24 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
   );
 }
 
-export default Navigation;
+/*eslint-disable */
+const CreatePostButton = createRemarkButton({
+  label: 'Add New Doc',
+  //where does this name come from??
+  filename: name => {
+  let slug = name.replace(/\s+/, '-').toLowerCase()
+
+  return `docs/${slug}.md`
+  },
+  body: () => `New doc, who dis?`,
+  //same with title
+  frontmatter: title => ({
+  title,
+  id: title.replace(/\s+/, '-').toLowerCase(),
+  prev: null,
+  next: null
+  })
+})
+/*eslint-enable */
+
+export default withPlugin(Navigation, CreatePostButton);

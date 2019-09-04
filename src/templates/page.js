@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
-import { remarkForm, createRemarkButton } from '@tinacms/react-tinacms-remark';
+import { remarkForm} from '@tinacms/react-tinacms-remark';
 import { getPageById } from 'utils/helpers';
 
 import { Page } from 'components/layout/Page';
@@ -68,22 +68,19 @@ const PageTemplateForm = {
       label: 'Post Body',
       name: 'rawMarkdownBody',
       component: 'textarea',
+    },
+    {
+      label: 'Previous Doc',
+      name: 'frontmatter.prev',
+      component: 'text',
+    },
+    {
+      label: 'Next Doc',
+      name: 'frontmatter.next',
+      component: 'text'
     }
   ]
 }
-
-const CreatePostButton = createRemarkButton({
-  label: 'Add New Doc',
-  filename: name => {
-  let slug = name.replace(/\s+/, '-').toLowerCase()
-
-  return `content/blog/${slug}/index.md`
-  },
-  frontmatter: title => ({
-  title,
-  body: () => `New doc, who dis?`
-  })
-})
 
 export default remarkForm(PageTemplate, PageTemplateForm);
 
