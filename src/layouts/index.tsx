@@ -33,7 +33,6 @@ const IndexLayout: React.FC<IndexLayoutProps> = ({ location, children }) => {
     <StaticQuery query={query}>
       {(data: DataProps) => {
         const { siteMetadata } = data.site;
-
         return (
           <AksaraReset>
             <LayoutRoot>

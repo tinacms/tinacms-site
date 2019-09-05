@@ -167,7 +167,7 @@ interface NavigationProps {
 
 function Navigation({ title, navigation, headerMenus }: NavigationProps) {
   const { state, dispatch } = React.useContext(NavigationContext);
-
+  console.log(navigation)
   return (
     <Wrapper isOpen={state.isOpen}>
       <Header>
@@ -214,31 +214,38 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
         </DocumentationMenu>
         <DocumentationNav onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}>
           {navigation &&
-            navigation.map(({ node }) => <NavigationMenu key={node.title} menuKey={node.title} node={node} />)}
+          navigation.map(({ node }) => {
+            return(
+            <NavigationMenu key={node.title} menuKey={node.title} node={node} />)
+          })}
         </DocumentationNav>
       </WrapperInner>
     </Wrapper>
   );
 }
 
-/*eslint-disable */
+//TinaCMS add docs post config
 const CreatePostButton = createRemarkButton({
   label: 'Add New Doc',
   //where does this name come from??
-  filename: name => {
-  let slug = name.replace(/\s+/, '-').toLowerCase()
-
-  return `docs/${slug}.md`
+  filename: path => {
+  const formattedPath = path.replace(/\s+/, '-').toLowerCase()
+  return `docs/${formattedPath}.md`
   },
   body: () => `New doc, who dis?`,
   //same with title
-  frontmatter: title => ({
-  title,
-  id: title.replace(/\s+/, '-').toLowerCase(),
-  prev: null,
-  next: null
-  })
+  frontmatter: path => {
+    //remove any other dirs from the title, return only filename
+    const title = path.slice(path.search(/\/[^\/]+$/) + 1 )
+    const id = path.replace(/\s+/, '-').toLowerCase()
+    return {
+      title,
+      id,
+      prev: null,
+      next: null
+    }
+  }
 })
-/*eslint-enable */
+
 
 export default withPlugin(Navigation, CreatePostButton);
