@@ -84,6 +84,9 @@ const query = graphql`
     navigationMenus: allTocJson {
       edges {
         node {
+          fields {
+            fileRelativePath
+          }
           title
           items {
             id

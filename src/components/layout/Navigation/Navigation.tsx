@@ -13,6 +13,7 @@ import { NavigationContext, NavigationActionTypes } from './NavigationContext';
 import NavigationMenu from './NavigationMenu';
 import NavButton from './NavButton';
 
+
 interface ToggleableProps {
   isOpen?: boolean;
 }

@@ -39,8 +39,27 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         name: 'layout',
         value: layout || ''
       });
+
     }
   }
+  if(node.internal.type.includes('Json')) {
+
+    let pathRoot = process.cwd()
+    let parent = getNode(node.parent)
+    createNodeField({
+      name: `fileRelativePath`,
+      node,
+      value: parent.absolutePath.replace(pathRoot, ''),
+    })
+  //   // console.log(getNode(node.parent))
+  //   const { relativePath } = getNode(node.parent)
+  //   console.log(relativePath)
+  //   createNodeField({
+  //     node,
+  //     name: 'fileRelativePath',
+  //     value: relativePath
+  //   })
+   }
 };
 
 exports.createPages = async ({ graphql, actions }) => {
