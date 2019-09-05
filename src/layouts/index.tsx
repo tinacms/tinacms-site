@@ -33,7 +33,6 @@ const IndexLayout: React.FC<IndexLayoutProps> = ({ location, children }) => {
     <StaticQuery query={query}>
       {(data: DataProps) => {
         const { siteMetadata } = data.site;
-
         return (
           <AksaraReset>
             <LayoutRoot>
@@ -84,6 +83,9 @@ const query = graphql`
     navigationMenus: allTocJson {
       edges {
         node {
+          fields {
+            fileRelativePath
+          }
           title
           items {
             id

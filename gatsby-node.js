@@ -39,8 +39,27 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         name: 'layout',
         value: layout || ''
       });
+
     }
   }
+  if(node.internal.type.includes('Json')) {
+
+    let pathRoot = process.cwd()
+    let parent = getNode(node.parent)
+    createNodeField({
+      name: `fileRelativePath`,
+      node,
+      value: parent.absolutePath.replace(pathRoot, ''),
+    })
+  //   // console.log(getNode(node.parent))
+  //   const { relativePath } = getNode(node.parent)
+  //   console.log(relativePath)
+  //   createNodeField({
+  //     node,
+  //     name: 'fileRelativePath',
+  //     value: relativePath
+  //   })
+   }
 };
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -68,7 +87,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
   allMarkdown.data.allMarkdownRemark.edges.forEach(({ node }) => {
     const { slug, layout } = node.fields;
-
     createPage({
       path: slug,
       // This will automatically resolve the template to a corresponding
@@ -80,7 +98,7 @@ exports.createPages = async ({ graphql, actions }) => {
       // template.
       //
       // Note that the template has to exist first, or else the build will fail.
-      component: path.resolve(`./src/templates/${layout || 'page'}.tsx`),
+      component: path.resolve(`./src/templates/${layout || 'page'}.js`),
       context: {
         // Data passed to context is available in page queries as GraphQL variables.
         slug

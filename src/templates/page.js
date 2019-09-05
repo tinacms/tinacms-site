@@ -1,12 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
-import { RouteComponentProps } from '@reach/router';
-import { remarkForm } from '@tinacms/react-tinacms-remark'
-
+import { remarkForm} from '@tinacms/react-tinacms-remark';
 import { getPageById } from 'utils/helpers';
-import { MenuNode, Edge } from 'interfaces/nodes';
-import { SiteMetadata } from 'interfaces/gatsby';
 
 import { Page } from 'components/layout/Page';
 import { Container } from 'components/layout/Container';
@@ -16,34 +12,11 @@ import { MarkdownContent } from 'components/page/Markdown';
 
 import { FooterWrapper, Footer } from 'components/layout/Footer';
 import { Pagination } from 'components/ui/Pagination';
-import { TocWrapper, TocFloatingButton } from 'components/docs/TableOfContents';
+import { TocWrapper } from 'components/docs/TableOfContents';
 import IndexLayout from 'layouts';
 import renderAst from 'utils/renderAst';
 
-interface PageTemplateProps extends RouteComponentProps {
-  data: {
-    site: {
-      siteMetadata: SiteMetadata;
-    };
-    sectionList: {
-      edges: Edge<MenuNode>[];
-    };
-    markdownRemark: {
-      htmlAst: any;
-      tableOfContents: string;
-      excerpt: string;
-      frontmatter: {
-        id: string;
-        title: string;
-        description?: string;
-        prev?: string;
-        next?: string;
-      };
-    };
-  };
-}
-
-const PageTemplate: React.SFC<PageTemplateProps> = ({ data }) => {
+const PageTemplate = ({ data }) => {
   const [tocIsOpen, setTocIsOpen] = React.useState(false);
   const { markdownRemark, sectionList, site } = data;
   const { prev, next } = markdownRemark.frontmatter;
@@ -77,14 +50,39 @@ const PageTemplate: React.SFC<PageTemplateProps> = ({ data }) => {
               <Footer />
             </FooterWrapper>
           </Container>
-          <TocFloatingButton tocIsOpen={tocIsOpen} onClick={() => setTocIsOpen(!tocIsOpen)} />
+          {/* //this button floats over the tina button ---> <TocFloatingButton tocIsOpen={tocIsOpen} onClick={() => setTocIsOpen(!tocIsOpen)} /> */}
         </DocsWrapper>
       </Page>
     </IndexLayout>
   );
 };
 
-export default remarkForm(PageTemplate);
+const PageTemplateForm = {
+  fields: [
+    {
+      label: 'Title',
+      name: 'frontmatter.title',
+      component: 'text'
+    },
+    {
+      label: 'Post Body',
+      name: 'rawMarkdownBody',
+      component: 'textarea',
+    },
+    {
+      label: 'Previous Doc',
+      name: 'frontmatter.prev',
+      component: 'text',
+    },
+    {
+      label: 'Next Doc',
+      name: 'frontmatter.next',
+      component: 'text'
+    }
+  ]
+}
+
+export default remarkForm(PageTemplate, PageTemplateForm);
 
 export const query = graphql`
   query PageTemplateQuery($slug: String!) {
@@ -131,3 +129,6 @@ export const query = graphql`
     }
   }
 `;
+
+
+

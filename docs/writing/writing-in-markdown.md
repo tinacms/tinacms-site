@@ -2,6 +2,7 @@
 id: writing-in-markdown
 title: Writing in Markdown
 prev: table-of-contents
+next: null
 ---
 
 Writing documentation in Gatsby is done in Markdown. Grundgesetz uses Remark to parse Markdown files and turn them into HTML.

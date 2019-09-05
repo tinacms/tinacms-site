@@ -1,10 +1,13 @@
 ---
-layout: home
 id: index
-title: Home
+title: Docs Intro
+prev: null
+next: null
 ---
 
-Grundgesetz is a skeleton for generating accessible documentation pages built on top of [Gatsby](https://www.gatsbyjs.org). It creates static pages from your Markdown documentation files, all prettily formatted with a easy-to-use layout.
+Tina is a......... need to add all our own copy here. This could be an introduction to the docs, it could expand in more technical language what was teased at in the landing page. 
+
+Lorem Ipsum...content that came with the teskeleton for generating accessible documentation pages built on top of [Gatsby](https://www.gatsbyjs.org). It creates static pages from your Markdown documentation files, all prettily formatted with a easy-to-use layout.
 
 Grundgesetz is initially built to solve internal issues in managing documentation for our products at [Kata.ai](https://kata.ai/), but at the same we also found out that it's a good base for quickly deploying a documentation site online, so we put this up for everyone to use.
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
+import { createRemarkButton } from '@tinacms/react-tinacms-remark';
+import { withPlugin } from '@tinacms/react-tinacms'
 
 import { MenuNode, Edge, HeaderMenuItem } from 'interfaces/nodes';
 import { determineFontDimensions, Heading } from 'components/foundations';
@@ -10,6 +12,7 @@ import { isActive } from 'utils/helpers';
 import { NavigationContext, NavigationActionTypes } from './NavigationContext';
 import NavigationMenu from './NavigationMenu';
 import NavButton from './NavButton';
+
 
 interface ToggleableProps {
   isOpen?: boolean;
@@ -164,7 +167,7 @@ interface NavigationProps {
 
 function Navigation({ title, navigation, headerMenus }: NavigationProps) {
   const { state, dispatch } = React.useContext(NavigationContext);
-
+  console.log(navigation)
   return (
     <Wrapper isOpen={state.isOpen}>
       <Header>
@@ -211,11 +214,38 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
         </DocumentationMenu>
         <DocumentationNav onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}>
           {navigation &&
-            navigation.map(({ node }) => <NavigationMenu key={node.title} menuKey={node.title} node={node} />)}
+          navigation.map(({ node }) => {
+            return(
+            <NavigationMenu key={node.title} menuKey={node.title} node={node} />)
+          })}
         </DocumentationNav>
       </WrapperInner>
     </Wrapper>
   );
 }
 
-export default Navigation;
+//TinaCMS add docs post config
+const CreatePostButton = createRemarkButton({
+  label: 'Add New Doc',
+  //where does this name come from??
+  filename: path => {
+  const formattedPath = path.replace(/\s+/, '-').toLowerCase()
+  return `docs/${formattedPath}.md`
+  },
+  body: () => `New doc, who dis?`,
+  //same with title
+  frontmatter: path => {
+    //remove any other dirs from the title, return only filename
+    const title = path.slice(path.search(/\/[^\/]+$/) + 1 )
+    const id = path.replace(/\s+/, '-').toLowerCase()
+    return {
+      title,
+      id,
+      prev: null,
+      next: null
+    }
+  }
+})
+
+
+export default withPlugin(Navigation, CreatePostButton);

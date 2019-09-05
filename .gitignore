@@ -117,3 +117,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+sandbox/
