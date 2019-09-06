@@ -1,20 +1,20 @@
-#Tina Docs
+# Tina Docs
 ____
 
 This extends the [Grundgesetz Skeleton](https://github.com/kata-ai/grundgesetz-skeleton) created by Resi Respati at [kata ai](https://github.com/kata-ai)
 
-###**Making new doc files**
+### **Making new doc files**
 
 When creating a new file, enter the full path (not just the title) to put it in a subdir that corresponds with the table of contents. You will also need to add the directory(if its new) and the file to the toc.json to get it to show in the toc component. I know it's annoying but since I couldn't get the jsonForm to work with this array of json objects, we will need to manually add items to that table of contents for now.
 
-###**Frontmatter Weirdness**
+### **Frontmatter Weirdness**
 
 The `next` and `prev` frontmatter values for the docs need to match the `id` from toc.json
 
 
-#Notes from the theme creator
+# Notes from the theme creator
 
-##Project Structure
+## Project Structure
 The project structure of Grundgesetz is specifically designed for easy maintenance of documentation and the site's code.
 
 ```
