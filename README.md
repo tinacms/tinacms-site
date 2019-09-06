@@ -1,5 +1,4 @@
 # Tina Docs
-____
 
 This extends the [Grundgesetz Skeleton](https://github.com/kata-ai/grundgesetz-skeleton) created by Resi Respati at [kata ai](https://github.com/kata-ai)
 
