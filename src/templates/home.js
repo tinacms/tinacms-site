@@ -18,7 +18,6 @@ import renderAst from 'utils/renderAst';
 
 const PageTemplate = ({ data }) => {
   const { markdownRemark } = data;
-  console.log(markdownRemark)
   return (
     <IndexLayout>
       <Page docsPage>
@@ -87,6 +86,16 @@ const PageTemplateForm = {
       label: 'Body Content',
       name: 'rawMarkdownBody',
       component: 'textarea',
+    },
+    {
+      label: 'Previous Doc',
+      name: 'frontmatter.prev',
+      component: 'text',
+    },
+    {
+      label: 'Next Doc',
+      name: 'frontmatter.next',
+      component: 'text'
     }
   ]
 }

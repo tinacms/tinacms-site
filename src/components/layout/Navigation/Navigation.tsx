@@ -167,7 +167,6 @@ interface NavigationProps {
 
 function Navigation({ title, navigation, headerMenus }: NavigationProps) {
   const { state, dispatch } = React.useContext(NavigationContext);
-  console.log(navigation)
   return (
     <Wrapper isOpen={state.isOpen}>
       <Header>
@@ -227,13 +226,11 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
 //TinaCMS add docs post config
 const CreatePostButton = createRemarkButton({
   label: 'Add New Doc',
-  //where does this name come from??
   filename: path => {
   const formattedPath = path.replace(/\s+/, '-').toLowerCase()
   return `docs/${formattedPath}.md`
   },
   body: () => `New doc, who dis?`,
-  //same with title
   frontmatter: path => {
     //remove any other dirs from the title, return only filename
     const title = path.slice(path.search(/\/[^\/]+$/) + 1 )

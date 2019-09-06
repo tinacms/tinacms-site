@@ -2,13 +2,13 @@
   {
     "id": "getting-started",
     "label": "Getting Started",
-    "href": "/getting-started/installation",
+    "href": "/getting-started/introduction",
     "external": false
   },
   {
     "id": "github",
     "label": "GitHub",
-    "href": "https://github.com/kata-ai/grundgesetz-skeleton",
+    "href": "https://github.com/tinacms/tinacms",
     "external": true
   }
 ]
