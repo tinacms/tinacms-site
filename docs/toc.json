@@ -3,39 +3,109 @@
     "title": "Getting Started",
     "items": [
       {
-        "id": "installation",
-        "slug": "/getting-started/installation",
-        "title": "Installation"
+        "id": "introduction",
+        "slug": "/getting-started/introduction",
+        "title": "Introduction"
       },
       {
-        "id": "development-server",
-        "slug": "/getting-started/development-server",
-        "title": "Development Server"
-      },
-      {
-        "id": "deploying",
-        "slug": "/getting-started/deploying",
-        "title": "Deploying"
+        "id": "how-tina-works",
+        "slug": "/getting-started/how-tina-works",
+        "title": "How Tina Works"
       }
     ]
   },
   {
-    "title": "Writing",
+    "title": "Gatsby",
     "items": [
       {
-        "id": "project-structure",
-        "slug": "/writing/project-structure",
-        "title": "Project Structure"
+        "id": "/gatsby/quickstart",
+        "slug": "/gatsby/quickstart",
+        "title": "Quickstart"
       },
       {
-        "id": "table-of-contents",
-        "slug": "/writing/table-of-contents",
-        "title": "Table of Contents"
+        "id": "/gatsby/manual-setup",
+        "slug": "/gatsby/manual-setup",
+        "title": "Manual Setup"
       },
       {
-        "id": "writing-in-markdown",
-        "slug": "/writing/writing-in-markdown",
-        "title": "Writing in Markdown"
+        "id": "/gatsby/content-editing",
+        "slug": "/gatsby/content-editing",
+        "title": "Content Editing"
+      },
+      {
+        "id": "/gatsby/content-creation",
+        "slug": "/gatsby/content-creation",
+        "title": "Content Creation"
+      },
+      {
+        "id": "/gatsby/custom-fields",
+        "slug": "/gatsby/custom-fields",
+        "title": "Custom Fields"
+      }
+    ]
+  },
+  {
+    "title": "React",
+    "items": [
+      {
+        "id": "/react/creating-forms",
+        "slug": "/react/creating-forms",
+        "title": "Creating Forms"
+      },
+      {
+        "id": "/react/creating-fields",
+        "slug": "/react/creating-fields",
+        "title": "Creating Fields"
+      }
+    ]
+  },
+  {
+    "title": "NextJS",
+    "items": [
+      {
+        "id": "tbd",
+        "slug": "/nextjs/tbd",
+        "title": "tbd"
+      }
+    ]
+  },
+  {
+    "title": "Concepts",
+    "items": [
+      {
+        "id": "/concepts/forms",
+        "slug": "/concepts/forms",
+        "title": "Forms"
+      },
+      {
+        "id": "/concepts/field-plugins",
+        "slug": "/concepts/field-plugins",
+        "title": "Field Plugins"
+      },
+      {
+        "id": "/concepts/backends",
+        "slug": "/concepts/backends",
+        "title": "Backends"
+      }
+    ]
+  },
+  {
+    "title": "Contributing",
+    "items": [
+      {
+        "id": "/contributing/guidelines",
+        "slug": "/contributing/guidelines",
+        "title": "Guidelines"
+      },
+      {
+        "id": "/contributing/setting-up",
+        "slug": "/contributing/setting-up",
+        "title": "Setting Up"
+      },
+      {
+        "id": "/contributing/troubleshooting",
+        "slug": "/contributing/troubleshooting",
+        "title": "Troubleshooting"
       }
     ]
   }

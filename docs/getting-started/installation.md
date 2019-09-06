@@ -5,42 +5,15 @@ prev: null
 next: development-server
 ---
 
-## Prerequisites
+## Tool Prerequisites
 
-Grundgesetz is built on top of [Gatsby](https://www.gatsbjs.org). To run all the tools required you need at least the following:
+Tina is built with [React](https://www.reactjs.org). To run all the tools required you need at least the following installed:
 
 - [Node.js](https://nodejs.org/en/) (8.0.0+)
 - [Yarn](https://yarnpkg.com) (Optional. You can still use `npm` if you want, but this is for your own sanity.)
 
-## Initializing the Project
+## Other Knowledge
 
-### The Fast Way
+Additionally, you should have a good working knowledge of whatever Javascript framework you are using, as setting up Tina requires a fairly intimate knowledge with component architecture to be able to customize and iterate on your bespoke version of Tina.
 
-You can now create a new repository with Grundgesetz included by going to the GitHub page clicking on the "Use this template" button on the top right.
-
-![use-template](/img/use-template.png)
-
-This will take you to the Create Repository screen. Fill in the details of your projects, and click "Create repository from template".
-
-![new-repo-from-template](/img/new-repo-from-template.png)
-
-Once the repository is created, you can [clone the repository](https://help.github.com/en/articles/cloning-a-repository) and open your terminal in the repository's folder. Once you're there, install the dependencies by running `yarn` (or `npm install`, if you prefer to use npm).
-
-### Using Gatsby CLI
-
-Alternatively, you can bootstrap your project using `gatsby-cli`. To install it, run the following command.
-
-```bash
-# npm
-npm install -g gatsby-cli
-# yarn
-yarn global add gatsby-cli
-```
-
-Now we have `gatsby-cli` installed, we can now create a project based on the Grundgesetz skeleton by running:
-
-```bash
-gatsby new project-name https://github.com/kata-ai/grundgesetz-skeleton
-```
-
-The project is generated in the folder with the `project-name` you specified. In the next section, we will start writing our documentation on-the-fly with the development server.
+If you just want to start coding to learn more about how Tina works, skip to the [Gatsby Quickstart](/gatsby/quickstart)
