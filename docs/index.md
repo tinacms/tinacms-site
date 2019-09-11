@@ -1,6 +1,6 @@
 ---
-id: index
 title: Tina Docs
+id: index
 prev: null
 next: /getting-started/installation
 ---
