@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
-import { remarkForm} from '@tinacms/react-tinacms-remark';
+import { remarkForm } from '@tinacms/react-tinacms-remark';
 import { getPageById } from 'utils/helpers';
 
 import { Page } from 'components/layout/Page';
@@ -67,12 +67,12 @@ const PageTemplateForm = {
     {
       label: 'Post Body',
       name: 'rawMarkdownBody',
-      component: 'textarea',
+      component: 'textarea'
     },
     {
       label: 'Previous Doc',
       name: 'frontmatter.prev',
-      component: 'text',
+      component: 'text'
     },
     {
       label: 'Next Doc',
@@ -80,7 +80,7 @@ const PageTemplateForm = {
       component: 'text'
     }
   ]
-}
+};
 
 export default remarkForm(PageTemplate, PageTemplateForm);
 
@@ -113,9 +113,8 @@ export const query = graphql`
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
-      fields {
-        fileRelativePath
-      }
+      fileRelativePath
+      rawFrontmatter
       rawMarkdownBody
       htmlAst
       tableOfContents
@@ -129,6 +128,3 @@ export const query = graphql`
     }
   }
 `;
-
-
-
