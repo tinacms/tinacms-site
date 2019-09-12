@@ -1,13 +1,17 @@
 ---
-id: /gatsby/manual-setup
 title: Manual Setup
+id: /gatsby/manual-setup
 prev: /gatsby/quickstart
 next: /gatsby/content-editing
 ---
 
-Learn how to setup Tina on an existing Gatsby site. Don't have a site yet? Refer to the [quickstart page](/gatsby/quickstart). This guide assumes you have the Gatsby CLI installed, Node & a package manager.
+Learn how to setup Tina on an existing Gatsby site.
 
-This page will guide you through installing and configuring Tina onto your project, however this won't make the content editable right away. [Go here](/gatsby/edit-content) to learn how to make content editable.
+After this guide you will have installed and added the TinaCMS sidebar to your project. However, this won't make your content editable. Go to the [next guide](/gatsby/edit-content) to learn how to make content editable.
+
+Assumptions: This guide assumes you have the Gatsby CLI installed, Node & a package manager.
+
+Note: Don't have a site yet? Refer to the [quickstart page](/gatsby/quickstart).
 
 ## Installation
 
@@ -51,12 +55,8 @@ module.exports = {
 
 1. **Open the CMS**
 
-   You will notice there's a pencil icon, this is the way you can toggle 'edit-mode' with Tina.
+   You will notice there's a pencil icon, this is the way you can toggle the Tina sidebar.
 
-Hooray! If you see the icon and can open the editing sidebar, this means you've successfully installed & configured Tina, however you should see a note that there is no editable content on the site yet. Follow the next steps to learn how to make content editable.
+Hooray! 
 
-## Next Steps
-
-- [Editing Markdown Files](/gatsby/content-editing#1-editing-markdown-in-gatsby)
-- [Editing JSON Files](/gatsby/content-editing/#2-editing-json-in-gatsby)
-- [Creating Custom Fields](/gatsby/custom-fields)
+If you see the icon and can open the editing sidebar, this means you've successfully installed & configured Tina. You will see a note that there is no editable content on the site yet. Follow the next steps to learn how to make content editable.
