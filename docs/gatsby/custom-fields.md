@@ -1,8 +1,8 @@
 ---
-id: /gatsby/custom-fields
 title: Custom Fields
+id: /gatsby/custom-fields
 prev: /gatsby/content-creation
-next: /concepts/field-plugins
+next:
 ---
 
 This doc explains how to add custom field plugins to a Gatsby site.
@@ -99,8 +99,3 @@ export const onClientEntry = () => {
   })
 }
 ```
-
-## Further Reading
-
-- [Field Plugins](/concepts/field-plugins)
-  - [Creating Fields in React](../react/creating-fields.md)

@@ -13,15 +13,18 @@ Tina is optimized for nextgen JAMstack tools. It is based in javascript and is e
 ## Get Started
 Depending on your tools, there are a few different flows mapped out for using Tina with either your existing project or to play around on a starter
 
-[Follow the documentation](/getting-started/installation)
 
 #### With Gatsby
-1. Start from scratch
-2. Add to existing site
+1. [Use the starter](/gatsby/quickstart)
+2. [Add to existing site](gatsby/manual-setup)
 
 #### With Create-React-App
+
+_Coming soon_
+
 #### With Next.js
- 
+
+_Coming soon_
 
 ## Contributing
 
