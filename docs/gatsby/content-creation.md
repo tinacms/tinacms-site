@@ -1,6 +1,6 @@
 ---
-id: /gatsby/content-creation
 title: Content Creation
+id: /gatsby/content-creation
 prev: /gatsby/content-editing
 next: /gatsby/custom-fields
 ---
@@ -13,16 +13,20 @@ Editing content is rad, but we need a way to add or create new content. This gui
 
 ## Creating Markdown in Gatsby
 
-Creating new Markdown files is made possible by two plugins:
+In this guide you'll learn to:
 
-- `gatsby-tinacms-remark`: Provides hooks and components for creating Remark forms.
-- `gatsby-tinacms-git`: Extends the gatsby development server to writes changes to the local filesystem;
-  and registers [CMS Backend](../concepts/backends.md) for saving changes to that backend.
+1. Create a `content-button` plugin
+2. Register the plugin with Tina
+3. Configure how content is created by:
+   * Formatting the filename & path
+   * Providing default frontmatter 
+   * Providing a default body
 
 ###1. Creating Content-Button Plugins
 
-Tina uses `content-button` plugins to render buttons at the top of the Tina sidebar. These buttons are used for creating new content in the CMS. The `createRemarkButton` function helps us constructs `content-button` plugins for creating markdown files.
+Tina uses `content-button` plugins to make creating content possible. These buttons are accessible from the sidebar menu. The `createRemarkButton` function helps us constructs `content-button` plugins for creating markdown files.
 
+**Example**
 ```javascript
 import { createRemarkButton } from '@tinacms/react-tinacms-remark'
 
@@ -31,16 +35,29 @@ const CreatePostButton = createRemarkButton({ label: 'Create Post' })
 
 ###2. Adding the Button
 
-Now that we've created the button, we need to add it to the sidebar. There's many places you could add this button. You'll need to think about where you want this button to show-up. You could add it to a blog index page, where all blogs or posts are listed. Or you could add it to a layout component so it is always available when that layout is used. This button should not be added to the templates where you set-up tina to edit content. For example, a blog template where you added a remarkForm.
+Now that we've created the button, we need to add it to the sidebar. The button only shoes up, when the component that registers it is rendered. There's many places you could add this button. You'll need to think about where you want this button to show-up. 
 
-**Option: only show on the Blog index**
+<!-- TIP -->
+Here are some places you may want to add the plugin:
 
-In this example, we use the `withPlugin` higher order component from `@tinacms/react-tinacms` to add the button
-to the Tina when visiting the blog index page.
+1. The Root component: it will always be available
+1. A Layout component: it will always available when that Layout is used.
+1. A Blog Index component: it will only be available when looking at the list of blog posts. 
+
+**Adding the Button to the Blog  Index**
+
+In this example, we will add the button to the Tina sidebar when visiting the blog index page. There are 3 steps involved:
+
+1. Import `createRemarkButton` and `withPlugin`
+2. Create the `content-button` plugin
+3. Add the plugin to the component
+
+_NOTE: No changes need to be made to the `BlogIndex` component itself._
 
 **Example: src/pages/index.js**
 
 ```jsx
+// 1. Import `createRemarkButton` and `withPlugin`
 import { withPlugin } from '@tinacms/react-tinacms'
 import { createRemarkButton } from '@tinacms/react-tinacms-remark'
 
@@ -73,21 +90,11 @@ function BlogIndex(props) {
   )
 }
 
-// Create the button plugin
-const CreatePostButton = createRemarkButton({
-  label: 'Create Post',
-  filename: name => {
-    let slug = name.replace(/\s+/, '-').toLowerCase()
+// 2. Create the `content-button` plugin
+const CreatePostPlugin = createRemarkButton({ label: 'Create Post' })
 
-    return `content/blog/${slug}/index.md`
-  },
-  frontmatter: title => ({
-    title,
-    date: new Date(),
-  }),
-})
-
-export default withPlugin(BlogIndex, CreatePostButton)
+// 3. Add the plugin to the component
+export default withPlugin(BlogIndex, CreatePostPlugin)
 ```
 This will add a button with the text `Create Post` to the sidebar. Clicking the button will reveal a text input that accepts the path of the markdown file to be created.
 
