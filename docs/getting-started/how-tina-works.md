@@ -1,6 +1,6 @@
 ---
-id: /getting-started/how-tina-works
 title: How Tina Works
+id: /getting-started/how-tina-works
 prev: introduction
 next: /gatsby/quickstart
 ---

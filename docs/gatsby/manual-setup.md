@@ -1,10 +1,9 @@
 ---
-id: /gatsby/manual-setup
 title: Manual Setup
+id: /gatsby/manual-setup
 prev: /gatsby/quickstart
 next: /gatsby/content-editing
 ---
-
 Learn how to setup Tina on an existing Gatsby site. Don't have a site yet? Refer to the [quickstart page](/gatsby/quickstart). This guide assumes you have the Gatsby CLI installed, Node & a package manager.
 
 This page will guide you through installing and configuring Tina onto your project, however this won't make the content editable right away. [Go here](/gatsby/edit-content) to learn how to make content editable.

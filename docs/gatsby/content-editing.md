@@ -1,6 +1,6 @@
 ---
-id: /gatsby/content-editing
 title: Content Editing
+id: /gatsby/content-editing
 prev: /gatsby/manual-setup
 next: /gatsby/content-creation
 ---

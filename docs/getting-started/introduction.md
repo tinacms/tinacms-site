@@ -1,6 +1,6 @@
 ---
-id: introduction
 title: Tina Docs
+id: introduction
 prev: null
 next: how-tina-works
 ---

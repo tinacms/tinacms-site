@@ -1061,9 +1061,9 @@
   integrity sha512-lxCuvTM8kUKf//W4Qujsz7V3H5zJryJ8Is8Ge+1J9WYs+inxLNwKZ9t9vIefKK42D+dhSVoWdRxOQNAc/sV/4g==
 
 "@tinacms/react-tinacms-remark@^0.1.0-alpha.4":
-  version "0.1.0-alpha.7"
-  resolved "https://registry.yarnpkg.com/@tinacms/react-tinacms-remark/-/react-tinacms-remark-0.1.0-alpha.7.tgz#a3acae24fd643f91b76ffe88d6e03a40b37f4efd"
-  integrity sha512-FP3D346hUXZxEY9gnxgwSst/s8wMkOKxQTWPLqEpYueIjg+5OpqjlyY00Ikzi7mlO8vbhSz5VElIjSgn//ZWXg==
+  version "0.1.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/@tinacms/react-tinacms-remark/-/react-tinacms-remark-0.1.0-alpha.9.tgz#4d909161d1bc30aec6275cec04f7afd3e43973cc"
+  integrity sha512-rVeAdeOJPeg1Yr6jXJu8J4dtV6DrJhvKOdYPCBuseNURiF31a5LiKUfZ0ErXs6YMtLSvFe0XUOqcs7aLJNw5nw==
   dependencies:
     "@tinacms/core" "^0.1.0-alpha.4"
     "@tinacms/react-tinacms" "^0.1.0-alpha.4"
