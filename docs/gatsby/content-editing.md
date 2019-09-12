@@ -1,20 +1,22 @@
 ---
-id: /gatsby/content-editing
 title: Content Editing
+id: /gatsby/content-editing
 prev: /gatsby/manual-setup
 next: /gatsby/content-creation
 ---
 
-There are many different content types in a Gatsby site. Currently Tina has plugins to edit [markdown](/gatsby/content-editing#editing-markdown-in-gatsby) & [JSON](/gatsby/content-editing#editing-json-in-gatsby), with plans for many more content types in the works. Have an idea for a Tina content editing plugin? [Consider contributing](/contributing/guidelines)! Check out how to create your own [form](/react/creating-forms) or [field plugin](/react/creating-fields).
+Gatsby allows you to build sites from many different data sources. Currently Tina has plugins for editing content in [markdown](/gatsby/content-editing#editing-markdown-in-gatsby) & [JSON](/gatsby/content-editing#editing-json-in-gatsby) files, with plans to suppor many more data sources.
+
+<!-- callout -->
+Have an idea for a Tina content editing plugin? [Consider contributing](/contributing/guidelines)! Check out how to create your own [form](/react/creating-forms) or [field plugin](/react/creating-fields).
 
 
-##1. Editing Markdown in Gatsby
+## Editing Markdown in Gatsby
 
-The [`gatsby-transformer-remark`](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-remark) plugin lets us use markdown in our Gatsby sites. Two additional plugins let us edit markdown with Tina:
+The [`gatsby-transformer-remark`](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-remark) plugin lets us use markdown in our Gatsby sites. Two other packages let us edit markdown with Tina:
 
-- `gatsby-tinacms-remark`: Provides hooks and components for creating Remark forms.
-- `gatsby-tinacms-git`: Extends the gatsby development server to writes changes to the local filesystem;
-  and registers [CMS Backend](../concepts/backends.md) for saving changes to that backend.
+- `react-tinacms-remark`: Provides hooks and components for creating Remark forms.
+- `gatsby-tinacms-git`: Extends the gatsby development server to writes changes to the local filesystem.
 
 ### Installation
 
@@ -43,54 +45,67 @@ module.exports = {
 
 ### Creating Remark Forms
 
-**Learn how to create your own custom forms [here](/react/creating-forms)!**
-
 The `remarkForm` [higher-order component](https://reactjs.org/docs/higher-order-components.html) (HOC) let's us register forms with `Tina`. In order for it to work with your template, 3 fields must be included in the `markdownRemark` query:
 
-- `id`
-- `fields.fileRelativePath`
-- `rawMarkdownBody`
+
+
+There are 3 steps to making a markdown file editable:
+
+1. Import the `remarkForm` HOC
+2. Wrap your template with `remarkForm`
+3. Add the required fields to the GraphQL query:
+    - `fileRelativePath`
+    - `rawFrontmatter`
+    - `rawMarkdownBody`
+
 
 **Example: src/templates/blog-post.js**
 
 ```jsx
+// 1. Import the `remarkForm` HOC
 import { remarkForm } from '@tinacms/react-tinacms-remark'
 
 function BlogPostTemplate(props) {
   return <h1>{props.data.markdownRemark.frontmatter.title}</h1>
 }
 
-// Wrap the export with `remarkForm`
+// 2. Wrap your template with `remarkForm`
 export default remarkForm(BlogPostTemplate)
 
-// Include the required fields in the query
+// 3. Add the required fields to the GraphQL query
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      fields {
-        fileRelativePath
-      }
-      rawMarkdownBody
-
+      id  
       html
       frontmatter {
         title
         date
         description
       }
+
+      fileRelativePath
+      rawFrontmatter
+      rawMarkdownBody
     }
   }
 `
 ```
 
-_IMPORTANT:_ Any front matter fields that are **not** queried will be deleted when saving content via the CMS.
+You hould now text inputs for each of your frontmatter fields and for the markdown body. Try changing the tile and see what happens!
 
-### Customizing Forms
+### Editing Markdown Content
 
-**Learn how to create your own forms [here](/react/creating-forms)!**
+With the Remark Form created, you can now edit your markdown file in the Tina sidebar. Content changes are written to the markdown files in real time. Hitting `Save` will commit those changes to your repository.
 
-The `remarkForm` HOC automatically creates a list of form fields based on the shape of your data. This is convenient for getting started but you will probably want to customize the form's list of fields.
+**Why write to disk "on change"?**
+
+This allows any `gatsby-remark-*` plugins to properly transform the data in to a remark node and
+provide a true-fidelity preview of the changes.
+
+### Customizing Remark Forms
+
+The `remarkForm` HOC creates the form based on the shape of your data. This is convenient for getting started but you will want to customize the form eventually.
 
 **Why customize the form?**
 
@@ -98,13 +113,17 @@ The `remarkForm` HOC automatically creates a list of form fields based on the sh
 1. Every field is made a `text` component.
 1. The order of fields might not be consistent.
 
+**How to customize the form**
+
 The `remarkForm` function accepts an optional `config` object for overriding the default configuration of a `RemarkForm`. The following properties are accepted:
 
 - `fields`: A list of field definitions
-  - `name`: The path to some value in the data being edited. (e.g. `frontmatter.tittle`)
+  - `name`: The path to some value in the data being edited. (e.g. `rawFrontmatter.tittle`)
   - `component`: The name of the React component that should be used to edit this field.
     The default options are: `"text"`, `"textarea"`, `"color"`.
   - `label`: A human readable label for the field.
+
+_NOTE: the name of your fields should be prefixed with `"rawFrontmattetr"` rather than `"frontmatter"`. The later is the fully transformed data._
 
 #### Example: src/templates/blog-post.js
 
@@ -120,48 +139,27 @@ function BlogPostTemplate(props) {
   )
 }
 
+// 1. Define the form
 let BlogPostForm = {
   fields: [
     {
       label: 'Title',
-      name: 'frontmatter.title',
+      name: 'rawFrontmatter.title',
       component: 'text',
     },
     {
       label: 'Description',
-      name: 'frontmatter.description',
+      name: 'rawFrontmatter.description',
       component: 'textarea',
     },
   ],
 }
 
+// 2. Pass it as a the second argument to `remarkForm`
 export default remarkForm(BlogPostTemplate, BlogPostForm)
 ```
 
-### Editing Markdown Content
-
-With the Remark Form created, you can now edit the files in the Tina sidebar. Changes to the form
-will be written back to the markdown files in real time.
-
-**Why write to disk "on change"?**
-
-This allows any `gatsby-remark-*` plugins to properly transform the data in to a remark node and
-provide a true-fidelity preview of the changes.
-
-Without this behaviour, producing a true-fidelity preview of the changes would require the frontend
-to replicate all transformations applied to the Markdown files by the gatsby transformers.
-
-#### Next Steps
-
-- [Creating Markdown](/gatsby/content-creation)
-- [Editing Json](/gatsby/content-editing/#2-editing-json-in-gatsby)
-
-#### References
-
-- [Creating Forms]()
-- [Custom Field Plugins](/gatsby/custom-fields)
-
-##2. Editing JSON in Gatsby
+## Editing JSON in Gatsby
 
 Creating forms for content provided by the [`gatsby-transformer-json`](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-json) plugin is made possible by three plugins:
 
