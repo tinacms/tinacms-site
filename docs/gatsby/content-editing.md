@@ -76,7 +76,7 @@ export default remarkForm(BlogPostTemplate)
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      id  
+      id
       html
       frontmatter {
         title
@@ -118,10 +118,11 @@ The `remarkForm` HOC creates the form based on the shape of your data. This is c
 The `remarkForm` function accepts an optional `config` object for overriding the default configuration of a `RemarkForm`. The following properties are accepted:
 
 - `fields`: A list of field definitions
-  - `name`: The path to some value in the data being edited. (e.g. `rawFrontmatter.tittle`)
+  - `name`: The path to some value in the data being edited. (e.g. `rawFrontmatter.title`)
   - `component`: The name of the React component that should be used to edit this field.
     The default options are: `"text"`, `"textarea"`, `"color"`.
   - `label`: A human readable label for the field.
+  - `description`: An optional description that expands on the purpose of the field or prompts a specific action.
 
 _NOTE: the name of your fields should be prefixed with `"rawFrontmattetr"` rather than `"frontmatter"`. The later is the fully transformed data._
 
@@ -145,11 +146,13 @@ let BlogPostForm = {
     {
       label: 'Title',
       name: 'rawFrontmatter.title',
+      description: 'Enter the title of the post here',
       component: 'text',
     },
     {
       label: 'Description',
       name: 'rawFrontmatter.description',
+      description: 'Enter the post description',
       component: 'textarea',
     },
   ],
