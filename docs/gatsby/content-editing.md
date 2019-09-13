@@ -1,5 +1,5 @@
 ---
-title: Content Editing
+title: Content Editing Test
 id: /gatsby/content-editing
 prev: /gatsby/manual-setup
 next: /gatsby/content-creation

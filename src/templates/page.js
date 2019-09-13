@@ -1,27 +1,28 @@
-import React from 'react';
-import { graphql } from 'gatsby';
-import { Helmet } from 'react-helmet';
-import { remarkForm } from '@tinacms/react-tinacms-remark';
-import { getPageById } from 'utils/helpers';
+import React from 'react'
+import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
+import { getPageById } from 'utils/helpers'
+import { TinaField } from '@tinacms/react-tinacms'
+import { remarkForm, liveRemarkForm } from '@tinacms/react-tinacms-remark'
+import { Wysiwyg } from '@tinacms/fields'
+import { Page } from 'components/layout/Page'
+import { Container } from 'components/layout/Container'
+import { DocsWrapper } from 'components/docs/DocsWrapper'
+import { DocsHeader } from 'components/docs/DocsHeader'
+import { MarkdownContent } from 'components/page/Markdown'
 
-import { Page } from 'components/layout/Page';
-import { Container } from 'components/layout/Container';
-import { DocsWrapper } from 'components/docs/DocsWrapper';
-import { DocsHeader } from 'components/docs/DocsHeader';
-import { MarkdownContent } from 'components/page/Markdown';
+import { FooterWrapper, Footer } from 'components/layout/Footer'
+import { Pagination } from 'components/ui/Pagination'
+import { TocWrapper } from 'components/docs/TableOfContents'
+import IndexLayout from 'layouts'
+import renderAst from 'utils/renderAst'
 
-import { FooterWrapper, Footer } from 'components/layout/Footer';
-import { Pagination } from 'components/ui/Pagination';
-import { TocWrapper } from 'components/docs/TableOfContents';
-import IndexLayout from 'layouts';
-import renderAst from 'utils/renderAst';
-
-const PageTemplate = ({ data }) => {
-  const [tocIsOpen, setTocIsOpen] = React.useState(false);
-  const { markdownRemark, sectionList, site } = data;
-  const { prev, next } = markdownRemark.frontmatter;
-  const prevPage = getPageById(sectionList.edges, prev);
-  const nextPage = getPageById(sectionList.edges, next);
+const PageTemplate = ({ data, setIsEditing, isEditing }) => {
+  const [tocIsOpen, setTocIsOpen] = React.useState(false)
+  const { markdownRemark, sectionList, site } = data
+  const { prev, next } = markdownRemark.frontmatter
+  const prevPage = getPageById(sectionList.edges, prev)
+  const nextPage = getPageById(sectionList.edges, next)
 
   return (
     <IndexLayout>
@@ -44,45 +45,51 @@ const PageTemplate = ({ data }) => {
           )}
           <Container>
             <DocsHeader title={markdownRemark.frontmatter.title} subtitle={markdownRemark.frontmatter.description} />
-            <MarkdownContent>{renderAst(markdownRemark.htmlAst)}</MarkdownContent>
+            <MarkdownContent>
+              <TinaField name="rawMarkdownBody" Component={Wysiwyg}>
+                {renderAst(markdownRemark.htmlAst)}
+              </TinaField>
+            </MarkdownContent>
             <FooterWrapper>
+              <button onClick={() => setIsEditing(p => !p)}>{isEditing ? 'Preview' : 'Edit'}</button>
               {(prevPage || nextPage) && <Pagination prevPage={prevPage} nextPage={nextPage} />}
               <Footer />
             </FooterWrapper>
           </Container>
+
           {/* //this button floats over the tina button ---> <TocFloatingButton tocIsOpen={tocIsOpen} onClick={() => setTocIsOpen(!tocIsOpen)} /> */}
         </DocsWrapper>
       </Page>
     </IndexLayout>
-  );
-};
+  )
+}
 
 const PageTemplateForm = {
   fields: [
     {
       label: 'Title',
-      name: 'frontmatter.title',
-      component: 'text'
+      name: 'rawFrontmatter.title',
+      component: 'text',
     },
     {
       label: 'Post Body',
       name: 'rawMarkdownBody',
-      component: 'textarea'
+      component: 'textarea',
     },
     {
       label: 'Previous Doc',
-      name: 'frontmatter.prev',
-      component: 'text'
+      name: 'rawFrontmatter.prev',
+      component: 'text',
     },
     {
       label: 'Next Doc',
-      name: 'frontmatter.next',
-      component: 'text'
-    }
-  ]
-};
+      name: 'rawFrontmatter.next',
+      component: 'text',
+    },
+  ],
+}
 
-export default remarkForm(PageTemplate, PageTemplateForm);
+export default liveRemarkForm(PageTemplate, PageTemplateForm)
 
 export const query = graphql`
   query PageTemplateQuery($slug: String!) {
@@ -127,4 +134,4 @@ export const query = graphql`
       }
     }
   }
-`;
+`
