@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 module.exports = {
   siteMetadata: {
@@ -10,27 +10,34 @@ module.exports = {
     author: {
       name: 'Resi Respati',
       url: 'https://resir014.xyz',
-      email: 'resi@kata.ai'
-    }
+      email: 'resi@kata.ai',
+    },
   },
   plugins: [
     '@tinacms/gatsby-tinacms-git',
-    '@tinacms/gatsby-plugin-tinacms',
+    {
+      resolve: '@tinacms/gatsby-plugin-tinacms',
+      options: {
+        sidebar: {
+          position: 'fixed',
+        },
+      },
+    },
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/static/img`,
-        name: 'uploads'
-      }
+        name: 'uploads',
+      },
     },
     '@tinacms/gatsby-tinacms-json',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'content',
-        path: `${__dirname}/docs`
-      }
+        path: `${__dirname}/docs`,
+      },
     },
     {
       resolve: 'gatsby-transformer-remark',
@@ -39,8 +46,8 @@ module.exports = {
           {
             resolve: 'gatsby-remark-relative-images',
             options: {
-              name: 'uploads'
-            }
+              name: 'uploads',
+            },
           },
           {
             resolve: 'gatsby-remark-images',
@@ -48,33 +55,33 @@ module.exports = {
               maxWidth: 704,
               quality: 90,
               wrapperStyle: 'margin-top: 32px; margin-bottom: 32px;',
-              linkImagesToOriginal: false
-            }
+              linkImagesToOriginal: false,
+            },
           },
           {
             resolve: 'gatsby-remark-responsive-iframe',
             options: {
-              wrapperStyle: 'margin-bottom: 1rem'
-            }
+              wrapperStyle: 'margin-bottom: 1rem',
+            },
           },
           {
             resolve: 'gatsby-remark-prismjs',
             options: {
-              inlineCodeMarker: '›'
-            }
+              inlineCodeMarker: '›',
+            },
           },
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-autolink-headers',
-          'gatsby-remark-smartypants'
-        ]
-      }
+          'gatsby-remark-smartypants',
+        ],
+      },
     },
     'gatsby-transformer-json',
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://tinacms.org'
-      }
+        siteUrl: 'https://tinacms.org',
+      },
     },
     'gatsby-plugin-styled-components',
     'gatsby-plugin-resolve-src',
@@ -84,6 +91,6 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-netlify-cache',
-    'gatsby-plugin-netlify'
-  ]
-};
+    'gatsby-plugin-netlify',
+  ],
+}
