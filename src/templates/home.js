@@ -1,23 +1,23 @@
-import React from 'react';
-import { graphql } from 'gatsby';
-import { Helmet } from 'react-helmet';
-import { remarkForm } from '@tinacms/react-tinacms-remark';
+import React from 'react'
+import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
+import { remarkForm } from '@tinacms/react-tinacms-remark'
 
-import { Page } from 'components/layout/Page';
+import { Page } from 'components/layout/Page'
 
-import { Container } from 'components/layout/Container';
-import { DocsWrapper } from 'components/docs/DocsWrapper';
-import { DocsHeader } from 'components/docs/DocsHeader';
-import MarkdownContent from 'components/page/Markdown/MarkdownContent';
+import { Container } from 'components/layout/Container'
+import { DocsWrapper } from 'components/docs/DocsWrapper'
+import { DocsHeader } from 'components/docs/DocsHeader'
+import MarkdownContent from 'components/page/Markdown/MarkdownContent'
 
-import { Footer, FooterWrapper } from 'components/layout/Footer';
-import IndexLayout from 'layouts';
-import renderAst from 'utils/renderAst';
+import { Footer, FooterWrapper } from 'components/layout/Footer'
+import IndexLayout from 'layouts'
+import renderAst from 'utils/renderAst'
 // import FooterWrapper from 'components/old-layout/FooterWrapper';
 // import Footer from 'components/old-layout/Footer';
 
 const PageTemplate = ({ data }) => {
-  const { markdownRemark } = data;
+  const { markdownRemark } = data
   return (
     <IndexLayout>
       <Page docsPage>
@@ -35,10 +35,10 @@ const PageTemplate = ({ data }) => {
         </DocsWrapper>
       </Page>
     </IndexLayout>
-  );
-};
+  )
+}
 
-export default remarkForm(PageTemplate, PageTemplateForm);
+export default remarkForm(PageTemplate, PageTemplateForm)
 
 export const query = graphql`
   query HomeTemplateQuery($slug: String!) {
@@ -70,7 +70,7 @@ export const query = graphql`
       }
     }
   }
-`;
+`
 
 //TinaCMS data
 const PageTemplateForm = {
@@ -78,22 +78,22 @@ const PageTemplateForm = {
     {
       label: 'Title',
       name: 'frontmatter.title',
-      component: 'text'
+      component: 'text',
     },
     {
       label: 'Body Content',
       name: 'rawMarkdownBody',
-      component: 'textarea'
+      component: 'textarea',
     },
     {
       label: 'Previous Doc',
       name: 'frontmatter.prev',
-      component: 'text'
+      component: 'text',
     },
     {
       label: 'Next Doc',
       name: 'frontmatter.next',
-      component: 'text'
-    }
-  ]
-};
+      component: 'text',
+    },
+  ],
+}
