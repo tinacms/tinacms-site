@@ -8,8 +8,8 @@ next: /gatsby/content-creation
 Gatsby allows you to build sites from many different data sources. Currently Tina has plugins for editing content in [markdown](/gatsby/content-editing#editing-markdown-in-gatsby) & [JSON](/gatsby/content-editing#editing-json-in-gatsby) files, with plans to suppor many more data sources.
 
 <!-- callout -->
-Have an idea for a Tina content editing plugin? [Consider contributing](/contributing/guidelines)! Check out how to create your own [form](/react/creating-forms) or [field plugin](/react/creating-fields).
 
+Have an idea for a Tina content editing plugin? [Consider contributing](/contributing/guidelines)! Check out how to create your own [form](/using-tina/creating-forms) or [field plugin](/using-tina/creating-fields).
 
 ## Editing Markdown in Gatsby
 
@@ -47,17 +47,14 @@ module.exports = {
 
 The `remarkForm` [higher-order component](https://reactjs.org/docs/higher-order-components.html) (HOC) let's us register forms with `Tina`. In order for it to work with your template, 3 fields must be included in the `markdownRemark` query:
 
-
-
 There are 3 steps to making a markdown file editable:
 
 1. Import the `remarkForm` HOC
 2. Wrap your template with `remarkForm`
 3. Add the required fields to the GraphQL query:
-    - `fileRelativePath`
-    - `rawFrontmatter`
-    - `rawMarkdownBody`
-
+   - `fileRelativePath`
+   - `rawFrontmatter`
+   - `rawMarkdownBody`
 
 **Example: src/templates/blog-post.js**
 
@@ -316,5 +313,5 @@ class DataTemplate extends React.Component {
 
 #### References
 
-- [Creating Forms](../react/creating-forms.md)
+- [Creating Forms](../using-tina/creating-forms.md)
 - [Custom Field Plugins](./custom-field-plugins.md)

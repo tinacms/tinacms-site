@@ -1,5 +1,5 @@
 ---
-id: /react/creating-fields
+id: /using-tina/creating-fields
 title: Creating Fields
 prev: null
 next: null
