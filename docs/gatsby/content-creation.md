@@ -171,3 +171,22 @@ const CreatePostButton = createRemarkButton({
   body: () => `This is a new blog post. Please write some content.`,
 })
 ```
+
+###6. Customizing the Create Form
+
+`createRemarkButton` accepts a `fields` option, just like [Creating Forms](../using-tina/creating-forms.md) does. When using a custom create form, all callback functions will receive an object containing all form data.
+
+**Example: Create Posts in Subdirectories**
+
+```javascript
+const CreatePostButton = createRemarkButton({
+  label: 'Create Post',
+  fields: [
+    { name: 'section', label: 'Section', component: 'text', required: true },
+    { name: 'title', label: 'Title', component: 'text', required: true },
+  ],
+  filename: ({ section, title }) => {
+    return `content/blog/${section}/${title}/index.md`
+  },
+})
+```
