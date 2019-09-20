@@ -43,6 +43,11 @@
         "title": "Creating Forms"
       },
       {
+        "id": "/using-tina/inline-editing",
+        "slug": "/using-tina/inline-editing",
+        "title": "Inline Editing"
+      },
+      {
         "id": "/using-tina/creating-fields",
         "slug": "/using-tina/creating-fields",
         "title": "Creating Fields"
