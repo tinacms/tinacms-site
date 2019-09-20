@@ -1,9 +1,10 @@
 ---
-id: /react/creating-forms
+id: /using-tina/creating-forms
 title: Creating Forms
 prev: /gatsby/custom-fields
-next: /react/creating-fields
+next: /using-tina/creating-fields
 ---
+
 Often, the premade form helpers (e.g. [useRemarkForm](/gatsby/content-editing#creating-remark-forms))
 provide all the behaviour we need. Eventually you may need something more custom, and in that case
 you'll want to reach for the `useCMSForm` hook in `@tinacms/react-cms`.

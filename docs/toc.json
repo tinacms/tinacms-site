@@ -15,6 +15,46 @@
     ]
   },
   {
+    "title": "Concepts",
+    "items": [
+      {
+        "id": "/concepts/forms",
+        "slug": "/concepts/forms",
+        "title": "Forms"
+      },
+      {
+        "id": "/concepts/field-plugins",
+        "slug": "/concepts/field-plugins",
+        "title": "Field Plugins"
+      },
+      {
+        "id": "/concepts/backends",
+        "slug": "/concepts/backends",
+        "title": "Backends"
+      }
+    ]
+  },
+  {
+    "title": "Using Tina",
+    "items": [
+      {
+        "id": "/using-tina/creating-forms",
+        "slug": "/using-tina/creating-forms",
+        "title": "Creating Forms"
+      },
+      {
+        "id": "/using-tina/inline-editing",
+        "slug": "/using-tina/inline-editing",
+        "title": "Inline Editing"
+      },
+      {
+        "id": "/using-tina/creating-fields",
+        "slug": "/using-tina/creating-fields",
+        "title": "Creating Fields"
+      }
+    ]
+  },
+  {
     "title": "Gatsby",
     "items": [
       {
@@ -45,47 +85,12 @@
     ]
   },
   {
-    "title": "React",
-    "items": [
-      {
-        "id": "/react/creating-forms",
-        "slug": "/react/creating-forms",
-        "title": "Creating Forms"
-      },
-      {
-        "id": "/react/creating-fields",
-        "slug": "/react/creating-fields",
-        "title": "Creating Fields"
-      }
-    ]
-  },
-  {
     "title": "NextJS",
     "items": [
       {
         "id": "tbd",
         "slug": "/nextjs/tbd",
         "title": "tbd"
-      }
-    ]
-  },
-  {
-    "title": "Concepts",
-    "items": [
-      {
-        "id": "/concepts/forms",
-        "slug": "/concepts/forms",
-        "title": "Forms"
-      },
-      {
-        "id": "/concepts/field-plugins",
-        "slug": "/concepts/field-plugins",
-        "title": "Field Plugins"
-      },
-      {
-        "id": "/concepts/backends",
-        "slug": "/concepts/backends",
-        "title": "Backends"
       }
     ]
   },

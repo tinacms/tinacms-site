@@ -4,6 +4,7 @@ title: Field Plugins
 prev: /concepts/forms
 next: /concepts/backends
 ---
+
 A field plugin defines a component that can be used to edit a field.
 
 The field plugin is a javascript object with two properties:
@@ -28,5 +29,5 @@ cms.forms.addFieldPlugin({
 
 ## Resources
 
-- [Creating Fields in React](../react/creating-fields.md)
+- [Creating Fields in React](../using-tina/creating-fields.md)
   - [Registering Fields in Gatsby](../gatsby/custom-field-plugins.md)

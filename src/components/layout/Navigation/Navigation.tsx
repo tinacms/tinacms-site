@@ -1,21 +1,20 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { Link } from 'gatsby';
-import { createRemarkButton } from '@tinacms/react-tinacms-remark';
+import React from 'react'
+import styled, { css } from 'styled-components'
+import { Link } from 'gatsby'
+import { createRemarkButton } from '@tinacms/react-tinacms-remark'
 import { withPlugin } from '@tinacms/react-tinacms'
 
-import { MenuNode, Edge, HeaderMenuItem } from 'interfaces/nodes';
-import { determineFontDimensions, Heading } from 'components/foundations';
-import { colors, layerIndexes, breakpoints, dimensions } from 'utils/variables';
-import { isActive } from 'utils/helpers';
+import { MenuNode, Edge, HeaderMenuItem } from 'interfaces/nodes'
+import { determineFontDimensions, Heading } from 'components/foundations'
+import { colors, layerIndexes, breakpoints, dimensions } from 'utils/variables'
+import { isActive } from 'utils/helpers'
 
-import { NavigationContext, NavigationActionTypes } from './NavigationContext';
-import NavigationMenu from './NavigationMenu';
-import NavButton from './NavButton';
-
+import { NavigationContext, NavigationActionTypes } from './NavigationContext'
+import NavigationMenu from './NavigationMenu'
+import NavButton from './NavButton'
 
 interface ToggleableProps {
-  isOpen?: boolean;
+  isOpen?: boolean
 }
 
 const Wrapper = styled('aside')<ToggleableProps>`
@@ -53,7 +52,7 @@ const Wrapper = styled('aside')<ToggleableProps>`
     border-bottom: none;
     background-color: ${colors.grey01};
   }
-`;
+`
 
 const WrapperInner = styled('nav')`
   margin-top: ${dimensions.heights.header}px;
@@ -65,7 +64,7 @@ const WrapperInner = styled('nav')`
     height: 100vh;
     overflow-y: auto;
   }
-`;
+`
 
 const Header = styled('div')`
   display: flex;
@@ -84,24 +83,24 @@ const Header = styled('div')`
     border-bottom-color: transparent;
     background-color: ${colors.grey01};
   }
-`;
+`
 
 interface HeaderInnerProps {
-  hideOnMobile?: boolean;
-  hideOnDesktop?: boolean;
+  hideOnMobile?: boolean
+  hideOnDesktop?: boolean
 }
 
 const HideOnMobile = css`
   @media (max-width: ${breakpoints.lg - 1}px) {
     display: none;
   }
-`;
+`
 
 const HideOnDesktop = css`
   @media (min-width: ${breakpoints.lg}px) {
     display: none;
   }
-`;
+`
 
 const HeaderInner = styled('div')<HeaderInnerProps>`
   display: flex;
@@ -112,10 +111,10 @@ const HeaderInner = styled('div')<HeaderInnerProps>`
 
   ${props => props.hideOnMobile && HideOnMobile}
   ${props => props.hideOnDesktop && HideOnDesktop}
-`;
+`
 
 interface FontSizeProps {
-  size: ReturnType<typeof determineFontDimensions>;
+  size: ReturnType<typeof determineFontDimensions>
 }
 
 const HomepageLink = styled(Link)<FontSizeProps>`
@@ -129,7 +128,7 @@ const HomepageLink = styled(Link)<FontSizeProps>`
     color: ${colors.grey09};
     text-decoration: none;
   }
-`;
+`
 
 const DocumentationMenu = styled('div')`
   display: flex;
@@ -151,22 +150,22 @@ const DocumentationMenu = styled('div')`
   }
 
   ${HideOnDesktop}
-`;
+`
 
 const DocumentationNav = styled('div')`
   display: flex;
   flex-direction: column;
   padding: 24px;
-`;
+`
 
 interface NavigationProps {
-  title: string;
-  navigation?: Edge<MenuNode>[];
-  headerMenus?: Edge<HeaderMenuItem>[];
+  title: string
+  navigation?: Edge<MenuNode>[]
+  headerMenus?: Edge<HeaderMenuItem>[]
 }
 
 function Navigation({ title, navigation, headerMenus }: NavigationProps) {
-  const { state, dispatch } = React.useContext(NavigationContext);
+  const { state, dispatch } = React.useContext(NavigationContext)
   return (
     <Wrapper isOpen={state.isOpen}>
       <Header>
@@ -201,48 +200,48 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
                   <a key={node.id} href={node.href} target="_blank" rel="noopener noreferrer">
                     {node.label}
                   </a>
-                );
+                )
               }
 
               return (
                 <Link key={node.id} getProps={isActive} to={node.href}>
                   {node.label}
                 </Link>
-              );
+              )
             })}
         </DocumentationMenu>
         <DocumentationNav onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}>
           {navigation &&
-          navigation.map(({ node }) => {
-            return(
-            <NavigationMenu key={node.title} menuKey={node.title} node={node} />)
-          })}
+            navigation.map(({ node }) => {
+              return <NavigationMenu key={node.title} menuKey={node.title} node={node} />
+            })}
         </DocumentationNav>
       </WrapperInner>
     </Wrapper>
-  );
+  )
 }
 
 //TinaCMS add docs post config
 const CreatePostButton = createRemarkButton({
   label: 'Add New Doc',
-  filename: path => {
-  const formattedPath = path.replace(/\s+/, '-').toLowerCase()
-  return `docs/${formattedPath}.md`
+  fields: [
+    { name: 'section', label: 'Section', component: 'text', required: true },
+    { name: 'title', label: 'Title', component: 'text', required: true },
+  ],
+  filename: ({ section, title }) => {
+    return `docs/${section.replace(/\s+/, '-').toLowerCase()}/${title.replace(/\s+/, '-').toLowerCase()}.md`
   },
   body: () => `New doc, who dis?`,
-  frontmatter: path => {
+  frontmatter: ({ title }) => {
     //remove any other dirs from the title, return only filename
-    const title = path.slice(path.search(/\/[^\/]+$/) + 1 )
-    const id = path.replace(/\s+/, '-').toLowerCase()
+    const id = title.replace(/\s+/, '-').toLowerCase()
     return {
       title,
       id,
       prev: null,
-      next: null
+      next: null,
     }
-  }
+  },
 })
 
-
-export default withPlugin(Navigation, CreatePostButton);
+export default withPlugin(Navigation, CreatePostButton)
