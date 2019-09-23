@@ -1,0 +1,117 @@
+[
+  {
+    "title": "Getting Started",
+    "items": [
+      {
+        "id": "introduction",
+        "slug": "/docs/getting-started/introduction",
+        "title": "Introduction"
+      },
+      {
+        "id": "how-tina-works",
+        "slug": "/docs/getting-started/how-tina-works",
+        "title": "How Tina Works"
+      }
+    ]
+  },
+  {
+    "title": "Concepts",
+    "items": [
+      {
+        "id": "/docs/concepts/forms",
+        "slug": "/docs/concepts/forms",
+        "title": "Forms"
+      },
+      {
+        "id": "/docs/concepts/field-plugins",
+        "slug": "/docs/concepts/field-plugins",
+        "title": "Field Plugins"
+      },
+      {
+        "id": "/docs/concepts/backends",
+        "slug": "/docs/concepts/backends",
+        "title": "Backends"
+      }
+    ]
+  },
+  {
+    "title": "Using Tina",
+    "items": [
+      {
+        "id": "/docs/using-tina/creating-forms",
+        "slug": "/docs/using-tina/creating-forms",
+        "title": "Creating Forms"
+      },
+      {
+        "id": "/docs/using-tina/inline-editing",
+        "slug": "/docs/using-tina/inline-editing",
+        "title": "Inline Editing"
+      },
+      {
+        "id": "/docs/using-tina/creating-fields",
+        "slug": "/docs/using-tina/creating-fields",
+        "title": "Creating Fields"
+      }
+    ]
+  },
+  {
+    "title": "Gatsby",
+    "items": [
+      {
+        "id": "/docs/gatsby/quickstart",
+        "slug": "/docs/gatsby/quickstart",
+        "title": "Quickstart"
+      },
+      {
+        "id": "/docs/gatsby/manual-setup",
+        "slug": "/docs/gatsby/manual-setup",
+        "title": "Manual Setup"
+      },
+      {
+        "id": "/docs/gatsby/content-editing",
+        "slug": "/docs/gatsby/content-editing",
+        "title": "Content Editing"
+      },
+      {
+        "id": "/docs/gatsby/content-creation",
+        "slug": "/docs/gatsby/content-creation",
+        "title": "Content Creation"
+      },
+      {
+        "id": "/docs/gatsby/custom-fields",
+        "slug": "/docs/gatsby/custom-fields",
+        "title": "Custom Fields"
+      }
+    ]
+  },
+  {
+    "title": "NextJS",
+    "items": [
+      {
+        "id": "tbd",
+        "slug": "/docs/nextjs/tbd",
+        "title": "tbd"
+      }
+    ]
+  },
+  {
+    "title": "Contributing",
+    "items": [
+      {
+        "id": "/docs/contributing/guidelines",
+        "slug": "/docs/contributing/guidelines",
+        "title": "Guidelines"
+      },
+      {
+        "id": "/docs/contributing/setting-up",
+        "slug": "/docs/contributing/setting-up",
+        "title": "Setting Up"
+      },
+      {
+        "id": "/docs/contributing/troubleshooting",
+        "slug": "/docs/contributing/troubleshooting",
+        "title": "Troubleshooting"
+      }
+    ]
+  }
+]
