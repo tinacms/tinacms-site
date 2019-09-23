@@ -21,6 +21,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         if (relativePath === 'index.md') {
           // If we have homepage set in docs folder, use it.
           slug = '/'
+        } else if (relativePath.endsWith('index.md')) {
+          // Use `index.md` as directory index
+          slug = `/${relativePath.replace('index.md', '')}`
         } else {
           slug = `/${relativePath.replace('.md', '')}/`
         }
