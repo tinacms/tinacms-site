@@ -1,8 +1,8 @@
 ---
-id: /contributing/guidelines
+id: /docs/contributing/guidelines
 title: Contribution Guidelines
-prev: /concepts/backends
-next: /contributing/setting-up
+prev: /docs/concepts/backends
+next: /docs/contributing/setting-up
 ---
 
 The following is a set of guidelines and tips for contributingto the TinaCMS and its packages.
@@ -24,4 +24,3 @@ The following is a set of guidelines and tips for contributingto the TinaCMS and
 | Vue specific packages   | `vue`    | `vue-tinacms-*`    |
 | Gastby plugins          | `gatsby` | `gatsby-tinacms-*` |
 | Demo Projects           | `demo`   | `demo-*`           |
-

@@ -1,8 +1,8 @@
 ---
-id: /using-tina/creating-forms
+id: /docs/using-tina/creating-forms
 title: Creating Forms
-prev: /gatsby/custom-fields
-next: /using-tina/creating-fields
+prev: /docs/gatsby/custom-fields
+next: /docs/using-tina/creating-fields
 ---
 
 Often, the premade form helpers (e.g. [useRemarkForm](/gatsby/content-editing#creating-remark-forms))

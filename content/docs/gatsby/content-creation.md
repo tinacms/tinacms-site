@@ -1,8 +1,8 @@
 ---
 title: Content Creation
-id: /gatsby/content-creation
-prev: /gatsby/content-editing
-next: /gatsby/custom-fields
+id: /docs/gatsby/content-creation
+prev: /docs/gatsby/content-editing
+next: /docs/gatsby/custom-fields
 ---
 
 Editing content is rad, but we need a way to add or create new content. This guide will go through the process of creating new markdown files. Have an idea for a new content-type that you would like to 'create' with a button in the Tina sidebar? [Consider contributing!](/contributing/guidelines)
