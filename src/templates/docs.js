@@ -36,6 +36,13 @@ const PageTemplate = ({ data, setIsEditing, isEditing }) => {
           <meta property="og:description" content={markdownRemark.excerpt} />
         </Helmet>
         <DocsWrapper hasToc={!!markdownRemark.tableOfContents}>
+          {markdownRemark.tableOfContents && (
+            <TocWrapper
+              isOpen={tocIsOpen}
+              onClick={() => setTocIsOpen(!tocIsOpen)}
+              dangerouslySetInnerHTML={{ __html: markdownRemark.tableOfContents }}
+            />
+          )}
           <Container>
             <DocsHeader title={markdownRemark.frontmatter.title} subtitle={markdownRemark.frontmatter.description} />
             <MarkdownContent>
@@ -85,7 +92,7 @@ const PageTemplateForm = {
 export default liveRemarkForm(PageTemplate, PageTemplateForm)
 
 export const query = graphql`
-  query PageTemplateQuery($slug: String!) {
+  query DocsQuery($slug: String!) {
     site {
       siteMetadata {
         title
