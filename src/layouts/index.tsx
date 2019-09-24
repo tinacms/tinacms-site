@@ -1,38 +1,38 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { graphql, StaticQuery } from 'gatsby';
-import { WindowLocation } from '@reach/router';
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import { graphql, StaticQuery } from 'gatsby'
+import { WindowLocation } from '@reach/router'
 
-import { AksaraReset } from 'components/foundations';
-import { LayoutRoot } from 'components/layout/LayoutRoot';
-import { LayoutMain } from 'components/layout/LayoutMain';
-import { Navigation } from 'components/layout/Navigation';
-import { Overlay } from 'components/layout/Overlay';
+import { AksaraReset } from 'components/foundations'
+import { LayoutRoot } from 'components/layout/LayoutRoot'
+import { LayoutMain } from 'components/layout/LayoutMain'
+import { Navigation } from 'components/layout/Navigation'
+import { Overlay } from 'components/layout/Overlay'
 
-import { MenuNode, Edge, HeaderMenuItem } from 'interfaces/nodes';
-import { SiteMetadata } from 'interfaces/gatsby';
+import { MenuNode, Edge, HeaderMenuItem } from 'interfaces/nodes'
+import { SiteMetadata } from 'interfaces/gatsby'
 
 interface IndexLayoutProps {
-  location?: WindowLocation;
+  location?: WindowLocation
 }
 
 interface DataProps {
   site: {
-    siteMetadata: SiteMetadata;
-  };
+    siteMetadata: SiteMetadata
+  }
   navigationMenus: {
-    edges: Edge<MenuNode>[];
-  };
+    edges: Edge<MenuNode>[]
+  }
   headerMenus: {
-    edges: Edge<HeaderMenuItem>[];
-  };
+    edges: Edge<HeaderMenuItem>[]
+  }
 }
 
 const IndexLayout: React.FC<IndexLayoutProps> = ({ location, children }) => {
   return (
     <StaticQuery query={query}>
       {(data: DataProps) => {
-        const { siteMetadata } = data.site;
+        const { siteMetadata } = data.site
         return (
           <AksaraReset>
             <LayoutRoot>
@@ -56,13 +56,13 @@ const IndexLayout: React.FC<IndexLayoutProps> = ({ location, children }) => {
               </LayoutMain>
             </LayoutRoot>
           </AksaraReset>
-        );
+        )
       }}
     </StaticQuery>
-  );
-};
+  )
+}
 
-export default IndexLayout;
+export default IndexLayout
 
 const query = graphql`
   query IndexLayoutQuery {
@@ -106,4 +106,4 @@ const query = graphql`
       }
     }
   }
-`;
+`
