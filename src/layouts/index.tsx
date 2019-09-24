@@ -14,6 +14,7 @@ import { SiteMetadata } from 'interfaces/gatsby'
 
 interface IndexLayoutProps {
   location?: WindowLocation
+  sidebarNav: any
 }
 
 interface DataProps {
@@ -28,7 +29,7 @@ interface DataProps {
   }
 }
 
-const IndexLayout: React.FC<IndexLayoutProps> = ({ location, children }) => {
+const IndexLayout: React.FC<IndexLayoutProps> = ({ location, children, sidebarNav }) => {
   return (
     <StaticQuery query={query}>
       {(data: DataProps) => {
@@ -47,7 +48,7 @@ const IndexLayout: React.FC<IndexLayoutProps> = ({ location, children }) => {
               </Helmet>
               <Navigation
                 title={siteMetadata.sidebarTitle || siteMetadata.title}
-                navigation={data.navigationMenus.edges}
+                navigation={sidebarNav ? sidebarNav.edges : null}
                 headerMenus={data.headerMenus.edges}
               />
               <Overlay />
@@ -80,22 +81,7 @@ const query = graphql`
         }
       }
     }
-    navigationMenus: allTocJson {
-      edges {
-        node {
-          fields {
-            fileRelativePath
-          }
-          title
-          items {
-            id
-            slug
-            title
-          }
-        }
-      }
-    }
-    headerMenus: allMenuJson {
+    headerMenus: allNavigationJson {
       edges {
         node {
           id

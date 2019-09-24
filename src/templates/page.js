@@ -19,10 +19,8 @@ import renderAst from 'utils/renderAst'
 
 const PageTemplate = ({ data, setIsEditing, isEditing }) => {
   const [tocIsOpen, setTocIsOpen] = React.useState(false)
-  const { markdownRemark, sectionList, site } = data
+  const { markdownRemark, site } = data
   const { prev, next } = markdownRemark.frontmatter
-  const prevPage = getPageById(sectionList.edges, prev)
-  const nextPage = getPageById(sectionList.edges, next)
 
   return (
     <IndexLayout>
@@ -96,18 +94,6 @@ export const query = graphql`
           name
           url
           email
-        }
-      }
-    }
-    sectionList: allTocJson {
-      edges {
-        node {
-          title
-          items {
-            id
-            slug
-            title
-          }
         }
       }
     }

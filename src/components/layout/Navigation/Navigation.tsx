@@ -182,13 +182,15 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
           <Heading as="h1" size={400}>
             Menu
           </Heading>
-          <NavButton
-            icon="x"
-            fill={colors.blue08}
-            onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}
-          >
-            Toggle Drawer
-          </NavButton>
+          {navigation && (
+            <NavButton
+              icon="x"
+              fill={colors.blue08}
+              onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}
+            >
+              Toggle Drawer
+            </NavButton>
+          )}
         </HeaderInner>
       </Header>
       <WrapperInner>
@@ -210,12 +212,13 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
               )
             })}
         </DocumentationMenu>
-        <DocumentationNav onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}>
-          {navigation &&
-            navigation.map(({ node }) => {
-              return <NavigationMenu key={node.title} menuKey={node.title} node={node} />
-            })}
-        </DocumentationNav>
+        {navigation && (
+          <DocumentationNav onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}>
+            {navigation.map(({ node }) => (
+              <NavigationMenu key={node.title} menuKey={node.title} node={node} />
+            ))}
+          </DocumentationNav>
+        )}
       </WrapperInner>
     </Wrapper>
   )

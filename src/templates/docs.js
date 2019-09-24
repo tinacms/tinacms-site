@@ -25,7 +25,7 @@ const PageTemplate = ({ data, setIsEditing, isEditing }) => {
   const nextPage = getPageById(sectionList.edges, next)
 
   return (
-    <IndexLayout>
+    <IndexLayout sidebarNav={sectionList}>
       <Page docsPage>
         <Helmet>
           <title>
@@ -106,7 +106,7 @@ export const query = graphql`
         }
       }
     }
-    sectionList: allTocJson {
+    sectionList: allTocDocsJson {
       edges {
         node {
           title
