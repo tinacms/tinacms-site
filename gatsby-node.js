@@ -107,15 +107,15 @@ exports.createPages = async ({ graphql, actions }) => {
     const { slug, layout, section } = node.fields
     createPage({
       path: slug,
+      //
       // This will automatically resolve the template to a corresponding
-      // `layout` frontmatter in the Markdown.
+      // layout according to the following hierarchy:
       //
-      // Feel free to set any `layout` as you'd like in the frontmatter, as
-      // long as the corresponding template file exists in src/templates.
-      // If no template is set, it will fall back to the default `page`
-      // template.
+      // - first, it will attempt to use the `layout` value in the content's front matter
+      // - if not found, it will use a layout matching the content's section (top-level directory) if it exists.
+      //   + note: content without a top-level directory defaults to the 'home' section
+      // - finally, if no corresponding layout is found, it will use the layout defined in `page.js`
       //
-      // Note that the template has to exist first, or else the build will fail.
       component: firstFound([
         path.resolve(`./src/templates/${layout}.js`),
         path.resolve(`./src/templates/${section}.js`),
