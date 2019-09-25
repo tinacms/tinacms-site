@@ -1,7 +1,7 @@
 ---
 title: Custom Fields
-id: /gatsby/custom-fields
-prev: /gatsby/content-creation
+id: /docs/gatsby/custom-fields
+prev: /docs/gatsby/content-creation
 next:
 ---
 

@@ -164,8 +164,42 @@ interface NavigationProps {
   headerMenus?: Edge<HeaderMenuItem>[]
 }
 
+const menuIsActive = (node: MenuNode) => {
+  const currentUrl = window.location.pathname
+  if (node.slug && currentUrl.includes(node.slug)) {
+    return true
+  }
+  return (
+    node.items &&
+    node.items.reduce((isActive, node) => {
+      if (node.slug && currentUrl.includes(node.slug)) {
+        return true
+      }
+      return isActive
+    }, false)
+  )
+}
+
 function Navigation({ title, navigation, headerMenus }: NavigationProps) {
   const { state, dispatch } = React.useContext(NavigationContext)
+
+  let initialMenuState: any = {}
+  if (navigation) {
+    navigation.map(({ node }) => {
+      initialMenuState[node.id] = menuIsActive(node)
+    })
+  }
+
+  const [openMenus, setOpenMenus] = React.useState(initialMenuState) as any
+
+  const createMenuToggle = (key: any) => {
+    return (isOpen: boolean) => {
+      let newOpenMenus = openMenus
+      newOpenMenus[key] = isOpen
+      setOpenMenus(newOpenMenus)
+    }
+  }
+
   return (
     <Wrapper isOpen={state.isOpen}>
       <Header>
@@ -182,13 +216,15 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
           <Heading as="h1" size={400}>
             Menu
           </Heading>
-          <NavButton
-            icon="x"
-            fill={colors.blue08}
-            onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}
-          >
-            Toggle Drawer
-          </NavButton>
+          {navigation && (
+            <NavButton
+              icon="x"
+              fill={colors.blue08}
+              onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}
+            >
+              Toggle Drawer
+            </NavButton>
+          )}
         </HeaderInner>
       </Header>
       <WrapperInner>
@@ -210,12 +246,19 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
               )
             })}
         </DocumentationMenu>
-        <DocumentationNav onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}>
-          {navigation &&
-            navigation.map(({ node }) => {
-              return <NavigationMenu key={node.title} menuKey={node.title} node={node} />
-            })}
-        </DocumentationNav>
+        {navigation && (
+          <DocumentationNav onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}>
+            {navigation.map(({ node }) => (
+              <NavigationMenu
+                key={node.title}
+                menuKey={node.title}
+                node={node}
+                isOpen={openMenus[node.id]}
+                setIsOpen={createMenuToggle(node.id)}
+              />
+            ))}
+          </DocumentationNav>
+        )}
       </WrapperInner>
     </Wrapper>
   )

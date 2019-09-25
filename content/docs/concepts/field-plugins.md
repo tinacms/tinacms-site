@@ -1,8 +1,8 @@
 ---
-id: /concepts/field-plugins
+id: /docs/concepts/field-plugins
 title: Field Plugins
-prev: /concepts/forms
-next: /concepts/backends
+prev: /docs/concepts/forms
+next: /docs/concepts/backends
 ---
 
 A field plugin defines a component that can be used to edit a field.

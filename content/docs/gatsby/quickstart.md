@@ -1,8 +1,8 @@
 ---
-id: /gatsby/quickstart
+id: /docs/gatsby/quickstart
 title: Quickstart
 prev: how-tina-works
-next: /gatsby/manual-setup
+next: /docs/gatsby/manual-setup
 ---
 
 If you want to get up and running quickly to see how Tina works, this is your route. You can either use a [Gatsby starter](/gatsby/quickstart) that is preconfigured with Tina or add Tina to your [existing project](/gatsby/manual-setup).
@@ -34,13 +34,16 @@ Now we have `gatsby-cli` installed, we can now create a project based on the Tin
 ```
 gatsby new my-tina-starter https://github.com/forestryio/gatsby-starter-Tina
 ```
+
 The project is generated in a folder titled `my-tina-starter`, feel free to change or update that name.
 ###3. Start the Server
 Now let's start the development server to see how Tina edits our files.
+
 ```
 cd my-tina-starter
 gatsby develop
 ```
+
 Now navigate to http://localhost:8000 to checkout the starter site!
 
 ###4. Open the CMS
