@@ -58,32 +58,44 @@ const ToggleMenuList = styled('li')`
   }
 `
 
-const MenuToggleButton = styled.button`
-  &: focus {
-    outline: none;
-  }
+const MenuToggle = styled.div`
   cursor: pointer;
-  padding: 0px;
-  border: none;
-  border-radius: 0px;
-  width: 0.7rem;
-  height: 0.7rem;
-  border-right: 1px solid;
-  border-bottom: 1px solid;
-  transform: ${({ isOpen }: { isOpen: boolean }) => (isOpen ? `rotateZ(45deg)` : `rotateZ(-45deg)`)};
-  background: transparent;
-  box-shadow: none;
-  float: right;
+  user-select: none;
+  position: relative;
+  &: after {
+    content: '';
+    position: absolute;
+    top: 0.14rem;
+    right: 0;
+    &: focus {
+      outline: none;
+    }
+    cursor: pointer;
+    padding: 0px;
+    border: none;
+    border-radius: 0px;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    transform: ${({ isOpen }: { isOpen: boolean }) => (isOpen ? `rotateZ(45deg)` : `rotateZ(-45deg)`)};
+    background: transparent;
+    box-shadow: none;
+    float: right;
+    opacity: 0.7;
+    transition: transform 0.1s ease;
+  }
 `
 
 const NavigationMenu: React.FC<NavigationMenuProps> = ({ node, isOpen, setIsOpen }) => {
   return (
     <Box mb="md">
-      <Heading as="h3" size={100} color="grey04" mb="sm">
-        {node.slug && <Link to={node.slug}>{node.title}</Link>}
-        {!node.slug && node.title}
-        <MenuToggleButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
-      </Heading>
+      <MenuToggle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
+        <Heading as="h3" size={100} color="grey04" mb="sm">
+          {node.slug && <Link to={node.slug}>{node.title}</Link>}
+          {!node.slug && node.title}
+        </Heading>
+      </MenuToggle>
       <ToggleMenu>
         {isOpen &&
           node.items.map(item => (
