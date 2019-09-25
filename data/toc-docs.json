@@ -1,6 +1,7 @@
 [
   {
     "title": "Getting Started",
+    "id": "getting-started",
     "items": [
       {
         "id": "introduction",
@@ -16,6 +17,7 @@
   },
   {
     "title": "Concepts",
+    "id": "concepts",
     "items": [
       {
         "id": "/docs/concepts/forms",
@@ -36,6 +38,7 @@
   },
   {
     "title": "Using Tina",
+    "id": "using-tina",
     "items": [
       {
         "id": "/docs/using-tina/creating-forms",
@@ -56,6 +59,7 @@
   },
   {
     "title": "Gatsby",
+    "id": "gasby",
     "items": [
       {
         "id": "/docs/gatsby/quickstart",
@@ -86,6 +90,7 @@
   },
   {
     "title": "NextJS",
+    "id": "nextjs",
     "items": [
       {
         "id": "tbd",
@@ -96,6 +101,7 @@
   },
   {
     "title": "Contributing",
+    "id": "contributing",
     "items": [
       {
         "id": "/docs/contributing/guidelines",
