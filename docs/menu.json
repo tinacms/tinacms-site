@@ -10,5 +10,11 @@
     "label": "GitHub",
     "href": "https://github.com/tinacms/tinacms",
     "external": true
+  },
+  {
+    "id": "slack",
+    "label": "Slack",
+    "href": "https://tinacms.slack.com",
+    "external": true
   }
 ]
