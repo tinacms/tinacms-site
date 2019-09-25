@@ -1,19 +1,21 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'gatsby';
+import React from 'react'
+import styled from 'styled-components'
+import { Link } from 'gatsby'
 
-import { MenuNode } from 'interfaces/nodes';
-import { Heading, Box } from 'components/foundations';
-import { colors, space } from 'utils/variables';
-import { isActive } from 'utils/helpers';
+import { MenuNode } from 'interfaces/nodes'
+import { Heading, Box } from 'components/foundations'
+import { colors, space } from 'utils/variables'
+import { isActive } from 'utils/helpers'
 
 interface NavigationMenuProps {
-  node: MenuNode;
-  menuKey: string;
+  node: MenuNode
+  menuKey: string
+  isOpen: boolean
+  setIsOpen(newState: boolean): void
 }
 
 interface ToggleableProps {
-  isOpen?: boolean;
+  isOpen?: boolean
 }
 
 const ToggleMenu = styled('ul')<ToggleableProps>`
@@ -21,7 +23,7 @@ const ToggleMenu = styled('ul')<ToggleableProps>`
   margin: 0 -${space.xs}px;
   padding: 0;
   transition: all 0.3s ease;
-`;
+`
 
 const ToggleMenuList = styled('li')`
   margin: 0;
@@ -54,25 +56,46 @@ const ToggleMenuList = styled('li')`
       border-color: transparent;
     }
   }
-`;
+`
 
-const NavigationMenu: React.FC<NavigationMenuProps> = ({ node }) => {
+const MenuToggleButton = styled.button`
+  &: focus {
+    outline: none;
+  }
+  cursor: pointer;
+  padding: 0px;
+  border: none;
+  border-radius: 0px;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  transform: ${({ isOpen }: { isOpen: boolean }) => (isOpen ? `rotateZ(45deg)` : `rotateZ(-45deg)`)};
+  background: transparent;
+  box-shadow: none;
+  float: right;
+`
+
+const NavigationMenu: React.FC<NavigationMenuProps> = ({ node, isOpen, setIsOpen }) => {
   return (
     <Box mb="md">
       <Heading as="h3" size={100} color="grey04" mb="sm">
-        {node.title}
+        {node.slug && <Link to={node.slug}>{node.title}</Link>}
+        {!node.slug && node.title}
+        <MenuToggleButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
       </Heading>
       <ToggleMenu>
-        {node.items.map(item => (
-          <ToggleMenuList key={item.id}>
-            <Link to={item.slug} getProps={isActive}>
-              {item.title}
-            </Link>
-          </ToggleMenuList>
-        ))}
+        {isOpen &&
+          node.items.map(item => (
+            <ToggleMenuList key={item.id}>
+              <Link to={item.slug} getProps={isActive}>
+                {item.title}
+              </Link>
+            </ToggleMenuList>
+          ))}
       </ToggleMenu>
     </Box>
-  );
-};
+  )
+}
 
-export default React.memo(NavigationMenu);
+export default React.memo(NavigationMenu)

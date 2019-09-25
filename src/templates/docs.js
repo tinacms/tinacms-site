@@ -110,6 +110,7 @@ export const query = graphql`
       edges {
         node {
           title
+          id
           items {
             id
             slug
