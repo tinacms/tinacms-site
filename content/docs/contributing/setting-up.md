@@ -1,8 +1,8 @@
 ---
-id: /contributing/setting-up
+id: /docs/contributing/setting-up
 title: Contribution Set-up
-prev: /contributing/guidelines
-next: /contributing/troubleshooting
+prev: /docs/contributing/guidelines
+next: /docs/contributing/troubleshooting
 ---
 
 ## Development

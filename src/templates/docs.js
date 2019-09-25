@@ -19,11 +19,13 @@ import renderAst from 'utils/renderAst'
 
 const PageTemplate = ({ data, setIsEditing, isEditing }) => {
   const [tocIsOpen, setTocIsOpen] = React.useState(false)
-  const { markdownRemark, site } = data
+  const { markdownRemark, sectionList, site } = data
   const { prev, next } = markdownRemark.frontmatter
+  const prevPage = getPageById(sectionList.edges, prev)
+  const nextPage = getPageById(sectionList.edges, next)
 
   return (
-    <IndexLayout>
+    <IndexLayout sidebarNav={sectionList}>
       <Page docsPage>
         <Helmet>
           <title>
@@ -34,6 +36,13 @@ const PageTemplate = ({ data, setIsEditing, isEditing }) => {
           <meta property="og:description" content={markdownRemark.excerpt} />
         </Helmet>
         <DocsWrapper hasToc={!!markdownRemark.tableOfContents}>
+          {markdownRemark.tableOfContents && (
+            <TocWrapper
+              isOpen={tocIsOpen}
+              onClick={() => setTocIsOpen(!tocIsOpen)}
+              dangerouslySetInnerHTML={{ __html: markdownRemark.tableOfContents }}
+            />
+          )}
           <Container>
             <DocsHeader title={markdownRemark.frontmatter.title} subtitle={markdownRemark.frontmatter.description} />
             <MarkdownContent>
@@ -83,7 +92,7 @@ const PageTemplateForm = {
 export default liveRemarkForm(PageTemplate, PageTemplateForm)
 
 export const query = graphql`
-  query PageTemplateQuery($slug: String!) {
+  query DocsQuery($slug: String!) {
     site {
       siteMetadata {
         title
@@ -94,6 +103,19 @@ export const query = graphql`
           name
           url
           email
+        }
+      }
+    }
+    sectionList: allTocDocsJson {
+      edges {
+        node {
+          title
+          id
+          items {
+            id
+            slug
+            title
+          }
         }
       }
     }

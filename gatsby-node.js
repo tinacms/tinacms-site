@@ -1,5 +1,6 @@
 'use strict'
 
+const fs = require('fs')
 const path = require('path')
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -29,6 +30,14 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         }
       }
 
+      let section
+      const sectionMatch = /^\/?([\w-]+)\//.exec(relativePath)
+      if (sectionMatch && sectionMatch[1]) {
+        section = sectionMatch[1]
+      } else {
+        section = 'home'
+      }
+
       // Used to generate URL to view this content.
       createNodeField({
         node,
@@ -36,7 +45,14 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         value: slug || '',
       })
 
-      // Used to determine a page layout.
+      // used to determine default page layout
+      createNodeField({
+        node,
+        name: 'section',
+        value: section,
+      })
+
+      // use to override default page layout
       createNodeField({
         node,
         name: 'layout',
@@ -74,6 +90,7 @@ exports.createPages = async ({ graphql, actions }) => {
             fields {
               layout
               slug
+              section
             }
           }
         }
@@ -87,19 +104,23 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   allMarkdown.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    const { slug, layout } = node.fields
+    const { slug, layout, section } = node.fields
     createPage({
       path: slug,
+      //
       // This will automatically resolve the template to a corresponding
-      // `layout` frontmatter in the Markdown.
+      // layout according to the following hierarchy:
       //
-      // Feel free to set any `layout` as you'd like in the frontmatter, as
-      // long as the corresponding template file exists in src/templates.
-      // If no template is set, it will fall back to the default `page`
-      // template.
+      // - first, it will attempt to use the `layout` value in the content's front matter
+      // - if not found, it will use a layout matching the content's section (top-level directory) if it exists.
+      //   + note: content without a top-level directory defaults to the 'home' section
+      // - finally, if no corresponding layout is found, it will use the layout defined in `page.js`
       //
-      // Note that the template has to exist first, or else the build will fail.
-      component: path.resolve(`./src/templates/${layout || 'page'}.js`),
+      component: firstFound([
+        path.resolve(`./src/templates/${layout}.js`),
+        path.resolve(`./src/templates/${section}.js`),
+        path.resolve(`./src/templates/page.js`),
+      ]),
       context: {
         // Data passed to context is available in page queries as GraphQL variables.
         slug,
@@ -107,3 +128,10 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 }
+
+const firstFound = paths =>
+  paths.reduce((found, path) => {
+    if (found) return found
+    if (fs.existsSync(path)) return path
+    return null
+  }, null)

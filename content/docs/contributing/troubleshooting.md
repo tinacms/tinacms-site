@@ -1,9 +1,10 @@
 ---
-id: /contributing/troubleshooting
+id: /docs/contributing/troubleshooting
 title: Contribution Troubleshooting
-prev: /contributing/setting-up
+prev: /docs/contributing/setting-up
 next: null
 ---
+
 ## Troubleshooting in Development
 
 This section contains solutions to various problems you may run into when developing for the TinaCMS.

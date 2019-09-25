@@ -26,7 +26,7 @@ const PageTemplate = ({ data }) => {
         </Helmet>
         <DocsWrapper>
           <Container>
-            <DocsHeader title="Welcome to Grundgesetz!" />
+            <DocsHeader title={markdownRemark.frontmatter.title} />
             <MarkdownContent>{renderAst(markdownRemark.htmlAst)}</MarkdownContent>
             <FooterWrapper>
               <Footer />

@@ -1,8 +1,8 @@
 ---
 title: Content Editing Test
-id: /gatsby/content-editing
-prev: /gatsby/manual-setup
-next: /gatsby/content-creation
+id: /docs/gatsby/content-editing
+prev: /docs/gatsby/manual-setup
+next: /docs/gatsby/content-creation
 ---
 
 Gatsby allows you to build sites from many different data sources. Currently Tina has plugins for editing content in [markdown](/gatsby/content-editing#editing-markdown-in-gatsby) & [JSON](/gatsby/content-editing#editing-json-in-gatsby) files, with plans to suppor many more data sources.
