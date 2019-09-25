@@ -57,7 +57,7 @@ useRemarkForm(remark, {
   fields: [
     // ...
     {
-      name: 'frontmatter.author.email',
+      name: 'rawFrontmatter.author.email',
       component: 'email',
       label: 'Email',
       description: 'The email address of the author',
