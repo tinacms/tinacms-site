@@ -1,5 +1,7 @@
 import { css } from 'styled-components';
 import { textSizes, colors } from 'utils/variables';
+import '../../typography/typefaces/fonts.css'
+
 
 const base = css`
   :root {
@@ -10,8 +12,10 @@ const base = css`
   html,
   body,
   #root {
+    font-family: "Inter";
     width: 100%;
     height: 100%;
+    -webkit-font-smooth: "antialiased";
   }
 
   a {

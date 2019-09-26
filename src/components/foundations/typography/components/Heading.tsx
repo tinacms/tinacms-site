@@ -21,6 +21,7 @@ export interface HeadingProps extends TypographyProps {
  * This is a base `Text` element to handle typography elements.
  */
 const StyledText = styled(Typography)<HeadingProps>`
+  font-family: 'tuner-regular';
   ${props => props.size === 100 && 'text-transform: uppercase;'}
 `;
 
