@@ -52,6 +52,7 @@ There are 3 steps to making a markdown file editable:
 1. Import the `remarkForm` HOC
 2. Wrap your template with `remarkForm`
 3. Add the required fields to the GraphQL query:
+   - `id`
    - `fileRelativePath`
    - `rawFrontmatter`
    - `rawMarkdownBody`
@@ -121,7 +122,7 @@ The `remarkForm` function accepts an optional `config` object for overriding the
   - `label`: A human readable label for the field.
   - `description`: An optional description that expands on the purpose of the field or prompts a specific action.
 
-_NOTE: the name of your fields should be prefixed with `"rawFrontmattetr"` rather than `"frontmatter"`. The later is the fully transformed data._
+_NOTE: the name of your fields should be prefixed with `"rawFrontmatter"` rather than `"frontmatter"`. The later is the fully transformed data._
 
 #### Example: src/templates/blog-post.js
 

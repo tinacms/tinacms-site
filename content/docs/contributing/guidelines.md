@@ -9,10 +9,10 @@ The following is a set of guidelines and tips for contributingto the TinaCMS and
 
 ## How to Contribute
 
-- **Reporting Bugs**
-- **Suggesting Enhancements**
-- **Writing Docs, Guides, or Blog Posts**
-- **Voluntering for User Testing**
+- Reporting Bugs
+- Suggesting Enhancements
+- Writing Docs, Guides, or Blog Posts
+- Voluntering for User Testing
 
 ## Creating Packages
 
