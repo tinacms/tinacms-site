@@ -7,7 +7,7 @@ import { withPlugin } from '@tinacms/react-tinacms'
 import { MenuNode, Edge, HeaderMenuItem } from 'interfaces/nodes'
 import { determineFontDimensions, Heading } from 'components/foundations'
 import { colors, layerIndexes, breakpoints, dimensions, space } from 'utils/variables'
-import icons from '../../foundations/icons/icons.js'
+import { Llama_Icon }from 'components/foundations/icons'
 import { isActive } from 'utils/helpers'
 
 import { NavigationContext, NavigationActionTypes } from './NavigationContext'
@@ -206,8 +206,6 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
       setOpenMenus(newOpenMenus)
     }
   }
-
-  const Llama_Icon = icons.Llama_Icon
 
   return (
     <Wrapper isOpen={state.isOpen}>
