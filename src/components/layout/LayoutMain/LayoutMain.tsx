@@ -7,6 +7,8 @@ import { NavigationContext, NavigationActionTypes } from '../Navigation/Navigati
 import { Header, HeaderInner } from '../Header';
 import { NavButton } from '../Navigation';
 import { Edge, HeaderMenuItem } from 'interfaces/nodes';
+
+import {Heading } from 'components/foundations'
 import { breakpoints, dimensions, colors, textSizes } from 'utils/variables';
 import { isActive } from 'utils/helpers';
 import { determineFontDimensions } from 'components/foundations';
@@ -114,14 +116,14 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
                 if (node.external) {
                   return (
                     <a key={node.id} href={node.href} target="_blank" rel="noopener noreferrer">
-                      {node.label}
+                      <Heading as="h1" size={100}>{node.label}</Heading>
                     </a>
                   );
                 }
 
                 return (
                   <Link key={node.id} getProps={isActive} to={node.href}>
-                    {node.label}
+                    <Heading as="h1" size={100}>{node.label}</Heading>
                   </Link>
                 );
               })}
