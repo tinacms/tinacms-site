@@ -1,5 +1,7 @@
 import { css } from 'styled-components';
 import { textSizes, colors } from 'utils/variables';
+import '../../typography/typefaces/fonts.css'
+
 
 const base = css`
   :root {
@@ -10,17 +12,21 @@ const base = css`
   html,
   body,
   #root {
+    font-family: "Inter";
     width: 100%;
     height: 100%;
+    -webkit-font-smooth: "antialiased";
+    color: ${colors.vDarkGreyPurple};
+    /* background-color: #f4f4f4; */
   }
 
   a {
-    color: ${colors.blue05};
+    color: ${colors.darkMustardYellow};
     text-decoration: none;
 
     &:hover,
     &:focus {
-      color: ${colors.indigo04};
+      color: ${colors.darkMustardYellow};
       text-decoration: underline;
     }
   }

@@ -75,13 +75,13 @@ const PaginationLink = styled(Link)`
     }
 
     ${PaginationTitle} {
-      color: ${colors.blue06};
+      color: ${colors.burntOrange};
     }
   }
 
   &:focus {
     ${PaginationButton} {
-      background-color: ${colors.blue07};
+      background-color: ${colors.burntOrange};
 
       svg {
         g {

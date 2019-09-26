@@ -13,7 +13,8 @@ export function determineFontDimensions(textType: keyof FontSizes, size: number 
     const styleProps = {
       fontSize: `${match.fontSize}px`,
       lineHeight: `${match.lineHeight}px`,
-      fontWeight: size <= 400 ? 600 : 500,
+      // fontWeight: size <= 400 ? 600 : 500,
+      fontWeight: 100,
       letterSpacing: `${match.letterSpacing}px`
     };
 

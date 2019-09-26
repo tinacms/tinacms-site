@@ -6,12 +6,15 @@ import { withPlugin } from '@tinacms/react-tinacms'
 
 import { MenuNode, Edge, HeaderMenuItem } from 'interfaces/nodes'
 import { determineFontDimensions, Heading } from 'components/foundations'
-import { colors, layerIndexes, breakpoints, dimensions } from 'utils/variables'
+import { colors, layerIndexes, breakpoints, dimensions, space } from 'utils/variables'
+import { Llama_Icon }from 'components/foundations/icons'
 import { isActive } from 'utils/helpers'
 
 import { NavigationContext, NavigationActionTypes } from './NavigationContext'
 import NavigationMenu from './NavigationMenu'
 import NavButton from './NavButton'
+
+
 
 interface ToggleableProps {
   isOpen?: boolean
@@ -108,7 +111,7 @@ const HeaderInner = styled('div')<HeaderInnerProps>`
   flex: 1;
   align-items: center;
   justify-content: space-between;
-
+  height: inherit;
   ${props => props.hideOnMobile && HideOnMobile}
   ${props => props.hideOnDesktop && HideOnDesktop}
 `
@@ -122,7 +125,11 @@ const HomepageLink = styled(Link)<FontSizeProps>`
   font-size: ${props => props.size.fontSize};
   font-size: ${props => props.size.lineHeight};
   font-weight: ${props => props.size.fontWeight};
-
+  height: inherit;
+  svg {
+    height: 100%;
+  }
+  padding: ${space.sm}px;
   &:hover,
   &:focus {
     color: ${colors.grey09};
@@ -209,11 +216,11 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
             size={determineFontDimensions('heading', 400)}
             onClick={() => dispatch({ type: NavigationActionTypes.CLOSE_DRAWER })}
           >
-            {title}
+            <Llama_Icon color={`${colors.burntOrange}`}/>
           </HomepageLink>
         </HeaderInner>
         <HeaderInner hideOnDesktop>
-          <Heading as="h1" size={400}>
+          <Heading as="h1" size={300}>
             Menu
           </Heading>
           {navigation && (
