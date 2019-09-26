@@ -1,5 +1,24 @@
 /** Color values mapped by Aksara color ID. */
 export const colors = {
+  //Mint Green
+  uberLiteMintGreen: '#E5F8DE',
+  liteMintGreen: '#D8E9D2',
+  medMintGreen: '#C5DEBD',
+  darkMintGreen: '#A7CEA4',
+  olive: '#83A180',
+  greyWhite: '#f4f4f4',
+  greyWhite02: 'E9E9EC',
+  burntOrange: '#EA7C2D',
+  darkBurntOrange: '#c76b29',
+  mustardYellow: '#F9D957',
+  medMustardYellow: '#D7930E',
+  darkMustardYellow: '#BF9019',
+  liteGreyPurple: '#7E7B92',
+  medGreyPurple: '#676577',
+  darkGreyPurple: '#575568',
+  vDarkGreyPurple:'#373542',
+  plum: '#402B44',
+
   // Blue
   /** Blue01 - Glitter */
   blue01: '#e7f1fc',
