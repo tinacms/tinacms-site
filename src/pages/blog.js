@@ -17,19 +17,24 @@ import BlogList from 'components/blog/BlogList'
 const BlogPage = () => {
   const data = useStaticQuery(graphql`
     query BlogPageQuery {
-      allMarkdownRemark(filter: {fileRelativePath: {glob: "/content/blog/**/*.md"}}) {
+      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, filter: {fileRelativePath: {glob: "/content/blog/**/*.md"}}) {
         edges {
           node {
+            id
             frontmatter {
               title
+              author
+              date(formatString: "MMMM DD, YYYY")
             }
-            fileRelativePath
+            excerpt(format: HTML, pruneLength: 200)
+            fields {
+              slug
+            }
           }
         }
       }
     }
   `)
-    console.log(data)
   return (
     <IndexLayout>
       <Page docsPage>
