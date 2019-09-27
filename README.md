@@ -6,9 +6,9 @@ This extends the [Grundgesetz Skeleton](https://github.com/kata-ai/grundgesetz-s
 
 When creating a new file, enter the full path (not just the title) to put it in a subdir that corresponds with the table of contents. You will also need to manually add the directory(if its new) and the file to the toc.json to get it to show in the toc component. This is TBD until we get the jsonForm to work with an array of objects. 
 
-### **Frontmatter Weirdness**
+### **Front Matter Weirdness**
 
-The `next` and `prev` frontmatter values for the docs need to match the `id` from toc.json
+The `next` and `prev` front matter values for the docs need to match the `id` from toc.json
 
 
 # Notes from the theme creator
@@ -107,9 +107,9 @@ The `toc.json` file inside the `docs/` folder holds our table of contents. It wi
 
 Writing documentation in Gatsby is done in Markdown. Grundgesetz uses Remark to parse Markdown files and turn them into HTML.
 
-### Frontmatters
+### Front Matter
 
-We provide the following Markdown frontmatters in each documentation page.
+We provide the following Markdown front matter in each documentation page.
 
 - `id` - A unique identifier representing the markdown page. This will be referenced in `toc.json` when getting the links for the navigation sidebar, as well as the `prev` and `next` items of the pagination.
 - `title` - The title of the page.
