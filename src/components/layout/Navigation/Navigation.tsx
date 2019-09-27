@@ -7,7 +7,7 @@ import { withPlugin } from '@tinacms/react-tinacms'
 import { MenuNode, Edge, HeaderMenuItem } from 'interfaces/nodes'
 import { determineFontDimensions, Heading } from 'components/foundations'
 import { colors, layerIndexes, breakpoints, dimensions, space } from 'utils/variables'
-import { Llama_Icon }from 'components/foundations/icons'
+import { Wordmark, Llama_Icon }from 'components/foundations/icons'
 import { isActive } from 'utils/helpers'
 
 import { NavigationContext, NavigationActionTypes } from './NavigationContext'
@@ -127,6 +127,7 @@ const HomepageLink = styled(Link)<FontSizeProps>`
   font-weight: ${props => props.size.fontWeight};
   height: inherit;
   svg {
+    /* width: 50px; */
     height: 100%;
   }
   padding: ${space.sm}px;
@@ -142,7 +143,6 @@ const DocumentationMenu = styled('div')`
   flex-direction: column;
   padding: 16px 24px;
   border-bottom: 1px solid ${colors.grey02};
-
   a {
     padding: 8px 0;
     color: ${colors.grey07};
@@ -150,7 +150,7 @@ const DocumentationMenu = styled('div')`
     &:hover,
     &:focus,
     &.active {
-      color: ${colors.blue07};
+      color: ${colors.darkMustardYellow};
       text-decoration: none;
       outline: none;
     }
@@ -216,22 +216,23 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
             size={determineFontDimensions('heading', 400)}
             onClick={() => dispatch({ type: NavigationActionTypes.CLOSE_DRAWER })}
           >
-            <Llama_Icon color={`${colors.burntOrange}`}/>
+            <Llama_Icon color={colors.burntOrange} />
+            {/* <Wordmark color={colors.darkMintGreen} /> */}
           </HomepageLink>
         </HeaderInner>
         <HeaderInner hideOnDesktop>
           <Heading as="h1" size={300}>
             Menu
           </Heading>
-          {navigation && (
+          {
             <NavButton
               icon="x"
-              fill={colors.blue08}
+              fill={colors.darkBurntOrange}
               onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}
             >
               Toggle Drawer
             </NavButton>
-          )}
+          }
         </HeaderInner>
       </Header>
       <WrapperInner>

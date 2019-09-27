@@ -11,7 +11,7 @@ import { Edge, HeaderMenuItem } from 'interfaces/nodes';
 import { breakpoints, dimensions, colors, textSizes } from 'utils/variables';
 import { isActive } from 'utils/helpers';
 import { determineFontDimensions, Heading } from 'components/foundations';
-import { Wordmark } from 'components/foundations/icons'
+import { Wordmark, Llama_Icon } from 'components/foundations/icons'
 
 interface LayoutMainInnerProps {
   className?: string;
@@ -114,7 +114,7 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
             </HomepageLink>
           </LogoWrapper>
         </HeaderInner>
-        <HeaderInner hideOnMobile>
+        <HeaderInner hideOnMobile contents="flex-end">
           <DocumentationMenu>
             {headerMenus &&
               headerMenus.map(({ node }) => {
@@ -133,6 +133,7 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
                 );
               })}
           </DocumentationMenu>
+          {/* <Llama_Icon color={`${colors.burntOrange}`}/> */}
         </HeaderInner>
       </Header>
       <SkipNavContent>{children}</SkipNavContent>
