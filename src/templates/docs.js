@@ -13,11 +13,11 @@ import { MarkdownContent } from 'components/page/Markdown'
 
 import { FooterWrapper, Footer } from 'components/layout/Footer'
 import { Pagination } from 'components/ui/Pagination'
-import { TocWrapper } from 'components/docs/TableOfContents'
+import { TocWrapper, TocFloatingButton } from 'components/docs/TableOfContents'
 import IndexLayout from 'layouts'
 import renderAst from 'utils/renderAst'
 
-const PageTemplate = ({ data, setIsEditing, isEditing }) => {
+const DocsTemplate = ({ data, setIsEditing, isEditing }) => {
   const [tocIsOpen, setTocIsOpen] = React.useState(false)
   const { markdownRemark, sectionList, site } = data
   const { prev, next } = markdownRemark.frontmatter
@@ -56,15 +56,14 @@ const PageTemplate = ({ data, setIsEditing, isEditing }) => {
               <Footer />
             </FooterWrapper>
           </Container>
-
-          {/* //this button floats over the tina button ---> <TocFloatingButton tocIsOpen={tocIsOpen} onClick={() => setTocIsOpen(!tocIsOpen)} /> */}
+          <TocFloatingButton tocIsOpen={tocIsOpen} onClick={() => setTocIsOpen(!tocIsOpen)} />
         </DocsWrapper>
       </Page>
     </IndexLayout>
   )
 }
 
-const PageTemplateForm = {
+const DocsTemplateForm = {
   fields: [
     {
       label: 'Title',
@@ -89,7 +88,7 @@ const PageTemplateForm = {
   ],
 }
 
-export default liveRemarkForm(PageTemplate, PageTemplateForm)
+export default liveRemarkForm(DocsTemplate, DocsTemplateForm)
 
 export const query = graphql`
   query DocsQuery($slug: String!) {
