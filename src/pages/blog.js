@@ -3,15 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
 import { Page } from 'components/layout/Page'
-
-import { Container } from 'components/layout/Container'
-import { DocsWrapper } from 'components/docs/DocsWrapper'
-import { DocsHeader } from 'components/docs/DocsHeader'
-import MarkdownContent from 'components/page/Markdown/MarkdownContent'
-
-import { Footer, FooterWrapper } from 'components/layout/Footer'
 import IndexLayout from 'layouts'
-import renderAst from 'utils/renderAst'
 import BlogList from 'components/blog/BlogList'
 
 const BlogPage = () => {
@@ -37,9 +29,9 @@ const BlogPage = () => {
   `)
   return (
     <IndexLayout>
-      <Page docsPage>
+      <Page BlogPage>
         <Helmet>
-          <meta property="og:title" content="Home" />
+          <meta property="og:title" content="Blog" />
         </Helmet>
         <BlogList posts={data.allMarkdownRemark.edges} />
       </Page>
@@ -48,4 +40,3 @@ const BlogPage = () => {
 }
 
 export default BlogPage
-
