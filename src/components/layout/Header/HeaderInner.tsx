@@ -22,14 +22,21 @@ const HideOnDesktop = css`
 `;
 
 const Wrapper = styled('div')<HeaderInnerProps>`
+  height: inherit;
   display: flex;
   flex-direction: row;
   align-items: center;
   flex: 1;
   justify-content: ${props => props.contents};
-
   ${props => props.hideOnMobile && HideOnMobile}
   ${props => props.hideOnDesktop && HideOnDesktop}
+  @media(min-width: ${breakpoints.lg}px) {
+    width: calc(100% - 200px);
+    svg {
+      height: inherit;
+      padding: 8px 0px 16px 48px;
+    }
+  }
 `;
 
 const HeaderInner: React.SFC<HeaderInnerProps> = ({ children, className, contents, ...rest }) => (

@@ -8,7 +8,7 @@ import { Header, HeaderInner } from '../Header';
 import { NavButton } from '../Navigation';
 import { Edge, HeaderMenuItem } from 'interfaces/nodes';
 
-import { breakpoints, dimensions, colors, textSizes } from 'utils/variables';
+import { breakpoints, dimensions, colors, textSizes, space } from 'utils/variables';
 import { isActive } from 'utils/helpers';
 import { determineFontDimensions, Heading } from 'components/foundations';
 import { Wordmark, Llama_Icon } from 'components/foundations/icons'
@@ -50,7 +50,7 @@ const LogoWrapper = styled('div')`
 const DocumentationMenu = styled('nav')`
   display: flex;
   flex-direction: row;
-
+  padding: 0 ${space.xs}px;
   a {
     padding: 8px 0;
     color: ${colors.grey07};
