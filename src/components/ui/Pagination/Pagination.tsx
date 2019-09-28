@@ -143,8 +143,8 @@ const PaginationItem = styled('div')`
 const PaginationBlock = styled('div')``;
 
 interface PaginationProps {
-  prevPage?: TocItem;
-  nextPage?: TocItem;
+  prevPage?: any;
+  nextPage?: any;
 }
 
 const Pagination: React.SFC<PaginationProps> = ({ prevPage, nextPage }) => (
@@ -152,7 +152,7 @@ const Pagination: React.SFC<PaginationProps> = ({ prevPage, nextPage }) => (
     <WrapperInner>
       <PaginationItem>
         {prevPage && (
-          <PaginationLink to={prevPage.slug}>
+          <PaginationLink to={prevPage.fields ? prevPage.fields.slug : prevPage.slug}>
             <PaginationButton>
               <svg width="24" height="24" viewBox="0 0 24 24">
                 <defs>
@@ -177,7 +177,7 @@ const Pagination: React.SFC<PaginationProps> = ({ prevPage, nextPage }) => (
                 Previous
               </PaginationHeading>
               <PaginationTitle size={400} display="inline-block" lineHeight="32px">
-                {prevPage.title}
+                {prevPage.frontmatter ? prevPage.frontmatter.title : prevPage.title}
               </PaginationTitle>
             </PaginationBlock>
           </PaginationLink>
@@ -186,13 +186,13 @@ const Pagination: React.SFC<PaginationProps> = ({ prevPage, nextPage }) => (
 
       <PaginationItem>
         {nextPage && (
-          <PaginationLink to={nextPage.slug}>
+          <PaginationLink to={nextPage.fields ? nextPage.fields.slug : nextPage.slug}>
             <PaginationBlock>
               <PaginationHeading size={200} color="grey04" display="block">
                 Next
               </PaginationHeading>
               <PaginationTitle size={400} display="inline-block" lineHeight="32px">
-                {nextPage.title}
+                {nextPage.frontmatter? nextPage.frontmatter.title : nextPage.title}
               </PaginationTitle>
             </PaginationBlock>
             <PaginationButton>

@@ -13,10 +13,10 @@ const Wrapper = styled('footer')`
   }
 `;
 
-const Footer: React.SFC = () => (
+const Footer: React.SFC = (props) => (
   <Wrapper>
     <p>
-
+      {props.children}
     </p>
   </Wrapper>
 );
