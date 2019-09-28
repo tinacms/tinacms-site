@@ -4,6 +4,7 @@ import { Link } from 'gatsby'
 
 import { Heading } from 'components/foundations'
 import { DocsWrapper } from 'components/docs/DocsWrapper'
+import BlogMetaData from 'components/blog/BlogMetaData'
 import { breakpoints, colors, space } from 'utils/variables';
 
 interface BlogList_Props {
@@ -21,10 +22,10 @@ function BlogList(props: BlogList_Props) {
           <Link key={blogPost.fileRelativePath} to={blogPost.fields.slug}>
             <article>
               <Heading>{blogPost.frontmatter.title}</Heading>
-              <div>
-              <p>By: {blogPost.frontmatter.author}</p>
-                <p>{blogPost.frontmatter.date}</p>
-              </div>
+              <BlogMetaData
+                author={blogPost.frontmatter.author}
+                date={blogPost.frontmatter.date}
+              />
               <span dangerouslySetInnerHTML={{__html: `${blogPost.excerpt}`}}></span>
             </article>
             <aside />
@@ -74,18 +75,6 @@ const StyledBlogList = styled(DocsWrapper)`
     }
     article {
       max-width: 704px;
-      div {
-        width: 100%;
-        justify-content: space-between;
-        display: flex;
-        flex-grow: 1;
-        p {
-          margin: ${space.sm}px 0 ${space.xs}px 0;
-        }
-        p {
-          color: ${colors.liteGreyPurple};
-        }
-      }
     }
   }
   @media( min-width: ${breakpoints.md}px) {
