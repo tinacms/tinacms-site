@@ -1,20 +1,19 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { Link } from 'gatsby'
+import { globalHistory } from '@reach/router'
 import { createRemarkButton } from '@tinacms/react-tinacms-remark'
 import { withPlugin } from '@tinacms/react-tinacms'
 
 import { MenuNode, Edge, HeaderMenuItem } from 'interfaces/nodes'
 import { determineFontDimensions, Heading } from 'components/foundations'
 import { colors, layerIndexes, breakpoints, dimensions, space } from 'utils/variables'
-import { Wordmark, Llama_Icon }from 'components/foundations/icons'
+import { Llama_Icon } from 'components/foundations/icons'
 import { isActive } from 'utils/helpers'
 
 import { NavigationContext, NavigationActionTypes } from './NavigationContext'
 import NavigationMenu from './NavigationMenu'
 import NavButton from './NavButton'
-
-
 
 interface ToggleableProps {
   isOpen?: boolean
@@ -172,7 +171,7 @@ interface NavigationProps {
 }
 
 const menuIsActive = (node: MenuNode) => {
-  const currentUrl = window.location.pathname
+  const currentUrl = globalHistory.location.pathname
   if (node.slug && currentUrl.includes(node.slug)) {
     return true
   }
@@ -216,8 +215,12 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
             size={determineFontDimensions('heading', 400)}
             onClick={() => dispatch({ type: NavigationActionTypes.CLOSE_DRAWER })}
           >
+<<<<<<< HEAD
             <Llama_Icon color={colors.burntOrange} />
             {/* <Wordmark color={colors.darkMintGreen} /> */}
+=======
+            <Llama_Icon color={`${colors.burntOrange}`} />
+>>>>>>> master
           </HomepageLink>
         </HeaderInner>
         <HeaderInner hideOnDesktop>
