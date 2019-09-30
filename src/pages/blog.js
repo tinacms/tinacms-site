@@ -1,6 +1,8 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
+import { withPlugin } from '@tinacms/react-tinacms'
+import { createRemarkButton } from '@tinacms/react-tinacms-remark'
 
 import { Page } from 'components/layout/Page'
 import IndexLayout from 'layouts'
@@ -39,4 +41,18 @@ const BlogPage = () => {
   )
 }
 
-export default BlogPage
+const CreateBlogPlugin = createRemarkButton({
+  label: 'Add New Blog',
+  filename: ({title}) => {
+    const slug = title.replace(/\s+/, '-').toLowerCase()
+
+    return `content/blog/${slug}.md`
+  },
+  frontmatter: ({title}) => ({
+    title,
+    date: new Date(),
+  }),
+  body: () => `Speak your mind.`
+})
+
+export default withPlugin(BlogPage, CreateBlogPlugin)
