@@ -73,7 +73,7 @@ const DocsTemplateForm = {
     {
       label: 'Post Body',
       name: 'rawMarkdownBody',
-      component: 'textarea',
+      component: 'markdown',
     },
     {
       label: 'Previous Doc',
