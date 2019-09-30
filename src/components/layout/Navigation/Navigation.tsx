@@ -215,12 +215,7 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
             size={determineFontDimensions('heading', 400)}
             onClick={() => dispatch({ type: NavigationActionTypes.CLOSE_DRAWER })}
           >
-<<<<<<< HEAD
-            <Llama_Icon color={colors.burntOrange} />
-            {/* <Wordmark color={colors.darkMintGreen} /> */}
-=======
             <Llama_Icon color={`${colors.burntOrange}`} />
->>>>>>> master
           </HomepageLink>
         </HeaderInner>
         <HeaderInner hideOnDesktop>
