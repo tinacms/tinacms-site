@@ -1,10 +1,10 @@
 import * as React from 'react'
 
-interface Workmark_Props {
+interface Wordmark_Props {
   color? : String;
 }
 
-export default function Wordmark(props: Workmark_Props) {
+export const Wordmark = (props: Wordmark_Props) => {
   return (
     <svg  viewBox="0 0 89 23" fill={`${props.color}`} xmlns="http://www.w3.org/2000/svg">
       <path d="M0 0.195467V5.04958H6.51871V23H13.0703V5.04958H19.589V0.195467H0Z"/>

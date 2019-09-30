@@ -1,11 +1,13 @@
 {
-  "name": "grundgesetz-skeleton",
-  "description": "Zero-configuration documentation builder, powered by Gatsby.",
+  "name": "tinacms-site",
+  "description": "A hub for Tina's documentation, blog & general info.",
   "version": "1.0.0",
   "private": true,
   "author": "Resi Respati <resi@kata.ai>",
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "tinacms",
+    "tina"
   ],
   "license": "MIT",
   "main": "n/a",

@@ -13,7 +13,7 @@ import { MarkdownContent } from 'components/page/Markdown'
 
 import { FooterWrapper, Footer } from 'components/layout/Footer'
 import { Pagination } from 'components/ui/Pagination'
-import { TocWrapper } from 'components/docs/TableOfContents'
+import { TocWrapper, TocFloatingButton } from 'components/docs/TableOfContents'
 import IndexLayout from 'layouts'
 import renderAst from 'utils/renderAst'
 
@@ -47,8 +47,7 @@ const PageTemplate = ({ data, setIsEditing, isEditing }) => {
               <Footer />
             </FooterWrapper>
           </Container>
-
-          {/* //this button floats over the tina button ---> <TocFloatingButton tocIsOpen={tocIsOpen} onClick={() => setTocIsOpen(!tocIsOpen)} /> */}
+          <TocFloatingButton tocIsOpen={tocIsOpen} onClick={() => setTocIsOpen(!tocIsOpen)} />
         </DocsWrapper>
       </Page>
     </IndexLayout>

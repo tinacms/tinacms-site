@@ -8,10 +8,10 @@ import { Header, HeaderInner } from '../Header';
 import { NavButton } from '../Navigation';
 import { Edge, HeaderMenuItem } from 'interfaces/nodes';
 
-import {Heading } from 'components/foundations'
-import { breakpoints, dimensions, colors, textSizes } from 'utils/variables';
+import { breakpoints, dimensions, colors, textSizes, space } from 'utils/variables';
 import { isActive } from 'utils/helpers';
-import { determineFontDimensions } from 'components/foundations';
+import { determineFontDimensions, Heading } from 'components/foundations';
+import { Wordmark, Llama_Icon } from 'components/foundations/icons'
 
 interface LayoutMainInnerProps {
   className?: string;
@@ -50,7 +50,7 @@ const LogoWrapper = styled('div')`
 const DocumentationMenu = styled('nav')`
   display: flex;
   flex-direction: row;
-
+  padding: 0 ${space.xs}px;
   a {
     padding: 8px 0;
     color: ${colors.grey07};
@@ -77,11 +77,16 @@ const HomepageLink = styled(Link)<FontSizeProps>`
   font-size: ${props => props.size.fontSize};
   line-height: ${props => props.size.lineHeight};
   font-weight: ${props => props.size.fontWeight};
+  display: flex;
+  height: 15px;
 
   &:hover,
   &:focus {
     color: ${colors.grey09};
     text-decoration: none;
+  }
+  svg {
+
   }
 `;
 
@@ -105,11 +110,11 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
               size={determineFontDimensions('heading', 400)}
               onClick={() => dispatch({ type: NavigationActionTypes.CLOSE_DRAWER })}
             >
-              {title}
+              <Wordmark color={`${colors.liteGreyPurple}`}/>
             </HomepageLink>
           </LogoWrapper>
         </HeaderInner>
-        <HeaderInner hideOnMobile>
+        <HeaderInner hideOnMobile contents="flex-end">
           <DocumentationMenu>
             {headerMenus &&
               headerMenus.map(({ node }) => {
@@ -128,6 +133,7 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
                 );
               })}
           </DocumentationMenu>
+          {/* <Llama_Icon color={`${colors.burntOrange}`}/> */}
         </HeaderInner>
       </Header>
       <SkipNavContent>{children}</SkipNavContent>

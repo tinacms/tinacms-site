@@ -126,6 +126,7 @@ const HomepageLink = styled(Link)<FontSizeProps>`
   font-weight: ${props => props.size.fontWeight};
   height: inherit;
   svg {
+    /* width: 50px; */
     height: 100%;
   }
   padding: ${space.sm}px;
@@ -141,7 +142,6 @@ const DocumentationMenu = styled('div')`
   flex-direction: column;
   padding: 16px 24px;
   border-bottom: 1px solid ${colors.grey02};
-
   a {
     padding: 8px 0;
     color: ${colors.grey07};
@@ -149,7 +149,7 @@ const DocumentationMenu = styled('div')`
     &:hover,
     &:focus,
     &.active {
-      color: ${colors.blue07};
+      color: ${colors.darkMustardYellow};
       text-decoration: none;
       outline: none;
     }
@@ -222,15 +222,15 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
           <Heading as="h1" size={300}>
             Menu
           </Heading>
-          {navigation && (
+          {
             <NavButton
               icon="x"
-              fill={colors.blue08}
+              fill={colors.darkBurntOrange}
               onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}
             >
               Toggle Drawer
             </NavButton>
-          )}
+          }
         </HeaderInner>
       </Header>
       <WrapperInner>

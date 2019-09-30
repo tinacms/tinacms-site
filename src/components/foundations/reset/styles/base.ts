@@ -23,11 +23,13 @@ const base = css`
   a {
     color: ${colors.darkMustardYellow};
     text-decoration: none;
+    transition: color 250ms ease;
 
     &:hover,
     &:focus {
       color: ${colors.darkMustardYellow};
       text-decoration: underline;
+      transition: color 250ms ease;
     }
   }
 
