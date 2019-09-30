@@ -38,8 +38,6 @@ const PageTemplate = ({ data }) => {
   )
 }
 
-export default remarkForm(PageTemplate, PageTemplateForm)
-
 export const query = graphql`
   query HomeTemplateQuery($slug: String!) {
     site {
@@ -97,3 +95,5 @@ const PageTemplateForm = {
     },
   ],
 }
+
+export default remarkForm(PageTemplate, PageTemplateForm)
