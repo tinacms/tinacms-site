@@ -35,7 +35,14 @@ Open your `gatsby-config.js` file and add `'@tinacms/gatsby-plugin-tinacms'` to 
 module.exports = {
   // ...
   plugins: [
-    '@tinacms/gatsby-plugin-tinacms',
+    {
+      resolve: '@tinacms/gatsby-plugin-tinacms',
+      options: {
+        plugins: [
+          // TODO: Add content-source plugins
+        ],
+      },
+    },
     // ...
   ],
 }
