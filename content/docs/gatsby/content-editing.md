@@ -18,7 +18,7 @@ The [`gatsby-transformer-remark`](https://github.com/gatsbyjs/gatsby/tree/master
 - `react-tinacms-remark`: Provides hooks and components for creating Remark forms.
 - `gatsby-tinacms-git`: Extends the gatsby development server to writes changes to the local filesystem.
 
-### Installation
+### Install the Git & Markdown Packages
 
 ```
 npm install --save @tinacms/react-tinacms-remark @tinacms/gatsby-tinacms-git
@@ -30,16 +30,24 @@ or
 yarn add @tinacms/react-tinacms-remark @tinacms/gatsby-tinacms-git
 ```
 
-### Adding the Plugin
+### Adding the Git Plugin
 
-Open the `gatsby-config.js` file and add make sure the following plugins are listed:
+Open the `gatsby-config.js` file and add the `"@tinacms/gastby-tinacms-git"` plugin:
 
 ```JavaScript
 module.exports = {
+  // ...
   plugins: [
-    "@tinacms/gatsby-tinacms-git",
+    {
+      resolve: '@tinacms/gatsby-plugin-tinacms',
+      options: {
+        plugins: [
+          "@tinacms/gatsby-tinacms-git",
+        ],
+      },
+    },
     // ...
-  ]
+  ],
 }
 ```
 
