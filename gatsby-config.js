@@ -1,5 +1,7 @@
 'use strict'
 
+const queries = require('./src/utils/algolia')
+require('dotenv').config()
 module.exports = {
   siteMetadata: {
     title: 'TinaCMS',
@@ -20,7 +22,7 @@ module.exports = {
       options: {
         sidebar: {
           position: 'fixed',
-          hidden: process.env.NODE_ENV === "production",
+          hidden: process.env.NODE_ENV === 'production',
         },
       },
     },
@@ -100,5 +102,14 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-netlify-cache',
     'gatsby-plugin-netlify',
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries,
+        chunkSize: 1000,
+      },
+    },
   ],
 }
