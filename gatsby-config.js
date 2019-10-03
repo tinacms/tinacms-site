@@ -94,7 +94,6 @@ module.exports = {
         siteUrl: 'https://tinacms.org',
       },
     },
-    'gatsby-plugin-styled-components',
     'gatsby-plugin-resolve-src',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-typescript',
@@ -112,5 +111,6 @@ module.exports = {
         chunkSize: 1000,
       },
     },
+    'gatsby-plugin-styled-components',
   ],
 }
