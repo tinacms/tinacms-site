@@ -1,30 +1,35 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'gatsby';
-import { SkipNavContent } from '@reach/skip-nav';
+import React from 'react'
+import styled from 'styled-components'
+import { Link } from 'gatsby'
+import { SkipNavContent } from '@reach/skip-nav'
 
-import { NavigationContext, NavigationActionTypes } from '../Navigation/NavigationContext';
-import { Header, HeaderInner } from '../Header';
-import { NavButton } from '../Navigation';
-import { Edge, HeaderMenuItem } from 'interfaces/nodes';
+import { NavigationContext, NavigationActionTypes } from '../Navigation/NavigationContext'
+import { Header, HeaderInner } from '../Header'
+import { NavButton } from '../Navigation'
+import { Edge, HeaderMenuItem } from 'interfaces/nodes'
 
-import { breakpoints, dimensions, colors, textSizes, space } from 'utils/variables';
-import { isActive } from 'utils/helpers';
-import { determineFontDimensions, Heading } from 'components/foundations';
+import { breakpoints, dimensions, colors, textSizes, space } from 'utils/variables'
+import { isActive } from 'utils/helpers'
+import { determineFontDimensions, Heading } from 'components/foundations'
 import { Wordmark, Llama_Icon } from 'components/foundations/icons'
+import Search from '../../Search'
+const searchIndices = [
+  { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
+  { name: `Posts`, title: `Blog Posts`, hitComp: `PostHit` },
+]
 
 interface LayoutMainInnerProps {
-  className?: string;
-  isNavigationOpen?: boolean;
+  className?: string
+  isNavigationOpen?: boolean
 }
 
 interface LayoutMainProps extends LayoutMainInnerProps {
-  title: string;
-  headerMenus?: Edge<HeaderMenuItem>[];
+  title: string
+  headerMenus?: Edge<HeaderMenuItem>[]
 }
 
 interface FontSizeProps {
-  size: ReturnType<typeof determineFontDimensions>;
+  size: ReturnType<typeof determineFontDimensions>
 }
 
 const StyledLayoutMain = styled('div')<LayoutMainInnerProps>`
@@ -37,7 +42,7 @@ const StyledLayoutMain = styled('div')<LayoutMainInnerProps>`
   @media (min-width: ${breakpoints.lg}px) {
     margin-left: ${dimensions.widths.sidebar.lg}px;
   }
-`;
+`
 
 const LogoWrapper = styled('div')`
   display: flex;
@@ -45,7 +50,7 @@ const LogoWrapper = styled('div')`
   justify-content: center;
   flex: 1;
   margin: 0 24px;
-`;
+`
 
 const DocumentationMenu = styled('nav')`
   display: flex;
@@ -70,7 +75,7 @@ const DocumentationMenu = styled('nav')`
       margin-left: 24px;
     }
   }
-`;
+`
 
 const HomepageLink = styled(Link)<FontSizeProps>`
   color: ${colors.grey09};
@@ -86,12 +91,11 @@ const HomepageLink = styled(Link)<FontSizeProps>`
     text-decoration: none;
   }
   svg {
-
   }
-`;
+`
 
 const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, headerMenus }) => {
-  const { state, dispatch } = React.useContext(NavigationContext);
+  const { state, dispatch } = React.useContext(NavigationContext)
 
   return (
     <StyledLayoutMain className={className} isNavigationOpen={state.isOpen}>
@@ -110,27 +114,33 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
               size={determineFontDimensions('heading', 400)}
               onClick={() => dispatch({ type: NavigationActionTypes.CLOSE_DRAWER })}
             >
-              <Wordmark color={`${colors.liteGreyPurple}`}/>
+              <Wordmark color={`${colors.liteGreyPurple}`} />
             </HomepageLink>
           </LogoWrapper>
         </HeaderInner>
+        <HeaderInner></HeaderInner>
         <HeaderInner hideOnMobile contents="flex-end">
+          <Search collapse indices={searchIndices} />
           <DocumentationMenu>
             {headerMenus &&
               headerMenus.map(({ node }) => {
                 if (node.external) {
                   return (
                     <a key={node.id} href={node.href} target="_blank" rel="noopener noreferrer">
-                      <Heading as="h1" size={100}>{node.label}</Heading>
+                      <Heading as="h1" size={100}>
+                        {node.label}
+                      </Heading>
                     </a>
-                  );
+                  )
                 }
 
                 return (
                   <Link key={node.id} getProps={isActive} to={node.href}>
-                    <Heading as="h1" size={100}>{node.label}</Heading>
+                    <Heading as="h1" size={100}>
+                      {node.label}
+                    </Heading>
                   </Link>
-                );
+                )
               })}
           </DocumentationMenu>
           {/* <Llama_Icon color={`${colors.burntOrange}`}/> */}
@@ -138,7 +148,7 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
       </Header>
       <SkipNavContent>{children}</SkipNavContent>
     </StyledLayoutMain>
-  );
-};
+  )
+}
 
-export default LayoutMain;
+export default LayoutMain
