@@ -14,8 +14,8 @@ import { determineFontDimensions, Heading } from 'components/foundations'
 import { Wordmark, Llama_Icon } from 'components/foundations/icons'
 import Search from '../../Search'
 const searchIndices = [
-  { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
-  { name: `Posts`, title: `Blog Posts`, hitComp: `PostHit` },
+  { name: `Docs`, title: `Docs`, hitComp: `DocHit` },
+  { name: `Blog`, title: `Blog`, hitComp: `BlogHit` },
 ]
 
 interface LayoutMainInnerProps {

@@ -53,7 +53,7 @@ export default function Search({ indices, collapse }: any) {
               <Results>
                 {/*
   // @ts-ignore */}
-                <Hits hitComponent={hitComps[hitComp](() => setFocus(false))} />
+                <Hits hitComponent={hitComps[hitComp]} />
               </Results>
             </Index>
           ))}
