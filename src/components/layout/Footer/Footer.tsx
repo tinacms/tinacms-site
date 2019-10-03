@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Edge, HeaderMenuItem } from 'interfaces/nodes'
 import { isActive } from 'utils/helpers'
 
-import { Wordmark, TwitterIcon } from 'components/foundations/icons'
+import { Wordmark, TwitterIcon, GithubIcon } from 'components/foundations/icons'
 import { Heading } from 'components/foundations'
 import CTAButton from 'components/foundations/CtaButton'
 import { colors, textSizes, space, breakpoints } from 'utils/variables';
@@ -46,6 +46,7 @@ const StyledWordmark = styled('div')`
 
 const StyledNavItems = styled('nav')`
   grid-area: nav;
+  text-transform: uppercase;
   h3:not(:first-child) {
     margin-top: ${space.xxs}px;
   }
@@ -63,8 +64,12 @@ const StyledCommunityItems = styled('div')`
     margin-left: ${space.xxs}px;
   }
   svg {
-    width: ${space.smallDesktop}px;
-    min-height: ${space.smallDesktop}px;
+    width: 32px;
+  }
+  a.github {
+    svg {
+      width: 24px;
+    }
   }
   @media(min-width: ${breakpoints.md}px) {
     button {
@@ -109,6 +114,9 @@ function Footer ({headerMenus}:FooterProps) {
           <CTAButton bgColor={`${colors.seafoam}`} textColor={`${colors.hunterOrange}`}>TINA FOR TEAMS</CTAButton>
           <a href="https://twitter.com/tina_cms">
             <TwitterIcon color={`${colors.seafoam}`}/>
+          </a>
+          <a className="github" href="https://github.com/tinacms/tinacms">
+            <GithubIcon color={`${colors.seafoam}`}/>
           </a>
         </StyledCommunityItems>
         <StyledNavItems>
