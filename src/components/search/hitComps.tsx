@@ -5,7 +5,7 @@ import { Hit } from 'react-instantsearch-core'
 
 const DocHit = (clickHandler: any) => ({ hit }: { hit: Hit }) => (
   <div>
-    <Link to={hit.slug} onClick={clickHandler}>
+    <Link to={(hit.fields as any).slug} onClick={clickHandler}>
       <h4>
         <Highlight attribute="title" hit={hit} tagName="mark" />
       </h4>
@@ -16,7 +16,7 @@ const DocHit = (clickHandler: any) => ({ hit }: { hit: Hit }) => (
 
 const BlogHit = (clickHandler: any) => ({ hit }: { hit: Hit }) => (
   <div>
-    <Link to={`/blog` + hit.slug} onClick={clickHandler}>
+    <Link to={(hit.fields as any).slug} onClick={clickHandler}>
       <h4>
         <Highlight attribute="title" hit={hit} tagName="mark" />
       </h4>

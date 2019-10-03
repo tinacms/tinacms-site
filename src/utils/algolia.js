@@ -12,6 +12,9 @@ const pageQuery = `{
           author
           date(formatString: "MMM D, YYYY")
         }
+        fields {
+          slug
+        }
         excerpt(pruneLength: 5000)
       }
     }
@@ -27,6 +30,9 @@ const postQuery = `{
         objectID: id
         frontmatter {
           title
+        }
+        fields {
+          slug
         }
         excerpt(pruneLength: 5000)
       }
