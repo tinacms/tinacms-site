@@ -10,7 +10,7 @@ interface HeaderProps {
 
 const isFixed = css`
   @media (min-width: ${breakpoints.lg}px) {
-    left: ${dimensions.widths.sidebar.lg}px;
+    /* left: ${dimensions.widths.sidebar.lg}px; */
   }
 `;
 
@@ -24,7 +24,6 @@ const Wrapper = styled('header')<HeaderProps>`
   height: ${dimensions.heights.header}px;
   padding: 0 24px;
   background-color: ${props => (props.navigation ? colors.grey01 : colors.white)};
-  border-bottom: ${props => (props.navigation ? 'none' : `1px solid ${colors.grey02}`)};
   z-index: ${layerIndexes.stickyNav};
 
   ${props => props.fixed && isFixed}

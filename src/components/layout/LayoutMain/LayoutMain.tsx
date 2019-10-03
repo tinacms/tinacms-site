@@ -7,11 +7,14 @@ import { NavigationContext, NavigationActionTypes } from '../Navigation/Navigati
 import { Header, HeaderInner } from '../Header';
 import { NavButton } from '../Navigation';
 import { Edge, HeaderMenuItem } from 'interfaces/nodes';
+import { FooterWrapper, Footer } from 'components/layout/Footer'
+
 
 import { breakpoints, dimensions, colors, textSizes, space } from 'utils/variables';
 import { isActive } from 'utils/helpers';
 import { determineFontDimensions, Heading } from 'components/foundations';
 import { Wordmark, Llama_Icon } from 'components/foundations/icons'
+
 
 interface LayoutMainInnerProps {
   className?: string;
@@ -33,10 +36,6 @@ const StyledLayoutMain = styled('div')<LayoutMainInnerProps>`
   flex: 1 1 auto;
   position: relative;
   transition: margin-left 0.3s ease;
-
-  @media (min-width: ${breakpoints.lg}px) {
-    margin-left: ${dimensions.widths.sidebar.lg}px;
-  }
 `;
 
 const LogoWrapper = styled('div')`
@@ -72,6 +71,12 @@ const DocumentationMenu = styled('nav')`
   }
 `;
 
+const StyledCTAButton = styled('button')`
+  background-color: ${colors.hunterOrange};
+  color: ${colors.seafoam};
+  border-radius: 100px;
+`
+
 const HomepageLink = styled(Link)<FontSizeProps>`
   color: ${colors.grey09};
   font-size: ${props => props.size.fontSize};
@@ -86,7 +91,10 @@ const HomepageLink = styled(Link)<FontSizeProps>`
     text-decoration: none;
   }
   svg {
-
+    height: 35px;
+  }
+  @media(min-width:${breakpoints.lg}px) {
+    height: 50px;
   }
 `;
 
@@ -110,11 +118,11 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
               size={determineFontDimensions('heading', 400)}
               onClick={() => dispatch({ type: NavigationActionTypes.CLOSE_DRAWER })}
             >
-              <Wordmark color={`${colors.liteGreyPurple}`}/>
+               <Llama_Icon color={`${colors.burntOrange}`}/>
             </HomepageLink>
           </LogoWrapper>
         </HeaderInner>
-        <HeaderInner hideOnMobile contents="flex-end">
+        <HeaderInner hideOnMobile contents="center">
           <DocumentationMenu>
             {headerMenus &&
               headerMenus.map(({ node }) => {
@@ -125,18 +133,23 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
                     </a>
                   );
                 }
-
                 return (
                   <Link key={node.id} getProps={isActive} to={node.href}>
                     <Heading as="h1" size={100}>{node.label}</Heading>
                   </Link>
                 );
               })}
+              <StyledCTAButton>
+                <Heading as="h1" size={100} color={`${colors.seafoam}`}>GET STARTED</Heading>
+              </StyledCTAButton>
+
           </DocumentationMenu>
-          {/* <Llama_Icon color={`${colors.burntOrange}`}/> */}
         </HeaderInner>
       </Header>
       <SkipNavContent>{children}</SkipNavContent>
+      <FooterWrapper>
+        <Footer headerMenus={headerMenus} />
+      </FooterWrapper>
     </StyledLayoutMain>
   );
 };

@@ -12,15 +12,15 @@
     "external": false
   },
   {
-    "id": "github",
-    "label": "GitHub",
-    "href": "https://github.com/tinacms/tinacms",
-    "external": true
+    "id": "community",
+    "label": "Community",
+    "href": "/community",
+    "external": false
   },
   {
-    "id": "slack",
-    "label": "Slack",
-    "href": "https://tinacms.slack.com",
-    "external": true
+    "id": "teams",
+    "label": "Teams",
+    "href": "/teams",
+    "external": false
   }
 ]

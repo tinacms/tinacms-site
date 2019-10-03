@@ -4,7 +4,7 @@ import { breakpoints } from 'utils/variables';
 
 interface HeaderInnerProps {
   className?: string;
-  contents?: 'space-around' | 'space-between' | 'space-evenly' | 'flex-start' | 'flex-end';
+  contents?: "center" | 'space-around' | 'space-between' | 'space-evenly' | 'flex-start' | 'flex-end';
   hideOnMobile?: boolean;
   hideOnDesktop?: boolean;
 }
@@ -31,7 +31,6 @@ const Wrapper = styled('div')<HeaderInnerProps>`
   ${props => props.hideOnMobile && HideOnMobile}
   ${props => props.hideOnDesktop && HideOnDesktop}
   @media(min-width: ${breakpoints.lg}px) {
-    width: calc(100% - 200px);
     svg {
       height: inherit;
       padding: 8px 0px 16px 48px;

@@ -47,7 +47,6 @@ const IndexLayout: React.FC<IndexLayoutProps> = ({ location, children, sidebarNa
                 <meta property="og:url" content={`${siteMetadata.siteUrl}${location ? location.pathname : '/'}`} />
               </Helmet>
               <Navigation
-                title={siteMetadata.sidebarTitle || siteMetadata.title}
                 navigation={sidebarNav ? sidebarNav.edges : null}
                 headerMenus={data.headerMenus.edges}
               />
