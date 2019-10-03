@@ -5,8 +5,8 @@ import { WindowLocation } from '@reach/router'
 
 import { AksaraReset } from 'components/foundations'
 import { LayoutRoot } from 'components/layout/LayoutRoot'
-import { LayoutMain } from 'components/layout/LayoutMain'
-import { Navigation } from 'components/layout/Navigation'
+import { DocsLayoutMain } from 'components/layout/LayoutMain'
+import { DocsNavigation } from 'components/layout/Navigation'
 import { Overlay } from 'components/layout/Overlay'
 
 import { MenuNode, Edge, HeaderMenuItem } from 'interfaces/nodes'
@@ -46,15 +46,15 @@ const DocsLayout: React.FC<DocsLayoutProps> = ({ location, children, sidebarNav 
                 <meta property="og:description" content={siteMetadata.description} />
                 <meta property="og:url" content={`${siteMetadata.siteUrl}${location ? location.pathname : '/'}`} />
               </Helmet>
-              <Navigation
+              <DocsNavigation
                 title={siteMetadata.sidebarTitle || siteMetadata.title}
                 navigation={sidebarNav ? sidebarNav.edges : null}
                 headerMenus={data.headerMenus.edges}
               />
               <Overlay />
-              <LayoutMain title={siteMetadata.sidebarTitle || siteMetadata.title} headerMenus={data.headerMenus.edges}>
+              <DocsLayoutMain title={siteMetadata.sidebarTitle || siteMetadata.title} headerMenus={data.headerMenus.edges}>
                 {children}
-              </LayoutMain>
+              </DocsLayoutMain>
             </LayoutRoot>
           </AksaraReset>
         )
