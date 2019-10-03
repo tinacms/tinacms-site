@@ -20,7 +20,7 @@ In this guide you'll learn to:
 2. Register the plugin with Tina
 3. Configure how content is created by:
    - Formatting the filename & path
-   - Providing default frontmatter
+   - Providing default front matter
    - Providing a default body
 
 ### 1. Creating Content-Button Plugins
@@ -193,7 +193,7 @@ const CreatePostButton = createRemarkButton({
 
 ### 5. Providing Default Front Matter
 
-The `createRemarkButton` function can be given a `frontmatter` function that returns the default frontmatter. Like the `filename` function, `frontmatter` receives the state of the form.
+The `createRemarkButton` function can be given a `frontmatter` function that returns the default front matter. Like the `filename` function, `frontmatter` receives the state of the form.
 
 **Example: Title + Date**
 
@@ -215,7 +215,7 @@ const CreatePostButton = createRemarkButton({
 
 ### 6. Providing a Default Body
 
-The `createRemarkButton` function can be given a `frontmatter` function tht returns the default frontmatter. Like the previous two functions, `frontmatter` receives the state of the form.
+The `createRemarkButton` function can be given a `body` function that returns the default markdown body. Like the previous two functions, `body` receives the state of the form.
 
 **Example: Title + Date**
 
