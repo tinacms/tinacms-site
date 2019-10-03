@@ -2,16 +2,16 @@ import React, { useState, useEffect, createRef } from 'react'
 import { InstantSearch, Index, Hits, connectStateResults } from 'react-instantsearch-dom'
 import algoliasearch from 'algoliasearch/lite'
 
-import { Root, PoweredBy, HitsWrapper } from './styles'
+import { Root, PoweredBy, HitsWrapper, IndexContainer, NoResultsLabel } from './styles'
 import Input from './Input'
 import { hitComponents } from './hitComps'
 import styled from 'styled-components'
 
-const Results = connectStateResults(({ searchState: state, searchResults: res, children }: any) => {
-  return res && res.nbHits > 0 ? children : `No results for '${state.query}'`
+const IndexResults = connectStateResults(({ searchResults: res, children }: any) => {
+  return res && res.nbHits > 0 ? children : null
 })
 
-const Stats = connectStateResults(({ searchResults: res }) => {
+const IndexStats = connectStateResults(({ searchResults: res }) => {
   return <>{res && res.nbHits > 0 && `${res.nbHits} result${res.nbHits > 1 ? `s` : ``}`}</>
 })
 
@@ -35,6 +35,7 @@ export default function Search({ indices, collapse }: any) {
     process.env.GATSBY_ALGOLIA_SEARCH_KEY as string
   )
   useClickOutside(ref, () => setFocus(false))
+
   return (
     <InstantSearch
       searchClient={searchClient}
@@ -45,17 +46,20 @@ export default function Search({ indices, collapse }: any) {
       <Input onFocus={() => setFocus(true)} {...{ collapse, focus }} />
       {query.length > 0 && focus && (
         <HitsWrapper show={true}>
+          <AllIndicesResults />
           {indices.map(({ name, title, hitComp }: { name: string; title: string; hitComp: any }) => (
             <Index key={name} indexName={name}>
-              <header>
-                <h3>{title}</h3>
-                <Stats />
-              </header>
-              <Results>
-                {/*
-  // @ts-ignore */}
-                <Hits hitComponent={hitComponents[hitComp](() => setFocus(false))} />
-              </Results>
+              <IndexResults>
+                <IndexContainer>
+                  <header>
+                    <h3>{title}</h3>
+                    <IndexStats />
+                  </header>
+                  {/*
+                  // @ts-ignore */}
+                  <Hits hitComponent={hitComponents[hitComp](() => setFocus(false))} />
+                </IndexContainer>
+              </IndexResults>
             </Index>
           ))}
           <PoweredBy />
@@ -64,3 +68,14 @@ export default function Search({ indices, collapse }: any) {
     </InstantSearch>
   )
 }
+
+const AllIndicesResults = connectStateResults(({ allSearchResults, searchState: state, children }: any) => {
+  const hasResults =
+    allSearchResults && Object.values(allSearchResults).some((results: any) => results && results.nbHits > 0)
+  return (
+    <>
+      {children}
+      {!hasResults && <NoResultsLabel>No results found for '{state.query}'</NoResultsLabel>}
+    </>
+  )
+})

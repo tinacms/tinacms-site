@@ -76,6 +76,8 @@ interface HitsWrapperProps {
   show: boolean
 }
 
+export const IndexContainer = styled.div``
+
 export const HitsWrapper = styled.div<HitsWrapperProps>`
   display: ${props => (props.show ? `grid` : `none`)};
   max-height: 80vh;
@@ -91,10 +93,6 @@ export const HitsWrapper = styled.div<HitsWrapperProps>`
   padding: 0.7em 1em 0.4em;
   background: white;
   border-radius: ${props => props.theme.smallBorderRadius};
-  > * + * {
-    padding-top: 1em !important;
-    border-top: 2px solid ${props => props.theme.darkGray};
-  }
   li + li {
     margin-top: 0.7em;
     padding-top: 0.7em;
@@ -107,6 +105,11 @@ export const HitsWrapper = styled.div<HitsWrapperProps>`
   ul {
     list-style: none;
   }
+  > *:not(:first-child) ${IndexContainer} {
+    padding-top: 1em !important;
+    border-top: 2px solid ${props => props.theme.darkGray};
+  }
+
   mark {
     color: ${props => props.theme.lightBlue};
     background: ${props => props.theme.darkBlue};
@@ -116,9 +119,8 @@ export const HitsWrapper = styled.div<HitsWrapperProps>`
     justify-content: space-between;
     margin-bottom: 0.3em;
     h3 {
-      color: white;
       background: ${props => props.theme.gray};
-      padding: 0.1em 0.4em;
+      padding: 0.1em 0em;
       border-radius: ${props => props.theme.smallBorderRadius};
     }
   }
@@ -128,6 +130,10 @@ export const HitsWrapper = styled.div<HitsWrapperProps>`
   h4 {
     margin-bottom: 0.3em;
   }
+`
+
+export const NoResultsLabel = styled.div`
+  padding: 16px 24px;
 `
 
 export const PoweredBy = styled(() => (
