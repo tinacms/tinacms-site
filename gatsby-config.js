@@ -3,6 +3,107 @@
 const queries = require('./src/utils/algolia')
 require('dotenv').config()
 
+const plugins = [
+  '@tinacms/gatsby-tinacms-git',
+  {
+    resolve: '@tinacms/gatsby-plugin-tinacms',
+    options: {
+      sidebar: {
+        position: 'fixed',
+        hidden: process.env.NODE_ENV === 'production',
+      },
+    },
+  },
+  {
+    // keep as first gatsby-source-filesystem plugin for gatsby image support
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      path: `${__dirname}/static/img`,
+      name: 'uploads',
+    },
+  },
+  '@tinacms/gatsby-tinacms-json',
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'content',
+      path: `${__dirname}/content`,
+    },
+  },
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'data',
+      path: `${__dirname}/data`,
+    },
+  },
+  {
+    resolve: 'gatsby-transformer-remark',
+    options: {
+      plugins: [
+        {
+          resolve: 'gatsby-remark-relative-images',
+          options: {
+            name: 'uploads',
+          },
+        },
+        {
+          resolve: 'gatsby-remark-images',
+          options: {
+            maxWidth: 704,
+            quality: 90,
+            wrapperStyle: 'margin-top: 32px; margin-bottom: 32px;',
+            linkImagesToOriginal: false,
+          },
+        },
+        {
+          resolve: 'gatsby-remark-responsive-iframe',
+          options: {
+            wrapperStyle: 'margin-bottom: 1rem',
+          },
+        },
+        {
+          resolve: 'gatsby-remark-prismjs',
+          options: {
+            inlineCodeMarker: '›',
+          },
+        },
+        'gatsby-remark-copy-linked-files',
+        'gatsby-remark-autolink-headers',
+        'gatsby-remark-smartypants',
+      ],
+    },
+  },
+  'gatsby-transformer-json',
+  {
+    resolve: 'gatsby-plugin-canonical-urls',
+    options: {
+      siteUrl: 'https://tinacms.org',
+    },
+  },
+  'gatsby-plugin-resolve-src',
+  'gatsby-plugin-catch-links',
+  'gatsby-plugin-typescript',
+  'gatsby-plugin-sharp',
+  'gatsby-transformer-sharp',
+  'gatsby-plugin-react-helmet',
+  'gatsby-plugin-netlify-cache',
+  'gatsby-plugin-netlify',
+  'gatsby-plugin-styled-components',
+]
+
+if (process.env.GATSBY_ALGOLIA_APP_ID && process.env.ALGOLIA_ADMIN_KEY) {
+  plugins.push({
+    resolve: `gatsby-plugin-algolia`,
+    options: {
+      appId: process.env.GATSBY_ALGOLIA_APP_ID,
+      apiKey: process.env.ALGOLIA_ADMIN_KEY,
+      queries,
+      chunkSize: 1000,
+    },
+  })
+}
+
 module.exports = {
   siteMetadata: {
     title: 'TinaCMS',
@@ -16,101 +117,5 @@ module.exports = {
       email: 'resi@kata.ai',
     },
   },
-  plugins: [
-    '@tinacms/gatsby-tinacms-git',
-    {
-      resolve: '@tinacms/gatsby-plugin-tinacms',
-      options: {
-        sidebar: {
-          position: 'fixed',
-          hidden: process.env.NODE_ENV === 'production',
-        },
-      },
-    },
-    {
-      // keep as first gatsby-source-filesystem plugin for gatsby image support
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/static/img`,
-        name: 'uploads',
-      },
-    },
-    '@tinacms/gatsby-tinacms-json',
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'content',
-        path: `${__dirname}/content`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'data',
-        path: `${__dirname}/data`,
-      },
-    },
-    {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [
-          {
-            resolve: 'gatsby-remark-relative-images',
-            options: {
-              name: 'uploads',
-            },
-          },
-          {
-            resolve: 'gatsby-remark-images',
-            options: {
-              maxWidth: 704,
-              quality: 90,
-              wrapperStyle: 'margin-top: 32px; margin-bottom: 32px;',
-              linkImagesToOriginal: false,
-            },
-          },
-          {
-            resolve: 'gatsby-remark-responsive-iframe',
-            options: {
-              wrapperStyle: 'margin-bottom: 1rem',
-            },
-          },
-          {
-            resolve: 'gatsby-remark-prismjs',
-            options: {
-              inlineCodeMarker: '›',
-            },
-          },
-          'gatsby-remark-copy-linked-files',
-          'gatsby-remark-autolink-headers',
-          'gatsby-remark-smartypants',
-        ],
-      },
-    },
-    'gatsby-transformer-json',
-    {
-      resolve: 'gatsby-plugin-canonical-urls',
-      options: {
-        siteUrl: 'https://tinacms.org',
-      },
-    },
-    'gatsby-plugin-resolve-src',
-    'gatsby-plugin-catch-links',
-    'gatsby-plugin-typescript',
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-netlify-cache',
-    'gatsby-plugin-netlify',
-    {
-      resolve: `gatsby-plugin-algolia`,
-      options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.ALGOLIA_ADMIN_KEY,
-        queries,
-        chunkSize: 1000,
-      },
-    },
-    'gatsby-plugin-styled-components',
-  ],
+  plugins,
 }
