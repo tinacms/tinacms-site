@@ -13,6 +13,7 @@ import { FooterWrapper, Footer } from 'components/layout/Footer'
 import { breakpoints, dimensions, colors, textSizes, space } from 'utils/variables';
 import { isActive } from 'utils/helpers';
 import { determineFontDimensions, Heading } from 'components/foundations';
+import CTAButton from 'components/foundations/CtaButton'
 import { Wordmark, Llama_Icon } from 'components/foundations/icons'
 
 
@@ -139,10 +140,9 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
                   </Link>
                 );
               })}
-              <StyledCTAButton>
-                <Heading as="h1" size={100} color={`${colors.seafoam}`}>GET STARTED</Heading>
-              </StyledCTAButton>
-
+              <CTAButton height={'40'} bgColor={`${colors.hunterOrange}`} textColor={`${colors.seafoam}`}>
+                Get Started
+              </CTAButton>
           </DocumentationMenu>
         </HeaderInner>
       </Header>

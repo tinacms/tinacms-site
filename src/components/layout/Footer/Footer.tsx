@@ -7,6 +7,7 @@ import { isActive } from 'utils/helpers'
 
 import { Wordmark, TwitterIcon } from 'components/foundations/icons'
 import { Heading } from 'components/foundations'
+import CTAButton from 'components/foundations/CtaButton'
 import { colors, textSizes, space, breakpoints } from 'utils/variables';
 
 const Wrapper = styled('footer')`
@@ -105,8 +106,7 @@ function Footer ({headerMenus}:FooterProps) {
           <Wordmark color={`${colors.darkPurple}`}/>
         </StyledWordmark>
         <StyledCommunityItems>
-          <button>TINA FOR TEAMS</button>
-          <a href="https://github.com/tinacms/tinacms">Github</a>
+          <CTAButton bgColor={`${colors.seafoam}`} textColor={`${colors.hunterOrange}`}>TINA FOR TEAMS</CTAButton>
           <a href="https://twitter.com/tina_cms">
             <TwitterIcon color={`${colors.seafoam}`}/>
           </a>
