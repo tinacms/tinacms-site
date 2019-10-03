@@ -25,40 +25,66 @@
         "title": "Forms"
       },
       {
-        "id": "/docs/concepts/field-plugins",
-        "slug": "/docs/concepts/field-plugins",
-        "title": "Field Plugins"
+        "id": "/docs/concepts/fields",
+        "slug": "/docs/concepts/fields",
+        "title": "Fields"
       },
       {
         "id": "/docs/concepts/backends",
         "slug": "/docs/concepts/backends",
         "title": "Backends"
+      },
+      {
+        "id": "/docs/concepts/plugins",
+        "slug": "/docs/concepts/plugins",
+        "title": "Plugins"
       }
     ]
   },
   {
-    "title": "Using Tina",
-    "id": "using-tina",
+    "title": "Fields",
+    "id": "fields",
+    "slug": "/docs/fields",
     "items": [
       {
-        "id": "/docs/using-tina/creating-forms",
-        "slug": "/docs/using-tina/creating-forms",
-        "title": "Creating Forms"
+        "id": "/docs/fields/text",
+        "slug": "/docs/fields/text",
+        "title": "Text"
       },
       {
-        "id": "/docs/using-tina/inline-editing",
-        "slug": "/docs/using-tina/inline-editing",
-        "title": "Inline Editing"
+        "id": "/docs/fields/text",
+        "slug": "/docs/fields/textarea",
+        "title": "Text Area"
       },
       {
-        "id": "/docs/using-tina/creating-fields",
-        "slug": "/docs/using-tina/creating-fields",
-        "title": "Creating Fields"
+        "id": "/docs/fields/markdown",
+        "slug": "/docs/fields/markdown",
+        "title": "Markdown"
+      },
+      {
+        "id": "/docs/fields/date",
+        "slug": "/docs/fields/date",
+        "title": "Date & Time"
+      },
+      {
+        "id": "/docs/fields/image",
+        "slug": "/docs/fields/image",
+        "title": "Image"
+      },
+      {
+        "id": "/docs/fields/color",
+        "slug": "/docs/fields/color",
+        "title": "Color"
+      },
+      {
+        "id": "/docs/fields/toggle",
+        "slug": "/docs/fields/toggle",
+        "title": "Toggle"
       }
     ]
   },
   {
-    "title": "Gatsby",
+    "title": "Tina + Gatsby",
     "id": "gasby",
     "items": [
       {
@@ -85,11 +111,16 @@
         "id": "/docs/gatsby/custom-fields",
         "slug": "/docs/gatsby/custom-fields",
         "title": "Custom Fields"
+      },
+      {
+        "id": "/docs/gatsby/inline-editing",
+        "slug": "/docs/gatsby/inline-editing",
+        "title": "Inline Editing"
       }
     ]
   },
   {
-    "title": "NextJS",
+    "title": "Tina + NextJS",
     "id": "nextjs",
     "items": [
       {
