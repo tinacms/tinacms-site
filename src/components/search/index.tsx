@@ -4,7 +4,7 @@ import algoliasearch from 'algoliasearch/lite'
 
 import { Root, PoweredBy, HitsWrapper } from './styles'
 import Input from './Input'
-import * as hitComps from './hitComps'
+import { hitComponents } from './hitComps'
 import styled from 'styled-components'
 
 const Results = connectStateResults(({ searchState: state, searchResults: res, children }: any) => {
@@ -54,7 +54,7 @@ export default function Search({ indices, collapse }: any) {
               <Results>
                 {/*
   // @ts-ignore */}
-                <Hits hitComponent={hitComps[hitComp]} />
+                <Hits hitComponent={hitComponents[hitComp](() => setFocus(false))} />
               </Results>
             </Index>
           ))}

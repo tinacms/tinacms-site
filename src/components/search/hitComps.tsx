@@ -3,7 +3,7 @@ import { Highlight, Snippet } from 'react-instantsearch-dom'
 import { Link } from 'gatsby'
 import { Hit } from 'react-instantsearch-core'
 
-export const DocHit = (clickHandler: any) => ({ hit }: { hit: Hit }) => (
+const DocHit = (clickHandler: any) => ({ hit }: { hit: Hit }) => (
   <div>
     <Link to={hit.slug} onClick={clickHandler}>
       <h4>
@@ -14,7 +14,7 @@ export const DocHit = (clickHandler: any) => ({ hit }: { hit: Hit }) => (
   </div>
 )
 
-export const BlogHit = (clickHandler: any) => ({ hit }: { hit: Hit }) => (
+const BlogHit = (clickHandler: any) => ({ hit }: { hit: Hit }) => (
   <div>
     <Link to={`/blog` + hit.slug} onClick={clickHandler}>
       <h4>
@@ -28,3 +28,8 @@ export const BlogHit = (clickHandler: any) => ({ hit }: { hit: Hit }) => (
     <Snippet attribute="excerpt" hit={hit} tagName="mark" />
   </div>
 )
+
+export const hitComponents = {
+  ['DocHit']: DocHit,
+  ['BlogHit']: BlogHit,
+}
