@@ -191,7 +191,7 @@ const CreatePostButton = createRemarkButton({
 })
 ```
 
-### 5. Providing Default Frontmatter
+### 5. Providing Default Front Matter
 
 The `createRemarkButton` function can be given a `frontmatter` function that returns the default frontmatter. Like the `filename` function, `frontmatter` receives the state of the form.
 
