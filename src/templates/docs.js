@@ -14,7 +14,7 @@ import { MarkdownContent } from 'components/page/Markdown'
 import { FooterWrapper, Footer } from 'components/layout/Footer'
 import { Pagination } from 'components/ui/Pagination'
 import { TocWrapper, TocFloatingButton } from 'components/docs/TableOfContents'
-import IndexLayout from 'layouts'
+import DocsLayout from 'layouts/docs'
 import renderAst from 'utils/renderAst'
 
 const DocsTemplate = ({ data, setIsEditing, isEditing }) => {
@@ -25,7 +25,7 @@ const DocsTemplate = ({ data, setIsEditing, isEditing }) => {
   const nextPage = getPageById(sectionList.edges, next)
 
   return (
-    <IndexLayout sidebarNav={sectionList}>
+    <DocsLayout sidebarNav={sectionList}>
       <Page docsPage>
         <Helmet>
           <title>
@@ -59,7 +59,7 @@ const DocsTemplate = ({ data, setIsEditing, isEditing }) => {
           <TocFloatingButton tocIsOpen={tocIsOpen} onClick={() => setTocIsOpen(!tocIsOpen)} />
         </DocsWrapper>
       </Page>
-    </IndexLayout>
+    </DocsLayout>
   )
 }
 
