@@ -53,7 +53,6 @@ const DocsTemplate = ({ data, setIsEditing, isEditing }) => {
             <FooterWrapper>
               <button onClick={() => setIsEditing(p => !p)}>{isEditing ? 'Preview' : 'Edit'}</button>
               {(prevPage || nextPage) && <Pagination prevPage={prevPage} nextPage={nextPage} />}
-              <Footer />
             </FooterWrapper>
           </Container>
           <TocFloatingButton tocIsOpen={tocIsOpen} onClick={() => setTocIsOpen(!tocIsOpen)} />

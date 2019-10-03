@@ -28,9 +28,6 @@ const PageTemplate = ({ data }) => {
           <Container>
             <DocsHeader title={markdownRemark.frontmatter.title} />
             <MarkdownContent>{renderAst(markdownRemark.htmlAst)}</MarkdownContent>
-            <FooterWrapper>
-              <Footer />
-            </FooterWrapper>
           </Container>
         </DocsWrapper>
       </Page>
