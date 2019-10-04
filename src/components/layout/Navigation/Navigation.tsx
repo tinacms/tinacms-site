@@ -208,9 +208,7 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
           >
             <Llama_Icon color={`${colors.burntOrange}`} />
           </HomepageLink>
-
         </HeaderInner>
-
         <HeaderInner hideOnDesktop>
           <Heading as="h1" size={300}>
             Menu

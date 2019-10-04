@@ -7,7 +7,7 @@ import { isActive } from 'utils/helpers'
 
 import { Wordmark, TwitterIcon, GithubIcon } from 'components/foundations/icons'
 import { Heading } from 'components/foundations'
-import CTAButton from 'components/foundations/CtaButton'
+import Button from 'components/foundations/Button'
 import { colors, textSizes, space, breakpoints } from 'utils/variables';
 
 const Wrapper = styled('footer')`
@@ -111,7 +111,7 @@ function Footer ({headerMenus}:FooterProps) {
           <Wordmark color={`${colors.darkPurple}`}/>
         </StyledWordmark>
         <StyledCommunityItems>
-          <CTAButton bgColor={`${colors.seafoam}`} textColor={`${colors.hunterOrange}`}>TINA FOR TEAMS</CTAButton>
+          <Button to="/teams" bgColor={`${colors.seafoam}`} textColor={`${colors.hunterOrange}`}>TINA FOR TEAMS</Button>
           <a href="https://twitter.com/tina_cms">
             <TwitterIcon color={`${colors.seafoam}`}/>
           </a>
@@ -160,8 +160,7 @@ export default Footer;
 
 /**
  * - TODO
- * - Replace github and twitter text w/ icons
- * import button component, once created
+ *
  * adjust social links to source from metadata or json config
  * - add links to license and privacy policy
  */

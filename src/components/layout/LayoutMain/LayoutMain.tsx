@@ -13,8 +13,8 @@ import { FooterWrapper, Footer } from 'components/layout/Footer'
 import { breakpoints, dimensions, colors, textSizes, space } from 'utils/variables';
 import { isActive } from 'utils/helpers';
 import { determineFontDimensions, Heading } from 'components/foundations';
-import CTAButton from 'components/foundations/CtaButton'
-import { Wordmark, Llama_Icon } from 'components/foundations/icons'
+import Button from 'components/foundations/Button'
+import { Llama_Icon } from 'components/foundations/icons'
 
 
 interface LayoutMainInnerProps {
@@ -72,10 +72,8 @@ const DocumentationMenu = styled('nav')`
   }
 `;
 
-const StyledCTAButton = styled('button')`
-  background-color: ${colors.hunterOrange};
-  color: ${colors.seafoam};
-  border-radius: 100px;
+const StyledMainContent = styled('section')`
+  flex-grow: 1;
 `
 
 const HomepageLink = styled(Link)<FontSizeProps>`
@@ -135,18 +133,25 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
                   );
                 }
                 return (
-                  <Link key={node.id} getProps={isActive} to={node.href}>
-                    <Heading as="h1" size={100}>{node.label}</Heading>
-                  </Link>
+                  <Button
+                    key={node.id}
+                    to={node.href}
+                    bgColor={`${colors.white}`}
+                    textColor={`${colors.hunterOrange}`}
+                    height="40">
+                    {node.label}
+                  </Button>
                 );
               })}
-              <CTAButton height={'40'} bgColor={`${colors.hunterOrange}`} textColor={`${colors.seafoam}`}>
-                Get Started
-              </CTAButton>
           </DocumentationMenu>
+          <Button to="/docs/getting-started/introduction" height={'40'} bgColor={`${colors.hunterOrange}`} textColor={`${colors.seafoam}`}>
+            Get Started
+          </Button>
         </HeaderInner>
       </Header>
-      <SkipNavContent>{children}</SkipNavContent>
+      <StyledMainContent>
+        <SkipNavContent>{children}</SkipNavContent>
+      </StyledMainContent>
       <FooterWrapper>
         <Footer headerMenus={headerMenus} />
       </FooterWrapper>

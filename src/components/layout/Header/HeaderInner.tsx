@@ -24,12 +24,18 @@ const HideOnDesktop = css`
 const Wrapper = styled('div')<HeaderInnerProps>`
   height: inherit;
   display: flex;
+  position: relative;
   flex-direction: row;
   align-items: center;
   flex: 1;
   justify-content: ${props => props.contents};
   ${props => props.hideOnMobile && HideOnMobile}
   ${props => props.hideOnDesktop && HideOnDesktop}
+  > a:last-child {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
   @media(min-width: ${breakpoints.lg}px) {
     svg {
       height: inherit;

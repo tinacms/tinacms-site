@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { breakpoints, colors, dimensions, layerIndexes } from 'utils/variables';
+import { breakpoints, colors, dimensions, layerIndexes, space } from 'utils/variables';
 
 interface HeaderProps {
   navigation?: boolean;
@@ -22,11 +22,13 @@ const Wrapper = styled('header')<HeaderProps>`
   left: 0;
   width: 100%;
   height: ${dimensions.heights.header}px;
-  padding: 0 24px;
+  padding: ${space.xSmallMobile}px ${space.smallMobile}px;;
   background-color: ${props => (props.navigation ? colors.grey01 : colors.white)};
   z-index: ${layerIndexes.stickyNav};
-
   ${props => props.fixed && isFixed}
+  @media(min-width: ${breakpoints.lg}){
+    padding: ${space.xSmallDeskop}px ${space.smallDesktop}px;
+  }
 `;
 
 const Header: React.SFC<HeaderProps> = ({ children, absolute, fixed, navigation }) => (
