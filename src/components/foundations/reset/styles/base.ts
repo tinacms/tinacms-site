@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { textSizes, colors } from 'utils/variables';
+import { textSizes, colors, breakpoints } from 'utils/variables';
 import '../../typography/typefaces/fonts.css'
 
 
@@ -16,8 +16,10 @@ const base = css`
     width: 100%;
     height: 100%;
     -webkit-font-smooth: "antialiased";
-    color: ${colors.vDarkGreyPurple};
-    /* background-color: #f4f4f4; */
+    color: #000;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
   a {
@@ -31,6 +33,43 @@ const base = css`
       text-decoration: underline;
       transition: color 250ms ease;
     }
+  }
+  /**HACK to get responsive mobile type styles */
+  @media(max-width: ${breakpoints.md}px) {
+    h1 {
+      font-size: 32px !important;
+      line-height: 1.375 !important;
+      letter-spacing: .1px !important;
+    }
+    h2 {
+      font-size: 24px !important;
+      line-height: 1.333!important;
+    }
+    h3 {
+      font-size: 18px !important;
+      line-height: 1.333 !important;
+    }
+    p.body {
+      font-size: 16px !important;
+      line-height: 1.375 !important;
+    }
+  }
+
+  p {
+    font-size: 18px !important;
+    line-height: 1.5!important;
+    letter-spacing: .8px !important;
+  }
+
+  button {
+    display: inline-block;
+    border: none;
+    margin: 0;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
   }
 
   img {

@@ -185,8 +185,43 @@ export const fonts = {
   monospace: "'SF Mono', Inconsolata, Menlo, Monaco, Consolas, 'Courier New', Courier, monospace;"
 };
 
-/** Heading size values mapped by size number. */
+/** Heading size values mapped by size number.
+ *
+ * HACK for responsive mobile style overrides live
+ * in components/foundations/reset/styles/base.ts
+ * Below are type styles > 768
+*/
 export const headingSizes = {
+  h1: {
+    fontSize: 64,
+    lineHeight: 83,
+    letterSpacing: .1
+  },
+  h2: {
+    fontSize: 32,
+    lineHeight: 45,
+    letterSpacing: .1
+  },
+  h3: {
+    fontSize: 24,
+    lineHeight: 32,
+    letterSpacing: .12
+  },
+  h4: {
+    fontSize: 16,
+    lineHeight: 22,
+    letterSpacing: .1
+  },
+  label: {
+    fontSize: 16,
+    lineHeight: 20,
+    letterSpacing: .12
+  },
+  body: {
+    fontSize: 18,
+    lineHeight: 25,
+    letterSpacing: .12
+  },
   900: {
     fontSize: 42,
     lineHeight: 48,
