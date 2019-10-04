@@ -1,9 +1,8 @@
 import React, { useState, useEffect, createRef } from 'react'
 import { InstantSearch, Index, Hits, connectStateResults } from 'react-instantsearch-dom'
 import algoliasearch from 'algoliasearch/lite'
-
 import { Root, PoweredBy, HitsWrapper, IndexContainer, NoResultsLabel } from './styles'
-import Input from './Input'
+import Input from './input'
 import { hitComponents } from './hitComps'
 import styled from 'styled-components'
 
