@@ -318,7 +318,19 @@ export const space = {
   /** Equivalent to 32px */
   xl: 32,
   /** Equivalent to 48px */
-  xxl: 48
+  xxl: 48,
+
+  /** TINA specific styles */
+  xSmallDesktop: 20,
+  xSmallMobile: 12,
+  smallDesktop: 32,
+  smallMobile: 24,
+  medDesktop: 54,
+  medMobile: 46,
+  lrgDesktop: 72,
+  lrgMobile: 60,
+  xlDekstop: 180,
+  xlMobile: 120
 };
 
 /** Breakpoint values (in px) mapped by size designators */
@@ -327,10 +339,12 @@ export const breakpoints = {
   xs: 0,
   /** 320px to 767px */
   sm: 320,
+  iphonePlus: 414,
   /** 768px to 1023px */
   md: 768,
   /** 1024px to 1439px */
   lg: 1024,
+  desktop: 1280,
   /** 1440px and above */
   xl: 1440
 };
