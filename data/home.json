@@ -1,0 +1,28 @@
+{
+  "headline": "Realtime content <br>editing. <br>Built into your <br>codebase.",
+  "hero_video": "/img/gif_FPO.jpg",
+  "description": "Tina is a site editing toolkit for modern javascript workflows.",
+  "three_points": [
+    {
+      "main": "Choose your tools",
+      "supporting": "Tina plays well with any JS-based componants framework. Whether your site is powered by Gatsby or Next.js, Tina has your back. Tina plays well with any JS-based componants framework. Whether your site is powered by Gatsby or Next.js, Tina has your back."
+    },
+    {
+      "main": "Edit from your site",
+      "supporting": "Once you’ve supercharged your components with Tina, your site becomes editable. For real. Editing content on a modern client-side JS app has never been easier, your editors will love it, they will benefit from realtime preview developers enjoy on their machine."
+    },
+    {
+      "main": "Extend & contribute",
+      "supporting": "Tina is an open source project blh blah. get help from a robust community. Lorem ipsum dolor amet edison bulb air plant swag actually neutra quinoa chia unicorn gentrify post-ironic bushwick. Kitsch kinfolk sartorial kogi 90's +1 man braid skateboard direct trade food truck."
+    }
+  ],
+  "setup": {
+    "headline": "Make your site editable in five minutes.",
+    "steps": [
+      { "step": "Install and configure Tina plugins" },
+      { "step": "Wrap your templates in higher order components provided by Tina" },
+      { "step": "Customize the sidebar and define editable content by passing an option argument"},
+      { "step": "Open the sidebar and voila, edit your site and watch the content updating in realtime." }
+     ]
+  }
+}
