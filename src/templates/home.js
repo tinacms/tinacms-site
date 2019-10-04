@@ -1,36 +1,217 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
-import { remarkForm } from '@tinacms/react-tinacms-remark'
+import styled from 'styled-components'
 
-import { Page } from 'components/layout/Page'
-
-import { Container } from 'components/layout/Container'
-import { DocsWrapper } from 'components/docs/DocsWrapper'
-import { DocsHeader } from 'components/docs/DocsHeader'
-import MarkdownContent from 'components/page/Markdown/MarkdownContent'
-
-import { Footer, FooterWrapper } from 'components/layout/Footer'
 import IndexLayout from 'layouts'
-import renderAst from 'utils/renderAst'
-// import FooterWrapper from 'components/old-layout/FooterWrapper';
-// import Footer from 'components/old-layout/Footer';
+import { Heading, Paragraph } from 'components/foundations'
+import Button from 'components/foundations/Button'
+import { colors, dimensions, space, breakpoints } from 'utils/variables'
 
-const PageTemplate = ({ data }) => {
-  const { markdownRemark } = data
+const Wrapper = styled('div')`
+  padding:
+    ${dimensions.heights.header}px
+    ${space.smallMobile}px
+    ${space.medMobile}px
+    ${space.smallMobile}px;
+`
+const HeroSection = styled('section')`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: ${colors.hunterOrange};
+  text-align: center;
+  aside#base {
+    background-color: ${colors.seafoam};
+    width: 100%;
+    height: 65vh;
+    min-height: 400px;
+    max-height: 500px;
+    z-index: -2;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  aside#white-ellipse {
+    width: 120%;
+    height: 10vh;
+    background-color: #fff;
+    z-index: -1;
+    position: absolute;
+    bottom: -5vh;
+    left: -10%;
+    clip-path: ellipse();
+  }
+  h1 {
+    max-width: 320px;
+    margin-top: ${space.medMobile}px;
+  }
+  figure {
+    display: flex;
+    justify-content: center;
+    max-width: 90%;
+    margin-top: ${space.medMobile}px;
+    img, video {
+      filter: drop-shadow(0 24px 24px #aeaeae);
+      border-radius: 10px;
+    }
+  }
+  @media(min-width: ${breakpoints.iphonePlus}px) {
+    figure {
+      width: 85%;
+    }
+  }
+  @media(min-width: ${breakpoints.md}px) {
+    aside#base {
+      height: 85vh;
+      max-height: 700px;
+      min-height: 600px;
+    }
+    h1 {
+      max-width: 800px;
+      margin-top: ${space.lrgDesktop}px;
+    }
+    figure {
+      margin-top: ${space.lrgDesktop}px;
+    }
+  }
+  @media(min-width: ${breakpoints.desktop}px) {
+    aside#base {
+      min-height: 700px;
+      max-height: 800px;
+    }
+    aside#white-ellipse {
+      height: 20vh;
+      bottom: -10vh;
+    }
+    h1 {
+      margin-top: ${space.medDesktop}px;
+    }
+    figure {
+      margin-top: ${space.medDesktop}px;
+    }
+  }
+`
+
+const InfoSection = styled('section')`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1000px;
+  margin: ${space.lrgMobile}px auto;
+  h2 {
+    max-width: 450px;
+    text-align: center;
+  }
+  a {
+    margin-top: ${space.smallMobile}px;
+  }
+  span#dotted-line {
+    margin-top: ${space.smallMobile}px;
+    height: 35px;
+    border-left: dotted 3px ${colors.mintChocoChip};
+  }
+  @media(min-width: ${breakpoints.lg}px) {
+    h2 {
+      max-width: 570px;
+    }
+  }
+  @media(min-width: ${breakpoints.desktop}px) {
+    max-width: 1200px;
+    margin: ${space.lrgDesktop}px auto;
+    a {
+      margin-top: ${space.smallDesktop}px;
+    }
+    span#dotted-line {
+      margin-top: 28px;
+      height: 45px;
+    }
+  }
+`
+const ThreePoints = styled('ul')`
+  list-style: none;
+  padding-left: 0;
+  text-align: center;
+  li {
+    margin-top: 38px;
+  }
+  li:first-child {
+    margin-top: ${space.smallMobile - 2}px;
+  }
+  p {
+    display: none;
+  }
+  @media(min-width: ${breakpoints.lg}px) {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 66px;
+    li {
+      text-align: left;
+      margin-top: ${space.smallDesktop}px;
+
+    }
+    li:first-child {
+      margin-top: ${space.smallDesktop}px;
+    }
+    h3 {
+      text-align: center;
+    }
+    p {
+      margin-top: ${space.smallDesktop}px;
+      padding-left: 18px;
+      display: block;
+      color: ${colors.grey};
+    }
+  }
+`
+
+const SetupSection = styled('section')`
+  width: 100%;
+  background-color: ${colors.seafoam};
+`
+
+
+const HomeTemplate = ({ data }) => {
+  const { dataJson } = data
+  console.log(dataJson)
   return (
     <IndexLayout>
-      <Page docsPage>
-        <Helmet>
-          <meta property="og:title" content="Home" />
-        </Helmet>
-        <DocsWrapper>
-          <Container>
-            <DocsHeader title={markdownRemark.frontmatter.title} />
-            <MarkdownContent>{renderAst(markdownRemark.htmlAst)}</MarkdownContent>
-          </Container>
-        </DocsWrapper>
-      </Page>
+        <Wrapper>
+          <Helmet>
+            <meta property="og:title" content="Home" />
+          </Helmet>
+          <HeroSection>
+            <aside id="base">
+              <aside id="white-ellipse" />
+            </aside>
+            <Heading as="h1" size="h1">
+              <span dangerouslySetInnerHTML={{__html: `${dataJson.headline}`}}>
+              </span>
+            </Heading>
+            <figure><img src={dataJson.hero_video} /></figure>
+          </HeroSection>
+          <InfoSection>
+            <Heading as="h2" size="h2" color={colors.darkPurple}>{dataJson.description}</Heading>
+            <Button to="/docs/getting-started/introduction" bgColor={colors.hunterOrange} textColor={colors.seafoam}>
+              Get Started
+            </Button>
+            <span id="dotted-line"/>
+            <ThreePoints>
+              {dataJson.three_points.map( point => {
+                return (
+                  <li>
+                    <Heading as="h3" size="h3" color={colors.hunterOrange}>{point.main}</Heading>
+                    <Paragraph as="p" size="body">{point.supporting}</Paragraph>
+                  </li>
+                )
+              })}
+            </ThreePoints>
+          </InfoSection>
+        </Wrapper>
+        <SetupSection>
+            <Heading as="h1" size="h1">{dataJson.setup.headline}</Heading>
+          </SetupSection>
     </IndexLayout>
   )
 }
@@ -50,6 +231,21 @@ export const query = graphql`
         }
       }
     }
+    dataJson(fileRelativePath: {eq: "/data/home.json"}) {
+      headline
+      description
+      hero_video
+      three_points {
+        main
+        supporting
+      }
+      setup {
+        headline
+        steps {
+          step
+        }
+      }
+    }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       fileRelativePath
@@ -58,39 +254,15 @@ export const query = graphql`
       htmlAst
       excerpt
       frontmatter {
-        id
-        title
-        prev
-        next
+        headline
+        description
+        extra_points {
+          main
+          supporting
+        }
       }
     }
   }
 `
 
-//TinaCMS data
-const PageTemplateForm = {
-  fields: [
-    {
-      label: 'Title',
-      name: 'frontmatter.title',
-      component: 'text',
-    },
-    {
-      label: 'Body Content',
-      name: 'rawMarkdownBody',
-      component: 'textarea',
-    },
-    {
-      label: 'Previous Doc',
-      name: 'frontmatter.prev',
-      component: 'text',
-    },
-    {
-      label: 'Next Doc',
-      name: 'frontmatter.next',
-      component: 'text',
-    },
-  ],
-}
-
-export default remarkForm(PageTemplate, PageTemplateForm)
+export default HomeTemplate
