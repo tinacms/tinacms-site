@@ -21,13 +21,13 @@ const Wrapper = styled('header')<HeaderProps>`
   top: 0;
   left: 0;
   width: 100%;
-  height: ${dimensions.heights.header}px;
+  /* height: ${dimensions.heights.header}px; */
   padding: ${space.xSmallMobile}px ${space.smallMobile}px;;
-  background-color: ${props => (props.navigation ? colors.grey01 : colors.white)};
+  background-color: ${props => (props.navigation ? colors.grey01 : "transparent")};
   z-index: ${layerIndexes.stickyNav};
   ${props => props.fixed && isFixed}
-  @media(min-width: ${breakpoints.lg}){
-    padding: ${space.xSmallDeskop}px ${space.smallDesktop}px;
+  @media(min-width: ${breakpoints.lg}px){
+    padding: ${space.xSmallDesktop}px ${space.smallDesktop}px;
   }
 `;
 

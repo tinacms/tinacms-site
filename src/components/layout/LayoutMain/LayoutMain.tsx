@@ -67,7 +67,7 @@ const DocumentationMenu = styled('nav')`
     }
 
     &:not(:first-child) {
-      margin-left: 24px;
+      margin-left: ${space.xSmallDesktop}px;
     }
   }
 `;

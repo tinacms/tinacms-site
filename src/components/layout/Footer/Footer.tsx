@@ -57,7 +57,7 @@ const StyledCommunityItems = styled('div')`
   display: flex;
   justify-content: flex-end;
   align-items: baseline;
-  button {
+  > a:first-child {
     display: none;
   }
   * {
@@ -72,8 +72,8 @@ const StyledCommunityItems = styled('div')`
     }
   }
   @media(min-width: ${breakpoints.md}px) {
-    button {
-      display: block;
+    > a:first-child {
+      display: flex;
     }
   }
 `
@@ -124,16 +124,16 @@ function Footer ({headerMenus}:FooterProps) {
             headerMenus.map(({ node }) => {
               if (node.external) {
                 return (
-                  <Heading as="h3" size="h3">
-                    <a key={node.id} href={node.href} target="_blank" rel="noopener noreferrer">
+                  <Heading key={node.id} as="h3" size="h3">
+                    <a href={node.href} target="_blank" rel="noopener noreferrer">
                       {node.label}
                     </a>
                   </Heading>
                 )
               }
               return (
-                <Heading as="h3" size="h3">
-                  <Link key={node.id} getProps={isActive} to={node.href}>
+                <Heading key={node.id} as="h3" size="h3">
+                  <Link getProps={isActive} to={node.href}>
                     {node.label}
                   </Link>
                 </Heading>
