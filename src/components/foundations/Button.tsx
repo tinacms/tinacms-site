@@ -14,6 +14,9 @@ interface ButtonProps {
 }
 
 const StyledButton = styled(Link)<ButtonProps>`
+  width: max-content;
+  filter: drop-shadow(1px 2px 18px rgb(0,0,0,12%));
+  transition: filter 250ms ease;
   display: flex;
   align-items: center;
   background-color: ${props => props.bgColor};
@@ -25,6 +28,8 @@ const StyledButton = styled(Link)<ButtonProps>`
   :hover,
   :focus {
     text-decoration: none;
+    filter: drop-shadow(1px 5px 18px rgb(0,0,0,25%));
+    transition: filter 250ms ease;
   }
   h5 {
     padding: 0 ${space.md}px;

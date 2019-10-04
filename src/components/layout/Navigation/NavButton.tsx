@@ -68,7 +68,7 @@ const NavButton: React.FC<NavButtonProps> = ({ height, width, fill, icon, childr
       <Root {...rest}>
         <VisuallyHidden>{children}</VisuallyHidden>
         <svg width={width} height={height}  viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect  rx="8.5" fill="white"/>
+          <rect width="17" height="17" rx="8.5" fill="white"/>
           <circle cx="8.5" cy="8.5" r="4.5" fill="#EC4815"/>
         </svg>
       </Root>
