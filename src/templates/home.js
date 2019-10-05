@@ -156,22 +156,28 @@ const ThreePoints = styled('ul')`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 66px;
+    margin-top: ${space.lrgDesktop}px;
     li {
       text-align: left;
-      margin-top: ${space.smallDesktop}px;
+      margin-top: 0;
 
     }
     li:first-child {
-      margin-top: ${space.smallDesktop}px;
+      margin-top: 0;
     }
     h3 {
       text-align: center;
     }
     p {
       margin-top: ${space.smallDesktop}px;
-      padding-left: 18px;
+      padding-left: 12px;
       display: block;
       color: ${colors.grey};
+    }
+  }
+  @media(min-width: ${breakpoints.desktop}px) {
+    p {
+      padding-left: 18px;
     }
   }
 `
@@ -179,6 +185,73 @@ const ThreePoints = styled('ul')`
 const SetupSection = styled('section')`
   width: 100%;
   background-color: ${colors.seafoam};
+  padding:
+    ${space.medMobile}px
+    ${space.smallMobile}px
+    ${space.lrgMobile}px
+    ${space.smallMobile}px;
+  color: ${colors.hunterOrange};
+  @media(min-width: ${breakpoints.lg}px) {
+    padding:
+      90px
+      ${space.smallDesktop}px
+      ${space.xlMobile}px
+      ${space.smallDesktop}px;
+  }
+`
+const SetupWrapper = styled('div')`
+  max-width: 500px;
+  margin: 0 auto;
+  h1 {
+    margin-bottom: ${space.smallDesktop}px;
+    text-align: center;
+  }
+  figure {
+    display: none;
+    font-family: "Inconsolata", Courier, monospace;
+  }
+  a {
+    margin: 0 auto;
+  }
+  @media(min-width: ${breakpoints.md}px) {
+    max-width: 650px;
+  }
+  @media(min-width: ${breakpoints.lg}px) {
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: ${space.lrgMobile}px;
+    h1 {
+      text-align: left;
+    }
+    figure {
+      display: block;
+      margin-top: ${space.smallDesktop}px;
+    }
+    a {
+      margin: 0;
+    }
+  }
+  @media(min-width: ${breakpoints.desktop}px) {
+    max-width: 1150px;
+    grid-template-columns: 1fr 1.2fr;
+  }
+`
+
+const SetupSteps = styled('ol')`
+  margin: 0;
+  list-style: none;
+  padding-left: 0;
+  color: ${colors.darkPurple};
+  li {
+    margin-bottom: ${space.smallMobile}px;
+  }
+  li:last-child {
+    margin-bottom: ${space.smallDesktop}px;
+  }
+  @media(min-width: ${breakpoints.lg}px) {
+    padding-left: ${space.xs}px;
+  }
 `
 
 
@@ -219,8 +292,23 @@ const HomeTemplate = ({ data }) => {
           </InfoSection>
         </Wrapper>
         <SetupSection>
+          <SetupWrapper>
+          <span>
             <Heading as="h1" size="h1">{dataJson.setup.headline}</Heading>
-          </SetupSection>
+            <SetupSteps>
+              {dataJson.setup.steps.map( item => (
+                <li>
+                  <Paragraph as="p" size="body">- {item.step}</Paragraph>
+                </li>
+              ))}
+            </SetupSteps>
+            <Button to="/docs/getting-started/introduction" bgColor={colors.hunterOrange} textColor={colors.seafoam}>
+              Get Started
+            </Button>
+          </span>
+          <figure><img src={dataJson.setup.code_ex} alt="Tina-Code-Setup-Example" /></figure>
+          </SetupWrapper>
+        </SetupSection>
     </IndexLayout>
   )
 }
@@ -253,6 +341,7 @@ export const query = graphql`
         steps {
           step
         }
+        code_ex
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {

@@ -23,6 +23,7 @@
       { "step": "Wrap your templates in higher order components provided by Tina" },
       { "step": "Customize the sidebar and define editable content by passing an option argument"},
       { "step": "Open the sidebar and voila, edit your site and watch the content updating in realtime." }
-     ]
+     ],
+     "code_ex": "/img/terminal.png"
   }
 }
