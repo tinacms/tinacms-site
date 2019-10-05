@@ -12,8 +12,15 @@ const Wrapper = styled('div')`
   padding:
     ${dimensions.heights.header}px
     ${space.smallMobile}px
-    ${space.medMobile}px
+    ${space.xSmallMobile}px
     ${space.smallMobile}px;
+  @media(min-width: ${breakpoints.lg}px) {
+    padding:
+      ${dimensions.heights.header}px
+      ${space.smallDesktop}px
+      ${space.xSmallDesktop}px
+      ${space.smallDesktop}px;
+  }
 `
 const HeroSection = styled('section')`
   display: flex;
@@ -47,11 +54,11 @@ const HeroSection = styled('section')`
     margin-top: ${space.medMobile}px;
   }
   figure {
-    display: flex;
-    justify-content: center;
+    display: block;
     max-width: 90%;
     margin-top: ${space.medMobile}px;
     img, video {
+      margin: 0 auto;
       filter: drop-shadow(0 24px 24px #aeaeae);
       border-radius: 10px;
     }
@@ -98,7 +105,7 @@ const InfoSection = styled('section')`
   flex-direction: column;
   align-items: center;
   max-width: 1000px;
-  margin: ${space.lrgMobile}px auto;
+  margin: ${space.medMobile}px auto;
   h2 {
     max-width: 450px;
     text-align: center;
@@ -112,12 +119,13 @@ const InfoSection = styled('section')`
     border-left: dotted 3px ${colors.mintChocoChip};
   }
   @media(min-width: ${breakpoints.lg}px) {
+    margin: ${space.lrgMobile}px auto;
     h2 {
       max-width: 570px;
     }
   }
   @media(min-width: ${breakpoints.desktop}px) {
-    max-width: 1200px;
+    max-width: 1150px;
     margin: ${space.lrgDesktop}px auto;
     a {
       margin-top: ${space.smallDesktop}px;
@@ -129,9 +137,11 @@ const InfoSection = styled('section')`
   }
 `
 const ThreePoints = styled('ul')`
+  margin: 0;
   list-style: none;
   padding-left: 0;
   text-align: center;
+  margin-top: ${space.smallMobile}px;
   li {
     margin-top: 38px;
   }
@@ -196,7 +206,6 @@ const HomeTemplate = ({ data }) => {
             <Button to="/docs/getting-started/introduction" bgColor={colors.hunterOrange} textColor={colors.seafoam}>
               Get Started
             </Button>
-            <span id="dotted-line"/>
             <ThreePoints>
               {dataJson.three_points.map( point => {
                 return (
