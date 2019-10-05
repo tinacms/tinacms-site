@@ -100,5 +100,17 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-netlify-cache',
     'gatsby-plugin-netlify',
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `TinaCMS`,
+        short_name: `TinaCMS`,
+        start_url: `/`,
+        background_color: `#E6FAF8`,
+        theme_color: `#EC4815`,
+        display: `standalone`,
+        icon: `static/img/favicon.png`
+      },
+    }
   ],
 }
