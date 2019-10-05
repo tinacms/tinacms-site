@@ -61,17 +61,6 @@ const base = css`
     letter-spacing: .8px !important;
   }
 
-  button {
-    display: inline-block;
-    border: none;
-    margin: 0;
-    text-decoration: none;
-    cursor: pointer;
-    text-align: center;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-  }
-
   img {
     display: block;
     max-width: 100%;
