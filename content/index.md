@@ -1,10 +1,11 @@
 ---
-headline: Realtime content editing. Built into your codebase.
-description: Tina is a site editing toolkit for modern javascript workflows.
-extra_points:
-  - main: Choose your framework,
-  - supporting: Lorem ipsum dolor amet edison bulb air plant swag actually neutra quinoa chia unicorn gentrify post-ironic bushwick. Kitsch kinfolk sartorial kogi 90's +1 man braid skateboard direct trade food truck. Readymade shoreditch chillwave poke yr next level. Viral tilde truffaut, street art ethical franzen twee letterpress.
+title: Tina
+description: Tina is not a CMS, Tina is a set of open source plugins to empower JS developers provide a realtime editing experience to content editors.
 ---
+## Realtime content editing, built into your codebase.
 
-This is the home page
+Tina is a site editing toolkit for modern JavaScript workflows.
 
+Tina currently works with [Gatsby](/docs/gatsby/quickstart/) and Next.js and use Git as a backend.
+
+Plugins for headless CMS and other frameworks like Vue.js will be added later.
