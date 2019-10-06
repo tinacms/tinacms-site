@@ -32,7 +32,7 @@ yarn add @tinacms/react-tinacms-remark @tinacms/gatsby-tinacms-git
 
 ### Adding the Git Plugin
 
-Open the `gatsby-config.js` file and add the `"@tinacms/gastby-tinacms-git"` plugin:
+Open the `gatsby-config.js` file and add the `"@tinacms/gatsby-plugin-tinacms"` plugin:
 
 ```JavaScript
 module.exports = {
