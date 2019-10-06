@@ -351,14 +351,7 @@ export const query = graphql`
       rawMarkdownBody
       htmlAst
       excerpt
-      frontmatter {
-        headline
-        description
-        extra_points {
-          main
-          supporting
-        }
-      }
+
     }
   }
 `
