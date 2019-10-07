@@ -1288,6 +1288,14 @@
     final-form "^4.18.2"
     final-form-arrays "^3.0.1"
 
+"@tinacms/core@^0.1.0-alpha.3", "@tinacms/core@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@tinacms/core/-/core-0.1.2.tgz#ada4dc31b94376363832c99a8bcf8681903ab7a1"
+  integrity sha512-7UZzehEWlZZb5sR2VFemURiPyvRLc9udwAR+ySjdYahPtoAOcHnXtqYS652dEP5RskPRqXwdjdE1Yt8aGxjvTQ==
+  dependencies:
+    final-form "^4.18.2"
+    final-form-arrays "^3.0.1"
+
 "@tinacms/fields@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@tinacms/fields/-/fields-0.1.0.tgz#94735898ce7f3fa5244c8d158f98b1eeda8d871e"
@@ -1384,6 +1392,14 @@
   resolved "https://registry.yarnpkg.com/@tinacms/icons/-/icons-0.1.0.tgz#50af45cb6d0d4919b7f7138d932f0b89ce527c49"
   integrity sha512-WivvzaAT+OqKnBM2GkI1Kt6yiIWkeX4sSLG3KE13lcujK6HYIDSF8NivaXKqOF91hCQOOULwQNNJ3X+LC3I7KQ==
 
+"@tinacms/react-tinacms-json@^0.1.0-alpha.3":
+  version "0.1.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@tinacms/react-tinacms-json/-/react-tinacms-json-0.1.0-alpha.3.tgz#13e9a88748df2e45cecfd061cfee04ff1ca58733"
+  integrity sha512-W9n40Fk9MEX9VIyNdZ76Fp5j3IZoLUHBvZxVRXRjGyFrQhUMRbtFvQFRkUPe2fsd2ynaUYlbDQUW2vgJkWvveA==
+  dependencies:
+    "@tinacms/core" "^0.1.0-alpha.3"
+    "@tinacms/react-tinacms" "^0.1.0-alpha.3"
+
 "@tinacms/react-tinacms-remark@0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@tinacms/react-tinacms-remark/-/react-tinacms-remark-0.1.0.tgz#451aa0fd3ba41f6a89e933724c0cc558999971f6"
@@ -1401,6 +1417,15 @@
   integrity sha512-eYtiU1EFzVeke4QO8mK71p837aIToRAYYrkHV4f/2e1xTXjV447rO/Zg38SE1wsOJeHR8hBAOc20lTkmEOrOxQ==
   dependencies:
     "@tinacms/core" "^0.1.0"
+
+"@tinacms/react-tinacms@^0.1.0-alpha.3":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@tinacms/react-tinacms/-/react-tinacms-0.1.2.tgz#8df1ae830846e7f8fbad34f7c5cf934793ee2e8e"
+  integrity sha512-Q+bEzPYqgJ9FyxE6t0G1k9E40GKWnzPzFwOxAczIk44j3QfzhaxH3fCPiN+BsA2sHyTvVyHjK98BgFpC1YXBXw==
+  dependencies:
+    "@tinacms/core" "^0.1.2"
+    lodash.get "^4.4.2"
+    lodash.set "^4.3.2"
 
 "@tinacms/styles@^0.0.1":
   version "0.0.1"
@@ -8500,6 +8525,11 @@ lodash.mergewith@^4.6.1:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/lodash.mergewith/-/lodash.mergewith-4.6.2.tgz#617121f89ac55f59047c7aec1ccd6654c6590f55"
   integrity sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==
+
+lodash.set@^4.3.2:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/lodash.set/-/lodash.set-4.3.2.tgz#d8757b1da807dde24816b0d6a84bea1a76230b23"
+  integrity sha1-2HV7HagH3eJIFrDWqEvqGnYjCyM=
 
 lodash.throttle@^4.1.1:
   version "4.1.1"

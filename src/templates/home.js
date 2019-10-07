@@ -257,8 +257,10 @@ const SetupSteps = styled('ol')`
 `
 
 
-const HomeTemplate = ({ data }) => {
-  const { dataJson } = data
+const HomeTemplate = (props) => {
+  // getting couldn't find instance of CMS error
+  // const [ dataJson ] = useJsonForm(props.data.dataJson)
+  const dataJson = props.data.dataJson
   return (
     <IndexLayout>
         <Wrapper>
