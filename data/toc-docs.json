@@ -4,12 +4,12 @@
     "id": "getting-started",
     "items": [
       {
-        "id": "introduction",
+        "id": "/docs/getting-started/introduction",
         "slug": "/docs/getting-started/introduction",
         "title": "Introduction"
       },
       {
-        "id": "how-tina-works",
+        "id": "/docs/getting-started/how-tina-works",
         "slug": "/docs/getting-started/how-tina-works",
         "title": "How Tina Works"
       }
@@ -19,6 +19,11 @@
     "title": "Concepts",
     "id": "concepts",
     "items": [
+      {
+        "id": "/docs/concepts/sidebar",
+        "slug": "/docs/concepts/sidebar",
+        "title": "Sidebar"
+      },
       {
         "id": "/docs/concepts/forms",
         "slug": "/docs/concepts/forms",

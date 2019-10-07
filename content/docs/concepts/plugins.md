@@ -1,8 +1,8 @@
 ---
 id: /docs/concepts/field-plugins
 title: Field Plugins
-prev: /docs/concepts/forms
-next: /docs/concepts/backends
+prev: /docs/concepts/backends
+next: /docs/gatsby/quickstart
 ---
 
 A field plugin defines a component that can be used to edit a field.

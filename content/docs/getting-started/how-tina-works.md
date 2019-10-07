@@ -1,8 +1,8 @@
 ---
 title: How Tina Works
-id: /getting-started/how-tina-works
-prev: introduction
-next: /docs/concepts/forms
+id: /docs/getting-started/how-tina-works
+prev: /docs/getting-started/introduction
+next: /docs/concepts/sidebar
 ---
 
 ## Real-Time Feedback
