@@ -1,33 +1,32 @@
 ---
-id: /docs/concepts/field-plugins
-title: Field Plugins
+title: Plugins
+id: /docs/concepts/plugins
 prev: /docs/concepts/backends
 next: /docs/gatsby/quickstart
 ---
 
-A field plugin defines a component that can be used to edit a field.
+<tip>This document is a work-in-progress. The Plugin API is not stable and it is not recommended to create or consume plugins in your projects.</tip>
 
-The field plugin is a javascript object with two properties:
+**Plugins** allow you to extend the functionality of the CMS. In fact, the plugin API is currently being used to add features to the core CMS, including:
 
-- `name`: A string used to identify the component. This is the name that is set in a [Field Definition](./forms.md#field-definitions). This name must be unique; if multiple plugins are registered with the same name, only the last will be used.
-- `Component`: The component that will used in the form. The exact nature of this component depends on which form builder is being used.
-- `validate`: A optional function that will be used to validate the field's data.
+- Built-in Form Fields
+- Create Content Buttons
 
-## Registering Field Plugins
+## Defining Plugins
 
 ```javascript
-import { MapPicker, validateMap } from 'cms-field-my-map-picker'
-
-let cms = new CMS()
-
-cms.forms.addFieldPlugin({
-  name: 'map',
-  Component: MapPicker,
-  validate: validateMap,
+cms.plugins.add({
+  // Required. Plugins can use the `__type` property to determine which other plugins they can communicate with
+  __type: 'say-hello',
+  // add other plugin-specific options here
+  hello() {
+    console.log('Hello, World!')
+  },
 })
 ```
 
-## Resources
+## Accessing Plugins
 
-- [Creating Fields in React](../using-tina/creating-fields.md)
-  - [Registering Fields in Gatsby](../gatsby/custom-field-plugins.md)
+```javascript
+cms.plugins.all('say-hello').map(plugin => plugin.hello())
+```
