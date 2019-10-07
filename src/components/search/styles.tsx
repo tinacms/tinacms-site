@@ -66,7 +66,7 @@ export const Input = styled.input<InputProps>`
   ${props => (props.collapse ? collapse : expand)};
 `
 
-export const Form = styled.form`
+export const SearchContainer = styled.div`
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
