@@ -262,9 +262,9 @@ const SetupSteps = styled('ol')`
 
 
 const HomeTemplate = (props) => {
-  // getting couldn't find instance of CMS error
-  // const [ dataJson ] = useJsonForm(props.data.dataJson)
-  const dataJson = props.data.dataJson
+  // seeing empty sidebar group or file
+  const [ dataJson ] = useJsonForm(props.data.dataJson)
+  // const dataJson = props.data.dataJson
   return (
     <IndexLayout>
         <Wrapper>
@@ -289,7 +289,7 @@ const HomeTemplate = (props) => {
             <ThreePoints>
               {dataJson.three_points.map( point => {
                 return (
-                  <li>
+                  <li key={point.main}>
                     <Heading as="h3" size="h3" color={colors.hunterOrange}>{point.main}</Heading>
                     <Paragraph as="p" size="body">{point.supporting}</Paragraph>
                   </li>
@@ -304,7 +304,7 @@ const HomeTemplate = (props) => {
             <Heading as="h1" size="h1">{dataJson.setup.headline}</Heading>
             <SetupSteps>
               {dataJson.setup.steps.map( item => (
-                <li>
+                <li key={item.step}>
                   <Paragraph as="p" size="body">- {item.step}</Paragraph>
                 </li>
               ))}
@@ -336,6 +336,9 @@ export const query = graphql`
       }
     }
     dataJson(fileRelativePath: {eq: "/data/home.json"}) {
+      fields {
+        fileRelativePath
+      }
       headline
       description
       hero_video
