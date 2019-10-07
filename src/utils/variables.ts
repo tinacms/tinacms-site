@@ -1,15 +1,23 @@
 /** Color values mapped by Aksara color ID. */
 export const colors = {
   //Mint Green
-  uberLiteMintGreen: '#E5F8DE',
-  liteMintGreen: '#D8E9D2',
-  medMintGreen: '#C5DEBD',
-  darkMintGreen: '#A7CEA4',
-  olive: '#83A180',
+  seafoam: "#E6FAF8",
+  mintChocoChip: "#B4F4E0",
   greyWhite: '#f4f4f4',
   greyWhite02: 'E9E9EC',
-  burntOrange: '#EA7C2D',
-  darkBurntOrange: '#c76b29',
+  hunterOrange: '#EC4815',
+  burntSienna: '#CE411D',
+  darkPurple: '#241748',
+  grey: '#595959',
+
+  //TODO -- find and replace all these colors
+  uberLiteMintGreen: '#E6FAF8',
+  liteMintGreen: '#E6FAF8',
+  medMintGreen: '#CB4F4E0',
+  darkMintGreen: '#B4F4E0',
+  olive: '#83A180',
+  burntOrange: '#EC4815',
+  darkBurntOrange: '#CE411D',
   mustardYellow: '#F9D957',
   medMustardYellow: '#D7930E',
   darkMustardYellow: '#BF9019',
@@ -17,7 +25,7 @@ export const colors = {
   medGreyPurple: '#676577',
   darkGreyPurple: '#575568',
   vDarkGreyPurple:'#373542',
-  plum: '#402B44',
+  plum: '#241748',
 
   // Blue
   /** Blue01 - Glitter */
@@ -177,8 +185,43 @@ export const fonts = {
   monospace: "'SF Mono', Inconsolata, Menlo, Monaco, Consolas, 'Courier New', Courier, monospace;"
 };
 
-/** Heading size values mapped by size number. */
+/** Heading size values mapped by size number.
+ *
+ * HACK for responsive mobile style overrides live
+ * in components/foundations/reset/styles/base.ts
+ * Below are type styles > 768
+*/
 export const headingSizes = {
+  h1: {
+    fontSize: 64,
+    lineHeight: 83,
+    letterSpacing: .1
+  },
+  h2: {
+    fontSize: 32,
+    lineHeight: 45,
+    letterSpacing: .1
+  },
+  h3: {
+    fontSize: 24,
+    lineHeight: 32,
+    letterSpacing: .12
+  },
+  h4: {
+    fontSize: 16,
+    lineHeight: 22,
+    letterSpacing: .1
+  },
+  label: {
+    fontSize: 16,
+    lineHeight: 20,
+    letterSpacing: .12
+  },
+  body: {
+    fontSize: 18,
+    lineHeight: 25,
+    letterSpacing: .12
+  },
   900: {
     fontSize: 42,
     lineHeight: 48,
@@ -275,7 +318,19 @@ export const space = {
   /** Equivalent to 32px */
   xl: 32,
   /** Equivalent to 48px */
-  xxl: 48
+  xxl: 48,
+
+  /** TINA specific styles */
+  xSmallDesktop: 20,
+  xSmallMobile: 12,
+  smallDesktop: 32,
+  smallMobile: 24,
+  medDesktop: 54,
+  medMobile: 46,
+  lrgDesktop: 72,
+  lrgMobile: 60,
+  xlDekstop: 180,
+  xlMobile: 120
 };
 
 /** Breakpoint values (in px) mapped by size designators */
@@ -284,10 +339,12 @@ export const breakpoints = {
   xs: 0,
   /** 320px to 767px */
   sm: 320,
+  iphonePlus: 414,
   /** 768px to 1023px */
   md: 768,
   /** 1024px to 1439px */
   lg: 1024,
+  desktop: 1280,
   /** 1440px and above */
   xl: 1440
 };

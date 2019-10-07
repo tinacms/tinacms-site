@@ -7,22 +7,18 @@ import { NavigationContext, NavigationActionTypes } from '../Navigation/Navigati
 import { Header, HeaderInner } from '../Header';
 import { NavButton } from '../Navigation';
 import { Edge, HeaderMenuItem } from 'interfaces/nodes';
-import { FooterWrapper, Footer } from 'components/layout/Footer'
-
 
 import { breakpoints, dimensions, colors, textSizes, space } from 'utils/variables';
 import { isActive } from 'utils/helpers';
 import { determineFontDimensions, Heading } from 'components/foundations';
-import Button from 'components/foundations/Button'
-import { Llama_Icon } from 'components/foundations/icons'
+import { Wordmark } from 'components/foundations/icons'
 
-
-interface LayoutMainInnerProps {
+interface DocsLayoutMainInnerProps {
   className?: string;
   isNavigationOpen?: boolean;
 }
 
-interface LayoutMainProps extends LayoutMainInnerProps {
+interface DocsLayoutMainProps extends DocsLayoutMainInnerProps {
   title: string;
   headerMenus?: Edge<HeaderMenuItem>[];
 }
@@ -31,12 +27,16 @@ interface FontSizeProps {
   size: ReturnType<typeof determineFontDimensions>;
 }
 
-const StyledLayoutMain = styled('div')<LayoutMainInnerProps>`
+const StyledDocsLayoutMain = styled('div')<DocsLayoutMainInnerProps>`
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
   position: relative;
   transition: margin-left 0.3s ease;
+
+  @media (min-width: ${breakpoints.lg}px) {
+    margin-left: ${dimensions.widths.sidebar.lg}px;
+  }
 `;
 
 const LogoWrapper = styled('div')`
@@ -67,14 +67,10 @@ const DocumentationMenu = styled('nav')`
     }
 
     &:not(:first-child) {
-      margin-left: ${space.xSmallDesktop}px;
+      margin-left: 24px;
     }
   }
 `;
-
-const StyledMainContent = styled('section')`
-  flex-grow: 1;
-`
 
 const HomepageLink = styled(Link)<FontSizeProps>`
   color: ${colors.grey09};
@@ -82,8 +78,7 @@ const HomepageLink = styled(Link)<FontSizeProps>`
   line-height: ${props => props.size.lineHeight};
   font-weight: ${props => props.size.fontWeight};
   display: flex;
-  padding-top: 10px;
-  /* height: 15px; */
+  height: 15px;
 
   &:hover,
   &:focus {
@@ -91,22 +86,19 @@ const HomepageLink = styled(Link)<FontSizeProps>`
     text-decoration: none;
   }
   svg {
-    height: 35px;
-  }
-  @media(min-width:${breakpoints.lg}px) {
-    height: 50px;
+
   }
 `;
 
-const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, headerMenus }) => {
+const DocsLayoutMain: React.SFC<DocsLayoutMainProps> = ({ children, title, className, headerMenus }) => {
   const { state, dispatch } = React.useContext(NavigationContext);
 
   return (
-    <StyledLayoutMain className={className} isNavigationOpen={state.isOpen}>
+    <StyledDocsLayoutMain className={className} isNavigationOpen={state.isOpen}>
       <Header fixed>
         <HeaderInner hideOnDesktop>
           <NavButton
-            icon="circle"
+            icon="hamburger"
             fill={colors.grey05}
             onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}
           >
@@ -118,11 +110,11 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
               size={determineFontDimensions('heading', 400)}
               onClick={() => dispatch({ type: NavigationActionTypes.CLOSE_DRAWER })}
             >
-               <Llama_Icon color={`${colors.burntOrange}`}/>
+              <Wordmark color={`${colors.liteGreyPurple}`}/>
             </HomepageLink>
           </LogoWrapper>
         </HeaderInner>
-        <HeaderInner hideOnMobile contents="center">
+        <HeaderInner hideOnMobile contents="flex-end">
           <DocumentationMenu>
             {headerMenus &&
               headerMenus.map(({ node }) => {
@@ -133,31 +125,19 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
                     </a>
                   );
                 }
+
                 return (
-                  <Button
-                    key={node.id}
-                    to={node.href}
-                    bgColor={`${colors.white}`}
-                    textColor={`${colors.hunterOrange}`}
-                    height="40">
-                    {node.label}
-                  </Button>
+                  <Link key={node.id} getProps={isActive} to={node.href}>
+                    <Heading as="h1" size={100}>{node.label}</Heading>
+                  </Link>
                 );
               })}
           </DocumentationMenu>
-          <Button to="/docs/getting-started/introduction" height={'40'} bgColor={`${colors.hunterOrange}`} textColor={`${colors.seafoam}`}>
-            Get Started
-          </Button>
         </HeaderInner>
       </Header>
-      <StyledMainContent>
-        <SkipNavContent>{children}</SkipNavContent>
-      </StyledMainContent>
-      <FooterWrapper>
-        <Footer headerMenus={headerMenus} />
-      </FooterWrapper>
-    </StyledLayoutMain>
+      <SkipNavContent>{children}</SkipNavContent>
+    </StyledDocsLayoutMain>
   );
 };
 
-export default LayoutMain;
+export default DocsLayoutMain;

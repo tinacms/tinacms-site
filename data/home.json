@@ -1,0 +1,30 @@
+{
+  "headline": "Realtime content <br>editing. <br>Built into your <br>codebase.",
+  "hero_video": "/img/gif_FPO.jpg",
+  "hero_alt":"TinaCMS_video",
+  "description": "Tina is a site editing toolkit for modern javascript workflows.",
+  "three_points": [
+    {
+      "main": "Choose your tools",
+      "supporting": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non ante eget mauris tristique condimentum vitae fringilla massa. Duis in fringilla urna. Vestibulum rutrum felis luctus ex vehicula dictum. Sed finibus nulla vel luctus ullamcorper. Quisque scelerisque, dignissim, tortor."
+    },
+    {
+      "main": "Edit from your site",
+      "supporting": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique velit elit, id convallis metus posuere a. Fusce fringilla, ex et tincidunt viverra, libero justo laoreet nunc, ut interdum nisl velit in ex. In hac habitasse platea dictumst. Vivamus ex, et maximus libero."
+    },
+    {
+      "main": "Extend & contribute",
+      "supporting": "Tina is an open source project blh blah. get help from a robust community. Lorem ipsum dolor amet edison bulb air plant swag actually neutra quinoa chia unicorn gentrify post-ironic bushwick. Kitsch kinfolk sartorial kogi 90's +1 man braid skateboard direct trade food truck."
+    }
+  ],
+  "setup": {
+    "headline": "Make your site editable in five minutes.",
+    "steps": [
+      { "step": "Install and configure Tina plugins" },
+      { "step": "Wrap your templates in higher order components provided by Tina" },
+      { "step": "Customize the sidebar and define editable content by passing an option argument"},
+      { "step": "Open the sidebar and voila, edit your site and watch the content updating in realtime." }
+     ],
+     "code_ex": "/img/terminal.png"
+  }
+}

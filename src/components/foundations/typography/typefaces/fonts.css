@@ -1,3 +1,8 @@
+/** Body copy **/
+@import url('https://rsms.me/inter/inter.css');
+/** Monospace / Code **/
+@import url('https://fonts.googleapis.com/css?family=Inconsolata&display=swap');
+
 /*
 	Copyright (C) Production Type
 	This software is the property of Production Type.
@@ -13,7 +18,6 @@
 	without first obtaining the written permission of Production Type.
 	For more information, please visit us at www.productiontype.com
 */
-@import url('https://rsms.me/inter/inter.css');
 
 /* @font-face {
 	font-family: 'tuner-bold';
