@@ -22,7 +22,6 @@ export interface HeadingProps extends TypographyProps {
  */
 const StyledText = styled(Typography)<HeadingProps>`
   font-family: 'tuner-regular';
-
 `;
 
 /**
@@ -31,7 +30,7 @@ const StyledText = styled(Typography)<HeadingProps>`
 export const Heading: React.SFC<HeadingProps> = ({ children, as, size, color, ...rest }) => (
   <StyledText
     as={as}
-    color={size === 100 ? 'liteGreyPurple' : 'plum'}
+    color={color}
     {...determineFontDimensions('heading', size)}
     size={size}
     {...rest}
@@ -42,7 +41,7 @@ export const Heading: React.SFC<HeadingProps> = ({ children, as, size, color, ..
 
 Heading.defaultProps = {
   as: 'h2',
-  color: 'medGreyPurple',
+  color: 'inherit',
   size: 800,
   margin: 0
 };

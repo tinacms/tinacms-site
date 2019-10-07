@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { breakpoints, colors, dimensions, layerIndexes } from 'utils/variables';
+import { breakpoints, colors, dimensions, layerIndexes, space } from 'utils/variables';
 
 interface HeaderProps {
   navigation?: boolean;
@@ -10,7 +10,7 @@ interface HeaderProps {
 
 const isFixed = css`
   @media (min-width: ${breakpoints.lg}px) {
-    left: ${dimensions.widths.sidebar.lg}px;
+    /* left: ${dimensions.widths.sidebar.lg}px; */
   }
 `;
 
@@ -21,13 +21,16 @@ const Wrapper = styled('header')<HeaderProps>`
   top: 0;
   left: 0;
   width: 100%;
-  height: ${dimensions.heights.header}px;
-  padding: 0 24px;
-  background-color: ${props => (props.navigation ? colors.grey01 : colors.white)};
-  border-bottom: ${props => (props.navigation ? 'none' : `1px solid ${colors.grey02}`)};
+  /* height: ${dimensions.heights.header}px; */
+  padding: ${space.xSmallMobile}px ${space.smallMobile}px;;
+  background-color: ${props => (props.navigation ? colors.grey01 : "transparent")};
+  background-color: ${colors.seafoam};
   z-index: ${layerIndexes.stickyNav};
-
   ${props => props.fixed && isFixed}
+  @media(min-width: ${breakpoints.lg}px){
+    padding: ${space.xSmallDesktop}px ${space.smallDesktop}px;
+    background: linear-gradient(#FAFFFE, transparent);
+  }
 `;
 
 const Header: React.SFC<HeaderProps> = ({ children, absolute, fixed, navigation }) => (
