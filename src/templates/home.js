@@ -257,7 +257,6 @@ const SetupSteps = styled('ol')`
 
 const HomeTemplate = ({ data }) => {
   const { dataJson } = data
-  console.log(dataJson)
   return (
     <IndexLayout>
         <Wrapper>
@@ -351,7 +350,6 @@ export const query = graphql`
       rawMarkdownBody
       htmlAst
       excerpt
-
     }
   }
 `
