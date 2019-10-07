@@ -30,6 +30,7 @@ const HeroSection = styled('section')`
   text-align: center;
   aside#base {
     background-color: ${colors.seafoam};
+    background: radial-gradient(circle at bottom center, #E6FAF8 50%, #F2FCFB);
     width: 100%;
     height: 65vh;
     min-height: 400px;
