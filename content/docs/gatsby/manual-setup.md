@@ -7,11 +7,11 @@ next: /docs/gatsby/content-editing
 
 Learn how to setup Tina on an existing Gatsby site.
 
-After this guide you will have installed and added the TinaCMS sidebar to your project. However, this won't make your content editable. Go to the [next guide](/gatsby/edit-content) to learn how to make content editable.
+After this guide you will have installed and added the TinaCMS sidebar to your project. However, this won't make your content editable. Go to the [next guide](/docs/gatsby/edit-content) to learn how to make content editable.
 
 Assumptions: This guide assumes you have the Gatsby CLI installed, Node & a package manager.
 
-Note: Don't have a site yet? Refer to the [quickstart page](/gatsby/quickstart).
+Note: Don't have a site yet? Refer to the [quickstart page](/docs/gatsby/quickstart).
 
 ## Installation
 
