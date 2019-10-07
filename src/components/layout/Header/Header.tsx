@@ -24,6 +24,7 @@ const Wrapper = styled('header')<HeaderProps>`
   /* height: ${dimensions.heights.header}px; */
   padding: ${space.xSmallMobile}px ${space.smallMobile}px;;
   background-color: ${props => (props.navigation ? colors.grey01 : "transparent")};
+  background: linear-gradient(#FAFFFE, transparent);
   z-index: ${layerIndexes.stickyNav};
   ${props => props.fixed && isFixed}
   @media(min-width: ${breakpoints.lg}px){
