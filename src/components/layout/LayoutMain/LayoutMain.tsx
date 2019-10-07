@@ -82,7 +82,8 @@ const HomepageLink = styled(Link)<FontSizeProps>`
   line-height: ${props => props.size.lineHeight};
   font-weight: ${props => props.size.fontWeight};
   display: flex;
-  height: 15px;
+  padding-top: 10px;
+  /* height: 15px; */
 
   &:hover,
   &:focus {
