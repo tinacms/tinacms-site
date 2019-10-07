@@ -2,8 +2,9 @@
 title: How Tina Works
 id: /getting-started/how-tina-works
 prev: introduction
-next: /gatsby/quickstart
+next: /docs/concepts/forms
 ---
+
 ## Real-Time Feedback
 
 Static sites work by taking structured content from a source, such as markdown files, and processing them through a template to transform them into HTML pages. Tina sits in the middle of this process, exposing this structured content directly to the end user via form fields in the browser, while simultaneously passing the same content through to the templating engine.
