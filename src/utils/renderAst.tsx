@@ -1,9 +1,10 @@
-import * as React from 'react';
-import rehypeReact from 'rehype-react';
-import { h1, h2, h3, h4, h5, h6, p, ul, li, table } from 'components/page/Markdown/MarkdownComponents';
+import * as React from 'react'
+import rehypeReact from 'rehype-react'
+import { h1, h2, h3, h4, h5, h6, p, ul, li, table } from 'components/page/Markdown/MarkdownComponents'
+import * as shortcodes from 'components/shortcodes'
 
 export interface ComponentMap {
-  [key: string]: React.ComponentType<any>;
+  [key: string]: React.ComponentType<any>
 }
 
 export function renderAst(markdownAst: any, additionalComponents: ComponentMap = {}) {
@@ -20,10 +21,11 @@ export function renderAst(markdownAst: any, additionalComponents: ComponentMap =
       ul,
       li,
       table,
-      ...additionalComponents
-    }
-  });
-  return rehype.Compiler(markdownAst);
+      ...shortcodes,
+      ...additionalComponents,
+    },
+  })
+  return rehype.Compiler(markdownAst)
 }
 
-export default renderAst;
+export default renderAst

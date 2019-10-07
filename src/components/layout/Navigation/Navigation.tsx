@@ -180,18 +180,19 @@ const menuIsActive = (node: MenuNode) => {
 function Navigation({ title, navigation, headerMenus }: NavigationProps) {
   const { state, dispatch } = React.useContext(NavigationContext)
 
-  let initialMenuState: any = {}
-  if (navigation) {
+  let initialMenuState: any = React.useRef(null)
+  if (initialMenuState.current === null && navigation) {
+    initialMenuState.current = {}
     navigation.map(({ node }) => {
-      initialMenuState[node.id] = menuIsActive(node)
+      initialMenuState.current[node.id] = menuIsActive(node)
     })
   }
 
-  const [openMenus, setOpenMenus] = React.useState(initialMenuState) as any
+  const [openMenus, setOpenMenus] = React.useState(initialMenuState.current) as any
 
   const createMenuToggle = (key: any) => {
     return (isOpen: boolean) => {
-      let newOpenMenus = openMenus
+      let newOpenMenus = Object.create(openMenus)
       newOpenMenus[key] = isOpen
       setOpenMenus(newOpenMenus)
     }
@@ -244,7 +245,7 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
             })}
         </DocumentationMenu>
         {navigation && (
-          <DocumentationNav onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}>
+          <DocumentationNav>
             {navigation.map(({ node }) => (
               <NavigationMenu
                 key={node.title}

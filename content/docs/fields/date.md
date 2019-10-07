@@ -2,7 +2,7 @@
 title: Date Field
 ---
 
-The `"date"` field plugin uses [`react-datettime`](https://www.npmjs.com/package/react-datetime) under the hood. 
+The `"date"` field plugin uses [`react-datettime`](https://www.npmjs.com/package/react-datetime) under the hood.
 
 ```typescript
 interface DateConfig extends DatetimepickerProps {
@@ -10,7 +10,7 @@ interface DateConfig extends DatetimepickerProps {
   name: string
   label?: string
   description?: string
-  colorFormat?: 'hex' | 'rgb' // Defaults to "hex"
+  dateFormat: string // Moment date format
 }
 ```
 
@@ -21,6 +21,6 @@ Any extra properties added to the the `date` field definition will be passed alo
   name: "datePosted",
   component: "date",
   label: "Date Posted",
-  dateFormat: "MMMM, dd, YYYY"
+  dateFormat: "MMMM, DD, YYYY"
 }
 ```
