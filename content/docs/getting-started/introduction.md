@@ -1,27 +1,33 @@
 ---
-title: Tina Docs
+title: Tina is Not a CMS
 id: introduction
 prev: null
 next: how-tina-works
 ---
-Tina is a lightweight but powerful toolkit for creating a site editing ui with javascript components. Tina surfaces superpowers for dev's to create, expand on and customize a simple yet intuitive ui for editing content.
+Tina is a **lightweight but powerful toolkit** for creating a content editing interface with JavaScript components. Tina surfaces superpowers for developers to create an intuitive UI for content editing, built directly into their website.
 
-Tina is optimized for nextgen JAMstack tools. It is based in javascript and is extensible enough to be configured with many different frameworks. Right now we have explored using Tina with Gatsby, Create-React-App & Next.js, with plans to dive into Vue.
+## The Next Generation of Content Management
 
 ![tina-gif](/img/temporary_show_tina.gif)
 
+Tina is optimized for next-gen JAMstack tools. It is written in JavaScript and easily adapted to multiple different frameworks.
+
+Tina currently supports React-based frameworks, including:
+
+* Create-React-App
+* Gatsby
+* NextJS
+
 ## Get Started
-Depending on your tools, there are a few different flows mapped out for using Tina with either your existing project or to play around on a starter.
 
-To use Tina, you should have a good working knowledge of your Javascript framework & JAMstack tools of choice. Setting up Tina requires a fairly intimate knowledge with component architecture to be able to customize and iterate on your bespoke content editing experience.
+To use Tina, you should have a good working knowledge of your JavaScript framework & JAMstack tools of choice.
 
-If you just want to start coding to learn more about how Tina works, skip to the [Gatsby Quickstart](/gatsby/quickstart)
+To get a better idea of what Tina is all about, take a look at [how Tina works](/docs/getting-started/how-tina-works "How Tina Works").
 
+If you're itching to see what Tina can do, head over to the [Gatsby Quickstart Guide](/gatsby/quickstart) to get up and running fast.
 
-## Contributing
+## Get Involved
 
-Want to get involved? Please visit our [Contributing]() section in our docs to learn more and get help with troubleshooting.
+Want to help out with Tina's development? Please visit our [Contributing]() section in our docs to learn more.
 
-## About
-
-Tina started as a side project for some engineers at [Forestry.io](), what was a cool idea has turned into this site editing schema that will change the way content is edited on the web. Our vision is to...
+Looking for help with Tina, or want to stay on top of the latest developments? [Join our Slack Community](https://tinacms.slack.com "Join the TinaCMS Slack") to chat with other Tina enthusiasts.
