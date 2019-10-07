@@ -257,8 +257,9 @@ const SetupSteps = styled('ol')`
 `
 
 
-const HomeTemplate = ({ data }) => {
-  const { dataJson } = data
+const HomeTemplate = (props) => {
+  // const [ dataJson ] = useJsonForm(props.data.dataJson)
+  const dataJson = props.data.dataJson
   return (
     <IndexLayout>
         <Wrapper>
