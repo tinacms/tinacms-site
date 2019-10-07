@@ -1,11 +1,8 @@
 ---
-id: /docs/using-tina/creating-fields
-title: Creating Fields
-prev: null
-next: null
+title: Creating Custom Fields
 ---
 
-This is a guide to creating [Field Plugin](/docs/concepts/field-plugins) Components in React.
+This is a guide to creating [Field Plugin](/concepts/field-plugins) Components in React.
 
 ## Component
 
@@ -59,5 +56,5 @@ cms.forms.addFieldPlugin({
 
 ## Further Reading
 
-- [Field Plugin](/docs/concepts/field-plugins)
-- [Registering Fields in Gatsby](/docs/gatsby/custom-fields)
+- [Field Plugin](/concepts/field-plugins)
+- [Registering Fields in Gatsby](/gatsby/custom-fields)

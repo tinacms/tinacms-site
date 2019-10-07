@@ -5,11 +5,11 @@ prev: /docs/gatsby/manual-setup
 next: /docs/gatsby/content-creation
 ---
 
-Gatsby allows you to build sites from many different data sources. Currently Tina has plugins for editing content in [markdown](/gatsby/content-editing#editing-markdown-in-gatsby) & [JSON](/gatsby/content-editing#editing-json-in-gatsby) files, with plans to suppor many more data sources.
+Gatsby allows you to build sites from many different data sources. Currently Tina has plugins for editing content in [markdown](/docs/gatsby/content-editing#editing-markdown-in-gatsby) & [JSON](/docs/gatsby/content-editing#editing-json-in-gatsby) files, with plans to suppor many more data sources.
 
 <!-- callout -->
 
-Have an idea for a Tina content editing plugin? [Consider contributing](/contributing/guidelines)! Check out how to create your own [form](/using-tina/creating-forms) or [field plugin](/using-tina/creating-fields).
+Have an idea for a Tina content editing plugin? [Consider contributing](/docs/contributing/guidelines)! Check out how to create your own [form](/docs/using-tina/creating-forms) or [field plugin](/docs/using-tina/creating-fields).
 
 ## Editing Markdown in Gatsby
 
@@ -318,7 +318,7 @@ class DataTemplate extends React.Component {
 
 #### Next Steps
 
-- [Editing Markdown](/gatsby/content-editing/#1-editing-markdown-in-gatsby)
+- [Editing Markdown](/docs/gatsby/content-editing/#1-editing-markdown-in-gatsby)
 
 #### References
 
