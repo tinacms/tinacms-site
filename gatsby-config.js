@@ -109,7 +109,7 @@ module.exports = {
         background_color: `#E6FAF8`,
         theme_color: `#EC4815`,
         display: `standalone`,
-        icon: `static/img/favicon.png`
+        icon: `static/img/Favicon.png`
       },
     }
   ],
