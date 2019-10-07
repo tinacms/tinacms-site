@@ -182,10 +182,10 @@ In this guide you'll learn to:
 2. Register the plugin with Tina
 3. Configure how content is created by:
    - Formatting the filename & path
-   - Providing default frontmatter
+   - Providing default front matter
    - Providing a default body
 
-###1. Creating Content-Button Plugins
+### 1. Creating Content-Button Plugins
 
 Tina uses `content-button` plugins to make creating content possible. These buttons are accessible from the sidebar menu. The `createRemarkButton` function helps us constructs `content-button` plugins for creating markdown files.
 
@@ -194,10 +194,24 @@ Tina uses `content-button` plugins to make creating content possible. These butt
 ```javascript
 import { createRemarkButton } from '@tinacms/react-tinacms-remark'
 
-const CreatePostButton = createRemarkButton({ label: 'Create Post' })
+const CreatePostButton = createRemarkButton({
+  label: 'Create Post',
+  fields: [
+    {
+      name: 'filename',
+      component: 'text',
+      label: 'Filename',
+      placeholder: 'content/blog/hello-world/index.md',
+      description: 'The full path to the new markdown file, relative to the repository root.',
+    },
+  ],
+  filename: form => {
+    return form.filename
+  },
+})
 ```
 
-###2. Adding the Button
+### 2. Adding the Button
 
 Now that we've created the button, we need to add it to the sidebar. The button only shoes up, when the component that registers it is rendered. There's many places you could add this button. You'll need to think about where you want this button to show-up.
 
@@ -256,7 +270,21 @@ function BlogIndex(props) {
 }
 
 // 2. Create the `content-button` plugin
-const CreatePostPlugin = createRemarkButton({ label: 'Create Post' })
+const CreatePostButton = createRemarkButton({
+  label: 'Create Post',
+  fields: [
+    {
+      name: 'filename',
+      component: 'text',
+      label: 'Filename',
+      placeholder: 'content/blog/hello-world/index.md',
+      description: 'The full path to the new markdown file, relative to the repository root.',
+    },
+  ],
+  filename: form => {
+    return form.filename
+  },
+})
 
 // 3. Add the plugin to the component
 export default withPlugin(BlogIndex, CreatePostPlugin)
@@ -268,73 +296,7 @@ With the plugin in place, **open TinaCMS and click the menu button** in the top-
 
 Click the "Create Post" button and a modal will pop up. Enter the path to a new file relative to your repository root (e.g. `content/blog/my-new-post.md`) and then click "create". A moment later the new post will be added to your Blog Index.
 
-_Note: The input is labelled "Title", but by default it expects the path to the markdown file, relative to the root of the repository. An [issue has been opened](https://github.com/tinacms/tinacms/issues/182) to correct this discrepancy._
-
-### 3. Formatting the filename & path
-
-To simplify file creation for content writers, the `createRemarkButton` can be given a `filename` function that calculates the path. This function is given the state of the form.
-
-**Example 1: Hardcoded Content Directory**
-
-```javascript
-const CreatePostButton = createRemarkButton({
-  label: 'Create Post',
-  filename: ({ title }) => `content/blog/${title}.md`,
-})
-```
-
-**Example 2: Content as index files**
-
-```javascript
-const CreatePostButton = createRemarkButton({
-  label: 'Create Post',
-  filename: ({ title }) => `content/blog/${title}/index.md`,
-})
-```
-
-**Example 3: Slugify Name**
-
-```javascript
-const CreatePostButton = createRemarkButton({
-  label: 'Create Post',
-  filename: ({ title }) => {
-    let slug = title.replace(/\s+/, '-').toLowerCase()
-
-    return `content/blog/${slug}/index.md`
-  },
-})
-```
-
-###4. Providing Default Frontmatter
-
-The `createRemarkButton` function can be given a `frontmatter` function that returns the default frontmatter. Like the `filename` function, `frontmatter` receives the state of the form.
-
-**Example: Title + Date**
-
-```javascript
-const CreatePostButton = createRemarkButton({
-  label: 'Create Post',
-  frontmatter: ({ title }) => ({
-    title,
-    date: new Date(),
-  }),
-})
-```
-
-###5. Providing a Default Body
-
-The `createRemarkButton` function can be given a `frontmatter` function tht returns the default frontmatter. Like the previous two functions, `frontmatter` receives the state of the form.
-
-**Example: Title + Date**
-
-```javascript
-const CreatePostButton = createRemarkButton({
-  label: 'Create Post',
-  body: formValues => `This is a new blog post. Please write some content.`,
-})
-```
-
-###6. Customizing the Create Form
+### 3. Customizing the Create Form
 
 `createRemarkButton` accepts a `fields` option, just like [Creating Forms](../using-tina/creating-forms.md) does. When using a custom create form, all callback functions will receive an object containing all form data.
 
@@ -347,8 +309,87 @@ const CreatePostButton = createRemarkButton({
     { name: 'section', label: 'Section', component: 'text', required: true },
     { name: 'title', label: 'Title', component: 'text', required: true },
   ],
-  filename: ({ section, title }) => {
-    return `content/blog/${section}/${title}/index.md`
+  filename: form => {
+    return `content/blog/${form.section}/${form.title}/index.md`
   },
+})
+```
+
+### 4. Formatting the filename & path
+
+The `createRemarkButton` must be given a `filename` function that calculates the path of the new file from the form data.
+
+**Example 1: Hardcoded Content Directory**
+
+```javascript
+const CreatePostButton = createRemarkButton({
+  label: 'Create Post',
+  fields: [{ name: 'title', label: 'Title', component: 'text', required: true }],
+  filename: form => `content/blog/${form.title}.md`,
+})
+```
+
+**Example 2: Content as index files**
+
+```javascript
+const CreatePostButton = createRemarkButton({
+  label: 'Create Post',
+  fields: [{ name: 'title', label: 'Title', component: 'text', required: true }],
+  filename: form => `content/blog/${form.title}/index.md`,
+})
+```
+
+**Example 3: Slugify Name**
+
+```javascript
+const CreatePostButton = createRemarkButton({
+  label: 'Create Post',
+  fields: [{ name: 'title', label: 'Title', component: 'text', required: true }],
+  filename: form => {
+    let slug = form.title.replace(/\s+/, '-').toLowerCase()
+
+    return `content/blog/${slug}/index.md`
+  },
+})
+```
+
+### 5. Providing Default Front Matter
+
+The `createRemarkButton` function can be given a `frontmatter` function that returns the default front matter. Like the `filename` function, `frontmatter` receives the state of the form.
+
+**Example: Title + Date**
+
+```javascript
+const CreatePostButton = createRemarkButton({
+  label: 'Create Post',
+  fields: [{ name: 'title', label: 'Title', component: 'text', required: true }],
+  filename: form => {
+    let slug = form.title.replace(/\s+/, '-').toLowerCase()
+
+    return `content/blog/${slug}/index.md`
+  },
+  frontmatter: form => ({
+    title: form.title,
+    date: new Date(),
+  }),
+})
+```
+
+### 6. Providing a Default Body
+
+The `createRemarkButton` function can be given a `body` function that returns the default markdown body. Like the previous two functions, `body` receives the state of the form.
+
+**Example: Title + Date**
+
+```javascript
+const CreatePostButton = createRemarkButton({
+  label: 'Create Post',
+  fields: [{ name: 'title', label: 'Title', component: 'text', required: true }],
+  filename: form => {
+    let slug = form.title.replace(/\s+/, '-').toLowerCase()
+
+    return `content/blog/${slug}/index.md`
+  },
+  body: form => `This is a new blog post. Please write some content.`,
 })
 ```
