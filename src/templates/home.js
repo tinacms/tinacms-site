@@ -31,7 +31,6 @@ const HeroSection = styled('section')`
   text-align: center;
   aside#base {
     background-color: ${colors.seafoam};
-    background: radial-gradient(circle at bottom center, #E6FAF8 50%, #F2FCFB);
     width: 100%;
     height: 65vh;
     min-height: 400px;
@@ -82,6 +81,11 @@ const HeroSection = styled('section')`
     }
     figure {
       margin-top: ${space.lrgDesktop}px;
+    }
+  }
+  @media(min-width: ${breakpoints.lg}px) {
+    aside#base {
+      background: radial-gradient(circle at bottom center,#E6FAF8 50%,#F2FCFB);
     }
   }
   @media(min-width: ${breakpoints.desktop}px) {
@@ -258,10 +262,7 @@ const SetupSteps = styled('ol')`
 
 
 const HomeTemplate = (props) => {
-<<<<<<< HEAD
   // getting couldn't find instance of CMS error
-=======
->>>>>>> aae707027036d5e4fa97d3eab3c5074cb499dce8
   // const [ dataJson ] = useJsonForm(props.data.dataJson)
   const dataJson = props.data.dataJson
   return (
