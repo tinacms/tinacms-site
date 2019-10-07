@@ -5,12 +5,12 @@ prev: /docs/gatsby/content-editing
 next: /docs/gatsby/custom-fields
 ---
 
-Editing content is rad, but we need a way to add or create new content. This guide will go through the process of creating new markdown files. Have an idea for a new content-type that you would like to 'create' with a button in the Tina sidebar? [Consider contributing!](/contributing/guidelines)
+Editing content is rad, but we need a way to add or create new content. This guide will go through the process of creating new markdown files. Have an idea for a new content-type that you would like to 'create' with a button in the Tina sidebar? [Consider contributing!](/docs/contributing/guidelines)
 
 ##Prerequisites
 
-- A Gatsby site [configured with Tina](/gatsby/manual-setup)
-- [Editing markdown](/gatsby/content-editing#1-editing-markdown-in-gatsby) with Tina setup
+- A Gatsby site [configured with Tina](/docs/gatsby/manual-setup)
+- [Editing markdown](/docs/gatsby/content-editing#1-editing-markdown-in-gatsby) with Tina setup
 
 ## Creating Markdown in Gatsby
 

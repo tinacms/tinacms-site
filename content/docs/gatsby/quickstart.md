@@ -5,7 +5,7 @@ prev: how-tina-works
 next: /docs/gatsby/manual-setup
 ---
 
-If you want to get up and running quickly to see how Tina works, this is your route. You can either use a [Gatsby starter](/gatsby/quickstart) that is preconfigured with Tina or add Tina to your [existing project](/gatsby/manual-setup).
+If you want to get up and running quickly to see how Tina works, this is your route. You can either use a [Gatsby starter](/docs/gatsby/quickstart) that is preconfigured with Tina or add Tina to your [existing project](/docs/gatsby/manual-setup).
 
 #### Prerequisites
 
@@ -56,5 +56,5 @@ Navigate to various pages and see the different fields of editable content. Make
 
 ## Next Steps
 
-- [Customizing Content Forms](/gatsby/custom-fields)
-- [Creating New Content](/gatsby/content-creation)
+- [Customizing Content Forms](/docs/gatsby/custom-fields)
+- [Creating New Content](/docs/gatsby/content-creation)
