@@ -1,6 +1,7 @@
 {
   "headline": "Realtime content <br>editing. <br>Built into your <br>codebase.",
   "hero_video": "/img/gif_FPO.jpg",
+  "hero_alt":"TinaCMS_video",
   "description": "Tina is a site editing toolkit for modern javascript workflows.",
   "three_points": [
     {

@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
+import { useJsonForm } from '@tinacms/react-tinacms-json'
 
 import IndexLayout from 'layouts'
 import { Heading, Paragraph } from 'components/foundations'
@@ -272,7 +273,7 @@ const HomeTemplate = ({ data }) => {
               <span dangerouslySetInnerHTML={{__html: `${dataJson.headline}`}}>
               </span>
             </Heading>
-            <figure><img src={dataJson.hero_video} /></figure>
+            <figure><img src={dataJson.hero_video} alt={dataJson.hero_alt} /></figure>
           </HeroSection>
           <InfoSection>
             <Heading as="h2" size="h2" color={colors.darkPurple}>{dataJson.description}</Heading>
@@ -332,6 +333,7 @@ export const query = graphql`
       headline
       description
       hero_video
+      hero_alt
       three_points {
         main
         supporting
