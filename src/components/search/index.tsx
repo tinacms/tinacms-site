@@ -4,7 +4,9 @@ import algoliasearch from 'algoliasearch/lite'
 import { Root, PoweredBy, HitsWrapper, IndexContainer, NoResultsLabel } from './styles'
 import Input from './input'
 import { hitComponents } from './hitComps'
-import styled from 'styled-components'
+
+const DEFAULT_ALGOLIA_APP_ID = '80HKRA52OJ'
+const DEFAULT_ALGOLIA_SEARCH_KEY = 'f13c10ad814c92b85f380deadc2db2dc'
 
 const IndexResults = connectStateResults(({ searchResults: res, children }: any) => {
   return res && res.nbHits > 0 ? children : null
@@ -30,8 +32,8 @@ export default function Search({ indices, collapse }: any) {
   const [query, setQuery] = useState(``)
   const [focus, setFocus] = useState(false)
   const searchClient = algoliasearch(
-    (process.env.GATSBY_ALGOLIA_APP_ID || 'PRU9K3QYUN') as string, //dummy search index if none exist
-    (process.env.GATSBY_ALGOLIA_SEARCH_KEY || '8e4e11e7083e01125acb0cb93b13e92b') as string
+    process.env.GATSBY_ALGOLIA_APP_ID || DEFAULT_ALGOLIA_APP_ID, //dummy search index if none exist
+    (process.env.GATSBY_ALGOLIA_SEARCH_KEY || DEFAULT_ALGOLIA_SEARCH_KEY) as string
   )
   useClickOutside(ref, () => setFocus(false))
 

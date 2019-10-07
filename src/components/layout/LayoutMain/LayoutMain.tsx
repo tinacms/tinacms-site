@@ -11,11 +11,11 @@ import { Edge, HeaderMenuItem } from 'interfaces/nodes'
 import { breakpoints, dimensions, colors, textSizes, space } from 'utils/variables'
 import { isActive } from 'utils/helpers'
 import { determineFontDimensions, Heading } from 'components/foundations'
-import { Wordmark, Llama_Icon } from 'components/foundations/icons'
+import { Wordmark } from 'components/foundations/icons'
 import Search from '../../search'
 const searchIndices = [
-  { name: `Docs`, title: `Docs`, hitComp: `DocHit` },
-  { name: `Blog`, title: `Blog`, hitComp: `BlogHit` },
+  { name: `Tina-Docs`, title: `Docs`, hitComp: `DocHit` },
+  { name: `Tina-Blog`, title: `Blog`, hitComp: `BlogHit` },
 ]
 
 interface LayoutMainInnerProps {

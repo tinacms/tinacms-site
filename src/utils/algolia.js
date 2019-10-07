@@ -51,13 +51,13 @@ const queries = [
   {
     query: pageQuery,
     transformer: ({ data }) => flatten(data.blog.edges),
-    indexName: `Blog`,
+    indexName: `Tina-Blog`,
     settings,
   },
   {
     query: postQuery,
     transformer: ({ data }) => flatten(data.docs.edges),
-    indexName: `Docs`,
+    indexName: `Tina-Docs`,
     settings,
   },
 ]
