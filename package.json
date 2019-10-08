@@ -65,7 +65,8 @@
     "styled-normalize": "^8.0.6",
     "styled-system": "^4.2.2",
     "typescript": "3.5.2",
-    "utility-types": "^3.7.0"
+    "utility-types": "^3.7.0",
+    "gatsby-plugin-google-tagmanager": "^2.1.12"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.8",

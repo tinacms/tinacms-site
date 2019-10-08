@@ -26,7 +26,7 @@ module.exports = {
       options: {
         sidebar: {
           position: 'fixed',
-          hidden: process.env.NODE_ENV === "production",
+          hidden: process.env.NODE_ENV === 'production',
         },
       },
     },
@@ -115,8 +115,16 @@ module.exports = {
         background_color: `#E6FAF8`,
         theme_color: `#EC4815`,
         display: `standalone`,
-        icon: `static/img/Favicon.png`
+        icon: `static/img/Favicon.png`,
       },
-    }
+    },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: 'GTM-5SNCV6K',
+        includeInDevelopment: false,
+        defaultDataLayer: { platform: 'gatsby' },
+      },
+    },
   ],
 }
