@@ -130,13 +130,21 @@ if (process.env.GATSBY_ALGOLIA_APP_ID && process.env.ALGOLIA_ADMIN_KEY && proces
   })
 }
 
+//TODO -- add slack invite link
+
 module.exports = {
   siteMetadata: {
     title: 'TinaCMS',
     sidebarTitle: 'TinaCMS',
     description: 'A site editor for the modern web',
     siteUrl: 'https://tinacms.org',
+    roadmapUrl: 'https://github.com/tinacms/tinacms/blob/master/ROADMAP.md',
     keywords: 'gatsbyjs, gatsby, react, cms, next',
+    social: {
+      twitter: 'https://twitter.com/tina_cms',
+      github: 'https://github.com/tinacms',
+      slack: ''
+    },
     author: {
       name: 'Resi Respati',
       url: 'https://resir014.xyz',
