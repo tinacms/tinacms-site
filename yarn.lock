@@ -5271,6 +5271,13 @@ gatsby-plugin-catch-links@^2.0.15:
     "@babel/runtime" "^7.6.2"
     escape-string-regexp "^1.0.5"
 
+gatsby-plugin-google-tagmanager@^2.1.12:
+  version "2.1.12"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-tagmanager/-/gatsby-plugin-google-tagmanager-2.1.12.tgz#0c282b12b29053fdc4a9db2a832babf5c1f3617d"
+  integrity sha512-cTW5d+QBrQWgX1aEJ1EJo/ecNkq3xmVr5Wkau/GyQ3ZQcFZYbuwa+8rbe5N+JD90y4Jpg6aCkLztoHmBLMHskw==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+
 gatsby-plugin-mailchimp@^5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-mailchimp/-/gatsby-plugin-mailchimp-5.1.2.tgz#c006369728e33cc8c212dc12a2e25e9e21f791a9"
