@@ -109,8 +109,6 @@ const StyledFooterSecondary = styled('div')`
       padding: 0 ${space.medMobile}px;
     }
     flex-direction: row;
-  }
-  @media(min-width: ${breakpoints.lg}px) {
     span {
       align-items: flex-end;
     }

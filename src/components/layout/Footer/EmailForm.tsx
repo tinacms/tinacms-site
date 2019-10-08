@@ -17,8 +17,10 @@ const StyledForm= styled('form')`
   h3 {
     grid-area: cta;
     align-self: center;
+    margin-right: 12px;
   }
   input {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
     grid-area: input;
     border: 0;
     border-radius: 0.25rem;
@@ -63,6 +65,7 @@ const StyledForm= styled('form')`
     }
     h3 {
       font-size: 18px;
+      margin-right: 0;
     }
   }
 `
