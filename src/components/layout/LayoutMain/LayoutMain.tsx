@@ -1,34 +1,38 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'gatsby';
-import { SkipNavContent } from '@reach/skip-nav';
+import React from 'react'
+import styled from 'styled-components'
+import { Link } from 'gatsby'
+import { SkipNavContent } from '@reach/skip-nav'
 
-import { NavigationContext, NavigationActionTypes } from '../Navigation/NavigationContext';
-import { Header, HeaderInner } from '../Header';
-import { NavButton } from '../Navigation';
-import { Edge, HeaderMenuItem } from 'interfaces/nodes';
+import { NavigationContext, NavigationActionTypes } from '../Navigation/NavigationContext'
+import { Header, HeaderInner } from '../Header'
+import { NavButton } from '../Navigation'
+import { Edge, HeaderMenuItem } from 'interfaces/nodes'
 import { FooterWrapper, Footer } from 'components/layout/Footer'
 
-
-import { breakpoints, dimensions, colors, textSizes, space } from 'utils/variables';
-import { isActive } from 'utils/helpers';
-import { determineFontDimensions, Heading } from 'components/foundations';
-import Button from 'components/foundations/Button'
+import { breakpoints, dimensions, colors, textSizes, space } from 'utils/variables'
+import { isActive } from 'utils/helpers'
+import { determineFontDimensions, Heading } from 'components/foundations'
 import { Llama_Icon } from 'components/foundations/icons'
+import Search from '../../search'
+import Button from 'components/foundations/Button'
 
+const searchIndices = [
+  { name: `Tina-Docs`, title: `Docs`, hitComp: `DocHit` },
+  { name: `Tina-Blog`, title: `Blog`, hitComp: `BlogHit` },
+]
 
 interface LayoutMainInnerProps {
-  className?: string;
-  isNavigationOpen?: boolean;
+  className?: string
+  isNavigationOpen?: boolean
 }
 
 interface LayoutMainProps extends LayoutMainInnerProps {
-  title: string;
-  headerMenus?: Edge<HeaderMenuItem>[];
+  title: string
+  headerMenus?: Edge<HeaderMenuItem>[]
 }
 
 interface FontSizeProps {
-  size: ReturnType<typeof determineFontDimensions>;
+  size: ReturnType<typeof determineFontDimensions>
 }
 
 const StyledLayoutMain = styled('div')<LayoutMainInnerProps>`
@@ -37,7 +41,7 @@ const StyledLayoutMain = styled('div')<LayoutMainInnerProps>`
   flex: 1 1 auto;
   position: relative;
   transition: margin-left 0.3s ease;
-`;
+`
 
 const LogoWrapper = styled('div')`
   display: flex;
@@ -45,7 +49,7 @@ const LogoWrapper = styled('div')`
   justify-content: center;
   flex: 1;
   margin: 0 24px;
-`;
+`
 
 const DocumentationMenu = styled('nav')`
   display: flex;
@@ -70,7 +74,7 @@ const DocumentationMenu = styled('nav')`
       margin-left: ${space.xSmallDesktop}px;
     }
   }
-`;
+`
 
 const StyledMainContent = styled('section')`
   flex-grow: 1;
@@ -93,17 +97,17 @@ const HomepageLink = styled(Link)<FontSizeProps>`
   svg {
     height: 35px;
   }
-  @media(min-width:${breakpoints.lg}px) {
+  @media (min-width: ${breakpoints.lg}px) {
     height: 50px;
   }
-`;
+`
 
 const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, headerMenus }) => {
-  const { state, dispatch } = React.useContext(NavigationContext);
+  const { state, dispatch } = React.useContext(NavigationContext)
 
   return (
     <StyledLayoutMain className={className} isNavigationOpen={state.isOpen}>
-      <Header >
+      <Header>
         <HeaderInner hideOnDesktop>
           <NavButton
             icon="circle"
@@ -118,7 +122,7 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
               size={determineFontDimensions('heading', 400)}
               onClick={() => dispatch({ type: NavigationActionTypes.CLOSE_DRAWER })}
             >
-               <Llama_Icon color={`${colors.burntOrange}`}/>
+              <Llama_Icon color={`${colors.burntOrange}`} />
             </HomepageLink>
           </LogoWrapper>
         </HeaderInner>
@@ -129,9 +133,11 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
                 if (node.external) {
                   return (
                     <a key={node.id} href={node.href} target="_blank" rel="noopener noreferrer">
-                      <Heading as="h1" size={100}>{node.label}</Heading>
+                      <Heading as="h1" size={100}>
+                        {node.label}
+                      </Heading>
                     </a>
-                  );
+                  )
                 }
                 return (
                   <Button
@@ -139,13 +145,20 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
                     to={node.href}
                     bgColor={`${colors.white}`}
                     textColor={`${colors.hunterOrange}`}
-                    height="40">
+                    height="40"
+                  >
                     {node.label}
                   </Button>
-                );
+                )
               })}
           </DocumentationMenu>
-          <Button to="/docs/getting-started/introduction" height={'40'} bgColor={`${colors.hunterOrange}`} textColor={`${colors.seafoam}`}>
+          <Search collapse indices={searchIndices} />
+          <Button
+            to="/docs/getting-started/introduction"
+            height={'40'}
+            bgColor={`${colors.hunterOrange}`}
+            textColor={`${colors.seafoam}`}
+          >
             Get Started
           </Button>
         </HeaderInner>
@@ -157,7 +170,7 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
         <Footer headerMenus={headerMenus} />
       </FooterWrapper>
     </StyledLayoutMain>
-  );
-};
+  )
+}
 
-export default LayoutMain;
+export default LayoutMain
