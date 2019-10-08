@@ -32,6 +32,7 @@ const Wrapper = styled('aside')<ToggleableProps>`
   }
 
   @media(min-width: ${breakpoints.lg}px) {
+
     background-color: transparent;
   }
 
@@ -50,6 +51,10 @@ const Wrapper = styled('aside')<ToggleableProps>`
   }
 
   @media (min-width: ${breakpoints.lg}px) {
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
     box-shadow: none;
   }
 `

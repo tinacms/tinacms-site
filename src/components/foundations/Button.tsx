@@ -39,9 +39,9 @@ const StyledButton = styled(Link)<ButtonProps>`
 const Button:React.SFC<ButtonProps> = ({to, bgColor, textColor, height, children}) => {
   return (
     <StyledButton to={to} bgColor={bgColor} textColor={textColor} height={height}>
-      <Heading as="h5" size="label" color={`${textColor}`}>
-        {children}
-      </Heading>
+        <Heading as="h5" size="label" color={`${textColor}`}>
+          {children}
+        </Heading>
     </StyledButton>
   )
 }

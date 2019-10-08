@@ -9,6 +9,7 @@ import { Wordmark, TwitterIcon, GithubIcon } from 'components/foundations/icons'
 import { Heading } from 'components/foundations'
 import Button from 'components/foundations/Button'
 import { colors, textSizes, space, breakpoints } from 'utils/variables';
+import EmailForm from  './EmailForm'
 
 const Wrapper = styled('footer')`
   background-color: ${colors.hunterOrange};
@@ -81,6 +82,7 @@ const StyledCommunityItems = styled('div')`
 const StyledFooterSecondary = styled('div')`
   grid-area: meta;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   width: 100%;
   padding: ${space.xSmallMobile}px ${space.smallMobile}px;
@@ -89,12 +91,27 @@ const StyledFooterSecondary = styled('div')`
   a {
     color: ${colors.seafoam};
   }
-
+  span {
+    margin-top: ${space.xSmallMobile}px;
+    display: flex;
+    justify-content: flex-end;
+    color: #EE8D6E;
+    h5 {
+      font-size: 12px;
+      margin-left: 8px;
+    }
+    a {
+      color: inherit;
+    }
+  }
   @media(min-width: ${breakpoints.md}px) {
     h4:not(:last-child) {
       padding: 0 ${space.medMobile}px;
     }
-    justify-content: flex-end;
+    flex-direction: row;
+    span {
+      align-items: flex-end;
+    }
   }
 `
 
@@ -143,12 +160,15 @@ function Footer ({headerMenus}:FooterProps) {
 
         </StyledFooterMain>
         <StyledFooterSecondary>
-          <Heading as="h4" size="h4">
-            <a href="https://github.com/tinacms/tinacms">License</a>
-          </Heading>
-          <Heading as="h4" size="h4">
-            TinaCMS{new Date().getFullYear()}
-          </Heading>
+          <EmailForm></EmailForm>
+          <span>
+            <Heading as="h5" size="label">
+              <a href="https://github.com/tinacms/tinacms">License</a>
+            </Heading>
+            <Heading as="h5" size="label">
+              TinaCMS{new Date().getFullYear()}
+            </Heading>
+          </span>
         </StyledFooterSecondary>
     </Wrapper>
   )
@@ -163,4 +183,5 @@ export default Footer;
  *
  * adjust social links to source from metadata or json config
  * - add links to license and privacy policy
+ * - add newsletter signup
  */

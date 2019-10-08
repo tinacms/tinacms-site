@@ -49,9 +49,7 @@ function BlogTemplate(props) {
             </Container>
             <FooterWrapper>
               <button onClick={() => setIsEditing(p => !p)}>{isEditing ? 'Preview' : 'Edit'}</button>
-              <Footer>
                 {(previous || next) && <Pagination prevPage={previous && previous} nextPage={next && next} />}
-              </Footer>
             </FooterWrapper>
         </StyledBlogPost>
       </Page>

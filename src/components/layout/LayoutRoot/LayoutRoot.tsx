@@ -14,7 +14,7 @@ const StyledLayoutRoot = styled('div')`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
+  overflow-x: hidden;
   @media (min-width: ${breakpoints.md}px) {
     flex-direction: row;
   }
