@@ -8,25 +8,31 @@ import { themeProps, FontSizes } from 'components/Theme';
  */
 export function determineFontDimensions(textType: keyof FontSizes, size: number = 400) {
   const match: any = (themeProps.fontSizes[textType] as any)[size];
+  if(match) {
+    if (textType === 'heading') {
+      const styleProps = {
+        fontSize: `${match.fontSize}px`,
+        lineHeight: `${match.lineHeight}px`,
+        // fontWeight: size <= 400 ? 600 : 500,
+        fontWeight: 100,
+        letterSpacing: `${match.letterSpacing}px`
+      };
 
-  if (textType === 'heading') {
-    const styleProps = {
-      fontSize: `${match.fontSize}px`,
-      lineHeight: `${match.lineHeight}px`,
-      // fontWeight: size <= 400 ? 600 : 500,
-      fontWeight: 100,
-      letterSpacing: `${match.letterSpacing}px`
-    };
+      return {
+        ...styleProps,
+        ...(size === 100 ? { textTransform: 'uppercase' } : {})
+      };
+    }
 
     return {
-      ...styleProps,
-      ...(size === 100 ? { textTransform: 'uppercase' } : {})
+      fontSize: `${match.fontSize}px`,
+      lineHeight: `${match.lineHeight}px`,
+      fontWeight: 400
     };
+  } else {
+    return {
+      fontSize: `16px`,
+      lineHeight: `1.2`,
+    }
   }
-
-  return {
-    fontSize: `${match.fontSize}px`,
-    lineHeight: `${match.lineHeight}px`,
-    fontWeight: 400
-  };
 }

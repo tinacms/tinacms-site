@@ -7,12 +7,15 @@ import { NavigationContext, NavigationActionTypes } from '../Navigation/Navigati
 import { Header, HeaderInner } from '../Header'
 import { NavButton } from '../Navigation'
 import { Edge, HeaderMenuItem } from 'interfaces/nodes'
+import { FooterWrapper, Footer } from 'components/layout/Footer'
 
 import { breakpoints, dimensions, colors, textSizes, space } from 'utils/variables'
 import { isActive } from 'utils/helpers'
 import { determineFontDimensions, Heading } from 'components/foundations'
-import { Wordmark } from 'components/foundations/icons'
+import { Llama_Icon } from 'components/foundations/icons'
 import Search from '../../search'
+import Button from 'components/foundations/Button'
+
 const searchIndices = [
   { name: `Tina-Docs`, title: `Docs`, hitComp: `DocHit` },
   { name: `Tina-Blog`, title: `Blog`, hitComp: `BlogHit` },
@@ -38,10 +41,6 @@ const StyledLayoutMain = styled('div')<LayoutMainInnerProps>`
   flex: 1 1 auto;
   position: relative;
   transition: margin-left 0.3s ease;
-
-  @media (min-width: ${breakpoints.lg}px) {
-    margin-left: ${dimensions.widths.sidebar.lg}px;
-  }
 `
 
 const LogoWrapper = styled('div')`
@@ -72,9 +71,13 @@ const DocumentationMenu = styled('nav')`
     }
 
     &:not(:first-child) {
-      margin-left: 24px;
+      margin-left: ${space.xSmallDesktop}px;
     }
   }
+`
+
+const StyledMainContent = styled('section')`
+  flex-grow: 1;
 `
 
 const HomepageLink = styled(Link)<FontSizeProps>`
@@ -83,7 +86,8 @@ const HomepageLink = styled(Link)<FontSizeProps>`
   line-height: ${props => props.size.lineHeight};
   font-weight: ${props => props.size.fontWeight};
   display: flex;
-  height: 15px;
+  padding-top: 10px;
+  /* height: 15px; */
 
   &:hover,
   &:focus {
@@ -91,6 +95,10 @@ const HomepageLink = styled(Link)<FontSizeProps>`
     text-decoration: none;
   }
   svg {
+    height: 35px;
+  }
+  @media (min-width: ${breakpoints.lg}px) {
+    height: 50px;
   }
 `
 
@@ -99,10 +107,10 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
 
   return (
     <StyledLayoutMain className={className} isNavigationOpen={state.isOpen}>
-      <Header fixed>
+      <Header>
         <HeaderInner hideOnDesktop>
           <NavButton
-            icon="hamburger"
+            icon="circle"
             fill={colors.grey05}
             onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}
           >
@@ -114,13 +122,11 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
               size={determineFontDimensions('heading', 400)}
               onClick={() => dispatch({ type: NavigationActionTypes.CLOSE_DRAWER })}
             >
-              <Wordmark color={`${colors.liteGreyPurple}`} />
+              <Llama_Icon color={`${colors.burntOrange}`} />
             </HomepageLink>
           </LogoWrapper>
         </HeaderInner>
-        <HeaderInner></HeaderInner>
-        <HeaderInner hideOnMobile contents="flex-end">
-          <Search collapse indices={searchIndices} />
+        <HeaderInner hideOnMobile contents="center">
           <DocumentationMenu>
             {headerMenus &&
               headerMenus.map(({ node }) => {
@@ -133,20 +139,36 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
                     </a>
                   )
                 }
-
                 return (
-                  <Link key={node.id} getProps={isActive} to={node.href}>
-                    <Heading as="h1" size={100}>
-                      {node.label}
-                    </Heading>
-                  </Link>
+                  <Button
+                    key={node.id}
+                    to={node.href}
+                    bgColor={`${colors.white}`}
+                    textColor={`${colors.hunterOrange}`}
+                    height="40"
+                  >
+                    {node.label}
+                  </Button>
                 )
               })}
           </DocumentationMenu>
-          {/* <Llama_Icon color={`${colors.burntOrange}`}/> */}
+          <Search collapse indices={searchIndices} />
+          <Button
+            to="/docs/getting-started/introduction"
+            height={'40'}
+            bgColor={`${colors.hunterOrange}`}
+            textColor={`${colors.seafoam}`}
+          >
+            Get Started
+          </Button>
         </HeaderInner>
       </Header>
-      <SkipNavContent>{children}</SkipNavContent>
+      <StyledMainContent>
+        <SkipNavContent>{children}</SkipNavContent>
+      </StyledMainContent>
+      <FooterWrapper>
+        <Footer headerMenus={headerMenus} />
+      </FooterWrapper>
     </StyledLayoutMain>
   )
 }

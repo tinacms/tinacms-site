@@ -5,14 +5,14 @@ import { WindowLocation } from '@reach/router'
 
 import { AksaraReset } from 'components/foundations'
 import { LayoutRoot } from 'components/layout/LayoutRoot'
-import { LayoutMain } from 'components/layout/LayoutMain'
-import { Navigation } from 'components/layout/Navigation'
+import { DocsLayoutMain } from 'components/layout/LayoutMain'
+import { DocsNavigation } from 'components/layout/Navigation'
 import { Overlay } from 'components/layout/Overlay'
 
 import { MenuNode, Edge, HeaderMenuItem } from 'interfaces/nodes'
 import { SiteMetadata } from 'interfaces/gatsby'
 
-interface IndexLayoutProps {
+interface DocsLayoutProps {
   location?: WindowLocation
   sidebarNav: Edge<MenuNode>[]
 }
@@ -29,7 +29,7 @@ interface DataProps {
   }
 }
 
-const IndexLayout: React.FC<IndexLayoutProps> = ({ location, children, sidebarNav }) => {
+const DocsLayout: React.FC<DocsLayoutProps> = ({ location, children, sidebarNav }) => {
   return (
     <StaticQuery query={query}>
       {(data: DataProps) => {
@@ -46,14 +46,15 @@ const IndexLayout: React.FC<IndexLayoutProps> = ({ location, children, sidebarNa
                 <meta property="og:description" content={siteMetadata.description} />
                 <meta property="og:url" content={`${siteMetadata.siteUrl}${location ? location.pathname : '/'}`} />
               </Helmet>
-              <Navigation
+              <DocsNavigation
+                title={siteMetadata.sidebarTitle || siteMetadata.title}
                 navigation={sidebarNav ? sidebarNav.edges : null}
                 headerMenus={data.headerMenus.edges}
               />
               <Overlay />
-              <LayoutMain title={siteMetadata.sidebarTitle || siteMetadata.title} headerMenus={data.headerMenus.edges}>
+              <DocsLayoutMain title={siteMetadata.sidebarTitle || siteMetadata.title} headerMenus={data.headerMenus.edges}>
                 {children}
-              </LayoutMain>
+              </DocsLayoutMain>
             </LayoutRoot>
           </AksaraReset>
         )
@@ -62,10 +63,10 @@ const IndexLayout: React.FC<IndexLayoutProps> = ({ location, children, sidebarNa
   )
 }
 
-export default IndexLayout
+export default DocsLayout
 
 const query = graphql`
-  query IndexLayoutQuery {
+  query DocsLayoutQuery {
     site {
       siteMetadata {
         title

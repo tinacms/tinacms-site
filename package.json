@@ -25,10 +25,10 @@
   },
   "dependencies": {
     "@reach/skip-nav": "^0.1.3",
-    "@tinacms/gatsby-plugin-tinacms": "0.1.0",
-    "@tinacms/gatsby-tinacms-git": "0.1.0",
-    "@tinacms/gatsby-tinacms-json": "0.1.0",
-    "@tinacms/react-tinacms-remark": "0.1.0",
+    "@tinacms/gatsby-plugin-tinacms": "next",
+    "@tinacms/gatsby-tinacms-git": "next",
+    "@tinacms/gatsby-tinacms-json": "next",
+    "@tinacms/react-tinacms-remark": "next",
     "algoliasearch": "^3.35.0",
     "babel-plugin-styled-components": "^1.10.2",
     "classnames": "^2.2.6",
@@ -37,6 +37,8 @@
     "gatsby-plugin-algolia": "^0.3.4",
     "gatsby-plugin-canonical-urls": "^2.0.13",
     "gatsby-plugin-catch-links": "^2.0.15",
+    "gatsby-plugin-mailchimp": "^5.1.2",
+    "gatsby-plugin-manifest": "^2.2.20",
     "gatsby-plugin-netlify": "^2.0.17",
     "gatsby-plugin-netlify-cache": "^1.2.0",
     "gatsby-plugin-react-helmet": "^3.0.12",
@@ -68,7 +70,8 @@
     "styled-system": "^4.2.2",
     "typescript": "3.5.2",
     "utility-types": "^3.7.0",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "gatsby-plugin-google-tagmanager": "^2.1.12"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.8",

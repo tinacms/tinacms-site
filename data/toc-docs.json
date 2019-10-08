@@ -4,12 +4,12 @@
     "id": "getting-started",
     "items": [
       {
-        "id": "introduction",
+        "id": "/docs/getting-started/introduction",
         "slug": "/docs/getting-started/introduction",
         "title": "Introduction"
       },
       {
-        "id": "how-tina-works",
+        "id": "/docs/getting-started/how-tina-works",
         "slug": "/docs/getting-started/how-tina-works",
         "title": "How Tina Works"
       }
@@ -20,45 +20,81 @@
     "id": "concepts",
     "items": [
       {
+        "id": "/docs/concepts/sidebar",
+        "slug": "/docs/concepts/sidebar",
+        "title": "Sidebar"
+      },
+      {
         "id": "/docs/concepts/forms",
         "slug": "/docs/concepts/forms",
         "title": "Forms"
       },
       {
-        "id": "/docs/concepts/field-plugins",
-        "slug": "/docs/concepts/field-plugins",
-        "title": "Field Plugins"
+        "id": "/docs/concepts/fields",
+        "slug": "/docs/concepts/fields",
+        "title": "Fields"
       },
       {
         "id": "/docs/concepts/backends",
         "slug": "/docs/concepts/backends",
         "title": "Backends"
+      },
+      {
+        "id": "/docs/concepts/plugins",
+        "slug": "/docs/concepts/plugins",
+        "title": "Plugins"
       }
     ]
   },
   {
-    "title": "Using Tina",
-    "id": "using-tina",
+    "title": "Fields",
+    "id": "fields",
+    "slug": "/docs/fields",
     "items": [
       {
-        "id": "/docs/using-tina/creating-forms",
-        "slug": "/docs/using-tina/creating-forms",
-        "title": "Creating Forms"
+        "id": "/docs/fields/text",
+        "slug": "/docs/fields/text",
+        "title": "Text"
       },
       {
-        "id": "/docs/using-tina/inline-editing",
-        "slug": "/docs/using-tina/inline-editing",
-        "title": "Inline Editing"
+        "id": "/docs/fields/text",
+        "slug": "/docs/fields/textarea",
+        "title": "Text Area"
       },
       {
-        "id": "/docs/using-tina/creating-fields",
-        "slug": "/docs/using-tina/creating-fields",
-        "title": "Creating Fields"
+        "id": "/docs/fields/markdown",
+        "slug": "/docs/fields/markdown",
+        "title": "Markdown"
+      },
+      {
+        "id": "/docs/fields/date",
+        "slug": "/docs/fields/date",
+        "title": "Date & Time"
+      },
+      {
+        "id": "/docs/fields/image",
+        "slug": "/docs/fields/image",
+        "title": "Image"
+      },
+      {
+        "id": "/docs/fields/color",
+        "slug": "/docs/fields/color",
+        "title": "Color"
+      },
+      {
+        "id": "/docs/fields/toggle",
+        "slug": "/docs/fields/toggle",
+        "title": "Toggle"
+      },
+      {
+        "id": "/docs/fields/custom-fields",
+        "slug": "/docs/fields/custom-fields",
+        "title": "Custom Fields"
       }
     ]
   },
   {
-    "title": "Gatsby",
+    "title": "Tina + Gatsby",
     "id": "gasby",
     "items": [
       {
@@ -72,24 +108,29 @@
         "title": "Manual Setup"
       },
       {
-        "id": "/docs/gatsby/content-editing",
-        "slug": "/docs/gatsby/content-editing",
-        "title": "Content Editing"
+        "id": "/docs/gatsby/markdown",
+        "slug": "/docs/gatsby/markdown",
+        "title": "Using Markdown Files"
       },
       {
-        "id": "/docs/gatsby/content-creation",
-        "slug": "/docs/gatsby/content-creation",
-        "title": "Content Creation"
+        "id": "/docs/gatsby/json",
+        "slug": "/docs/gatsby/json",
+        "title": "Using JSON Files"
       },
       {
         "id": "/docs/gatsby/custom-fields",
         "slug": "/docs/gatsby/custom-fields",
         "title": "Custom Fields"
+      },
+      {
+        "id": "/docs/gatsby/inline-editing",
+        "slug": "/docs/gatsby/inline-editing",
+        "title": "Inline Editing"
       }
     ]
   },
   {
-    "title": "NextJS",
+    "title": "Tina + NextJS",
     "id": "nextjs",
     "items": [
       {

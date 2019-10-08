@@ -4,6 +4,12 @@ const queries = require('./src/utils/algolia')
 require('dotenv').config()
 
 const plugins = [
+  {
+    resolve: 'gatsby-plugin-mailchimp',
+    options: {
+      endpoint: 'https://forestry.us20.list-manage.com/subscribe/post?u=ae8b977f987ebf4c64c121d19&amp;id=325dc4b702',
+    },
+  },
   '@tinacms/gatsby-tinacms-git',
   {
     resolve: '@tinacms/gatsby-plugin-tinacms',
@@ -81,6 +87,7 @@ const plugins = [
       siteUrl: 'https://tinacms.org',
     },
   },
+  'gatsby-plugin-styled-components',
   'gatsby-plugin-resolve-src',
   'gatsby-plugin-catch-links',
   'gatsby-plugin-typescript',
@@ -89,7 +96,26 @@ const plugins = [
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-netlify-cache',
   'gatsby-plugin-netlify',
-  'gatsby-plugin-styled-components',
+  {
+    resolve: `gatsby-plugin-manifest`,
+    options: {
+      name: `TinaCMS`,
+      short_name: `TinaCMS`,
+      start_url: `/`,
+      background_color: `#E6FAF8`,
+      theme_color: `#EC4815`,
+      display: `standalone`,
+      icon: `static/img/Favicon.png`,
+    },
+  },
+  {
+    resolve: 'gatsby-plugin-google-tagmanager',
+    options: {
+      id: 'GTM-5SNCV6K',
+      includeInDevelopment: false,
+      defaultDataLayer: { platform: 'gatsby' },
+    },
+  },
 ]
 
 if (process.env.GATSBY_ALGOLIA_APP_ID && process.env.ALGOLIA_ADMIN_KEY) {

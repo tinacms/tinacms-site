@@ -2,6 +2,8 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { Link } from 'gatsby'
 import { globalHistory } from '@reach/router'
+import { createRemarkButton } from '@tinacms/react-tinacms-remark'
+import { withPlugin } from '@tinacms/react-tinacms'
 
 import { MenuNode, Edge, HeaderMenuItem } from 'interfaces/nodes'
 import { determineFontDimensions, Heading } from 'components/foundations'
@@ -21,7 +23,6 @@ const Wrapper = styled('aside')<ToggleableProps>`
   position: fixed;
   transition: all 0.3s ease;
   background-color: ${colors.white};
-
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: ${layerIndexes.dialog};
   overflow-y: auto;
@@ -29,11 +30,7 @@ const Wrapper = styled('aside')<ToggleableProps>`
   @media (min-width: ${breakpoints.md}px) and (max-width: ${breakpoints.lg - 1}px) {
     width: ${dimensions.widths.sidebar.sm}px;
     box-shadow: none;
-  }
-
-  @media(min-width: ${breakpoints.lg}px) {
-
-    background-color: transparent;
+    border-bottom: none;
   }
 
   @media (max-width: ${breakpoints.lg - 1}px) {
@@ -43,6 +40,7 @@ const Wrapper = styled('aside')<ToggleableProps>`
     bottom: 0px;
     right: 0px;
     width: ${dimensions.widths.sidebar.md}px;
+    height: 100vh;
     padding-bottom: 5rem;
     overflow-y: auto;
     pointer-events: auto;
@@ -51,11 +49,10 @@ const Wrapper = styled('aside')<ToggleableProps>`
   }
 
   @media (min-width: ${breakpoints.lg}px) {
-    position: absolute;
-    z-index: 1000;
-    top: 0;
-    left: 0;
+    flex: 0 0 ${dimensions.widths.sidebar.lg}px;
     box-shadow: none;
+    border-bottom: none;
+    background-color: ${colors.grey01};
   }
 `
 
@@ -64,7 +61,10 @@ const WrapperInner = styled('nav')`
 
   @media (min-width: ${breakpoints.lg}px) {
     width: 200px;
-    overflow: none;
+    flex: 1 1 auto;
+    z-index: 2;
+    height: 100vh;
+    overflow-y: auto;
   }
 `
 
@@ -78,10 +78,12 @@ const Header = styled('div')`
   height: ${dimensions.heights.header}px;
   padding: 0 24px;
   background-color: ${colors.white};
+  border-bottom: 1px solid ${colors.grey02};
   z-index: ${layerIndexes.stickyNav};
 
-  @media(min-width: ${breakpoints.lg}px) {
-    background-color: transparent;
+  @media (min-width: ${breakpoints.lg}px) {
+    border-bottom-color: transparent;
+    background-color: ${colors.grey01};
   }
 `
 
@@ -124,6 +126,7 @@ const HomepageLink = styled(Link)<FontSizeProps>`
   font-weight: ${props => props.size.fontWeight};
   height: inherit;
   svg {
+    /* width: 50px; */
     height: 100%;
   }
   padding: ${space.sm}px;
@@ -138,6 +141,7 @@ const DocumentationMenu = styled('div')`
   display: flex;
   flex-direction: column;
   padding: 16px 24px;
+  border-bottom: 1px solid ${colors.grey02};
   a {
     padding: 8px 0;
     color: ${colors.grey07};
@@ -160,8 +164,8 @@ const DocumentationNav = styled('div')`
   padding: 24px;
 `
 
-interface NavigationProps {
-  title?: string
+interface DocsNavigationProps {
+  title: string
   navigation?: Edge<MenuNode>[]
   headerMenus?: Edge<HeaderMenuItem>[]
 }
@@ -182,22 +186,21 @@ const menuIsActive = (node: MenuNode) => {
   )
 }
 
-function Navigation({ title, navigation, headerMenus }: NavigationProps) {
+function DocsNavigation({ title, navigation, headerMenus }: DocsNavigationProps) {
   const { state, dispatch } = React.useContext(NavigationContext)
 
-  let initialMenuState: any = React.useRef(null)
-  if (initialMenuState.current === null && navigation) {
-    initialMenuState.current = {}
+  let initialMenuState: any = {}
+  if (navigation) {
     navigation.map(({ node }) => {
-      initialMenuState.current[node.id] = menuIsActive(node)
+      initialMenuState[node.id] = menuIsActive(node)
     })
   }
 
-  const [openMenus, setOpenMenus] = React.useState(initialMenuState.current) as any
+  const [openMenus, setOpenMenus] = React.useState(initialMenuState) as any
 
   const createMenuToggle = (key: any) => {
     return (isOpen: boolean) => {
-      let newOpenMenus = Object.create(openMenus)
+      let newOpenMenus = openMenus
       newOpenMenus[key] = isOpen
       setOpenMenus(newOpenMenus)
     }
@@ -250,7 +253,7 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
             })}
         </DocumentationMenu>
         {navigation && (
-          <DocumentationNav>
+          <DocumentationNav onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}>
             {navigation.map(({ node }) => (
               <NavigationMenu
                 key={node.title}
@@ -267,5 +270,27 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
   )
 }
 
+//TinaCMS add docs post config
+const CreatePostButton = createRemarkButton({
+  label: 'Add New Doc',
+  fields: [
+    { name: 'section', label: 'Section', component: 'text', required: true },
+    { name: 'title', label: 'Title', component: 'text', required: true },
+  ],
+  filename: ({ section, title }) => {
+    return `docs/${section.replace(/\s+/, '-').toLowerCase()}/${title.replace(/\s+/, '-').toLowerCase()}.md`
+  },
+  body: () => `New doc, who dis?`,
+  frontmatter: ({ title }) => {
+    //remove any other dirs from the title, return only filename
+    const id = title.replace(/\s+/, '-').toLowerCase()
+    return {
+      title,
+      id,
+      prev: null,
+      next: null,
+    }
+  },
+})
 
-export default Navigation
+export default withPlugin(DocsNavigation, CreatePostButton)

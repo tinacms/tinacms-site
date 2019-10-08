@@ -4,7 +4,7 @@ import { breakpoints } from 'utils/variables';
 
 interface HeaderInnerProps {
   className?: string;
-  contents?: 'space-around' | 'space-between' | 'space-evenly' | 'flex-start' | 'flex-end';
+  contents?: "center" | 'space-around' | 'space-between' | 'space-evenly' | 'flex-start' | 'flex-end';
   hideOnMobile?: boolean;
   hideOnDesktop?: boolean;
 }
@@ -24,14 +24,19 @@ const HideOnDesktop = css`
 const Wrapper = styled('div')<HeaderInnerProps>`
   height: inherit;
   display: flex;
+  position: relative;
   flex-direction: row;
   align-items: center;
   flex: 1;
   justify-content: ${props => props.contents};
   ${props => props.hideOnMobile && HideOnMobile}
   ${props => props.hideOnDesktop && HideOnDesktop}
+  > a:last-child {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
   @media(min-width: ${breakpoints.lg}px) {
-    width: calc(100% - 200px);
     svg {
       height: inherit;
       padding: 8px 0px 16px 48px;
