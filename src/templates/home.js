@@ -58,18 +58,19 @@ const HeroSection = styled('section')`
     display: block;
     max-width: 90%;
     margin-top: ${space.medMobile}px;
-    img, video {
+    img,
+    video {
       margin: 0 auto;
       filter: drop-shadow(0 24px 24px #aeaeae);
       border-radius: 10px;
     }
   }
-  @media(min-width: ${breakpoints.iphonePlus}px) {
+  @media (min-width: ${breakpoints.iphonePlus}px) {
     figure {
       width: 85%;
     }
   }
-  @media(min-width: ${breakpoints.md}px) {
+  @media (min-width: ${breakpoints.md}px) {
     aside#base {
       height: 85vh;
       max-height: 700px;
@@ -83,12 +84,12 @@ const HeroSection = styled('section')`
       margin-top: ${space.lrgDesktop}px;
     }
   }
-  @media(min-width: ${breakpoints.lg}px) {
+  @media (min-width: ${breakpoints.lg}px) {
     aside#base {
       background: radial-gradient(circle at center bottom,#CBEEF3 ,#E6FAF8 50%);
     }
   }
-  @media(min-width: ${breakpoints.desktop}px) {
+  @media (min-width: ${breakpoints.desktop}px) {
     aside#base {
       min-height: 700px;
       max-height: 800px;
@@ -124,13 +125,13 @@ const InfoSection = styled('section')`
     height: 35px;
     border-left: dotted 3px ${colors.mintChocoChip};
   }
-  @media(min-width: ${breakpoints.lg}px) {
+  @media (min-width: ${breakpoints.lg}px) {
     margin: ${space.lrgMobile}px auto;
     h2 {
       max-width: 570px;
     }
   }
-  @media(min-width: ${breakpoints.desktop}px) {
+  @media (min-width: ${breakpoints.desktop}px) {
     max-width: 1150px;
     margin: ${space.lrgDesktop}px auto;
     a {
@@ -157,7 +158,7 @@ const ThreePoints = styled('ul')`
   p {
     display: none;
   }
-  @media(min-width: ${breakpoints.lg}px) {
+  @media (min-width: ${breakpoints.lg}px) {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -166,7 +167,6 @@ const ThreePoints = styled('ul')`
     li {
       text-align: left;
       margin-top: 0;
-
     }
     li:first-child {
       margin-top: 0;
@@ -181,7 +181,7 @@ const ThreePoints = styled('ul')`
       color: ${colors.grey};
     }
   }
-  @media(min-width: ${breakpoints.desktop}px) {
+  @media (min-width: ${breakpoints.desktop}px) {
     p {
       padding-left: 18px;
     }
@@ -191,18 +191,10 @@ const ThreePoints = styled('ul')`
 const SetupSection = styled('section')`
   width: 100%;
   background-color: ${colors.seafoam};
-  padding:
-    ${space.medMobile}px
-    ${space.smallMobile}px
-    ${space.lrgMobile}px
-    ${space.smallMobile}px;
+  padding: ${space.medMobile}px ${space.smallMobile}px ${space.lrgMobile}px ${space.smallMobile}px;
   color: ${colors.hunterOrange};
-  @media(min-width: ${breakpoints.lg}px) {
-    padding:
-      90px
-      ${space.smallDesktop}px
-      ${space.xlMobile}px
-      ${space.smallDesktop}px;
+  @media (min-width: ${breakpoints.lg}px) {
+    padding: 90px ${space.smallDesktop}px ${space.xlMobile}px ${space.smallDesktop}px;
   }
 `
 const SetupWrapper = styled('div')`
@@ -214,15 +206,15 @@ const SetupWrapper = styled('div')`
   }
   figure {
     display: none;
-    font-family: "Inconsolata", Courier, monospace;
+    font-family: 'Inconsolata', Courier, monospace;
   }
   a {
     margin: 0 auto;
   }
-  @media(min-width: ${breakpoints.md}px) {
+  @media (min-width: ${breakpoints.md}px) {
     max-width: 650px;
   }
-  @media(min-width: ${breakpoints.lg}px) {
+  @media (min-width: ${breakpoints.lg}px) {
     max-width: 1000px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -238,7 +230,7 @@ const SetupWrapper = styled('div')`
       margin: 0;
     }
   }
-  @media(min-width: ${breakpoints.desktop}px) {
+  @media (min-width: ${breakpoints.desktop}px) {
     max-width: 1150px;
     grid-template-columns: 1fr 1.2fr;
   }
@@ -255,57 +247,67 @@ const SetupSteps = styled('ol')`
   li:last-child {
     margin-bottom: ${space.smallDesktop}px;
   }
-  @media(min-width: ${breakpoints.lg}px) {
+  @media (min-width: ${breakpoints.lg}px) {
     padding-left: ${space.xs}px;
   }
 `
 
-
-const HomeTemplate = (props) => {
+const HomeTemplate = props => {
   // seeing empty sidebar group or file
-  const [ dataJson ] = useJsonForm(props.data.dataJson)
-  // const dataJson = props.data.dataJson
+  //const [ dataJson ] = useJsonForm(props.data.dataJson)
+  const dataJson = props.data.dataJson
   return (
     <IndexLayout>
-        <Wrapper>
-          <Helmet>
-            <meta property="og:title" content="Home" />
-          </Helmet>
-          <HeroSection>
-            <aside id="base">
-              <aside id="white-ellipse" />
-            </aside>
-            <Heading as="h1" size="h1">
-              <span dangerouslySetInnerHTML={{__html: `${dataJson.headline}`}}>
-              </span>
-            </Heading>
-            <figure><img src={dataJson.hero_video} alt={dataJson.hero_alt} /></figure>
-          </HeroSection>
-          <InfoSection>
-            <Heading as="h2" size="h2" color={colors.darkPurple}>{dataJson.description}</Heading>
-            <Button to="/docs/getting-started/introduction" bgColor={colors.hunterOrange} textColor={colors.seafoam}>
-              Get Started
-            </Button>
-            <ThreePoints>
-              {dataJson.three_points.map( point => {
-                return (
-                  <li key={point.main}>
-                    <Heading as="h3" size="h3" color={colors.hunterOrange}>{point.main}</Heading>
-                    <Paragraph as="p" size="body">{point.supporting}</Paragraph>
-                  </li>
-                )
-              })}
-            </ThreePoints>
-          </InfoSection>
-        </Wrapper>
-        <SetupSection>
-          <SetupWrapper>
+      <Wrapper>
+        <Helmet>
+          <meta property="og:title" content="Home" />
+        </Helmet>
+        <HeroSection>
+          <aside id="base">
+            <aside id="white-ellipse" />
+          </aside>
+          <Heading as="h1" size="h1">
+            <span dangerouslySetInnerHTML={{ __html: `${dataJson.headline}` }}></span>
+          </Heading>
+          <figure>
+            <img src={dataJson.hero_video} alt={dataJson.hero_alt} />
+          </figure>
+        </HeroSection>
+        <InfoSection>
+          <Heading as="h2" size="h2" color={colors.darkPurple}>
+            {dataJson.description}
+          </Heading>
+          <Button to="/docs/getting-started/introduction" bgColor={colors.hunterOrange} textColor={colors.seafoam}>
+            Get Started
+          </Button>
+          <ThreePoints>
+            {dataJson.three_points.map(point => {
+              return (
+                <li key={point.main}>
+                  <Heading as="h3" size="h3" color={colors.hunterOrange}>
+                    {point.main}
+                  </Heading>
+                  <Paragraph as="p" size="body">
+                    {point.supporting}
+                  </Paragraph>
+                </li>
+              )
+            })}
+          </ThreePoints>
+        </InfoSection>
+      </Wrapper>
+      <SetupSection>
+        <SetupWrapper>
           <span>
-            <Heading as="h1" size="h1">{dataJson.setup.headline}</Heading>
+            <Heading as="h1" size="h1">
+              {dataJson.setup.headline}
+            </Heading>
             <SetupSteps>
-              {dataJson.setup.steps.map( item => (
+              {dataJson.setup.steps.map(item => (
                 <li key={item.step}>
-                  <Paragraph as="p" size="body">- {item.step}</Paragraph>
+                  <Paragraph as="p" size="body">
+                    - {item.step}
+                  </Paragraph>
                 </li>
               ))}
             </SetupSteps>
@@ -313,9 +315,11 @@ const HomeTemplate = (props) => {
               Get Started
             </Button>
           </span>
-          <figure><img src={dataJson.setup.code_ex} alt="Tina-Code-Setup-Example" /></figure>
-          </SetupWrapper>
-        </SetupSection>
+          <figure>
+            <img src={dataJson.setup.code_ex} alt="Tina-Code-Setup-Example" />
+          </figure>
+        </SetupWrapper>
+      </SetupSection>
     </IndexLayout>
   )
 }

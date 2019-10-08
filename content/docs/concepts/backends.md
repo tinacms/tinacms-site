@@ -1,8 +1,8 @@
 ---
-id: /docs/concepts/backends
 title: Backends
-prev: /docs/concepts/field-plugins
-next: /docs/contributing/guidelines
+id: /docs/concepts/backends
+prev: /docs/concepts/fields
+next: /docs/concepts/plugins
 ---
 
 A **backend** for the CMS will specify where content is stored, as well as where the latest version of content is sourced from.
