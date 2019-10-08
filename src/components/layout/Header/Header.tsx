@@ -23,13 +23,11 @@ const Wrapper = styled('header')<HeaderProps>`
   width: 100%;
   /* height: ${dimensions.heights.header}px; */
   padding: ${space.xSmallMobile}px ${space.smallMobile}px;;
-  background-color: ${props => (props.navigation ? colors.grey01 : "transparent")};
-  background-color: ${colors.seafoam};
+  background-color: ${props => (props.navigation ? colors.seafoam : "transparent")};
   z-index: ${layerIndexes.stickyNav};
   ${props => props.fixed && isFixed}
   @media(min-width: ${breakpoints.lg}px){
     padding: ${space.xSmallDesktop}px ${space.smallDesktop}px;
-    background: linear-gradient(#FAFFFE, transparent);
   }
 `;
 

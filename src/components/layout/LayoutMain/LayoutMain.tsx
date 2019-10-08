@@ -103,7 +103,7 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
 
   return (
     <StyledLayoutMain className={className} isNavigationOpen={state.isOpen}>
-      <Header fixed>
+      <Header >
         <HeaderInner hideOnDesktop>
           <NavButton
             icon="circle"
