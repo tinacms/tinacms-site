@@ -7,7 +7,7 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-mailchimp',
     options: {
-      endpoint: 'https://forestry.us20.list-manage.com/subscribe/post?u=ae8b977f987ebf4c64c121d19&amp;id=325dc4b702',
+      endpoint: process.env.MAILCHIMP_ENDPOINT,
     },
   },
   '@tinacms/gatsby-tinacms-git',
