@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
-import { useJsonForm } from '@tinacms/react-tinacms-json'
+import { useJsonForm } from '@tinacms/gatsby-tinacms-json'
 
 import IndexLayout from 'layouts'
 import { Heading, Paragraph } from 'components/foundations'
@@ -11,13 +11,13 @@ import { colors, dimensions, space, breakpoints } from 'utils/variables'
 
 const Wrapper = styled('div')`
   padding:
-    ${dimensions.heights.header}px
+    0
     ${space.smallMobile}px
     ${space.xSmallMobile}px
     ${space.smallMobile}px;
   @media(min-width: ${breakpoints.lg}px) {
     padding:
-      ${dimensions.heights.header}px
+      0
       ${space.smallDesktop}px
       ${space.xSmallDesktop}px
       ${space.smallDesktop}px;
@@ -85,7 +85,7 @@ const HeroSection = styled('section')`
   }
   @media(min-width: ${breakpoints.lg}px) {
     aside#base {
-      background: radial-gradient(circle at bottom center,#E6FAF8 50%,#F2FCFB);
+      background: radial-gradient(circle at center bottom,#CBEEF3 ,#E6FAF8 50%);
     }
   }
   @media(min-width: ${breakpoints.desktop}px) {
@@ -336,6 +336,9 @@ export const query = graphql`
       }
     }
     dataJson(fileRelativePath: {eq: "/data/home.json"}) {
+      id
+      fileRelativePath
+      rawJson
       fields {
         fileRelativePath
       }
