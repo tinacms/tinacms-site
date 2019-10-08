@@ -5,6 +5,65 @@ import styled from 'styled-components';
 import { Heading } from 'components/foundations'
 import { colors, space, breakpoints } from 'utils/variables'
 
+/**
+ * TODO:
+ * move this out of footer since
+ * its used on community page also
+ *
+ */
+
+const EmailForm = () => {
+  const  [ email, setEmail ] = useState('')
+  const [ isEntering, setIsEntering] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    console.log(email)
+    e.preventDefault();
+    addToMailchimp(email)
+      .then((data) => {
+        console.log(data)
+        alert(data.msg);
+      })
+      .catch((error: Error) => {
+        // Errors in here are client side
+        // Mailchimp always returns a 200
+        if (error.message === 'Timeout') {
+          alert('Looks like your browser is blocking this. Try to disable any tracker-blocking feature and resubmit.')
+        }
+        console.error(error)
+      });
+  };
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsEntering(true)
+    setEmail(event.currentTarget.value);
+  };
+
+  return (
+    <StyledForm onSubmit={handleSubmit} >
+      <Heading as="h3" size="h3">Stay in touch 👉</Heading>
+
+      { isEntering &&
+        <StyledButton type="submit">
+          <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
+            Subscribe
+          </Heading>
+        </StyledButton>
+      }
+        <input
+          placeholder="Your email..."
+          name="email"
+          type="text"
+          onChange={handleEmailChange}
+          onFocus={handleEmailChange}
+        />
+
+    </StyledForm>
+  );
+
+}
+
+export default EmailForm
 
 const StyledForm= styled('form')`
   padding: ${space.xSmallDesktop}px 0;
@@ -97,51 +156,4 @@ const StyledButton = styled('button')`
     padding: 0 ${space.md}px;
   }
 `
-
-const EmailForm = () => {
-  const  [ email, setEmail ] = useState('')
-  const [ isEntering, setIsEntering] = useState(false)
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    console.log(email)
-    e.preventDefault();
-    addToMailchimp(email)
-      .then((data) => {
-        console.log(data)
-        alert(data.msg);
-      })
-      .catch((error: Error) => {
-        // Errors in here are client side
-        // Mailchimp always returns a 200
-        if (error.message === 'Timeout') {
-          alert('Looks like your browser is blocking this. Try to disable any tracker-blocking feature and resubmit.')
-        }
-        console.error(error)
-      });
-  };
-
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsEntering(true)
-    setEmail(event.currentTarget.value);
-  };
-
-  return (
-    <StyledForm onSubmit={handleSubmit} >
-      <Heading as="h3" size="h3">Stay in touch 👉</Heading>
-
-      { isEntering && <StyledButton type="submit"><Heading as="h5" size="label" color={`${colors.hunterOrange}`}>Subscribe</Heading></StyledButton> }
-        <input
-          placeholder="Your email..."
-          name="email"
-          type="text"
-          onChange={handleEmailChange}
-          onFocus={handleEmailChange}
-        />
-
-    </StyledForm>
-  );
-
-}
-
-export default EmailForm
 
