@@ -118,7 +118,7 @@ const plugins = [
   },
 ]
 
-if (process.env.GATSBY_ALGOLIA_APP_ID && process.env.ALGOLIA_ADMIN_KEY && NODE_ENV == 'production') {
+if (process.env.GATSBY_ALGOLIA_APP_ID && process.env.ALGOLIA_ADMIN_KEY && process.env.BRANCH == 'master') {
   plugins.push({
     resolve: `gatsby-plugin-algolia`,
     options: {
