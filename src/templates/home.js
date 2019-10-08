@@ -7,7 +7,131 @@ import { useJsonForm } from '@tinacms/gatsby-tinacms-json'
 import IndexLayout from 'layouts'
 import { Heading, Paragraph } from 'components/foundations'
 import Button from 'components/foundations/Button'
-import { colors, dimensions, space, breakpoints } from 'utils/variables'
+import { colors, space, breakpoints } from 'utils/variables'
+
+const HomeTemplate = props => {
+  // seeing empty sidebar group or file
+  //const [ dataJson ] = useJsonForm(props.data.dataJson)
+  const dataJson = props.data.dataJson
+  return (
+    <IndexLayout>
+      <Wrapper>
+        <Helmet>
+          <meta property="og:title" content="Home" />
+        </Helmet>
+        <HeroSection>
+          <aside id="base">
+            <aside id="white-ellipse" />
+          </aside>
+          <Heading as="h1" size="h1">
+            <span dangerouslySetInnerHTML={{ __html: `${dataJson.headline}` }}></span>
+          </Heading>
+          <figure>
+            <img src={dataJson.hero_video} alt={dataJson.hero_alt} />
+          </figure>
+        </HeroSection>
+        <InfoSection>
+          <Heading as="h2" size="h2" color={colors.darkPurple}>
+            {dataJson.description}
+          </Heading>
+          <Button to="/docs/getting-started/introduction" bgColor={colors.hunterOrange} textColor={colors.seafoam}>
+            Get Started
+          </Button>
+          <ThreePoints>
+            {dataJson.three_points.map(point => {
+              return (
+                <li key={point.main}>
+                  <Heading as="h3" size="h3" color={colors.hunterOrange}>
+                    {point.main}
+                  </Heading>
+                  <Paragraph as="p" size="body">
+                    {point.supporting}
+                  </Paragraph>
+                </li>
+              )
+            })}
+          </ThreePoints>
+        </InfoSection>
+      </Wrapper>
+      <SetupSection>
+        <SetupWrapper>
+          <span>
+            <Heading as="h1" size="h1">
+              {dataJson.setup.headline}
+            </Heading>
+            <SetupSteps>
+              {dataJson.setup.steps.map(item => (
+                <li key={item.step}>
+                  <Paragraph as="p" size="body">
+                    - {item.step}
+                  </Paragraph>
+                </li>
+              ))}
+            </SetupSteps>
+            <Button to="/docs/getting-started/introduction" bgColor={colors.hunterOrange} textColor={colors.seafoam}>
+              Get Started
+            </Button>
+          </span>
+          <figure>
+            <img src={dataJson.setup.code_ex} alt="Tina-Code-Setup-Example" />
+          </figure>
+        </SetupWrapper>
+      </SetupSection>
+    </IndexLayout>
+  )
+}
+
+export const query = graphql`
+  query HomeTemplateQuery($slug: String!) {
+    site {
+      siteMetadata {
+        title
+        description
+        siteUrl
+        keywords
+        author {
+          name
+          url
+          email
+        }
+      }
+    }
+    dataJson(fileRelativePath: {eq: "/data/home.json"}) {
+      id
+      fileRelativePath
+      rawJson
+      fields {
+        fileRelativePath
+      }
+      headline
+      description
+      hero_video
+      hero_alt
+      three_points {
+        main
+        supporting
+      }
+      setup {
+        headline
+        steps {
+          step
+        }
+        code_ex
+      }
+    }
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      id
+      fileRelativePath
+      rawFrontmatter
+      rawMarkdownBody
+      htmlAst
+      excerpt
+    }
+  }
+`
+
+export default HomeTemplate
+
 
 const Wrapper = styled('div')`
   padding:
@@ -251,126 +375,3 @@ const SetupSteps = styled('ol')`
     padding-left: ${space.xs}px;
   }
 `
-
-const HomeTemplate = props => {
-  // seeing empty sidebar group or file
-  //const [ dataJson ] = useJsonForm(props.data.dataJson)
-  const dataJson = props.data.dataJson
-  return (
-    <IndexLayout>
-      <Wrapper>
-        <Helmet>
-          <meta property="og:title" content="Home" />
-        </Helmet>
-        <HeroSection>
-          <aside id="base">
-            <aside id="white-ellipse" />
-          </aside>
-          <Heading as="h1" size="h1">
-            <span dangerouslySetInnerHTML={{ __html: `${dataJson.headline}` }}></span>
-          </Heading>
-          <figure>
-            <img src={dataJson.hero_video} alt={dataJson.hero_alt} />
-          </figure>
-        </HeroSection>
-        <InfoSection>
-          <Heading as="h2" size="h2" color={colors.darkPurple}>
-            {dataJson.description}
-          </Heading>
-          <Button to="/docs/getting-started/introduction" bgColor={colors.hunterOrange} textColor={colors.seafoam}>
-            Get Started
-          </Button>
-          <ThreePoints>
-            {dataJson.three_points.map(point => {
-              return (
-                <li key={point.main}>
-                  <Heading as="h3" size="h3" color={colors.hunterOrange}>
-                    {point.main}
-                  </Heading>
-                  <Paragraph as="p" size="body">
-                    {point.supporting}
-                  </Paragraph>
-                </li>
-              )
-            })}
-          </ThreePoints>
-        </InfoSection>
-      </Wrapper>
-      <SetupSection>
-        <SetupWrapper>
-          <span>
-            <Heading as="h1" size="h1">
-              {dataJson.setup.headline}
-            </Heading>
-            <SetupSteps>
-              {dataJson.setup.steps.map(item => (
-                <li key={item.step}>
-                  <Paragraph as="p" size="body">
-                    - {item.step}
-                  </Paragraph>
-                </li>
-              ))}
-            </SetupSteps>
-            <Button to="/docs/getting-started/introduction" bgColor={colors.hunterOrange} textColor={colors.seafoam}>
-              Get Started
-            </Button>
-          </span>
-          <figure>
-            <img src={dataJson.setup.code_ex} alt="Tina-Code-Setup-Example" />
-          </figure>
-        </SetupWrapper>
-      </SetupSection>
-    </IndexLayout>
-  )
-}
-
-export const query = graphql`
-  query HomeTemplateQuery($slug: String!) {
-    site {
-      siteMetadata {
-        title
-        description
-        siteUrl
-        keywords
-        author {
-          name
-          url
-          email
-        }
-      }
-    }
-    dataJson(fileRelativePath: {eq: "/data/home.json"}) {
-      id
-      fileRelativePath
-      rawJson
-      fields {
-        fileRelativePath
-      }
-      headline
-      description
-      hero_video
-      hero_alt
-      three_points {
-        main
-        supporting
-      }
-      setup {
-        headline
-        steps {
-          step
-        }
-        code_ex
-      }
-    }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      fileRelativePath
-      rawFrontmatter
-      rawMarkdownBody
-      htmlAst
-      excerpt
-    }
-  }
-`
-
-export default HomeTemplate
