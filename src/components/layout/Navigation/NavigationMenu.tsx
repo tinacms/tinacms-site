@@ -24,16 +24,15 @@ const ToggleMenu = styled('ul')<ToggleableProps>`
   margin: 0;
   padding: 0;
   opacity: 0;
-  transition: all 150ms ease;
   background: white;
-  transform-origin: 50% 0;
-  transform: scale3d(1, 0, 1);
   padding: 0;
   ${p =>
     p.isOpen &&
     css`
       opacity: 1;
       transform: scale3d(1, 1, 1);
+      border-top: 1px solid ${colors.grey02};
+      border-bottom: 1px solid ${colors.grey02};
     `};
 `
 

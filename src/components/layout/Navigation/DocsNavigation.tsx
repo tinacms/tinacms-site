@@ -55,6 +55,7 @@ const Wrapper = styled('aside')<ToggleableProps>`
     flex: 0 0 ${dimensions.widths.sidebar.lg}px;
     box-shadow: none;
     border-bottom: none;
+    height: 100%;
     background-color: ${colors.grey01};
   }
 `
@@ -168,7 +169,7 @@ const DocumentationMenu = styled('div')`
 const DocumentationNav = styled('div')`
   display: flex;
   flex-direction: column;
-  padding: 0;
+  padding: 12px 0 0 0;
 `
 
 interface DocsNavigationProps {
