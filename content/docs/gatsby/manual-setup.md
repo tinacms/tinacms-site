@@ -2,7 +2,7 @@
 title: Manual Setup
 id: /docs/gatsby/manual-setup
 prev: /docs/gatsby/quickstart
-next: /docs/gatsby/content-editing
+next: /docs/gatsby/markdown
 ---
 
 Learn how to setup Tina on an existing Gatsby site.
