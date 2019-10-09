@@ -1,7 +1,8 @@
 import React from 'react'
 import { connectSearchBox } from 'react-instantsearch-dom'
 import * as debounce from 'lodash/debounce'
-import { SearchIcon, Input, SearchContainer } from './styles'
+import { IconWrapper, Input, SearchContainer } from './styles'
+import { SearchIcon } from './SearchIcon'
 import styled from 'styled-components'
 
 export default connectSearchBox(({ refine, ...rest }) => {
@@ -14,16 +15,9 @@ export default connectSearchBox(({ refine, ...rest }) => {
   return (
     <SearchContainer>
       <Input type="text" placeholder="Search" aria-label="Search" onChange={onChange} {...rest} />
-      <SearchIcon>
-        <MagnifyingIconPlaceholder />
-      </SearchIcon>
+      <IconWrapper>
+        <SearchIcon />
+      </IconWrapper>
     </SearchContainer>
   )
 }) as any
-
-//TODO - use a magnifying glass icon instead of a llama
-const MagnifyingIconPlaceholder = styled.div`
-  background-color: blue;
-  width: 10px;
-  height: 10px;
-`
