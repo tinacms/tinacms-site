@@ -12,7 +12,16 @@ import { colors, space, breakpoints } from 'utils/variables'
  *
  */
 
-const EmailForm = () => {
+ interface EmailFormProps {
+   inputColor: string
+   textColor: string
+   cta: string
+   btnColor: string
+   btnTextColor: string
+   isFooter: boolean
+ }
+
+const EmailForm = (props: EmailFormProps) => {
   const  [ email, setEmail ] = useState('')
   const [ isEntering, setIsEntering] = useState(false)
 
@@ -21,7 +30,6 @@ const EmailForm = () => {
     e.preventDefault();
     addToMailchimp(email)
       .then((data) => {
-        console.log(data)
         alert(data.msg);
       })
       .catch((error: Error) => {
@@ -40,12 +48,20 @@ const EmailForm = () => {
   };
 
   return (
-    <StyledForm onSubmit={handleSubmit} >
-      <Heading as="h3" size="h3">Stay in touch 👉</Heading>
+    <StyledForm inputColor={props.inputColor} textColor={props.textColor} onSubmit={handleSubmit} >
+      <Heading as="h3" size="h3">{props.cta}</Heading>
 
-      { isEntering &&
-        <StyledButton type="submit">
-          <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
+      {
+        props.isFooter ?
+        isEntering  &&
+        <StyledButton btnColor={props.btnColor} type="submit">
+          <Heading as="h5" size="label" color={`${props.btnTextColor}`}>
+            Subscribe
+          </Heading>
+        </StyledButton>
+        :
+        <StyledButton btnColor={props.btnColor} type="submit">
+          <Heading as="h5" size="label" color={`${props.btnTextColor}`}>
             Subscribe
           </Heading>
         </StyledButton>
@@ -63,9 +79,23 @@ const EmailForm = () => {
 
 }
 
+EmailForm.defaultProps = {
+  inputColor: "#B13617",
+  textColor: colors.mintChocoChip,
+  cta: 'Stay in touch 👉',
+  btnColor: colors.seafoam,
+  btnTextColor: colors.hunterOrange,
+  isFooter: false
+}
+
 export default EmailForm
 
-const StyledForm= styled('form')`
+interface StyledFormProps {
+  inputColor: string
+  textColor: string
+}
+
+const StyledForm= styled('form')<StyledFormProps>`
   padding: ${space.xSmallDesktop}px 0;
   display: grid;
   grid-template-columns: repeat(2, auto);
@@ -83,8 +113,8 @@ const StyledForm= styled('form')`
     grid-area: input;
     border: 0;
     border-radius: 0.25rem;
-    background: #B13617;
-    color: ${colors.mintChocoChip};
+    background: ${p => p.inputColor};
+    color: ${p => p.textColor};
     font-family: system-ui, sans-serif;
     font-size: 1rem;
     line-height: 1.2;
@@ -98,7 +128,7 @@ const StyledForm= styled('form')`
     font-family: 'tuner-regular';
     font-size: 16px;
     ::placeholder {
-      color: ${colors.mintChocoChip};
+      color: ${p => p.textColor};
       opacity: 1;
       font-family: 'tuner-regular';
       font-size: 16px;
@@ -129,7 +159,11 @@ const StyledForm= styled('form')`
   }
 `
 
-const StyledButton = styled('button')`
+interface StyledButtonProps {
+  btnColor: string
+}
+
+const StyledButton = styled('button')<StyledButtonProps>`
   justify-self: end;
   grid-area: btn;
   width: max-content;
@@ -137,8 +171,7 @@ const StyledButton = styled('button')`
   transition: filter 250ms ease;
   display: flex;
   align-items: center;
-  background-color: ${colors.seafoam};
-  color: ${colors.mintChocoChip};
+  background-color: ${p => p.btnColor};
   border-radius: 100px;
   border: 0;
   white-space: no-wrap;

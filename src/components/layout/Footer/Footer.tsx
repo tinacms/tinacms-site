@@ -56,7 +56,7 @@ function Footer ({headerMenus}:FooterProps) {
 
         </StyledFooterMain>
         <StyledFooterSecondary>
-          <EmailForm />
+          <EmailForm isFooter={true} />
           <span>
             <Heading as="h5" size="label">
               <a href="https://github.com/tinacms/tinacms">License</a>
