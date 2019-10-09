@@ -4,7 +4,7 @@ export const colors = {
   seafoam: "#E6FAF8",
   mintChocoChip: "#B4F4E0",
   greyWhite: '#f4f4f4',
-  greyWhite02: 'E9E9EC',
+  greyWhite02: '#E9E9EC',
   hunterOrange: '#EC4815',
   burntSienna: '#CE411D',
   darkPurple: '#241748',
