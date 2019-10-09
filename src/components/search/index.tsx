@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createRef } from 'react'
 import { InstantSearch, Index, Hits, connectStateResults } from 'react-instantsearch-dom'
 import algoliasearch from 'algoliasearch/lite'
-import { Root, PoweredBy, HitsWrapper, IndexContainer, NoResultsLabel } from './styles'
+import { Root, PoweredBy, HitsWrapper, HitsResults, IndexContainer, NoResultsLabel } from './styles'
 import Input from './input'
 import { hitComponents } from './hitComps'
 
@@ -47,23 +47,25 @@ export default function Search({ indices, collapse }: any) {
       <Input onFocus={() => setFocus(true)} {...{ collapse, focus }} />
       {query.length > 0 && focus && (
         <HitsWrapper show={true}>
-          <AllIndicesResults />
-          {indices.map(({ name, title, hitComp }: { name: string; title: string; hitComp: any }) => (
-            <Index key={name} indexName={name}>
-              <IndexResults>
-                <IndexContainer>
-                  <header>
-                    <h3>{title}</h3>
-                    <IndexStats />
-                  </header>
-                  {/*
-                  // @ts-ignore */}
-                  <Hits hitComponent={hitComponents[hitComp](() => setFocus(false))} />
-                </IndexContainer>
-              </IndexResults>
-            </Index>
-          ))}
-          <PoweredBy />
+          <HitsResults>
+            <AllIndicesResults />
+            {indices.map(({ name, title, hitComp }: { name: string; title: string; hitComp: any }) => (
+              <Index key={name} indexName={name}>
+                <IndexResults>
+                  <IndexContainer>
+                    <header>
+                      <h3>{title}</h3>
+                      <IndexStats />
+                    </header>
+                    {/*
+                    // @ts-ignore */}
+                    <Hits hitComponent={hitComponents[hitComp](() => setFocus(false))} />
+                  </IndexContainer>
+                </IndexResults>
+              </Index>
+            ))}
+            <PoweredBy />
+          </HitsResults>
         </HitsWrapper>
       )}
     </InstantSearch>
