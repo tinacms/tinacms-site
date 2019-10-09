@@ -14,7 +14,7 @@ A site configured to use Tina will display a blue edit button in the lower left 
 
 Sidebar contents are **contextual**. For example, when using Tina with Markdown files, a conventional implementation will display a form for the current page's markdown file.
 
-$SCREENSHOT_PLEASE
+![Sidebar after adding remarkform to your template](/img/tina-sidebar-remarkform-gatsby-london.gif)
 
 In the event a page is composed from multiple files, it is possible to add multiple forms to the sidebar for that page's context. All forms available in the current context will then be displayed.
 
