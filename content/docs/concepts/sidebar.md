@@ -8,11 +8,9 @@ The **sidebar** is the primary interface in Tina. It is the shell that holds [fo
 
 ## Using the Sidebar
 
-$SCREENSHOT_PLEASE
-
 A site configured to use Tina will display a blue edit button in the lower left corner. Clicking this button will open the sidebar.
 
-$SCREENSHOT_PLEASE
+![Clicking the pen icon to reveal Tina Sidebar](/img/tina-sidebar-gatsby-london.gif)
 
 Sidebar contents are **contextual**. For example, when using Tina with Markdown files, a conventional implementation will display a form for the current page's markdown file.
 
@@ -28,4 +26,4 @@ The sidebar has two display options: `displace` and `overlay`.
 
 By default, Tina's sidebar will occupy the same layout flow as your website (`displace)`. This means that when you open the sidebar, your website will shrink to make space for the sidebar. Depending on your site's design, you may have CSS rules that conflict with this approach, or may simply prefer to have the sidebar overlay your content instead of displacing it (`overlay`).
 
-## 
+##
