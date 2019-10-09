@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import { dimensions, breakpoints, colors, layerIndexes } from 'utils/variables';
+import styled from 'styled-components'
+import { dimensions, breakpoints, colors, layerIndexes } from 'utils/variables'
 
 interface ToggleableProps {
-  isOpen?: boolean;
+  isOpen?: boolean
 }
 
 const TocWrapper = styled('section')<ToggleableProps>`
@@ -65,6 +65,6 @@ const TocWrapper = styled('section')<ToggleableProps>`
       color: ${colors.grey07};
     }
   }
-`;
+`
 
-export default TocWrapper;
+export default TocWrapper

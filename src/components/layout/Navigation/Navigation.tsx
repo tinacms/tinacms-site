@@ -31,8 +31,7 @@ const Wrapper = styled('aside')<ToggleableProps>`
     box-shadow: none;
   }
 
-  @media(min-width: ${breakpoints.lg}px) {
-
+  @media (min-width: ${breakpoints.lg}px) {
     background-color: transparent;
   }
 
@@ -80,7 +79,7 @@ const Header = styled('div')`
   background-color: ${colors.white};
   z-index: ${layerIndexes.stickyNav};
 
-  @media(min-width: ${breakpoints.lg}px) {
+  @media (min-width: ${breakpoints.lg}px) {
     background-color: transparent;
   }
 `
@@ -126,7 +125,7 @@ const HomepageLink = styled(Link)<FontSizeProps>`
   svg {
     height: 100%;
   }
-  padding: ${space.sm}px;
+  padding: 15px 12px 9px 12px;
   &:hover,
   &:focus {
     color: ${colors.grey09};
@@ -212,7 +211,7 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
             size={determineFontDimensions('heading', 400)}
             onClick={() => dispatch({ type: NavigationActionTypes.CLOSE_DRAWER })}
           >
-            <Llama_Icon color={`${colors.burntOrange}`} />
+            <Llama_Icon color={`${colors.hunterOrange}`} />
           </HomepageLink>
         </HeaderInner>
         <HeaderInner hideOnDesktop>
@@ -222,7 +221,7 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
           {
             <NavButton
               icon="x"
-              fill={colors.darkBurntOrange}
+              fill={colors.hunterOrange}
               onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}
             >
               Toggle Drawer
@@ -266,6 +265,5 @@ function Navigation({ title, navigation, headerMenus }: NavigationProps) {
     </Wrapper>
   )
 }
-
 
 export default Navigation

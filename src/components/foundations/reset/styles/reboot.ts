@@ -1,4 +1,6 @@
-import { css } from 'styled-components';
+import { css } from 'styled-components'
+import { colors } from 'utils/variables'
+import { rgba } from 'polished'
 
 const reboot = css`
   /*!
@@ -72,6 +74,7 @@ const reboot = css`
   h6 {
     margin-top: 0;
     margin-bottom: 0.5rem;
+    color: ${colors.hunterOrange};
   }
 
   p {
@@ -151,15 +154,31 @@ const reboot = css`
   }
 
   a {
-    color: #007bff;
+    color: ${colors.link};
     text-decoration: none;
     background-color: transparent;
-    -webkit-text-decoration-skip: objects;
+    transition: all 85ms ease-out;
   }
 
   a:hover {
-    color: #0056b3;
-    text-decoration: underline;
+    color: ${colors.linkHover};
+  }
+
+  p,
+  li,
+  blockquote {
+    a {
+      color: ${colors.link};
+      text-decoration: underline;
+      text-decoration-color: ${rgba(colors.link, 0.3)};
+      -webkit-text-decoration-skip: objects;
+      transition: all 85ms ease-out;
+    }
+
+    a:hover,
+    a:focus {
+      text-decoration-color: ${colors.linkHover};
+    }
   }
 
   a:not([href]):not([tabindex]) {
@@ -349,6 +368,6 @@ const reboot = css`
   [hidden] {
     display: none !important;
   }
-`;
+`
 
-export default reboot;
+export default reboot

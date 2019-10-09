@@ -1,5 +1,5 @@
-import { css } from 'styled-components';
-import { colors, paragraphSizes, textSizes } from 'utils/variables';
+import { css } from 'styled-components'
+import { colors, paragraphSizes, textSizes } from 'utils/variables'
 
 const code = css`
   /*
@@ -13,9 +13,9 @@ const code = css`
   */
   code[class*='language-'],
   pre[class*='language-'] {
-    font-family: "Inconsolata", Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter',
-      'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', 'Courier New', Courier,
-      monospace;
+    font-family: 'Inconsolata', Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono', 'Lucida Console',
+      'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L',
+      'Courier New', Courier, monospace;
     font-size: 16px;
     line-height: 24px;
     direction: ltr;
@@ -30,13 +30,15 @@ const code = css`
     -moz-hyphens: none;
     -ms-hyphens: none;
     hyphens: none;
-    background: ${colors.grey01};
-    color: ${colors.plum};
+    border-radius: 0.3rem;
+    color: ${colors.lightPurple};
     border-radius: 3px;
   }
 
   /* Code blocks */
   pre[class*='language-'] {
+    background: ${colors.grey01};
+    border: 1px solid ${colors.grey02};
     padding: 1em;
     margin: 0.5em 0;
     overflow: auto;
@@ -44,10 +46,12 @@ const code = css`
 
   /* Inline code */
   :not(pre) > code[class*='language-'] {
-    padding: 0.1em;
+    padding: 0.1em 0.2em;
     border-radius: 0.3em;
-    background: none;
-    color: ${colors.darkBurntOrange};
+    background: ${colors.grey01};
+    border: 1px solid ${colors.grey02};
+    border-radius: 0.3rem;
+    color: ${colors.hunterOrange};
     font-size: 18px;
     line-height: 28px;
   }
@@ -78,11 +82,11 @@ const code = css`
   }
 
   .token.tag {
-    color: #DFB509;
+    color: #dfb509;
   }
 
   .token.string {
-    color: #74B06F;
+    color: #74b06f;
   }
 
   .token.selector {
@@ -90,14 +94,14 @@ const code = css`
   }
 
   .token.attr-name {
-    color: #B58AC9;
+    color: #b58ac9;
   }
 
   .token.entity,
   .token.url,
   .language-css .token.string,
   .style .token.string {
-    color: #C2A7FB;
+    color: #c2a7fb;
   }
 
   .token.attr-value,
@@ -105,18 +109,18 @@ const code = css`
   .token.control,
   .token.directive,
   .token.unit {
-    color: #A87B2B;
+    color: #a87b2b;
   }
 
   .token.statement,
   .token.regex,
   .token.atrule {
-    color: #C2A7FB;
+    color: #c2a7fb;
   }
 
   .token.placeholder,
   .token.variable {
-    color: #DFB509;
+    color: #dfb509;
   }
 
   .token.deleted {
@@ -169,6 +173,6 @@ const code = css`
     background: -webkit-linear-gradient(left, rgba(107, 115, 148, 0.2) 70%, rgba(107, 115, 148, 0));
     background: linear-gradient(to right, rgba(107, 115, 148, 0.2) 70%, rgba(107, 115, 148, 0));
   }
-`;
+`
 
-export default code;
+export default code

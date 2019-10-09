@@ -122,7 +122,7 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
               size={determineFontDimensions('heading', 400)}
               onClick={() => dispatch({ type: NavigationActionTypes.CLOSE_DRAWER })}
             >
-              <Llama_Icon color={`${colors.burntOrange}`} />
+              <Llama_Icon color={`${colors.hunterOrange}`} />
             </HomepageLink>
           </LogoWrapper>
         </HeaderInner>
