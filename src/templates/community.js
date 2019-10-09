@@ -57,8 +57,8 @@ const HeroSection = styled('section')`
   @media (min-width: ${breakpoints.md}px) {
     aside#base {
       height: 400px;
-      min-height: revert;
-      max-height: revert;
+      min-height: unset;
+      max-height: unset;
     }
     h1 {
       max-width: 800px;
@@ -87,10 +87,9 @@ const SocialSection = styled('section')`
   margin: 145px 0 65px 0;
   @media(min-width: ${breakpoints.md}px) {
     margin-top: 260px;
-  }
-  @media(min-width: ${breakpoints.md}px) {
-    grid-template-rows: revert;
+    grid-template-rows: unset;
     grid-template-columns: repeat(3, auto);
+    grid-column-gap: 38px;
     width: 600px;
     margin: 280px auto 165px auto;
   }
@@ -134,26 +133,29 @@ const SocialItem = styled('div')`
   }
   @media(min-width: ${breakpoints.md}px) {
     flex-direction: row;
-    width: revert;
+    width: unset;
     align-items: flex-end;
-    grid-column-gap: 38px;
+    /* grid-column-gap: 38px; */
     h5 {
       margin-bottom: 0;
     }
     span.dotted-line {
       height: 1px;
       width: 57px;
-      border-left: revert;
+      border-left: unset;
       border-top:3px dotted ${colors.hunterOrange};
       padding-bottom: 8px;
-      margin-right: 38px;
+      margin-left: 38px;
     }
   }
 `
 
 const InfoSection = styled('section')`
   margin-bottom: ${space.lrgMobile}px;
+  text-align: center;
   figure {
+    display: flex;
+    flex-direction: column;
     grid-area: gif;
     width: 80%;
     margin: 0 auto;
@@ -171,7 +173,7 @@ const InfoSection = styled('section')`
     grid-area: info;
   }
   h2 {
-    margin-top: ${space.medMobile}px;
+    margin: ${space.medMobile}px auto 0 auto;
     width: 80%;
   }
   p {
@@ -179,6 +181,11 @@ const InfoSection = styled('section')`
   }
   span#buttons > a:first-of-type {
     display: none;
+  }
+  span#buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
   a {
     filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
@@ -191,19 +198,26 @@ const InfoSection = styled('section')`
     transition: all 250ms ease-out;
   }
   @media(min-width: ${breakpoints.md}px) {
+    text-align: left;
     max-width: 1150px;
     margin: 0 auto ${space.lrgDesktop}px auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas: "info gif";
     grid-column-gap: ${space.smallMobile}px;
+    figure {
+      flex-direction: row;
+    }
     span#info-wrap {
       width: 90%;
       margin: auto;
     }
+    span#buttons {
+      justify-content: flex-start;
+    }
     h2 {
       margin-top: ${space.xs}px;
-      width: revert;
+      width: unset;
     }
   }
   @media(min-width: ${breakpoints.lg}px) {
