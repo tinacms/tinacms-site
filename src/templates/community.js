@@ -32,10 +32,9 @@ const HeroSection = styled('section')`
   text-align: center;
   aside#base {
     background-color: ${colors.seafoam};
+    background: radial-gradient(circle at center bottom,rgb(203,238,243, .6),#E6FAF8 50%);
     width: 100%;
-    height: 65vh;
-    min-height: 400px;
-    max-height: 500px;
+    height: 280px;
     z-index: -2;
     position: absolute;
     top: 0;
@@ -53,61 +52,233 @@ const HeroSection = styled('section')`
   }
   h1 {
     max-width: 320px;
-    margin-top: ${space.medMobile}px;
+    margin-top: 57px;
   }
   @media (min-width: ${breakpoints.md}px) {
     aside#base {
-      height: 85vh;
-      max-height: 700px;
-      min-height: 600px;
+      height: 400px;
+      min-height: revert;
+      max-height: revert;
     }
     h1 {
       max-width: 800px;
       margin-top: ${space.lrgDesktop}px;
     }
   }
-  @media (min-width: ${breakpoints.lg}px) {
-    aside#base {
-      background: radial-gradient(circle at center bottom,#CBEEF3 ,#E6FAF8 50%);
-    }
-  }
   @media (min-width: ${breakpoints.desktop}px) {
     aside#base {
-      min-height: 700px;
-      max-height: 800px;
+      height: 520px;
     }
     aside#white-ellipse {
       height: 20vh;
       bottom: -10vh;
     }
     h1 {
-      margin-top: ${space.medDesktop}px;
+      margin-top: 110px;
     }
   }
 `
 
 const SocialSection = styled('section')`
-
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-row-gap: 22px;
+  justify-content: center;
+  margin: 145px 0 65px 0;
+  @media(min-width: ${breakpoints.md}px) {
+    margin-top: 260px;
+  }
+  @media(min-width: ${breakpoints.md}px) {
+    grid-template-rows: revert;
+    grid-template-columns: repeat(3, auto);
+    width: 600px;
+    margin: 280px auto 165px auto;
+  }
 `
 
 const SocialItem = styled('div')`
+  width: 85px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    svg {
+      transform: scale3d(1, 1, 1);
+      transition: transform 180ms ease-in;
+    }
 
+  }
+  a:hover {
+    text-decoration: none;
+    svg {
+      transform: scale3d(1.1, 1.1, 1.1);
+      transition: transform 250ms ease-out;
+    }
+
+  }
+  svg {
+    width: 66px;
+    margin-bottom: 15px;
+  }
+  h5 {
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  span.dotted-line {
+    display: block;
+    height: 30px;
+    border-left: 2px dotted ${colors.hunterOrange};
+  }
+  @media(min-width: ${breakpoints.md}px) {
+    flex-direction: row;
+    width: revert;
+    align-items: flex-end;
+    grid-column-gap: 38px;
+    h5 {
+      margin-bottom: 0;
+    }
+    span.dotted-line {
+      height: 1px;
+      width: 57px;
+      border-left: revert;
+      border-top:3px dotted ${colors.hunterOrange};
+      padding-bottom: 8px;
+      margin-right: 38px;
+    }
+  }
 `
 
 const InfoSection = styled('section')`
+  margin-bottom: ${space.lrgMobile}px;
+  figure {
+    grid-area: gif;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 10%;
+    overflow: hidden;
+    img {
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+      height: auto;
+      min-height: 100%;
+    }
+  }
+  span#info-wrap {
+    grid-area: info;
+  }
+  h2 {
+    margin-top: ${space.medMobile}px;
+    width: 80%;
+  }
+  p {
+    margin: ${space.smallMobile}px 0 ${space.medMobile}px 0;
+  }
+  span#buttons > a:first-of-type {
+    display: none;
+  }
+  a {
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
+    transform: scale3d(1, 1, 1);
+    transition: all 180ms ease-in;
+  }
+  a:hover {
+    filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.35));
+    transform: scale3d(1.03, 1.03, 1.13);
+    transition: all 250ms ease-out;
+  }
+  @media(min-width: ${breakpoints.md}px) {
+    max-width: 1150px;
+    margin: 0 auto ${space.lrgDesktop}px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "info gif";
+    grid-column-gap: ${space.smallMobile}px;
+    span#info-wrap {
+      width: 90%;
+      margin: auto;
+    }
+    h2 {
+      margin-top: ${space.xs}px;
+      width: revert;
+    }
+  }
+  @media(min-width: ${breakpoints.lg}px) {
+    margin-bottom: 165px;
+    span#info-wrap {
+      width: 85%;
+      span#buttons {
+        display: flex;
+      }
+    }
+    span#buttons > a:first-of-type {
+      display: flex;
+      margin-right: ${space.smallDesktop}px;
+    }
 
+  }
 `
 
 const NewsletterSection = styled('section')`
-
+  background-color: ${colors.seafoam};
+  padding:
+    ${space.medMobile}px
+    ${space.smallMobile}px
+    ${space.smallDesktop}px
+    ${space.smallMobile}px;
+  form {
+    display: flex;
+    flex-direction: column-reverse;
+    h3 {
+      display: none;
+    }
+    input {
+      filter: inset 3px 1px 5px rgba(0,0,0,0.15);
+      margin-top: 0;
+      margin-bottom: ${space.smallMobile}px;
+    }
+  }
+  @media(min-width: ${breakpoints.md}px) {
+    text-align: center;
+    form {
+      display: grid;
+      grid-template-columns: minMax(70%, 1fr);
+      grid-column-gap: 40px;
+      grid-template-rows: auto;
+      grid-row-gap: 38px;
+      grid-template-areas:
+          "cta cta"
+          "input btn";
+      max-width: 620px;
+      margin: 0 auto;
+      h3 {
+        grid-area: cta;
+        display: block;
+      }
+      input {
+        grid-area: input;
+      }
+      button {
+        grid-area: btn;
+      }
+    }
+  }
+  @media(min-width: ${breakpoints.lg}px) {
+    padding: ${space.lrgMobile}px ${space.smallDesktop}px;
+  }
 `
-
 
 function CommunityTemplate ({data}) {
   const frontmatter = data.markdownRemark.frontmatter
-  const metaData = data.site.siteMetadata
+  const metadata = data.site.siteMetadata
   return (
     <IndexLayout>
+      <Helmet>
+          <meta property="og:title" content="Home" />
+      </Helmet>
       <Wrapper>
         <HeroSection>
           <aside id="base">
@@ -119,54 +290,65 @@ function CommunityTemplate ({data}) {
         </HeroSection>
         <SocialSection>
           <SocialItem>
-            <TwitterIcon color={`${colors.hunterOrange}`} />
-              <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
-                Tweet us
-              </Heading>
+            <a href={`${metadata.social.twitter}`} target="_blank">
+              <TwitterIcon color={`${colors.hunterOrange}`} />
+                <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
+                  Tweet us
+                </Heading>
+              </a>
+              <span className="dotted-line"/>
           </SocialItem>
-          <span className="dotted-line"/>
           <SocialItem>
-            <GithubIcon color={`${colors.hunterOrange}`} />
-              <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
-                Fork us
-              </Heading>
+            <a href={`${metadata.social.github}`} target="_blank">
+              <GithubIcon color={`${colors.hunterOrange}`} />
+                <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
+                  Fork us
+                </Heading>
+              </a>
+              <span className="dotted-line"/>
           </SocialItem>
-          <span className="dotted-line"/>
           <SocialItem>
-            <SlackIcon color={`${colors.hunterOrange}`} />
-              <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
-                Slack us
-              </Heading>
+            <a href={`${metadata.social.slack}`} target="_blank">
+              <SlackIcon color={`${colors.hunterOrange}`} />
+                <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
+                  Slack us
+                </Heading>
+            </a>
           </SocialItem>
         </SocialSection>
         <InfoSection>
           <figure>
             <img src={frontmatter.gif[0].src} alt={frontmatter.gif[0].gif_alt}/>
           </figure>
-          <Heading as="h2" size="h2" color={`${colors.hunterOrange}`}>
-            {frontmatter.supporting_headline}
-          </Heading>
-          <Paragraph>{frontmatter.supporting_body}</Paragraph>
-          <Button
-            to="/docs/contributing/guidelines"
-            bgColor={`${colors.seafoam}`}
-            textColor={`${colors.hunterOrange}`}
-          >
-            Contribute
-          </Button>
-          <Button
-            to={`${metaData.roadmapUrl}`}
-            bgColor={`${colors.seafoam}`}
-            textColor={`${colors.hunterOrange}`}
-            isExternal={true}
-          >
-            View Roadmap
-          </Button>
+          <span id="info-wrap">
+            <Heading as="h2" size="h2" color={`${colors.hunterOrange}`}>
+              {frontmatter.supporting_headline}
+            </Heading>
+            <Paragraph>{frontmatter.supporting_body}</Paragraph>
+            <span id="buttons">
+              <Button
+                to="/docs/contributing/guidelines"
+                bgColor={`${colors.seafoam}`}
+                textColor={`${colors.hunterOrange}`}
+              >
+                Contribute
+              </Button>
+              <Button
+                to={`${metadata.roadmapUrl}`}
+                bgColor={`${colors.seafoam}`}
+                textColor={`${colors.hunterOrange}`}
+                isExternal={true}
+              >
+                View Roadmap
+              </Button>
+            </span>
+          </span>
         </InfoSection>
+        </Wrapper>
         <NewsletterSection>
-          <EmailForm />
+          <Heading as="h2" size="h2" color={colors.hunterOrange}>Newsletter ✌️</Heading>
+          <EmailForm cta="We move quick. Stay up to date." inputColor="#fff" textColor={colors.hunterOrange} btnColor={colors.hunterOrange} btnTextColor={colors.seafoam} />
         </NewsletterSection>
-      </Wrapper>
     </IndexLayout>
   )
 }
