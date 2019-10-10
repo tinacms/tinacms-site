@@ -62,9 +62,7 @@ const HomeTemplate = props => {
             <SetupSteps>
               {dataJson.setup.steps.map(item => (
                 <li key={item.step}>
-                  <Paragraph as="p" size="body">
-                    - {item.step}
-                  </Paragraph>
+                  <p>- {item.step}</p>
                 </li>
               ))}
             </SetupSteps>
@@ -96,7 +94,7 @@ export const query = graphql`
         }
       }
     }
-    dataJson(fileRelativePath: {eq: "/data/home.json"}) {
+    dataJson(fileRelativePath: { eq: "/data/home.json" }) {
       id
       fileRelativePath
       rawJson
@@ -132,19 +130,10 @@ export const query = graphql`
 
 export default HomeTemplate
 
-
 const Wrapper = styled('div')`
-  padding:
-    0
-    ${space.smallMobile}px
-    ${space.xSmallMobile}px
-    ${space.smallMobile}px;
-  @media(min-width: ${breakpoints.lg}px) {
-    padding:
-      0
-      ${space.smallDesktop}px
-      ${space.xSmallDesktop}px
-      ${space.smallDesktop}px;
+  padding: 0 ${space.smallMobile}px ${space.xSmallMobile}px ${space.smallMobile}px;
+  @media (min-width: ${breakpoints.lg}px) {
+    padding: 0 ${space.smallDesktop}px ${space.xSmallDesktop}px ${space.smallDesktop}px;
   }
 `
 const HeroSection = styled('section')`
@@ -210,7 +199,7 @@ const HeroSection = styled('section')`
   }
   @media (min-width: ${breakpoints.lg}px) {
     aside#base {
-      background: radial-gradient(circle at center bottom,#CBEEF3 ,#E6FAF8 50%);
+      background: radial-gradient(circle at center bottom, #cbeef3, #e6faf8 50%);
     }
   }
   @media (min-width: ${breakpoints.desktop}px) {

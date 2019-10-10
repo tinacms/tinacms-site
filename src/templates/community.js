@@ -101,12 +101,17 @@ const SocialItem = styled('div')`
       transition: transform 180ms ease-in;
     }
   }
-  a:hover {
+  a:hover,
+  a:focus {
+    outline: none;
     text-decoration: none;
     svg {
       transform: scale3d(1.1, 1.1, 1.1);
       transition: transform 250ms ease-out;
     }
+  }
+  a:focus {
+    text-decoration: underline;
   }
   svg {
     width: 66px;
@@ -227,10 +232,11 @@ const InfoSection = styled('section')`
 
 const NewsletterSection = styled('section')`
   background-color: ${colors.seafoam};
-  padding: ${space.medMobile}px ${space.smallMobile}px ${space.smallDesktop}px ${space.smallMobile}px;
+  padding: ${space.medMobile}px ${space.smallMobile}px;
   form {
     display: flex;
     flex-direction: column-reverse;
+    padding: 24px 0 0 0;
     h3 {
       display: none;
     }
@@ -253,12 +259,14 @@ const NewsletterSection = styled('section')`
         'input btn';
       max-width: 620px;
       margin: 0 auto;
+      padding: 18px 0 24px 0;
       h3 {
         grid-area: cta;
         display: block;
       }
       input {
         grid-area: input;
+        margin: 0;
       }
       button {
         grid-area: btn;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import addToMailchimp from 'gatsby-plugin-mailchimp'
 import styled from 'styled-components'
-
+import { rgba } from 'polished'
 import { Heading } from 'components/foundations'
 import { colors, space, breakpoints } from 'utils/variables'
 
@@ -125,6 +125,7 @@ const StyledForm = styled('form')<StyledFormProps>`
     width: 100%;
     padding: 0 16px;
     margin-top: ${space.xSmallDesktop}px;
+    transition: all 85ms ease-out;
     font-family: 'tuner-regular';
     font-size: 16px;
     ::placeholder {
@@ -134,8 +135,16 @@ const StyledForm = styled('form')<StyledFormProps>`
       font-size: 16px;
       transition: opacity 200ms ease;
     }
-    :active,
-    :focus {
+    &:hover,
+    &:focus {
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08), 0 0 0 3px ${p => rgba(p.inputColor, 0.7)},
+        0px 2px 3px rgba(0, 0, 0, 0.12);
+    }
+    &:focus,
+    &:active {
+      outline: none;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08), 0 0 0 3px ${p => rgba(p.textColor, 0.7)},
+        0px 2px 3px rgba(0, 0, 0, 0.12);
       ::placeholder {
         opacity: 0.5;
         transition: opacity 200ms ease;
@@ -174,16 +183,27 @@ const StyledButton = styled('button')<StyledButtonProps>`
   background-color: ${p => p.btnColor};
   border-radius: 100px;
   border: 0;
+  cursor: pointer;
   white-space: no-wrap;
   text-decoration: none;
   text-transform: uppercase;
   height: 40px;
   padding: 0;
-  :hover,
-  :focus {
+  &:hover,
+  &:focus {
     text-decoration: none;
     filter: drop-shadow(1px 5px 18px rgb(0, 0, 0, 25%));
     transition: filter 250ms ease;
+  }
+  &:focus {
+    box-shadow: 0 0 0 3px ${p => rgba(p.btnColor, 0.5)};
+  }
+  &:focus,
+  &:active {
+    outline: none;
+  }
+  &:active {
+    filter: none;
   }
   h5 {
     padding: 0 ${space.md}px;
