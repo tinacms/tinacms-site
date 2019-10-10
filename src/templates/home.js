@@ -61,7 +61,7 @@ const HomeTemplate = props => {
             </Heading>
             <SetupSteps>
               {dataJson.setup.steps.map(item => (
-                <li key={item.step}>
+                <li key={item.step.trim()}>
                   <p>{item.step}</p>
                 </li>
               ))}
