@@ -38,8 +38,7 @@ const ToggleMenu = styled('ul')<ToggleableProps>`
 
 const ToggleMenuList = styled('li')`
   margin: 0;
-  font-size: 85%;
-  color: ${colors.darkPurple};
+  color: ${colors.darkGrey};
 
   padding-left: 8px;
 
@@ -55,7 +54,7 @@ const ToggleMenuList = styled('li')`
     padding: 4px 10px;
     border: 2px solid transparent;
     border-radius: 5px;
-    color: ${colors.lightPurple};
+    color: ${colors.darkGrey};
     text-decoration: none;
     position: relative;
     transition: all 85ms ease-out;
@@ -74,11 +73,11 @@ const ToggleMenuList = styled('li')`
     }
 
     &.active {
-      color: ${colors.hunterOrange};
+      /* color: ${colors.hunterOrange}; */
       background: ${colors.seafoam};
       border-color: transparent;
       text-decoration: none;
-      font-weight: bold;
+      /* font-weight: bold; */
     }
   }
 `
@@ -90,12 +89,11 @@ const MenuToggle = styled.div`
   padding: 10px 14px;
   h3 {
     margin: 0;
-    color: ${colors.darkPurple};
     ${p =>
       p.isOpen &&
       css`
         color: ${colors.hunterOrange};
-        font-weight: bold;
+        /* font-weight: bold; */
       `};
   }
   svg {
@@ -130,7 +128,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({ node, isOpen, setIsOpen
   return (
     <NavGroup>
       <MenuToggle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
-        <Heading as="h3" size={100} color="grey04" mb="sm">
+        <Heading as="h3" size={400} color={colors.darkGrey} mb="sm">
           {node.slug && <Link to={node.slug}>{node.title}</Link>}
           {!node.slug && node.title}
         </Heading>
