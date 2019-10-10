@@ -57,7 +57,7 @@
         "title": "Text"
       },
       {
-        "id": "/docs/fields/text",
+        "id": "/docs/fields/textarea",
         "slug": "/docs/fields/textarea",
         "title": "Text Area"
       },

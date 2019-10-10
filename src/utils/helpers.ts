@@ -1,23 +1,28 @@
-import { LinkGetProps } from '@reach/router';
-import { MenuNode, TocItem, Edge } from 'interfaces/nodes';
-import { Color, themeProps, Space } from '../components/Theme';
+import { LinkGetProps } from '@reach/router'
+import { MenuNode, TocItem, Edge } from 'interfaces/nodes'
+import { Color, themeProps, Space } from '../components/Theme'
 
-export const getColor = (colorKey: Color) => themeProps.colors[colorKey];
+export const getColor = (colorKey: Color) => themeProps.colors[colorKey]
 
-export const getSpacing = (spaceKey: Space) => themeProps.space[spaceKey];
+export const getSpacing = (spaceKey: Space) => themeProps.space[spaceKey]
 
 export const getPageById = (sectionList: Edge<MenuNode>[], templateFile?: string) => {
   if (!templateFile) {
-    return undefined;
+    return undefined
   }
 
-  const sectionItems = sectionList.map(({ node }) => node.items);
-  const flattenedSectionItems: TocItem[] = ([] as TocItem[]).concat(...sectionItems);
+  const sectionItems = sectionList.map(({ node }) => node.items)
+  const flattenedSectionItems: TocItem[] = ([] as TocItem[]).concat(...sectionItems)
 
-  return flattenedSectionItems.find(item => item.id === templateFile);
-};
+  return flattenedSectionItems.find(item => item.id === templateFile)
+}
+
+export const ensureTrailingSlash = (input: string) => {
+  return input.endsWith('/') ? input : `${input}/`
+}
 
 /** Workaround for activeClassName: https://github.com/gatsbyjs/gatsby/issues/7737 */
-export const isActive = ({ isPartiallyCurrent }: LinkGetProps) => {
-  return isPartiallyCurrent ? { className: 'active' } : {};
-};
+export const isActive = ({ href, location }: LinkGetProps) => {
+  const isCurrent = ensureTrailingSlash(href).endsWith(ensureTrailingSlash(location.pathname))
+  return isCurrent ? { className: 'active' } : {}
+}
