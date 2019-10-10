@@ -5,13 +5,6 @@ import { rgba } from 'polished'
 import { Heading } from 'components/foundations'
 import { colors, space, breakpoints } from 'utils/variables'
 
-/**
- * TODO:
- * move this out of footer since
- * its used on community page also
- *
- */
-
 interface EmailFormProps {
   inputColor: string
   textColor: string
@@ -26,7 +19,6 @@ const EmailForm = (props: EmailFormProps) => {
   const [isEntering, setIsEntering] = useState(false)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    console.log(email)
     e.preventDefault()
     addToMailchimp(email)
       .then(data => {
