@@ -7,11 +7,12 @@ export const colors = {
   greyWhite02: '#E9E9EC',
   hunterOrange: '#EC4815',
   burntSienna: '#CE411D',
-  link: '#8165D7',
-  linkHover: '#664ABA',
+  link: '#000',
+  linkHover: '#EC4815',
   lightPurple: '#302454',
   darkPurple: '#241748',
   grey: '#595959',
+  darkGrey: "#404040",
 
   // Blue
   /** Blue01 - Glitter */
