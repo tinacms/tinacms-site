@@ -39,6 +39,7 @@ const ToggleMenuList = styled('li')`
   margin: 0;
   color: ${colors.darkGrey};
   padding-left: 8px;
+  position: relative;
 
   a {
     display: block;
@@ -64,7 +65,7 @@ const ToggleMenuList = styled('li')`
     &.active {
       border-color: transparent;
       text-decoration: none;
-      /* font-weight: bold; */
+      background-color: ${colors.seafoam};
     }
   }
 
