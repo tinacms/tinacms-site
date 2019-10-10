@@ -11,12 +11,12 @@ To get started:
 
 ```bash
 git clone git@github.com:tinacms/tinacms.git
-cd cms
+cd tinacms
 npm run bootstrap
 npm run build
 
 # Start the Gatsby demo
-cd packages/demo/demo-gatsby
+cd packages/demo-gatsby
 npm run start
 ```
 
