@@ -34,12 +34,10 @@ const BlogPage = () => {
   `)
   return (
     <IndexLayout>
-      <Page BlogPage>
         <Helmet>
           <meta property="og:title" content="Blog" />
         </Helmet>
         <BlogList posts={data.allMarkdownRemark.edges} />
-      </Page>
     </IndexLayout>
   )
 }

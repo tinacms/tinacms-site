@@ -12,6 +12,12 @@ import { breakpoints, dimensions, colors, textSizes, space } from 'utils/variabl
 import { isActive } from 'utils/helpers'
 import { determineFontDimensions, Heading } from 'components/foundations'
 import { Wordmark } from 'components/foundations/icons'
+import Search from '../../search'
+
+const searchIndices = [
+  { name: `Tina-Docs`, title: `Docs`, hitComp: `DocHit` },
+  { name: `Tina-Blog`, title: `Blog`, hitComp: `BlogHit` },
+]
 
 interface DocsLayoutMainInnerProps {
   className?: string
@@ -136,6 +142,7 @@ const DocsLayoutMain: React.SFC<DocsLayoutMainProps> = ({ children, title, class
                 )
               })}
           </DocumentationMenu>
+          <Search collapse indices={searchIndices} />
         </HeaderInner>
       </Header>
       <SkipNavContent>{children}</SkipNavContent>

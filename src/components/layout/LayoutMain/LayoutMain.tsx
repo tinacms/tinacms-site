@@ -9,17 +9,12 @@ import { NavButton } from '../Navigation'
 import { Edge, HeaderMenuItem } from 'interfaces/nodes'
 import { FooterWrapper, Footer } from 'components/layout/Footer'
 
-import { breakpoints, dimensions, colors, textSizes, space } from 'utils/variables'
-import { isActive } from 'utils/helpers'
+import { breakpoints, colors, textSizes, space } from 'utils/variables'
 import { determineFontDimensions, Heading } from 'components/foundations'
 import { Llama_Icon } from 'components/foundations/icons'
-import Search from '../../search'
 import Button from 'components/foundations/Button'
 
-const searchIndices = [
-  { name: `Tina-Docs`, title: `Docs`, hitComp: `DocHit` },
-  { name: `Tina-Blog`, title: `Blog`, hitComp: `BlogHit` },
-]
+
 
 interface LayoutMainInnerProps {
   className?: string
@@ -110,8 +105,8 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
       <Header>
         <HeaderInner hideOnDesktop>
           <NavButton
-            icon="circle"
-            fill={colors.grey05}
+            icon="hamburger"
+            fill={colors.hunterOrange}
             onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}
           >
             Toggle Drawer
@@ -152,7 +147,6 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
                 )
               })}
           </DocumentationMenu>
-          <Search collapse indices={searchIndices} />
           <Button
             to="/docs/getting-started/introduction"
             height={'40'}
