@@ -74,7 +74,6 @@ const reboot = css`
   h6 {
     margin-top: 0;
     margin-bottom: 0.5rem;
-    color: ${colors.hunterOrange};
   }
 
   p {

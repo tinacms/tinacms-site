@@ -8,15 +8,15 @@ const UnorderedList = styled('ul')`
 `
 
 export const h1 = (props: any) => <Heading size={800} as="h1" fontFamily="sansSerif" color="hunterOrange" {...props} />
-export const h2 = (props: any) => <Heading size={600} as="h2" mt="xl" color="hunterOrange" {...props} />
-export const h3 = (props: any) => <Heading size={500} as="h3" mt="xl" color="hunterOrange" {...props} />
-export const h4 = (props: any) => <Heading size={400} as="h4" mt="xl" color="hunterOrange" {...props} />
-export const h5 = (props: any) => <Heading size={400} as="h5" mt="xl" color="hunterOrange" {...props} />
-export const h6 = (props: any) => <Heading size={400} as="h6" mt="xl" color="hunterOrange" {...props} />
-export const p = (props: any) => <Paragraph size={400} mt="sm" color="grey06" {...props} />
+export const h2 = (props: any) => <Heading size={600} as="h2" mt="xl" color="black" {...props} />
+export const h3 = (props: any) => <Heading size={500} as="h3" mt="xl" color="black" {...props} />
+export const h4 = (props: any) => <Heading size={400} as="h4" mt="xl" color="black" {...props} />
+export const h5 = (props: any) => <Heading size={400} as="h5" mt="xl" color="black" {...props} />
+export const h6 = (props: any) => <Heading size={400} as="h6" mt="xl" color="black" {...props} />
+export const p = (props: any) => <Paragraph size={400} mt="sm" color="darkGrey" {...props} />
 export const ul = (props: any) => <UnorderedList {...props} />
 export const ol = (props: any) => <UnorderedList as="ol" {...props} />
-export const li = (props: any) => <Paragraph size={400} as="li" color="grey06" my="xxs" {...props} />
+export const li = (props: any) => <Paragraph size={400} as="li" color="darkGrey" my="xxs" {...props} />
 export const table = styled('table')`
   width: 100%;
   margin: ${space.lg}px 0;
