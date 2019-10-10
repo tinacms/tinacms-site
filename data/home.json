@@ -1,6 +1,6 @@
 {
   "headline": "Realtime content <br>editing. <br>Built into your <br>codebase.",
-  "description": "Tina is a site editing toolkit for modern javascript workflows.",
+  "description": "Tina is an open source site editing toolkit for modern javascript workflows.",
   "hero_video": "/img/placeholder.png",
   "hero_alt": "TinaCMS_video",
   "three_points": [
@@ -10,11 +10,11 @@
     },
     {
       "main": "Edit from your site",
-      "supporting": "Manage content in your site itself, not another platform. Import Tina directly into your components to expose an editing interface for controlling and updating layers of your content mesh. You define the content model and editing powers specific to your site."
+      "supporting": "Manage content on your own site, not another platform. Import Tina directly into your components to expose an editing interface for controlling and updating layers of your content mesh. You define the content model and editing powers specific to your site."
     },
     {
       "main": "Extend & contribute",
-      "supporting": "This is not one-size-fits-all CMS. Tina is a g̶r̶a̶s̶s̶f̶e̶d̶ *grassroots open source javascript toolkit with a plugin-rich ecosystem. You can customize and extend the toolkit to suit your needs. Get and give help with a robust community of contributors."
+      "supporting": "This is not one-size-fits-all CMS. Tina is a grassroots open source javascript toolkit with a plugin-rich ecosystem. You can customize and extend the toolkit to suit your needs. Get and give help with a robust community of contributors."
     }
   ],
   "setup": {
