@@ -54,14 +54,14 @@ const DocumentationMenu = styled('nav')`
   a {
     padding: 8px 0;
     color: ${colors.grey07};
-    font-size: ${textSizes[300].fontSize}px;
-    line-height: ${textSizes[300].lineHeight}px;
+    font-size: ${textSizes[400].fontSize}px;
+    line-height: ${textSizes[400].lineHeight}px;
     font-weight: 600;
 
     &:hover,
     &:focus,
     &.active {
-      color: ${colors.blue07};
+      color: ${colors.hunterOrange};
       text-decoration: none;
       outline: none;
     }

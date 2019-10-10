@@ -69,7 +69,7 @@ const WrapperInner = styled('nav')`
   }
 
   @media (min-width: ${breakpoints.lg}px) {
-    width: 200px;
+    width: 225px;
     flex: 1 1 auto;
     z-index: 2;
     overflow-y: auto;
