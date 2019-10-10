@@ -137,7 +137,7 @@ const HomepageLink = styled(Link)<FontSizeProps>`
     /* width: 50px; */
     height: 100%;
   }
-  padding: ${space.sm}px;
+  padding: 15px 12px 9px 12px;
   &:hover,
   &:focus {
     color: ${colors.grey09};

@@ -33,6 +33,7 @@ const ToggleMenu = styled('ul')<ToggleableProps>`
       transform: scale3d(1, 1, 1);
       border-top: 1px solid ${colors.grey02};
       border-bottom: 1px solid ${colors.grey02};
+      padding: 8px 0;
     `};
 `
 
@@ -40,15 +41,8 @@ const ToggleMenuList = styled('li')`
   margin: 0;
   font-size: 85%;
   color: ${colors.darkPurple};
-
+  position: relative;
   padding-left: 8px;
-
-  &:first-child {
-    padding-top: 8px;
-  }
-  &:last-child {
-    padding-bottom: 8px;
-  }
 
   a {
     display: block;
@@ -62,23 +56,49 @@ const ToggleMenuList = styled('li')`
 
     &:hover,
     &:focus {
-      background: ${colors.seafoam};
       color: ${colors.darkPurple};
       text-decoration: none;
     }
 
     &:focus {
       outline: none;
-      background-color: ${colors.seafoam};
       border-color: ${colors.mintChocoChip};
     }
 
     &.active {
       color: ${colors.hunterOrange};
-      background: ${colors.seafoam};
+      background-color: ${colors.seafoam};
       border-color: transparent;
       text-decoration: none;
       font-weight: bold;
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    border-radius: 5px;
+    background-color: ${colors.seafoam};
+    z-index: -1;
+    transition: all 85ms ease-out;
+    transform: translate3d(0, 100%, 0);
+    opacity: 0;
+  }
+
+  &:hover {
+    color: ${colors.darkPurple};
+    text-decoration: none;
+    &:after {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+    & ~ * {
+      &:after {
+        transform: translate3d(0, -100%, 0);
+      }
     }
   }
 `
@@ -90,7 +110,6 @@ const MenuToggle = styled.div`
   padding: 10px 14px;
   h3 {
     margin: 0;
-    color: ${colors.darkPurple};
     ${p =>
       p.isOpen &&
       css`
