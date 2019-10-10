@@ -83,7 +83,7 @@ const SocialSection = styled('section')`
     grid-template-columns: repeat(3, auto);
     grid-column-gap: 38px;
     width: 600px;
-    margin: 280px auto 165px auto;
+    margin: 260px auto 165px auto;
   }
 `
 
