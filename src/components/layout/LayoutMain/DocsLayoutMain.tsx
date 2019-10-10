@@ -1,30 +1,30 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'gatsby';
-import { SkipNavContent } from '@reach/skip-nav';
+import React from 'react'
+import styled from 'styled-components'
+import { Link } from 'gatsby'
+import { SkipNavContent } from '@reach/skip-nav'
 
-import { NavigationContext, NavigationActionTypes } from '../Navigation/NavigationContext';
-import { Header, HeaderInner } from '../Header';
-import { NavButton } from '../Navigation';
-import { Edge, HeaderMenuItem } from 'interfaces/nodes';
+import { NavigationContext, NavigationActionTypes } from '../Navigation/NavigationContext'
+import { Header, HeaderInner } from '../Header'
+import { NavButton } from '../Navigation'
+import { Edge, HeaderMenuItem } from 'interfaces/nodes'
 
-import { breakpoints, dimensions, colors, textSizes, space } from 'utils/variables';
-import { isActive } from 'utils/helpers';
-import { determineFontDimensions, Heading } from 'components/foundations';
+import { breakpoints, dimensions, colors, textSizes, space } from 'utils/variables'
+import { isActive } from 'utils/helpers'
+import { determineFontDimensions, Heading } from 'components/foundations'
 import { Wordmark } from 'components/foundations/icons'
 
 interface DocsLayoutMainInnerProps {
-  className?: string;
-  isNavigationOpen?: boolean;
+  className?: string
+  isNavigationOpen?: boolean
 }
 
 interface DocsLayoutMainProps extends DocsLayoutMainInnerProps {
-  title: string;
-  headerMenus?: Edge<HeaderMenuItem>[];
+  title: string
+  headerMenus?: Edge<HeaderMenuItem>[]
 }
 
 interface FontSizeProps {
-  size: ReturnType<typeof determineFontDimensions>;
+  size: ReturnType<typeof determineFontDimensions>
 }
 
 const StyledDocsLayoutMain = styled('div')<DocsLayoutMainInnerProps>`
@@ -37,7 +37,7 @@ const StyledDocsLayoutMain = styled('div')<DocsLayoutMainInnerProps>`
   @media (min-width: ${breakpoints.lg}px) {
     margin-left: ${dimensions.widths.sidebar.lg}px;
   }
-`;
+`
 
 const LogoWrapper = styled('div')`
   display: flex;
@@ -45,7 +45,7 @@ const LogoWrapper = styled('div')`
   justify-content: center;
   flex: 1;
   margin: 0 24px;
-`;
+`
 
 const DocumentationMenu = styled('nav')`
   display: flex;
@@ -54,14 +54,14 @@ const DocumentationMenu = styled('nav')`
   a {
     padding: 8px 0;
     color: ${colors.grey07};
-    font-size: ${textSizes[300].fontSize}px;
-    line-height: ${textSizes[300].lineHeight}px;
+    font-size: ${textSizes[400].fontSize}px;
+    line-height: ${textSizes[400].lineHeight}px;
     font-weight: 600;
 
     &:hover,
     &:focus,
     &.active {
-      color: ${colors.blue07};
+      color: ${colors.hunterOrange};
       text-decoration: none;
       outline: none;
     }
@@ -70,7 +70,7 @@ const DocumentationMenu = styled('nav')`
       margin-left: 24px;
     }
   }
-`;
+`
 
 const HomepageLink = styled(Link)<FontSizeProps>`
   color: ${colors.grey09};
@@ -86,12 +86,11 @@ const HomepageLink = styled(Link)<FontSizeProps>`
     text-decoration: none;
   }
   svg {
-
   }
-`;
+`
 
 const DocsLayoutMain: React.SFC<DocsLayoutMainProps> = ({ children, title, className, headerMenus }) => {
-  const { state, dispatch } = React.useContext(NavigationContext);
+  const { state, dispatch } = React.useContext(NavigationContext)
 
   return (
     <StyledDocsLayoutMain className={className} isNavigationOpen={state.isOpen}>
@@ -110,7 +109,7 @@ const DocsLayoutMain: React.SFC<DocsLayoutMainProps> = ({ children, title, class
               size={determineFontDimensions('heading', 400)}
               onClick={() => dispatch({ type: NavigationActionTypes.CLOSE_DRAWER })}
             >
-              <Wordmark color={`${colors.liteGreyPurple}`}/>
+              <Wordmark color={`${colors.lightPurple}`} />
             </HomepageLink>
           </LogoWrapper>
         </HeaderInner>
@@ -121,23 +120,27 @@ const DocsLayoutMain: React.SFC<DocsLayoutMainProps> = ({ children, title, class
                 if (node.external) {
                   return (
                     <a key={node.id} href={node.href} target="_blank" rel="noopener noreferrer">
-                      <Heading as="h1" size={100}>{node.label}</Heading>
+                      <Heading as="h1" size={100}>
+                        {node.label}
+                      </Heading>
                     </a>
-                  );
+                  )
                 }
 
                 return (
                   <Link key={node.id} getProps={isActive} to={node.href}>
-                    <Heading as="h1" size={100}>{node.label}</Heading>
+                    <Heading as="h1" size={100}>
+                      {node.label}
+                    </Heading>
                   </Link>
-                );
+                )
               })}
           </DocumentationMenu>
         </HeaderInner>
       </Header>
       <SkipNavContent>{children}</SkipNavContent>
     </StyledDocsLayoutMain>
-  );
-};
+  )
+}
 
-export default DocsLayoutMain;
+export default DocsLayoutMain

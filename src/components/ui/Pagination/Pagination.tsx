@@ -1,16 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'gatsby';
-import { TocItem } from 'interfaces/nodes';
-import { Text, Heading } from 'components/foundations';
-import { space, breakpoints, colors } from 'utils/variables';
+import React from 'react'
+import styled from 'styled-components'
+import { Link } from 'gatsby'
+import { TocItem } from 'interfaces/nodes'
+import { Text, Heading } from 'components/foundations'
+import { space, breakpoints, colors } from 'utils/variables'
 
 const Wrapper = styled('aside')`
   margin-bottom: ${space.xl}px;
   border-collapse: collapse;
   border-radius: 4px;
   overflow: hidden;
-`;
+`
 
 const WrapperInner = styled('div')`
   display: flex;
@@ -20,7 +20,7 @@ const WrapperInner = styled('div')`
     flex-direction: row;
     justify-content: space-between;
   }
-`;
+`
 
 const PaginationButton = styled('div')`
   display: flex;
@@ -46,11 +46,11 @@ const PaginationButton = styled('div')`
     margin-top: 16px;
     margin-left: 24px;
   }
-`;
+`
 
-const PaginationTitle = styled(Heading)``;
+const PaginationTitle = styled(Heading)``
 
-const PaginationHeading = styled(Text)``;
+const PaginationHeading = styled(Text)``
 
 const PaginationLink = styled(Link)`
   display: flex;
@@ -75,13 +75,13 @@ const PaginationLink = styled(Link)`
     }
 
     ${PaginationTitle} {
-      color: ${colors.burntOrange};
+      color: ${colors.hunterOrange};
     }
   }
 
   &:focus {
     ${PaginationButton} {
-      background-color: ${colors.burntOrange};
+      background-color: ${colors.hunterOrange};
 
       svg {
         g {
@@ -94,7 +94,7 @@ const PaginationLink = styled(Link)`
       color: ${colors.grey07};
     }
   }
-`;
+`
 
 const PaginationItem = styled('div')`
   display: flex;
@@ -138,13 +138,13 @@ const PaginationItem = styled('div')`
       border-left: none;
     }
   }
-`;
+`
 
-const PaginationBlock = styled('div')``;
+const PaginationBlock = styled('div')``
 
 interface PaginationProps {
-  prevPage?: any;
-  nextPage?: any;
+  prevPage?: any
+  nextPage?: any
 }
 
 const Pagination: React.SFC<PaginationProps> = ({ prevPage, nextPage }) => (
@@ -192,7 +192,7 @@ const Pagination: React.SFC<PaginationProps> = ({ prevPage, nextPage }) => (
                 Next
               </PaginationHeading>
               <PaginationTitle size={400} display="inline-block" lineHeight="32px">
-                {nextPage.frontmatter? nextPage.frontmatter.title : nextPage.title}
+                {nextPage.frontmatter ? nextPage.frontmatter.title : nextPage.title}
               </PaginationTitle>
             </PaginationBlock>
             <PaginationButton>
@@ -219,6 +219,6 @@ const Pagination: React.SFC<PaginationProps> = ({ prevPage, nextPage }) => (
       </PaginationItem>
     </WrapperInner>
   </Wrapper>
-);
+)
 
-export default Pagination;
+export default Pagination

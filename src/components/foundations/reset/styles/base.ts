@@ -1,7 +1,7 @@
-import { css } from 'styled-components';
-import { textSizes, colors, breakpoints } from 'utils/variables';
+import { css } from 'styled-components'
+import { textSizes, colors, breakpoints } from 'utils/variables'
 import '../../typography/typefaces/fonts.css'
-
+import { rgba } from 'polished'
 
 const base = css`
   :root {
@@ -12,10 +12,10 @@ const base = css`
   html,
   body,
   #root {
-    font-family: "Inter";
+    font-family: 'Inter';
     width: 100%;
     height: 100%;
-    -webkit-font-smooth: "antialiased";
+    -webkit-font-smooth: 'antialiased';
     color: #000;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -23,27 +23,43 @@ const base = css`
   }
 
   a {
-    color: ${colors.darkMustardYellow};
+    color: ${colors.link};
     text-decoration: none;
-    transition: color 250ms ease;
+    background-color: transparent;
+    transition: all 85ms ease-out;
+  }
 
-    &:hover,
-    &:focus {
-      color: ${colors.darkMustardYellow};
+  a:hover {
+    color: ${colors.linkHover};
+  }
+
+  p,
+  li,
+  blockquote {
+    a {
+      color: ${colors.link};
       text-decoration: underline;
-      transition: color 250ms ease;
+      text-decoration-color: ${rgba(colors.link, 0.3)};
+      -webkit-text-decoration-skip: objects;
+      transition: all 85ms ease-out;
+    }
+
+    a:hover,
+    a:focus {
+      text-decoration-color: ${colors.linkHover};
     }
   }
+
   /**HACK to get responsive mobile type styles */
-  @media(max-width: ${breakpoints.md}px) {
+  @media (max-width: ${breakpoints.md}px) {
     h1 {
       font-size: 32px !important;
       line-height: 1.375 !important;
-      letter-spacing: .1px !important;
+      letter-spacing: 0.1px !important;
     }
     h2 {
       font-size: 24px !important;
-      line-height: 1.333!important;
+      line-height: 1.333 !important;
     }
     h3 {
       font-size: 18px !important;
@@ -57,8 +73,8 @@ const base = css`
 
   p {
     font-size: 18px !important;
-    line-height: 1.5!important;
-    letter-spacing: .8px !important;
+    line-height: 1.5 !important;
+    letter-spacing: 0.8px !important;
   }
 
   img {
@@ -140,6 +156,6 @@ const base = css`
     height: auto;
     clip: auto;
   }
-`;
+`
 
-export default base;
+export default base

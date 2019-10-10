@@ -26,6 +26,9 @@ const Wrapper = styled('aside')<ToggleableProps>`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: ${layerIndexes.dialog};
   overflow-y: auto;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
 
   @media (min-width: ${breakpoints.md}px) and (max-width: ${breakpoints.lg - 1}px) {
     width: ${dimensions.widths.sidebar.sm}px;
@@ -52,18 +55,23 @@ const Wrapper = styled('aside')<ToggleableProps>`
     flex: 0 0 ${dimensions.widths.sidebar.lg}px;
     box-shadow: none;
     border-bottom: none;
+    height: 100%;
     background-color: ${colors.grey01};
   }
 `
 
 const WrapperInner = styled('nav')`
   margin-top: ${dimensions.heights.header}px;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    width: 0 !important;
+  }
 
   @media (min-width: ${breakpoints.lg}px) {
-    width: 200px;
+    width: 225px;
     flex: 1 1 auto;
     z-index: 2;
-    height: 100vh;
     overflow-y: auto;
   }
 `
@@ -129,7 +137,7 @@ const HomepageLink = styled(Link)<FontSizeProps>`
     /* width: 50px; */
     height: 100%;
   }
-  padding: ${space.sm}px;
+  padding: 15px 12px 9px 12px;
   &:hover,
   &:focus {
     color: ${colors.grey09};
@@ -149,7 +157,7 @@ const DocumentationMenu = styled('div')`
     &:hover,
     &:focus,
     &.active {
-      color: ${colors.darkMustardYellow};
+      color: ${colors.hunterOrange};
       text-decoration: none;
       outline: none;
     }
@@ -161,7 +169,7 @@ const DocumentationMenu = styled('div')`
 const DocumentationNav = styled('div')`
   display: flex;
   flex-direction: column;
-  padding: 24px;
+  padding: 12px 0 0 0;
 `
 
 interface DocsNavigationProps {
@@ -215,7 +223,7 @@ function DocsNavigation({ title, navigation, headerMenus }: DocsNavigationProps)
             size={determineFontDimensions('heading', 400)}
             onClick={() => dispatch({ type: NavigationActionTypes.CLOSE_DRAWER })}
           >
-            <Llama_Icon color={`${colors.burntOrange}`} />
+            <Llama_Icon color={`${colors.hunterOrange}`} />
           </HomepageLink>
         </HeaderInner>
         <HeaderInner hideOnDesktop>
@@ -225,7 +233,7 @@ function DocsNavigation({ title, navigation, headerMenus }: DocsNavigationProps)
           {
             <NavButton
               icon="x"
-              fill={colors.darkBurntOrange}
+              fill={colors.hunterOrange}
               onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}
             >
               Toggle Drawer

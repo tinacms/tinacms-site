@@ -1,14 +1,14 @@
-import styled from 'styled-components';
-import { dimensions, breakpoints, colors, layerIndexes } from 'utils/variables';
+import styled from 'styled-components'
+import { dimensions, breakpoints, colors, layerIndexes } from 'utils/variables'
 
 interface ToggleableProps {
-  isOpen?: boolean;
+  isOpen?: boolean
 }
 
 const TocWrapper = styled('section')<ToggleableProps>`
   display: block;
   margin-left: 24px;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 28px;
 
   @media (min-width: ${breakpoints.xl}px) {
@@ -65,6 +65,6 @@ const TocWrapper = styled('section')<ToggleableProps>`
       color: ${colors.grey07};
     }
   }
-`;
+`
 
-export default TocWrapper;
+export default TocWrapper

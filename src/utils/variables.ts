@@ -1,31 +1,18 @@
 /** Color values mapped by Aksara color ID. */
 export const colors = {
   //Mint Green
-  seafoam: "#E6FAF8",
-  mintChocoChip: "#B4F4E0",
+  seafoam: '#E6FAF8',
+  mintChocoChip: '#B4F4E0',
   greyWhite: '#f4f4f4',
-  greyWhite02: 'E9E9EC',
+  greyWhite02: '#E9E9EC',
   hunterOrange: '#EC4815',
   burntSienna: '#CE411D',
+  link: '#000',
+  linkHover: '#EC4815',
+  lightPurple: '#302454',
   darkPurple: '#241748',
   grey: '#595959',
-
-  //TODO -- find and replace all these colors
-  uberLiteMintGreen: '#E6FAF8',
-  liteMintGreen: '#E6FAF8',
-  medMintGreen: '#CB4F4E0',
-  darkMintGreen: '#B4F4E0',
-  olive: '#83A180',
-  burntOrange: '#EC4815',
-  darkBurntOrange: '#CE411D',
-  mustardYellow: '#F9D957',
-  medMustardYellow: '#D7930E',
-  darkMustardYellow: '#BF9019',
-  liteGreyPurple: '#7E7B92',
-  medGreyPurple: '#676577',
-  darkGreyPurple: '#575568',
-  vDarkGreyPurple:'#373542',
-  plum: '#241748',
+  darkGrey: "#404040",
 
   // Blue
   /** Blue01 - Glitter */
@@ -173,133 +160,133 @@ export const colors = {
 
   // Helper colors
   white: '#fff',
-  black: '#000'
-};
+  black: '#000',
+}
 
 export const systemFonts =
-  "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'";
+  "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
 
 export const fonts = {
   system: systemFonts,
   sansSerif: `'Inter', ${systemFonts}`,
-  monospace: "'SF Mono', Inconsolata, Menlo, Monaco, Consolas, 'Courier New', Courier, monospace;"
-};
+  monospace: "'SF Mono', Inconsolata, Menlo, Monaco, Consolas, 'Courier New', Courier, monospace;",
+}
 
 /** Heading size values mapped by size number.
  *
  * HACK for responsive mobile style overrides live
  * in components/foundations/reset/styles/base.ts
  * Below are type styles > 768
-*/
+ */
 export const headingSizes = {
   h1: {
     fontSize: 64,
     lineHeight: 83,
-    letterSpacing: .1
+    letterSpacing: 0.1,
   },
   h2: {
     fontSize: 32,
     lineHeight: 45,
-    letterSpacing: .1
+    letterSpacing: 0.1,
   },
   h3: {
     fontSize: 24,
     lineHeight: 32,
-    letterSpacing: .12
+    letterSpacing: 0.12,
   },
   h4: {
     fontSize: 16,
     lineHeight: 22,
-    letterSpacing: .1
+    letterSpacing: 0.1,
   },
   label: {
     fontSize: 16,
     lineHeight: 20,
-    letterSpacing: .12
+    letterSpacing: 0.12,
   },
   body: {
     fontSize: 18,
     lineHeight: 25,
-    letterSpacing: .12
+    letterSpacing: 0.12,
   },
   900: {
     fontSize: 42,
     lineHeight: 48,
-    letterSpacing: -0.2
+    letterSpacing: -0.2,
   },
   800: {
     fontSize: 35,
     lineHeight: 40,
-    letterSpacing: -0.2
+    letterSpacing: -0.2,
   },
   700: {
     fontSize: 29,
     lineHeight: 32,
-    letterSpacing: -0.2
+    letterSpacing: -0.2,
   },
   600: {
     fontSize: 24,
     lineHeight: 28,
-    letterSpacing: -0.05
+    letterSpacing: -0.05,
   },
   500: {
     fontSize: 20,
     lineHeight: 24,
-    letterSpacing: -0.05
+    letterSpacing: -0.05,
   },
   400: {
     fontSize: 16,
     lineHeight: 20,
-    letterSpacing: -0.05
+    letterSpacing: -0.05,
   },
   300: {
     fontSize: 14,
     lineHeight: 20,
-    letterSpacing: -0.05
+    letterSpacing: -0.05,
   },
   200: {
     fontSize: 12,
     lineHeight: 16,
-    letterSpacing: 0
+    letterSpacing: 0,
   },
   100: {
     fontSize: 12,
     lineHeight: 16,
-    letterSpacing: 0.5
-  }
-};
+    letterSpacing: 0.5,
+  },
+}
 
 /** Text size values mapped by size number. */
 export const textSizes = {
   500: {
     fontSize: 20,
-    lineHeight: 24
+    lineHeight: 24,
   },
   400: {
     fontSize: 16,
-    lineHeight: 20
+    lineHeight: 20,
   },
   300: {
     fontSize: 14,
-    lineHeight: 20
+    lineHeight: 20,
   },
   200: {
     fontSize: 12,
-    lineHeight: 16
-  }
-};
+    lineHeight: 16,
+  },
+}
 
 /** Text size values mapped by size number. */
 export const paragraphSizes = {
   400: {
     fontSize: 16,
-    lineHeight: 24
+    lineHeight: 24,
   },
   300: {
     fontSize: 14,
-    lineHeight: 24
-  }
-};
+    lineHeight: 24,
+  },
+}
 
 /** Space values (in px) mapped by size designators */
 export const space = {
@@ -330,8 +317,8 @@ export const space = {
   lrgDesktop: 72,
   lrgMobile: 60,
   xlDekstop: 180,
-  xlMobile: 120
-};
+  xlMobile: 120,
+}
 
 /** Breakpoint values (in px) mapped by size designators */
 export const breakpoints = {
@@ -346,8 +333,8 @@ export const breakpoints = {
   lg: 1024,
   desktop: 1280,
   /** 1440px and above */
-  xl: 1440
-};
+  xl: 1440,
+}
 
 export const layerIndexes = {
   base: 0,
@@ -356,19 +343,19 @@ export const layerIndexes = {
   stickyNav: 8,
   overlay: 16,
   dialog: 24,
-  popout: 32
-};
+  popout: 32,
+}
 
 export const dimensions = {
   widths: {
     sidebar: {
       sm: 240,
       md: 280,
-      lg: 200
+      lg: 200,
     },
-    containerPadding: space.lg
+    containerPadding: space.lg,
   },
   heights: {
-    header: 64
-  }
-};
+    header: 64,
+  },
+}
