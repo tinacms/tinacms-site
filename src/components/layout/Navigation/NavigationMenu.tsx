@@ -115,7 +115,7 @@ const MenuToggle = styled.div`
   svg {
     position: absolute;
     right: 14px;
-    top: 9px;
+    top: 11px;
     fill: ${colors.grey};
     width: 18px;
     height: auto;
