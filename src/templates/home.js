@@ -174,8 +174,9 @@ const HeroSection = styled('section')`
     img,
     video {
       margin: 0 auto;
-      filter: drop-shadow(0 24px 24px #aeaeae);
+      filter: drop-shadow(0 24px 24px #d3e3e6);
       border-radius: 10px;
+      max-width: 800px;
     }
   }
   @media (min-width: ${breakpoints.iphonePlus}px) {
