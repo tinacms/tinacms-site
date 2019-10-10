@@ -8,20 +8,12 @@ import { Heading, Paragraph } from 'components/foundations'
 import Button from 'components/foundations/Button'
 import { TwitterIcon, GithubIcon, SlackIcon } from 'components/foundations/icons'
 import { colors, space, breakpoints } from 'utils/variables'
-import { EmailForm } from  'components/layout/Footer'
+import { EmailForm } from 'components/layout/Footer'
 
 const Wrapper = styled('div')`
-  padding:
-    0
-    ${space.smallMobile}px
-    ${space.xSmallMobile}px
-    ${space.smallMobile}px;
-  @media(min-width: ${breakpoints.lg}px) {
-    padding:
-      0
-      ${space.smallDesktop}px
-      ${space.xSmallDesktop}px
-      ${space.smallDesktop}px;
+  padding: 0 ${space.smallMobile}px ${space.xSmallMobile}px ${space.smallMobile}px;
+  @media (min-width: ${breakpoints.lg}px) {
+    padding: 0 ${space.smallDesktop}px ${space.xSmallDesktop}px ${space.smallDesktop}px;
   }
 `
 const HeroSection = styled('section')`
@@ -32,7 +24,7 @@ const HeroSection = styled('section')`
   text-align: center;
   aside#base {
     background-color: ${colors.seafoam};
-    background: radial-gradient(circle at center bottom,rgb(203,238,243, .6),#E6FAF8 50%);
+    background: radial-gradient(circle at center bottom, rgb(203, 238, 243, 0.6), #e6faf8 50%);
     width: 100%;
     height: 280px;
     z-index: -2;
@@ -85,7 +77,7 @@ const SocialSection = styled('section')`
   grid-row-gap: 22px;
   justify-content: center;
   margin: 145px 0 65px 0;
-  @media(min-width: ${breakpoints.md}px) {
+  @media (min-width: ${breakpoints.md}px) {
     margin-top: 260px;
     grid-template-rows: unset;
     grid-template-columns: repeat(3, auto);
@@ -108,7 +100,6 @@ const SocialItem = styled('div')`
       transform: scale3d(1, 1, 1);
       transition: transform 180ms ease-in;
     }
-
   }
   a:hover {
     text-decoration: none;
@@ -116,7 +107,6 @@ const SocialItem = styled('div')`
       transform: scale3d(1.1, 1.1, 1.1);
       transition: transform 250ms ease-out;
     }
-
   }
   svg {
     width: 66px;
@@ -131,7 +121,7 @@ const SocialItem = styled('div')`
     height: 30px;
     border-left: 2px dotted ${colors.hunterOrange};
   }
-  @media(min-width: ${breakpoints.md}px) {
+  @media (min-width: ${breakpoints.md}px) {
     flex-direction: row;
     width: unset;
     align-items: flex-end;
@@ -143,7 +133,7 @@ const SocialItem = styled('div')`
       height: 1px;
       width: 57px;
       border-left: unset;
-      border-top:3px dotted ${colors.hunterOrange};
+      border-top: 3px dotted ${colors.hunterOrange};
       padding-bottom: 8px;
       margin-left: 38px;
     }
@@ -197,13 +187,13 @@ const InfoSection = styled('section')`
     transform: scale3d(1.03, 1.03, 1.13);
     transition: all 250ms ease-out;
   }
-  @media(min-width: ${breakpoints.md}px) {
+  @media (min-width: ${breakpoints.md}px) {
     text-align: left;
     max-width: 1150px;
     margin: 0 auto ${space.lrgDesktop}px auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: "info gif";
+    grid-template-areas: 'info gif';
     grid-column-gap: ${space.smallMobile}px;
     figure {
       flex-direction: row;
@@ -220,7 +210,7 @@ const InfoSection = styled('section')`
       width: unset;
     }
   }
-  @media(min-width: ${breakpoints.lg}px) {
+  @media (min-width: ${breakpoints.lg}px) {
     margin-bottom: 165px;
     span#info-wrap {
       width: 85%;
@@ -232,17 +222,12 @@ const InfoSection = styled('section')`
       display: flex;
       margin-right: ${space.smallDesktop}px;
     }
-
   }
 `
 
 const NewsletterSection = styled('section')`
   background-color: ${colors.seafoam};
-  padding:
-    ${space.medMobile}px
-    ${space.smallMobile}px
-    ${space.smallDesktop}px
-    ${space.smallMobile}px;
+  padding: ${space.medMobile}px ${space.smallMobile}px ${space.smallDesktop}px ${space.smallMobile}px;
   form {
     display: flex;
     flex-direction: column-reverse;
@@ -250,12 +235,12 @@ const NewsletterSection = styled('section')`
       display: none;
     }
     input {
-      filter: inset 3px 1px 5px rgba(0,0,0,0.15);
+      filter: inset 3px 1px 5px rgba(0, 0, 0, 0.15);
       margin-top: 0;
       margin-bottom: ${space.smallMobile}px;
     }
   }
-  @media(min-width: ${breakpoints.md}px) {
+  @media (min-width: ${breakpoints.md}px) {
     text-align: center;
     form {
       display: grid;
@@ -264,8 +249,8 @@ const NewsletterSection = styled('section')`
       grid-template-rows: auto;
       grid-row-gap: 38px;
       grid-template-areas:
-          "cta cta"
-          "input btn";
+        'cta cta'
+        'input btn';
       max-width: 620px;
       margin: 0 auto;
       h3 {
@@ -280,18 +265,18 @@ const NewsletterSection = styled('section')`
       }
     }
   }
-  @media(min-width: ${breakpoints.lg}px) {
+  @media (min-width: ${breakpoints.lg}px) {
     padding: ${space.lrgMobile}px ${space.smallDesktop}px;
   }
 `
 
-function CommunityTemplate ({data}) {
+function CommunityTemplate({ data }) {
   const frontmatter = data.markdownRemark.frontmatter
   const metadata = data.site.siteMetadata
   return (
     <IndexLayout>
       <Helmet>
-          <meta property="og:title" content="Home" />
+        <meta property="og:title" content="Home" />
       </Helmet>
       <Wrapper>
         <HeroSection>
@@ -306,33 +291,33 @@ function CommunityTemplate ({data}) {
           <SocialItem>
             <a href={`${metadata.social.twitter}`} target="_blank">
               <TwitterIcon color={`${colors.hunterOrange}`} />
-                <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
-                  Tweet us
-                </Heading>
-              </a>
-              <span className="dotted-line"/>
+              <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
+                Tweet us
+              </Heading>
+            </a>
+            <span className="dotted-line" />
           </SocialItem>
           <SocialItem>
             <a href={`${metadata.social.github}`} target="_blank">
               <GithubIcon color={`${colors.hunterOrange}`} />
-                <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
-                  Fork us
-                </Heading>
-              </a>
-              <span className="dotted-line"/>
+              <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
+                Fork us
+              </Heading>
+            </a>
+            <span className="dotted-line" />
           </SocialItem>
           <SocialItem>
             <a href={`${metadata.social.slack}`} target="_blank">
               <SlackIcon color={`${colors.hunterOrange}`} />
-                <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
-                  Slack us
-                </Heading>
+              <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
+                Slack us
+              </Heading>
             </a>
           </SocialItem>
         </SocialSection>
         <InfoSection>
           <figure>
-            <img src={frontmatter.gif[0].src} alt={frontmatter.gif[0].gif_alt}/>
+            <img src={frontmatter.gif[0].src} alt={frontmatter.gif[0].gif_alt} />
           </figure>
           <span id="info-wrap">
             <Heading as="h2" size="h2" color={`${colors.hunterOrange}`}>
@@ -358,11 +343,19 @@ function CommunityTemplate ({data}) {
             </span>
           </span>
         </InfoSection>
-        </Wrapper>
-        <NewsletterSection>
-          <Heading as="h2" size="h2" color={colors.hunterOrange}>Newsletter ✌️</Heading>
-          <EmailForm cta="We move quick. Stay up to date." inputColor="#fff" textColor={colors.hunterOrange} btnColor={colors.hunterOrange} btnTextColor={colors.seafoam} />
-        </NewsletterSection>
+      </Wrapper>
+      <NewsletterSection>
+        <Heading as="h2" size="h2" color={colors.hunterOrange}>
+          Newsletter ✌️
+        </Heading>
+        <EmailForm
+          cta="We move quick. Stay up to date."
+          inputColor="#fff"
+          textColor={colors.hunterOrange}
+          btnColor={colors.hunterOrange}
+          btnTextColor={colors.seafoam}
+        />
+      </NewsletterSection>
     </IndexLayout>
   )
 }

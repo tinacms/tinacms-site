@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
-import addToMailchimp from 'gatsby-plugin-mailchimp';
-import styled from 'styled-components';
+import React, { useState } from 'react'
+import addToMailchimp from 'gatsby-plugin-mailchimp'
+import styled from 'styled-components'
 
 import { Heading } from 'components/foundations'
 import { colors, space, breakpoints } from 'utils/variables'
@@ -12,25 +12,25 @@ import { colors, space, breakpoints } from 'utils/variables'
  *
  */
 
- interface EmailFormProps {
-   inputColor: string
-   textColor: string
-   cta: string
-   btnColor: string
-   btnTextColor: string
-   isFooter: boolean
- }
+interface EmailFormProps {
+  inputColor: string
+  textColor: string
+  cta: string
+  btnColor: string
+  btnTextColor: string
+  isFooter: boolean
+}
 
 const EmailForm = (props: EmailFormProps) => {
-  const  [ email, setEmail ] = useState('')
-  const [ isEntering, setIsEntering] = useState(false)
+  const [email, setEmail] = useState('')
+  const [isEntering, setIsEntering] = useState(false)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     console.log(email)
-    e.preventDefault();
+    e.preventDefault()
     addToMailchimp(email)
-      .then((data) => {
-        alert(data.msg);
+      .then(data => {
+        alert(data.msg)
       })
       .catch((error: Error) => {
         // Errors in here are client side
@@ -39,53 +39,53 @@ const EmailForm = (props: EmailFormProps) => {
           alert('Looks like your browser is blocking this. Try to disable any tracker-blocking feature and resubmit.')
         }
         console.error(error)
-      });
-  };
+      })
+  }
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsEntering(true)
-    setEmail(event.currentTarget.value);
-  };
+    setEmail(event.currentTarget.value)
+  }
 
   return (
-    <StyledForm inputColor={props.inputColor} textColor={props.textColor} onSubmit={handleSubmit} >
-      <Heading as="h3" size="h3">{props.cta}</Heading>
+    <StyledForm inputColor={props.inputColor} textColor={props.textColor} onSubmit={handleSubmit}>
+      <Heading as="h3" size="h3">
+        {props.cta}
+      </Heading>
 
-      {
-        props.isFooter ?
-        isEntering  &&
+      {props.isFooter ? (
+        isEntering && (
+          <StyledButton btnColor={props.btnColor} type="submit">
+            <Heading as="h5" size="label" color={`${props.btnTextColor}`}>
+              Subscribe
+            </Heading>
+          </StyledButton>
+        )
+      ) : (
         <StyledButton btnColor={props.btnColor} type="submit">
           <Heading as="h5" size="label" color={`${props.btnTextColor}`}>
             Subscribe
           </Heading>
         </StyledButton>
-        :
-        <StyledButton btnColor={props.btnColor} type="submit">
-          <Heading as="h5" size="label" color={`${props.btnTextColor}`}>
-            Subscribe
-          </Heading>
-        </StyledButton>
-      }
-        <input
-          placeholder="Your email..."
-          name="email"
-          type="text"
-          onChange={handleEmailChange}
-          onFocus={handleEmailChange}
-        />
-
+      )}
+      <input
+        placeholder="Your email..."
+        name="email"
+        type="text"
+        onChange={handleEmailChange}
+        onFocus={handleEmailChange}
+      />
     </StyledForm>
-  );
-
+  )
 }
 
 EmailForm.defaultProps = {
-  inputColor: "#B13617",
+  inputColor: '#B13617',
   textColor: colors.mintChocoChip,
   cta: 'Stay in touch 👉',
   btnColor: colors.seafoam,
   btnTextColor: colors.hunterOrange,
-  isFooter: false
+  isFooter: false,
 }
 
 export default EmailForm
@@ -95,24 +95,24 @@ interface StyledFormProps {
   textColor: string
 }
 
-const StyledForm= styled('form')<StyledFormProps>`
+const StyledForm = styled('form')<StyledFormProps>`
   padding: ${space.xSmallDesktop}px 0;
   display: grid;
   grid-template-columns: repeat(2, auto);
   grid-template-rows: auto;
   grid-template-areas:
-    "cta btn"
-    "input input";
+    'cta btn'
+    'input input';
   h3 {
     grid-area: cta;
     align-self: center;
     margin-right: 12px;
   }
   input {
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08), 0px 2px 3px rgba(0, 0, 0, 0.12);
     grid-area: input;
     border: 0;
-    border-radius: 0.25rem;
+    border-radius: 5px;
     background: ${p => p.inputColor};
     color: ${p => p.textColor};
     font-family: system-ui, sans-serif;
@@ -120,10 +120,10 @@ const StyledForm= styled('form')<StyledFormProps>`
     line-height: 1.2;
     white-space: nowrap;
     text-decoration: none;
-    cursor: pointer;
+    cursor: text;
     height: 40px;
     width: 100%;
-    padding: 0 18px;
+    padding: 0 16px;
     margin-top: ${space.xSmallDesktop}px;
     font-family: 'tuner-regular';
     font-size: 16px;
@@ -137,16 +137,16 @@ const StyledForm= styled('form')<StyledFormProps>`
     :active,
     :focus {
       ::placeholder {
-        opacity: .5;
+        opacity: 0.5;
         transition: opacity 200ms ease;
       }
     }
   }
-  @media(min-width: ${breakpoints.lg}px) {
+  @media (min-width: ${breakpoints.lg}px) {
     padding: 10px 0;
     display: grid;
     grid-template-columns: repeat(3, auto);
-    grid-template-areas:"cta input btn";
+    grid-template-areas: 'cta input btn';
     grid-column-gap: ${space.xSmallDesktop}px;
     input {
       margin: 0;
@@ -167,7 +167,7 @@ const StyledButton = styled('button')<StyledButtonProps>`
   justify-self: end;
   grid-area: btn;
   width: max-content;
-  filter: drop-shadow(1px 2px 18px rgb(0,0,0,12%));
+  filter: drop-shadow(1px 2px 18px rgb(0, 0, 0, 12%));
   transition: filter 250ms ease;
   display: flex;
   align-items: center;
@@ -182,11 +182,10 @@ const StyledButton = styled('button')<StyledButtonProps>`
   :hover,
   :focus {
     text-decoration: none;
-    filter: drop-shadow(1px 5px 18px rgb(0,0,0,25%));
+    filter: drop-shadow(1px 5px 18px rgb(0, 0, 0, 25%));
     transition: filter 250ms ease;
   }
   h5 {
     padding: 0 ${space.md}px;
   }
 `
-
