@@ -8,7 +8,7 @@ interface ToggleableProps {
 const TocWrapper = styled('section')<ToggleableProps>`
   display: block;
   margin-left: 24px;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 28px;
 
   @media (min-width: ${breakpoints.xl}px) {
