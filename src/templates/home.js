@@ -62,7 +62,7 @@ const HomeTemplate = props => {
             <SetupSteps>
               {dataJson.setup.steps.map(item => (
                 <li key={item.step}>
-                  <p>- {item.step}</p>
+                  <p>{item.step}</p>
                 </li>
               ))}
             </SetupSteps>
@@ -349,18 +349,27 @@ const SetupWrapper = styled('div')`
   }
 `
 
-const SetupSteps = styled('ol')`
+const SetupSteps = styled('ul')`
   margin: 0;
   list-style: none;
   padding-left: 0;
   color: ${colors.darkPurple};
   li {
+    position: relative;
     margin-bottom: ${space.smallMobile}px;
+    padding-left: 2.5em;
+    &:before {
+      content: '↳';
+      position: absolute;
+      font-weight: bold;
+      left: 2px;
+      top: 0;
+      font-size: 1.8em;
+      line-height: 1.1;
+      color: ${colors.hunterOrange};
+    }
   }
   li:last-child {
     margin-bottom: ${space.smallDesktop}px;
-  }
-  @media (min-width: ${breakpoints.lg}px) {
-    padding-left: ${space.xs}px;
   }
 `
