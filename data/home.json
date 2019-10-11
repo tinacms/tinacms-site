@@ -1,6 +1,6 @@
 {
-  "headline": "Realtime content <br>editing. <br>Built into your <br>codebase.",
-  "description": "Tina is an open source site editing toolkit for modern javascript workflows.",
+  "headline": "Build real-time editing into your site.",
+  "description": "Tina is an open-source site editing toolkit for React-based frameworks — Gatsby & Next.js",
   "hero_video": "/img/placeholder.png",
   "hero_alt": "TinaCMS_video",
   "three_points": [

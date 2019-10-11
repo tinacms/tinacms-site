@@ -165,7 +165,7 @@ const HeroSection = styled('section')`
     clip-path: ellipse();
   }
   h1 {
-    max-width: 320px;
+    max-width: 290px;
     margin-top: ${space.medMobile}px;
   }
   figure {
@@ -192,7 +192,7 @@ const HeroSection = styled('section')`
       min-height: 600px;
     }
     h1 {
-      max-width: 800px;
+      max-width: 550px;
       margin-top: ${space.lrgDesktop}px;
     }
     figure {
