@@ -16,11 +16,13 @@ import { Pagination } from 'components/ui/Pagination'
 import { TocWrapper, TocFloatingButton } from 'components/docs/TableOfContents'
 import IndexLayout from 'layouts'
 import renderAst from 'utils/renderAst'
+import { useSidebar } from '@tinacms/tinacms'
 
 const PageTemplate = ({ data, setIsEditing, isEditing }) => {
   const [tocIsOpen, setTocIsOpen] = React.useState(false)
   const { markdownRemark, site } = data
   const { prev, next } = markdownRemark.frontmatter
+  const sidebar = useSidebarbar()
 
   return (
     <IndexLayout>
@@ -42,7 +44,9 @@ const PageTemplate = ({ data, setIsEditing, isEditing }) => {
               </TinaField>
             </MarkdownContent>
             <FooterWrapper>
-              <button onClick={() => setIsEditing(p => !p)}>{isEditing ? 'Preview' : 'Edit'}</button>
+              {!sidebar.hidden && (
+                <button onClick={() => setIsEditing(p => !p)}>{isEditing ? 'Preview' : 'Edit'}</button>
+              )}
               {(prevPage || nextPage) && <Pagination prevPage={prevPage} nextPage={nextPage} />}
               <Footer />
             </FooterWrapper>

@@ -16,6 +16,7 @@ import { Pagination } from 'components/ui/Pagination'
 import { TocWrapper, TocFloatingButton } from 'components/docs/TableOfContents'
 import DocsLayout from 'layouts/docs'
 import renderAst from 'utils/renderAst'
+import { useSidebar } from '@tinacms/tinacms'
 
 const DocsTemplate = ({ data, setIsEditing, isEditing }) => {
   const [tocIsOpen, setTocIsOpen] = React.useState(false)
@@ -23,6 +24,7 @@ const DocsTemplate = ({ data, setIsEditing, isEditing }) => {
   const { prev, next } = markdownRemark.frontmatter
   const prevPage = getPageById(sectionList.edges, prev)
   const nextPage = getPageById(sectionList.edges, next)
+  const sidebar = useSidebar()
 
   return (
     <DocsLayout sidebarNav={sectionList}>
@@ -51,7 +53,9 @@ const DocsTemplate = ({ data, setIsEditing, isEditing }) => {
               </TinaField>
             </MarkdownContent>
             <FooterWrapper>
-              <button onClick={() => setIsEditing(p => !p)}>{isEditing ? 'Preview' : 'Edit'}</button>
+              {!sidebar.hidden && (
+                <button onClick={() => setIsEditing(p => !p)}>{isEditing ? 'Preview' : 'Edit'}</button>
+              )}
               {(prevPage || nextPage) && <Pagination prevPage={prevPage} nextPage={nextPage} />}
             </FooterWrapper>
           </Container>

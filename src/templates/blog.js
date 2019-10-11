@@ -17,7 +17,7 @@ import { Pagination } from 'components/ui/Pagination'
 import { Footer, FooterWrapper } from 'components/layout/Footer'
 import IndexLayout from 'layouts'
 import renderAst from 'utils/renderAst'
-
+import { useSidebar } from '@tinacms/tinacms'
 
 function BlogTemplate(props) {
   const blogPostData = props.data.markdownRemark
@@ -25,6 +25,7 @@ function BlogTemplate(props) {
   const { next, previous } = getNextPrevPost(paginationData, blogPostData.fields.slug)
   //for liveRemarkForm
   const { isEditing, setIsEditing } = props
+  const sidebar = useSidebar()
 
   function getNextPrevPost(paginationData, thisPostSlug) {
     const currentPost = paginationData.filter(post => post.node.fields.slug === thisPostSlug)[0]
@@ -35,22 +36,22 @@ function BlogTemplate(props) {
     <IndexLayout>
       <Page singleBlogPage>
         <Helmet>
-          <meta property="og:title" content={`Blog | ${blogPostData.frontmatter.title}`}/>
+          <meta property="og:title" content={`Blog | ${blogPostData.frontmatter.title}`} />
         </Helmet>
         <StyledBlogPost>
-            <Container>
-              <Heading>{blogPostData.frontmatter.title}</Heading>
-              <BlogMetaData author={blogPostData.frontmatter.author} date={blogPostData.frontmatter.date} />
-              <MarkdownContent>
-                <TinaField name="rawMarkdownBody" Component={Wysiwyg}>
-                  {renderAst(blogPostData.htmlAst)}
-                </TinaField>
-              </MarkdownContent>
-            </Container>
-            <FooterWrapper>
-              <button onClick={() => setIsEditing(p => !p)}>{isEditing ? 'Preview' : 'Edit'}</button>
-                {(previous || next) && <Pagination prevPage={previous && previous} nextPage={next && next} />}
-            </FooterWrapper>
+          <Container>
+            <Heading>{blogPostData.frontmatter.title}</Heading>
+            <BlogMetaData author={blogPostData.frontmatter.author} date={blogPostData.frontmatter.date} />
+            <MarkdownContent>
+              <TinaField name="rawMarkdownBody" Component={Wysiwyg}>
+                {renderAst(blogPostData.htmlAst)}
+              </TinaField>
+            </MarkdownContent>
+          </Container>
+          <FooterWrapper>
+            {!sidebar.hidden && <button onClick={() => setIsEditing(p => !p)}>{isEditing ? 'Preview' : 'Edit'}</button>}
+            {(previous || next) && <Pagination prevPage={previous && previous} nextPage={next && next} />}
+          </FooterWrapper>
         </StyledBlogPost>
       </Page>
     </IndexLayout>
@@ -60,39 +61,36 @@ function BlogTemplate(props) {
 const BlogTemplateOptions = {
   fields: [
     {
-      label: "Title",
-      name: "rawFrontmatter.title",
-      component: "text"
+      label: 'Title',
+      name: 'rawFrontmatter.title',
+      component: 'text',
     },
     {
-      label: "Date Posted",
-      name: "rawFrontmatter.date",
-      component: "date"
+      label: 'Date Posted',
+      name: 'rawFrontmatter.date',
+      component: 'date',
     },
     {
-      label: "Author",
-      name: "rawFrontmatter.author",
-      component: "text"
+      label: 'Author',
+      name: 'rawFrontmatter.author',
+      component: 'text',
     },
     {
-      label: "Body",
-      name: "rawMarkdownBody",
-      component: "markdown"
-    }
-
-  ]
-
+      label: 'Body',
+      name: 'rawMarkdownBody',
+      component: 'markdown',
+    },
+  ],
 }
-
 
 export default liveRemarkForm(BlogTemplate, BlogTemplateOptions)
 
 const StyledBlogPost = styled(DocsWrapper)`
-  @media( min-width: ${breakpoints.md}px) {
+  @media (min-width: ${breakpoints.md}px) {
     min-width: 650px;
     margin: ${space.xl}px auto;
   }
-  @media( min-width: ${breakpoints.xl}px) {
+  @media (min-width: ${breakpoints.xl}px) {
     min-width: 768px;
   }
 `
@@ -114,33 +112,33 @@ export const query = graphql`
       }
       htmlAst
     }
-    allMarkdownRemark(filter: {
-      fileRelativePath: {glob: "/content/blog/**/*.md"}},
-      sort: {fields: frontmatter___date})
-      {
-        edges {
-          next {
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-            }
+    allMarkdownRemark(
+      filter: { fileRelativePath: { glob: "/content/blog/**/*.md" } }
+      sort: { fields: frontmatter___date }
+    ) {
+      edges {
+        next {
+          fields {
+            slug
           }
-          previous {
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-            }
+          frontmatter {
+            title
           }
-          node {
-            fields {
-              slug
-            }
+        }
+        previous {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+          }
+        }
+        node {
+          fields {
+            slug
           }
         }
       }
+    }
   }
 `
