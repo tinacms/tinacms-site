@@ -2,11 +2,86 @@ import React, { useState }from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
+import { remarkForm } from '@tinacms/react-tinacms-remark'
 
 import IndexLayout from 'layouts'
 import { Heading, Paragraph } from 'components/foundations'
 import { colors, space, breakpoints } from 'utils/variables'
 import { TeamsForm } from 'components/foundations'
+
+function TeamsTemplate (props) {
+  const frontmatter = props.data.markdownRemark.frontmatter
+  return (
+    <IndexLayout page="teams">
+     <Helmet>
+        <meta property="og:title" content="Teams" />
+      </Helmet>
+      <BgColor />
+      <Wrapper>
+        <StyledInfoSection>
+          <Heading as="h2" size="h2" color={`${colors.mintChocoChip}`}>{frontmatter.headline}</Heading>
+          <span id="dotted-line" />
+          <StyledPoints>
+            {frontmatter.supporting_points.map(item =>
+              <li key={item.point.trim()}>
+                <Paragraph as="p" size="body" color="white">
+                  {item.point}
+                </Paragraph>
+              </li>)}
+          </StyledPoints>
+          <Heading as="h2" size="h2" color={`${colors.hunterOrange}`} className="coming-soon">Coming Soon...</Heading>
+        </StyledInfoSection>
+        <StyledFormSection>
+          <Heading as="h5" size="label" color={colors.hunterOrange}>
+            Teams Private Beta
+          </Heading>
+          <TeamsForm />
+        </StyledFormSection>
+      </Wrapper>
+    </IndexLayout>
+  )
+}
+
+const TeamsTemplateOptions = {
+  fields: [
+    {
+      label: 'Headline',
+      name: 'rawFrontmatter.headline',
+      description: 'Enter the main headline here',
+      component: 'textarea'
+    },
+    {
+      label: 'Supporting Points',
+      name: 'rawFrontmatter.supporting_points.point',
+      description: 'Edit the points here',
+      component: 'text'
+    },
+  ]
+}
+
+
+export default remarkForm(TeamsTemplate, TeamsTemplateOptions)
+
+
+export const query = graphql`
+  query TeamsTemplateQuery($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      id
+      fileRelativePath
+      rawFrontmatter
+      rawMarkdownBody
+      htmlAst
+      excerpt
+      frontmatter {
+        headline
+        supporting_points {
+          point
+        }
+      }
+    }
+  }
+`
+
 
 const BgColor = styled('aside')`
   background-color: ${colors.darkPurple};
@@ -98,60 +173,3 @@ const StyledFormSection = styled('section')`
     border-radius: 60px
   }
 `
-
-function TeamsTemplate (props) {
-  const frontmatter = props.data.markdownRemark.frontmatter
-  return (
-    <IndexLayout page="teams">
-     <Helmet>
-        <meta property="og:title" content="Teams" />
-      </Helmet>
-      <BgColor />
-      <Wrapper>
-        <StyledInfoSection>
-          <Heading as="h2" size="h2" color={`${colors.mintChocoChip}`}>{frontmatter.headline}</Heading>
-          <span id="dotted-line" />
-          <StyledPoints>
-            {frontmatter.supporting_points.map(item =>
-              <li key={item.point.trim()}>
-                <Paragraph as="p" size="body" color="white">
-                  {item.point}
-                </Paragraph>
-              </li>)}
-          </StyledPoints>
-          <Heading as="h2" size="h2" color={`${colors.hunterOrange}`} className="coming-soon">Coming Soon...</Heading>
-        </StyledInfoSection>
-        <StyledFormSection>
-          <Heading as="h5" size="label" color={colors.hunterOrange}>
-            Teams Private Beta
-          </Heading>
-          <TeamsForm />
-        </StyledFormSection>
-      </Wrapper>
-    </IndexLayout>
-  )
-}
-
-
-export default TeamsTemplate
-
-
-export const query = graphql`
-  query TeamsTemplateQuery($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      fileRelativePath
-      rawFrontmatter
-      rawMarkdownBody
-      htmlAst
-      excerpt
-      frontmatter {
-        headline
-        supporting_points {
-          point
-        }
-      }
-    }
-  }
-`
-
