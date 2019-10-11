@@ -14,6 +14,7 @@ import { SiteMetadata } from 'interfaces/gatsby'
 
 interface IndexLayoutProps {
   location?: WindowLocation
+  page?: string
   sidebarNav: Edge<MenuNode>[]
 }
 
@@ -29,7 +30,7 @@ interface DataProps {
   }
 }
 
-const IndexLayout: React.FC<IndexLayoutProps> = ({ location, children, sidebarNav }) => {
+const IndexLayout: React.FC<IndexLayoutProps> = ({ location, children, sidebarNav, page }) => {
   return (
     <StaticQuery query={query}>
       {(data: DataProps) => {
@@ -51,7 +52,7 @@ const IndexLayout: React.FC<IndexLayoutProps> = ({ location, children, sidebarNa
                 headerMenus={data.headerMenus.edges}
               />
               <Overlay />
-              <LayoutMain title={siteMetadata.sidebarTitle || siteMetadata.title} headerMenus={data.headerMenus.edges}>
+              <LayoutMain page={page} title={siteMetadata.sidebarTitle || siteMetadata.title} headerMenus={data.headerMenus.edges}>
                 {children}
               </LayoutMain>
             </LayoutRoot>

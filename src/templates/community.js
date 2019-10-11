@@ -8,7 +8,137 @@ import { Heading, Paragraph } from 'components/foundations'
 import Button from 'components/foundations/Button'
 import { TwitterIcon, GithubIcon, SlackIcon } from 'components/foundations/icons'
 import { colors, space, breakpoints } from 'utils/variables'
-import { EmailForm } from 'components/layout/Footer'
+import { EmailForm } from 'components/foundations'
+
+function CommunityTemplate({ data }) {
+  const frontmatter = data.markdownRemark.frontmatter
+  const metadata = data.site.siteMetadata
+  return (
+    <IndexLayout>
+      <Helmet>
+        <meta property="og:title" content="Community" />
+      </Helmet>
+      <Wrapper>
+        <HeroSection>
+          <aside id="base">
+            <aside id="white-ellipse" />
+          </aside>
+          <Heading as="h1" size="h1">
+            <span>{frontmatter.headline}</span>
+          </Heading>
+        </HeroSection>
+        <SocialSection>
+          <SocialItem>
+            <a href={`${metadata.social.twitter}`} target="_blank">
+              <TwitterIcon color={`${colors.hunterOrange}`} />
+              <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
+                Tweet us
+              </Heading>
+            </a>
+            <span className="dotted-line" />
+          </SocialItem>
+          <SocialItem>
+            <a href={`${metadata.social.github}`} target="_blank">
+              <GithubIcon color={`${colors.hunterOrange}`} />
+              <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
+                Fork us
+              </Heading>
+            </a>
+            <span className="dotted-line" />
+          </SocialItem>
+          <SocialItem>
+            <a href={`${metadata.social.slack}`} target="_blank">
+              <SlackIcon color={`${colors.hunterOrange}`} />
+              <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
+                Slack us
+              </Heading>
+            </a>
+          </SocialItem>
+        </SocialSection>
+        <InfoSection>
+          <figure>
+            <img src={frontmatter.gif[0].src} alt={frontmatter.gif[0].gif_alt} />
+          </figure>
+          <span id="info-wrap">
+            <Heading as="h2" size="h2" color={`${colors.hunterOrange}`}>
+              {frontmatter.supporting_headline}
+            </Heading>
+            <Paragraph>{frontmatter.supporting_body}</Paragraph>
+            <span id="buttons">
+              <Button
+                to="/docs/contributing/guidelines"
+                bgColor={`${colors.seafoam}`}
+                textColor={`${colors.hunterOrange}`}
+              >
+                Contribute
+              </Button>
+              <Button
+                to={`${metadata.roadmapUrl}`}
+                bgColor={`${colors.seafoam}`}
+                textColor={`${colors.hunterOrange}`}
+                isExternal={true}
+              >
+                View Roadmap
+              </Button>
+            </span>
+          </span>
+        </InfoSection>
+      </Wrapper>
+      <NewsletterSection>
+        <Heading as="h2" size="h2" color={colors.hunterOrange}>
+          Newsletter ✌️
+        </Heading>
+        <EmailForm
+          cta="We move quick. Stay up to date."
+          inputColor="#fff"
+          textColor={colors.hunterOrange}
+          btnColor={colors.hunterOrange}
+          btnTextColor={colors.seafoam}
+        />
+      </NewsletterSection>
+    </IndexLayout>
+  )
+}
+
+export const query = graphql`
+  query CommunityTemplateQuery($slug: String!) {
+    site {
+      siteMetadata {
+        title
+        description
+        siteUrl
+        roadmapUrl
+        keywords
+        social {
+          twitter
+          github
+          slack
+        }
+      }
+    }
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      id
+      fileRelativePath
+      rawFrontmatter
+      rawMarkdownBody
+      htmlAst
+      excerpt
+      frontmatter {
+        headline
+        gif {
+          src
+          alt
+        }
+        supporting_headline
+        supporting_body
+      }
+    }
+  }
+`
+
+export default CommunityTemplate
+
+
 
 const Wrapper = styled('div')`
   padding: 0 ${space.smallMobile}px ${space.xSmallMobile}px ${space.smallMobile}px;
@@ -130,7 +260,6 @@ const SocialItem = styled('div')`
     flex-direction: row;
     width: unset;
     align-items: flex-end;
-    /* grid-column-gap: 38px; */
     h5 {
       margin-bottom: 0;
     }
@@ -277,131 +406,3 @@ const NewsletterSection = styled('section')`
     padding: ${space.lrgMobile}px ${space.smallDesktop}px;
   }
 `
-
-function CommunityTemplate({ data }) {
-  const frontmatter = data.markdownRemark.frontmatter
-  const metadata = data.site.siteMetadata
-  return (
-    <IndexLayout>
-      <Helmet>
-        <meta property="og:title" content="Home" />
-      </Helmet>
-      <Wrapper>
-        <HeroSection>
-          <aside id="base">
-            <aside id="white-ellipse" />
-          </aside>
-          <Heading as="h1" size="h1">
-            <span>{frontmatter.headline}</span>
-          </Heading>
-        </HeroSection>
-        <SocialSection>
-          <SocialItem>
-            <a href={`${metadata.social.twitter}`} target="_blank">
-              <TwitterIcon color={`${colors.hunterOrange}`} />
-              <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
-                Tweet us
-              </Heading>
-            </a>
-            <span className="dotted-line" />
-          </SocialItem>
-          <SocialItem>
-            <a href={`${metadata.social.github}`} target="_blank">
-              <GithubIcon color={`${colors.hunterOrange}`} />
-              <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
-                Fork us
-              </Heading>
-            </a>
-            <span className="dotted-line" />
-          </SocialItem>
-          <SocialItem>
-            <a href={`${metadata.social.slack}`} target="_blank">
-              <SlackIcon color={`${colors.hunterOrange}`} />
-              <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
-                Slack us
-              </Heading>
-            </a>
-          </SocialItem>
-        </SocialSection>
-        <InfoSection>
-          <figure>
-            <img src={frontmatter.gif[0].src} alt={frontmatter.gif[0].gif_alt} />
-          </figure>
-          <span id="info-wrap">
-            <Heading as="h2" size="h2" color={`${colors.hunterOrange}`}>
-              {frontmatter.supporting_headline}
-            </Heading>
-            <Paragraph>{frontmatter.supporting_body}</Paragraph>
-            <span id="buttons">
-              <Button
-                to="/docs/contributing/guidelines"
-                bgColor={`${colors.seafoam}`}
-                textColor={`${colors.hunterOrange}`}
-              >
-                Contribute
-              </Button>
-              <Button
-                to={`${metadata.roadmapUrl}`}
-                bgColor={`${colors.seafoam}`}
-                textColor={`${colors.hunterOrange}`}
-                isExternal={true}
-              >
-                View Roadmap
-              </Button>
-            </span>
-          </span>
-        </InfoSection>
-      </Wrapper>
-      <NewsletterSection>
-        <Heading as="h2" size="h2" color={colors.hunterOrange}>
-          Newsletter ✌️
-        </Heading>
-        <EmailForm
-          cta="We move quick. Stay up to date."
-          inputColor="#fff"
-          textColor={colors.hunterOrange}
-          btnColor={colors.hunterOrange}
-          btnTextColor={colors.seafoam}
-        />
-      </NewsletterSection>
-    </IndexLayout>
-  )
-}
-
-export const query = graphql`
-  query CommunityTemplateQuery($slug: String!) {
-    site {
-      siteMetadata {
-        title
-        description
-        siteUrl
-        roadmapUrl
-        keywords
-        social {
-          twitter
-          github
-          slack
-        }
-      }
-    }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      fileRelativePath
-      rawFrontmatter
-      rawMarkdownBody
-      htmlAst
-      excerpt
-      frontmatter {
-        headline
-        gif {
-          src
-          alt
-        }
-        supporting_headline
-        supporting_body
-      }
-    }
-  }
-`
-
-export default CommunityTemplate

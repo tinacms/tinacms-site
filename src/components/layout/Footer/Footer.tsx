@@ -9,7 +9,7 @@ import { Wordmark, TwitterIcon, GithubIcon } from 'components/foundations/icons'
 import { Heading } from 'components/foundations'
 import Button from 'components/foundations/Button'
 import { colors, textSizes, space, breakpoints } from 'utils/variables'
-import EmailForm from './EmailForm'
+import { EmailForm } from 'components/foundations'
 
 interface FooterProps {
   headerMenus?: Edge<HeaderMenuItem>[]
@@ -130,10 +130,10 @@ const StyledCommunityItems = styled('div')`
     display: none;
   }
   * {
-    margin-left: ${space.xxs}px;
+    margin-left: ${space.xs}px;
   }
   svg {
-    width: 32px;
+    width: 28px;
   }
   a.github {
     svg {

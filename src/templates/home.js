@@ -59,9 +59,10 @@ const HomeTemplate = props => {
             <Heading as="h1" size="h1">
               {dataJson.setup.headline}
             </Heading>
+            <span id="dotted-line" />
             <SetupSteps>
               {dataJson.setup.steps.map(item => (
-                <li key={item.step}>
+                <li key={item.step.trim()}>
                   <p>{item.step}</p>
                 </li>
               ))}
@@ -234,11 +235,6 @@ const InfoSection = styled('section')`
   a {
     margin-top: ${space.smallMobile}px;
   }
-  span#dotted-line {
-    margin-top: ${space.smallMobile}px;
-    height: 35px;
-    border-left: dotted 3px ${colors.mintChocoChip};
-  }
   @media (min-width: ${breakpoints.lg}px) {
     margin: ${space.lrgMobile}px auto;
     h2 {
@@ -250,10 +246,6 @@ const InfoSection = styled('section')`
     margin: ${space.lrgDesktop}px auto;
     a {
       margin-top: ${space.smallDesktop}px;
-    }
-    span#dotted-line {
-      margin-top: 28px;
-      height: 45px;
     }
   }
 `
@@ -335,6 +327,14 @@ const SetupWrapper = styled('div')`
     grid-column-gap: ${space.lrgMobile}px;
     h1 {
       text-align: left;
+      margin-bottom: 20px;
+    }
+    span#dotted-line {
+      display: block;
+      width: 70px;
+      height: 1px;
+      border-bottom: 3px dotted ${colors.hunterOrange};
+      margin: 0 0 28px 5px;
     }
     figure {
       display: block;
