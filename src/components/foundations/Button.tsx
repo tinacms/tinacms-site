@@ -18,7 +18,7 @@ interface ButtonProps {
 const StyledButton = styled(Link)<ButtonProps>`
   width: max-content;
   transform: translate3d(0px, 0px, 0px);
-  transition: transform 180px ease-in;
+  transition: transform 180ms ease-in;
   display: flex;
   align-items: center;
   background-color: ${props => props.bgColor};
@@ -32,7 +32,7 @@ const StyledButton = styled(Link)<ButtonProps>`
   &:focus {
     text-decoration: none;
     transform: translate3d(-1px, -2px, 2px);
-    transition: transform 180px ease-out;
+    transition: transform 180ms ease-out;
   }
   &:focus {
     box-shadow: 0 0 0 3px ${p => rgba(p.bgColor, 0.5)};

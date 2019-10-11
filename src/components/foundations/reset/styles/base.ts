@@ -26,7 +26,7 @@ const base = css`
     color: ${colors.link};
     text-decoration: none;
     background-color: transparent;
-    transition: all 85ms ease-out;
+    transition: color 185ms ease-out;
   }
 
   a:hover {
@@ -41,7 +41,7 @@ const base = css`
       text-decoration: underline;
       text-decoration-color: ${rgba(colors.link, 0.3)};
       -webkit-text-decoration-skip: objects;
-      transition: all 85ms ease-out;
+      transition: color 185ms ease-out;
     }
 
     a:hover,
