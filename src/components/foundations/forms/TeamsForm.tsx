@@ -23,7 +23,8 @@ function TeamsForm() {
           body: JSON.stringify(data)
         });
         const response = await rawResponse.json();
-        alert(response.inlineMessage);
+        const message = response.inlineMessage.replace(/<[^>]*>/g, '').trim()
+        alert(message);
       } catch (e) {
         alert('Looks like an error, please email support@forestry.io')
         console.error(e)
