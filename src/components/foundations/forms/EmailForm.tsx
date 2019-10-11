@@ -107,8 +107,6 @@ const StyledForm = styled('form')<StyledFormProps>`
     border-radius: 5px;
     background: ${p => p.inputColor};
     color: ${p => p.textColor};
-    font-family: system-ui, sans-serif;
-    font-size: 1rem;
     line-height: 1.2;
     white-space: nowrap;
     text-decoration: none;
