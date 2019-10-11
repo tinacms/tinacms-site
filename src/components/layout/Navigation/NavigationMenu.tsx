@@ -20,19 +20,10 @@ interface ToggleableProps {
 const ToggleMenu = styled('ul')<ToggleableProps>`
   list-style-type: none;
   margin: 0;
-  padding: 0;
-  opacity: 0;
   background: white;
-  padding: 0;
-  ${p =>
-    p.isOpen &&
-    css`
-      opacity: 1;
-      transform: scale3d(1, 1, 1);
-      border-top: 1px solid ${colors.grey02};
-      border-bottom: 1px solid ${colors.grey02};
-      padding: 8px 0;
-    `};
+  border-top: 1px solid ${colors.grey02};
+  border-bottom: 1px solid ${colors.grey02};
+  padding: 8px 0;
 `
 
 const ToggleMenuList = styled('li')`
@@ -150,16 +141,17 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({ node, isOpen, setIsOpen
         </Heading>
         <RightArrowIcon />
       </MenuToggle>
-      <ToggleMenu isOpen={isOpen}>
-        {isOpen &&
-          node.items.map(item => (
+      {isOpen && (
+        <ToggleMenu>
+          {node.items.map(item => (
             <ToggleMenuList key={item.id}>
               <Link to={item.slug} getProps={isActive}>
                 {item.title}
               </Link>
             </ToggleMenuList>
           ))}
-      </ToggleMenu>
+        </ToggleMenu>
+      )}
     </NavGroup>
   )
 }
