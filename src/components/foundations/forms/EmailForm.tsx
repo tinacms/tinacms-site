@@ -166,9 +166,11 @@ const StyledButton = styled('button')<StyledButtonProps>`
   justify-self: end;
   grid-area: btn;
   width: max-content;
-  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
-  transform: scale3d(1, 1, 1);
-  transition: all 180ms ease-in;
+  /* filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
+  transform: scale3d(1, 1, 1); */
+  transform: translate3d(0px, 0px, 0px);
+  transition: transform 180ms ease-in;
+  backface-visibility: hidden;
   display: flex;
   align-items: center;
   background-color: ${p => p.btnColor};
@@ -183,9 +185,11 @@ const StyledButton = styled('button')<StyledButtonProps>`
   &:hover,
   &:focus {
     text-decoration: none;
-    filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.35));
+    /* filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.35));
     transform: scale3d(1.03, 1.03, 1.13);
-    transition: all 250ms ease-out;
+    transition: all 250ms ease-out; */
+    transform: translate3d(-3px, 0px, 2px);
+    transition: transform 150ms ease-out;
   }
   &:focus {
     box-shadow: 0 0 0 3px ${p => rgba(p.btnColor, 0.5)};

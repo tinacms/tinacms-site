@@ -348,14 +348,16 @@ const InfoSection = styled('section')`
     justify-content: center;
   }
   a {
-    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
-    transform: scale3d(1, 1, 1);
-    transition: all 180ms ease-in;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.15));
+    /*transform: scale3d(1, 1, 1);
+    transition: all 180ms ease-in; */
+    transform: translate3d(0px, 0px, 0px);
+    transition: transform 180ms ease-in;
+    backface-visibility: hidden;
   }
   a:hover {
-    filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.35));
-    transform: scale3d(1.03, 1.03, 1.13);
-    transition: all 250ms ease-out;
+    transform: translate3d(-1px, -2px, 2px);
+    transition: transform 150ms ease-out;
   }
   @media (min-width: ${breakpoints.md}px) {
     text-align: left;

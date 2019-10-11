@@ -167,9 +167,9 @@ const StyledButton = styled('button')`
   margin-top: ${space.smallDesktop}px;
   /* filter: drop-shadow(1px 2px 18px rgb(0, 0, 0, 12%));
   transition: filter 250ms ease; */
-  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
-  transform: scale3d(1, 1, 1);
-  transition: all 180ms ease-in;
+  transform: translate3d(0px, 0px, 0px);
+  transition: transform 180ms ease-in;
+  backface-visibility: hidden;
   display: flex;
   align-items: center;
   background-color: ${colors.hunterOrange};
@@ -186,9 +186,8 @@ const StyledButton = styled('button')`
     text-decoration: none;
     /* filter: drop-shadow(1px 5px 18px rgb(0, 0, 0, 25%));
     transition: filter 250ms ease; */
-    filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.35));
-    transform: scale3d(1.03, 1.03, 1.13);
-    transition: all 250ms ease-out;
+    transform: translate3d(-1px, -2px, 2px);
+    transition: transform 150ms ease-out;
   }
   &:focus {
     box-shadow: 0 0 0 3px ${rgba(colors.hunterOrange, 0.5)};

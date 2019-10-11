@@ -11,7 +11,6 @@ interface BlogList_Props {
   posts: any
 }
 
-
 function BlogList(props: BlogList_Props) {
   return (
     <StyledBlogList>
@@ -42,19 +41,21 @@ export default BlogList
 const StyledBlogList = styled(DocsWrapper)`
   section {
     width: 100%;
+    margin-bottom: ${space.smallMobile}px;
     a {
       h2 {
         transition: color 250ms ease;
+        margin-bottom: ${space.xSmallDesktop}px;
       }
       color: inherit;
       &:hover,
       &:focus {
         h2 {
-          color: ${colors.darkMustardYellow};
+          color: ${colors.hunterOrange};
           transition: color 250ms ease;
         }
         aside {
-          transform: scale3d(1.2, 1, 1);
+          transform: scale3d(1.1, 1, 1);
           transform-origin: left;
           transition: transform 250ms ease;
         }
@@ -62,33 +63,44 @@ const StyledBlogList = styled(DocsWrapper)`
       }
       aside {
         width: 15vw;
-        background-color: ${colors.liteMintGreen};
+        /* background-color: ${colors.liteMintGreen}; */
         height: 2px;
+        border-bottom: dotted 3px ${colors.mintChocoChip};
         transform: scale3d(1, 1, 1);
         transition: transform 250ms ease;
         transform-origin: left;
       }
     }
     a:not(:first-child) {
-      margin-top: ${space.lg}px;
+      margin-top: ${space.medMobile}px;
       display: block;
     }
     article {
       max-width: 704px;
     }
+    span > p {
+      color: ${colors.darkGrey};
+      margin-bottom: ${space.smallMobile}px;
+    }
   }
   @media( min-width: ${breakpoints.md}px) {
-    margin-top: ${space.xl}px;
+    margin: ${space.lg}px 0 ${space.lrgDesktop}px 0;
     section {
       width: unset;
       margin: 0 auto;
       a:not(:first-child) {
-        margin-top: ${space.xl}px;
+        margin-top: ${space.medDesktop}px;
       }
       a {
+        h2 {
+          margin-bottom: 0;
+        }
         aside {
           width: 8vw;
         }
+      }
+      span > p {
+        margin-bottom: ${space.smallDesktop}px;
       }
     }
   }
