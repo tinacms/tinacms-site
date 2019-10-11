@@ -12,21 +12,25 @@ function TeamsForm() {
   const [ email, setEmail ] = useState('')
 
   async function postForm(data){
-    const url = `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.GATSBY_HUBSPOT_PORTAL_ID}/${process.env.GATSBY_HUBSPOT_FORM_ID}`
-    try {
-      const rawResponse = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      });
-      const response = await rawResponse.json();
-      alert(response.inlineMessage);
-    } catch (e) {
-      alert('Looks like an error, please email support@forestry.io')
-      console.error(e)
+    if (process.env.GATSBY_HUBSPOT_FORM_ID && process.env.GATSBY_HUBSPOT_PORTAL_ID) {
+      const url = `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.GATSBY_HUBSPOT_PORTAL_ID}/${process.env.GATSBY_HUBSPOT_FORM_ID}`
+      try {
+        const rawResponse = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+        const response = await rawResponse.json();
+        alert(response.inlineMessage);
+      } catch (e) {
+        alert('Looks like an error, please email support@forestry.io')
+        console.error(e)
+      }
+    } else {
+      console.error('Teams Form: Environment variables missing')
     }
   }
 
@@ -57,7 +61,11 @@ function TeamsForm() {
         "value": email
       }
     ]}
-    postForm(formData)
+    if (process.env.NODE_ENV === 'production') {
+      postForm(formData)
+    } else {
+      console.error('Teams form only posts in production')
+    }
   }
 
   return (
