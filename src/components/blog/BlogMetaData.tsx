@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { colors, space } from 'utils/variables'
+import { colors, space, breakpoints } from 'utils/variables'
 
 interface BlogMetaData_Props {
   author: String,
@@ -23,9 +23,13 @@ const StyledBlogMetaData = styled('div')`
   display: flex;
   flex-grow: 1;
   p {
-    margin: ${space.sm}px 0 ${space.xs}px 0;
+    display: none;
   }
-  p {
-    color: ${colors.liteGreyPurple};
+  @media(min-width: ${breakpoints.md}px) {
+    p {
+      margin: ${space.sm}px 0 ${space.xs}px 0;
+      color: ${colors.grey04};
+      display: block;
+    }
   }
 `

@@ -37,7 +37,9 @@ export default styled(MarkdownContent)`
       }
     }
   }
-
+  p:last-child {
+    margin-bottom: ${space.smallDesktop}px;
+  }
   .lead {
     font-size: 1.25rem;
     font-weight: 300;

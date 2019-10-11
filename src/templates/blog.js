@@ -90,7 +90,8 @@ export default liveRemarkForm(BlogTemplate, BlogTemplateOptions)
 const StyledBlogPost = styled(DocsWrapper)`
   @media( min-width: ${breakpoints.md}px) {
     min-width: 650px;
-    margin: ${space.xl}px auto;
+    margin: 0 auto;
+    padding-top: 0;
   }
   @media( min-width: ${breakpoints.xl}px) {
     min-width: 768px;
