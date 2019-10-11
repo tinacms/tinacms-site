@@ -130,7 +130,7 @@ const StyledCommunityItems = styled('div')`
     display: none;
   }
   * {
-    margin-left: ${space.xxs}px;
+    margin-left: ${space.xs}px;
   }
   svg {
     width: 28px;

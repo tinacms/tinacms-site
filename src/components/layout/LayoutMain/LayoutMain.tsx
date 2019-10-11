@@ -19,6 +19,7 @@ import Button from 'components/foundations/Button'
 interface LayoutMainInnerProps {
   className?: string
   isNavigationOpen?: boolean
+  page?: string
 }
 
 interface LayoutMainProps extends LayoutMainInnerProps {
@@ -29,6 +30,82 @@ interface LayoutMainProps extends LayoutMainInnerProps {
 interface FontSizeProps {
   size: ReturnType<typeof determineFontDimensions>
 }
+
+const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, headerMenus, page }) => {
+  const { state, dispatch } = React.useContext(NavigationContext)
+
+  return (
+    <StyledLayoutMain className={className} isNavigationOpen={state.isOpen}>
+      <Header>
+        <HeaderInner hideOnDesktop>
+          <NavButton
+            icon="hamburger"
+            fill={colors.hunterOrange}
+            onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}
+          >
+            Toggle Drawer
+          </NavButton>
+          <LogoWrapper>
+            <HomepageLink
+              to="/"
+              size={determineFontDimensions('heading', 400)}
+              onClick={() => dispatch({ type: NavigationActionTypes.CLOSE_DRAWER })}
+            >
+              <Llama_Icon color={`${colors.hunterOrange}`} />
+            </HomepageLink>
+          </LogoWrapper>
+        </HeaderInner>
+        <HeaderInner hideOnMobile contents="center">
+          <DocumentationMenu>
+            {headerMenus &&
+              headerMenus.map(({ node }) => {
+                if (node.external) {
+                  return (
+                    <a key={node.id} href={node.href} target="_blank" rel="noopener noreferrer">
+                      <Heading as="h1" size={100}>
+                        {node.label}
+                      </Heading>
+                    </a>
+                  )
+                }
+                return (
+                  <Button
+                    key={node.id}
+                    to={node.href}
+                    bgColor={page === 'teams' ? `${colors.darkPurple}`:`${colors.white}`}
+                    textColor={`${colors.hunterOrange}`}
+                    height="40"
+                  >
+                    {node.label}
+                  </Button>
+                )
+              })}
+          </DocumentationMenu>
+          {
+            page !== 'teams' &&
+          <Button
+            to="/docs/getting-started/introduction"
+            height={'40'}
+            bgColor={`${colors.hunterOrange}`}
+            textColor={`${colors.seafoam}`}
+          >
+            Get Started
+          </Button>
+          }
+        </HeaderInner>
+      </Header>
+      <StyledMainContent>
+        <SkipNavContent>{children}</SkipNavContent>
+      </StyledMainContent>
+      <FooterWrapper>
+        <Footer headerMenus={headerMenus} />
+      </FooterWrapper>
+    </StyledLayoutMain>
+  )
+}
+
+export default LayoutMain
+
 
 const StyledLayoutMain = styled('div')<LayoutMainInnerProps>`
   display: flex;
@@ -96,75 +173,3 @@ const HomepageLink = styled(Link)<FontSizeProps>`
     height: 50px;
   }
 `
-
-const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, headerMenus }) => {
-  const { state, dispatch } = React.useContext(NavigationContext)
-
-  return (
-    <StyledLayoutMain className={className} isNavigationOpen={state.isOpen}>
-      <Header>
-        <HeaderInner hideOnDesktop>
-          <NavButton
-            icon="hamburger"
-            fill={colors.hunterOrange}
-            onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}
-          >
-            Toggle Drawer
-          </NavButton>
-          <LogoWrapper>
-            <HomepageLink
-              to="/"
-              size={determineFontDimensions('heading', 400)}
-              onClick={() => dispatch({ type: NavigationActionTypes.CLOSE_DRAWER })}
-            >
-              <Llama_Icon color={`${colors.hunterOrange}`} />
-            </HomepageLink>
-          </LogoWrapper>
-        </HeaderInner>
-        <HeaderInner hideOnMobile contents="center">
-          <DocumentationMenu>
-            {headerMenus &&
-              headerMenus.map(({ node }) => {
-                if (node.external) {
-                  return (
-                    <a key={node.id} href={node.href} target="_blank" rel="noopener noreferrer">
-                      <Heading as="h1" size={100}>
-                        {node.label}
-                      </Heading>
-                    </a>
-                  )
-                }
-                return (
-                  <Button
-                    key={node.id}
-                    to={node.href}
-                    bgColor={`${colors.white}`}
-                    textColor={`${colors.hunterOrange}`}
-                    height="40"
-                  >
-                    {node.label}
-                  </Button>
-                )
-              })}
-          </DocumentationMenu>
-          <Button
-            to="/docs/getting-started/introduction"
-            height={'40'}
-            bgColor={`${colors.hunterOrange}`}
-            textColor={`${colors.seafoam}`}
-          >
-            Get Started
-          </Button>
-        </HeaderInner>
-      </Header>
-      <StyledMainContent>
-        <SkipNavContent>{children}</SkipNavContent>
-      </StyledMainContent>
-      <FooterWrapper>
-        <Footer headerMenus={headerMenus} />
-      </FooterWrapper>
-    </StyledLayoutMain>
-  )
-}
-
-export default LayoutMain
