@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 
 import { Edge, HeaderMenuItem } from 'interfaces/nodes'
@@ -16,6 +16,22 @@ interface FooterProps {
 }
 
 function Footer({ headerMenus }: FooterProps) {
+  const  data  = useStaticQuery(
+    graphql`
+      query getSiteMetada {
+        site {
+          siteMetadata {
+            licenseUrl
+            social {
+              twitter
+              github
+            }
+          }
+        }
+      }
+    `
+  )
+  const metadata = data.site.siteMetadata
   return (
     <Wrapper>
       <StyledFooterMain>
@@ -26,10 +42,10 @@ function Footer({ headerMenus }: FooterProps) {
           <Button to="/teams" bgColor={`${colors.seafoam}`} textColor={`${colors.hunterOrange}`}>
             TINA FOR TEAMS
           </Button>
-          <a href="https://twitter.com/tina_cms">
+          <a href={metadata.social.twitter} target="_blank">
             <TwitterIcon color={`${colors.seafoam}`} />
           </a>
-          <a className="github" href="https://github.com/tinacms/tinacms">
+          <a className="github" href={metadata.social.github} target="_blank">
             <GithubIcon color={`${colors.seafoam}`} />
           </a>
         </StyledCommunityItems>
@@ -59,7 +75,7 @@ function Footer({ headerMenus }: FooterProps) {
         <EmailForm isFooter={true} />
         <span>
           <Heading as="h5" size="label">
-            <a href="https://github.com/tinacms/tinacms">License</a>
+            <a href={metadata.licenseUrl} target="_blank">License</a>
           </Heading>
           <Heading as="h5" size="label">
             TinaCMS{new Date().getFullYear()}
@@ -71,14 +87,6 @@ function Footer({ headerMenus }: FooterProps) {
 }
 
 export default Footer
-
-/**
- * - TODO
- *
- * adjust social links to source from metadata or json config
- * - add links to license and privacy policy
- *
- */
 
 const Wrapper = styled('footer')`
   background-color: ${colors.hunterOrange};
