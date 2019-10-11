@@ -129,7 +129,7 @@ const StyledCommunityItems = styled('div')`
   > a:first-child {
     display: none;
   }
-  * {
+  > :not(:first-child) {
     margin-left: ${space.xs}px;
   }
   svg {
