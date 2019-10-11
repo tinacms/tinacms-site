@@ -1,8 +1,11 @@
 ---
-headline: Some baller statement about Tina Teams being the shit that is longer and more robust in describing.
+title: ''
+headline: >-
+  Edit your site in the cloud. Unlock the power of Tina for the entire team.
+  Sign up for early access.
 supporting_points:
-  - point: Collaborate in the cloud
-  - point: Give a link to your editors to a custom staging environment
-  - point: Git backed, for now, with plans to support other backend options
-  - point: One more point, something dope
+  - point: Give editors a link to a custom live editing environment
+  - point: Test Tina in your editorial workflows
+  - point: Deploy right from the command line with the Tina CLI
+  - point: 'Git backed, for now,  with plans to support other backend options'
 ---
