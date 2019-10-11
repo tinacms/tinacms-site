@@ -21,11 +21,13 @@ const BgColor = styled('aside')`
 const Wrapper = styled('div')`
   @media(min-width: ${breakpoints.lg}px) {
     max-width: 1150px;
+    margin: 0 auto;
     display: flex;
   }
 `
 
 const StyledInfoSection = styled('section')`
+  width: 100%;
   max-width: 600px;
   margin: 0 auto;
   padding: 38px ${space.smallMobile}px 20px ${space.smallMobile}px;
@@ -42,7 +44,7 @@ const StyledInfoSection = styled('section')`
   @media(min-width: ${breakpoints.lg}px) {
     padding: ${space.lrgDesktop}px ${space.smallDesktop}px 0 ${space.smallDesktop}px;
     max-width: 560px;
-    margin-right: ${space.lrgDesktop}px;
+    margin: 0 ${space.lrgDesktop}px  100px 0;
     h2.coming-soon {
       display: block;
     }
@@ -88,7 +90,11 @@ const StyledFormSection = styled('section')`
     width: max-content;
   }
   @media(min-width: ${breakpoints.lg}px) {
-    padding: 0 ${space.smallDesktop}px ${space.lrgDesktop}px ${space.smallDesktop}px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 72px 32px 100px 0;
+    padding: unset;
     border-radius: 60px
   }
 `
@@ -96,7 +102,7 @@ const StyledFormSection = styled('section')`
 function TeamsTemplate (props) {
   const frontmatter = props.data.markdownRemark.frontmatter
   return (
-    <IndexLayout>
+    <IndexLayout page="teams">
      <Helmet>
         <meta property="og:title" content="Teams" />
       </Helmet>

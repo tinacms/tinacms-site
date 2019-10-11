@@ -70,7 +70,7 @@ function TeamsForm() {
   return (
     <StyledForm onSubmit={handleSubmit}>
       <label >
-        <p className="body">First </p>
+        <p className="body">First Name</p>
         <input
           type="text"
           id="name"
@@ -79,7 +79,7 @@ function TeamsForm() {
           onChange={handleNameChange}/>
       </label>
       <label >
-      <p className="body">Last </p>
+      <p className="body">Last Name</p>
         <input
           type="text"
           id="surname"
@@ -153,8 +153,8 @@ const StyledForm = styled('form')`
   }
 
   @media(min-width: ${breakpoints.lg}px) {
-    height: 100%;
-    width: 100%;
+    height: unset;
+    width: 65%;
     border-radius: 60px;
   }
 `
@@ -164,8 +164,11 @@ const StyledButton = styled('button')`
   align-self: center;
   width: max-content;
   margin-top: ${space.smallDesktop}px;
-  filter: drop-shadow(1px 2px 18px rgb(0, 0, 0, 12%));
-  transition: filter 250ms ease;
+  /* filter: drop-shadow(1px 2px 18px rgb(0, 0, 0, 12%));
+  transition: filter 250ms ease; */
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
+  transform: scale3d(1, 1, 1);
+  transition: all 180ms ease-in;
   display: flex;
   align-items: center;
   background-color: ${colors.hunterOrange};
@@ -180,8 +183,11 @@ const StyledButton = styled('button')`
   &:hover,
   &:focus {
     text-decoration: none;
-    filter: drop-shadow(1px 5px 18px rgb(0, 0, 0, 25%));
-    transition: filter 250ms ease;
+    /* filter: drop-shadow(1px 5px 18px rgb(0, 0, 0, 25%));
+    transition: filter 250ms ease; */
+    filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.35));
+    transform: scale3d(1.03, 1.03, 1.13);
+    transition: all 250ms ease-out;
   }
   &:focus {
     box-shadow: 0 0 0 3px ${rgba(colors.hunterOrange, 0.5)};
