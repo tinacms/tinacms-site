@@ -5,14 +5,13 @@ import styled from 'styled-components'
 
 import IndexLayout from 'layouts'
 import { Heading, Paragraph } from 'components/foundations'
-import Button from 'components/foundations/Button'
-import { colors, dimensions, space, breakpoints } from 'utils/variables'
+import { colors, space, breakpoints } from 'utils/variables'
 import { TeamsForm } from 'components/foundations'
 
 const BgColor = styled('aside')`
   background-color: ${colors.darkPurple};
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -20,11 +19,37 @@ const BgColor = styled('aside')`
 `
 
 const Wrapper = styled('div')`
-  /**put max width here */
+  @media(min-width: ${breakpoints.lg}px) {
+    max-width: 1150px;
+    display: flex;
+  }
 `
 
 const StyledInfoSection = styled('section')`
-
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 38px ${space.smallMobile}px 20px ${space.smallMobile}px;
+  span#dotted-line {
+    display: block;
+    width: 60px;
+    height: 1px;
+    border-bottom: 3px dotted ${colors.mintChocoChip};
+    margin: 20px 0 32px 1px;
+  }
+  h2.coming-soon {
+    display: none;
+  }
+  @media(min-width: ${breakpoints.lg}px) {
+    padding: ${space.lrgDesktop}px ${space.smallDesktop}px 0 ${space.smallDesktop}px;
+    max-width: 560px;
+    margin-right: ${space.lrgDesktop}px;
+    h2.coming-soon {
+      display: block;
+    }
+    ul {
+      max-width: 500px;
+    }
+  }
 `
 
 const StyledPoints = styled('ul')`
@@ -53,7 +78,19 @@ const StyledPoints = styled('ul')`
 `
 
 const StyledFormSection = styled('section')`
-
+  background-color: ${colors.lightPurple};
+  padding: 38px ${space.smallMobile}px;
+  width: 100%;
+  h5 {
+    font-size: 18px;
+    text-transform: uppercase;
+    margin: 0 auto;
+    width: max-content;
+  }
+  @media(min-width: ${breakpoints.lg}px) {
+    padding: 0 ${space.smallDesktop}px ${space.lrgDesktop}px ${space.smallDesktop}px;
+    border-radius: 60px
+  }
 `
 
 function TeamsTemplate (props) {
@@ -62,8 +99,6 @@ function TeamsTemplate (props) {
     <IndexLayout>
      <Helmet>
         <meta property="og:title" content="Teams" />
-        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
-        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
       </Helmet>
       <BgColor />
       <Wrapper>
@@ -71,12 +106,20 @@ function TeamsTemplate (props) {
           <Heading as="h2" size="h2" color={`${colors.mintChocoChip}`}>{frontmatter.headline}</Heading>
           <span id="dotted-line" />
           <StyledPoints>
-            {frontmatter.supporting_points.map(item => <li key={item.point.trim()}>{item.point}</li>)}
+            {frontmatter.supporting_points.map(item =>
+              <li key={item.point.trim()}>
+                <Paragraph as="p" size="body" color="white">
+                  {item.point}
+                </Paragraph>
+              </li>)}
           </StyledPoints>
-          <Heading as="h2" size="h2" color={`${colors.hunterOrange}`}>Coming Soon...</Heading>
+          <Heading as="h2" size="h2" color={`${colors.hunterOrange}`} className="coming-soon">Coming Soon...</Heading>
         </StyledInfoSection>
         <StyledFormSection>
-          <TeamsForm/>
+          <Heading as="h5" size="label" color={colors.hunterOrange}>
+            Teams Private Beta
+          </Heading>
+          <TeamsForm />
         </StyledFormSection>
       </Wrapper>
     </IndexLayout>

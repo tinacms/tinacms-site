@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import { rgba } from 'polished'
 
-
-const StyledForm = styled('form')`
-
-`
+import { colors, breakpoints, space } from 'utils/variables'
+import { Heading } from 'components/foundations'
 
 function TeamsForm() {
   const [ firstName, setFirstName ] = useState('')
@@ -71,7 +70,7 @@ function TeamsForm() {
   return (
     <StyledForm onSubmit={handleSubmit}>
       <label >
-        First Name
+        <p className="body">First </p>
         <input
           type="text"
           id="name"
@@ -80,7 +79,7 @@ function TeamsForm() {
           onChange={handleNameChange}/>
       </label>
       <label >
-        Last Name
+      <p className="body">Last </p>
         <input
           type="text"
           id="surname"
@@ -89,7 +88,7 @@ function TeamsForm() {
           onChange={handleSurnameChange}/>
       </label>
       <label >
-        Email
+      <p className="body">Email</p>
         <input
           type="text"
           id="email"
@@ -98,9 +97,104 @@ function TeamsForm() {
           value={email}
           onChange={handleEmailChange} />
       </label>
-      <button type="submit">Sign Up</button>
+      <StyledButton type="submit">
+        <Heading as="h5" size="label">Sign Up</Heading>
+        </StyledButton>
     </StyledForm>
   )
 }
 
 export default TeamsForm
+
+const StyledForm = styled('form')`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: ${space.smallDesktop}px auto;
+  p {
+    color: ${colors.mintChocoChip};
+    margin-bottom: 10px;
+  }
+  label {
+    margin-bottom: ${space.xSmallDesktop}px;
+  }
+
+  input {
+    height: 40px;
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: ${colors.seafoam};
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08), 0px 2px 3px rgba(0, 0, 0, 0.12);
+    border: 0;
+    border-radius: 5px;
+    color: ${colors.black};
+    line-height: 1.2;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: text;
+    width: 100%;
+    padding: 0 16px;
+    transition: all 85ms ease-out;
+    font-family: 'tuner-regular';
+    font-size: 16px;
+    &:hover,
+    &:focus {
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08), 0 0 0 3px ${rgba(colors.seafoam, 0.7)},
+        0px 2px 3px rgba(0, 0, 0, 0.12);
+    }
+    &:focus,
+    &:active {
+      outline: none;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08), 0 0 0 3px ${rgba(colors.seafoam, 0.7)},
+        0px 2px 3px rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  @media(min-width: ${breakpoints.lg}px) {
+    height: 100%;
+    width: 100%;
+    border-radius: 60px;
+  }
+`
+
+
+const StyledButton = styled('button')`
+  align-self: center;
+  width: max-content;
+  margin-top: ${space.smallDesktop}px;
+  filter: drop-shadow(1px 2px 18px rgb(0, 0, 0, 12%));
+  transition: filter 250ms ease;
+  display: flex;
+  align-items: center;
+  background-color: ${colors.hunterOrange};
+  border-radius: 100px;
+  border: 0;
+  cursor: pointer;
+  white-space: no-wrap;
+  text-decoration: none;
+  text-transform: uppercase;
+  height: 45px;
+  padding: 0;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    filter: drop-shadow(1px 5px 18px rgb(0, 0, 0, 25%));
+    transition: filter 250ms ease;
+  }
+  &:focus {
+    box-shadow: 0 0 0 3px ${rgba(colors.hunterOrange, 0.5)};
+  }
+  &:focus,
+  &:active {
+    outline: none;
+  }
+  &:active {
+    filter: none;
+  }
+  h5 {
+    padding: 0 24px;
+  }
+`
+
