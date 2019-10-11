@@ -140,6 +140,7 @@ module.exports = {
     description: 'A site editor for the modern web',
     siteUrl: 'https://tinacms.org',
     roadmapUrl: 'https://github.com/tinacms/tinacms/blob/master/ROADMAP.md',
+    licenseUrl: 'https://github.com/tinacms/tinacms/blob/master/LICENSE',
     keywords: 'gatsbyjs, gatsby, react, cms, next',
     social: {
       twitter: 'https://twitter.com/tina_cms',
