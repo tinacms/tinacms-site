@@ -112,7 +112,7 @@ const StyledLayoutMain = styled('div')<LayoutMainInnerProps>`
   flex-direction: column;
   flex: 1 1 auto;
   position: relative;
-  transition: margin-left 0.3s ease;
+  /* transition: margin-left 0.3s ease; */
 `
 
 const LogoWrapper = styled('div')`
