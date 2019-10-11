@@ -2,12 +2,13 @@
 
 const queries = require('./src/utils/algolia')
 require('dotenv').config()
+const dummyMailchimpEndpoint = 'https://theDomainHere.us18.list-manage.com/subscribe/post?u=1512315231251&amp;id=0asd21t12e1'
 
 const plugins = [
   {
     resolve: 'gatsby-plugin-mailchimp',
     options: {
-      endpoint: process.env.MAILCHIMP_ENDPOINT,
+      endpoint: process.env.NODE_ENV === 'production' ? process.env.MAILCHIMP_ENDPOINT : dummyMailchimpEndpoint
     },
   },
   '@tinacms/gatsby-tinacms-git',
