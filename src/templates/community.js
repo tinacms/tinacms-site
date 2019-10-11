@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
+import { remarkForm } from '@tinacms/react-tinacms-remark'
 
 import IndexLayout from 'layouts'
 import { Heading, Paragraph } from 'components/foundations'
@@ -136,7 +137,42 @@ export const query = graphql`
   }
 `
 
-export default CommunityTemplate
+const CommunityTemplateOptions = {
+  fields: [
+    {
+      label: 'Headline',
+      name: 'rawFrontmatter.headline',
+      description: 'Enter the main headline here',
+      component: 'textarea'
+    },
+    {
+      label: 'Gif',
+      name: 'rawFrontmatter.gif.src',
+      description: 'Enter path to gif from static',
+      component: 'text'
+    },
+    {
+      label: 'Gif Alt',
+      name: 'rawFrontmatter.gif.alt',
+      description: 'Enter Gif alt tag here',
+      component: 'text'
+    },
+    {
+      label: 'Secondary Headline',
+      name: 'rawFrontmatter.supporting_headline',
+      description: 'Enter the secondary headline here',
+      component: 'textarea'
+    },
+    {
+      label: 'Secondary Body Copy',
+      name: 'rawFrontmatter.supporting_body',
+      description: 'Enter the body copy here',
+      component: 'textarea'
+    }
+  ]
+}
+
+export default remarkForm(CommunityTemplate, CommunityTemplateOptions)
 
 
 
