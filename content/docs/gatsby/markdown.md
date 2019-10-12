@@ -29,7 +29,7 @@ yarn add @tinacms/gatsby-tinacms-remark @tinacms/gatsby-tinacms-git
 
 ### Adding the Git Plugin
 
-Open the `gatsby-config.js` file and add both plugin:
+Open the `gatsby-config.js` file and add both plugins:
 
 ```JavaScript
 module.exports = {
