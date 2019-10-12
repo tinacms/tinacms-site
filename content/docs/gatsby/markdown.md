@@ -10,26 +10,26 @@ Have an idea for a Tina content editing plugin? [Consider contributing](/docs/co
 
 ## Editing Markdown in Gatsby
 
-The [`gatsby-transformer-remark`](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-remark) plugin lets us use markdown in our Gatsby sites. Two other packages let us edit markdown with Tina:
+The [`gatsby-transformer-remark`](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-remark) plugin lets us use markdown in our Gatsby sites. Two other plugins let us edit markdown with Tina:
 
-- `react-tinacms-remark`: Provides hooks and components for creating Remark forms.
+- `gatsby-tinacms-remark`: Provides hooks and components for creating Remark forms.
 - `gatsby-tinacms-git`: Extends the gatsby development server to writes changes to the local filesystem.
 
 ### Install the Git & Markdown Packages
 
 ```
-npm install --save @tinacms/react-tinacms-remark @tinacms/gatsby-tinacms-git
+npm install --save @tinacms/gatsby-tinacms-remark @tinacms/gatsby-tinacms-git
 ```
 
 or
 
 ```
-yarn add @tinacms/react-tinacms-remark @tinacms/gatsby-tinacms-git
+yarn add @tinacms/gatsby-tinacms-remark @tinacms/gatsby-tinacms-git
 ```
 
 ### Adding the Git Plugin
 
-Open the `gatsby-config.js` file and add the `"@tinacms/gatsby-plugin-tinacms"` plugin:
+Open the `gatsby-config.js` file and add both plugin:
 
 ```JavaScript
 module.exports = {
@@ -40,6 +40,7 @@ module.exports = {
       options: {
         plugins: [
           "@tinacms/gatsby-tinacms-git",
+          "@tinacms/gatsby-tinacms-remark",
         ],
       },
     },
@@ -66,7 +67,7 @@ There are 3 steps to making a markdown file editable:
 
 ```jsx
 // 1. Import the `remarkForm` HOC
-import { remarkForm } from '@tinacms/react-tinacms-remark'
+import { remarkForm } from '@tinacms/gatsby-tinacms-remark'
 
 function BlogPostTemplate(props) {
   return <h1>{props.data.markdownRemark.frontmatter.title}</h1>
@@ -132,7 +133,7 @@ _NOTE: the name of your fields should be prefixed with `"rawFrontmatter"` rather
 #### Example: src/templates/blog-post.js
 
 ```jsx
-import { remarkForm } from '@tinacms/react-tinacms-remark'
+import { remarkForm } from '@tinacms/gatsby-tinacms-remark'
 
 function BlogPostTemplate(props) {
   return (
@@ -192,7 +193,7 @@ Tina uses `content-button` plugins to make creating content possible. These butt
 **Example**
 
 ```javascript
-import { createRemarkButton } from '@tinacms/react-tinacms-remark'
+import { createRemarkButton } from '@tinacms/gatsby-tinacms-remark'
 
 const CreatePostButton = createRemarkButton({
   label: 'Create Post',
@@ -238,7 +239,7 @@ _NOTE: No changes need to be made to the `BlogIndex` component itself._
 ```jsx
 // 1. Import `createRemarkButton` and `withPlugin`
 import { withPlugin } from '@tinacms/react-tinacms'
-import { createRemarkButton } from '@tinacms/react-tinacms-remark'
+import { createRemarkButton } from '@tinacms/gatsby-tinacms-remark'
 
 // Note: this is just an example index component.
 function BlogIndex(props) {
