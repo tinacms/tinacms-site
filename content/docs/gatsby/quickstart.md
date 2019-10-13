@@ -32,7 +32,7 @@ yarn global add gatsby-cli
 Now we have `gatsby-cli` installed, we can now create a project based on the Tina starter by running:
 
 ```
-gatsby new my-tina-starter https://github.com/forestryio/gatsby-starter-Tina
+gatsby new my-tina-starter https://github.com/tinacms/gatsby-starter-tinacms
 ```
 
 The project is generated in a folder titled `my-tina-starter`, feel free to change or update that name.
