@@ -18,7 +18,7 @@ If you followed the [editing markdown in Gatsby](/docs/gatsby/content-editing.md
 **Before**
 
 ```jsx
-import { remarkForm } from '@tinacms/react-tinacms-remark'
+import { remarkForm } from '@tinacms/gatsby-tinacms-remark'
 
 const Template = ({ data }) => (
   <section class="content" dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}></section>
@@ -30,7 +30,7 @@ export default remarkForm(Template)
 **After**
 
 ```jsx
-import { liveRemarkForm } from '@tinacms/react-tinacms-remark'
+import { liveRemarkForm } from '@tinacms/gatsby-tinacms-remark'
 
 const Template = ({ data }) => (
   <section class="content" dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}></section>
@@ -48,7 +48,7 @@ In the following example, we wrap the `section` that renders the markdown conten
 **Before**
 
 ```jsx
-import { liveRemarkForm } from '@tinacms/react-tinacms-remark'
+import { liveRemarkForm } from '@tinacms/gatsby-tinacms-remark'
 
 const Template = ({ data }) => (
   <section class="content" dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}></section>
@@ -60,7 +60,7 @@ export default liveRemarkForm(Template)
 **After**
 
 ```jsx
-import { liveRemarkForm } from '@tinacms/react-tinacms-remark'
+import { liveRemarkForm } from '@tinacms/gatsby-tinacms-remark'
 import { Wysiwyg } from '@tinacms/fields'
 import { TinaField } from '@tinacms/form-builder'
 
@@ -78,7 +78,7 @@ export default liveRemarkForm(Template)
 When your template is processed through the `liveRemarkForm` function, it will have the properties `isEditing` and `setIsEditing` that you can use to create a trigger for activating inline editing mode.
 
 ```jsx
-import { liveRemarkForm } from '@tinacms/react-tinacms-remark'
+import { liveRemarkForm } from '@tinacms/gatsby-tinacms-remark'
 import { Wysiwyg } from '@tinacms/fields'
 import { TinaField } from '@tinacms/form-builder'
 
