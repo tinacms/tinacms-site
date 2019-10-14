@@ -34,9 +34,6 @@ function SmashingConfTemplate(props) {
           </StyledPoints>
         </StyledInfoSection>
         <StyledFormSection>
-          <Heading as="h5" size="label" color={colors.hunterOrange}>
-            Teams Early Access
-          </Heading>
           <TeamsForm hubspotFormID={process.env.GATSBY_SMASHINGCONF_HUBSPOT_FORM_ID} />
         </StyledFormSection>
       </Wrapper>
@@ -97,6 +94,7 @@ const Wrapper = styled('div')`
     max-width: 1150px;
     margin: 0 auto;
     display: flex;
+    align-items: center;
   }
 `
 

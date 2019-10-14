@@ -72,6 +72,9 @@ function TeamsForm(props) {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
+      <Heading as="h5" size="label" color={colors.hunterOrange} style={{ marginBottom: '1rem' }}>
+        Teams Early Access
+      </Heading>
       <label>
         <p className="body">First Name</p>
         <input type="text" id="name" name="name" value={firstName} onChange={handleNameChange} />
