@@ -1,5 +1,7 @@
 ---
 title: Group Field
+prev: /docs/fields/toggle
+next: /docs/fields/group-list
 ---
 
 ```typescript

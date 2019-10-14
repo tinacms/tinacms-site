@@ -1,7 +1,7 @@
 ---
 title: Toggle Field
 prev: /docs/fields/color
-next: /docs/fields/groups
+next: /docs/fields/group
 ---
 
 The `toggle` field represents a true/false toggle. This field is typically used for boolean content values. You could use this to toggle a certain feature on the page on or off.
