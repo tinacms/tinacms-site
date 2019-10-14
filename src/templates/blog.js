@@ -69,6 +69,8 @@ const BlogTemplateOptions = {
       label: 'Date Posted',
       name: 'rawFrontmatter.date',
       component: 'date',
+      dateFormat: "MMMM DD YYYY",
+      timeFormat: false
     },
     {
       label: 'Author',
