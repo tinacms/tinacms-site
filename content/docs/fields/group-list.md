@@ -5,7 +5,7 @@ title: Group-List Field
 ```typescript
 import { Field } from '@tinacms/core'
 
-interface GroupConfig {
+interface GroupListConfig {
   component: 'group-list'
   name: string
   label?: string
