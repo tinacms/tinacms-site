@@ -87,6 +87,21 @@
         "title": "Toggle"
       },
       {
+        "id": "/docs/fields/group",
+        "slug": "/docs/fields/group",
+        "title": "Group"
+      },
+      {
+        "id": "/docs/fields/group-list",
+        "slug": "/docs/fields/group-list",
+        "title": "Group List"
+      },
+      {
+        "id": "/docs/fields/blocks",
+        "slug": "/docs/fields/blocks",
+        "title": "Blocks"
+      },
+      {
         "id": "/docs/fields/custom-fields",
         "slug": "/docs/fields/custom-fields",
         "title": "Custom Fields"
