@@ -96,7 +96,29 @@ export const pageQuery = graphql`
 `
 ```
 
-You hould now text inputs for each of your frontmatter fields and for the markdown body. Try changing the tile and see what happens!
+You should now see text inputs for each of your frontmatter fields and for the markdown body. Try changing the tile and see what happens!
+
+### Queries aliasing 'markdownRemark'
+
+NOTE: If your query uses an alias for 'markdownRemark', then you will have to use the 'queryName' option to specify the alias name.
+
+**Example: src/templates/blog-post.js**
+
+```jsx
+/// ...
+
+// Use 'queryName' to specify where markdownRemark is found.
+export default remarkForm(BlogPostTemplate, { queryName: 'myContent' })
+
+// Aliasing markdownRemark as 'myContent'
+export const pageQuery = graphql`
+  query BlogPostBySlug($slug: String!) {
+    myContent: markdownRemark(fields: { slug: { eq: $slug } }) {
+      // ...
+    }
+  }
+`
+```
 
 ### Editing Markdown Content
 
@@ -128,7 +150,7 @@ The `remarkForm` function accepts an optional `config` object for overriding the
   - `label`: A human readable label for the field.
   - `description`: An optional description that expands on the purpose of the field or prompts a specific action.
 
-_NOTE: the name of your fields should be prefixed with `"rawFrontmatter"` rather than `"frontmatter"`. The later is the fully transformed data._
+_NOTE: the name of your fields should be prefixed with `"rawFrontmatter"` rather than `"frontmatter"`. The latter is the fully transformed data._
 
 #### Example: src/templates/blog-post.js
 
