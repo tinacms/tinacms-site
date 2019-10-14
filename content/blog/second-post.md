@@ -1,7 +1,7 @@
 ---
-title: Second Post
-date: "2019-08-08T22:42:09Z"
-author: "Scott Gallant"
+title: Announcement
+date: 2019-10-16T07:00:00.000Z
+author: Scott Gallant
 ---
 
 Ramps man bun taxidermy lumbersexual art party keytar schlitz semiotics literally direct trade wayfarers activated charcoal seitan mustache skateboard. Lo-fi leggings marfa VHS 90's semiotics trust fund. Unicorn church-key heirloom selvage hot chicken blog chartreuse forage, activated charcoal drinking vinegar offal. Next level gochujang activated charcoal, mixtape locavore everyday carry poke bitters small batch actually quinoa man braid lumbersexual. Tote bag vape distillery man bun, pok pok knausgaard flannel green juice semiotics direct trade retro.

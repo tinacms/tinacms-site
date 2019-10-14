@@ -1,7 +1,7 @@
 ---
 title: Inline Editing
 id: inline-editing
-prev: null
+prev: /docs/gatsby/custom-fields
 next: null
 ---
 

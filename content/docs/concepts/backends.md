@@ -5,6 +5,7 @@ prev: /docs/concepts/fields
 next: /docs/concepts/plugins
 ---
 
+
 A **backend** for the CMS will specify where content is stored, as well as where the latest version of content is sourced from.
 
 Backend should be implemented as an [express router](https://expressjs.com/en/guide/routing.html#express-router), which can be plugged into the website's development server to expose a content storage API.
@@ -14,6 +15,8 @@ Backend should be implemented as an [express router](https://expressjs.com/en/gu
 - Git
 
 ## Creating a Custom Backend
+
+<tip> Please note: the examples below are considered advanced usecases; it is currently recommended for most folks to use the default Git-based backend.</tip>
 
 We recommend tht backends that intend to support multiple platforms be broken into two parts:
 

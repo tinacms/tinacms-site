@@ -2,7 +2,6 @@
 title: Plugins
 id: /docs/concepts/plugins
 prev: /docs/concepts/backends
-next: /docs/gatsby/quickstart
 ---
 
 <tip>This document is a work-in-progress. The Plugin API is not stable and it is not recommended to create or consume plugins in your projects.</tip>
