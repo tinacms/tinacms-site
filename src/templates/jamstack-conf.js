@@ -9,7 +9,7 @@ import { Heading, Paragraph } from 'components/foundations'
 import { colors, space, breakpoints } from 'utils/variables'
 import { TeamsForm } from 'components/foundations'
 
-function TeamsTemplate(props) {
+function JamstackConfTemplate(props) {
   const frontmatter = props.data.markdownRemark.frontmatter
   return (
     <IndexLayout page="teams">
@@ -34,14 +34,14 @@ function TeamsTemplate(props) {
           </StyledPoints>
         </StyledInfoSection>
         <StyledFormSection>
-          <TeamsForm hubspotFormID={process.env.GATSBY_HUBSPOT_FORM_ID} />
+          <TeamsForm hubspotFormID={process.env.GATSBY_JAMSTACKCONF_HUBSPOT_FORM_ID} />
         </StyledFormSection>
       </Wrapper>
     </IndexLayout>
   )
 }
 
-const TeamsTemplateOptions = {
+const JamstackConfTemplateOptions = {
   fields: [
     {
       label: 'Headline',
@@ -58,10 +58,10 @@ const TeamsTemplateOptions = {
   ],
 }
 
-export default remarkForm(TeamsTemplate, TeamsTemplateOptions)
+export default remarkForm(JamstackConfTemplate, JamstackConfTemplateOptions)
 
 export const query = graphql`
-  query TeamsTemplateQuery($slug: String!) {
+  query JamstackConfTemplateQuery($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       fileRelativePath

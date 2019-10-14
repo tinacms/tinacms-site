@@ -22,7 +22,7 @@ const PageTemplate = ({ data, setIsEditing, isEditing }) => {
   const [tocIsOpen, setTocIsOpen] = React.useState(false)
   const { markdownRemark, site } = data
   const { prev, next } = markdownRemark.frontmatter
-  const sidebar = useSidebarbar()
+  const sidebar = useSidebar()
 
   return (
     <IndexLayout>
@@ -47,7 +47,7 @@ const PageTemplate = ({ data, setIsEditing, isEditing }) => {
               {!sidebar.hidden && (
                 <button onClick={() => setIsEditing(p => !p)}>{isEditing ? 'Preview' : 'Edit'}</button>
               )}
-              {(prevPage || nextPage) && <Pagination prevPage={prevPage} nextPage={nextPage} />}
+              {(prev || next) && <Pagination prevPage={prev} nextPage={next} />}
               <Footer />
             </FooterWrapper>
           </Container>

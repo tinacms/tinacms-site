@@ -5,26 +5,27 @@ import { rgba } from 'polished'
 import { colors, breakpoints, space } from 'utils/variables'
 import { Heading } from 'components/foundations'
 
-function TeamsForm() {
-  const [ firstName, setFirstName ] = useState('')
-  const [ surname, setSurname] = useState('')
-  const [ email, setEmail ] = useState('')
+function TeamsForm(props) {
+  const [firstName, setFirstName] = useState('')
+  const [surname, setSurname] = useState('')
+  const [email, setEmail] = useState('')
+  const { hubspotFormID } = props
 
-  async function postForm(data){
-    if (process.env.GATSBY_HUBSPOT_FORM_ID && process.env.GATSBY_HUBSPOT_PORTAL_ID) {
-      const url = `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.GATSBY_HUBSPOT_PORTAL_ID}/${process.env.GATSBY_HUBSPOT_FORM_ID}`
+  async function postForm(data) {
+    if (hubspotFormID && process.env.GATSBY_HUBSPOT_PORTAL_ID) {
+      const url = `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.GATSBY_HUBSPOT_PORTAL_ID}/${hubspotFormID}`
       try {
         const rawResponse = await fetch(url, {
           method: 'POST',
           headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
           },
-          body: JSON.stringify(data)
-        });
-        const response = await rawResponse.json();
+          body: JSON.stringify(data),
+        })
+        const response = await rawResponse.json()
         const message = response.inlineMessage.replace(/<[^>]*>/g, '').trim()
-        alert(message);
+        alert(message)
       } catch (e) {
         alert('Looks like an error, please email support@forestry.io')
         console.error(e)
@@ -47,20 +48,21 @@ function TeamsForm() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const formData = {
-      "fields": [
-      {
-        "name": "firstname",
-        "value": firstName
-      },
-      {
-        "name": "lastname",
-        "value": surname
-      },
-      {
-        "name": "email",
-        "value": email
-      }
-    ]}
+      fields: [
+        {
+          name: 'firstname',
+          value: firstName,
+        },
+        {
+          name: 'lastname',
+          value: surname,
+        },
+        {
+          name: 'email',
+          value: email,
+        },
+      ],
+    }
     if (process.env.NODE_ENV === 'production') {
       postForm(formData)
     } else {
@@ -70,37 +72,26 @@ function TeamsForm() {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <label >
+      <Heading as="h5" size="label" color={colors.hunterOrange} style={{ marginBottom: '1rem' }}>
+        Teams Early Access
+      </Heading>
+      <label>
         <p className="body">First Name</p>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={firstName}
-          onChange={handleNameChange}/>
+        <input type="text" id="name" name="name" value={firstName} onChange={handleNameChange} />
       </label>
-      <label >
-      <p className="body">Last Name</p>
-        <input
-          type="text"
-          id="surname"
-          name="surname"
-          value={surname}
-          onChange={handleSurnameChange}/>
+      <label>
+        <p className="body">Last Name</p>
+        <input type="text" id="surname" name="surname" value={surname} onChange={handleSurnameChange} />
       </label>
-      <label >
-      <p className="body">Email</p>
-        <input
-          type="text"
-          id="email"
-          name="email"
-          required
-          value={email}
-          onChange={handleEmailChange} />
+      <label>
+        <p className="body">Email</p>
+        <input type="text" id="email" name="email" required value={email} onChange={handleEmailChange} />
       </label>
       <StyledButton type="submit">
-        <Heading as="h5" size="label">Sign Up</Heading>
-        </StyledButton>
+        <Heading as="h5" size="label">
+          Request Access
+        </Heading>
+      </StyledButton>
     </StyledForm>
   )
 }
@@ -153,13 +144,12 @@ const StyledForm = styled('form')`
     }
   }
 
-  @media(min-width: ${breakpoints.lg}px) {
+  @media (min-width: ${breakpoints.lg}px) {
     height: unset;
     width: 65%;
     border-radius: 60px;
   }
 `
-
 
 const StyledButton = styled('button')`
   align-self: center;
@@ -203,4 +193,3 @@ const StyledButton = styled('button')`
     padding: 0 24px;
   }
 `
-
