@@ -130,17 +130,6 @@
     ]
   },
   {
-    "title": "Tina + NextJS",
-    "id": "nextjs",
-    "items": [
-      {
-        "id": "tbd",
-        "slug": "/docs/nextjs/tbd",
-        "title": "tbd"
-      }
-    ]
-  },
-  {
     "title": "Contributing",
     "id": "contributing",
     "items": [
