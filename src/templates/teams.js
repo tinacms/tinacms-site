@@ -32,13 +32,10 @@ function TeamsTemplate(props) {
               </li>
             ))}
           </StyledPoints>
-          <Heading as="h2" size="h2" color={`${colors.hunterOrange}`} className="coming-soon">
-            Coming Soon...
-          </Heading>
         </StyledInfoSection>
         <StyledFormSection>
           <Heading as="h5" size="label" color={colors.hunterOrange}>
-            Teams Private Beta
+            Teams Early Access
           </Heading>
           <TeamsForm hubspotFormID={process.env.GATSBY_HUBSPOT_FORM_ID} />
         </StyledFormSection>
