@@ -206,13 +206,16 @@ function DocsNavigation({ title, navigation, headerMenus }: DocsNavigationProps)
 
   const [openMenus, setOpenMenus] = React.useState(initialMenuState) as any
 
-  const createMenuToggle = (key: any) => {
-    return (isOpen: boolean) => {
-      let newOpenMenus = openMenus
-      newOpenMenus[key] = isOpen
-      setOpenMenus(newOpenMenus)
-    }
-  }
+  const createMenuToggle = React.useCallback(
+    (key: any) => {
+      return (isOpen: boolean) => {
+        let newOpenMenus = { ...openMenus } 
+        newOpenMenus[key] = isOpen
+        setOpenMenus(newOpenMenus)
+      }
+    },
+    [openMenus]
+  )
 
   return (
     <Wrapper isOpen={state.isOpen}>
@@ -261,7 +264,7 @@ function DocsNavigation({ title, navigation, headerMenus }: DocsNavigationProps)
             })}
         </DocumentationMenu>
         {navigation && (
-          <DocumentationNav onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}>
+          <DocumentationNav>
             {navigation.map(({ node }) => (
               <NavigationMenu
                 key={node.title}
