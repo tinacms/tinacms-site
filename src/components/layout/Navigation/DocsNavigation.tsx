@@ -209,7 +209,7 @@ function DocsNavigation({ title, navigation, headerMenus }: DocsNavigationProps)
   const createMenuToggle = React.useCallback(
     (key: any) => {
       return (isOpen: boolean) => {
-        let newOpenMenus = Object.create(openMenus)
+        let newOpenMenus = { ...openMenus } 
         newOpenMenus[key] = isOpen
         setOpenMenus(newOpenMenus)
       }
