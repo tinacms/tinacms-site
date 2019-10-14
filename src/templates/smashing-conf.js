@@ -9,7 +9,7 @@ import { Heading, Paragraph } from 'components/foundations'
 import { colors, space, breakpoints } from 'utils/variables'
 import { TeamsForm } from 'components/foundations'
 
-function TeamsTemplate(props) {
+function SmashingConfTemplate(props) {
   const frontmatter = props.data.markdownRemark.frontmatter
   return (
     <IndexLayout page="teams">
@@ -32,22 +32,19 @@ function TeamsTemplate(props) {
               </li>
             ))}
           </StyledPoints>
-          <Heading as="h2" size="h2" color={`${colors.hunterOrange}`} className="coming-soon">
-            Coming Soon...
-          </Heading>
         </StyledInfoSection>
         <StyledFormSection>
           <Heading as="h5" size="label" color={colors.hunterOrange}>
-            Teams Private Beta
+            Teams Early Access
           </Heading>
-          <TeamsForm hubSpotFormID={process.env.GATSBY_HUBSPOT_FORM_ID} />
+          <TeamsForm hubspotFormID={process.env.SMASHINGCONF_HUBSPOT_FORM_ID} />
         </StyledFormSection>
       </Wrapper>
     </IndexLayout>
   )
 }
 
-const TeamsTemplateOptions = {
+const SmashingConfTemplateOptions = {
   fields: [
     {
       label: 'Headline',
@@ -64,10 +61,10 @@ const TeamsTemplateOptions = {
   ],
 }
 
-export default remarkForm(TeamsTemplate, TeamsTemplateOptions)
+export default remarkForm(SmashingConfTemplate, SmashingConfTemplateOptions)
 
 export const query = graphql`
-  query TeamsTemplateQuery($slug: String!) {
+  query SmashingConfTemplateQuery($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       fileRelativePath
