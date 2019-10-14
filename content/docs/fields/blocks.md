@@ -1,5 +1,7 @@
 ---
-title: Blocks FIeld
+title: Blocks Field
+prev: /docs/fields/group-list
+next: /docs/fields/custom-fields
 ---
 
 ```typescript
