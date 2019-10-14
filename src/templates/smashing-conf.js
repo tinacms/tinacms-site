@@ -37,7 +37,7 @@ function SmashingConfTemplate(props) {
           <Heading as="h5" size="label" color={colors.hunterOrange}>
             Teams Early Access
           </Heading>
-          <TeamsForm hubspotFormID={process.env.SMASHINGCONF_HUBSPOT_FORM_ID} />
+          <TeamsForm hubspotFormID={process.env.GATSBY_SMASHINGCONF_HUBSPOT_FORM_ID} />
         </StyledFormSection>
       </Wrapper>
     </IndexLayout>
