@@ -1,11 +1,8 @@
 ---
 title: ''
-headline: >-
-  Edit your site in the cloud. Unlock the power of Tina for the entire team.
-  Sign up for early access.
+headline: Unlock the power of Tina for the entire team.
 supporting_points:
-  - point: Give editors a link to a custom live editing environment
-  - point: Test Tina in your editorial workflows
+  - point: A custom live editing environment for you and your team
   - point: Deploy right from the command line with the Tina CLI
-  - point: 'Git backed, for now,  with plans to support other backend options'
+  - point: Git backed (other data sources coming soon)
 ---
