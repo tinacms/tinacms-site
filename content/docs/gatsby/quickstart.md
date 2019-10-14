@@ -1,11 +1,11 @@
 ---
-id: /docs/gatsby/quickstart
 title: Quickstart
+id: /docs/gatsby/quickstart
 prev: how-tina-works
 next: /docs/gatsby/manual-setup
 ---
 
-If you want to get up and running quickly to see how Tina works, this is your route. You can either use a [Gatsby starter](/docs/gatsby/quickstart) that is preconfigured with Tina or add Tina to your [existing project](/docs/gatsby/manual-setup).
+If you want to get up and running quickly to see how Tina works, this is your route. You can either use a [Gatsby starter](https://github.com/tinacms/gatsby-starter-tinacms) that is preconfigured with Tina or add Tina to your [existing project](/docs/gatsby/manual-setup).
 
 #### Prerequisites
 

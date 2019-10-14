@@ -1,8 +1,8 @@
 ---
 title: Custom Fields
 id: /docs/gatsby/custom-fields
-prev: /docs/gatsby/content-creation
-next:
+prev: /docs/gatsby/json
+next: /docs/gatsby/inline-editing
 ---
 
 This doc explains how to add custom field plugins to a Gatsby site.

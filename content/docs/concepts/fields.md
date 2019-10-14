@@ -1,12 +1,12 @@
 ---
 title: Fields
 prev: /docs/concepts/forms
-next: /docs/gatsby/quickstart
+next: /docs/concepts/backends
 ---
 
 A [form](/docs/concepts/forms 'Tina Concepts: Forms') in Tina is made up of one or more **fields**.
 
-Tina has several built-in field types, as well as the ability to define your own fields.
+Tina has several built-in [field types](/docs/concepts/fields#field-types), as well as the ability to define your [own fields](/docs/fields/custom-fields).
 
 ## Field Definition
 
@@ -27,3 +27,20 @@ interface Field {
 - `description`: _(Optional)_ A description that will appear below the field. Could be used to explain how the field data is used.
 - `component`: Either a React component that renders the field, or a string containing the ID of a built-in field type or custom field plugin
 - `defaultValue`: _(Optional)_ This value will be inserted into the field if no value is set.
+
+## Field Types
+
+Checkout the interfaces for each field type below.
+
+- [Text](/docs/fields/text)
+- [Text-Area](/docs/fields/textarea)
+- [Markdown](/docs/fields/markdown)
+- [Date & Time](/docs/fields/date)
+- [Image](/docs/fields/image)
+- [Color](/docs/fields/color)
+- [Toggle](/docs/fields/toggle)
+- [Group](/docs/fields/group)
+- [Group List](/docs/fields/group-list)
+- [Blocks](/docs/fields/blocks)
+
+Learn how to incorporate Tina's built-in field types into your [ Gatsby remark forms](/docs/gatsby/markdown#customizing-remark-forms).

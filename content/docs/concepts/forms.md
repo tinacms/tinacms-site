@@ -5,9 +5,18 @@ prev: /docs/concepts/sidebar
 next: /docs/concepts/fields
 ---
 
-In Tina, **forms** are how you expose your site's content for editing. Forms can be created by invoking the `useCMSForm` hook or using the `<CMSForm>` higher-order component.
+In Tina, **forms** are how you expose your site's content for editing.
+
+## Setup Predefined Forms
+
+If you're using Gatsby, most of your needs will be met by the [remark](/docs/gatsby/markdown) & [json](/docs/gatsby/json) forms already defined by Tina. If your site uses markdown as a datasource, head over to the [Using Markdown Files](/docs/gatsby/markdown) tutorial. If you need to edit json data, head over to the [Using Json Files](/docs/gatsby/json) tutorial.
+
+## Creating Custom Forms
+
+If you want to make custom forms, they can be created by invoking the `useCMSForm` hook or using the `<CMSForm>` higher-order component.
 
 ## useCMSForm
+<tip>Please note: creating custom forms is considered an advanced usecase. It is recommended for most folks to use Tina's predefined forms mentioned above.</tip>
 
 ```typescript
 function useCMSForm(options: FormOption): [object, Form]

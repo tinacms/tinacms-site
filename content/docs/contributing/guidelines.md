@@ -1,7 +1,7 @@
 ---
-id: /docs/contributing/guidelines
 title: Contribution Guidelines
-prev: /docs/concepts/backends
+id: /docs/contributing/guidelines
+prev: null
 next: /docs/contributing/setting-up
 ---
 

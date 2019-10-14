@@ -1,5 +1,7 @@
 ---
 title: JSON in Gatsby
+prev: /docs/gatsby/markdown
+next: /docs/gatsby/custom-fields
 ---
 
 ## Editing JSON in Gatsby
