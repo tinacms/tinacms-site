@@ -40,7 +40,7 @@ function TeamsTemplate(props) {
           <Heading as="h5" size="label" color={colors.hunterOrange}>
             Teams Private Beta
           </Heading>
-          <TeamsForm hubSpotFormID={process.env.GATSBY_HUBSPOT_FORM_ID} />
+          <TeamsForm hubspotFormID={process.env.GATSBY_HUBSPOT_FORM_ID} />
         </StyledFormSection>
       </Wrapper>
     </IndexLayout>
