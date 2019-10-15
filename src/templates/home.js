@@ -26,11 +26,24 @@ const HomeTemplate = props => {
           <Heading as="h1" size="h1">
             <span dangerouslySetInnerHTML={{ __html: `${dataJson.headline}` }}></span>
           </Heading>
-          <Video>
-            <video autoPlay loop muted>
-              <source src={dataJson.hero_video} type="video/mp4" />
+          <HeroVideo>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              poster={`https://res.cloudinary.com/forestry-demo/video/upload/so_0/${dataJson.hero_video}.jpg`}
+            >
+              <source
+                src={`https://res.cloudinary.com/forestry-demo/video/upload/${dataJson.hero_video}.webm`}
+                type="video/webm"
+              />
+              <source
+                src={`https://res.cloudinary.com/forestry-demo/video/upload/${dataJson.hero_video}.mp4`}
+                type="video/mp4"
+              />
             </video>
-          </Video>
+          </HeroVideo>
         </HeroSection>
         <InfoSection>
           <Heading as="h2" size="h2" color={colors.darkPurple}>
@@ -140,10 +153,10 @@ const Wrapper = styled('div')`
   }
 `
 
-const Video = styled.div`
+const HeroVideo = styled.div`
   display: block;
   max-width: 90%;
-  margin-top: ${space.medMobile}px;
+  margin-top: ${space.medDesktop}px;
   img,
   video {
     margin: 0 auto;
@@ -151,6 +164,9 @@ const Video = styled.div`
     border-radius: 10px;
     max-width: 934px;
     width: 100%;
+  }
+  @media (min-width: ${breakpoints.md}px) {
+    margin-top: ${space.lrgDesktop}px;
   }
 `
 
