@@ -36,7 +36,7 @@ const HomeTemplate = props => {
             >
               <source
                 src={`https://res.cloudinary.com/forestry-demo/video/upload/${dataJson.hero_video}.webm`}
-                type="video/mp4"
+                type="video/webm"
               />
               <source
                 src={`https://res.cloudinary.com/forestry-demo/video/upload/${dataJson.hero_video}.mp4`}
