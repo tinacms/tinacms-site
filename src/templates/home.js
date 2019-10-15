@@ -27,8 +27,21 @@ const HomeTemplate = props => {
             <span dangerouslySetInnerHTML={{ __html: `${dataJson.headline}` }}></span>
           </Heading>
           <HeroVideo>
-            <video autoPlay loop muted playsInline>
-              <source src={dataJson.hero_video} type="video/mp4" />
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              poster="https://res.cloudinary.com/forestry-demo/video/upload/so_0/v1571159974/tina-hero-demo.jpg"
+            >
+              <source
+                src="https://res.cloudinary.com/forestry-demo/video/upload/v1571159974/tina-hero-demo.webm"
+                type="video/mp4"
+              />
+              <source
+                src="https://res.cloudinary.com/forestry-demo/video/upload/v1571159974/tina-hero-demo.mp4"
+                type="video/mp4"
+              />
             </video>
           </HeroVideo>
         </HeroSection>
