@@ -40,7 +40,12 @@ const EmailForm = (props: EmailFormProps) => {
   }
 
   return (
-    <StyledForm inputColor={props.inputColor} textColor={props.textColor} onSubmit={handleSubmit}>
+    <StyledForm
+      id="newsletter-signup"
+      inputColor={props.inputColor}
+      textColor={props.textColor}
+      onSubmit={handleSubmit}
+    >
       <Heading as="h3" size="h3">
         {props.cta}
       </Heading>
