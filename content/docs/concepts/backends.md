@@ -18,7 +18,7 @@ Backend should be implemented as an [express router](https://expressjs.com/en/gu
 
 <tip> Please note: the examples below are considered advanced usecases; it is currently recommended for most folks to use the default Git-based backend.</tip>
 
-We recommend tht backends that intend to support multiple platforms be broken into two parts:
+We recommend that backends that intend to support multiple platforms be broken into two parts:
 
 1. a core package that provides an Express router
 2. an adapter package that plugs this router into an express server running on the website
