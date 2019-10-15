@@ -17,7 +17,8 @@ const HomeTemplate = props => {
     <IndexLayout>
       <Wrapper>
         <Helmet>
-          <meta property="og:title" content="Home" />
+          <meta property="og:title" content="TinaCMS - Home" />
+          <meta name="twitter:title" content="TinaCMS - Home" />
         </Helmet>
         <HeroSection>
           <aside id="base">

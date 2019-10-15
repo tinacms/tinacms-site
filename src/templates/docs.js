@@ -36,6 +36,7 @@ const DocsTemplate = ({ data, setIsEditing, isEditing }) => {
           <meta name="description" content={markdownRemark.excerpt} />
           <meta property="og:title" content={markdownRemark.frontmatter.title} />
           <meta property="og:description" content={markdownRemark.excerpt} />
+          <meta name="twitter:title" content={markdownRemark.frontmatter.title} />
         </Helmet>
         <DocsWrapper hasToc={!!markdownRemark.tableOfContents}>
           {markdownRemark.tableOfContents && (

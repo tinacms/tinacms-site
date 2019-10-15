@@ -36,7 +36,8 @@ function BlogTemplate(props) {
     <IndexLayout>
       <Page singleBlogPage>
         <Helmet>
-          <meta property="og:title" content={`Blog | ${blogPostData.frontmatter.title}`} />
+          <meta property="og:title" content={`TinaCMS - Blog | ${blogPostData.frontmatter.title}`} />
+          <meta name="twitter:title" content={`TinaCMS - Blog | ${blogPostData.frontmatter.title}`} />
         </Helmet>
         <StyledBlogPost>
           <Container>
@@ -69,8 +70,8 @@ const BlogTemplateOptions = {
       label: 'Date Posted',
       name: 'rawFrontmatter.date',
       component: 'date',
-      dateFormat: "MMMM DD YYYY",
-      timeFormat: false
+      dateFormat: 'MMMM DD YYYY',
+      timeFormat: false,
     },
     {
       label: 'Author',
