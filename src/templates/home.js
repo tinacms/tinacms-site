@@ -147,7 +147,7 @@ const Video = styled.div`
   img,
   video {
     margin: 0 auto;
-    filter: drop-shadow(0 24px 24px #c4d1d4);
+    filter: drop-shadow(rgba(104, 120, 125, 0.3) 0px 14px 16px);
     border-radius: 10px;
     max-width: 934px;
     width: 100%;
