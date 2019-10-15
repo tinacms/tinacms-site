@@ -26,9 +26,11 @@ const HomeTemplate = props => {
           <Heading as="h1" size="h1">
             <span dangerouslySetInnerHTML={{ __html: `${dataJson.headline}` }}></span>
           </Heading>
-          <figure>
-            <img src={dataJson.hero_video} alt={dataJson.hero_alt} />
-          </figure>
+          <Video>
+            <video autoplay="true" loop>
+              <source src={dataJson.hero_video} type="video/mp4" />
+            </video>
+          </Video>
         </HeroSection>
         <InfoSection>
           <Heading as="h2" size="h2" color={colors.darkPurple}>
@@ -137,6 +139,20 @@ const Wrapper = styled('div')`
     padding: 0 ${space.smallDesktop}px ${space.xSmallDesktop}px ${space.smallDesktop}px;
   }
 `
+
+const Video = styled.div`
+  display: block;
+  max-width: 90%;
+  margin-top: ${space.medMobile}px;
+  img,
+  video {
+    margin: 0 auto;
+    filter: drop-shadow(0 24px 24px #c4d1d4);
+    border-radius: 10px;
+    max-width: 934px;
+  }
+`
+
 const HeroSection = styled('section')`
   display: flex;
   flex-direction: column;
@@ -167,18 +183,6 @@ const HeroSection = styled('section')`
   h1 {
     max-width: 290px;
     margin-top: ${space.medMobile}px;
-  }
-  figure {
-    display: block;
-    max-width: 90%;
-    margin-top: ${space.medMobile}px;
-    img,
-    video {
-      margin: 0 auto;
-      filter: drop-shadow(0 24px 24px #d3e3e6);
-      border-radius: 10px;
-      max-width: 800px;
-    }
   }
   @media (min-width: ${breakpoints.iphonePlus}px) {
     figure {
