@@ -26,11 +26,11 @@ const HomeTemplate = props => {
           <Heading as="h1" size="h1">
             <span dangerouslySetInnerHTML={{ __html: `${dataJson.headline}` }}></span>
           </Heading>
-          <Video>
-            <video autoPlay loop muted>
+          <HeroVideo>
+            <video autoPlay loop muted playsInline>
               <source src={dataJson.hero_video} type="video/mp4" />
             </video>
-          </Video>
+          </HeroVideo>
         </HeroSection>
         <InfoSection>
           <Heading as="h2" size="h2" color={colors.darkPurple}>
@@ -140,10 +140,10 @@ const Wrapper = styled('div')`
   }
 `
 
-const Video = styled.div`
+const HeroVideo = styled.div`
   display: block;
   max-width: 90%;
-  margin-top: ${space.medMobile}px;
+  margin-top: ${space.medDesktop}px;
   img,
   video {
     margin: 0 auto;
@@ -151,6 +151,9 @@ const Video = styled.div`
     border-radius: 10px;
     max-width: 934px;
     width: 100%;
+  }
+  @media (min-width: ${breakpoints.md}px) {
+    margin-top: ${space.lrgDesktop}px;
   }
 `
 
