@@ -14,7 +14,8 @@ function TeamsTemplate(props) {
   return (
     <IndexLayout page="teams">
       <Helmet>
-        <meta property="og:title" content="Teams" />
+        <meta property="og:title" content="TinaCMS - Teams" />
+        <meta name="twitter:title" content="TinaCMS - Teams" />
       </Helmet>
       <BgColor />
       <Wrapper>

@@ -17,7 +17,8 @@ function CommunityTemplate({ data }) {
   return (
     <IndexLayout>
       <Helmet>
-        <meta property="og:title" content="Community" />
+        <meta property="og:title" content="TinaCMS - Community" />
+        <meta name="twitter:title" content="TinaCMS - Community" />
       </Helmet>
       <Wrapper>
         <HeroSection>
@@ -143,38 +144,36 @@ const CommunityTemplateOptions = {
       label: 'Headline',
       name: 'rawFrontmatter.headline',
       description: 'Enter the main headline here',
-      component: 'textarea'
+      component: 'textarea',
     },
     {
       label: 'Gif',
       name: 'rawFrontmatter.gif.src',
       description: 'Enter path to gif from static',
-      component: 'text'
+      component: 'text',
     },
     {
       label: 'Gif Alt',
       name: 'rawFrontmatter.gif.alt',
       description: 'Enter Gif alt tag here',
-      component: 'text'
+      component: 'text',
     },
     {
       label: 'Secondary Headline',
       name: 'rawFrontmatter.supporting_headline',
       description: 'Enter the secondary headline here',
-      component: 'textarea'
+      component: 'textarea',
     },
     {
       label: 'Secondary Body Copy',
       name: 'rawFrontmatter.supporting_body',
       description: 'Enter the body copy here',
-      component: 'textarea'
-    }
-  ]
+      component: 'textarea',
+    },
+  ],
 }
 
 export default remarkForm(CommunityTemplate, CommunityTemplateOptions)
-
-
 
 const Wrapper = styled('div')`
   padding: 0 ${space.smallMobile}px ${space.xSmallMobile}px ${space.smallMobile}px;
