@@ -35,7 +35,7 @@ const HomeTemplate = props => {
               poster={`https://res.cloudinary.com/forestry-demo/video/upload/so_0/${dataJson.hero_video}.jpg`}
             >
               <source
-                src={`https://res.cloudinary.com/forestry-demo/video/upload/${dataJson.hero_video}.webm`}
+                src={`https://res.cloudinary.com/forestry-demo/video/upload/q_100/${dataJson.hero_video}.webm`}
                 type="video/webm"
               />
               <source
