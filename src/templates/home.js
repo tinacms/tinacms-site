@@ -32,14 +32,14 @@ const HomeTemplate = props => {
               loop
               muted
               playsInline
-              poster="https://res.cloudinary.com/forestry-demo/video/upload/so_0/v1571159974/tina-hero-demo.jpg"
+              poster={`https://res.cloudinary.com/forestry-demo/video/upload/so_0/${dataJson.hero_video}.jpg`}
             >
               <source
-                src="https://res.cloudinary.com/forestry-demo/video/upload/v1571159974/tina-hero-demo.webm"
+                src={`https://res.cloudinary.com/forestry-demo/video/upload/${dataJson.hero_video}.webm`}
                 type="video/mp4"
               />
               <source
-                src="https://res.cloudinary.com/forestry-demo/video/upload/v1571159974/tina-hero-demo.mp4"
+                src={`https://res.cloudinary.com/forestry-demo/video/upload/${dataJson.hero_video}.mp4`}
                 type="video/mp4"
               />
             </video>
