@@ -150,6 +150,7 @@ const Video = styled.div`
     filter: drop-shadow(0 24px 24px #c4d1d4);
     border-radius: 10px;
     max-width: 934px;
+    width: 100%;
   }
 `
 
