@@ -27,7 +27,7 @@ const HomeTemplate = props => {
             <span dangerouslySetInnerHTML={{ __html: `${dataJson.headline}` }}></span>
           </Heading>
           <Video>
-            <video autoplay="true" loop>
+            <video autoPlay loop muted>
               <source src={dataJson.hero_video} type="video/mp4" />
             </video>
           </Video>
