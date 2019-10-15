@@ -1,8 +1,8 @@
 ---
 headline: Join the club
 gif:
-  - src: /img/uncle-rico.gif
-    alt: uncle-rico-gif
+  - src: /img/rico-replacement.jpg
+    alt: Join the club
 supporting_headline: 'Open source, extensible and community-driven'
 supporting_body: >-
   Tina is made better by the wisdom of crowds. Help us fundamentally shift the
@@ -12,4 +12,3 @@ supporting_body: >-
   get involved with development. Peak at our roadmap to see what's coming down
   the line.
 ---
-
