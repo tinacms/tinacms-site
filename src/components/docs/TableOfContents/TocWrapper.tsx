@@ -7,13 +7,13 @@ interface ToggleableProps {
 
 const TocWrapper = styled('section')<ToggleableProps>`
   display: block;
-  margin-left: 24px;
+  width: 15%;
   font-size: 14px;
-  line-height: 28px;
+  line-height: 18px;
 
   @media (min-width: ${breakpoints.xl}px) {
     flex: 0 0 240px;
-    position: sticky;
+    position: fixed;
     top: ${dimensions.heights.header + 32}px;
     max-height: calc(100vh - ${dimensions.heights.header + 32}px);
     overflow-y: auto;
@@ -49,6 +49,12 @@ const TocWrapper = styled('section')<ToggleableProps>`
 
     p {
       margin: 0;
+    }
+
+    li {
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
     }
 
     ul {

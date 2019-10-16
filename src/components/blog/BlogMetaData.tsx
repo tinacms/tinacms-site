@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import { colors, space, breakpoints } from 'utils/variables'
 
 interface BlogMetaData_Props {
-  author: String,
-  date: Date | String,
+  author: String
+  date: Date | String
 }
 
 export default function BlogMetaData({ author, date }: BlogMetaData_Props) {
@@ -23,13 +23,8 @@ const StyledBlogMetaData = styled('div')`
   display: flex;
   flex-grow: 1;
   p {
-    display: none;
-  }
-  @media(min-width: ${breakpoints.md}px) {
-    p {
-      margin: ${space.sm}px 0 ${space.xs}px 0;
-      color: ${colors.grey04};
-      display: block;
-    }
+    margin: ${space.sm}px 0 ${space.xs}px 0;
+    color: ${colors.grey04};
+    display: block;
   }
 `

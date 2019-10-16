@@ -12,9 +12,11 @@ type NavButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 const Root = styled('button')`
   position: absolute;
   display: inline-block;
+  top: 0;
   margin: 0;
   padding: 0;
   height: 100%;
+  min-height: 55px;
   background: none;
   border: none;
   color: inherit;
