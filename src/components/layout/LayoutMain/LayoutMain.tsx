@@ -115,13 +115,14 @@ const HeaderCta = styled.div`
   height: 100%;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   a {
     margin-left: 20px;
     flex: 0 0 auto;
   }
   .github {
     display: inline-block;
-    width: 41px;
+    width: 35px;
     &:hover,
     &:focus {
       text-decoration: none;
@@ -137,8 +138,8 @@ const HeaderCta = styled.div`
     }
   }
   svg {
-    height: 100%;
-    width: auto;
+    width: 100%;
+    height: auto;
     padding: 0;
     position: relative;
     display: block;

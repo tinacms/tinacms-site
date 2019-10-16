@@ -294,6 +294,7 @@ const HeroSection = styled('section')`
 const InfoCta = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   a {
     margin-top: 0;
     flex: 0 0 auto;
@@ -303,7 +304,7 @@ const InfoCta = styled.div`
   }
   .github {
     display: inline-block;
-    width: 41px;
+    width: 35px;
     &:hover,
     &:focus {
       text-decoration: none;
@@ -322,8 +323,8 @@ const InfoCta = styled.div`
     }
   }
   svg {
-    height: auto;
     width: 100%;
+    height: auto;
     padding: 0;
     position: relative;
     display: block;
