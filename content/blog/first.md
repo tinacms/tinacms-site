@@ -3,17 +3,18 @@ title: 'Announcing TinaCMS '
 date: '2019-10-16T07:00:00.000Z'
 author: Scott Gallant
 ---
+
 Today, we’re excited to announce [TinaCMS](http://tinacms.org): an open-source site editing toolkit for React-based sites (Gatsby and Next.js).
 
 Tina is not a CMS, in the traditional sense. As in, it’s not a _separate_ system for managing content. Instead, Tina adds editing functionality to your site when running in dev mode locally, or when using [Tina Teams](http://tinacms.org/teams) (cloud)...In fact, I'm writing this post with Tina right now:
 
-![](http://g.recordit.co/y7kggaWvTe.gif)
+![tina-announcement-gif](https://res.cloudinary.com/forestry-demo/image/upload/v1571244588/tina-cms-announcement-post.gif)
 
 When you install Tina, your site gets a floating _edit_ icon in the corner that toggles an editing pane (left) to exposes the CMS fields. This gives your content editors a contextual editing experience that’s super intuitive. When your you click "Save" Tina writes your content to external data sources. Try the [Gatsby starter site](https://tinacms.org/docs/gatsby/quickstart) to see for yourself.
 
 ### Where does Tina store my content?
 
-Currently, Tina writes to Markdown and data files and commits to Git but it can be extended to write to other data sources (think, a WordPress database, Google Sheets, Airtable, etc). When running locally, Tina writes to the file system and if you're using [Tina Teams](http://tinacms.org/teams), it commits to your GitHub/GitLab repo. 
+Currently, Tina writes to Markdown and data files and commits to Git but it can be extended to write to other data sources (think, a WordPress database, Google Sheets, Airtable, etc). When running locally, Tina writes to the file system and if you're using [Tina Teams](http://tinacms.org/teams), it commits to your GitHub/GitLab repo.
 
 ### Why Tina?
 
@@ -27,10 +28,10 @@ We developers have hot-reloading, and Tina is the hot-reloading for content edit
 
 Join us in building next-gen content management.
 
-* TinaCMS GitHub repo
-* Gatsby Demo Site
-* TinaCMS Docs
-* Spectrum Group
+- TinaCMS GitHub repo
+- Gatsby Demo Site
+- TinaCMS Docs
+- Spectrum Group
 
 Notes: like hot reloading code for preview. Could you imagine
 
