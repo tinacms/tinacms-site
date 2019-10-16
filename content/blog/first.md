@@ -1,5 +1,37 @@
 ---
-title: Announcement
-date: 2019-10-16T07:00:00.000Z
+title: 'Announcing TinaCMS '
+date: '2019-10-16T07:00:00.000Z'
 author: Scott Gallant
 ---
+Today, we’re excited to announce [TinaCMS](http://tinacms.org): an open-source site editing toolkit for React-based sites (Gatsby and Next.js).
+
+Tina is not a CMS, in the traditional sense. As in, it’s not a _separate_ system for managing content. Instead, Tina adds editing functionality to your site when running in dev mode locally, or when using [Tina Teams](http://tinacms.org/teams) (cloud)...In fact, I'm writing this post with Tina right now:
+
+![](http://g.recordit.co/y7kggaWvTe.gif)
+
+When you install Tina, your site gets a floating _edit_ icon in the corner that toggles an editing pane (left) to exposes the CMS fields. This gives your content editors a contextual editing experience that’s super intuitive. When your you click "Save" Tina writes your content to external data sources. Try the [Gatsby starter site](https://tinacms.org/docs/gatsby/quickstart) to see for yourself.
+
+### Where does Tina store my content?
+
+Currently, Tina writes to Markdown and data files and commits to Git but it can be extended to write to other data sources (think, a WordPress database, Google Sheets, Airtable, etc). When running locally, Tina writes to the file system and if you're using [Tina Teams](http://tinacms.org/teams), it commits to your GitHub/GitLab repo. 
+
+### Why Tina?
+
+I’ve been setting up content management systems for people since the early 2000’s. In the beginning, CMSs like WordPress and Drupal gave our non-developer colleagues website editing powers. But we’ve seen very little innovation on the editing experience in the past 10+ years. Meanwhile, the editing experience of site builders like Squarespace, Wix and Webflow have become very sophisticated.
+
+When I watch people use a traditional CMS, I often see them struggle because the input (the CMS) lacks the context of the output (their site) and using a CMS feels more like filing your taxes than editing a website. Now that we’ve moved to headless CMSs and the JAMstack, editors often lose the ability to preview, leaving them in the dark as they create content.
+
+We developers have hot-reloading, and Tina is the hot-reloading for content editors.
+
+### Get Started
+
+Join us in building next-gen content management.
+
+* TinaCMS GitHub repo
+* Gatsby Demo Site
+* TinaCMS Docs
+* Spectrum Group
+
+Notes: like hot reloading code for preview. Could you imagine
+
+Editors need to know what their content looks like, in the context of their site. This is why we made Tina. Next-gen sites require next-gen content editing tools.
