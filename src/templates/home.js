@@ -93,18 +93,22 @@ const HomeTemplate = props => {
               Get Started
             </Button>
           </div>
-          <CodeExample>{`yarn add @tinacms/gatsby-plugin-tinacms
+          <CodeExample
+            dangerouslySetInnerHTML={{
+              __html: `yarn add <b>@tinacms/gatsby-plugin-tinacms</b>
 
 module.exports = {
-  // ...
+  <span>// ...</span>
   plugins: [
-    '@tinacms/gatsby-plugin-tinacms',
-    // ...
+    '<b>@tinacms/gatsby-plugin-tinacms</b>',
+    <span>// ...</span>
   ],
 };
 
-export WithTina( Component );
-`}</CodeExample>
+export <b>WithTina</b>( <b>Component</b> );
+`,
+            }}
+          ></CodeExample>
         </SetupWrapper>
       </SetupSection>
     </IndexLayout>
@@ -174,8 +178,11 @@ const CodeExample = styled.code`
   white-space: pre;
   filter: drop-shadow(rgba(104, 120, 125, 0.2) 0px 7px 8px);
   align-self: flex-start;
-  span {
+  b {
     color: #ec4815;
+  }
+  span {
+    opacity: 0.5;
   }
 `
 
