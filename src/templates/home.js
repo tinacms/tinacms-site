@@ -71,7 +71,7 @@ const HomeTemplate = props => {
       </Wrapper>
       <SetupSection>
         <SetupWrapper>
-          <span>
+          <div>
             <Heading as="h1" size="h1">
               {dataJson.setup.headline}
             </Heading>
@@ -86,10 +86,19 @@ const HomeTemplate = props => {
             <Button to="/docs/getting-started/introduction" bgColor={colors.hunterOrange} textColor={colors.seafoam}>
               Get Started
             </Button>
-          </span>
-          <figure>
-            <img src={dataJson.setup.code_ex} alt="Tina-Code-Setup-Example" />
-          </figure>
+          </div>
+          <CodeExample>{`yarn add @tinacms/gatsby-plugin-tinacms
+
+module.exports = {
+  // ...
+  plugins: [
+    '@tinacms/gatsby-plugin-tinacms',
+    // ...
+  ],
+};
+
+export WithTina( Component );
+`}</CodeExample>
         </SetupWrapper>
       </SetupSection>
     </IndexLayout>
@@ -146,6 +155,23 @@ export const query = graphql`
 `
 
 export default HomeTemplate
+
+const CodeExample = styled.code`
+  border-radius: 50px;
+  background-color: #d4f0ee;
+  color: #241748;
+  padding: 50px;
+  font-size: 20px;
+  line-height: 1.2;
+  font-family: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono',
+    'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;
+  white-space: pre;
+  filter: drop-shadow(rgba(104, 120, 125, 0.2) 0px 7px 8px);
+  align-self: flex-start;
+  span {
+    color: #ec4815;
+  }
+`
 
 const Wrapper = styled('div')`
   padding: 0 ${space.smallMobile}px ${space.xSmallMobile}px ${space.smallMobile}px;
