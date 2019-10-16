@@ -173,8 +173,7 @@ const CodeExample = styled.code`
   padding: 50px;
   font-size: 20px;
   line-height: 1.2;
-  font-family: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono',
-    'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;
+  font-family: 'Hack', Monaco, 'Courier New', Courier, monospace;
   white-space: pre;
   filter: drop-shadow(rgba(104, 120, 125, 0.2) 0px 7px 8px);
   align-self: flex-start;
