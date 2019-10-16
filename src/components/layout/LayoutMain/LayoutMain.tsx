@@ -11,10 +11,8 @@ import { FooterWrapper, Footer } from 'components/layout/Footer'
 
 import { breakpoints, colors, textSizes, space } from 'utils/variables'
 import { determineFontDimensions, Heading } from 'components/foundations'
-import { Llama_Icon } from 'components/foundations/icons'
+import { Llama_Icon, GithubIcon } from 'components/foundations/icons'
 import Button from 'components/foundations/Button'
-
-
 
 interface LayoutMainInnerProps {
   className?: string
@@ -72,7 +70,7 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
                   <Button
                     key={node.id}
                     to={node.href}
-                    bgColor={page === 'teams' ? `${colors.darkPurple}`:`${colors.white}`}
+                    bgColor={page === 'teams' ? `${colors.darkPurple}` : `${colors.white}`}
                     textColor={`${colors.hunterOrange}`}
                     height="40"
                   >
@@ -81,17 +79,21 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
                 )
               })}
           </DocumentationMenu>
-          {
-            page !== 'teams' &&
-          <Button
-            to="/docs/getting-started/introduction"
-            height={'40'}
-            bgColor={`${colors.hunterOrange}`}
-            textColor={`${colors.seafoam}`}
-          >
-            Get Started
-          </Button>
-          }
+          <HeaderCta>
+            {page !== 'teams' && (
+              <Button
+                to="/docs/getting-started/introduction"
+                height={'40'}
+                bgColor={`${colors.hunterOrange}`}
+                textColor={`${colors.seafoam}`}
+              >
+                Get Started
+              </Button>
+            )}
+            <a className="github" href="https://github.com/tinacms/tinacms" target="_blank">
+              <GithubIcon color={`${colors.hunterOrange}`} />
+            </a>
+          </HeaderCta>
         </HeaderInner>
       </Header>
       <StyledMainContent>
@@ -106,6 +108,43 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
 
 export default LayoutMain
 
+const HeaderCta = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  a {
+    margin-left: 20px;
+    flex: 0 0 auto;
+  }
+  .github {
+    display: inline-block;
+    width: 35px;
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      transform: translate3d(-1px, -2px, 2px);
+      transition: transform 150ms ease-out;
+    }
+    &:focus,
+    &:active {
+      outline: none;
+    }
+    &:active {
+      filter: none;
+    }
+  }
+  svg {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    position: relative;
+    display: block;
+  }
+`
 
 const StyledLayoutMain = styled('div')<LayoutMainInnerProps>`
   display: flex;
@@ -167,7 +206,10 @@ const HomepageLink = styled(Link)<FontSizeProps>`
     text-decoration: none;
   }
   svg {
-    height: 35px;
+    height: 45px;
+    @media (min-width: ${breakpoints.lg}px) {
+      height: 50px;
+    }
   }
   @media (min-width: ${breakpoints.lg}px) {
     height: 50px;

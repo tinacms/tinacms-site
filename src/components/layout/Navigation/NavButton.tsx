@@ -1,15 +1,16 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import { colors } from 'utils/variables';
+import * as React from 'react'
+import styled from 'styled-components'
+import { colors } from 'utils/variables'
 
 type NavButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  height?: number;
-  width?: number;
-  fill?: string;
-  icon?: 'hamburger' | 'x' | 'circle';
-};
+  height?: number
+  width?: number
+  fill?: string
+  icon?: 'hamburger' | 'x' | 'circle'
+}
 
 const Root = styled('button')`
+  position: absolute;
   display: inline-block;
   margin: 0;
   padding: 0;
@@ -23,7 +24,7 @@ const Root = styled('button')`
   &:focus {
     outline: none;
   }
-`;
+`
 
 const VisuallyHidden = styled('span')`
   border: 0;
@@ -34,7 +35,7 @@ const VisuallyHidden = styled('span')`
   padding: 0;
   overflow: hidden;
   position: absolute;
-`;
+`
 
 const NavButton: React.FC<NavButtonProps> = ({ height, width, fill, icon, children, ...rest }) => {
   if (icon === 'hamburger') {
@@ -60,19 +61,19 @@ const NavButton: React.FC<NavButtonProps> = ({ height, width, fill, icon, childr
           </defs>
         </svg>
       </Root>
-    );
+    )
   }
 
   if (icon === 'circle') {
     return (
       <Root {...rest}>
         <VisuallyHidden>{children}</VisuallyHidden>
-        <svg width={width} height={height}  viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="17" height="17" rx="8.5" fill="white"/>
-          <circle cx="8.5" cy="8.5" r="4.5" fill="#EC4815"/>
+        <svg width={width} height={height} viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="17" height="17" rx="8.5" fill="white" />
+          <circle cx="8.5" cy="8.5" r="4.5" fill="#EC4815" />
         </svg>
       </Root>
-    );
+    )
   }
 
   return (
@@ -93,18 +94,17 @@ const NavButton: React.FC<NavButtonProps> = ({ height, width, fill, icon, childr
         />
       </svg>
     </Root>
-  );
-};
+  )
+}
 
 NavButton.defaultProps = {
   height: 24,
   width: 24,
   fill: colors.grey05,
-  icon: 'hamburger'
-};
+  icon: 'hamburger',
+}
 
-export default NavButton;
-
+export default NavButton
 
 /**
  * TODO

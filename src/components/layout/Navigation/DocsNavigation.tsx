@@ -230,9 +230,6 @@ function DocsNavigation({ title, navigation, headerMenus }: DocsNavigationProps)
           </HomepageLink>
         </HeaderInner>
         <HeaderInner hideOnDesktop>
-          <Heading as="h1" size={300}>
-            Menu
-          </Heading>
           {
             <NavButton
               icon="x"
@@ -246,6 +243,9 @@ function DocsNavigation({ title, navigation, headerMenus }: DocsNavigationProps)
       </Header>
       <WrapperInner>
         <DocumentationMenu>
+          <Link key="home" to="/">
+            Home
+          </Link>
           {headerMenus &&
             headerMenus.map(({ node }) => {
               if (node.external) {
