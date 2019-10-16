@@ -104,7 +104,7 @@ const DocsLayoutMain: React.SFC<DocsLayoutMainProps> = ({ children, title, class
         <HeaderInner hideOnDesktop>
           <NavButton
             icon="hamburger"
-            fill={colors.grey05}
+            fill={colors.hunterOrange}
             onClick={() => dispatch({ type: NavigationActionTypes.TOGGLE_DRAWER })}
           >
             Toggle Drawer
