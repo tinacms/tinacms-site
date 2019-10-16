@@ -150,8 +150,8 @@ interface PaginationProps {
 const Pagination: React.SFC<PaginationProps> = ({ prevPage, nextPage }) => (
   <Wrapper>
     <WrapperInner>
-      <PaginationItem>
-        {prevPage && (
+      {prevPage && (
+        <PaginationItem>
           <PaginationLink to={prevPage.fields ? prevPage.fields.slug : prevPage.slug}>
             <PaginationButton>
               <svg width="24" height="24" viewBox="0 0 24 24">
@@ -181,11 +181,11 @@ const Pagination: React.SFC<PaginationProps> = ({ prevPage, nextPage }) => (
               </PaginationTitle>
             </PaginationBlock>
           </PaginationLink>
-        )}
-      </PaginationItem>
+        </PaginationItem>
+      )}
 
-      <PaginationItem>
-        {nextPage && (
+      {nextPage && (
+        <PaginationItem>
           <PaginationLink to={nextPage.fields ? nextPage.fields.slug : nextPage.slug}>
             <PaginationBlock>
               <PaginationHeading size={200} color="grey04" display="block">
@@ -215,8 +215,8 @@ const Pagination: React.SFC<PaginationProps> = ({ prevPage, nextPage }) => (
               </svg>
             </PaginationButton>
           </PaginationLink>
-        )}
-      </PaginationItem>
+        </PaginationItem>
+      )}
     </WrapperInner>
   </Wrapper>
 )
