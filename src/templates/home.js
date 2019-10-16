@@ -189,6 +189,9 @@ const CodeExample = styled.code`
     margin-top: 40px;
     margin-bottom: 40px;
   }
+  @media (max-width: ${breakpoints.md}px) {
+    display: none;
+  }
 `
 
 const Wrapper = styled('div')`
