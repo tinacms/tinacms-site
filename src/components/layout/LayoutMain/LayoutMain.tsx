@@ -205,7 +205,10 @@ const HomepageLink = styled(Link)<FontSizeProps>`
     text-decoration: none;
   }
   svg {
-    height: 35px;
+    height: 45px;
+    @media (min-width: ${breakpoints.lg}px) {
+      height: 50px;
+    }
   }
   @media (min-width: ${breakpoints.lg}px) {
     height: 50px;
