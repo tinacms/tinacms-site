@@ -183,6 +183,12 @@ const CodeExample = styled.code`
   span {
     opacity: 0.5;
   }
+  @media (max-width: ${breakpoints.lg}px) {
+    width: 100%;
+    display: block;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
 `
 
 const Wrapper = styled('div')`
