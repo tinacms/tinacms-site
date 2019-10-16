@@ -2,8 +2,8 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { Link } from 'gatsby'
 import { globalHistory } from '@reach/router'
-import { createRemarkButton } from '@tinacms/react-tinacms-remark'
-import { withPlugin } from '@tinacms/react-tinacms'
+import { createRemarkButton } from 'gatsby-tinacms-remark'
+import { withPlugin } from 'react-tinacms'
 
 import { MenuNode, Edge, HeaderMenuItem } from 'interfaces/nodes'
 import { determineFontDimensions, Heading } from 'components/foundations'
@@ -209,7 +209,7 @@ function DocsNavigation({ title, navigation, headerMenus }: DocsNavigationProps)
   const createMenuToggle = React.useCallback(
     (key: any) => {
       return (isOpen: boolean) => {
-        let newOpenMenus = { ...openMenus } 
+        let newOpenMenus = { ...openMenus }
         newOpenMenus[key] = isOpen
         setOpenMenus(newOpenMenus)
       }

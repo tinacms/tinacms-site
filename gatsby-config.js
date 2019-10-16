@@ -2,18 +2,19 @@
 
 const queries = require('./src/utils/algolia')
 require('dotenv').config()
-const dummyMailchimpEndpoint = 'https://theDomainHere.us18.list-manage.com/subscribe/post?u=1512315231251&amp;id=0asd21t12e1'
+const dummyMailchimpEndpoint =
+  'https://theDomainHere.us18.list-manage.com/subscribe/post?u=1512315231251&amp;id=0asd21t12e1'
 
 const plugins = [
   {
     resolve: 'gatsby-plugin-mailchimp',
     options: {
-      endpoint: process.env.NODE_ENV === 'production' ? process.env.MAILCHIMP_ENDPOINT : dummyMailchimpEndpoint
+      endpoint: process.env.NODE_ENV === 'production' ? process.env.MAILCHIMP_ENDPOINT : dummyMailchimpEndpoint,
     },
   },
-  '@tinacms/gatsby-tinacms-git',
+  'gatsby-tinacms-git',
   {
-    resolve: '@tinacms/gatsby-plugin-tinacms',
+    resolve: 'gatsby-plugin-tinacms',
     options: {
       sidebar: {
         position: 'fixed',
@@ -21,6 +22,7 @@ const plugins = [
       },
     },
   },
+  'gatsby-tinacms-remark',
   {
     // keep as first gatsby-source-filesystem plugin for gatsby image support
     resolve: 'gatsby-source-filesystem',
@@ -29,7 +31,7 @@ const plugins = [
       name: 'uploads',
     },
   },
-  '@tinacms/gatsby-tinacms-json',
+  'gatsby-tinacms-json',
   {
     resolve: 'gatsby-source-filesystem',
     options: {
@@ -145,7 +147,8 @@ module.exports = {
     social: {
       twitter: 'https://twitter.com/tina_cms',
       github: 'https://github.com/tinacms',
-      slack: 'https://join.slack.com/t/tinacms/shared_invite/enQtNzgxNDY1OTA3ODI3LTNkNWEwYjQyYTA2ZDZjZGQ2YmI5Y2ZlOWVmMjlkYmYxMzVmNjM0YTk2MWM2MTIzMmMxMDg3NWIxN2EzOWQ0NDM'
+      slack:
+        'https://join.slack.com/t/tinacms/shared_invite/enQtNzgxNDY1OTA3ODI3LTNkNWEwYjQyYTA2ZDZjZGQ2YmI5Y2ZlOWVmMjlkYmYxMzVmNjM0YTk2MWM2MTIzMmMxMDg3NWIxN2EzOWQ0NDM',
     },
     author: {
       name: 'Resi Respati',

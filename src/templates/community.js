@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
-import { remarkForm } from '@tinacms/react-tinacms-remark'
+import { remarkForm } from 'gatsby-tinacms-remark'
 
 import IndexLayout from 'layouts'
 import { Heading, Paragraph } from 'components/foundations'

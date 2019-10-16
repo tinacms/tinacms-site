@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
-import { useJsonForm } from '@tinacms/gatsby-tinacms-json'
+import { useJsonForm } from 'gatsby-tinacms-json'
 
 import IndexLayout from 'layouts'
 import { Heading, Paragraph } from 'components/foundations'

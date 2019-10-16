@@ -1,8 +1,8 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
-import { withPlugin } from '@tinacms/react-tinacms'
-import { createRemarkButton } from '@tinacms/react-tinacms-remark'
+import { withPlugin } from 'react-tinacms'
+import { createRemarkButton } from 'gatsby-tinacms-remark'
 
 import { Page } from 'components/layout/Page'
 import IndexLayout from 'layouts'
@@ -34,10 +34,10 @@ const BlogPage = () => {
   `)
   return (
     <IndexLayout>
-        <Helmet>
-          <meta property="og:title" content="Blog" />
-        </Helmet>
-        <BlogList posts={data.allMarkdownRemark.edges} />
+      <Helmet>
+        <meta property="og:title" content="Blog" />
+      </Helmet>
+      <BlogList posts={data.allMarkdownRemark.edges} />
     </IndexLayout>
   )
 }

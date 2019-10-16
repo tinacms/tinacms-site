@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
-import { remarkForm, liveRemarkForm } from '@tinacms/react-tinacms-remark'
+import { remarkForm, liveRemarkForm } from 'gatsby-tinacms-remark'
 import { TinaField } from '@tinacms/form-builder'
 import { Wysiwyg } from '@tinacms/fields'
 
@@ -17,7 +17,7 @@ import { Pagination } from 'components/ui/Pagination'
 import { Footer, FooterWrapper } from 'components/layout/Footer'
 import IndexLayout from 'layouts'
 import renderAst from 'utils/renderAst'
-import { useSidebar } from '@tinacms/tinacms'
+import { useSidebar } from 'tinacms'
 
 function BlogTemplate(props) {
   const blogPostData = props.data.markdownRemark
