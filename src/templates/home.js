@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import { useJsonForm } from '@tinacms/gatsby-tinacms-json'
+import { GithubIcon } from 'components/foundations/icons'
 
 import IndexLayout from 'layouts'
 import { Heading, Paragraph } from 'components/foundations'
@@ -50,9 +51,14 @@ const HomeTemplate = props => {
           <Heading as="h2" size="h2" color={colors.darkPurple}>
             {dataJson.description}
           </Heading>
-          <Button to="/docs/getting-started/introduction" bgColor={colors.hunterOrange} textColor={colors.seafoam}>
-            Get Started
-          </Button>
+          <InfoCta>
+            <Button to="/docs/getting-started/introduction" bgColor={colors.hunterOrange} textColor={colors.seafoam}>
+              Get Started
+            </Button>
+            <a className="github" href="https://github.com/tinacms/tinacms" target="_blank">
+              <GithubIcon color={`${colors.hunterOrange}`} />
+            </a>
+          </InfoCta>
           <ThreePoints>
             {dataJson.three_points.map(point => {
               return (
@@ -267,6 +273,45 @@ const HeroSection = styled('section')`
     figure {
       margin-top: ${space.medDesktop}px;
     }
+  }
+`
+
+const InfoCta = styled.div`
+  display: flex;
+  justify-content: center;
+  a {
+    margin-top: 0;
+    flex: 0 0 auto;
+  }
+  a:not(:first-child) {
+    margin-left: 20px;
+  }
+  .github {
+    display: inline-block;
+    width: 41px;
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      transform: translate3d(-1px, -2px, 2px);
+      transition: transform 150ms ease-out;
+    }
+    &:focus,
+    &:active {
+      outline: none;
+    }
+    &:active {
+      filter: none;
+    }
+    @media (min-width: ${breakpoints.lg}px) {
+      display: none;
+    }
+  }
+  svg {
+    height: auto;
+    width: 100%;
+    padding: 0;
+    position: relative;
+    display: block;
   }
 `
 
