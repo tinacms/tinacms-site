@@ -4,7 +4,8 @@ id: /docs/concepts/sidebar
 prev: /docs/getting-started/how-tina-works
 next: /docs/concepts/forms
 ---
-The **sidebar** is the primary interface in Tina. It is the shell that holds [forms](/docs/concepts/forms "Tina Concepts: Forms") and [plugins](/docs/concepts/plugins "Tina Concepts: Plugins").
+
+The **sidebar** is the primary interface in Tina. It is the shell that holds [forms](/docs/concepts/forms 'Tina Concepts: Forms') and [plugins](/docs/concepts/plugins 'Tina Concepts: Plugins').
 
 ## Setup the Sidebar
 
@@ -29,9 +30,10 @@ The sidebar has two display options: `fixed` and `float`.
 By default, Tina's sidebar will overlay on top of your website (`float`). This default is set to prevent any layout conflicts with the sidebar and your site. If you set Tina to position `fixed`, when you open Tina, your website will shrink to make space for the sidebar. Depending on your site's design, you may have CSS rules that conflict with this approach (`fixed`), or may simply prefer to have the sidebar overlay your content instead of displacing it (`float`). Override or adjust this by specifying the sidebar option in the config file where you register Tina plugins.
 
 For example, in your `gatsby-config.js` file...
+
 ```javascript
  {
-    resolve: '@tinacms/gatsby-plugin-tinacms',
+    resolve: 'gatsby-plugin-tinacms',
     options: {
       sidebar: {
         position: 'fixed',
