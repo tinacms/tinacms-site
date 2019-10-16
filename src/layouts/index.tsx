@@ -47,12 +47,12 @@ const IndexLayout: React.FC<IndexLayoutProps> = ({ location, children, sidebarNa
                 <meta property="og:site_name" content={siteMetadata.title} />
                 <meta property="og:description" content={siteMetadata.description} />
                 <meta property="og:url" content={`${siteMetadata.siteUrl}${location ? location.pathname : '/'}`} />
-                <meta property="og:image" content="img/tina-facebook-share.png" />
+                <meta property="og:image" content={`${siteMetadata.siteUrl}/img/tina-facebook-share.png`} />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={siteMetadata.title} />
                 <meta name="twitter:description" content={siteMetadata.description} />
                 <meta name="twitter:url" content={`${siteMetadata.siteUrl}${location ? location.pathname : '/'}`} />
-                <meta name="twitter:image" content="img/tina-twitter-share.png" />
+                <meta name="twitter:image" content={`${siteMetadata.siteUrl}/img/tina-twitter-share.png`} />
               </Helmet>
               <Navigation navigation={sidebarNav ? sidebarNav.edges : null} headerMenus={data.headerMenus.edges} />
               <Overlay />

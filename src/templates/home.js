@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import { useJsonForm } from '@tinacms/gatsby-tinacms-json'
+import { GithubIcon } from 'components/foundations/icons'
 
 import IndexLayout from 'layouts'
 import { Heading, Paragraph } from 'components/foundations'
@@ -50,9 +51,14 @@ const HomeTemplate = props => {
           <Heading as="h2" size="h2" color={colors.darkPurple}>
             {dataJson.description}
           </Heading>
-          <Button to="/docs/getting-started/introduction" bgColor={colors.hunterOrange} textColor={colors.seafoam}>
-            Get Started
-          </Button>
+          <InfoCta>
+            <Button to="/docs/getting-started/introduction" bgColor={colors.hunterOrange} textColor={colors.seafoam}>
+              Get Started
+            </Button>
+            <a className="github" href="https://github.com/tinacms/tinacms" target="_blank">
+              <GithubIcon color={`${colors.hunterOrange}`} />
+            </a>
+          </InfoCta>
           <ThreePoints>
             {dataJson.three_points.map(point => {
               return (
@@ -71,7 +77,7 @@ const HomeTemplate = props => {
       </Wrapper>
       <SetupSection>
         <SetupWrapper>
-          <span>
+          <div>
             <Heading as="h1" size="h1">
               {dataJson.setup.headline}
             </Heading>
@@ -86,10 +92,23 @@ const HomeTemplate = props => {
             <Button to="/docs/getting-started/introduction" bgColor={colors.hunterOrange} textColor={colors.seafoam}>
               Get Started
             </Button>
-          </span>
-          <figure>
-            <img src={dataJson.setup.code_ex} alt="Tina-Code-Setup-Example" />
-          </figure>
+          </div>
+          <CodeExample
+            dangerouslySetInnerHTML={{
+              __html: `yarn add <b>@tinacms/gatsby-plugin-tinacms</b>
+
+module.exports = {
+  <span>// ...</span>
+  plugins: [
+    '<b>@tinacms/gatsby-plugin-tinacms</b>',
+    <span>// ...</span>
+  ],
+};
+
+export <b>WithTina</b>( <b>Component</b> );
+`,
+            }}
+          ></CodeExample>
         </SetupWrapper>
       </SetupSection>
     </IndexLayout>
@@ -146,6 +165,25 @@ export const query = graphql`
 `
 
 export default HomeTemplate
+
+const CodeExample = styled.code`
+  border-radius: 50px;
+  background-color: #d4f0ee;
+  color: #241748;
+  padding: 50px;
+  font-size: 20px;
+  line-height: 1.2;
+  font-family: 'Hack', Monaco, 'Courier New', Courier, monospace;
+  white-space: pre;
+  filter: drop-shadow(rgba(104, 120, 125, 0.2) 0px 7px 8px);
+  align-self: flex-start;
+  b {
+    color: #ec4815;
+  }
+  span {
+    opacity: 0.5;
+  }
+`
 
 const Wrapper = styled('div')`
   padding: 0 ${space.smallMobile}px ${space.xSmallMobile}px ${space.smallMobile}px;
@@ -241,6 +279,45 @@ const HeroSection = styled('section')`
     figure {
       margin-top: ${space.medDesktop}px;
     }
+  }
+`
+
+const InfoCta = styled.div`
+  display: flex;
+  justify-content: center;
+  a {
+    margin-top: 0;
+    flex: 0 0 auto;
+  }
+  a:not(:first-child) {
+    margin-left: 20px;
+  }
+  .github {
+    display: inline-block;
+    width: 41px;
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      transform: translate3d(-1px, -2px, 2px);
+      transition: transform 150ms ease-out;
+    }
+    &:focus,
+    &:active {
+      outline: none;
+    }
+    &:active {
+      filter: none;
+    }
+    @media (min-width: ${breakpoints.lg}px) {
+      display: none;
+    }
+  }
+  svg {
+    height: auto;
+    width: 100%;
+    padding: 0;
+    position: relative;
+    display: block;
   }
 `
 
