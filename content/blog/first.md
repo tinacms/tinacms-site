@@ -26,7 +26,7 @@ We developers have hot-reloading, and Tina is the hot-reloading for content edit
 
 ### Get Started
 
-Join us in building next-gen content management.
+We're coming out of a monolithic CMS era and we believe next-gen sites need a next-gen CMS. Checkout Tina and let us know what you think!
 
 * [TinaCMS Docs](https://tinacms.org/docs/getting-started/introduction)
 * [TinaCMS GitHub repo](https://github.com/tinacms/tinacms)
