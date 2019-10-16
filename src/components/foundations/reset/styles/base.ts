@@ -50,6 +50,13 @@ const base = css`
     }
   }
 
+  p img {
+    margin: 30px 0;
+    border-radius: 5px;
+    border: 1px solid ${colors.grey02};
+    overflow: hidden;
+  }
+
   /**HACK to get responsive mobile type styles */
   @media (max-width: ${breakpoints.md}px) {
     h1 {
