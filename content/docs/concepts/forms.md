@@ -16,6 +16,7 @@ If you're using Gatsby, most of your needs will be met by the [remark](/docs/gat
 If you want to make custom forms, they can be created by invoking the `useCMSForm` hook or using the `<CMSForm>` higher-order component.
 
 ## useCMSForm
+
 <tip>Please note: creating custom forms is considered an advanced usecase. It is recommended for most folks to use Tina's predefined forms mentioned above.</tip>
 
 ```typescript
@@ -37,7 +38,7 @@ interface FormOptions {
 ### Example
 
 ```javascript
-import { useCMSForm } from '@tinacms/tinacms'
+import { useCMSForm } from 'react-tinacms'
 
 function PageTemplate(props) {
   let [someData] = useCMSForm({

@@ -16,18 +16,18 @@ Note: Don't have a site yet? Refer to the [quickstart page](/docs/gatsby/quickst
 ## Installation
 
 ```
-npm install --save @tinacms/gatsby-plugin-tinacms
+npm install --save gatsby-plugin-tinacms
 ```
 
 or
 
 ```
-yarn add @tinacms/gatsby-plugin-tinacms
+yarn add gatsby-plugin-tinacms
 ```
 
 ## Adding the Plugin
 
-Open your `gatsby-config.js` file and add `'@tinacms/gatsby-plugin-tinacms'` to the list of plugins:
+Open your `gatsby-config.js` file and add `'gatsby-plugin-tinacms'` to the list of plugins:
 
 **gatsby-config.js**
 
@@ -36,7 +36,7 @@ module.exports = {
   // ...
   plugins: [
     {
-      resolve: '@tinacms/gatsby-plugin-tinacms',
+      resolve: 'gatsby-plugin-tinacms',
       options: {
         plugins: [
           // We'll add some Tinacms plugins in the next step.

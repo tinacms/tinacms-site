@@ -20,13 +20,13 @@ The [`gatsby-transformer-remark`](https://github.com/gatsbyjs/gatsby/tree/master
 ### Install the Git & Markdown Packages
 
 ```
-npm install --save @tinacms/gatsby-tinacms-remark @tinacms/gatsby-tinacms-git
+npm install --save gatsby-tinacms-remark gatsby-tinacms-git
 ```
 
 or
 
 ```
-yarn add @tinacms/gatsby-tinacms-remark @tinacms/gatsby-tinacms-git
+yarn add gatsby-tinacms-remark gatsby-tinacms-git
 ```
 
 ### Adding the Git Plugin
@@ -38,11 +38,11 @@ module.exports = {
   // ...
   plugins: [
     {
-      resolve: '@tinacms/gatsby-plugin-tinacms',
+      resolve: 'gatsby-plugin-tinacms',
       options: {
         plugins: [
-          "@tinacms/gatsby-tinacms-git",
-          "@tinacms/gatsby-tinacms-remark",
+          "gatsby-tinacms-git",
+          "gatsby-tinacms-remark",
         ],
       },
     },
@@ -69,7 +69,7 @@ There are 3 steps to making a markdown file editable:
 
 ```jsx
 // 1. Import the `remarkForm` HOC
-import { remarkForm } from '@tinacms/gatsby-tinacms-remark'
+import { remarkForm } from 'gatsby-tinacms-remark'
 
 function BlogPostTemplate(props) {
   return <h1>{props.data.markdownRemark.frontmatter.title}</h1>
@@ -157,7 +157,7 @@ _NOTE: the name of your fields should be prefixed with `"rawFrontmatter"` rather
 #### Example: src/templates/blog-post.js
 
 ```jsx
-import { remarkForm } from '@tinacms/gatsby-tinacms-remark'
+import { remarkForm } from 'gatsby-tinacms-remark'
 
 function BlogPostTemplate(props) {
   return (
@@ -217,7 +217,7 @@ Tina uses `content-button` plugins to make creating content possible. These butt
 **Example**
 
 ```javascript
-import { createRemarkButton } from '@tinacms/gatsby-tinacms-remark'
+import { createRemarkButton } from 'gatsby-tinacms-remark'
 
 const CreatePostButton = createRemarkButton({
   label: 'Create Post',
@@ -262,8 +262,8 @@ _NOTE: No changes need to be made to the `BlogIndex` component itself._
 
 ```jsx
 // 1. Import `createRemarkButton` and `withPlugin`
-import { withPlugin } from '@tinacms/react-tinacms'
-import { createRemarkButton } from '@tinacms/gatsby-tinacms-remark'
+import { withPlugin } from 'react-tinacms'
+import { createRemarkButton } from 'gatsby-tinacms-remark'
 
 // Note: this is just an example index component.
 function BlogIndex(props) {

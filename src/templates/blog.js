@@ -2,20 +2,18 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
-import { remarkForm, liveRemarkForm } from 'gatsby-tinacms-remark'
+import { liveRemarkForm } from 'gatsby-tinacms-remark'
 import { TinaField } from '@tinacms/form-builder'
 import { Wysiwyg } from '@tinacms/fields'
-
-import { Page } from 'components/layout/Page'
-import { breakpoints, space } from 'utils/variables'
 import { Container } from 'components/layout/Container'
 import { DocsWrapper } from 'components/docs/DocsWrapper'
 import MarkdownContent from 'components/page/Markdown/MarkdownContent'
 import { Heading } from 'components/foundations'
 import BlogMetaData from 'components/blog/BlogMetaData'
 import { Pagination } from 'components/ui/Pagination'
-import { Footer, FooterWrapper } from 'components/layout/Footer'
+import { FooterWrapper } from 'components/layout/Footer'
 import IndexLayout from 'layouts'
+import { colors, breakpoints } from 'utils/variables'
 import renderAst from 'utils/renderAst'
 import { useSidebar } from 'tinacms'
 
@@ -34,27 +32,29 @@ function BlogTemplate(props) {
 
   return (
     <IndexLayout>
-      <Page singleBlogPage>
-        <Helmet>
-          <meta property="og:title" content={`TinaCMS - Blog | ${blogPostData.frontmatter.title}`} />
-          <meta name="twitter:title" content={`TinaCMS - Blog | ${blogPostData.frontmatter.title}`} />
-        </Helmet>
-        <StyledBlogPost>
-          <Container>
-            <Heading>{blogPostData.frontmatter.title}</Heading>
-            <BlogMetaData author={blogPostData.frontmatter.author} date={blogPostData.frontmatter.date} />
-            <MarkdownContent>
-              <TinaField name="rawMarkdownBody" Component={Wysiwyg}>
-                {renderAst(blogPostData.htmlAst)}
-              </TinaField>
-            </MarkdownContent>
-          </Container>
-          <FooterWrapper>
-            {!sidebar.hidden && <button onClick={() => setIsEditing(p => !p)}>{isEditing ? 'Preview' : 'Edit'}</button>}
-            {(previous || next) && <Pagination prevPage={previous && previous} nextPage={next && next} />}
-          </FooterWrapper>
-        </StyledBlogPost>
-      </Page>
+      <Helmet>
+        <meta property="og:title" content={`TinaCMS - Blog | ${blogPostData.frontmatter.title}`} />
+        <meta name="twitter:title" content={`TinaCMS - Blog | ${blogPostData.frontmatter.title}`} />
+      </Helmet>
+      <BlogHero>
+        <Heading as="h1" size="h1">
+          {blogPostData.frontmatter.title}
+        </Heading>
+      </BlogHero>
+      <StyledBlogPost>
+        <Container>
+          <BlogMetaData author={blogPostData.frontmatter.author} date={blogPostData.frontmatter.date} />
+          <MarkdownContent>
+            <TinaField name="rawMarkdownBody" Component={Wysiwyg}>
+              {renderAst(blogPostData.htmlAst)}
+            </TinaField>
+          </MarkdownContent>
+        </Container>
+        <FooterWrapper>
+          {!sidebar.hidden && <button onClick={() => setIsEditing(p => !p)}>{isEditing ? 'Preview' : 'Edit'}</button>}
+          {(previous || next) && <Pagination prevPage={previous && previous} nextPage={next && next} />}
+        </FooterWrapper>
+      </StyledBlogPost>
     </IndexLayout>
   )
 }
@@ -88,11 +88,53 @@ const BlogTemplateOptions = {
 
 export default liveRemarkForm(BlogTemplate, BlogTemplateOptions)
 
+const BlogHero = styled.div`
+  position: relative;
+  color: ${colors.hunterOrange};
+  text-align: center;
+  padding-top: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -100px;
+    left: 0;
+    right: 0;
+    bottom: -25px;
+    background-image: url('/img/header-bg.svg');
+    background-size: ${breakpoints.md}px 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+
+  @media (min-width: ${breakpoints.md}px) {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+
+    &:before {
+      background-size: 100% 100%;
+      bottom: -2vw;
+    }
+  }
+  @media (min-width: ${breakpoints.lg}px) {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    margin-bottom: 70px;
+  }
+`
+
 const StyledBlogPost = styled(DocsWrapper)`
+  padding-top: 0;
   @media (min-width: ${breakpoints.md}px) {
     min-width: 650px;
     margin: 0 auto;
-    padding-top: 0;
   }
   @media (min-width: ${breakpoints.xl}px) {
     min-width: 768px;

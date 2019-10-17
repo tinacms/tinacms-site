@@ -175,13 +175,13 @@ const CommunityTemplateOptions = {
 
 export default remarkForm(CommunityTemplate, CommunityTemplateOptions)
 
-const Wrapper = styled('div')`
+export const Wrapper = styled('div')`
   padding: 0 ${space.smallMobile}px ${space.xSmallMobile}px ${space.smallMobile}px;
   @media (min-width: ${breakpoints.lg}px) {
     padding: 0 ${space.smallDesktop}px ${space.xSmallDesktop}px ${space.smallDesktop}px;
   }
 `
-const HeroSection = styled('section')`
+export const HeroSection = styled('section')`
   display: flex;
   flex-direction: column;
   align-items: center;
