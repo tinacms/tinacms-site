@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import { getPageById } from 'utils/helpers'
 import { TinaField } from '@tinacms/form-builder'
-import { remarkForm, liveRemarkForm } from '@tinacms/react-tinacms-remark'
+import { remarkForm, liveRemarkForm } from 'gatsby-tinacms-remark'
 import { Wysiwyg } from '@tinacms/fields'
 import { Page } from 'components/layout/Page'
 import { Container } from 'components/layout/Container'
@@ -16,7 +16,7 @@ import { Pagination } from 'components/ui/Pagination'
 import { TocWrapper, TocFloatingButton } from 'components/docs/TableOfContents'
 import IndexLayout from 'layouts'
 import renderAst from 'utils/renderAst'
-import { useSidebar } from '@tinacms/tinacms'
+import { useSidebar } from 'tinacms'
 
 const PageTemplate = ({ data, setIsEditing, isEditing }) => {
   const [tocIsOpen, setTocIsOpen] = React.useState(false)

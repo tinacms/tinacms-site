@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
-import { useJsonForm } from '@tinacms/gatsby-tinacms-json'
 import { GithubIcon } from 'components/foundations/icons'
 
 import IndexLayout from 'layouts'
@@ -97,12 +96,12 @@ const HomeTemplate = props => {
           </div>
           <CodeExample
             dangerouslySetInnerHTML={{
-              __html: `yarn add <b>@tinacms/gatsby-plugin-tinacms</b>
+              __html: `yarn add <b>gatsby-plugin-tinacms</b>
 
 module.exports = {
   <span>// ...</span>
   plugins: [
-    '<b>@tinacms/gatsby-plugin-tinacms</b>',
+    '<b>gatsby-plugin-tinacms</b>',
     <span>// ...</span>
   ],
 };
