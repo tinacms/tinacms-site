@@ -72,7 +72,7 @@ function TeamsForm(props) {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <Heading as="h5" size="label" color={colors.hunterOrange} style={{ marginBottom: '1rem' }}>
+      <Heading as="h5" size="label" color={colors.hunterOrange} style={{ marginBottom: '24px' }}>
         Teams Early Access
       </Heading>
       <label>
@@ -154,9 +154,7 @@ const StyledForm = styled('form')`
 const StyledButton = styled('button')`
   align-self: center;
   width: max-content;
-  margin-top: ${space.smallDesktop}px;
-  /* filter: drop-shadow(1px 2px 18px rgb(0, 0, 0, 12%));
-  transition: filter 250ms ease; */
+  margin-top: 24px;
   transform: translate3d(0px, 0px, 0px);
   transition: transform 180ms ease-in;
   backface-visibility: hidden;
@@ -174,8 +172,6 @@ const StyledButton = styled('button')`
   &:hover,
   &:focus {
     text-decoration: none;
-    /* filter: drop-shadow(1px 5px 18px rgb(0, 0, 0, 25%));
-    transition: filter 250ms ease; */
     transform: translate3d(-1px, -2px, 2px);
     transition: transform 150ms ease-out;
   }
