@@ -17,7 +17,7 @@ If you want to make custom forms, they can be created by invoking the `useCMSFor
 
 ## useCMSForm
 
-<tip>Please note: creating custom forms is considered an advanced usecase. It is recommended for most folks to use Tina's predefined forms mentioned above.</tip>
+<tip>**Please note:** creating custom forms is considered an advanced usecase. It is recommended for most folks to use Tina's predefined forms mentioned above.</tip>
 
 ```typescript
 function useCMSForm(options: FormOption): [object, Form]

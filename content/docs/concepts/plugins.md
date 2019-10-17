@@ -4,7 +4,7 @@ id: /docs/concepts/plugins
 prev: /docs/concepts/backends
 ---
 
-<tip>This document is a work-in-progress. The Plugin API is not stable and it is not recommended to create or consume plugins in your projects.</tip>
+<tip>**This document is a work-in-progress.** The Plugin API is not stable and it is not recommended to create or consume plugins in your projects.</tip>
 
 **Plugins** allow you to extend the functionality of the CMS. In fact, the plugin API is currently being used to add features to the core CMS, including:
 
