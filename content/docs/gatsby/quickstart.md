@@ -57,4 +57,4 @@ Navigate to various pages and see the different fields of editable content. Make
 ## Next Steps
 
 - [Customizing Content Forms](/docs/gatsby/custom-fields)
-- [Creating New Content](/docs/gatsby/content-creation)
+- [Creating New Content](/docs/gatsby/markdown#creating-new-markdown-files)
