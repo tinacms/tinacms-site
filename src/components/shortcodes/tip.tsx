@@ -4,9 +4,11 @@ import { colors, space } from 'utils/variables'
 
 export const tip = styled.span`
   display: block;
-  background-color: ${colors.uberLiteMintGreen};
-  border: 1px solid ${colors.liteMintGreen};
-  padding: ${space.xxs}px ${space.xs}px;
-  margin-bottom: ${space.xxs}px;
-  margin-top: ${space.xxs}px;
+  font-size: 16px;
+  background-color: ${colors.seafoam};
+  border: 1px solid ${colors.mintChocoChip};
+  border-left-width: 5px;
+  border-radius: 3px;
+  padding: 1em;
+  margin: 0.5em 0;
 `
