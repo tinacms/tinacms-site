@@ -96,12 +96,12 @@ const HomeTemplate = props => {
           </div>
           <CodeExample
             dangerouslySetInnerHTML={{
-              __html: `yarn add <b>@tinacms/gatsby-plugin-tinacms</b>
+              __html: `yarn add <b>gatsby-plugin-tinacms</b>
 
 module.exports = {
   <span>// ...</span>
   plugins: [
-    '<b>@tinacms/gatsby-plugin-tinacms</b>',
+    '<b>gatsby-plugin-tinacms</b>',
     <span>// ...</span>
   ],
 };
