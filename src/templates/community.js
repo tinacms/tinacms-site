@@ -70,14 +70,14 @@ function CommunityTemplate({ data }) {
               <Button
                 to="/docs/contributing/guidelines"
                 bgColor={`${colors.seafoam}`}
-                textColor={`${colors.hunterOrange}`}
+                textColor={`${colors.burntSienna}`}
               >
                 Contribute
               </Button>
               <Button
                 to={`${metadata.roadmapUrl}`}
                 bgColor={`${colors.seafoam}`}
-                textColor={`${colors.hunterOrange}`}
+                textColor={`${colors.burntSienna}`}
                 isExternal={true}
               >
                 View Roadmap
@@ -346,18 +346,6 @@ const InfoSection = styled('section')`
     display: flex;
     justify-content: center;
   }
-  a {
-    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.15));
-    /*transform: scale3d(1, 1, 1);
-    transition: all 180ms ease-in; */
-    transform: translate3d(0px, 0px, 0px);
-    transition: transform 180ms ease-in;
-    backface-visibility: hidden;
-  }
-  a:hover {
-    transform: translate3d(-1px, -2px, 2px);
-    transition: transform 150ms ease-out;
-  }
   @media (min-width: ${breakpoints.md}px) {
     text-align: left;
     max-width: 1150px;
@@ -391,7 +379,7 @@ const InfoSection = styled('section')`
     }
     span#buttons > a:first-of-type {
       display: flex;
-      margin-right: ${space.smallDesktop}px;
+      margin-right: 20px;
     }
   }
 `
