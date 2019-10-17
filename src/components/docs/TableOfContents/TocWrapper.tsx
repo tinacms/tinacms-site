@@ -14,7 +14,7 @@ const TocWrapper = styled('section')<ToggleableProps>`
   @media (min-width: ${breakpoints.xl}px) {
     flex: 0 0 240px;
     position: fixed;
-    top: ${dimensions.heights.header + 32}px;
+    top: ${dimensions.heights.header + 24}px;
     max-height: calc(100vh - ${dimensions.heights.header + 32}px);
     overflow-y: auto;
   }
@@ -47,8 +47,11 @@ const TocWrapper = styled('section')<ToggleableProps>`
     border-left: 1px solid ${colors.grey02};
     list-style-type: none;
 
-    p {
-      margin: 0;
+    p,
+    li,
+    a {
+      font-size: 14px !important;
+      line-height: 18px !important;
     }
 
     li {
