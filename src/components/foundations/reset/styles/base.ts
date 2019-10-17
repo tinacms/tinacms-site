@@ -50,7 +50,8 @@ const base = css`
     }
   }
 
-  p img {
+  p img,
+  .gatsby-resp-iframe-wrapper {
     margin: 30px 0;
     border-radius: 5px;
     border: 1px solid ${colors.grey02};

@@ -16,7 +16,7 @@ interface FooterProps {
 }
 
 function Footer({ headerMenus }: FooterProps) {
-  const  data  = useStaticQuery(
+  const data = useStaticQuery(
     graphql`
       query getSiteMetada {
         site {
@@ -75,7 +75,9 @@ function Footer({ headerMenus }: FooterProps) {
         <EmailForm isFooter={true} />
         <span>
           <Heading as="h5" size="label">
-            <a href={metadata.licenseUrl} target="_blank">License</a>
+            <a href={metadata.licenseUrl} target="_blank">
+              License
+            </a>
           </Heading>
           <Heading as="h5" size="label">
             TinaCMS{new Date().getFullYear()}
@@ -138,7 +140,7 @@ const StyledCommunityItems = styled('div')`
     display: none;
   }
   > :not(:first-child) {
-    margin-left: ${space.xs}px;
+    margin-left: 20px;
   }
   svg {
     width: 28px;
