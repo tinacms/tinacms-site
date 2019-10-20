@@ -80,19 +80,13 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
               })}
           </DocumentationMenu>
           <HeaderCta>
-            {page !== 'teams' && (
-              <Button
-                to="/docs/getting-started/introduction"
-                height={'40'}
-                bgColor={`${colors.hunterOrange}`}
-                textColor={`${colors.seafoam}`}
-              >
-                Get Started
-              </Button>
-            )}
-            <a className="github" href="https://github.com/tinacms/tinacms" target="_blank">
-              <GithubIcon color={`${colors.hunterOrange}`} />
-            </a>
+            <iframe
+              src="https://ghbtns.com/github-btn.html?user=tinacms&repo=tinacms&type=star&count=true&size=large"
+              frameborder="0"
+              scrolling="0"
+              width="160px"
+              height="30px"
+            ></iframe>
           </HeaderCta>
         </HeaderInner>
       </Header>
