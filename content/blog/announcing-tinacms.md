@@ -3,9 +3,10 @@ title: 'Announcing TinaCMS '
 date: '2019-10-16T07:00:00.000Z'
 author: Scott Gallant
 ---
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/iPDCmbaEF0Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Today, we’re excited to announce [TinaCMS](http://tinacms.org): an open-source site editing toolkit for React-based sites (Gatsby and Next.js).
+Today, we’re excited to announce [TinaCMS](https://github.com/tinacms/tinacms): an open-source site editing toolkit for React-based sites (Gatsby and Next.js).
 
 Tina is not a CMS, in the traditional sense. As in, it’s not a _separate_ system for managing content. Instead, Tina adds editing functionality to your site when running in dev mode locally, or when using [Tina Teams](http://tinacms.org/teams) (cloud)...In fact, I'm writing this post with Tina right now:
 
