@@ -38,6 +38,8 @@ function customBackend() {
 
   return router
 }
+
+module.exports = customBackend
 ```
 
 Then, create a Gatsby plugin that leverages its `onCreateDevServer` hook to plugin this backend's router into the Gatsby dev server:
@@ -45,7 +47,7 @@ Then, create a Gatsby plugin that leverages its `onCreateDevServer` hook to plug
 ```javascript
 // gatsby-plugin-custombackend/gatsby-node.js
 
-import { customBackend } from 'custom-backend'
+const customBackend = require('custom-backend')
 
 exports.onCreateDevServer = ({ app }) => {
   app.use('/my-route-prefix', customBackend())
