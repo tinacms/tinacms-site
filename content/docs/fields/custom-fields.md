@@ -79,4 +79,4 @@ cms.forms.addFieldPlugin({
 
 ## Further Reading
 
-- [Registering Fields in Gatsby](/gatsby/custom-fields)
+- [Registering Fields in Gatsby](/docs/gatsby/custom-fields)
