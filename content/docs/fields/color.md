@@ -6,7 +6,6 @@ next: /docs/fields/toggle
 
 The `color` field is a visual color picker. This field is used for content values that handle the rendering of color. Can be saved as RGB or hex value.
 
-
 ## Definition
 
 Below is an example of how a `color` field could be defined in a Gatsby remark form. Read more on passing in form field options [here](/docs/gatsby/markdown#customizing-remark-forms).
@@ -19,7 +18,7 @@ const BlogPostForm = {
       component: 'color',
       label: 'Background Color',
       description: 'Edit the page background color here',
-      colorFormat: 'hex'
+      colorFormat: 'hex',
     },
     // ...
   ],
@@ -28,11 +27,11 @@ const BlogPostForm = {
 
 ## Options
 
- - `name`: The path to some value in the data being edited.
- - `component`: The name of the React component that should be used to edit this field. Available field component types are [defined here](/docs/concepts/fields#field-types)
- - `label`: An human readable label for the field. This label displays in the sidebar and is optional. If no label is provided, the sidebar will default to the name.
- - `description`: An optional description that expands on the purpose of the field or prompts a specific action.
- -  `colorFormat`: Optionally specify whether you want the color value to be a hexadecimal ('hex') or RBG value.
+- `name`: The path to some value in the data being edited.
+- `component`: The name of the React component that should be used to edit this field. Available field component types are [defined here](/docs/concepts/fields#field-types)
+- `label`: A human readable label for the field. This label displays in the sidebar and is optional. If no label is provided, the sidebar will default to the name.
+- `description`: An optional description that expands on the purpose of the field or prompts a specific action.
+- `colorFormat`: Optionally specify whether you want the color value to be a hexadecimal ('hex') or RBG value.
 
 ```typescript
 interface ColorConfig {
