@@ -15,7 +15,7 @@ Have an idea for a Tina content editing plugin? [Consider contributing](/docs/co
 The [`gatsby-transformer-remark`](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-remark) plugin lets us use markdown in our Gatsby sites. Two other plugins let us edit markdown with Tina:
 
 - `gatsby-tinacms-remark`: Provides hooks and components for creating Remark forms.
-- `gatsby-tinacms-git`: Extends the gatsby development server to writes changes to the local filesystem.
+- `gatsby-tinacms-git`: Extends the gatsby development server to write changes to the local filesystem.
 
 ### Install the Git & Markdown Packages
 
