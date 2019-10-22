@@ -12,7 +12,6 @@ const plugins = [
       endpoint: process.env.NODE_ENV === 'production' ? process.env.MAILCHIMP_ENDPOINT : dummyMailchimpEndpoint,
     },
   },
-  'gatsby-tinacms-git',
   {
     resolve: 'gatsby-plugin-tinacms',
     options: {
@@ -20,6 +19,7 @@ const plugins = [
         position: 'fixed',
         hidden: process.env.NODE_ENV === 'production',
       },
+      plugins: ['gatsby-tinacms-git'],
     },
   },
   'gatsby-tinacms-remark',
