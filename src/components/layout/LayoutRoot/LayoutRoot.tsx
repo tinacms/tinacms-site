@@ -39,7 +39,7 @@ const LayoutRoot: React.SFC<LayoutRootProps> = ({ children, className, location 
 
         return (
           <>
-            <AlertBar hidden={window.location.href.includes('docs') ? true : false}>
+            <AlertBar hidden={typeof window !== 'undefined' && window.location.href.includes('docs') ? true : false}>
               <a href="https://www.producthunt.com/posts/tinacms" className="hidden-mobile">
                 Check us out on <span>ProductHunt</span>
               </a>
