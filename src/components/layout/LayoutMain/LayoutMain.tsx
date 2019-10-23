@@ -138,10 +138,6 @@ const HeaderCta = styled.div`
     position: relative;
     display: block;
   }
-
-  #product-hunt-btn img {
-    margin-right: 8px;
-  }
 `
 
 const StyledLayoutMain = styled('div')<LayoutMainInnerProps>`
