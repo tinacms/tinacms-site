@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import { graphql, StaticQuery } from 'gatsby'
-import { WindowLocation } from '@reach/router'
+import { WindowLocation, globalHistory } from '@reach/router'
 import { SkipNavLink } from '@reach/skip-nav'
 
 import { NavigationContextProvider } from 'components/layout/Navigation/NavigationContext'
@@ -36,10 +36,11 @@ const LayoutRoot: React.SFC<LayoutRootProps> = ({ children, className, location 
     <StaticQuery query={query}>
       {(data: DataProps) => {
         const { siteMetadata } = data.site
+        const currentUrl = globalHistory.location.pathname
 
         return (
           <>
-            <AlertBar hidden={typeof window !== 'undefined' && window.location.href.includes('docs') ? true : false}>
+            <AlertBar hidden={currentUrl.includes('docs') ? true : false}>
               <a href="https://www.producthunt.com/posts/tinacms" className="hidden-mobile">
                 Check us out on <span>ProductHunt</span>
               </a>
