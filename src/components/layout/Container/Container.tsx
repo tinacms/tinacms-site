@@ -1,4 +1,4 @@
-import { styledWrapper as styled } from 'utils/primitives';
+import { styledWrapper as styled } from 'utils/primitives'
 
 const Container = styled('div')`
   position: relative;
@@ -6,6 +6,6 @@ const Container = styled('div')`
   margin-right: auto;
   width: 100%;
   max-width: 704px;
-`;
+`
 
-export default Container;
+export default Container
