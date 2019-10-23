@@ -80,6 +80,17 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
               })}
           </DocumentationMenu>
           <HeaderCta>
+            <a
+              id="product-hunt-btn"
+              href="https://www.producthunt.com/posts/tinacms?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-tinacms"
+              target="_blank"
+            >
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=172055&theme=light"
+                alt="TinaCMS - Open source editing tool-kit for react based sittes | Product Hunt Embed"
+                height="30px"
+              />
+            </a>
             <iframe
               src="https://ghbtns.com/github-btn.html?user=tinacms&repo=tinacms&type=star&count=true&size=large"
               frameborder="0"
@@ -137,6 +148,10 @@ const HeaderCta = styled.div`
     padding: 0;
     position: relative;
     display: block;
+  }
+
+  #product-hunt-btn img {
+    margin-right: 8px;
   }
 `
 
