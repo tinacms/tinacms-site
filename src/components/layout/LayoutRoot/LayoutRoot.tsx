@@ -108,10 +108,12 @@ const AlertBar = styled.div`
   font-size: 1.25rem;
   background-color: #ec4815;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   a {
     color: white;
+    margin: 0 1rem;
+    white-space: nowrap;
     &:hover {
       color: white;
       opacity: 0.7;
