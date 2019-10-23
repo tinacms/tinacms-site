@@ -40,7 +40,7 @@ const LayoutRoot: React.SFC<LayoutRootProps> = ({ children, className, location 
         return (
           <>
             <AlertBar hidden={window.location.href.includes('docs') ? true : false}>
-              <a href="https://www.producthunt.com/posts/tinacms">
+              <a href="https://www.producthunt.com/posts/tinacms" className="hidden-mobile">
                 Check us out on <span>ProductHunt</span>
               </a>
               <a
@@ -122,5 +122,10 @@ const AlertBar = styled.div`
   }
   & + * {
     position: relative;
+  }
+  .hidden-mobile {
+    @media (max-width: 440px) {
+      display: none;
+    }
   }
 `
