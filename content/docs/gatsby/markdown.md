@@ -312,7 +312,7 @@ const CreatePostButton = createRemarkButton({
 })
 
 // 3. Add the plugin to the component
-export default withPlugin(BlogIndex, CreatePostPlugin)
+export default withPlugin(BlogIndex, CreatePostButton)
 ```
 
 **Creating Content**
