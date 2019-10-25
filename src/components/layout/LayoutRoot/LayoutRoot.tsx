@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import { graphql, StaticQuery } from 'gatsby'
-import { WindowLocation, globalHistory } from '@reach/router'
+import { WindowLocation } from '@reach/router'
 import { SkipNavLink } from '@reach/skip-nav'
 
 import { NavigationContextProvider } from 'components/layout/Navigation/NavigationContext'
@@ -36,40 +36,21 @@ const LayoutRoot: React.SFC<LayoutRootProps> = ({ children, className, location 
     <StaticQuery query={query}>
       {(data: DataProps) => {
         const { siteMetadata } = data.site
-        const currentUrl = globalHistory.location.pathname
 
         return (
-          <>
-            <AlertBar hidden={currentUrl.includes('docs') ? true : false}>
-              <a href="https://www.producthunt.com/posts/tinacms" className="hidden-mobile">
-                Check us out on <span>ProductHunt</span>
-              </a>
-              <a
-                id="product-hunt-btn"
-                href="https://www.producthunt.com/posts/tinacms?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-tinacms"
-                target="_blank"
-              >
-                <img
-                  src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=172055&theme=light"
-                  alt="TinaCMS - Open source editing tool-kit for react based sittes | Product Hunt Embed"
-                  height="30px"
-                />
-              </a>
-            </AlertBar>
-            <StyledLayoutRoot className={className}>
-              <Helmet>
-                <title>{siteMetadata.title}</title>
-                <meta name="description" content={siteMetadata.description} />
-                <meta name="keywords" content={siteMetadata.keywords} />
-                <meta property="og:type" content="website" />
-                <meta property="og:site_name" content={siteMetadata.title} />
-                <meta property="og:description" content={siteMetadata.description} />
-                <meta property="og:url" content={`${siteMetadata.siteUrl}${location ? location.pathname : '/'}`} />
-              </Helmet>
-              <SkipNavLink />
-              {children}
-            </StyledLayoutRoot>
-          </>
+          <StyledLayoutRoot className={className}>
+            <Helmet>
+              <title>{siteMetadata.title}</title>
+              <meta name="description" content={siteMetadata.description} />
+              <meta name="keywords" content={siteMetadata.keywords} />
+              <meta property="og:type" content="website" />
+              <meta property="og:site_name" content={siteMetadata.title} />
+              <meta property="og:description" content={siteMetadata.description} />
+              <meta property="og:url" content={`${siteMetadata.siteUrl}${location ? location.pathname : '/'}`} />
+            </Helmet>
+            <SkipNavLink />
+            {children}
+          </StyledLayoutRoot>
         )
       }}
     </StaticQuery>
