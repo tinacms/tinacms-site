@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import { graphql, StaticQuery } from 'gatsby'
-import { WindowLocation, globalHistory } from '@reach/router'
+import { WindowLocation } from '@reach/router'
 import { SkipNavLink } from '@reach/skip-nav'
 
 import { NavigationContextProvider } from 'components/layout/Navigation/NavigationContext'
