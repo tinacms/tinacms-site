@@ -59,6 +59,7 @@ const CreateBlogPlugin = createRemarkButton({
   frontmatter: ({ title }) => ({
     title,
     date: new Date(),
+    draft: true,
   }),
   body: () => `Speak your mind.`,
 })
