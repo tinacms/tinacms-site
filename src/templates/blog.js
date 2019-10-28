@@ -43,6 +43,7 @@ function BlogTemplate(props) {
       </BlogHero>
       <StyledBlogPost>
         <Container>
+          {blogPostData.frontmatter.draft && <DraftIndicator>Draft</DraftIndicator>}
           <BlogMetaData author={blogPostData.frontmatter.author} date={blogPostData.frontmatter.date} />
           <MarkdownContent>
             <TinaField name="rawMarkdownBody" Component={Wysiwyg}>
@@ -67,6 +68,11 @@ const BlogTemplateOptions = {
       component: 'text',
     },
     {
+      name: "frontmatter.draft",
+      component: "toggle",
+      label: "Draft",
+    },
+    {
       label: 'Date Posted',
       name: 'rawFrontmatter.date',
       component: 'date',
@@ -87,6 +93,18 @@ const BlogTemplateOptions = {
 }
 
 export default liveRemarkForm(BlogTemplate, BlogTemplateOptions)
+
+const DraftIndicator = styled.h2`
+  color: ${colors.hunterOrange};
+  border: ${colors.hunterOrange} 2px solid;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 const BlogHero = styled.div`
   position: relative;
