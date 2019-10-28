@@ -113,7 +113,7 @@ const BlogHero = styled.div`
   padding-top: 40px;
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 60px;
   margin-bottom: 40px;
 
   &:before {
@@ -133,9 +133,12 @@ const BlogHero = styled.div`
 
   @media (min-width: ${breakpoints.md}px) {
     padding-top: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 100px;
     margin-bottom: 50px;
-
+    h1 {
+      max-width: 706px;
+      margin: 0 auto;
+    }
     &:before {
       background-size: 100% 100%;
       bottom: -2vw;
@@ -143,13 +146,17 @@ const BlogHero = styled.div`
   }
   @media (min-width: ${breakpoints.lg}px) {
     padding-top: 70px;
-    padding-bottom: 70px;
+    padding-bottom: 120px;
     margin-bottom: 70px;
   }
 `
 
 const StyledBlogPost = styled(DocsWrapper)`
   padding-top: 0;
+  div aside {
+    margin: 0 auto;
+    max-width: 704px;
+  }
   @media (min-width: ${breakpoints.md}px) {
     min-width: 650px;
     margin: 0 auto;
