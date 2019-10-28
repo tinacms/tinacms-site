@@ -155,11 +155,12 @@ export const query = graphql`
         author
         title
         date(formatString: "MMMM DD, YYYY")
+        draft
       }
       htmlAst
     }
     allMarkdownRemark(
-      filter: { fileRelativePath: { glob: "/content/blog/**/*.md" } }
+      filter: { published: { eq: true }, fileRelativePath: { glob: "/content/blog/**/*.md" } }
       sort: { fields: frontmatter___date }
     ) {
       edges {
