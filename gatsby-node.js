@@ -2,6 +2,7 @@
 
 const fs = require('fs')
 const path = require('path')
+const { GraphQLBoolean } = require('gatsby/graphql')
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
@@ -79,6 +80,33 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
+exports.setFieldsOnGraphQLNodeType = ({ type }) => {
+  // if the node is a markdown file, add the `published` field
+  if ("MarkdownRemark" === type.name) {
+    return {
+      published: {
+        type: GraphQLBoolean,
+        resolve: ({ frontmatter }) => {
+          /*
+          `published` is always true in development
+              so both drafts and finished posts are built
+          */
+          if (process.env.NODE_ENV !== "production") {
+            return true
+          }
+          /*
+          return the opposite of the `draft` value,
+          i.e. if draft = true : published = false
+          */
+         console.log(frontmatter.draft)
+          return !frontmatter.draft
+        },
+      },
+    }
+  }
+  return {}
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -87,6 +115,7 @@ exports.createPages = async ({ graphql, actions }) => {
       allMarkdownRemark(limit: 1000) {
         edges {
           node {
+            published
             fields {
               layout
               slug
@@ -105,6 +134,9 @@ exports.createPages = async ({ graphql, actions }) => {
 
   allMarkdown.data.allMarkdownRemark.edges.forEach(({ node }) => {
     const { slug, layout, section } = node.fields
+     // if unpublished return, to prevent the page from being created
+    if (!node.published) return
+    // otherwise, create the `published` page
     createPage({
       path: slug,
       //
