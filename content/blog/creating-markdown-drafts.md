@@ -203,5 +203,5 @@ Tina will only add the draft frontmatter value to files where it is edited. If t
 
 ### That’s it!
 
-We successfully added ‘draft-mode’ to a simple blog. Now this configuration might look slightly different depending on your site, but feel free to reference the [TinaCMS-site](https://github.com/tinacms/tinacms-site) repo to see this feature in action on a more complicated site.
+We successfully added ‘draft-mode’ to a simple blog. Now this configuration might look slightly different depending on your site, but feel free to reference the [TinaCMS-site](https://github.com/tinacms/tinacms-site) repo, specifically the blog template, to see this feature in action on a more complicated site.
 
