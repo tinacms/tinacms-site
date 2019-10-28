@@ -2,7 +2,7 @@
 title: Creating Markdown Drafts
 date: '2019-10-28T22:17:53.124Z'
 author: Nolan Phillips
-draft: true
+draft: false
 ---
 
 One of the core features of an editorial workflow is to provide writers & editors a safe space for creating and iterating on content without these in-process posts, case studies, what-have-you, publishing to production — **draft-mode**.
