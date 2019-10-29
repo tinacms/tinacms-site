@@ -6,7 +6,7 @@ next: /docs/gatsby/configure-git-plugin
 
 ## Editing JSON in Gatsby
 
-Creating forms for content provided by the [`gatsby-transformer-json`](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-json) plugin is made possible by three plugins:
+Creating forms for content provided by the [`gatsby-transformer-json`](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-json) plugin is made possible by two plugins:
 
 - `gatsby-tinacms-json`: Provides hooks and components for creating Remark forms.
 - `gatsby-tinacms-git`: Extends the gatsby dev server to writes changes to the local filesystem;
@@ -67,7 +67,8 @@ In order to edit a json file, you must register a form with the CMS. There are t
 
 In order for the Json forms to work, you must include the following fields in your `dataJson` query:
 
-- `fields.fileRelativePath`
+- `rawJson`
+- `fileRelativePath`
 
 An example `dataQuery` in your template might look like this:
 
@@ -75,13 +76,11 @@ An example `dataQuery` in your template might look like this:
 query DataQuery($slug: String!) {
   dataJson(fields: { slug: { eq: $slug } }) {
     id
-    fileRelativePath
-    rawJson
-    fields {
-      fileRelativePath
-    }
     firstName
     lastName
+
+    rawJson
+    fileRelativePath
   }
 }
 ```
@@ -127,7 +126,7 @@ function DataTemplate(props) {
 based component for accessing [CMS Forms](../concepts/forms.md).
 
 This Component is a thin wrapper of `useJsonForm`. Since React[Hooks](https://reactjs.org/docs/hooks-intro.html) are
-only available within Function Components you will wneed to use `JsonForm` if your template is Class Component.
+only available within Function Components you will need to use `JsonForm` if your template is Class Component.
 
 **Props**
 
