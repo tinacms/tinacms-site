@@ -11,6 +11,8 @@ This post will outline how to add a draft-state to your markdown files in a [Gat
 
 The code examples are based on a repository that has a very similar structure to the [gatsby-starter-tinacms](https://github.com/tinacms/gatsby-starter-tinacms). Feel free to reference that as you go along.
 
+![draft-mode-gif](/gif/draft-mode.gif)
+
 ### **Step 1: Add the published field to MarkdownRemark nodes**
 
 First off, we need to create a way to tell Gatsby what files to include (or not include) in the build process depending on the environment. To do this, we will add a `published` field to every MarkdownRemark node. The `published` field simply represents the faucet from which files get included in the build process. In development mode, the faucet is fully open, and all posts, regardless of their draft state, will be ‘published’ or sent through the build process. In production mode, the faucet filters out anything in draft state. So think of the `published` as a sort-of misnomer for `includedInBuild`.
@@ -148,7 +150,7 @@ Now our templates and components dealing with any blog post data will conditiona
 
 ### Step 4: Add a "draft" indicator in development
 
-Since you’re already in your blog-post.js template file and you have added the filter parameter, we now need to add the ‘draft’ field to our query so we can conditionally render some indication of the post status in the component.
+Since you’re already in your blog-post.js template file and you have added the filter parameter, we now need to add the ‘draft’ field to our query so we can conditionally render some indication of the post status in the component. You may need to restart the Gatsby dev server after adjusting this query.
 
 Add the draft to your blog-post.js query:
 
@@ -188,7 +190,7 @@ There’s lots of ways you can incorporate the ‘draft’ indicator status into
 
 ### Step 5: Add the Draft Toggle to your Form
 
-Finally, let’s add this draft toggle field to the form, where we edit our blog posts with TinaCMS. Simply add this field to each page's form definition. If you don't see this field in the sidebar, try restarting the Gatsby dev server.
+Finally, let’s add this draft toggle field to the form, where we edit our blog posts with TinaCMS. Simply add this field to each page's form definition.
 
 ```json
      {
