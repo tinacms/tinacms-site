@@ -22,7 +22,6 @@ const plugins = [
       plugins: ['gatsby-tinacms-json', 'gatsby-tinacms-remark', 'gatsby-tinacms-git'],
     },
   },
-  'gatsby-tinacms-remark',
   {
     // keep as first gatsby-source-filesystem plugin for gatsby image support
     resolve: 'gatsby-source-filesystem',
@@ -31,7 +30,6 @@ const plugins = [
       name: 'uploads',
     },
   },
-  'gatsby-tinacms-json',
   {
     resolve: 'gatsby-source-filesystem',
     options: {
