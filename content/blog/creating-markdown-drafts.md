@@ -7,9 +7,9 @@ draft: false
 
 One of the core features of an editorial workflow is to provide writers & editors a safe space for creating and iterating on content without these in-process posts publishing to production — **draft-mode**.
 
-This post will outline how to add a draft-state to your markdown files in a [Gatsby](https://www.gatsbyjs.org/ "Gatsby") site using TinaCMS. Based on a post's draft state, we will selectively ‘publish’ or not publish files based on the environment. In development, we’d like to ‘publish’ all files so that we can view and edit drafts and completed posts alike; whereas in production we are going to filter out draft posts in our graphQL queries.
+This post will outline how to add a draft-state to your markdown files in a [Gatsby](https://www.gatsbyjs.org/ "Gatsby") site using TinaCMS. Based on the environment and the file's draft state, they will be selectively ‘published’ or not published. In development, we will ‘publish’ all files so we can view and edit drafts and completed posts alike; whereas in production we are going to filter out draft posts in our graphQL queries.
 
-The code examples are based on a repository that has a very similar structure to the [gatsby-starter-tinacms](https://github.com/tinacms/gatsby-starter-tinacms). Feel free to reference that as you go along.
+The code examples are based on the [gatsby-starter-tinacms](https://github.com/tinacms/gatsby-starter-tinacms). Feel free to reference that as you go along.
 
 ![draft-mode-gif](/gif/draft-mode.gif)
 
@@ -51,7 +51,7 @@ exports.setFieldsOnGraphQLNodeType = ({ type }) => {
 
 ### Step 2: Create only published pages
 
-While we’re in the `gatsby-node.js` file, we need to consider how to prevent files in a draft state from being created as pages by Gatsby. We need to query for all the MarkdownRemark files, specifically with the `published` field data, so we can only create pages if they are `published` or set to be included in the build.
+While we’re in the `gatsby-node.js` file, we need to prevent files in a draft state from being created as pages by Gatsby. We need to query for all the MarkdownRemark files, specifically with the `published` field data, so we can only create pages if they are `published` or set to be included in the build.
 
 Let’s loop through all the posts and only call createPage for `published` content. This example code is using the [createPages API](https://www.gatsbyjs.org/docs/creating-and-modifying-pages/), which is where you manipulate or handle the creation of pages in Gatsby.
 
