@@ -3,27 +3,22 @@ title: JSON in Gatsby
 prev: /docs/gatsby/markdown
 next: /docs/gatsby/configure-git-plugin
 ---
-
 ## Editing JSON in Gatsby
 
 Creating forms for content provided by the [`gatsby-transformer-json`](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-json) plugin is made possible by two plugins:
 
-- `gatsby-tinacms-json`: Provides hooks and components for creating Remark forms.
-- `gatsby-tinacms-git`: Extends the gatsby dev server to writes changes to the local filesystem;
+* `gatsby-tinacms-json`: Provides hooks and components for creating Remark forms.
+* `gatsby-tinacms-git`: Extends the gatsby dev server to writes changes to the local filesystem;
   and registers [CMS Backend](../concepts/backends.md) for saving changes to that backend.
 
 ### Installation
-
 ```
-npm install --save gatsby-source-filesystem gatsby-transformer-json gatsby-tinacms-git gatsby-tinacms-json
+    npm install --save gatsby-source-filesystem gatsby-transformer-json gatsby-tinacms-git gatsby-tinacms-json
 ```
-
 or
-
 ```
-yarn add gatsby-source-filesystem gatsby-transformer-json gatsby-tinacms-git gatsby-tinacms-json
+    yarn add gatsby-source-filesystem gatsby-transformer-json gatsby-tinacms-git gatsby-tinacms-json
 ```
-
 ### Configuring Gatsby
 
 **gastby-config.js**
@@ -56,34 +51,32 @@ query MyQuery {
 }
 ```
 
-### Creating JSON Forms
+## Creating JSON Forms
 
 In order to edit a json file, you must register a form with the CMS. There are two approaches to registering Json forms with Tina. The approach you choose depends on whether the React template is a class or function.
 
 1. [`useJsonForm`](#useJsonForm): A [Hook](https://reactjs.org/docs/hooks-intro.html) used when the template is a function.
-1. [`JsonForm`](#JsonForm): A [Render Props](https://reactjs.org/docs/render-props.html#use-render-props-for-cross-cutting-concerns) component to use when the template is a class component.
+2. [`JsonForm`](#JsonForm): A [Render Props](https://reactjs.org/docs/render-props.html#use-render-props-for-cross-cutting-concerns) component to use when the template is a class component.
 
 ### Note: required query data
 
 In order for the Json forms to work, you must include the following fields in your `dataJson` query:
 
-- `rawJson`
-- `fileRelativePath`
+* `rawJson`
+* `fileRelativePath`
 
 An example `dataQuery` in your template might look like this:
 
-```
-query DataQuery($slug: String!) {
-  dataJson(fields: { slug: { eq: $slug } }) {
-    id
-    firstName
-    lastName
+    query DataQuery($slug: String!) {
+      dataJson(fields: { slug: { eq: $slug } }) {
+        id
+        firstName
+        lastName
 
-    rawJson
-    fileRelativePath
-  }
-}
-```
+        rawJson
+        fileRelativePath
+      }
+    }
 
 Additionally, any fields that are **not** queried will be deleted when saving content via the CMS.
 
@@ -100,13 +93,13 @@ useJsonForm(data): [values, form]
 
 **Arguments**
 
-- `data`: The data returned from a Gatsby `dataJson` query.
+* `data`: The data returned from a Gatsby `dataJson` query.
 
 **Return**
 
-- `[values, form]`
-  - `values`: The current values to be displayed. This has the same shape as the `data` argument.
-  - `form`: A reference to the [CMS Form](../concepts/forms.md) object. The `form` is rarely needed in the template.
+* `[values, form]`
+  * `values`: The current values to be displayed. This has the same shape as the `data` argument.
+  * `form`: A reference to the [CMS Form](../concepts/forms.md) object. The `form` is rarely needed in the template.
 
 **src/templates/blog-post.js**
 
@@ -125,15 +118,15 @@ function DataTemplate(props) {
 `JsonForm` is a [Render Props](https://reactjs.org/docs/render-props.html#use-render-props-for-cross-cutting-concerns)
 based component for accessing [CMS Forms](../concepts/forms.md).
 
-This Component is a thin wrapper of `useJsonForm`. Since React[Hooks](https://reactjs.org/docs/hooks-intro.html) are
+This Component is a thin wrapper of `useJsonForm`. Since [React Hooks](https://reactjs.org/docs/hooks-intro.html) are
 only available within Function Components you will need to use `JsonForm` if your template is Class Component.
 
 **Props**
 
-- `data`: The data returned from a Gatsby `dataJson` query.
-- `render({ data, form }): JSX.Element`: A function that returns JSX elements
-  - `data`: The current values to be displayed. This has the same shape as the data in the `Json` prop.
-  - `form`: A reference to the [CMS Form](../concepts/forms.md) object. The `form` is rarely needed in the template.
+* `data`: The data returned from a Gatsby `dataJson` query.
+* `render({ data, form }): JSX.Element`: A function that returns JSX elements
+  * `data`: The current values to be displayed. This has the same shape as the data in the `Json` prop.
+  * `form`: A reference to the [CMS Form](../concepts/forms.md) object. The `form` is rarely needed in the template.
 
 **src/templates/blog-post.js**
 
@@ -152,4 +145,68 @@ class DataTemplate extends React.Component {
     )
   }
 }
+```
+
+## Customizing Json Forms
+
+When using a json form with Tina, the shape of the data will initially be created with simple default text components. However, you may want to use Tina's more advanced components or specify things like labels etc. for each field. At this time, customizing the form is **only supported when using the `useJsonForm` hook** to register your form.
+
+**Why customize the form?**
+
+1. The default `label` for a field is it’s `name`.
+2. Every field is made a `text` component.
+3. The order of fields might not be consistent.
+
+**How to customize the form**
+
+The `useJsonForm` hook accepts an optional `config` object for overriding the default configuration. The following properties are accepted:
+
+* `label`: An optional label for the file
+* `fields`: A list of field definitions
+  * `name`: The path to some value in the data being edited. (e.g. `rawJson.title`)
+  * `component`: The name of the React component that should be used to edit this field. The default options are: `"text"`, `"textarea"`, `"color"`.
+  * `label`: A human readable label for the field.
+  * `description`: An optional description that expands on the purpose of the field or prompts a specific action.
+
+<tip>
+NOTE: there may be additional properties specific to each field, but the above are the rudimentary properties of every field. Check the `Fields` section of the docs for particulars on the properties for each field.
+</tip>
+
+
+```js
+
+import { useJsonForm } from "gatsby-tinacms-json"
+
+function Page(props) {
+  const [page] = useJsonForm(props.data.page, FormOptions)
+
+  return (
+    <section>
+      <Wrapper>
+        <h2>{page.hero_copy}</h2>
+        <p>{page.supporting_copy}</p>
+      </Wrapper>
+    </section>
+  )
+}
+
+const FormOptions = {
+  fields: [
+    {
+      label: "Hero Copy",
+      name: "rawJson.hero_copy",
+      description: 'Hero copy for the main block',
+      component: "text",
+    },
+    {
+      label: "Supporting Copy",
+      name: "rawJson.supporting_copy",
+      description: "Choose your supporting copy for the hero",
+      component: "textarea",
+    },
+  ],
+}
+
+export default Page
+
 ```
