@@ -1,7 +1,7 @@
 ---
 title: Custom Fields
 id: /docs/gatsby/custom-fields
-prev: /docs/gatsby/json
+prev: /docs/gatsby/configure-git-plugin
 next: /docs/gatsby/inline-editing
 ---
 
