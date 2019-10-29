@@ -41,7 +41,7 @@ Now let's start the development server to see how Tina edits our files.
 
 ```
 cd my-tina-starter
-gatsby develop
+npm run develop
 ```
 
 Now navigate to http://localhost:8000 to checkout the starter site!
