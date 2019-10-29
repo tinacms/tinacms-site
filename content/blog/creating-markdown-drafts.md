@@ -49,7 +49,7 @@ exports.setFieldsOnGraphQLNodeType = ({ type }) => {
 
 ### Step 2: Create only published pages
 
-While we’re in the `gatsby-node.js` file, we need to consider how to prevent files in a draft state from being created as pages by Gatsby. We need to query for all the MarkdownRemark files, specifically with the `published` field data, so we can only create pages if they are `published` or set to be included in the build.
+While we’re in the `gatsby-node.js` file, we need to prevent files in a draft state from being created as pages by Gatsby. We need to query for all the MarkdownRemark files, specifically with the `published` field data, so we can only create pages if they are `published` or set to be included in the build.
 
 Let’s loop through all the posts and only call createPage for `published` content. This example code is using the [createPages API](https://www.gatsbyjs.org/docs/creating-and-modifying-pages/), which is where you manipulate or handle the creation of pages in Gatsby.
 
