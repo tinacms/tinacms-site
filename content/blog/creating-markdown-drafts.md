@@ -9,7 +9,7 @@ One of the core features of an editorial workflow is to provide writers & editor
 
 This post will outline how to add a draft-state to your markdown files in a [Gatsby](https://www.gatsbyjs.org/ "Gatsby") site using TinaCMS. Based on the environment and the file's draft state, they will be selectively ‘published’ or not published. In development, we will ‘publish’ all files so we can view and edit drafts and completed posts alike; whereas in production we are going to filter out draft posts in our graphQL queries.
 
-The code examples are based on a repository that has a very similar structure to the [gatsby-starter-tinacms](https://github.com/tinacms/gatsby-starter-tinacms). Feel free to reference that as you go along.
+The code examples are based on the [gatsby-starter-tinacms](https://github.com/tinacms/gatsby-starter-tinacms). Feel free to reference that as you go along.
 
 ### **Step 1: Add the published field to MarkdownRemark nodes**
 
