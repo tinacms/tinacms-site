@@ -56,7 +56,7 @@ const HomeTemplate = props => {
             <Button to="/docs/getting-started/introduction" bgColor={colors.hunterOrange} textColor={colors.seafoam}>
               Get Started
             </Button>
-            <a className="github" href="https://github.com/tinacms/tinacms" target="_blank">
+            <a className="github" href="https://github.com/tinacms/tinacms" target="_blank" rel="noopener noreferrer">
               <GithubIcon color={`${colors.hunterOrange}`} />
             </a>
           </InfoCta>

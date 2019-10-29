@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet'
 import { withPlugin } from 'react-tinacms'
 import { createRemarkButton } from 'gatsby-tinacms-remark'
 
-import { Page } from 'components/layout/Page'
 import IndexLayout from 'layouts'
 import BlogList from 'components/blog/BlogList'
 
@@ -52,7 +51,7 @@ const CreateBlogPlugin = createRemarkButton({
     },
   ],
   filename: ({ title }) => {
-    const slug = title.replace(/\s+/, '-').toLowerCase()
+    const slug = title.replace(/\s+/g, '-').toLowerCase()
 
     return `content/blog/${slug}.md`
   },
