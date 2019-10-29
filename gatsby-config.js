@@ -12,7 +12,6 @@ const plugins = [
       endpoint: process.env.NODE_ENV === 'production' ? process.env.MAILCHIMP_ENDPOINT : dummyMailchimpEndpoint,
     },
   },
-  'gatsby-tinacms-git',
   {
     resolve: 'gatsby-plugin-tinacms',
     options: {
@@ -20,9 +19,9 @@ const plugins = [
         position: 'fixed',
         hidden: process.env.NODE_ENV === 'production',
       },
+      plugins: ['gatsby-tinacms-json', 'gatsby-tinacms-remark', 'gatsby-tinacms-git'],
     },
   },
-  'gatsby-tinacms-remark',
   {
     // keep as first gatsby-source-filesystem plugin for gatsby image support
     resolve: 'gatsby-source-filesystem',
@@ -31,7 +30,6 @@ const plugins = [
       name: 'uploads',
     },
   },
-  'gatsby-tinacms-json',
   {
     resolve: 'gatsby-source-filesystem',
     options: {
