@@ -1,5 +1,5 @@
-import React from 'react'
-import { graphql } from 'gatsby'
+import React, { useEffect } from 'react'
+import { graphql, navigate } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import { getPageById } from 'utils/helpers'
 import { TinaField } from '@tinacms/form-builder'
@@ -25,7 +25,12 @@ const DocsTemplate = ({ data, setIsEditing, isEditing }) => {
   const prevPage = getPageById(sectionList.edges, prev)
   const nextPage = getPageById(sectionList.edges, next)
   const sidebar = useSidebar()
-
+  useEffect(() => {
+    //redirect away from index.md since the introduction doc is main for now
+    if (data.markdownRemark.fileRelativePath === '/content/docs/index.md') {
+      navigate('/docs/getting-started/introduction')
+    }
+  }, [])
   return (
     <DocsLayout sidebarNav={sectionList}>
       <Page docsPage>

@@ -13,7 +13,7 @@ const BlogPage = () => {
     query BlogPageQuery {
       allMarkdownRemark(
         sort: { fields: [frontmatter___date], order: DESC }
-        filter: { fileRelativePath: { glob: "/content/blog/**/*.md" } }
+        filter: { published: {eq: true}, fileRelativePath: { glob: "/content/blog/**/*.md" } }
       ) {
         edges {
           node {
@@ -59,6 +59,7 @@ const CreateBlogPlugin = createRemarkButton({
   frontmatter: ({ title }) => ({
     title,
     date: new Date(),
+    draft: true,
   }),
   body: () => `Speak your mind.`,
 })
