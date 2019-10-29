@@ -145,6 +145,32 @@
     ]
   },
   {
+    "title": "Tina + NextJS",
+    "id": "nextjs",
+    "items": [
+      {
+        "id": "/docs/nextjs/overview",
+        "slug": "/docs/nextjs/overview",
+        "title": "Overview"
+      },
+      {
+        "id": "/docs/nextjs/bootstrapping",
+        "slug": "/docs/nextjs/bootstrapping",
+        "title": "Bootstrapping Tina"
+      },
+      {
+        "id": "/docs/nextjs/adding-backends",
+        "slug": "/docs/nextjs/adding-backends",
+        "title": "Adding a Backend"
+      },
+      {
+        "id": "/docs/nextjs/markdown",
+        "slug": "/docs/nextjs/markdown",
+        "title": "Using Markdown"
+      }
+    ]
+  },
+  {
     "title": "Contributing",
     "id": "contributing",
     "items": [
