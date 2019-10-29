@@ -1,7 +1,7 @@
 ---
 title: Creating Markdown Drafts
 date: '2019-10-28T22:17:53.124Z'
-author: Nolan Phillips
+author: Nolan Phillips & Kendall Strautman
 draft: false
 ---
 

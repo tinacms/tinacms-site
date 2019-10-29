@@ -153,6 +153,7 @@ const BlogHero = styled.div`
 
 const StyledBlogPost = styled(DocsWrapper)`
   padding-top: 0;
+  padding: 0 24px;
   div aside {
     margin: 0 auto;
     max-width: 704px;
