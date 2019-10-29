@@ -7,7 +7,7 @@ draft: false
 
 One of the core features of an editorial workflow is to provide writers & editors a safe space for creating and iterating on content without these in-process posts, case studies, what-have-you, publishing to production — **draft-mode**.
 
-This post will outline how to add a draft-state to your markdown files in a [Gatsby](https://www.gatsbyjs.org/ "Gatsby") site using TinaCMS. This is an overview of how the draft state is going to work. The draft state will end up being a toggle field in the Tina sidebar that sets a  boolean frontmatter value on the markdown file. Based on this frontmatter ‘draft’ boolean, we will selectively ‘publish’ or not publish files based on the environment. In development, we’d like to ‘publish’ all files so that we can view and edit drafts and completed posts alike; whereas in production we are going to prevent anything in draft state from being created as a page, and also filter out draft posts in our graphQL queries in the blog template file.
+This post will outline how to add a draft-state to your markdown files in a [Gatsby](https://www.gatsbyjs.org/ "Gatsby") site using TinaCMS. Based on a post's draft state, we will selectively ‘publish’ or not publish files based on the environment. In development, we’d like to ‘publish’ all files so that we can view and edit drafts and completed posts alike; whereas in production we are going to filter out draft posts in our graphQL queries.
 
 The code examples are based on a repository that has a very similar structure to the [gatsby-starter-tinacms](https://github.com/tinacms/gatsby-starter-tinacms). Feel free to reference that as you go along.
 
@@ -15,7 +15,7 @@ The code examples are based on a repository that has a very similar structure to
 
 First off, we need to create a way to tell Gatsby what files to include (or not include) in the build process depending on the environment. To do this, we will add a `published` field to every MarkdownRemark node. The `published` field simply represents the faucet from which files get included in the build process. In development mode, the faucet is fully open, and all posts, regardless of their draft state, will be ‘published’ or sent through the build process. In production mode, the faucet filters out anything in draft state. So think of the `published` as a sort-of misnomer for `includedInBuild`.
 
-The first file we need to touch to do this is the  **gatsby-node.js** file, which typically lives in the root of a site. This is a special gatsby file where we can access all of [Gatsby’s Node-API’s](https://www.gatsbyjs.org/docs/node-apis/), or points of access to the GraphQL layer that processes all the data in a Gatsby site. The API we will use is called [`setFieldsOnGraphQLNodeType`](https://www.gatsbyjs.org/docs/node-apis/#setFieldsOnGraphQLNodeType):
+The first file we need to touch to do this is the  **gatsby-node.js** file, which typically lives in the root of a site. This is a special gatsby file where we can access all of [Gatsby’s Node-API’s](https://www.gatsbyjs.org/docs/node-apis/), or access points to the GraphQL layer that processes all the data in a Gatsby site. The API we will use is called [`setFieldsOnGraphQLNodeType`](https://www.gatsbyjs.org/docs/node-apis/#setFieldsOnGraphQLNodeType):
 
 ```js
 const { GraphQLBoolean } = require('gatsby/graphql')
@@ -100,9 +100,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 ### Step 3: Filter unpublished pages at the query level
 
-Now that we have our published field controlling the flow of whether or not posts get included in the build, we need to adjust the queries in our template and any index list file so that we only query for and handle `published` data.
+Now that we have our published field controlling the flow of whether or not posts get included in the build, we need to adjust the queries in our templates and index list files so that we only query for `published` data.
 
-First go to the index file or any component that handles the rendering of the ‘list’ of all posts. Let’s add a filter parameter to the `allMarkdownRemark` query:
+First, go to the index file or any component that handles the rendering of the ‘list’ of all posts. Let’s add a filter parameter to the `allMarkdownRemark` query:
 
 **src/pages/index.js**
 
@@ -144,7 +144,7 @@ export const pageQuery = graphql`
 `
 ```
 
-Now our templates and components dealing with any blog post data will only handle data that is set to `published` or included in the build depending on the development environment.
+Now our templates and components dealing with any blog post data will conditionally handle `published` content depending on the build environment.
 
 ### Step 4: Add a "draft" indicator in development
 
@@ -168,7 +168,7 @@ export const pageQuery = graphql`
 `
 ```
 
-There’s lots of ways your can incorporate the ‘draft’ indicator status into your component. One way would be to conditionally render draft status instead of the date, based on the value of frontmatter.draft, as shown in the example below:
+There’s lots of ways you can incorporate the ‘draft’ indicator status into your component. One way would be to conditionally render draft status instead of the date, based on the value of frontmatter.draft, as shown in the example below:
 
 ```js
 <p
@@ -188,7 +188,7 @@ There’s lots of ways your can incorporate the ‘draft’ indicator status int
 
 ### Step 5: Add the Draft Toggle to your Form
 
-Finally, let’s add this draft toggle field the form where we edit our blog posts with TinaCMS. Simply add this additional option to wherever your form field options object is defined. If you don't see this field in the sidebar, try restarting the Gatsby dev server.
+Finally, let’s add this draft toggle field to the form, where we edit our blog posts with TinaCMS. Simply add this field to each page's form definition. If you don't see this field in the sidebar, try restarting the Gatsby dev server.
 
 ```json
      {
@@ -199,7 +199,7 @@ Finally, let’s add this draft toggle field the form where we edit our blog pos
 ```
 
 ##### Note:
-Tina will only add the draft frontmatter value to files where it is edited. If the draft frontmatter value is not set on a file, it will be `null` (falsy)and will get published in all environments.
+Tina will only add the draft frontmatter value to files after it's been edited. If the draft frontmatter value is not set on a file, it will be `null` (falsy)and will get published in all environments.
 
 ### That’s it!
 
