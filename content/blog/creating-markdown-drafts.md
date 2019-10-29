@@ -5,7 +5,7 @@ author: Nolan Phillips
 draft: false
 ---
 
-One of the core features of an editorial workflow is to provide writers & editors a safe space for creating and iterating on content without these in-process posts, case studies, what-have-you, publishing to production — **draft-mode**.
+One of the core features of an editorial workflow is to provide writers & editors a safe space for creating and iterating on content without these in-process posts publishing to production — **draft-mode**.
 
 This post will outline how to add a draft-state to your markdown files in a [Gatsby](https://www.gatsbyjs.org/ "Gatsby") site using TinaCMS. Based on a post's draft state, we will selectively ‘publish’ or not publish files based on the environment. In development, we’d like to ‘publish’ all files so that we can view and edit drafts and completed posts alike; whereas in production we are going to filter out draft posts in our graphQL queries.
 
@@ -102,7 +102,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 Now that we have our published field controlling the flow of whether or not posts get included in the build, we need to adjust the queries in our templates and index list files so that we only query for `published` data.
 
-First, go to the index file or any component that handles the rendering of the ‘list’ of all posts. Let’s add a filter parameter to the `allMarkdownRemark` query:
+Go to the component or page file that renders a ‘list’ of all posts — this could be an index file on a simple blog, or a list page file on a more complicated site. In that file, let’s add a filter parameter to the `allMarkdownRemark` query:
 
 **src/pages/index.js**
 
