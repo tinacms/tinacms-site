@@ -4,13 +4,15 @@ prev: /docs/fields/date
 next: /docs/fields/color
 ---
 
-The `image` field is a visual color picker. This field is used for content values that point to an image used on the page. This field allows you to upload new images by via dragging or selection in Finder. Note this field does not handle any images included in the markdown body, those would be handled by the [markdown](docs/fields/markdown)component.
+The `image` field is used for content values that point to an image used on the page. This field allows you to upload new images by via dragging or selection in Finder. Note this field does not handle any images included in the markdown body, those would be handled by the [markdown](docs/fields/markdown)component.
 
 ## Definition
 
 Below is an example of how a `image` field could be defined in a Gatsby remark form. Read more on passing in form field options [here](/docs/gatsby/markdown#customizing-remark-forms).
 
 ```javascript
+import get from "lodash.get";
+
 const BlogPostForm = {
   fields: [
     {
