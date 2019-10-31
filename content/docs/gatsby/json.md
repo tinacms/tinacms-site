@@ -8,7 +8,7 @@ next: /docs/gatsby/configure-git-plugin
 Creating forms for content provided by the [`gatsby-transformer-json`](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-json) plugin is made possible by two plugins:
 
 * `gatsby-tinacms-json`: Provides hooks and components for creating JSON forms.
-* `gatsby-tinacms-git`: Extends the gatsby dev server to writes changes to the local filesystem;
+* `gatsby-tinacms-git`: Extends the gatsby dev server to write changes to the local filesystem;
   and registers [CMS Backend](../concepts/backends.md) for saving changes to that backend.
 
 **Note on top-level arrays:**
