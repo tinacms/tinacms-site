@@ -31,7 +31,7 @@ function CommunityTemplate({ data }) {
         </HeroSection>
         <SocialSection>
           <SocialItem>
-            <a href={`${metadata.social.twitter}`} target="_blank">
+            <a href={`${metadata.social.twitter}`} target="_blank" rel="noopener noreferrer">
               <TwitterIcon color={`${colors.hunterOrange}`} />
               <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
                 Tweet us
@@ -40,7 +40,7 @@ function CommunityTemplate({ data }) {
             <span className="dotted-line" />
           </SocialItem>
           <SocialItem>
-            <a href={`${metadata.social.github}`} target="_blank">
+            <a href={`${metadata.social.github}`} target="_blank" rel="noopener noreferrer">
               <GithubIcon color={`${colors.hunterOrange}`} />
               <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
                 Fork us
@@ -49,7 +49,7 @@ function CommunityTemplate({ data }) {
             <span className="dotted-line" />
           </SocialItem>
           <SocialItem>
-            <a href={`${metadata.social.slack}`} target="_blank">
+            <a href={`${metadata.social.slack}`} target="_blank" rel="noopener noreferrer">
               <SlackIcon color={`${colors.hunterOrange}`} />
               <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
                 Slack us
@@ -88,7 +88,10 @@ function CommunityTemplate({ data }) {
       </Wrapper>
       <NewsletterSection>
         <Heading as="h2" size="h2" color={colors.hunterOrange}>
-          Newsletter ✌️
+          Newsletter{' '}
+          <span role="img" aria-label="two finger peace sign">
+            ✌️
+          </span>
         </Heading>
         <EmailForm
           cta="We move quick. Stay up to date."

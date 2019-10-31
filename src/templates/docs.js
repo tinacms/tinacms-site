@@ -1,9 +1,9 @@
-import React from 'react'
-import { graphql } from 'gatsby'
+import React, { useEffect } from 'react'
+import { graphql, navigate } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import { getPageById } from 'utils/helpers'
 import { TinaField } from '@tinacms/form-builder'
-import { remarkForm, liveRemarkForm } from 'gatsby-tinacms-remark'
+import { liveRemarkForm } from 'gatsby-tinacms-remark'
 import { Wysiwyg } from '@tinacms/fields'
 import { Page } from 'components/layout/Page'
 import { Container } from 'components/layout/Container'
@@ -11,7 +11,7 @@ import { DocsWrapper } from 'components/docs/DocsWrapper'
 import { DocsHeader } from 'components/docs/DocsHeader'
 import { MarkdownContent } from 'components/page/Markdown'
 
-import { FooterWrapper, Footer } from 'components/layout/Footer'
+import { FooterWrapper } from 'components/layout/Footer'
 import { Pagination } from 'components/ui/Pagination'
 import { TocWrapper, TocFloatingButton } from 'components/docs/TableOfContents'
 import DocsLayout from 'layouts/docs'
@@ -25,7 +25,12 @@ const DocsTemplate = ({ data, setIsEditing, isEditing }) => {
   const prevPage = getPageById(sectionList.edges, prev)
   const nextPage = getPageById(sectionList.edges, next)
   const sidebar = useSidebar()
-
+  useEffect(() => {
+    //redirect away from index.md since the introduction doc is main for now
+    if (data.markdownRemark.fileRelativePath === '/content/docs/index.md') {
+      navigate('/docs/getting-started/introduction')
+    }
+  }, [])
   return (
     <DocsLayout sidebarNav={sectionList}>
       <Page docsPage>

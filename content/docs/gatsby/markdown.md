@@ -238,7 +238,7 @@ const CreatePostButton = createRemarkButton({
 
 ### 2. Adding the Button
 
-Now that we've created the button, we need to add it to the sidebar. The button only shoes up, when the component that registers it is rendered. There's many places you could add this button. You'll need to think about where you want this button to show-up.
+Now that we've created the button, we need to add it to the sidebar. The button only shows up when the component that registers it is rendered. There's many places you could add this button. You'll need to think about where you want this button to show-up.
 
 <!-- TIP -->
 
@@ -312,7 +312,7 @@ const CreatePostButton = createRemarkButton({
 })
 
 // 3. Add the plugin to the component
-export default withPlugin(BlogIndex, CreatePostPlugin)
+export default withPlugin(BlogIndex, CreatePostButton)
 ```
 
 **Creating Content**

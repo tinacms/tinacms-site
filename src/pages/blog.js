@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet'
 import { withPlugin } from 'react-tinacms'
 import { createRemarkButton } from 'gatsby-tinacms-remark'
 
-import { Page } from 'components/layout/Page'
 import IndexLayout from 'layouts'
 import BlogList from 'components/blog/BlogList'
 
@@ -13,7 +12,7 @@ const BlogPage = () => {
     query BlogPageQuery {
       allMarkdownRemark(
         sort: { fields: [frontmatter___date], order: DESC }
-        filter: { fileRelativePath: { glob: "/content/blog/**/*.md" } }
+        filter: { published: {eq: true}, fileRelativePath: { glob: "/content/blog/**/*.md" } }
       ) {
         edges {
           node {
@@ -52,13 +51,14 @@ const CreateBlogPlugin = createRemarkButton({
     },
   ],
   filename: ({ title }) => {
-    const slug = title.replace(/\s+/, '-').toLowerCase()
+    const slug = title.replace(/\s+/g, '-').toLowerCase()
 
     return `content/blog/${slug}.md`
   },
   frontmatter: ({ title }) => ({
     title,
     date: new Date(),
+    draft: true,
   }),
   body: () => `Speak your mind.`,
 })

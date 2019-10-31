@@ -27,4 +27,7 @@ const StyledBlogMetaData = styled('div')`
     color: ${colors.grey04};
     display: block;
   }
+  p:first-child {
+    max-width: 250px;
+  }
 `

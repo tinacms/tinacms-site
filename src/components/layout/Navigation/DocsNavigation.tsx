@@ -64,6 +64,7 @@ const WrapperInner = styled('nav')`
   margin-top: ${dimensions.heights.header}px;
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
+  overflow-x: hidden;
   &::-webkit-scrollbar {
     width: 0 !important;
   }

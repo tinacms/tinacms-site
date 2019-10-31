@@ -43,6 +43,7 @@ function BlogTemplate(props) {
       </BlogHero>
       <StyledBlogPost>
         <Container>
+          {blogPostData.frontmatter.draft && <DraftIndicator>Draft</DraftIndicator>}
           <BlogMetaData author={blogPostData.frontmatter.author} date={blogPostData.frontmatter.date} />
           <MarkdownContent>
             <TinaField name="rawMarkdownBody" Component={Wysiwyg}>
@@ -67,6 +68,11 @@ const BlogTemplateOptions = {
       component: 'text',
     },
     {
+      name: "frontmatter.draft",
+      component: "toggle",
+      label: "Draft",
+    },
+    {
       label: 'Date Posted',
       name: 'rawFrontmatter.date',
       component: 'date',
@@ -88,6 +94,18 @@ const BlogTemplateOptions = {
 
 export default liveRemarkForm(BlogTemplate, BlogTemplateOptions)
 
+const DraftIndicator = styled.h2`
+  color: ${colors.hunterOrange};
+  border: ${colors.hunterOrange} 2px solid;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 const BlogHero = styled.div`
   position: relative;
   color: ${colors.hunterOrange};
@@ -95,7 +113,7 @@ const BlogHero = styled.div`
   padding-top: 40px;
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 60px;
   margin-bottom: 40px;
 
   &:before {
@@ -115,9 +133,12 @@ const BlogHero = styled.div`
 
   @media (min-width: ${breakpoints.md}px) {
     padding-top: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 100px;
     margin-bottom: 50px;
-
+    h1 {
+      max-width: 706px;
+      margin: 0 auto;
+    }
     &:before {
       background-size: 100% 100%;
       bottom: -2vw;
@@ -125,13 +146,18 @@ const BlogHero = styled.div`
   }
   @media (min-width: ${breakpoints.lg}px) {
     padding-top: 70px;
-    padding-bottom: 70px;
+    padding-bottom: 120px;
     margin-bottom: 70px;
   }
 `
 
 const StyledBlogPost = styled(DocsWrapper)`
   padding-top: 0;
+  padding: 0 24px;
+  div aside {
+    margin: 0 auto;
+    max-width: 704px;
+  }
   @media (min-width: ${breakpoints.md}px) {
     min-width: 650px;
     margin: 0 auto;
@@ -155,11 +181,12 @@ export const query = graphql`
         author
         title
         date(formatString: "MMMM DD, YYYY")
+        draft
       }
       htmlAst
     }
     allMarkdownRemark(
-      filter: { fileRelativePath: { glob: "/content/blog/**/*.md" } }
+      filter: { published: { eq: true }, fileRelativePath: { glob: "/content/blog/**/*.md" } }
       sort: { fields: frontmatter___date }
     ) {
       edges {

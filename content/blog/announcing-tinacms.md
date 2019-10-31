@@ -2,6 +2,7 @@
 title: 'Announcing TinaCMS '
 date: '2019-10-16T07:00:00.000Z'
 author: Scott Gallant
+draft: false
 ---
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/iPDCmbaEF0Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
