@@ -33,7 +33,7 @@ Page.getInitialProps = function(ctx) {
 
 The `getInitialProps` function is run by Next when the page is requested to load the data, and the return value is passed to our component as its initial props. Take note of `fileRelativePath`; we'll need that when we set up the form.
 
-## Adding a Form with `useCMSForm`
+## Adding a Form with _useCMSForm_
 
 To add forms to the Tina sidebar, we'll use the `useCMSForm` hook inside our page component. Using this hook, we will configure the following:
 
