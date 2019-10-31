@@ -23,10 +23,10 @@ class MyApp extends App {
 export default MyApp
 ```
 
-From here, install `tinacms`:
+From here, install `tinacms` and `react-tinacms`:
 
 ```bash
-npm install tinacms
+npm install tinacms react-tinacms
 ```
 
 After installing `tinacms`, we need to create an instance of the CMS and pass it through to our pages via the `Tina` component. Our new App class will look like this:
