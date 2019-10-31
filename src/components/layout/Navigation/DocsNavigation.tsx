@@ -290,12 +290,12 @@ const CreatePostButton = createRemarkButton({
     { name: 'title', label: 'Title', component: 'text', required: true },
   ],
   filename: ({ section, title }) => {
-    return `docs/${section.replace(/\s+/, '-').toLowerCase()}/${title.replace(/\s+/, '-').toLowerCase()}.md`
+    return `content/docs/${section.replace(/\s+/, '-').toLowerCase()}/${title.replace(/\s+/, '-').toLowerCase()}.md`
   },
   body: () => `New doc, who dis?`,
-  frontmatter: ({ title }) => {
+  frontmatter: ({ title, section }) => {
     //remove any other dirs from the title, return only filename
-    const id = title.replace(/\s+/, '-').toLowerCase()
+    const id = `/docs/${section}/${title.replace(/\s+/, '-').toLowerCase()}`
     return {
       title,
       id,

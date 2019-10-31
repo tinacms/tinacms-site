@@ -150,6 +150,32 @@
     ]
   },
   {
+    "title": "Tina + NextJS",
+    "id": "nextjs",
+    "items": [
+      {
+        "id": "/docs/nextjs/overview",
+        "slug": "/docs/nextjs/overview",
+        "title": "Overview"
+      },
+      {
+        "id": "/docs/nextjs/bootstrapping",
+        "slug": "/docs/nextjs/bootstrapping",
+        "title": "Bootstrapping Tina"
+      },
+      {
+        "id": "/docs/nextjs/adding-backends",
+        "slug": "/docs/nextjs/adding-backends",
+        "title": "Adding a Backend"
+      },
+      {
+        "id": "/docs/nextjs/creating-forms",
+        "slug": "/docs/nextjs/creating-forms",
+        "title": "Creating Forms"
+      }
+    ]
+  },
+  {
     "title": "Contributing",
     "id": "contributing",
     "items": [
