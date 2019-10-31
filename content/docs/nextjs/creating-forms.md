@@ -55,7 +55,7 @@ export default function Page(props) {
 
   // add a form to the CMS; store form data in `post`
   let [post, form] = useCMSForm({
-    id: 'blogpost',
+    id: props.fileRelativePath, // needs to be unique
     label: 'Edit Post',
 
     // starting values for the post object
@@ -125,7 +125,7 @@ export default function Page(props) {
 
   // add a form to the CMS; store form data in `post`
   let [post, form] = useCMSForm({
-    id: 'blogpost',
+    id: props.fileRelativePath, // needs to be unique
     label: 'Edit Post',
 
     // starting values for the post object
