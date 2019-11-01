@@ -190,6 +190,11 @@
         "title": "Setting Up"
       },
       {
+        "id": "/docs/contributing/releasing",
+        "slug": "/docs/contributing/releasing",
+        "title": "Releasing"
+      },
+      {
         "id": "/docs/contributing/troubleshooting",
         "slug": "/docs/contributing/troubleshooting",
         "title": "Troubleshooting"
