@@ -36,17 +36,17 @@ const formOptions = {
         fields: [
           {
             label:"Email",
-            name:"rawJson.contact.email",
+            name:"email",
             description: "Contact email",
             component: "text"
           },
           { label:"Twitter",
-            name:"rawJson.contact.twitter_handle",
+            name:"twitter_handle",
             description: "Twitter handle",
             component: "text"
           },
           { label:"Github",
-            name:"rawJson.contact.github_handle",
+            name:"github_handle",
             description: "Github username",
             component: "text"
           }
