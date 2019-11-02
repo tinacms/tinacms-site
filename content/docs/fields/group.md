@@ -10,6 +10,20 @@ The `group` field represents a group of values. This field is typically used wit
 
 Below is an example of how a `group` field could be defined in a Gatsby json form. Read more on passing in json form field options [here](/docs/gatsby/json#customizing-json-forms).
 
+If the json for some example contact info looked like this:
+
+```json
+{
+  "contact": {
+    "email": "hello@tinacms.org",
+    "twitter_handle": "tina_cms",
+    "github_handle": "tinacms"
+  },
+}
+```
+
+Our form options would look like this:
+
 ```javascript
 const formOptions = {
     label: 'Info Page',
