@@ -41,3 +41,20 @@ For example, in your `gatsby-config.js` file...
     },
   }...
 ```
+
+## Hiding Sidebar in Production
+
+Obviously Tina is an editing tool that we don't want accessible or visible in production environments. Tina's packages are optimized to not run in production, but you need to take an extra step to hide the sidebar completely. You'll need to have [`dotenv`](https://www.npmjs.com/package/dotenv) installed. Pass this additional option to the sidebar in your config file.
+
+**gatsby-config.js**
+```
+{
+  resolve: "@tinacms/gatsby-plugin-tinacms",
+  options: {
+    sidebar: {
+      hidden: process.env.NODE_ENV === "production"
+    }
+  }
+}
+```
+_Note:_ This is an intermediate workaround that we plan on enhancing further to extract Tina code during production builds.
