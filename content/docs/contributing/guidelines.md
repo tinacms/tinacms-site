@@ -5,22 +5,36 @@ prev: null
 next: /docs/contributing/setting-up
 ---
 
-The following is a set of guidelines and tips for contributingto the TinaCMS and its packages.
+The following is a set of guidelines and tips for contributingto the TinaCMS and its packages. Please also reference this [doc](https://github.com/tinacms/tinacms/blob/master/CONTRIBUTING.md) for the latest info on contributing.
 
 ## How to Contribute
 
-- Reporting Bugs
-- Suggesting Enhancements
-- Writing Docs, Guides, or Blog Posts
+- [Reporting Bugs](https://github.com/tinacms/tinacms/issues)
+- [Suggesting Enhancements](https://github.com/tinacms/tinacms/issues)
+- [Writing Docs, Guides, or Blog Posts](https://github.com/tinacms/tinacms-site)
 - Voluntering for User Testing
+- [Adding features, fixing bugs etc.](https://github.com/tinacms/tinacms/issues)
+- Tackle a [good-first-issue](https://github.com/tinacms/tinacms/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)!
 
-## Creating Packages
+## Contributing Code
 
-| Type                    | Folder   | Naming Convention  |
-| ----------------------- | -------- | ------------------ |
-| Internal packages       | `core`   | `@tinacms/*`       |
-| Node API extensions     | `api`    | `@tinacms/api-*`   |
-| React specific packages | `react`  | `react-tinacms-*`  |
-| Vue specific packages   | `vue`    | `vue-tinacms-*`    |
-| Gastby plugins          | `gatsby` | `gatsby-tinacms-*` |
-| Demo Projects           | `demo`   | `demo-*`           |
+Read the [set-up](/docs/contributing/setting-up) guide to get started developing on Tina locally.
+
+### Making Commits
+
+TinaCMS uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) to generate CHANGELOG entries. Please make sure your commits follow this convention.
+
+### Creating Packages
+
+Packages in Tina are organized according to thier name
+
+| Type                    | Naming Convention  | Example Path            |
+| ----------------------- | ------------------ | ----------------------- |
+| Internal packages       | `@tinacms/*`       | `@tinacms/core`         |
+| Node API extensions     | `@tinacms/api-*`   | `@tinacms/api-git`      |
+| React specific packages | `react-tinacms-*`  | `react-tinacms-remark`  |
+| Gastby plugins          | `gatsby-tinacms-*` | `gatsby-tinacms-json`   |
+| NextJS package          | `next-tinacms-*`   | `next-tinacms-markdown` |
+| Demo Projects           | `demo-*`           | `demo-gatsby`           |
+
+

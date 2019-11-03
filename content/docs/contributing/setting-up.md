@@ -21,6 +21,8 @@ cd packages/demo-gatsby
 npm run start
 ```
 
+**Do not run `npm install` from inside the `packages` directory**
+
 <tip>**TinaCMS** uses [**Lerna**](https://lerna.js.org/) to manage dependencies when developing locally. This allows the various packages to reference each other via symlinks. Running `npm install` from within a package replaces the symlinks with references to the packages in the npm registry.</tip>
 
 ## Commands
@@ -31,7 +33,7 @@ npm run start
 | npm run build                      | Build all packages                            |
 | npm run test                       | Run tests for all packages                    |
 | lerna run build --scope \<package> | Build only \<package>.                        |
-| lerna run watch --parallel         | Watch all packages for rebuilds.              |
+| lerna run watch                    | Watch all packages for rebuilds.              |
 
 ## Links
 

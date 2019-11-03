@@ -64,7 +64,7 @@ const BlogPostForm = {
 
 ```typescript
 interface ImageConfig {
-  component: 'Toggle'
+  component: 'image'
   name: string
   label?: string
   description?: string
