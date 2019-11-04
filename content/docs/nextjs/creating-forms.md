@@ -77,7 +77,7 @@ export default function Page(props) {
       return cms.api.git
         .writeToDisk({
           fileRelativePath: props.fileRelativePath,
-          content: JSON.stringify({ title: formState.values.title }),
+          content: JSON.stringify({ title: data.title }),
         })
         .then(() => {
           return cms.api.git.commit({
