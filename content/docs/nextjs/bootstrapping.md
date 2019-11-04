@@ -26,8 +26,10 @@ export default MyApp
 From here, install `tinacms` and `react-tinacms`:
 
 ```bash
-npm install tinacms react-tinacms
+npm install tinacms react-tinacms@canary
 ```
+
+Note that, for the time being, we need to use the **canary** release of `react-tinacms`.
 
 After installing `tinacms`, we need to create an instance of the CMS and pass it through to our pages via the `Tina` component. Our new App class will look like this:
 
