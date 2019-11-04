@@ -39,11 +39,14 @@ import App from 'next/app'
 import { Tina, TinaCMS } from 'tinacms'
 
 class MyApp extends App {
+  constructor() {
+    super()
+    this.cms = new TinaCMS()
+  }
   render() {
     const { Component, pageProps } = this.props
-    const cms = new TinaCMS()
     return (
-      <Tina cms={cms}>
+      <Tina cms={this.cms}>
         <Component {...pageProps} />
       </Tina>
     )
