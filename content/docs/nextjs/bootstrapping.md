@@ -26,8 +26,10 @@ export default MyApp
 From here, install `tinacms` and `react-tinacms`:
 
 ```bash
-npm install tinacms react-tinacms
+npm install tinacms react-tinacms@canary
 ```
+
+Note that, for the time being, we need to use the **canary** release of `react-tinacms`.
 
 After installing `tinacms`, we need to create an instance of the CMS and pass it through to our pages via the `Tina` component. Our new App class will look like this:
 
@@ -37,11 +39,14 @@ import App from 'next/app'
 import { Tina, TinaCMS } from 'tinacms'
 
 class MyApp extends App {
+  constructor() {
+    super()
+    this.cms = new TinaCMS()
+  }
   render() {
     const { Component, pageProps } = this.props
-    const cms = new TinaCMS()
     return (
-      <Tina cms={cms}>
+      <Tina cms={this.cms}>
         <Component {...pageProps} />
       </Tina>
     )

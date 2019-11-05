@@ -34,3 +34,48 @@ npm install concurrently @tinacms/api-git@canary @tinacms/git-client
 ```
 
 The first argument passed to `tina-git-server` is the port you want to run the server on.
+
+## Hooking up the Frontend
+
+All that's left is to configiure the CMS to consume the git API that now runs on the backend. We can do this easily with the `GitClient` class from the `@tinacms/git-client` package. To get started, install the package:
+
+```
+npm install @tinacms/git-client
+```
+
+When creating an instance of `GitClient`, we need to pass it the URL where the API endpoints can be reached. By default, `tina-git-server`'s API routes are scoped within the `/___tina` path. Since we're running the server locally on port 3001, the full URL to our git backend is `http"//localhost:3001/___tina`. We could then instantiate the git client as follows:
+
+```javascript
+const client = new GitClient('http://localhost:3001/___tina')
+```
+
+We'll need to amend our `_app.js` application wrapper to register this with the CMS. We can attach APIs to our CMS using the `registerApi` method.
+
+The `_app.js` file should now look something like this:
+
+```javascript
+import React from 'react'
+import App from 'next/app'
+import { Tina, TinaCMS } from 'tinacms'
+import { GitClient } from '@tinacms/git-client'
+
+class MyApp extends App {
+  constructor() {
+    super()
+    this.cms = new TinaCMS()
+    const client = new GitClient('http://localhost:3001/___tina')
+    this.cms.registerApi('git', client)
+  }
+
+  render() {
+    const { Component, pageProps } = this.props
+    return (
+      <Tina cms={this.cms}>
+        <Component {...pageProps} />
+      </Tina>
+    )
+  }
+}
+
+export default MyApp
+```
