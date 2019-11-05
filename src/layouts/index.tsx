@@ -15,7 +15,7 @@ import { SiteMetadata } from 'interfaces/gatsby'
 interface IndexLayoutProps {
   location?: WindowLocation
   page?: string
-  sidebarNav: Edge<MenuNode>[]
+  sidebarNav?: Edge<MenuNode>[]
 }
 
 interface DataProps {
