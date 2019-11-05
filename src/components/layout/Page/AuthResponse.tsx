@@ -1,11 +1,10 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import Helmet from 'react-helmet'
 import StyledButton from 'components/foundations/Button'
 import { Page } from 'components/layout/Page'
 import { styledWrapper as styled } from 'utils/primitives'
 import { Heading, Text } from 'components/foundations'
-import { colors, space, breakpoints } from 'utils/variables'
+import { colors } from 'utils/variables'
 
 import IndexLayout from 'layouts'
 
@@ -14,7 +13,7 @@ interface Props {
 }
 
 export const AuthResponse: React.FC<Props> = props => (
-  <IndexLayout>
+  <IndexLayout hideNav={true}>
     <BgColor />
     <Page>
       <Helmet>

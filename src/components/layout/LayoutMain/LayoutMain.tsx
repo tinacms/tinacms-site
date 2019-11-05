@@ -23,15 +23,15 @@ interface LayoutMainInnerProps {
 interface LayoutMainProps extends LayoutMainInnerProps {
   title: string
   headerMenus?: Edge<HeaderMenuItem>[]
+  hideNav?: boolean //hide header & footer
 }
 
 interface FontSizeProps {
   size: ReturnType<typeof determineFontDimensions>
 }
 
-const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, headerMenus, page }) => {
+const LayoutMain: React.SFC<LayoutMainProps> = ({ children, className, headerMenus, page, hideNav }) => {
   const { state, dispatch } = React.useContext(NavigationContext)
-  const isCliPage = typeof window !== 'undefined' && window.location.href.includes('cli')
 
   return (
     <StyledLayoutMain className={className} isNavigationOpen={state.isOpen}>
@@ -54,7 +54,7 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
             </HomepageLink>
           </LogoWrapper>
         </HeaderInner>
-        {!isCliPage && (
+        {!hideNav && (
           <HeaderInner hideOnMobile contents="center">
             <DocumentationMenu>
               {headerMenus &&
@@ -96,7 +96,7 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
       <StyledMainContent>
         <SkipNavContent>{children}</SkipNavContent>
       </StyledMainContent>
-      {!isCliPage && (
+      {!hideNav && (
         <FooterWrapper>
           <Footer headerMenus={headerMenus} />
         </FooterWrapper>
