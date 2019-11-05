@@ -41,7 +41,7 @@ To add forms to the Tina sidebar, we'll use the `useCMSForm` hook inside our pag
 2. `fields` to define the shape of our form
 3. The `onSubmit` callback that calls the git API [registered in our app component](./adding-backends.md) to commit the changes
 
-`useCMSForm` will return two values in an array, following the convention of React hooks. The first value is the current data in the form, and the second value is the form object itself. We want to capture the form data in a variably called `post`, and replace the call to `props` in our render function with this `post` variable. This will enable our layout to dynamically update as changes are made to the form data.
+`useCMSForm` will return two values in an array, following the convention of React hooks. The first value is the current data in the form, and the second value is the form object itself. We want to capture the form data in a variable called `post`, and replace the call to `props` in our render function with this `post` variable. This will enable our layout to dynamically update as changes are made to the form data.
 
 ```javascript
 // /pages/[slug].js
@@ -67,7 +67,7 @@ export default function Page(props) {
     fields: [
       {
         name: 'title',
-        label: 'TItle',
+        label: 'Title',
         component: 'text',
       },
     ],
