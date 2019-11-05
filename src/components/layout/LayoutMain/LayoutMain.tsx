@@ -23,13 +23,14 @@ interface LayoutMainInnerProps {
 interface LayoutMainProps extends LayoutMainInnerProps {
   title: string
   headerMenus?: Edge<HeaderMenuItem>[]
+  hideNav?: boolean //hide header & footer
 }
 
 interface FontSizeProps {
   size: ReturnType<typeof determineFontDimensions>
 }
 
-const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, headerMenus, page }) => {
+const LayoutMain: React.SFC<LayoutMainProps> = ({ children, className, headerMenus, page, hideNav }) => {
   const { state, dispatch } = React.useContext(NavigationContext)
 
   return (
@@ -53,49 +54,53 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, title, className, he
             </HomepageLink>
           </LogoWrapper>
         </HeaderInner>
-        <HeaderInner hideOnMobile contents="center">
-          <DocumentationMenu>
-            {headerMenus &&
-              headerMenus.map(({ node }) => {
-                if (node.external) {
+        {!hideNav && (
+          <HeaderInner hideOnMobile contents="center">
+            <DocumentationMenu>
+              {headerMenus &&
+                headerMenus.map(({ node }) => {
+                  if (node.external) {
+                    return (
+                      <a key={node.id} href={node.href} target="_blank" rel="noopener noreferrer">
+                        <Heading as="h1" size={100}>
+                          {node.label}
+                        </Heading>
+                      </a>
+                    )
+                  }
                   return (
-                    <a key={node.id} href={node.href} target="_blank" rel="noopener noreferrer">
-                      <Heading as="h1" size={100}>
-                        {node.label}
-                      </Heading>
-                    </a>
+                    <Button
+                      key={node.id}
+                      to={node.href}
+                      bgColor={page === 'teams' ? `${colors.darkPurple}` : `${colors.white}`}
+                      textColor={`${colors.hunterOrange}`}
+                      height="40"
+                    >
+                      {node.label}
+                    </Button>
                   )
-                }
-                return (
-                  <Button
-                    key={node.id}
-                    to={node.href}
-                    bgColor={page === 'teams' ? `${colors.darkPurple}` : `${colors.white}`}
-                    textColor={`${colors.hunterOrange}`}
-                    height="40"
-                  >
-                    {node.label}
-                  </Button>
-                )
-              })}
-          </DocumentationMenu>
-          <HeaderCta>
-            <iframe
-              src="https://ghbtns.com/github-btn.html?user=tinacms&repo=tinacms&type=star&count=true&size=large"
-              frameborder="0"
-              scrolling="0"
-              width="160px"
-              height="30px"
-            ></iframe>
-          </HeaderCta>
-        </HeaderInner>
+                })}
+            </DocumentationMenu>
+            <HeaderCta>
+              <iframe
+                src="https://ghbtns.com/github-btn.html?user=tinacms&repo=tinacms&type=star&count=true&size=large"
+                frameborder="0"
+                scrolling="0"
+                width="160px"
+                height="30px"
+              ></iframe>
+            </HeaderCta>
+          </HeaderInner>
+        )}
       </Header>
       <StyledMainContent>
         <SkipNavContent>{children}</SkipNavContent>
       </StyledMainContent>
-      <FooterWrapper>
-        <Footer headerMenus={headerMenus} />
-      </FooterWrapper>
+      {!hideNav && (
+        <FooterWrapper>
+          <Footer headerMenus={headerMenus} />
+        </FooterWrapper>
+      )}
     </StyledLayoutMain>
   )
 }
