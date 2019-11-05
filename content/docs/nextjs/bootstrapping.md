@@ -7,7 +7,7 @@ next: /docs/nextjs/adding-backends
 
 ## Adding the Tina Provider
 
-We need to wrap every page in the `<Tina>` component. This component will provide the CMS to all of our pages, allowing us to create an editor for our content. We can do this in NextJS by creating a file at `pages/_app.js` and extending the default NextJS `App` class. Next will then use our custom app component to render the page. A basic boilerplate for extending the default `App` class looks like this:
+We need to wrap every page in the `<Tina>` component. This component will provide the CMS to all of our pages, allowing us to create an editor for our content. We can do this in NextJS by creating a file at `pages/_app.js` and extending the default NextJS [`App`](https://nextjs.org/docs#custom-app) class. Next will then use our custom app component to render the page. A basic boilerplate for extending the default `App` class looks like this:
 
 ```javascript
 import React from 'react'
