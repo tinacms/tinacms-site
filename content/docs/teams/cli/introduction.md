@@ -36,8 +36,9 @@ Then you can run the init command within a repository context:
 Arguments wrapped in `[]` in the command name are optional. If not provided, the user will be prompted for their values.
 E.g:
 
+#### tina branches [branch]
+
 ```
-tina branches [branch]
 
 You can enter:
 $ tina branches
