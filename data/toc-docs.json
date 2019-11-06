@@ -200,5 +200,36 @@
         "title": "Troubleshooting"
       }
     ]
+  },
+  {
+    "title": "Teams",
+    "id": "teams",
+    "items": [
+      {
+        "id": "/docs/teams/introduction",
+        "slug": "/docs/teams/introduction",
+        "title": "Introduction"
+      },
+      {
+        "id": "/docs/teams/cli/introduction",
+        "slug": "/docs/teams/cli/introduction",
+        "title": "CLI"
+      },
+      {
+        "id": "/docs/teams/cli/commands",
+        "slug": "/docs/teams/cli/commands",
+        "title": "CLI Commands"
+      },
+      {
+        "id": "/docs/teams/cli/contributing",
+        "slug": "/docs/teams/cli/contributing",
+        "title": "Contributing"
+      },
+      {
+        "id": "/docs/teams/cli/advanced",
+        "slug": "/docs/teams/cli/advanced",
+        "title": "Advanced Configuration"
+      }
+    ]
   }
 ]
