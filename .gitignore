@@ -119,3 +119,5 @@ $RECYCLE.BIN/
 *.lnk
 
 sandbox/
+
+.tina/secrets.json
