@@ -198,7 +198,7 @@ Remove a list of comma-separated roles from a user for a repo
 
 ### tina serve \[options\] | tina server \[options\]
 
-Allows you to self-host a development version of your site behind an authentication .
+Allows you to self-host a development version of your site behind an authentication layer.
 
 Sets up a reverse-proxy on your site.
 
