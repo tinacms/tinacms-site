@@ -4,26 +4,21 @@ id: /docs/teams/cli/contributing
 prev: /docs/teams/cli/commands
 next: /docs/teams/cli/advanced
 ---
+The Tina Teams API is closed source, however the CLI is [open-source](https://github.com/tinacms/cli "TinaCMS CLI").
 
 ## Development
 
 To run this project locally in another directory, you can create a symlink by running
 
-```
-npm link
-```
+    npm link
 
 Then Tina can be run in another directory by running:
 
-```
-tina <commands>
-```
+    tina <commands>
 
 To run the command locally in this project directory, you can run:
 
-```
-./bin/tina <commands>
-```
+    ./bin/tina <commands>
 
 You can view the list of commands with `--help`
 
