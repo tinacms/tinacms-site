@@ -5,10 +5,9 @@ prev: /docs/teams/introduction
 next: /docs/teams/cli/commands
 ---
 
-The Tina CLI deploys your site to Tina's preview servers. This pairs nicely with [Tina CMS](https://github.com/tinacms/tinacms) so that editors can edit sites from a live URL without having to pull anything down.
+The Tina CLI can be used to deploy / manage your site on Tina's hosted environment. Tina Teams pairs nicely with [Tina CMS](https://github.com/tinacms/tinacms) so that editors can edit sites from a live URL without having to pull anything down to a local dev environment.
 
-With the CLI, you can add repos to Tina
-Multiple branches can be deployed for each repo. Deployed branches allow a version of your site to be accessed via a public URL.
+You can add repos to Tina, and deploy multiple branches for each repo. Each deployed branch allows your team to edit a version of your site via a unique public URL.
 
 ## Limitations
 
@@ -36,14 +35,11 @@ Then you can run the init command within a repository context:
 Arguments wrapped in `[]` in the command name are optional. If not provided, the user will be prompted for their values.
 E.g:
 
-#### tina branches [branch]
+#### tina branches \[branch\]
 
-```
+    You can enter:
+    $ tina branches
+      - User will be prompted for a branch name
 
-You can enter:
-$ tina branches
-  - User will be prompted for a branch name
-
-or:
-$ tina branches master
-```
+    or:
+    $ tina branches master

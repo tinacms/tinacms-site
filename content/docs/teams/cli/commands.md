@@ -33,17 +33,17 @@ e.g: `tina repos --help`
 - [`tina users:roles:remove`](#tina-usersrolesremove-email-roles) - Removes a list of roles from a user on a repo.
 - [`tina serve`](#tina-serve-options--tina-server-options) - Allows you to self-host a development version of your site behind authentication.
 
-### `tina init`
+### tina init
 
 Guides you along creating a repo/branch in Tina from ground zero.
 
-### `tina login`
+### tina login
 
 Log in / Create a Tina account.
 
 Required in order to perform most actions within the CLI.
 
-### `tina config:init`
+### tina config:init
 
 Initialize the local project with a Tina config.
 
@@ -52,11 +52,11 @@ Tina will read this file directly from your repository, so it will need to be pu
 
 When `tina config:init` is run, an empty ./.tina/secrets.json is created if it doesn't already exist. These values are sent to Tina when a branch is deployed.
 
-### `tina repos`
+### tina repos
 
 List repos that the logged in user has access to.
 
-### `tina repos:info [options]`
+### tina repos:info [options]
 
 Describe a given repo in Tina
 
@@ -66,22 +66,22 @@ Describe a given repo in Tina
   -url, --ssh_url <ssh_url>  Specify a repo to use instead of using the repo from the current context (optional)
 ```
 
-### `tina repos:add`
+### tina repos:add
 
 Adds a repo into Tina, based on the site context that this command is run from.
 
 Each repo can multiple branches.
 
-### `tina repos:remove`
+### tina repos:remove
 
 Removes a repo from Tina.
 This will remove the repo fron Tina based on the repository context that this command is run from.
 
-### `tina branches`
+### tina branches
 
 List branches that the logged in user has access to on the repository context that this command is run from.
 
-### `tina branches:info [branch]`
+### tina branches:info [branch]
 
 Describe a branch in Tina.
 
@@ -91,7 +91,7 @@ Describe a branch in Tina.
   [branch]  Specify a branch to use instead of prompting from a select list (optional)
 ```
 
-### `tina deploy [branch] | tina branches:add [branch]`
+### tina deploy [branch] | tina branches:add [branch]
 
 Adds a branch into tina, and deploys a live staging environment.
 
@@ -103,7 +103,7 @@ Once you select a branch, Tina will deploy it to its servers and allow you to ac
   [branch]  Specify a branch to use instead of prompting from a select list (optional)
 ```
 
-### `tina branches:remove [branch]`
+### tina branches:remove [branch]
 
 Removes a branch from Tina.
 The branch is based on the site context that this command is run from.
@@ -114,7 +114,7 @@ The branch is based on the site context that this command is run from.
   [branch]  Specify a branch to use instead of prompting from a select list (optional)
 ```
 
-### `tina branches:logs [branch] [step]`
+### tina branches:logs \[branch\] \[step\]
 
 Fetches the logs for a deployment step in tina
 
@@ -131,7 +131,7 @@ Fetches the logs for a deployment step in tina
 -s, --step <step> Logs status on a branch deployment. If no branch is specified, it will use the current context's branch.
 ```
 
-### `tina users [options]`
+### tina users [options]
 
 List users on a tina repo.
 
@@ -141,7 +141,7 @@ List users on a tina repo.
 -t, --type [type] type of the users to include (owner or member) - defaults to all
 ```
 
-### `tina users:info [email]`
+### tina users:info [email]
 
 Describe a user on a tina repo.
 
@@ -151,7 +151,7 @@ Describe a user on a tina repo.
 [email] Specify a user's email to use instead of prompting from a select list (optional)
 ```
 
-### `tina users:add [email] [options]`
+### tina users:add \[email\] \[options\]
 
 Add a user to a tina repo.
 
@@ -168,7 +168,7 @@ Add a user to a tina repo.
 -r, --role <role> a comma separated list of roles assigned to this user.
 ```
 
-### `tina users:update [email] [options]`
+### tina users:update \[email\] \[options\]
 
 Update a user's access on a repo.
 
@@ -185,7 +185,7 @@ Update a user's access on a repo.
 -r, --role <role> a comma separated list of roles assigned to this user.
 ```
 
-### `tina users:remove [email]`
+### tina users:remove [email]
 
 Remove a user from a repo.
 
@@ -195,7 +195,7 @@ Remove a user from a repo.
 [email] Specify a user's email to use instead of prompting from a select list (optional)
 ```
 
-### `tina users:roles:add [email] [roles]`
+### tina users:roles:add \[email\] \[roles\]
 
 Adds a list of comma separated roles onto a user for a repo
 
@@ -212,7 +212,7 @@ tina users:roles:add tim@tina.io editor,developer
 [roles] Specify a comma separated list of roles instead of prompting (optional)
 ```
 
-### `tina users:roles:remove [email] [roles]`
+### tina users:roles:remove \[email\] \[roles\]
 
 Removes a list of comma separated roles from a user for a repo
 
@@ -229,7 +229,7 @@ tina users:roles:remove tim@tina.io editor,developer
 [roles] Specify a comma separated list of roles instead of prompting (optional)
 ```
 
-### `tina serve [options] | tina server [options]`
+### tina serve [options] | tina server [options]
 
 Allows you to self-host a development version of your site behind authentication.
 
