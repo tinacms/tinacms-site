@@ -10,6 +10,7 @@ import { Container } from 'components/layout/Container'
 import { DocsWrapper } from 'components/docs/DocsWrapper'
 import { DocsHeader } from 'components/docs/DocsHeader'
 import { MarkdownContent } from 'components/page/Markdown'
+import { tip as Tip } from 'components/shortcodes/tip'
 
 import { FooterWrapper } from 'components/layout/Footer'
 import { Pagination } from 'components/ui/Pagination'
@@ -25,6 +26,8 @@ const DocsTemplate = ({ data, setIsEditing, isEditing }) => {
   const prevPage = getPageById(sectionList.edges, prev)
   const nextPage = getPageById(sectionList.edges, next)
   const sidebar = useSidebar()
+
+  const isTeamsSection = data.markdownRemark.fileRelativePath.startsWith('/content/docs/teams')
   useEffect(() => {
     //redirect away from index.md since the introduction doc is main for now
     if (data.markdownRemark.fileRelativePath === '/content/docs/index.md') {
@@ -54,6 +57,7 @@ const DocsTemplate = ({ data, setIsEditing, isEditing }) => {
           <Container>
             <DocsHeader title={markdownRemark.frontmatter.title} subtitle={markdownRemark.frontmatter.description} />
             <MarkdownContent>
+              {isTeamsSection && <Tip>{site.siteMetadata.teamsWarning}</Tip>}
               <TinaField name="rawMarkdownBody" Component={Wysiwyg}>
                 {renderAst(markdownRemark.htmlAst)}
               </TinaField>
@@ -106,6 +110,7 @@ export const query = graphql`
         title
         description
         siteUrl
+        teamsWarning
         keywords
         author {
           name
