@@ -25,9 +25,9 @@ In the event a page is composed from multiple files, it is possible to add multi
 
 ## Sidebar Style
 
-The sidebar has two display options: `fixed` and `float`.
+The sidebar has two display options: `displace` and `overlay`.
 
-By default, Tina's sidebar will overlay on top of your website (`float`). This default is set to prevent any layout conflicts with the sidebar and your site. If you set Tina to position `fixed`, when you open Tina, your website will shrink to make space for the sidebar. Depending on your site's design, you may have CSS rules that conflict with this approach (`fixed`), or may simply prefer to have the sidebar overlay your content instead of displacing it (`float`). Override or adjust this by specifying the sidebar option in the config file where you register Tina plugins.
+By default, Tina's sidebar will overlay on top of your website (`overlay`). This default is set to prevent any layout conflicts with the sidebar and your site. If you set Tina to position `displace`, when you open Tina, your website will shrink to make space for the sidebar. Depending on your site's design, you may have CSS rules that conflict with this approach (`displace`), or may simply prefer to have the sidebar overlay your content instead of displacing it (`overlay`). Override or adjust this by specifying the sidebar option in the config file where you register Tina plugins.
 
 For example, in your `gatsby-config.js` file...
 
@@ -36,11 +36,12 @@ For example, in your `gatsby-config.js` file...
     resolve: 'gatsby-plugin-tinacms',
     options: {
       sidebar: {
-        position: 'fixed',
+        position: 'displace',
       },
     },
   }...
 ```
+<tip>These display options were updated from `fixed` and `float`. Consider `fixed` to equal `displace` & `float` to equal `overlay`. The updates are backwards compatible; the older options will still work.</tip>
 
 ## Hiding Sidebar in Production
 
