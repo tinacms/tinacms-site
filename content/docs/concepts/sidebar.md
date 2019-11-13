@@ -45,10 +45,15 @@ For example, in your `gatsby-config.js` file...
 
 ## Hiding Sidebar in Production
 
-Obviously Tina is an editing tool that we don't want accessible or visible in production environments. Tina's packages are optimized to not run in production, but you need to take an extra step to hide the sidebar completely. You'll need to have [`dotenv`](https://www.npmjs.com/package/dotenv) installed. Pass this additional option to the sidebar in your config file.
+Obviously Tina is an editing tool that we don't want accessible or visible in production environments. Tina's packages are optimized to not run in production, but you need to take an extra step to hide the sidebar completely. You'll need to have [`dotenv`](https://www.npmjs.com/package/dotenv) installed. Then you'll pass in additional info to Tina about this sidebar option. Depenging on the metaframework you are using, the implementation might look slightly different.
 
-**gatsby-config.js**
-```
+### With Gatsby
+
+You'll want to pass in this option to wherever the plugin is registered in the `gatsby-config` file.
+
+```javascript
+// gatsby-config.js
+
 {
   resolve: "@tinacms/gatsby-plugin-tinacms",
   options: {
@@ -58,4 +63,38 @@ Obviously Tina is an editing tool that we don't want accessible or visible in pr
   }
 }
 ```
-_Note:_ This is an intermediate workaround that we plan on enhancing further to extract Tina code during production builds.
+
+### With Next.js
+
+If you followed the implementation in our Next.js docs, you'll want to go to the `_app.js` file where the CMS is registered. Again, depending on your setup with Next + Tina, this config may look slightly different. Note this is also where you might specify the sidebar [display options](https://tinacms.org/docs/concepts/sidebar#sidebar-style).
+
+```javascript
+//_app.js
+
+class MyApp extends App {
+  constructor() {
+    super()
+    this.cms = new TinaCMS()
+    const client = new GitClient('http://localhost:3001/___tina')
+    this.cms.registerApi('git', client)
+  }
+  // Sidebar options
+  options = {
+      sidebar: {
+        hidden: process.env.NODE_ENV === "production"
+      }
+  }
+  render() {
+    const { Component, pageProps } = this.props
+    // Pass in sidebar options to Tina component
+    return (
+      <Tina cms={this.cms} {...this.options.sidebar}>
+        <Component {...pageProps} />
+      </Tina>
+    )
+  }
+}
+```
+
+
+<tip>_Note:_ This is an intermediate workaround that we plan on enhancing further to extract Tina code during production builds.</tip>
