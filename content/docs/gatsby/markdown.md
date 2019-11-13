@@ -124,7 +124,7 @@ export const pageQuery = graphql`
 
 ### Editing Markdown Content
 
-With the Remark Form created, you can now edit your markdown file in the Tina sidebar. Content changes are written to the markdown files in real time. Hitting `Save` will commit those changes to your repository.
+With the Remark Form created, you can now edit your markdown file in the Tina sidebar. The `markdown` component is [commonmark](https://commonmark.org/help/) compatible. Content changes are written to the markdown files in real time. Hitting `Save` will commit those changes to your repository.
 
 **Why write to disk "on change"?**
 
