@@ -13,7 +13,7 @@ If you'd like to skip ahead and reference 'final' versions of the starter, feel 
 
 ## Clone the starter
 
-Let’s get started. For the sake of time, I have provided a **[bare bones starter](https://github.com/kendallstrautman/nextjs-blog-starter)**. You can clone the project or check it out on github for reference. If you want to see the finished version, check it out with Forestry or with TinaCMS.
+Let’s get started. For the sake of time, I have provided a **[bare bones starter](https://github.com/kendallstrautman/nextjs-blog-starter)**. You can clone the project or check it out on [github](https://github.com/kendallstrautman/nextjs-blog-starter) for reference.
 
 ``` javascript
 // clone the repo from your terminal
