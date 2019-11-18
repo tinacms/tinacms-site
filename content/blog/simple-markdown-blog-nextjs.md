@@ -86,7 +86,7 @@ To zoom out a little, the purpose of the `Layout` component is to provide the vi
 
 Within `Layout`, there is a `Meta` component that contains all global styles along with anything needed to be put in the <head> of the site for SEO or accessibility purposes. Note that the use of a `Layout` component isn’t unique to Next.js; you’ll see it commonly used in Gatsby sites as well.
 
-One thing you may notice in the `Layout` component is the use of a `<style jsx>` tag. **Next.js works out of the box with** [**styled-jsx**](https://github.com/zeit/styled-jsx), a neat _css-in-js_ framework made by the Zeit team. It’s super intuitive to use. All of the styles are scoped to the componentand you can do dynamic styling based on props. The css-in-js world is your oyster!
+One thing you may notice in the `Layout` component is the use of a `<style jsx>` tag. **Next.js works out of the box with** [**styled-jsx**](https://github.com/zeit/styled-jsx), a neat _css-in-js_ framework made by the Zeit team. It’s super intuitive to use. All of the styles are scoped to the component, and you can do dynamic styling based on props. The css-in-js world is your oyster!
 
 The only downside of `styled-jsx` is the lack of support for nesting, which may or may not be a concern for you. As long as you just write good ol’ fashioned vanilla css, you’ll be good. To learn more about how to use `styled-jsx`, take a look at the [styled-jsx GitHub repository](https://github.com/zeit/styled-jsx).
 
