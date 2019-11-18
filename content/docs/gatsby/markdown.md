@@ -57,6 +57,8 @@ There are 3 steps to making a markdown file editable:
 2. Wrap your template with `remarkForm`
 3. Add `...TinaRemark` to the GraphQL query
 
+<tip>Required fields used to be queried individually: `id`, `fileRelativePath`, `rawFrontmatter`, & `rawMarkdownBody`. The same fields are now being queried via `TinaRemark`</tip>
+
 **Example: src/templates/blog-post.js**
 
 ```jsx
