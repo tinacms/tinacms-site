@@ -19,15 +19,11 @@ The [`gatsby-transformer-remark`](https://github.com/gatsbyjs/gatsby/tree/master
 
 ### Install the Git & Markdown Packages
 
-```
-npm install --save gatsby-tinacms-remark gatsby-tinacms-git
-```
+    npm install --save gatsby-tinacms-remark gatsby-tinacms-git
 
 or
 
-```
-yarn add gatsby-tinacms-remark gatsby-tinacms-git
-```
+    yarn add gatsby-tinacms-remark gatsby-tinacms-git
 
 ### Adding the Git Plugin
 
@@ -59,11 +55,9 @@ There are 3 steps to making a markdown file editable:
 
 1. Import the `remarkForm` HOC
 2. Wrap your template with `remarkForm`
-3. Add the required fields to the GraphQL query:
-   - `id`
-   - `fileRelativePath`
-   - `rawFrontmatter`
-   - `rawMarkdownBody`
+3. Add `...TinaRemark` to the GraphQL query
+
+<tip>Required fields used to be queried individually: `id`, `fileRelativePath`, `rawFrontmatter`, & `rawMarkdownBody`. The same fields are now being queried via `TinaRemark`</tip>
 
 **Example: src/templates/blog-post.js**
 
@@ -89,10 +83,7 @@ export const pageQuery = graphql`
         date
         description
       }
-
-      fileRelativePath
-      rawFrontmatter
-      rawMarkdownBody
+      ...TinaRemark
     }
   }
 `
@@ -138,21 +129,19 @@ The `remarkForm` HOC creates the form based on the shape of your data. This is c
 **Why customize the form?**
 
 1. The default `label` for a field is it's `name`.
-1. Every field is made a `text` component.
-1. The order of fields might not be consistent.
+2. Every field is made a `text` component.
+3. The order of fields might not be consistent.
 
 **How to customize the form**
 
 The `remarkForm` function accepts an optional `config` object for overriding the default configuration of a `RemarkForm`. The following properties are accepted:
 
 - `fields`: A list of field definitions
-  - `name`: The path to some value in the data being edited. (e.g. `rawFrontmatter.title`)
+  - `name`: The path to some value in the data being edited. (e.g. `frontmatter.title`)
   - `component`: The name of the React component that should be used to edit this field.
     The default options are: `"text"`, `"textarea"`, `"color"`.
   - `label`: A human readable label for the field.
   - `description`: An optional description that expands on the purpose of the field or prompts a specific action.
-
-_NOTE: the name of your fields should be prefixed with `"rawFrontmatter"` rather than `"frontmatter"`. The latter is the fully transformed data._
 
 #### Example: src/templates/blog-post.js
 
@@ -173,13 +162,13 @@ let BlogPostForm = {
   fields: [
     {
       label: 'Title',
-      name: 'rawFrontmatter.title',
+      name: 'frontmatter.title',
       description: 'Enter the title of the post here',
       component: 'text',
     },
     {
       label: 'Description',
-      name: 'rawFrontmatter.description',
+      name: 'frontmatter.description',
       description: 'Enter the post description',
       component: 'textarea',
     },
@@ -194,7 +183,7 @@ export default remarkForm(BlogPostTemplate, BlogPostForm)
 
 Editing content is rad, but we need a way to add or create new content. This guide will go through the process of creating new markdown files. Have an idea for a new content-type that you would like to 'create' with a button in the Tina sidebar? [Consider contributing!](/docs/contributing/guidelines)
 
-##Prerequisites
+###Prerequisites
 
 - A Gatsby site [configured with Tina](/docs/gatsby/manual-setup)
 - [Editing markdown](/docs/gatsby/content-editing#1-editing-markdown-in-gatsby) with Tina setup
@@ -245,8 +234,8 @@ Now that we've created the button, we need to add it to the sidebar. The button 
 Here are some places you may want to add the plugin:
 
 1. The Root component: it will always be available
-1. A Layout component: it will always available when that Layout is used.
-1. A Blog Index component: it will only be available when looking at the list of blog posts.
+2. A Layout component: it will always available when that Layout is used.
+3. A Blog Index component: it will only be available when looking at the list of blog posts.
 
 **Adding the Button to the Blog Index**
 
@@ -256,7 +245,7 @@ In this example, we will add the button to the Tina sidebar when visiting the bl
 2. Create the `content-button` plugin
 3. Add the plugin to the component
 
-_NOTE: No changes need to be made to the `BlogIndex` component itself._
+_NOTE: No changes need to be made to the_ `_BlogIndex_` _component itself._
 
 **Example: src/pages/index.js**
 

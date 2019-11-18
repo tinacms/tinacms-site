@@ -3,12 +3,13 @@ title: JSON in Gatsby
 prev: /docs/gatsby/markdown
 next: /docs/gatsby/configure-git-plugin
 ---
+
 ## Editing JSON in Gatsby
 
 Creating forms for content provided by the [`gatsby-transformer-json`](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-json) plugin is made possible by two plugins:
 
-* `gatsby-tinacms-json`: Provides hooks and components for creating JSON forms.
-* `gatsby-tinacms-git`: Extends the gatsby dev server to write changes to the local filesystem;
+- `gatsby-tinacms-json`: Provides hooks and components for creating JSON forms.
+- `gatsby-tinacms-git`: Extends the gatsby dev server to write changes to the local filesystem;
   and registers [CMS Backend](../concepts/backends.md) for saving changes to that backend.
 
 **Note on top-level arrays:**
@@ -16,34 +17,31 @@ Creating forms for content provided by the [`gatsby-transformer-json`](https://g
 _With Gatsby_, due to the way [`gatsby-transformer-json`](https://www.gatsbyjs.org/packages/gatsby-transformer-json/) handles JSON, Tina cannot accept a top-level array in the json file. For example:
 
 ```json
-[
-  { "breakfast": "granola" },
-  { "lunch": "tacos" },
-  { "dinner": "pizza" }
-]
+[{ "breakfast": "granola" }, { "lunch": "tacos" }, { "dinner": "pizza" }]
 ```
+
 If you need a top-level array of objects like above, we recommend creating separate json files for each object. If you want to keep the data in one file, we recommend creating a single top-level object with the array nested as a value. For example:
 
 ```json
 {
-  "menu": [
-    { "breakfast": "granola" },
-    { "lunch": "tacos" },
-    { "dinner": "pizza" }
-  ]
+  "menu": [{ "breakfast": "granola" }, { "lunch": "tacos" }, { "dinner": "pizza" }]
 }
 ```
 
 If you adjust your data structure, it may affect the way you query for the file in Gatsby. Read more on the specifics of how json files are transformed to nodes in GraphQL [here](https://www.gatsbyjs.org/packages/gatsby-transformer-json/#parsing-algorithm).
 
 ### Installation
+
 ```
     npm install --save gatsby-source-filesystem gatsby-transformer-json gatsby-tinacms-git gatsby-tinacms-json
 ```
+
 or
+
 ```
     yarn add gatsby-source-filesystem gatsby-transformer-json gatsby-tinacms-git gatsby-tinacms-json
 ```
+
 ### Configuring Gatsby
 
 **gastby-config.js**
@@ -80,15 +78,17 @@ query MyQuery {
 
 In order to edit a json file, you must register a form with the CMS. There are two approaches to registering Json forms with Tina. The approach you choose depends on whether the React template is a class or function.
 
-1. [`useJsonForm`](#useJsonForm): A [Hook](https://reactjs.org/docs/hooks-intro.html) used when the template is a function.
+1. [`useLocalJsonForm`](#useLocalJsonForm): A [Hook](https://reactjs.org/docs/hooks-intro.html) used when the template is a function.
 2. [`JsonForm`](#JsonForm): A [Render Props](https://reactjs.org/docs/render-props.html#use-render-props-for-cross-cutting-concerns) component to use when the template is a class component.
+
+<tip>Nov 18, 2019: The hook for creating a form changed from `useJsonForm` 👉 `useLocalJsonForm`</tip>
 
 ### Note: required query data
 
 In order for the Json forms to work, you must include the following fields in your `dataJson` query:
 
-* `rawJson`
-* `fileRelativePath`
+- `rawJson`
+- `fileRelativePath`
 
 An example `dataQuery` in your template might look like this:
 
@@ -105,7 +105,7 @@ An example `dataQuery` in your template might look like this:
 
 Additionally, any fields that are **not** queried will be deleted when saving content via the CMS.
 
-### useJsonForm
+### useLocalJsonForm
 
 This is a [React Hook](https://reactjs.org/docs/hooks-intro.html) for registering Json Forms with the CMS.
 This is the recommended approach if your template is a Function Component.
@@ -113,26 +113,26 @@ This is the recommended approach if your template is a Function Component.
 **Interface**
 
 ```typescript
-useJsonForm(data): [values, form]
+useLocalJsonForm(data): [values, form]
 ```
 
 **Arguments**
 
-* `data`: The data returned from a Gatsby `dataJson` query.
+- `data`: The data returned from a Gatsby `dataJson` query.
 
 **Return**
 
-* `[values, form]`
-  * `values`: The current values to be displayed. This has the same shape as the `data` argument.
-  * `form`: A reference to the [CMS Form](../concepts/forms.md) object. The `form` is rarely needed in the template.
+- `[values, form]`
+  - `values`: The current values to be displayed. This has the same shape as the `data` argument.
+  - `form`: A reference to the [CMS Form](../concepts/forms.md) object. The `form` is rarely needed in the template.
 
 **src/templates/blog-post.js**
 
 ```jsx
-import { useJsonForm } from 'gatsby-tinacms-json'
+import { useLocalJsonForm } from 'gatsby-tinacms-json'
 
 function DataTemplate(props) {
-  const [data] = useJsonForm(props.data.dataJson)
+  const [data] = useLocalJsonForm(props.data.dataJson)
 
   return <h1>{data.firstName}</h1>
 }
@@ -143,15 +143,15 @@ function DataTemplate(props) {
 `JsonForm` is a [Render Props](https://reactjs.org/docs/render-props.html#use-render-props-for-cross-cutting-concerns)
 based component for accessing [CMS Forms](../concepts/forms.md).
 
-This Component is a thin wrapper of `useJsonForm`. Since [React Hooks](https://reactjs.org/docs/hooks-intro.html) are
+This Component is a thin wrapper of `useLocalJsonForm`. Since [React Hooks](https://reactjs.org/docs/hooks-intro.html) are
 only available within Function Components you will need to use `JsonForm` if your template is Class Component.
 
 **Props**
 
-* `data`: The data returned from a Gatsby `dataJson` query.
-* `render({ data, form }): JSX.Element`: A function that returns JSX elements
-  * `data`: The current values to be displayed. This has the same shape as the data in the `Json` prop.
-  * `form`: A reference to the [CMS Form](../concepts/forms.md) object. The `form` is rarely needed in the template.
+- `data`: The data returned from a Gatsby `dataJson` query.
+- `render({ data, form }): JSX.Element`: A function that returns JSX elements
+  - `data`: The current values to be displayed. This has the same shape as the data in the `Json` prop.
+  - `form`: A reference to the [CMS Form](../concepts/forms.md) object. The `form` is rarely needed in the template.
 
 **src/templates/blog-post.js**
 
@@ -174,7 +174,7 @@ class DataTemplate extends React.Component {
 
 ## Customizing Json Forms
 
-When using a json form with Tina, the shape of the data will initially be created with simple default text components. However, you may want to use Tina's more advanced components or specify things like labels etc. for each field. At this time, customizing the form is **only supported when using the `useJsonForm` hook** to register your form.
+When using a json form with Tina, the shape of the data will initially be created with simple default text components. However, you may want to use Tina's more advanced components or specify things like labels etc. for each field. At this time, customizing the form is **only supported when using the `useLocalJsonForm` hook** to register your form.
 
 **Why customize the form?**
 
@@ -184,26 +184,24 @@ When using a json form with Tina, the shape of the data will initially be create
 
 **How to customize the form**
 
-The `useJsonForm` hook accepts an optional `config` object for overriding the default configuration. The following properties are accepted:
+The `useLocalJsonForm` hook accepts an optional `config` object for overriding the default configuration. The following properties are accepted:
 
-* `label`: An optional label for the file
-* `fields`: A list of field definitions
-  * `name`: The path to some value in the data being edited. (e.g. `rawJson.title`)
-  * `component`: The name of the React component that should be used to edit this field. The default options are: `"text"`, `"textarea"`, `"color"`.
-  * `label`: A human readable label for the field.
-  * `description`: An optional description that expands on the purpose of the field or prompts a specific action.
+- `label`: An optional label for the file
+- `fields`: A list of field definitions
+  - `name`: The path to some value in the data being edited. (e.g. `rawJson.title`)
+  - `component`: The name of the React component that should be used to edit this field. The default options are: `"text"`, `"textarea"`, `"color"`.
+  - `label`: A human readable label for the field.
+  - `description`: An optional description that expands on the purpose of the field or prompts a specific action.
 
 <tip>
 NOTE: there may be additional properties specific to each field, but the above are the rudimentary properties of every field. Check the `Fields` section of the docs for particulars on the properties for each field.
 </tip>
 
-
 ```js
-
-import { useJsonForm } from "gatsby-tinacms-json"
+import { useLocalJsonForm } from 'gatsby-tinacms-json'
 
 function Page(props) {
-  const [page] = useJsonForm(props.data.page, FormOptions)
+  const [page] = useLocalJsonForm(props.data.page, FormOptions)
 
   return (
     <section>
@@ -218,20 +216,19 @@ function Page(props) {
 const FormOptions = {
   fields: [
     {
-      label: "Hero Copy",
-      name: "rawJson.hero_copy",
+      label: 'Hero Copy',
+      name: 'rawJson.hero_copy',
       description: 'Hero copy for the main block',
-      component: "text",
+      component: 'text',
     },
     {
-      label: "Supporting Copy",
-      name: "rawJson.supporting_copy",
-      description: "Choose your supporting copy for the hero",
-      component: "textarea",
+      label: 'Supporting Copy',
+      name: 'rawJson.supporting_copy',
+      description: 'Choose your supporting copy for the hero',
+      component: 'textarea',
     },
   ],
 }
 
 export default Page
-
 ```
