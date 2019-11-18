@@ -81,6 +81,8 @@ In order to edit a json file, you must register a form with the CMS. There are t
 1. [`useLocalJsonForm`](#useLocalJsonForm): A [Hook](https://reactjs.org/docs/hooks-intro.html) used when the template is a function.
 2. [`JsonForm`](#JsonForm): A [Render Props](https://reactjs.org/docs/render-props.html#use-render-props-for-cross-cutting-concerns) component to use when the template is a class component.
 
+<tip>Nov 18, 2019: The hook for creating a form changed from `useJsonForm` 👉 `useLocalJsonForm`</tip>
+
 ### Note: required query data
 
 In order for the Json forms to work, you must include the following fields in your `dataJson` query:
