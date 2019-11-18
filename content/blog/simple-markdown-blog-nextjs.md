@@ -110,19 +110,19 @@ hero_image: ../static/bali-15.jpg
 Brain is the seed of intelligence something incredible is waiting to be known.
 ```
 
-Also, create a `static` folder within `src`; this is where you will keep images.
+Also, create a `static` folder within `src`. This is where you will keep images.
 
-## Install some stuff 🤖
+## Processing Markdown Files 🤖
 
 Next, we need to install a few packages that will process our markdown files.
 
     $ yarn add raw-loader gray-matter react-markdown
 
-[Raw Loader](https://github.com/webpack-contrib/raw-loader) will process our markdown files. [Gray Matter](https://github.com/jonschlinkert/gray-matter) will parse our yaml frontmatter values. And [React Markdown](https://github.com/rexxars/react-markdown) will help us render the body of our markdown files without having to `dangerouslySetInnerHtml`, which is good for everyone 🎠.
+[Raw Loader](https://github.com/webpack-contrib/raw-loader) will process our markdown files. [Gray Matter](https://github.com/jonschlinkert/gray-matter) will parse our yaml frontmatter values. And [React Markdown](https://github.com/rexxars/react-markdown) will parse and render the body of our markdown files.
 
-### Add Next.js config
+### Add Next.js Config
 
-Now that we’ve installed some packages needed to handle markdown, we need to configure the use of the `raw-loader` by creating a `[next.config.js](https://nextjs.org/docs#custom-configuration)` file at the root of the project. In this file we will handle any custom configuration for webpack, routing, build & runtime config, export options, and a whole lot more. In our use case, we will simply be adding a webpack rule to use `raw-loader` for processing all markdown files.
+Now that we’ve installed some packages needed to handle markdown, we need to configure the use of the `raw-loader` by creating a [next.config.js](https://nextjs.org/docs#custom-configuration) file at the root of the project. In this file we will handle any custom configuration for webpack, routing, build & runtime config, export options, and a whole lot more. In our use case, we will simply be adding a webpack rule to use `raw-loader` for processing all markdown files.
 
 ```javascript
 //next.config.js
@@ -137,19 +137,19 @@ module.exports = {
 }
 ```
 
-### Pages & dynamic routing
+### Pages & Dynamic Routing
 
 So we’re set up to use markdown files in our project. Let’s start coding a blog template page that will render the content from these markdown files in `src/posts`.
 
-For some background knowledge, the `**pages**` **directory is special for Next.js**. Any components exported in this directory will automatically become ‘pages’ for the site. For example, `pages/index.js` will automatically become the ‘home’ page. If you made and `pages/about.js`, an ‘/about’ route would be created for you and render whatever is in that `about` page component.
+For some background knowledge, the `pages` directory is special in Next.js. Each `.js` file in this directory will respond to a matching HTTP request. For example, when the home page ('/') is requested, the component exported from `pages/index.js` will be rendered. If you wanted your site to have a page at `/about`, simply create a file named `pages/about.js`.
 
-While this is awesome for static pages, but we need to have a single template from which all blog posts will be built, sourcing the different data from each markdown file. This means we need some sort of dynamic routing, such that unique blog posts utilizing the same template have ‘pretty’ urls and their own individual pages.
+This is awesome for static pages, but we'd like to have a single template from which all blog posts will be built, sourcing the different data from each markdown file. This means we need some sort of dynamic routing, such that unique blog posts utilizing the same template have ‘pretty’ urls and their own individual pages.
 
-[**Dynamic routes**](https://nextjs.org/docs#dynamic-routing) **in Next.js are identified by (**`**\[\]**`**) brackets in the page name**. Within these brackets we can pass a query parameter to the page component. For example, let’s create a new folder within `src/posts` called `blog`, then add a new file within that blog folder `[slug].js`, we can use whatever is passed as this `slug` parameter to dynamically access data. So if we visit `http://localhost:3000/blog/julius-cesear`, whatever is returned from the `[slug].js` page component will render, and will have access to that ‘slug’ query parameter, i.e. ‘julius-cesar’.
+[Dynamic routes](https://nextjs.org/docs#dynamic-routing) in Next.js are identified by **square brackets** `[]` in the filename. Within these brackets we can pass a query parameter to the page component. For example, let’s create a new folder within `src/posts` called `blog`, then add a new file within that blog folder `[slug].js`, we can use whatever is passed as this `slug` parameter to dynamically access data. So if we visit `http://localhost:3000/blog/julius-caesar`, whatever is returned from the `[slug].js` page component will render, and will have access to that ‘slug’ query parameter, i.e. ‘julius-caesar’.
 
-### Get markdown data for blog template
+### Get Markdown Data For the Blog Template
 
-With dynamic routing, we can make use of this slug parameter by passing in the filename of the blog post and then getting the data from that .md file via `getInitialProps`.
+With dynamic routing, we can make use of this slug parameter by passing in the filename of the blog post and then getting the data from the corresponding markdown file via `getInitialProps`.
 
 ```javascript
 import matter from 'gray-matter'
@@ -190,11 +190,11 @@ BlogTemplate.getInitialProps = async function(context) {
 
 You’ll notice in this example that we’re making use of `gray-matter` and `ReactMarkdown` to properly handle the yaml frontmatter and markdown body.
 
-**A zoomed out look at how this is working:** when you navigate to a dynamic route, .e.g. `http://localhost:3000/blog/julius-cesear`, the BlogTemplate component in `pages/blog/[slug].js` is passed the query object `{ slug: ‘julius-cesar’ }`. When the `getInitialProps` method is called, that query object is passed in through the context. We get ahold of that slug value and then go search for a file within the `posts` directory that contains the same filename. Once we get the data from that file, we parse the frontmatter from the markdown body and return the data. That data is passed down as props to the `BlogTemplate` component which can then render that data as it needs.
+**A zoomed out look at how this is working:** when you navigate to a dynamic route, .e.g. `http://localhost:3000/blog/julius-caesar`, the BlogTemplate component in `pages/blog/[slug].js` is passed the query object `{ slug: ‘julius-caesar’ }`. When the `getInitialProps` method is called, that query object is passed in through the context. We get ahold of that slug value and then go search for a file within the `posts` directory that contains the same filename. Once we get the data from that file, we parse the frontmatter from the markdown body and return the data. That data is passed down as props to the `BlogTemplate` component which can then render that data as it needs.
 
-Checkout this [\[slug\].js file](https://github.com/kendallstrautman/brevifolia-next-forestry/blob/master/src/pages/blog/%5Bslug%5D.js) in the final version of my starter blog to get another idea of how that blog data could be rendered and styles applied.
+Checkout the [\[slug\].js file](https://github.com/kendallstrautman/brevifolia-next-forestry/blob/master/src/pages/blog/%5Bslug%5D.js) in the final version of my starter blog to get another idea of how that blog data could be rendered and styles applied.
 
-### Get data for the blog index
+### Get Data For the Blog Index
 
 Let’s finish this simple blog off by adding in the proper data to the `BlogList` component for the `Index` page. Since we can only use `getInitialProps` on page components, we will get ahold of all the blog data in the `Index` component and then pass it down as a prop for `BlogList` to render.
 
@@ -237,7 +237,7 @@ Index.getInitialProps = async function() {
 }
 ```
 
-This can be slightly complex to look at, but let’s take it one step at a time. Feel free to reference [this blog](https://blog.toukopeltomaa.com/next-js-markdown-blog#gets-posts-from-posts-folder) for the original code. It uses a function provided by Webpack, `[require.context()](https://webpack.js.org/guides/dependency-management/#requirecontext)`, that allows us to create our own ‘context’ based on three parameters:
+This can be slightly complex to look at, but let’s take it one step at a time. Feel free to reference [this blog](https://blog.toukopeltomaa.com/next-js-markdown-blog#gets-posts-from-posts-folder) for the original code. It uses a function provided by Webpack, [require.context()](https://webpack.js.org/guides/dependency-management/#requirecontext), that allows us to create our own ‘context’ based on three parameters:
 
 - the directory to match within,
 - a boolean flag to include or exclude subdirectories,
@@ -267,11 +267,6 @@ export default Index
 
 Then you are free to loop through the blogs and render the list within your `BlogList` component as you need. Feel free to check out the [BlogList component](https://github.com/kendallstrautman/brevifolia-next-forestry/blob/master/src/components/BlogList.js) in my starter to see how that data could be handled.
 
-### Next Steps
+## Next Steps
 
-After setting up your blog or portfolio site, you’ll most likely need a content management system to make editing and updating your posts or data easier. Stay tuned for my next blog on setting up this starter with TinaCMS. In the meantime, you can read on using Next.js with TinaCMS in the documentation here.
-
-If you want to play right away, you can also import this starter into Forestry and start updating content.
-
-- [Starter configured with TinaCMS](https://github.com/kendallstrautman/brevifolia-next-tinacms)
-- [Starter configured with Forestry](https://github.com/kendallstrautman/brevifolia-next-forestry)
+After setting up your blog or portfolio site, you’ll most likely need a content management system to make editing and updating your posts or data easier. Stay tuned for my next blog on setting up this starter with TinaCMS. In the meantime, you can check out our [documentation on using Next.js with TinaCMS](/docs/nextjs/overview), or [fork the finished product](https://github.com/kendallstrautman/brevifolia-next-tinacms) to start playing with TinaCMS right away.
