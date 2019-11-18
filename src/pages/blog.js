@@ -22,7 +22,7 @@ const BlogPage = () => {
               author
               date(formatString: "MMMM DD, YYYY")
             }
-            excerpt(format: HTML, pruneLength: 200)
+            excerpt(format: HTML, pruneLength: 150, truncate: true)
             fields {
               slug
             }

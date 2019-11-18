@@ -44,6 +44,7 @@ const StyledBlogList = styled(DocsWrapper)`
     margin-bottom: ${space.smallMobile}px;
     a {
       h2 {
+        max-width: 80%;
         transition: color 250ms ease;
         margin-bottom: ${space.xSmallDesktop}px;
       }

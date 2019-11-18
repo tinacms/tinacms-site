@@ -7,7 +7,7 @@ import { NavigationContext, NavigationActionTypes } from '../Navigation/Navigati
 import { Header, HeaderInner } from '../Header'
 import { NavButton } from '../Navigation'
 import { Edge, HeaderMenuItem } from 'interfaces/nodes'
-import { FooterWrapper, Footer } from 'components/layout/Footer'
+import { Footer } from 'components/layout/Footer'
 
 import { breakpoints, colors, textSizes, space } from 'utils/variables'
 import { determineFontDimensions, Heading } from 'components/foundations'
@@ -97,9 +97,7 @@ const LayoutMain: React.SFC<LayoutMainProps> = ({ children, className, headerMen
         <SkipNavContent>{children}</SkipNavContent>
       </StyledMainContent>
       {!hideNav && (
-        <FooterWrapper>
-          <Footer headerMenus={headerMenus} />
-        </FooterWrapper>
+        <Footer headerMenus={headerMenus} />
       )}
     </StyledLayoutMain>
   )
