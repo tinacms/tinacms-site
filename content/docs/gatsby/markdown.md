@@ -3,6 +3,7 @@ title: Markdown in Gatsby
 prev: /docs/gatsby/manual-setup
 next: /docs/gatsby/json
 ---
+
 Gatsby allows you to build sites from many different data sources. Currently Tina has plugins for editing content in [markdown](/docs/gatsby/content-editing#editing-markdown-in-gatsby) & [JSON](/docs/gatsby/content-editing#editing-json-in-gatsby) files, with plans to suppor many more data sources.
 
 <!-- callout -->
@@ -11,10 +12,10 @@ Have an idea for a Tina content editing plugin? [Consider contributing](/docs/co
 
 ## Editing Markdown in Gatsby
 
-The `[gatsby-transformer-remark](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-remark)` plugin lets us use markdown in our Gatsby sites. Two other plugins let us edit markdown with Tina:
+The [`gatsby-transformer-remark`](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-remark) plugin lets us use markdown in our Gatsby sites. Two other plugins let us edit markdown with Tina:
 
-* `gatsby-tinacms-remark`: Provides hooks and components for creating Remark forms.
-* `gatsby-tinacms-git`: Extends the gatsby development server to write changes to the local filesystem.
+- `gatsby-tinacms-remark`: Provides hooks and components for creating Remark forms.
+- `gatsby-tinacms-git`: Extends the gatsby development server to write changes to the local filesystem.
 
 ### Install the Git & Markdown Packages
 
@@ -133,14 +134,12 @@ The `remarkForm` HOC creates the form based on the shape of your data. This is c
 
 The `remarkForm` function accepts an optional `config` object for overriding the default configuration of a `RemarkForm`. The following properties are accepted:
 
-* `fields`: A list of field definitions
-  * `name`: The path to some value in the data being edited. (e.g. `rawFrontmatter.title`)
-  * `component`: The name of the React component that should be used to edit this field.
+- `fields`: A list of field definitions
+  - `name`: The path to some value in the data being edited. (e.g. `frontmatter.title`)
+  - `component`: The name of the React component that should be used to edit this field.
     The default options are: `"text"`, `"textarea"`, `"color"`.
-  * `label`: A human readable label for the field.
-  * `description`: An optional description that expands on the purpose of the field or prompts a specific action.
-
-_NOTE: the name of your fields should be prefixed with_ `_"rawFrontmatter"_` _rather than_ `_"frontmatter"_`_. The latter is the fully transformed data._
+  - `label`: A human readable label for the field.
+  - `description`: An optional description that expands on the purpose of the field or prompts a specific action.
 
 #### Example: src/templates/blog-post.js
 
@@ -161,13 +160,13 @@ let BlogPostForm = {
   fields: [
     {
       label: 'Title',
-      name: 'rawFrontmatter.title',
+      name: 'frontmatter.title',
       description: 'Enter the title of the post here',
       component: 'text',
     },
     {
       label: 'Description',
-      name: 'rawFrontmatter.description',
+      name: 'frontmatter.description',
       description: 'Enter the post description',
       component: 'textarea',
     },
@@ -182,10 +181,10 @@ export default remarkForm(BlogPostTemplate, BlogPostForm)
 
 Editing content is rad, but we need a way to add or create new content. This guide will go through the process of creating new markdown files. Have an idea for a new content-type that you would like to 'create' with a button in the Tina sidebar? [Consider contributing!](/docs/contributing/guidelines)
 
-\##Prerequisites
+###Prerequisites
 
-* A Gatsby site [configured with Tina](/docs/gatsby/manual-setup)
-* [Editing markdown](/docs/gatsby/content-editing#1-editing-markdown-in-gatsby) with Tina setup
+- A Gatsby site [configured with Tina](/docs/gatsby/manual-setup)
+- [Editing markdown](/docs/gatsby/content-editing#1-editing-markdown-in-gatsby) with Tina setup
 
 ## Creating Markdown in Gatsby
 
@@ -194,9 +193,9 @@ In this guide you'll learn to:
 1. Create a `content-button` plugin
 2. Register the plugin with Tina
 3. Configure how content is created by:
-   * Formatting the filename & path
-   * Providing default front matter
-   * Providing a default body
+   - Formatting the filename & path
+   - Providing default front matter
+   - Providing a default body
 
 ### 1. Creating Content-Button Plugins
 
