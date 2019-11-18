@@ -16,13 +16,13 @@ Note: Don't have a site yet? Refer to the [quickstart page](/docs/gatsby/quickst
 ## Installation
 
 ```
-npm install --save gatsby-plugin-tinacms
+npm install --save gatsby-plugin-tinacms styled-components
 ```
 
 or
 
 ```
-yarn add gatsby-plugin-tinacms
+yarn add gatsby-plugin-tinacms styled-components
 ```
 
 ## Adding the Plugin
