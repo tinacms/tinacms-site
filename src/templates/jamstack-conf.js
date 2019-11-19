@@ -16,8 +16,8 @@ function JamstackConfTemplate(props) {
       <Helmet>
         <meta property="og:title" content="TinaCMS - Teams" />
         <meta name="twitter:title" content="TinaCMS - Teams" />
-        <meta property="og:image" content="https://tinacms.org/img/tina-facebook-share-2.png" />
-        <meta name="twitter:image" content="https://tinacms.org/img/tina-twitter-share-2.png" />
+        <meta property="og:image" content="https://tinacms.org/img/tina-facebook-share.png" />
+        <meta name="twitter:image" content="https://tinacms.org/img/tina-twitter-share.png" />
       </Helmet>
       <BgColor />
       <Wrapper>
