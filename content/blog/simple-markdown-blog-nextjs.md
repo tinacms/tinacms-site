@@ -84,7 +84,7 @@ Notice the use of [getInitialProps](https://nextjs.org/docs#fetching-data-and-co
 
 To zoom out a little, the purpose of the `Layout` component is to provide the visual skeleton for every page of the site. It typically will contain some sort of nav or header that shows up on most or all pages, along with a footer element. In our case we just have a header that contains the site title.
 
-Within `Layout`, there is a `Meta` component that contains all global styles along with anything needed to be put in the <head> of the site for SEO or accessibility purposes. Note that the use of a `Layout` component isn’t unique to Next.js; you’ll see it commonly used in Gatsby sites as well.
+Within `Layout`, there is a `Meta` component that contains all global styles along with anything needed to be put in the `head` of the site for SEO or accessibility purposes. Note that the use of a `Layout` component isn’t unique to Next.js; you’ll see it commonly used in Gatsby sites as well.
 
 One thing you may notice in the `Layout` component is the use of a `<style jsx>` tag. **Next.js works out of the box with** [**styled-jsx**](https://github.com/zeit/styled-jsx), a neat _css-in-js_ framework made by the Zeit team. It’s super intuitive to use. All of the styles are scoped to the component, and you can do dynamic styling based on props. The css-in-js world is your oyster!
 
