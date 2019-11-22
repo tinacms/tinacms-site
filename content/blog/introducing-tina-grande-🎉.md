@@ -12,7 +12,7 @@ author: Scott Byrne
 
 ##  Breakdown
 
-### [🧱](https://emojipedia.org/brick/) Content Structure
+### 🧱 Content Structure
 
 All site content is stored in the `/content` folder in the root of the project. Here you’ll find images, pages, posts, and settings. **Posts** use markdown, while **Pages** and **Settings** use JSON. You’ll notice there are `dummy.json` and `dummy.md` files; these are added to ensure that even if all site content is removed, the graphql queries will still work.
 
@@ -26,7 +26,7 @@ When you customize _Grande's_ colors, the theme will intelligently select a fore
 
 Currently to customize the site logo you'll need to modify two files: `src/components/header.js` and `content/images/icon.png`. The header logo is a [styled-icon](https://styled-icons.js.org/) which allows for easy theming.
 
-### [📄](https://emojipedia.org/page-facing-up/) Pages
+### 📄 Pages
 
 Pages use a blocks-based system that is extendible to add any block you’d like. At the time of writing you can choose from a **title**, **form** or _**content**_ block.
 
@@ -34,13 +34,13 @@ The **form** block is a simple form builder with [**Formspree.io **](https://for
 
 On the _page_ sidebar form you can select _hero_ to add a hero section to your page. If the hero contains a **headline**, **textline** or at least one **action** it will be rendered above your content. The default hero image is set through the theme but can be customized on a per-page (or post) basis. Toggle **large** to add extra vertical spacing to the hero section.
 
-### [📝](https://emojipedia.org/memo/) Posts
+### 📝 Posts
 
 You can create posts from within Tina by using the _+_ button in the top right of the sidebar. Posts are created as a draft by default and won’t be published with your live site. You can edit the post in the sidebar, or use the in-page editor to write your blog post by clicking the _edit_ button on the top left of the post.
 
 <br />
 
-# [✨](https://emojipedia.org/sparkles/)
+# ✨
 
 <br />
 
