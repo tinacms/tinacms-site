@@ -16,6 +16,8 @@ To run all the tools required you need at least the following installed:
 
 ##**Use a starter**
 
+<tip>There are a few awesome starters to choose from with varying styles and levels of complexity. Soon we will have a dedicated starters page; in the meantime check these out: a [basic Gatsby starter](https://github.com/tinacms/gatsby-starter-tinacms), [Tina Grande](https://github.com/tinacms/tina-starter-grande), [Brevifolia](https://github.com/kendallstrautman/brevifolia-gatsby-tinacms)</tip>
+
 ###1. Install the Gatsby CLI
 
 To use the starter, you will need to use the `gatsby-cli`. To install it, run the following command.
