@@ -14,7 +14,7 @@ author: Scott Byrne
 
 _Grande_ features a fully customizable theme. You can edit the site colors, header styles, hero styles and more. Through the sidebar, select the **Theme** form to edit global theme settings. Note that **Hero** settings can be overridden by individual pages.
 
-When you customize _Grande's_ colors, the theme will intelligently select a foreground color based on the theme colours chosen, which means you can choose any color without causing contrast issues. Some elements — such as links — select between the primary and secondary color based on which option provides better contrast. Updated theme colours won’t be reflected in the Tina UI until the Gatsby server is restarted, but should be visible in the website as they're made.
+When you customize _Grande's_ colors, the theme will intelligently select a foreground color based on the theme colours chosen, which means you can choose any color without causing contrast issues. Some elements — such as links — select between the primary and secondary color based on which option provides better contrast. Updated colors will be reflected in the website as they're made, but the Tina UI _(and site meta colors)_ won't be updated until the Gatsby server is restarted.
 
 Currently to customize the site logo you'll need to modify two files: `src/components/header.js` and `content/images/icon.png`. The header logo is a [styled-icon](https://styled-icons.js.org/) which allows for easy theming.
 
