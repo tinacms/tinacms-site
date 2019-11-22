@@ -10,7 +10,7 @@ author: Scott Byrne
 
 ## Feature Breakdown
 
-### Theme
+### 🎨 Theme
 
 _Grande_ features a fully customizable theme. You can edit the site colors, header styles, hero styles and more. Through the sidebar, select the **Theme** form to edit global theme settings. Note that **Hero** settings can be overridden by individual pages.
 
@@ -18,7 +18,7 @@ When you customize _Grande's_ colors, the theme will intelligently select a fore
 
 Currently to customize the site logo you'll need to modify two files: `src/components/header.js` and `content/images/icon.png`. The header logo is a [styled-icon](https://styled-icons.js.org/) which allows for easy theming.
 
-### Pages
+### [📄](https://emojipedia.org/page-facing-up/) Pages
 
 Pages use a blocks-based system that is extendible to add any block you’d like. At the time of writing you can choose from a **title**, **form** or _**content**_ block.
 
@@ -26,7 +26,7 @@ The **form** block is a simple form builder with [**Formspree.io **](https://for
 
 On the _page_ sidebar form you can select _hero_ to add a hero section to your page. If the hero contains a **headline**, **textline** or at least one **action** it will be rendered above your content. The default hero image is set through the theme but can be customized on a per-page (or post) basis. Toggle **large** to add extra vertical spacing to the hero section.
 
-### Posts
+### [📝](https://emojipedia.org/memo/) Posts
 
 You can create posts from within Tina by using the _+_ button in the top right of the sidebar. Posts are created as a draft by default and won’t be published with your live site. You can edit the post in the sidebar, or use the in-page editor to write your blog post by clicking the _edit_ button on the top left of the post.
 
@@ -35,3 +35,11 @@ You can create posts from within Tina by using the _+_ button in the top right o
 All site content is stored in the `/content` folder in the root of the project. Here you’ll find images, pages, posts, and settings. **Posts** use markdown, while **Pages** and **Settings** use JSON. You’ll notice there are `dummy.json` and `dummy.md` files; these are added to ensure that even if all site content is removed, the graphql queries will still work.
 
 Gatsby pages are typically stored in `/pages`, which you won't find in _Grande_. Since all pages are dynamic, look to the `/content/pages` folder to see what pages will get generated.
+
+<br />
+
+# [✨](https://emojipedia.org/sparkles/)
+
+<br />
+
+Thanks for reading! Jump over [to the repo](https://github.com/tinacms/tina-starter-grande) to see what we're working on adding next or to report a bug. Grande is under active development and welcomes contributions of any kind
