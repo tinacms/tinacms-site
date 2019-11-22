@@ -11,7 +11,7 @@ Next.js is a React "metaframework" (a framework built on a framework) for develo
 
 &nbsp;
 <tip>
-If you'd like to skip ahead and reference final versions of the starter, feel free to checkout the [finished implementation](https://github.com/kendallstrautman/brevifolia-next-tinacms)🦙.
+If you'd like to skip ahead and reference final versions of the starter, feel free to checkout the [finished implementation](https://github.com/kendallstrautman/brevifolia-nextjs).
 </tip>
 
 ## Clone the starter
@@ -269,4 +269,4 @@ Then you are free to loop through the blogs and render the list within your `Blo
 
 ## Next Steps
 
-After setting up your blog or portfolio site, you’ll most likely need a content management system to make editing and updating your posts or data easier. Stay tuned for my next blog on setting up this starter with TinaCMS. In the meantime, you can check out our [documentation on using Next.js with TinaCMS](/docs/nextjs/overview), or [fork the finished product](https://github.com/kendallstrautman/brevifolia-next-tinacms) to start playing with TinaCMS right away.
+After setting up your blog or portfolio site, you’ll most likely need a content management system to make editing and updating your posts or data easier. Stay tuned for my next blog on setting up this starter with TinaCMS. In the meantime, you can check out our [documentation on using Next.js with TinaCMS](/docs/nextjs/overview), or [fork the finished product](https://github.com/kendallstrautman/brevifolia-nextjs) to start playing with TinaCMS right away.
