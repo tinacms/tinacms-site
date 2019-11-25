@@ -3,6 +3,11 @@ title: Configure Git plugin
 id: /docs/gatsby/configure-git-plugin
 prev: /docs/gatsby/json
 next: /docs/gatsby/custom-fields
+consumes:
+  - file: /packages/@tinacms/api-git/src/router.ts
+    details: Describes GitRouterConfig interface
+  - file: /packages/gatsby-tinacms-git/gatsby-node.ts
+    details: Expects gatsby-tinacms-git to pass options directly to git router
 ---
 
 The Git plugin provides some options that can be adjusted.
