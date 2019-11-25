@@ -76,16 +76,11 @@ query MyQuery {
 
 ## Creating JSON Forms
 
-In order to edit a json file, you must register a form with the CMS. There are two approaches to registering Json forms with Tina. The approach you choose depends on whether the React template is a class or function.
+In order to edit a JSON file, you must register a form with the CMS. There are two different types of forms in Tina: global & local. Please refer to the [form concepts](../concepts/forms) doc to get clarity on the differences.
 
-1. [`useLocalJsonForm`](#useLocalJsonForm): A [Hook](https://reactjs.org/docs/hooks-intro.html) used when the template is a function.
-2. [`JsonForm`](#JsonForm): A [Render Props](https://reactjs.org/docs/render-props.html#use-render-props-for-cross-cutting-concerns) component to use when the template is a class component.
+#### Note: required query data
 
-<tip>Nov 18, 2019: The hook for creating a form changed from `useJsonForm` 👉 `useLocalJsonForm`</tip>
-
-### Note: required query data
-
-In order for the Json forms to work, you must include the following fields in your `dataJson` query:
+In order for the JSON forms to work, you must include the following fields in your `dataJson` graphql query:
 
 - `rawJson`
 - `fileRelativePath`
@@ -104,6 +99,15 @@ An example `dataQuery` in your template might look like this:
     }
 
 Additionally, any fields that are **not** queried will be deleted when saving content via the CMS.
+
+### Local Json Forms
+
+There are two approaches to registering local JSON forms with Tina. The approach you choose depends on whether the React template is a class or function.
+
+1. [`useLocalJsonForm`](#useLocalJsonForm): A [Hook](https://reactjs.org/docs/hooks-intro.html) used when the template is a function.
+2. [`JsonForm`](#JsonForm): A [Render Props](https://reactjs.org/docs/render-props.html#use-render-props-for-cross-cutting-concerns) component to use when the template is a class component.
+
+<tip>Nov 18, 2019: The hook for creating a local form changed from `useJsonForm` 👉 `useLocalJsonForm`</tip>
 
 ### useLocalJsonForm
 
@@ -171,6 +175,40 @@ class DataTemplate extends React.Component {
   }
 }
 ```
+
+### Global JSON Forms
+
+Check out global forms in use [here](https://github.com/ncphillips/talk-boston-basic/blob/master/src/components/bio.js) and in the [grande starter](https://github.com/tinacms/tina-starter-grande/blob/master/src/components/layout.js).
+
+**Interface**
+
+```typescript
+useGlobalJsonForm(data): [values, form]
+```
+
+**Arguments**
+
+- `data`: The data returned from a Gatsby `dataJson` query.
+
+**Return**
+
+- `[values, form]`
+  - `values`: The current values to be displayed. This has the same shape as the `data` argument.
+  - `form`: A reference to the [CMS Form](../concepts/forms.md) object. The `form` is rarely needed in the template.
+
+**Example**
+
+```jsx
+
+import { useGlobalJsonForm } from 'gatsby-tinacms-json'
+
+function DataTemplate(props) {
+  const [data] = useGlobalJsonForm(props.data.dataJson)
+
+  return <h1>{data.siteName}</h1>
+}
+```
+You can essentially treat `useGlobalJsonForm` and `useLocalJsonForm` as interchangeable. You would choose to use either one depending on the type of content you want to edit and whether you want this editing capacity to be available sitewide, or contextually based on the page. Try switching between a local and global form and see how they behave differently in the sidebar.
 
 ## Customizing Json Forms
 
