@@ -76,7 +76,7 @@ query MyQuery {
 
 ## Creating JSON Forms
 
-In order to edit a json file, you must register a form with the CMS. There are two different types of forms in Tina: global & local. Please refer to the [form concepts](../concepts/forms) doc to get clarity on the differences.
+In order to edit a JSON file, you must register a form with the CMS. There are two different types of forms in Tina: global & local. Please refer to the [form concepts](../concepts/forms) doc to get clarity on the differences.
 
 #### Note: required query data
 
