@@ -82,7 +82,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 exports.setFieldsOnGraphQLNodeType = ({ type }) => {
   // if the node is a markdown file, add the `published` field
-  if ("MarkdownRemark" === type.name) {
+  if ('MarkdownRemark' === type.name) {
     return {
       published: {
         type: GraphQLBoolean,
@@ -91,14 +91,14 @@ exports.setFieldsOnGraphQLNodeType = ({ type }) => {
           `published` is always true in development
               so both drafts and finished posts are built
           */
-          if (process.env.NODE_ENV !== "production") {
+          if (process.env.NODE_ENV !== 'production') {
             return true
           }
           /*
           return the opposite of the `draft` value,
           i.e. if draft = true : published = false
           */
-         console.log(frontmatter.draft)
+          console.log(frontmatter.draft)
           return !frontmatter.draft
         },
       },
@@ -108,6 +108,8 @@ exports.setFieldsOnGraphQLNodeType = ({ type }) => {
 }
 
 exports.createPages = async ({ graphql, actions }) => {
+  await generateConsumerMatrix(graphql)
+
   const { createPage } = actions
 
   const allMarkdown = await graphql(`
@@ -134,7 +136,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   allMarkdown.data.allMarkdownRemark.edges.forEach(({ node }) => {
     const { slug, layout, section } = node.fields
-     // if unpublished return, to prevent the page from being created
+    // if unpublished return, to prevent the page from being created
     if (!node.published) return
     // otherwise, create the `published` page
     createPage({
@@ -159,6 +161,34 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+}
+
+// generate a JSON file that identifies which libraries a given document depends on
+async function generateConsumerMatrix(graphql) {
+  const allMarkdown = await graphql(`
+    {
+      allMarkdownRemark {
+        edges {
+          node {
+            fileRelativePath
+            frontmatter {
+              consumes {
+                file
+                details
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+  let consumerMatrix = allMarkdown.data.allMarkdownRemark.edges.reduce((consumers, { node }) => {
+    if (!node.frontmatter.consumes || node.frontmatter.consumes.length <= 0) return consumers
+    consumers[node.fileRelativePath] = node.frontmatter.consumes
+    return consumers
+  }, {})
+  if (!consumerMatrix) consumerMatrix = {}
+  fs.writeFileSync('./static/consumers.json', JSON.stringify(consumerMatrix))
 }
 
 const firstFound = paths =>

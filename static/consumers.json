@@ -1,0 +1,1 @@
+{"/content/docs/gatsby/configure-git-plugin.md":[{"file":"/packages/@tinacms/api-git/src/router.ts","details":"Describes GitRouterConfig interface"},{"file":"/packages/gatsby-tinacms-git/gatsby-node.ts","details":"Expects gatsby-tinacms-git to pass options directly to git router"}]}
