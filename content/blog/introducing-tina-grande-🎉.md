@@ -30,7 +30,7 @@ Currently to customize the site logo you'll need to modify two files: `src/compo
 
 Pages use a blocks-based system that is extendible to add any block you’d like. At the time of writing you can choose from a **title**, **form** or _**content**_ block.
 
-The **form** block is a simple form builder with [**Formspree.io **](https://formspree.io/ "Formspree.io")integration. You can select pre-made inputs or create a custom input. Each input has a **label**, **type** and **autocomplete** property. The first time your form is used from a new domain it requires confirmation, so send a test message and you'll receive a confirmation prompt from Formspree.
+The **form** block is a simple form builder with **[Formspree.io ](https://formspree.io/ "Formspree.io")** integration. You can select pre-made inputs or create a custom input. Each input has a **label**, **type** and **autocomplete** property. The first time your form is used from a new domain it requires confirmation, so send a test message and you'll receive a confirmation prompt from Formspree.
 
 On the _page_ sidebar form you can select _hero_ to add a hero section to your page. If the hero contains a **headline**, **textline** or at least one **action** it will be rendered above your content. The default hero image is set through the theme but can be customized on a per-page (or post) basis. Toggle **large** to add extra vertical spacing to the hero section.
 
