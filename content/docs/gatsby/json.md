@@ -80,7 +80,7 @@ In order to edit a JSON file, you must register a form with the CMS. There are t
 
 #### Note: required query data
 
-In order for the Json forms to work, you must include the following fields in your `dataJson` graphql query:
+In order for the JSON forms to work, you must include the following fields in your `dataJson` graphql query:
 
 - `rawJson`
 - `fileRelativePath`
