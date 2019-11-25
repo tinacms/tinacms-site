@@ -4,7 +4,7 @@ prev: /docs/gatsby/manual-setup
 next: /docs/gatsby/json
 ---
 
-Gatsby allows you to build sites from many different data sources. Currently Tina has plugins for editing content in [markdown](/docs/gatsby/content-editing#editing-markdown-in-gatsby) & [JSON](/docs/gatsby/content-editing#editing-json-in-gatsby) files, with plans to suppor many more data sources.
+Gatsby allows you to build sites from many different data sources. Currently Tina has plugins for editing content in [markdown](/docs/gatsby/content-editing#editing-markdown-in-gatsby) & [JSON](/docs/gatsby/content-editing#editing-json-in-gatsby) files, with plans to support many more data sources.
 
 <!-- callout -->
 
