@@ -176,7 +176,7 @@ class DataTemplate extends React.Component {
 }
 ```
 
-### Global Json Forms
+### Global JSON Forms
 
 Check out global forms in use [here](https://github.com/ncphillips/talk-boston-basic/blob/master/src/components/bio.js) and in the [grande starter](https://github.com/tinacms/tina-starter-grande/blob/master/src/components/layout.js).
 
