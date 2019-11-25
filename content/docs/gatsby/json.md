@@ -76,11 +76,11 @@ query MyQuery {
 
 ## Creating JSON Forms
 
-In order to edit a json file, you must register a form with the CMS. There are two different types of forms in Tina: global & local. Please refer to the [form concepts](../concepts/forms) doc to get clarity on the differences.
+In order to edit a JSON file, you must register a form with the CMS. There are two different types of forms in Tina: global & local. Please refer to the [form concepts](../concepts/forms) doc to get clarity on the differences.
 
 #### Note: required query data
 
-In order for the Json forms to work, you must include the following fields in your `dataJson` graphql query:
+In order for the JSON forms to work, you must include the following fields in your `dataJson` graphql query:
 
 - `rawJson`
 - `fileRelativePath`
@@ -102,7 +102,7 @@ Additionally, any fields that are **not** queried will be deleted when saving co
 
 ### Local Json Forms
 
-There are two approaches to registering local Json forms with Tina. The approach you choose depends on whether the React template is a class or function.
+There are two approaches to registering local JSON forms with Tina. The approach you choose depends on whether the React template is a class or function.
 
 1. [`useLocalJsonForm`](#useLocalJsonForm): A [Hook](https://reactjs.org/docs/hooks-intro.html) used when the template is a function.
 2. [`JsonForm`](#JsonForm): A [Render Props](https://reactjs.org/docs/render-props.html#use-render-props-for-cross-cutting-concerns) component to use when the template is a class component.
@@ -176,7 +176,7 @@ class DataTemplate extends React.Component {
 }
 ```
 
-### Global Json Forms
+### Global JSON Forms
 
 Check out global forms in use [here](https://github.com/ncphillips/talk-boston-basic/blob/master/src/components/bio.js) and in the [grande starter](https://github.com/tinacms/tina-starter-grande/blob/master/src/components/layout.js).
 
