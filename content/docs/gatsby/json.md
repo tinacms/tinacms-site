@@ -102,7 +102,7 @@ Additionally, any fields that are **not** queried will be deleted when saving co
 
 ### Local Json Forms
 
-There are two approaches to registering local Json forms with Tina. The approach you choose depends on whether the React template is a class or function.
+There are two approaches to registering local JSON forms with Tina. The approach you choose depends on whether the React template is a class or function.
 
 1. [`useLocalJsonForm`](#useLocalJsonForm): A [Hook](https://reactjs.org/docs/hooks-intro.html) used when the template is a function.
 2. [`JsonForm`](#JsonForm): A [Render Props](https://reactjs.org/docs/render-props.html#use-render-props-for-cross-cutting-concerns) component to use when the template is a class component.
