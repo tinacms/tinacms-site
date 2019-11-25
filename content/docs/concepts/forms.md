@@ -19,7 +19,7 @@ Global forms live within a settings-type panel and are always available to the c
 
 ## Setup Predefined Forms
 
-Most of the time, you will be using predefined forms provided by Tina. If you're using Gatsby, most of your needs will be met by the [remark](/docs/gatsby/markdown) & [json](/docs/gatsby/json) forms already defined by Tina. If your site uses markdown as a datasource, head over to the [Using Markdown Files](/docs/gatsby/markdown) tutorial. If you need to edit json data, head over to the [Using Json Files](/docs/gatsby/json) tutorial.
+Most of the time, you will be using predefined forms provided by Tina. If you're using Gatsby, most of your needs will be met by the [remark](/docs/gatsby/markdown) & [JSON](/docs/gatsby/json) forms already defined by Tina. If your site uses markdown as a datasource, head over to the [Using Markdown Files](/docs/gatsby/markdown) tutorial. If you need to edit json data, head over to the [Using JSON Files](/docs/gatsby/json) tutorial.
 
 ## Creating Custom Forms
 
@@ -93,4 +93,3 @@ function PageTemplate(props) {
 }
 ```
 <tip>Update react-tinacms version:0.9.0: The previous hook `useCMSForm` used to create custom forms is now the same as `useLocalForm`</tip>
-
