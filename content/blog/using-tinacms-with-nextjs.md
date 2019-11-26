@@ -14,6 +14,12 @@ consumes:
     details: Shows wrapping Next.js app with Tina component
   - file: /packages/tinacms/src/tina-cms.tsx
     details: Creates cms instance with TinaCMS
+  - file: /packages/@tinacms/react-core/src/use-form.ts
+    details: Demonstrates using useLocalForm on a Next.js site
+  - file: /packages/@tinacms/react-core/src/use-watch-form-values.ts
+    details: Demonstrates usage of useWatchFormValues
+  - file: /packages/react-tinacms/src/index.ts
+    details: Imports useLocalForm and useWatchFormValues from react-tinacms metapackage
 ---
 <div style="text-align: left;">
   <br>
