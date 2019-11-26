@@ -5,6 +5,15 @@ author: Kendall Strautman
 draft: false
 ---
 
+<text style="text-align: left;">
+  <br>
+    <h1>Tina + Next Part I</h1>
+</text>
+
+_Want to skip to using Tina with Next.js? Jump to [Part II](https://tinacms.org/blog/using-tinacms-with-nextjs/) of this series._
+
+<br>
+
 Next.js is a React "metaframework" (a framework built on a framework) for developing web applications. Next.js has become a popular choice for web developers due to its bootstrapped React environment (similar to `create-react-app`) and its simple, file-based routing for writing backend code.
 
 **Next.js is simple and flexible.** Compared to a full-fledged static site generator, there are less prescriptive guiderails placed on developers in the implementation of an app or site. Due to this flexibility, this article shares just one perspective to approach building a simple, markdown-based blog. Take what’s helpful 🤗, disregard the rest.
