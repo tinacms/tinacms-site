@@ -3,6 +3,11 @@ title: Configure Git plugin
 id: /docs/gatsby/configure-git-plugin
 prev: /docs/gatsby/json
 next: /docs/gatsby/custom-fields
+consumes:
+  - file: /packages/@tinacms/react-core/src/use-form.ts
+    details: Demonstrates using useLocalForm on a Next.js site
+  - file: /packages/react-tinacms/src/index.ts
+    details: Imports useLocalForm from react-tinacms metapackage
 ---
 
 The Git plugin provides some options that can be adjusted.
