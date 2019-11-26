@@ -4,6 +4,7 @@ date: '2019-11-26T07:00:00.000Z'
 author: Kendall Strautman & DJ Walker
 draft: false
 ---
+
 <text style="text-align: left;">
   <br>
     <h1>Tina + Next: Part II</h1>
@@ -18,11 +19,9 @@ This blog is a part of a series exploring the use of Next.js + Tina. In [Part I]
 
 ## Tina Overview 🦙
 
-[Tina](https://tinacms.org/) is not a CMS in the sense that you are used to. It is not a separate platform that you create an account with, or store data on.
+We like to say that "[Tina](https://tinacms.org/) is not a CMS". Rather, Tina is a collection of open-source javascript components that you build into your site codebase — **a toolkit for creating a real time content-editing UI.** It's incredibly flexible, developers are in absolute control over content management, and editors get a "real-time WYSIWYG" experience.
 
-Rather, Tina is a collection of open-source javascript components that you build into your site codebase — **a toolkit for creating a real time content-editing UI.** It's incredibly flexible, developers are in absolute control over content management and editors get a 'real-time wysiwyg' experience.
-
-The best way to see how Tina works is to use it. Hopefully by the end of this tutorial, you’ll get a better idea of the paradigm shift Tina introduces in the world of CMS's.
+The best way to get a feel for how Tina works is to use it. We hope that by the end of this tutorial, you’ll not only learn how to use Tina, but also how Tina rethinks the way a CMS should work.
 
 ## Let’s get started
 
@@ -34,15 +33,15 @@ This tutorial will show you how to install and **configure Tina for editing cont
 
 ### Some background 🏜
 
-It’s important to note that due to the ‘open-ended’ nature of Next.js, there are numerous ways you could incorporate Tina into a Next.js sites or apps. This tutorial will showcase just one approach with hopefully straightforward examples.
+It’s important to note that due to the open-ended nature of Next.js, there are numerous ways you could incorporate Tina into a Next.js sites or apps. This tutorial will showcase just one approach with straightforward examples.
 
-Although they are talking of implementing plugins very soon, as of now, **Next.js does not have a plugin system.** Most of the content and examples for TinaCMS up until now have used Gatsby, so you may be familiar with various Gatsby+Tina plugins that help ease the setup process to make content editable. Since we can’t utilize these plugins, we have to do some of this heavier-lift config ourselves.
+It's also worth noting that unlike Gatsby, Next.js does not currently have a plugin system. If you've previously looked at Tina's [Gatsby setup guide](/docs/gatsby/manual-setup), you'll see that we're utilizing a few different plugins to set up Tina. With Next.js, we'll need to write that boostrapping code directly into our project.
 
 ### Set up locally 🏡
 
 Feel free to follow along and fit these guidelines to your own site or blog, or you can use the starter we created in the previous tutorial. In your terminal, navigate to where you would like this blog to live, then run:
 
-``` bash
+```bash
 #clone the repo
 $ git clone git@github.com:kendallstrautman/brevifolia-next-forestry.git next-tina-blog
 
@@ -53,11 +52,12 @@ $ cd next-tina-blog
 $ yarn install
 $ yarn dev
 ```
+
 Now that the development server is running, navigate to http://localhost:3000/ to check it out.
 
 ### Configure TinaCMS in App 🔆
 
-With Next.js, there is an [`App` class component](https://nextjs.org/docs#custom-app) that initializes pages; we need to override this component to wrap every page in a `Tina` component that will provide access to the `cms` instance.
+With Next.js, there is an [`App` class component](https://nextjs.org/docs#custom-app) that initializes pages. We need to override this component to wrap every page in a `Tina` component that will provide access to the `cms` instance.
 
 Following along with the [Tina documentation:](https://tinacms.org/docs/nextjs/bootstrapping)
 
@@ -65,9 +65,10 @@ Following along with the [Tina documentation:](https://tinacms.org/docs/nextjs/b
 # Install `tinacms` and `react-tinacms`
 $ yarn add tinacms react-tinacms
 ```
+
 Create a new file in the root of your project called `_app.js` and add this code.
 
-``` javascript
+```javascript
 import React from 'react'
 import App from 'next/app'
 import { Tina, TinaCMS } from 'tinacms'
@@ -92,31 +93,33 @@ class MyApp extends App {
 export default MyApp
 ```
 
-If you restart the dev server, you should now see a pencil icon in the lower left-hand corner. Go ahead and click it to reveal a [sidebar](https://tinacms.org/docs/concepts/sidebar). The `Tina` component we added in `_app.js` gives each page access to this [sidebar](https://tinacms.org/docs/concepts/sidebar), it is home base for making edits with Tina.
+If you restart the dev server, you should now see a pencil icon in the lower left-hand corner. Go ahead and click it to reveal a [sidebar](https://tinacms.org/docs/concepts/sidebar). The `Tina` component we added in `_app.js` gives each page access to this [sidebar](https://tinacms.org/docs/concepts/sidebar). Think of it as your "home base" for editing content with Tina.
 
 ### Setting up a Git Backend 👾
 
 As of now, the sidebar is empty because Tina doesn’t know what content to edit. Before we connect Tina to content, we need to [set up a backend](https://tinacms.org/docs/nextjs/adding-backends) that will talk to git and can keep track of content changes as they are happening.
 
-``` bash
+```bash
 # Install concurrently & tina git packages
 $ yarn add concurrently @tinacms/api-git @tinacms/git-client
 ```
 
 Then in your package.json file, add this script:
-``` json
+
+```json
 "scripts": {
     "develop": "concurrently \"next src\" \"tina-git-server 3001\"",
      ...//
   }
 ```
+
 This script is using [`concurrently`](https://github.com/kimmobrunfeldt/concurrently) to start both the Next.js development server and the `tina-git-server`. We need these running at the same time so that as we are making content changes in the development environment, the git API will persist those changes.
 
 ### Connecting back & front 🖇
 
 Now we need to link this git backend with the instance of the `cms` within our starter blog. Head over to your `_app.js` file and register an instance of `GitClient` with the `cms` as seen in the code below.
 
-``` javascript
+```javascript
 import React from 'react'
 import App from 'next/app'
 import { Tina, TinaCMS } from 'tinacms'
@@ -134,14 +137,14 @@ class MyApp extends App {
   }
 
   render() {
-   //...
+    //...
   }
 }
 
 export default MyApp
 ```
 
-That’s all the config for tracking and persisting content changes with git & Tina. To test, run the `develop` script and make sure there are no errors. Things should look the same, only now we have a git api waiting to hear from Tina.
+That’s all the config for tracking and persisting content changes with git & Tina. To test, run the `develop` script and make sure there are no errors. Things should look the same, but behind the scenes we've added a way to send content changes from the frontend to the backend.
 
 ### Creating content forms 📝
 
@@ -153,30 +156,28 @@ As a recap from [Part I](https://tinacms.org/blog/simple-markdown-blog-nextjs/),
 
 #### Content Form Config
 
-First we need to add an additional property to the return object from `getInitialProps` called `fileRelativePath`. Tina needs this path in order to know what file to update. Here’s an example of how you could add `fileRelativePath`.
+First, we need to add an additional property to the return object from `getInitialProps` called `fileRelativePath`. Tina needs this path in order to know what file to update. Here’s an example of how you could add `fileRelativePath`:
 
-``` javascript
+```javascript
 BlogTemplate.getInitialProps = async function(ctx) {
- const { slug } = ctx.query
- const content = await import(`../../posts/${slug}.md`)
- const config = await import(`../../data/config.json`)
- const data = matter(content.default);
+  const { slug } = ctx.query
+  const content = await import(`../../posts/${slug}.md`)
+  const config = await import(`../../data/config.json`)
+  const data = matter(content.default)
 
- return {
-   fileRelativePath: `src/posts/${slug}.md`,
-   title: config.title,
-   ...data
- }
+  return {
+    fileRelativePath: `src/posts/${slug}.md`,
+    title: config.title,
+    ...data,
+  }
 }
 ```
 
-Next we will create and register a form with the hook, `useLocalForm`. Tina differentiates between forms that are contextual to the content on the page and forms that are used for overarching settings: [local versus global](https://tinacms.org/docs/concepts/forms/). In our case, we want to create a  local form since the content we want to edit is specific to each blog post.
+Next, we will create and register a form with the `useLocalForm` hook. When registering a form, it needs to know four things: a unique `id`, what `initialValues` it can edit, the shape of the content via [`field`](https://tinacms.org/docs/concepts/fields) definitions, and what to do `onSubmit`.
 
-When registering a form, it needs to know four things: a unique `id`, what `initialValues` it can edit, the shape of the content via [`field`](https://tinacms.org/docs/concepts/fields) definitions, and how to handle 'save' or `onSubmit`.
+Check out the code below to see an example of invoking `useLocalForm`:
 
-Checkout the code below to see an example of invoking `useLocalForm`.
-
-``` jsx
+```jsx
 import { useCMS, useLocalForm } from 'react-tinacms'
 import * as yaml from 'js-yaml'
 
@@ -267,59 +268,59 @@ export default function BlogTemplate(props) {
 
 
 ```
-To explain in further detail, `onSubmit` is a callback function that talks with the git API we registered earlier to write file changes to disk and then commit those changes.
 
-Notice in this callback the use of the `toMarkdownString` function; this makes sure that the markdown data passed to the git api is properly _stringified_.
+Observe that in the `onSubmit` callback function, we access the git API we registered earlier to write file changes to disk and then commit those changes. We're also serializing our data via the `toMarkdownString` function; the git backend is deliberately unopinionated, so we need to take care of preparing our data for writing before sending it back.
 
 #### Update rendered data 🎨
 
-As hooks typically do, `useLocalForm` will return an array with two items: the form data and the form object — `[ post, form ]`. With the code outlined above, all of our blog content will be stored in `post`, so we need to update the render function to reference `post` instead of `props`.
+Look again at the way we're calling `useLocalForm`:
 
-``` jsx
-// replace props with post for editable form content
+```jsx
+const [post, form] = useLocalForm(...)
+```
+
+This is a common pattern for React hooks. `useLocalForm` returns a two-element array that we are destructuring into two separate objects. `form` returns the form object that we can do some neat stuff with (more on that in a moment,) but what we really care about right now is the `post` object. This object contains the form data, and will update whenever the values in the form are changed by the user. If we use _this_ data when rendering our layout, our site will update in real time as the data changes!
+
+The `post` object will contain the `initialValues` on first render. Since it has the same shape as the `props` we're using in our layout, all we have to do is replace the appropriate references to `props` with `post`:
+
+```jsx
+// replace "props" with "post" for editable form content
 return (
-   <Layout siteTitle={props.title}>
-     <article className="blog">
-         <figure className="blog__hero">
-         <img
-             src={post.frontmatter.hero_image}
-             alt={`blog_hero_${post.frontmatter.title}`}
-         />
-         </figure>
-         <div className="blog__info">
-         <h1>{post.frontmatter.title}</h1>
-         <h3>{post.frontmatter.date}</h3>
-         </div>
-         <div className="blog__body">
-         <ReactMarkdown source={post.markdownBody} />
-         </div>
-         <h2 className="blog__footer">
-         Written By: {post.frontmatter.author}
-         </h2>
-     </article>
-   </Layout>
-   );
+  <Layout siteTitle={props.title}>
+    <article className="blog">
+      <figure className="blog__hero">
+        <img src={post.frontmatter.hero_image} alt={`blog_hero_${post.frontmatter.title}`} />
+      </figure>
+      <div className="blog__info">
+        <h1>{post.frontmatter.title}</h1>
+        <h3>{post.frontmatter.date}</h3>
+      </div>
+      <div className="blog__body">
+        <ReactMarkdown source={post.markdownBody} />
+      </div>
+      <h2 className="blog__footer">Written By: {post.frontmatter.author}</h2>
+    </article>
+  </Layout>
+)
 ```
 
 Note the `siteTitle` still references `props.title`, this is because this value isn't being passed to Tina as an editable part of this form. If we want to edit this site config, we could create another form (for example on the `Layout` component) that would connect Tina to the `config.json` file.
 
 #### Edit content 🎯
 
-If you run `yarn develop` and open up a blog post in the browser, you should see editable fields in the sidebar. Try to update the blog title, hit save and see what happens.
+If you run `yarn develop` and open up a blog post in the browser, you should see editable fields in the sidebar. Try to update the post title, hit save and see what happens.
 
 If everything is set up correctly, Tina will try to commit those changes. (You may be prompted for your password in the terminal) Kill the dev server and run `git log` to see the commit from Tina. 🙌🏻
 
-This is amazing, we wired up Tina to make edits and commit changes, but you’ll notice that if you navigate to another page or refresh without saving, these changes don’t persist.
+This is amazing! We wired up Tina to make edits and commit changes. One thing you’ll notice, however, is that any unsaved changes disappear when navigating to another page or refreshing.
 
 #### Watching for real-time content changes ⌚️
 
-If you want your changes writing to disk in real time, we’ll need to use another hook, `useWatchFormValues`. This hook helps Tina listen for these changes and then immediately write those changes to the source files, then via 'hot-reloading' we should see those changes reflecting live in the browser.
+If you want your changes writing to disk in real time, we’ll need to use another hook, `useWatchFormValues`. This hook allows you to execute a function any time the form state changes. `useWatchFormValues` takes the form object created by the `useLocalForm` hook, and a callback function to invoke when the form changes.
 
-`useWatchFormValues` takes the form object created by the `useLocalForm` hook, and also a callback function (`writeToDisk`) to invoke when the form has changed.
+Add this example code below to your template component just before the `return` statement. Feel free to reference the final file [here](https://github.com/kendallstrautman/brevifolia-next-tinacms/blob/master/src/pages/blog/%5Bslug%5D.js).
 
-Add this example code below to your `[slug].js` file just before the render function. Feel free to reference the final file [here](https://github.com/kendallstrautman/brevifolia-next-tinacms/blob/master/src/pages/blog/%5Bslug%5D.js).
-
-``` jsx
+```jsx
 // add useWatchFormValues to import
 import { useCMS, useLocalForm, useWatchFormValues } from 'react-tinacms'
 
@@ -347,18 +348,16 @@ export default function BlogTemplate(props) {
 
 ![todo, add gif here]()
 
-If all went well, your blog posts will now be editable by Tina. Let's see it in action.
+If all went well, your blog posts will now be editable by Tina. Let's see it in action!
 
-Start up the dev server — `yarn develop` — open up a blog post in the browser alongside the associated markdown file in `src/posts`. Go ahead and make edits and check the source file.
-
-If you keep the browser and code editor open side-by-side, you should be able to watch the changes reflect in real time in both places.
+Start up the dev server by running `yarn develop`, and open up a blog post in the browser. Go ahead and make edits, and then check the source file in a text editor. If you keep the browser and code editor open side-by-side, you should be able to watch the changes reflect in real time in both places!
 
 <tip> **Troubleshooting Tip**: If you’re only seeing changes update in the browser, but not immediately writing to the file system, **make sure you are using the correct script** that initiates both the next dev server and the git api via `concurrently`. </tip>
 
 ### Next Steps 🚶‍♀️
 
-Well done! With some config and invoking hooks provided by Tina, we can now edit all our blog posts with Tina.
+Well done! With some config and calling a few hooks, we can now edit all our blog posts with Tina.
 
 To set up content editing on the rest of the site, we’ll want to configure Tina for the ‘info’ page, along with any other general site metadata. Try to implement the same approach in the `info` page component. Checkout the [final repo](https://github.com/kendallstrautman/brevifolia-next-tinacms) for reference on how to do this.
 
-Stay tuned: in subsequent posts, we’ll cover how to setup this site for static export, implementing global forms, and extracting this Tina config into a single reusable function.
+**Stay tuned:** in subsequent posts, we’ll cover how to setup this site for static export, implementing global forms, and extracting this Tina config into a single reusable function.
