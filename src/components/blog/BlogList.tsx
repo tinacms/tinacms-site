@@ -25,7 +25,7 @@ function BlogList(props: BlogList_Props) {
                 author={blogPost.frontmatter.author}
                 date={blogPost.frontmatter.date}
               />
-              <span dangerouslySetInnerHTML={{__html: `${blogPost.excerpt}`}}></span>
+              <p>{blogPost.excerpt}</p>
             </article>
             <aside />
           </Link>
@@ -79,7 +79,7 @@ const StyledBlogList = styled(DocsWrapper)`
     article {
       max-width: 704px;
     }
-    span > p {
+    p {
       color: ${colors.darkGrey};
       margin-bottom: ${space.smallMobile}px;
     }
@@ -100,7 +100,7 @@ const StyledBlogList = styled(DocsWrapper)`
           width: 8vw;
         }
       }
-      span > p {
+      p {
         margin-bottom: ${space.smallDesktop}px;
       }
     }
