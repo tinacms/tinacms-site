@@ -172,7 +172,7 @@ BlogTemplate.getInitialProps = async function(ctx) {
 
 Next we will create and register a form with the hook, `useLocalForm`. Tina differentiates between forms that are contextual to the content on the page and forms that are used for overarching settings: [local versus global](https://tinacms.org/docs/concepts/forms/). In our case, we want to create a  local form since the content we want to edit is specific to each blog post.
 
-When registering a form, it needs to know four things: a unique `id`, what `initialValues` it can edit, the shape of the content via `field` definitions, and how to handle 'save' or `onSubmit`.
+When registering a form, it needs to know four things: a unique `id`, what `initialValues` it can edit, the shape of the content via [`field`](https://tinacms.org/docs/concepts/fields) definitions, and how to handle 'save' or `onSubmit`.
 
 Checkout the code below to see an example of invoking `useLocalForm`.
 
