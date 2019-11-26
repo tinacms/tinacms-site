@@ -40,7 +40,7 @@ We like to say that "[Tina](https://tinacms.org/) is not a CMS". Rather, Tina is
 
 The best way to get a feel for how Tina works is to use it. We hope that by the end of this tutorial, you’ll not only learn how to use Tina, but also how Tina rethinks the way a CMS should work.
 
-## Let’s get started
+## Let’s Get Started
 
 ![brevifolia photo](/blog/brevifolia-screenshot.jpg)
 
@@ -48,13 +48,13 @@ This tutorial will show you how to install and **configure Tina for editing cont
 
 <tip>Jump ahead to see the [final repo here](https://github.com/kendallstrautman/brevifolia-next-tinacms). Or check out the [Tina + Next.js documentation](https://tinacms.org/docs/nextjs/overview) here </tip>
 
-### Some background 🏜
+### Some Background 🏜
 
 It’s important to note that due to the open-ended nature of Next.js, there are numerous ways you could incorporate Tina into a Next.js sites or apps. This tutorial will showcase just one approach with straightforward examples.
 
 It's also worth noting that unlike Gatsby, Next.js does not currently have a plugin system. If you've previously looked at Tina's [Gatsby setup guide](/docs/gatsby/manual-setup), you'll see that we're utilizing a few different plugins to set up Tina. With Next.js, we'll need to write that boostrapping code directly into our project.
 
-### Set up locally 🏡
+### Set up Locally 🏡
 
 Feel free to follow along and fit these guidelines to your own site or blog, or you can use the starter we created in the previous tutorial. In your terminal, navigate to where you would like this blog to live, then run:
 
@@ -132,7 +132,7 @@ Then in your package.json file, add this script:
 
 This script is using [`concurrently`](https://github.com/kimmobrunfeldt/concurrently) to start both the Next.js development server and the `tina-git-server`. We need these running at the same time so that as we are making content changes in the development environment, the git API will persist those changes.
 
-### Connecting back & front 🖇
+### Connecting Back & Front 🖇
 
 Now we need to link this git backend with the instance of the `cms` within our starter blog. Head over to your `_app.js` file and register an instance of `GitClient` with the `cms` as seen in the code below.
 
@@ -163,7 +163,7 @@ export default MyApp
 
 That’s all the config for tracking and persisting content changes with git & Tina. To test, run the `develop` script and make sure there are no errors. Things should look the same, but behind the scenes we've added a way to send content changes from the frontend to the backend.
 
-### Creating content forms 📝
+### Creating Content Forms 📝
 
 Alright, now the fun starts — let’s dig into [editing content](https://tinacms.org/docs/nextjs/creating-forms). We access Tina’s editing powers by registering forms to the `cms`. When creating these [forms](https://tinacms.org/docs/concepts/forms), we define [fields](https://tinacms.org/docs/concepts/fields) that connect to bits and pieces of the content you want to make editable.
 
@@ -288,7 +288,7 @@ export default function BlogTemplate(props) {
 
 Observe that in the `onSubmit` callback function, we access the git API we registered earlier to write file changes to disk and then commit those changes. We're also serializing our data via the `toMarkdownString` function; the git backend is deliberately unopinionated, so we need to take care of preparing our data for writing before sending it back.
 
-#### Update rendered data 🎨
+#### Update Rendered Data 🎨
 
 Look again at the way we're calling `useLocalForm`:
 
@@ -323,7 +323,7 @@ return (
 
 Note the `siteTitle` still references `props.title`, this is because this value isn't being passed to Tina as an editable part of this form. If we want to edit this site config, we could create another form (for example on the `Layout` component) that would connect Tina to the `config.json` file.
 
-#### Edit content 🎯
+#### Edit Content 🎯
 
 If you run `yarn develop` and open up a blog post in the browser, you should see editable fields in the sidebar. Try to update the post title, hit save and see what happens.
 
@@ -331,7 +331,7 @@ If everything is set up correctly, Tina will try to commit those changes. (You m
 
 This is amazing! We wired up Tina to make edits and commit changes. One thing you’ll notice, however, is that any unsaved changes disappear when navigating to another page or refreshing.
 
-#### Watching for real-time content changes ⌚️
+#### Watching for Real-Time Content Changes ⌚️
 
 If you want your changes writing to disk in real time, we’ll need to use another hook, `useWatchFormValues`. This hook allows you to execute a function any time the form state changes. `useWatchFormValues` takes the form object created by the `useLocalForm` hook, and a callback function to invoke when the form changes.
 
@@ -361,7 +361,7 @@ export default function BlogTemplate(props) {
 }
 ```
 
-### Test & edit content ✨
+### Test & Edit Content ✨
 
 ![tinacms editing gif](/gif/tina-nextjs.gif)
 
