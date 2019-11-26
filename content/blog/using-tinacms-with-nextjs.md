@@ -3,12 +3,23 @@ title: Using TinaCMS with Next.js
 date: '2019-11-26T07:00:00.000Z'
 author: Kendall Strautman & DJ Walker
 draft: false
+consumes:
+  - file: /packages/@tinacms/api-git/src/server.ts
+    details: Uses tina-git-server
+  - file: /packages/@tinacms/api-git/src/router.ts
+    details: Uses tina-git-server
+  - file: /packages/@tinacms/api-git/src/server.ts
+    details: Sets up git client to consume backend
+  - file: /packages/tinacms/src/components/Tina.tsx
+    details: Shows wrapping Next.js app with Tina component
+  - file: /packages/tinacms/src/tina-cms.tsx
+    details: Creates cms instance with TinaCMS
 ---
-<text style="text-align: left;">
+<div style="text-align: left;">
   <br>
     <h1>Tina + Next: Part II</h1>
   <br>
-</text>
+</div>
 
 This blog is a part of a series exploring the use of Next.js + Tina. In [Part I](https://tinacms.org/blog/simple-markdown-blog-nextjs/), we learned how to create a simple markdown-based blog with Next. In this post we’ll add content editing capacity by configuring the site with TinaCMS.
 

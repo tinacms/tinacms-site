@@ -5,10 +5,10 @@ author: Kendall Strautman
 draft: false
 ---
 
-<text style="text-align: left;">
+<div style="text-align: left;">
   <br>
     <h1>Tina + Next Part I</h1>
-</text>
+</div>
 
 _Want to skip to using Tina with Next.js? Jump to [Part II](https://tinacms.org/blog/using-tinacms-with-nextjs/) of this series._
 
