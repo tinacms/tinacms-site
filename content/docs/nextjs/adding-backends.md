@@ -16,10 +16,10 @@ The server-side application can be run a as a standalone express app. In this ex
 
 ## Installation
 
-For the time being, you will want to use the `canary` channel of `@tinacms/api-git` in order to run it as a standalone application. Run the following installation command:
+Run the following installation command:
 
 ```
-npm install concurrently @tinacms/api-git@canary @tinacms/git-client
+npm install concurrently @tinacms/api-git @tinacms/git-client
 ```
 
 ## Running the Server-Side API
