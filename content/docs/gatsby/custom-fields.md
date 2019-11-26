@@ -39,11 +39,10 @@ Open your `gatsby-browser.js` and create an `onClientEntry`. In this function, w
 **gatsby-browser.js**
 
 ```javascript
-import { cms } from 'gatsby-plugin-tinacms'
 import { EmailField } from './src/components/EmailField'
 
 export const onClientEntry = () => {
-  cms.fields.add({
+  window.tinacms.fields.add({
     name: 'email',
     Component: EmailField,
   })
@@ -84,11 +83,10 @@ If the value is invalid, then return the error message to be displayed.
 **gatsby-browser.js**
 
 ```javascript
-import { cms } from 'gatsby-plugin-tinacms'
 import { EmailField } from './src/components/EmailField'
 
 export const onClientEntry = () => {
-  cms.forms.addFieldPlugin({
+  window.tinacms.forms.addFieldPlugin({
     name: 'email',
     Component: EmailField,
     validate(value, allValues, meta, field) {
