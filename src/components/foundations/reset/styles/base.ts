@@ -52,7 +52,7 @@ const base = css`
 
   p img,
   .gatsby-resp-iframe-wrapper {
-    margin: 30px 0;
+    margin: 30px auto;
     border-radius: 5px;
     border: 1px solid ${colors.grey02};
     overflow: hidden;
