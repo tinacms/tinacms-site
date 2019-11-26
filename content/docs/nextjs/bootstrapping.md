@@ -3,6 +3,11 @@ title: Bootstrapping
 id: /docs/nextjs/bootstrapping
 prev: /docs/nextjs/overview
 next: /docs/nextjs/adding-backends
+consumes:
+  - file: /packages/tinacms/src/components/Tina.tsx
+    details: Shows wrapping Next.js app with Tina component
+  - file: /packages/tinacms/src/tina-cms.tsx
+    details: Creates cms instance with TinaCMS
 ---
 
 ## Adding the Tina Provider
