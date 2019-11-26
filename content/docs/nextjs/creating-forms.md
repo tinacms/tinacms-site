@@ -3,6 +3,13 @@ title: Creating Forms
 id: /docs/nextjs/bootstrapping
 prev: /docs/nextjs/adding-backends
 next: /docs/contributing/guidelines
+consumes:
+  - file: /packages/@tinacms/react-core/src/use-form.ts
+    details: Demonstrates using useLocalForm on a Next.js site
+  - file: /packages/@tinacms/react-core/src/use-watch-form-values.ts
+    details: Demonstrates usage of useWatchFormValues
+  - file: /packages/react-tinacms/src/index.ts
+    details: Imports useLocalForm and useWatchFormValues from react-tinacms metapackage
 ---
 
 Let's imagine we have a Page component in our NextJS app using the dynamic route of `pages/[slug].js`. This page will get its content from a corresponding JSON file located at `posts/[slug].json`. Thus, when you visit `nextjsapp.com/hello-world`, it will display the contents of `/posts/hello-world.json`. We can set up a very simple version of this with the following code:
