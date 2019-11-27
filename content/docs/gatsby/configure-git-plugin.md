@@ -17,6 +17,9 @@ The Git plugin provides some options that can be adjusted.
 **gatsby-config.js**
 
 ```javascript
+const path = require("path")
+const REPO_ABSOLUTE_PATH = path.join(process.cwd(), "../..")
+
 module.exports = {
   // ...
   plugins: [
