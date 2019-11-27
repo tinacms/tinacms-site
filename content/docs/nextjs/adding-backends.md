@@ -3,6 +3,17 @@ id: /docs/nextjs/adding-backends
 title: Adding a Backend
 prev: /docs/nextjs/bootstrapping
 next: /docs/nextjs/creating-forms
+consumes:
+  - file: /packages/@tinacms/api-git/src/server.ts
+    details: Demonstrates using tina-git-server
+  - file: /packages/@tinacms/api-git/src/router.ts
+    details: Demonstrates using tina-git-server
+  - file: /packages/@tinacms/api-git/src/server.ts
+    details: Sets up git client to consume backend
+  - file: /packages/tinacms/src/components/Tina.tsx
+    details: Shows wrapping Next.js app with Tina component
+  - file: /packages/tinacms/src/tina-cms.tsx
+    details: Creates cms instance with TinaCMS
 ---
 
 The `<Tina>` component makes it possible to attach [forms](../concepts/forms.md) to the Tina sidebar, but we need to wire up a [backend](../concepts/backends.md) in order for content changes to be persisted anywhere. Let's set up the default git backend.
@@ -16,10 +27,10 @@ The server-side application can be run a as a standalone express app. In this ex
 
 ## Installation
 
-For the time being, you will want to use the `canary` channel of `@tinacms/api-git` in order to run it as a standalone application. Run the following installation command:
+Run the following installation command:
 
 ```
-npm install concurrently @tinacms/api-git@canary @tinacms/git-client
+npm install concurrently @tinacms/api-git @tinacms/git-client
 ```
 
 ## Running the Server-Side API

@@ -13,7 +13,7 @@ There are two distinct types of forms: Local and Global. Local forms are context
 
 ![tina-grande-local-form](/img/tina_grande_local_forms.jpg)
 
-Global forms live within a settings-type panel and are always available to the cms, regardless of the page context. Global forms could be site-wide settings, theme configurations, general metadata, or other top-level config. In the sidebar, global forms are accessed via the hamburger menu in the upper left-hand corner.
+Global forms live within a settings-type panel, they could be site-wide settings, theme configurations, general metadata, or other top-level config. In the sidebar, global forms are accessed via the hamburger menu in the upper left-hand corner. These forms are typically registered on a global (layout) component so that they are always accessible through different page contexts.
 
 ![tina-grande-global-form](/img/tina-grande-global-form.jpg)
 
