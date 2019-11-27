@@ -35,22 +35,22 @@ Currently, Tina provides `content-creator` plugins for both markdown and JSON fi
 There are two `content-creator` plugins to use with Gatsby.
 
 - `RemarkCreatorPlugin`: Constructs a `content-creator` plugin for markdown files.
-``` typescript
+``` javascript
 interface RemarkCreatorPlugin{
-  label: string
-  fields: Field[]
-  filename(form: any): Promise<string>
-  frontmatter?(form: any): Promise<any>
-  body?(form: any): Promise<string>
+     label: string
+     fields: Field[]
+     filename(form: any): Promise<string>
+     frontmatter?(form: any): Promise<any>
+     body?(form: any): Promise<string>
 }
 ```
 - `JsonCreatorPlugin`: Contstructs a `content-creator` plugin for JSON files.
 ``` typescript
 interface JsonCreatorPlugin {
-  label: string
-  fields: Field[]
-  filename(form: any): Promise<string>
-  data?(form: any): Promise<any>
+     label: string
+     fields: Field[]
+     filename(form: any): Promise<string>
+     data?(form: any): Promise<any>
 }
 ```
 
