@@ -12,7 +12,7 @@ consumes:
 
 An integral aspect of content management is the ability to create new content. To create new content files with Tina, you will need to configure and register `content-creator` plugins with the cms.
 
-Currently, Tina provides `content-creator` plugins for [markdown](/docs/gatsby/creating-new-files#markdown) files in **Gatsby projects**. Once registered, actions from these `content-creator` plugins are accessible from the sidebar menu. If you have an idea for a new `content-creator` plugin, [consider contributing!](/docs/contributing/guidelines)
+Currently, Tina provides `content-creator` plugins for both [markdown](/docs/gatsby/creating-new-files#create-markdown-in-gatsby) and [JSON](/docs/gatsby/creating-new-files#create-json-in-gatsby) files in **Gatsby projects**. Once registered, actions from these `content-creator` plugins are accessible from the sidebar menu. If you have an idea for a new `content-creator` plugin, [consider contributing!](/docs/contributing/guidelines)
 
 ![content-creator-plugin-tinacms](/img/content-creator-ex.jpg)
 
@@ -23,29 +23,44 @@ Currently, Tina provides `content-creator` plugins for [markdown](/docs/gatsby/c
 2. Register the plugin with Tina
 3. Configure how content is created by:
    - Formatting the filename & path
-   - Providing default front matter
-   - Providing a default body
+   - Providing default data (frontmatter, markdown, or json)
 
 ### Prerequisites
 
 - A Gatsby site [configured with Tina](/docs/gatsby/manual-setup)
 - Content editing with [markdown](/docs/gatsby/markdown) or [JSON](/docs/gatsby/json) set up
 
-<br>
-
-# Create Markdown in Gatsby
-
-Follow the steps below when you are looking to create new markdown files in your Gatsby project.
-
 ## 1. Add Content-Creator Plugin
 
-The `RemarkCreatorPlugin` class helps us construct a `content-creator` plugin specifically for adding new remark in Gatsby. This class needs to be instantiated with three things:
+There are two `content-creator` plugins to use with Gatsby.
+
+- `RemarkCreatorPlugin`: Constructs a `content-creator` plugin for markdown files.
+``` typescript
+interface RemarkCreatorPlugin{
+  label: string
+  fields: Field[]
+  filename(form: any): Promise<string>
+  frontmatter?(form: any): Promise<any>
+  body?(form: any): Promise<string>
+}
+```
+- `JsonCreatorPlugin`: Contstructs a `content-creator` plugin for JSON files.
+``` typescript
+interface JsonCreatorPlugin {
+  label: string
+  fields: Field[]
+  filename(form: any): Promise<string>
+  data?(form: any): Promise<any>
+}
+```
+
+These classes need to be instantiated with at least these three things:
 
 - `label`: A simple action label displayed when users interact with the + button in the sidebar.
 - `filename`: A function whose return value should be the path to the new file.
 - `fields`: An array of field objects. Read more on field defitions [here](/docs/concepts/fields).
 
-**Example**
+**Markdown Example**
 
 ```javascript
 import { RemarkCreatorPlugin } from 'gatsby-tinacms-remark'
@@ -84,6 +99,29 @@ const CreatePostPlugin = createRemarkButton({
   ],
 })
 ```
+
+**JSON Example**
+
+```javascript
+import { JsonCreatorPlugin } from 'gatsby-tinacms-json'
+
+const CreatePostPlugin = new JsonCreatorPlugin({
+  label: 'Create New File',
+  filename: form => {
+    return form.filename
+  },
+  fields: [
+    {
+      name: 'filename',
+      component: 'text',
+      label: 'Filename',
+      placeholder: 'content/data/puppies.json',
+      description: 'The full path to the new markdown file, relative to the repository root.',
+    },
+  ],
+})
+```
+
 ### Where To Add the Plugin
 
 When adding a `content-creator` plugin, you'll have to consider when you want this functionality available to the editor. If the component where you registered the plugin is actively rendered on the site, you will be able to add new content via the plugin.
