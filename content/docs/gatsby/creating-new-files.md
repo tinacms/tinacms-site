@@ -12,7 +12,7 @@ consumes:
 
 An integral aspect of content management is the ability to create new content. To create new content files with Tina, you will need to configure and register `content-creator` plugins with the cms.
 
-Currently, Tina provides `content-creator` plugins for both [markdown](/docs/gatsby/creating-new-files#create-markdown-in-gatsby) and [JSON](/docs/gatsby/creating-new-files#create-json-in-gatsby) files in **Gatsby projects**. Once registered, actions from these `content-creator` plugins are accessible from the sidebar menu. If you have an idea for a new `content-creator` plugin, [consider contributing!](/docs/contributing/guidelines)
+Currently, Tina provides `content-creator` plugins for both markdown and JSON files in **Gatsby projects**. Once registered, actions from these `content-creator` plugins are accessible from the sidebar menu. If you have an idea for a new `content-creator` plugin, [consider contributing!](/docs/contributing/guidelines)
 
 ![content-creator-plugin-tinacms](/img/content-creator-ex.jpg)
 
