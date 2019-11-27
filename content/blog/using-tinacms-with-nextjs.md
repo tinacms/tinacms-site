@@ -126,9 +126,11 @@ Then in your package.json file, add this script:
 ```json
 "scripts": {
     "develop": "concurrently \"next src\" \"tina-git-server 3001\"",
-     ...//
+    //...
   }
 ```
+
+<tip>In the [example repo](https://github.com/kendallstrautman/brevifolia-nextjs), the pages and site components live in a `src` directory. If, in your project, these files live in the root, the `develop` command would look something like this: `concurrently \"next\" \"tina-git-server 3001\"`</tip>
 
 This script is using [`concurrently`](https://github.com/kimmobrunfeldt/concurrently) to start both the Next.js development server and the `tina-git-server`. We need these running at the same time so that as we are making content changes in the development environment, the git API will persist those changes.
 
