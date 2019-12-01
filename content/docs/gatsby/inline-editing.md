@@ -13,7 +13,7 @@ Creating an inline editing experience for Remark content only requires a few ext
 
 ### 1. Replace remarkForm with liveRemarkForm
 
-If you followed the [editing markdown in Gatsby](/docs/gatsby/content-editing.md#editing-markdown-in-gatsby) guide, you used the `remarkForm` function to attach the CMS to your page template. Once you've added some inline fields into your template, all you have to do is replace the call to `remarkForm` with a call to `liveRemarkForm`
+If you followed the [editing markdown in Gatsby](/docs/gatsby/markdown#editing-markdown-content) guide, you used the `remarkForm` function to attach the CMS to your page template. Once you've added some inline fields into your template, all you have to do is replace the call to `remarkForm` with a call to `liveRemarkForm`
 
 **Before**
 
