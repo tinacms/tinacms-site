@@ -106,7 +106,7 @@ const CreatePostPlugin = createRemarkButton({
 import { JsonCreatorPlugin } from 'gatsby-tinacms-json'
 
 const CreatePostPlugin = new JsonCreatorPlugin({
-  label: 'Create New File',
+  label: 'New JSON File',
   filename: form => {
     return form.filename
   },
