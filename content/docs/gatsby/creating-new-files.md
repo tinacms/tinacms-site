@@ -1,5 +1,5 @@
 ---
-title: Create New Files
+title: Creating New Files
 id: /docs/gatsby/create-new-files
 prev: /docs/gatsby/json
 next: /docs/gatsby/configure-git-plugin
