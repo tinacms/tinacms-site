@@ -82,13 +82,17 @@ const CreatePostPlugin = new RemarkCreatorPlugin({
 })
 ```
 <tip>
-Deprecated: `createRemarkButton` is a function that served the same purpose as the `RemarkCreatorPlugin` class. We recommend using `RemarkCreatorPlugin`, however, below is an example of this function in use.
+The `createRemarkButton` function is deprecated as of `gatsby-tinacms-remark: 0.4.0`.
+This is a function that served the same purpose as the `RemarkCreatorPlugin` class. Below is an example of `createRemarkButton` in use.
 </tip>
 
 ```javascript
 import { createRemarkButton } from 'gatsby-tinacms-remark'
 
-// Deprecated in favor of RemarkCreatorPlugin class
+/*
+** Deprecated — gatsby-tinacms-remark: 0.4.0
+** in favor of RemarkCreatorPlugin class
+*/
 const CreatePostPlugin = createRemarkButton({
   label: 'Create Post',
   filename: form => {
