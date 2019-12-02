@@ -66,7 +66,7 @@ These classes need to be instantiated with at least these three things:
 import { RemarkCreatorPlugin } from 'gatsby-tinacms-remark'
 
 const CreatePostPlugin = new RemarkCreatorPlugin({
-  label: 'Add New Post',
+  label: 'New Blog Post',
   filename: form => {
     return form.filename
   },
