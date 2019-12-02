@@ -260,6 +260,8 @@ const CreatePostPlugin = new RemarkCreatorPlugin({
 
 **Example 3: Slugify Name**
 
+<tip>The [`slugify`](https://www.npmjs.com/package/slugify) package is also great for this usecase.</tip>
+
 ```javascript
 const CreatePostPlugin = new RemarkCreatorPlugin({
   label: 'Create Post',
