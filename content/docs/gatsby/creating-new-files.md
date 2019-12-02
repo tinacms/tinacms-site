@@ -1,6 +1,6 @@
 ---
 title: Creating New Files
-id: /docs/gatsby/create-new-files
+id: /docs/gatsby/creating-new-files
 prev: /docs/gatsby/json
 next: /docs/gatsby/configure-git-plugin
 consumes:
