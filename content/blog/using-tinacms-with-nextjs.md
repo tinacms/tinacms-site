@@ -1,6 +1,6 @@
 ---
 title: Using TinaCMS with Next.js
-date: '2019-11-26T07:00:00.000Z'
+date: '2019-12-02T07:00:00.000Z'
 author: Kendall Strautman & DJ Walker
 draft: false
 consumes:
