@@ -50,7 +50,7 @@ This tutorial will show you how to install and **configure Tina for editing cont
 
 ### Some Background 🏜
 
-It’s important to note that due to the open-ended nature of Next.js, there are numerous ways you could incorporate Tina into a Next.js sites or apps. This tutorial will showcase just one approach with straightforward examples.
+It’s important to note that due to the open-ended nature of Next.js, there are numerous ways you could incorporate Tina into Next.js sites or apps. This tutorial will showcase just one approach with straightforward examples.
 
 It's also worth noting that unlike Gatsby, Next.js does not currently have a plugin system. If you've previously looked at Tina's [Gatsby setup guide](/docs/gatsby/manual-setup), you'll see that we're utilizing a few different plugins to set up Tina. With Next.js, we'll need to write that boostrapping code directly into our project.
 
@@ -60,7 +60,7 @@ Feel free to follow along and fit these guidelines to your own site or blog, or 
 
 ```bash
 #clone the repo
-$ git clone git@github.com:kendallstrautman/brevifolia-next-forestry.git next-tina-blog
+$ git clone git@github.com:kendallstrautman/brevifolia-nextjs.git next-tina-blog
 
 #navigate to the directory
 $ cd next-tina-blog
@@ -298,7 +298,7 @@ Look again at the way we're calling `useLocalForm`:
 const [post, form] = useLocalForm(...)
 ```
 
-This is a common pattern for React hooks. `useLocalForm` returns a two-element array that we are destructuring into two separate objects. `form` returns the form object that we can do some neat stuff with (more on that in a moment,) but what we really care about right now is the `post` object. This object contains the form data, and will update whenever the values in the form are changed by the user. If we use _this_ data when rendering our layout, our site will update in real time as the data changes!
+This is a common pattern for React hooks. `useLocalForm` returns a two-element array that we are destructuring into two separate objects. `form` returns the form object that we can do some neat stuff with (more on that in a moment), but what we really care about right now is the `post` object. This object contains the form data, and will update whenever the values in the form are changed by the user. If we use _this_ data when rendering our layout, our site will update in real time as the data changes!
 
 The `post` object will contain the `initialValues` on first render. Since it has the same shape as the `props` we're using in our layout, all we have to do is replace the appropriate references to `props` with `post`:
 
@@ -329,7 +329,7 @@ Note the `siteTitle` still references `props.title`, this is because this value 
 
 If you run `yarn develop` and open up a blog post in the browser, you should see editable fields in the sidebar. Try to update the post title, hit save and see what happens.
 
-If everything is set up correctly, Tina will try to commit those changes. (You may be prompted for your password in the terminal) Kill the dev server and run `git log` to see the commit from Tina. 🙌🏻
+If everything is set up correctly, Tina will try to commit those changes (you may be prompted for your password in the terminal). Kill the dev server and run `git log` to see the commit from Tina. 🙌🏻
 
 This is amazing! We wired up Tina to make edits and commit changes. One thing you’ll notice, however, is that any unsaved changes disappear when navigating to another page or refreshing.
 
