@@ -1,8 +1,8 @@
 ---
 title: Using TinaCMS with Next.js
-date: '2019-11-26T07:00:00.000Z'
+date: '2019-12-02T07:00:00.000Z'
 author: Kendall Strautman & DJ Walker
-draft: true
+draft: false
 consumes:
   - file: /packages/@tinacms/api-git/src/server.ts
     details: Uses tina-git-server
