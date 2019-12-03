@@ -129,7 +129,8 @@ const StyledForm = styled('form')`
     width: 100%;
     padding: 0 16px;
     transition: all 85ms ease-out;
-    font-family: 'tuner-regular';
+    font-family: 'tuner-regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+      'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     font-size: 16px;
     &:hover,
     &:focus {

@@ -29,8 +29,7 @@
 } */
 
 @font-face {
-  font-family: 'tuner-regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
-    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'tuner-regular';
   font-style: normal;
   font-weight: regular;
   font-display: fallback;
