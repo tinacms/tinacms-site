@@ -42,7 +42,7 @@ The best way to get a feel for how Tina works is to use it. We hope that by the 
 
 ## Let’s Get Started
 
-![brevifolia photo](/blog/brevifolia-screenshot.jpg)
+![tinacms editing gif](/gif/tina-nextjs.gif)
 
 This tutorial will show you how to install and **configure Tina for editing content on a simple markdown-based blog** that was created in last week’s post. If you want to dig into how the base blog was made, read [Part I](https://tinacms.org/blog/simple-markdown-blog-nextjs/) of this series.
 
@@ -364,8 +364,6 @@ export default function BlogTemplate(props) {
 ```
 
 ### Test & Edit Content ✨
-
-![tinacms editing gif](/gif/tina-nextjs.gif)
 
 If all went well, your blog posts will now be editable by Tina. Let's see it in action!
 
