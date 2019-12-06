@@ -146,17 +146,21 @@ Now that we've created the `content-creator` plugin, we need to add it to the si
 
 In this example, we will add the button to the Tina sidebar when visiting the blog index page. There are 3 steps involved:
 
-1. Import `RemarkCreatorPlugin` and `withPlugin`
-2. Create the `content-creator` plugin
-3. Add the plugin to the component
+1. Install `tinacms`
+2. Import `RemarkCreatorPlugin` and `withPlugin`
+3. Create the `content-creator` plugin
+4. Add the plugin to the component
 
-_NOTE: No changes need to be made to the_ `_BlogIndex_` _component itself._
+First, if you haven't already, install the `tinacms` package.
+```bash
+$ yarn add tinacms || npm install --save tinacms
+```
 
 **Example: src/pages/index.js**
 
 ```jsx
 // 1. Import `RemarkCreatorPlugin` and `withPlugin`
-import { withPlugin } from 'react-tinacms'
+import { withPlugin } from 'tinacms'
 import { RemarkCreatorPlugin } from 'gatsby-tinacms-remark'
 
 // Note: this is just an example index component.
@@ -208,7 +212,7 @@ const CreatePostPlugin = new RemarkCreatorPlugin({
 // 3. Add the plugin to the component
 export default withPlugin(BlogIndex, CreatePostPlugin)
 ```
-
+<tip>NOTE: No changes need to be made to the `BlogIndex` component itself.</tip>
 ### Creating Content
 
 With the plugin in place, **open TinaCMS and click the menu button** in the top-left corner. The menu panel will slide into view with the button at the top.
