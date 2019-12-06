@@ -4,8 +4,10 @@ date: '2019-12-09T07:00:00.000Z'
 author: Nolan Phillips
 draft: false
 consumes:
-  - file:
-    details:
+  - file: /packages/@tinacms/src/plugins.ts
+    details: Talks at a high level about the plugin manager
+  - file: /packages/gatsby-tinacms-remark/src/remark-creator-plugin.ts
+    details: Shows example of RemarkCreatorPlugin in use
 ---
 
 One of the most important aspects of TinaCMS is its dynamic plugin system.
