@@ -76,7 +76,7 @@ In order to run this server instead of the default Next.js dev server, you will 
 
 ### Add Backend Middleware to the Dev Server
 
-As mentioned previously, backends in Tina are written as middleware that can be attached to any Express server. Now that we have our custom dev server running express and handling requests, all that's left to do is attach the necessary middleware:
+As mentioned previously, backends in Tina are written as middleware that can be attached to any Express server. Now that we have our custom dev server running Express and handling requests, all that's left to do is attach the necessary middleware:
 
 ```diff
   const express = require('express')
