@@ -118,21 +118,54 @@ As of now, the sidebar is empty because Tina doesn’t know what content to edit
 
 ```bash
 # Install concurrently & tina git packages
-$ yarn add concurrently @tinacms/api-git @tinacms/git-client
+$ yarn add express cors @tinacms/api-git @tinacms/git-client
+```
+
+Tina's backend plugins are set up as Express middleware. This means that we'll need to run Express with our Next.js dev server. Create a `server.js` file in the root of your project with the following:
+
+```javascript
+const express = require('express')
+const next = require('next')
+const cors = require('cors')
+const gitApi = require('@tinacms/api-git')
+
+const port = parseInt(process.env.PORT, 10) || 3000
+const dev = process.env.NODE_ENV !== 'production'
+const app = next({
+  dev,
+  dir: './src',
+})
+const handle = app.getRequestHandler()
+
+app.prepare().then(() => {
+  const server = express()
+
+  server.use(cors())
+  server.use('/___tina', gitApi.router())
+
+  server.all('*', (req, res) => {
+    return handle(req, res)
+  })
+
+  server.listen(port, err => {
+    if (err) throw err
+    console.log(`> Ready on http://localhost:${port}`)
+  })
+})
 ```
 
 Then in your package.json file, add this script:
 
 ```json
 "scripts": {
-    "develop": "concurrently \"next src\" \"tina-git-server 3001\"",
+    "develop": "node server.js",
     //...
   }
 ```
 
-<tip>In the [example repo](https://github.com/kendallstrautman/brevifolia-nextjs), the pages and site components live in a `src` directory. If, in your project, these files live in the root, the `develop` command would look something like this: `concurrently \"next\" \"tina-git-server 3001\"`</tip>
+This will have Next use your custom server code instead if its default development server. Take a look at the [Next.js custom server docs](https://nextjs.org/docs#custom-server-and-routing) and [Tina's Next.js docs](/docs/nextjs/adding-backends) for more information.
 
-This script is using [`concurrently`](https://github.com/kimmobrunfeldt/concurrently) to start both the Next.js development server and the `tina-git-server`. We need these running at the same time so that as we are making content changes in the development environment, the git API will persist those changes.
+<tip>In the [example repo](https://github.com/kendallstrautman/brevifolia-nextjs), the pages and site components live in a `src` directory. If, in your project, these files live in the root, the code to retrieve the Next.js application would look something like this: `const app = next({ dev })`</tip>
 
 ### Connecting Back & Front 🖇
 
@@ -150,7 +183,7 @@ class MyApp extends App {
     super()
     this.cms = new TinaCMS()
     // create the client
-    const client = new GitClient('http://localhost:3001/___tina')
+    const client = new GitClient('http://localhost:3000/___tina')
     // register client with the cms
     this.cms.registerApi('git', client)
   }
