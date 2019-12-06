@@ -1,6 +1,6 @@
 ---
-id: /docs/nextjs/adding-backends
 title: Adding a Backend
+id: /docs/nextjs/adding-backends
 prev: /docs/nextjs/bootstrapping
 next: /docs/nextjs/creating-forms
 consumes:
@@ -23,28 +23,84 @@ The git backend consists of two parts:
 1. The server-side application that handles file manipulation and interaction with the git protocol, and
 2. The client-side adapter that allows forms registered with Tina to send data to the server-side app.
 
-The server-side application can be run a as a standalone express app. In this example, we'll use [concurrently](https://www.npmjs.com/package/concurrently) to run both the git API and the NextJS development server in a single NPM script.
+Because backends in Tina are designed as [express-compatible middleware](/docs/concepts/backends), we need a way to add middleware to our Next.js dev server. To do this, we will need to use Next.js with a [custom development server](https://github.com/zeit/next.js#custom-server-and-routing) that will use Express and allow us to attach the git middleware.
 
 ## Installation
 
 Run the following installation command:
 
 ```
-npm install concurrently @tinacms/api-git @tinacms/git-client
+npm install express cors @tinacms/api-git @tinacms/git-client
 ```
 
-## Running the Server-Side API
+## Adding the Server-side Middleware
 
-`@tinacms/api-git` exposes the `tina-git-server` command that you can run in an NPM script. Update the `scripts` section in your `package.json` file to run both Next and the git API via `concurrently`:
+Start by creating a custom server file to run your dev server. Next.js provides an example of using an Express server in [this GitHub repository](https://github.com/zeit/next.js/tree/canary/examples/custom-server-express), which we'll be following pretty closely.
+
+A bare-bones `server.js` file might look something like this:
+
+```javascript
+const express = require('express')
+const next = require('next')
+
+const port = parseInt(process.env.PORT, 10) || 3000
+const dev = process.env.NODE_ENV !== 'production'
+const app = next({ dev })
+const handle = app.getRequestHandler()
+
+app.prepare().then(() => {
+  const server = express()
+
+  server.all('*', (req, res) => {
+    return handle(req, res)
+  })
+
+  server.listen(port, err => {
+    if (err) throw err
+    console.log(`> Ready on http://localhost:${port}`)
+  })
+})
+```
+
+In order to run this server instead of the default Next.js dev server, you will need to set up a script in your `package.json` file to run this file:
 
 ```json
   "scripts": {
-    "develop": "concurrently \"next dev\" \"tina-git-server 3001\"",
-    "start": "next start"
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "cross-env NODE_ENV=production node server.js"
   }
 ```
 
-The first argument passed to `tina-git-server` is the port you want to run the server on.
+### Add Backend Middleware to the Dev Server
+
+```javascript
+const express = require('express')
+const cors = require('cors')
+const next = require('next')
+const gitApi = require('@tinacms/api-git')
+
+const port = parseInt(process.env.PORT, 10) || 3000
+const dev = process.env.NODE_ENV !== 'production'
+const app = next({ dev })
+const handle = app.getRequestHandler()
+
+app.prepare().then(() => {
+  const server = express()
+
+  server.use(cors())
+  server.use('/___tina', gitApi.router())
+
+  server.all('*', (req, res) => {
+    return handle(req, res)
+  })
+
+  server.listen(port, err => {
+    if (err) throw err
+    console.log(`> Ready on http://localhost:${port}`)
+  })
+})
+```
 
 ## Hooking up the Frontend
 
