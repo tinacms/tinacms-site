@@ -28,6 +28,8 @@ consumes:
   <br>
 </div>
 
+**Note: This blog was updated as of 12.06.19 related to [these changes](https://tinacms.org/blog/deprecating-tina-git-server/)**
+
 This blog is a part of a series exploring the use of Next.js + Tina. In [Part I](https://tinacms.org/blog/simple-markdown-blog-nextjs/), we learned how to create a simple markdown-based blog with Next. In this post we’ll add content editing capacity by configuring the site with TinaCMS.
 
 ## Next.js Recap ▲
@@ -79,8 +81,8 @@ With Next.js, there is an [`App` class component](https://nextjs.org/docs#custom
 Following along with the [Tina documentation:](https://tinacms.org/docs/nextjs/bootstrapping)
 
 ```bash
-# Install `tinacms` and `react-tinacms`
-$ yarn add tinacms react-tinacms
+# Install `tinacms` and other peer dependencies
+$ yarn add tinacms styled-components moment
 ```
 
 Create a new file in the root of your project called `_app.js` and add this code.
@@ -117,7 +119,7 @@ If you restart the dev server, you should now see a pencil icon in the lower lef
 As of now, the sidebar is empty because Tina doesn’t know what content to edit. Before we connect Tina to content, we need to [set up a backend](https://tinacms.org/docs/nextjs/adding-backends) that will talk to git and can keep track of content changes as they are happening.
 
 ```bash
-# Install concurrently & tina git packages
+# Install express, cors & tina git packages
 $ yarn add express cors @tinacms/api-git @tinacms/git-client
 ```
 
