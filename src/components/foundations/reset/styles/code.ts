@@ -86,7 +86,7 @@ const code = css`
   }
 
   .token.string {
-    color: #269D9B;
+    color: #269d9b;
   }
 
   .token.selector {
@@ -172,6 +172,17 @@ const code = css`
     background: rgba(107, 115, 148, 0.2);
     background: -webkit-linear-gradient(left, rgba(107, 115, 148, 0.2) 70%, rgba(107, 115, 148, 0));
     background: linear-gradient(to right, rgba(107, 115, 148, 0.2) 70%, rgba(107, 115, 148, 0));
+  }
+
+  .language-diff .token.unchanged {
+    color: ${colors.grey04};
+  }
+  .language-diff .token.inserted {
+    color: #269d9b;
+    border-bottom: none;
+  }
+  .language-diff .token.deleted {
+    color: ${colors.hunterOrange};
   }
 `
 

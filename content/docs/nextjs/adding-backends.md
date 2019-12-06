@@ -35,6 +35,8 @@ npm install express cors @tinacms/api-git @tinacms/git-client
 
 ## Adding the Server-side Middleware
 
+### Using a Custom Dev Server
+
 Start by creating a custom server file to run your dev server. Next.js provides an example of using an Express server in [this GitHub repository](https://github.com/zeit/next.js/tree/canary/examples/custom-server-express), which we'll be following pretty closely.
 
 A bare-bones `server.js` file might look something like this:
@@ -74,32 +76,34 @@ In order to run this server instead of the default Next.js dev server, you will 
 
 ### Add Backend Middleware to the Dev Server
 
-```javascript
-const express = require('express')
-const cors = require('cors')
-const next = require('next')
-const gitApi = require('@tinacms/api-git')
+As mentioned previously, backends in Tina are written as middleware that can be attached to any Express server. Now that we have our custom dev server running express and handling requests, all that's left to do is attach the necessary middleware:
 
-const port = parseInt(process.env.PORT, 10) || 3000
-const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
-const handle = app.getRequestHandler()
+```diff
+  const express = require('express')
+  const next = require('next')
++ const cors = require('cors')
++ const gitApi = require('@tinacms/api-git')
 
-app.prepare().then(() => {
-  const server = express()
+  const port = parseInt(process.env.PORT, 10) || 3000
+  const dev = process.env.NODE_ENV !== 'production'
+  const app = next({ dev })
+  const handle = app.getRequestHandler()
 
-  server.use(cors())
-  server.use('/___tina', gitApi.router())
+  app.prepare().then(() => {
+    const server = express()
 
-  server.all('*', (req, res) => {
-    return handle(req, res)
++   server.use(cors())
++   server.use('/___tina', gitApi.router())
+
+    server.all('*', (req, res) => {
+      return handle(req, res)
+    })
+
+    server.listen(port, err => {
+      if (err) throw err
+      console.log(`> Ready on http://localhost:${port}`)
+    })
   })
-
-  server.listen(port, err => {
-    if (err) throw err
-    console.log(`> Ready on http://localhost:${port}`)
-  })
-})
 ```
 
 ## Hooking up the Frontend
