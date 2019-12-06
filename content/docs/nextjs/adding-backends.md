@@ -114,10 +114,10 @@ All that's left is to configiure the CMS to consume the git API that now runs on
 npm install @tinacms/git-client
 ```
 
-When creating an instance of `GitClient`, we need to pass it the URL where the API endpoints can be reached. By default, `tina-git-server`'s API routes are scoped within the `/___tina` path. Since we're running the server locally on port 3001, the full URL to our git backend is `http://localhost:3001/___tina`. We could then instantiate the git client as follows:
+When creating an instance of `GitClient`, we need to pass it the URL where the API endpoints can be reached. Since we're running the server locally on port 3000, the full URL to our git backend is `http://localhost:3000/___tina`. We could then instantiate the git client as follows:
 
 ```javascript
-const client = new GitClient('http://localhost:3001/___tina')
+const client = new GitClient('http://localhost:3000/___tina')
 ```
 
 We'll need to amend our `_app.js` application wrapper to register this with the CMS. We can attach APIs to our CMS using the `registerApi` method.
@@ -134,7 +134,7 @@ class MyApp extends App {
   constructor() {
     super()
     this.cms = new TinaCMS()
-    const client = new GitClient('http://localhost:3001/___tina')
+    const client = new GitClient('http://localhost:3000/___tina')
     this.cms.registerApi('git', client)
   }
 
