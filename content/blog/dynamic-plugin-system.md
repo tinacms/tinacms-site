@@ -58,3 +58,5 @@ Do you have posts and events? Expose the ability to create posts only from /blog
 This plugin system demonstrates how the principle of Inversion of Control influences TinaCMS. Deciding when to enable certain features of the CMS is a complex responsibility. Static plugin systems give it to either the system itself or to the plugin developer. TinaCMS gives that responsibility to the plugin user.
 
 This approach benefits both sides: plugin authors don’t have to worry about implementing some complex configuration scheme, and developers can apply the plugin in both simple and complex use cases without resorting to hacks.
+
+If you're interested in learning more about plugins in TinaCMS, checkout the [documentation](https://tinacms.org/docs/concepts/plugins). Interested in creating your own plugin? Head over to the contribution [guidelines](https://tinacms.org/docs/contributing/guidelines). Feel free to post any questions or comments in the [Tina Forum](https://community.tinacms.org/t/dynamic-plugins-in-tinacms/37).
