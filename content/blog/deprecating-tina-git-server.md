@@ -12,7 +12,7 @@ To make it easy to use Tina's backend plugins, they are designed as Express midd
 With Next.js, the lack of a plugin system requires developers to write a bit more code in order work with Tina. In order to use Express middleware with a Next.js site, a developer can do one of two things:
 
 1. Create a standalone Express app to use the middleware, or
-2. Write a [custom server](https://nextjs.org/docs#custom-server-and-routing) to run the site that creates an Express server and attaches the middleware.
+2. Write a [custom server](https://nextjs.org/docs#custom-server-and-routing) to run the site, creating an Express server and attaching the middleware in the process.
 
 We previously settled on solution 1 in order to maximize compatibility with any existing Next.js sites; otherwise, anyone already using a custom server with Next.js and not using Express may have a harder time integrating the two together. This led to the creation of the `tina-git-server` command.
 
