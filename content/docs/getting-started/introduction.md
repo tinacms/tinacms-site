@@ -31,4 +31,4 @@ If you're itching to see what Tina can do, head over to the [Gatsby Quickstart G
 
 Want to help out with Tina's development? Please visit our [Contributing](/docs/contributing/guidelines) section in our docs to learn more.
 
-Looking for help with Tina, or want to stay on top of the latest developments? [Join our Slack Community](https://tinacms.slack.com 'Join the TinaCMS Slack') to chat with other Tina enthusiasts.
+Looking for help with Tina, or want to stay on top of the latest developments? Checkout the [Tina Community Forum](https://community.tinacms.org/) to get answers, help, and llama-humor.

@@ -7,6 +7,8 @@ next: /docs/contributing/setting-up
 
 The following is a set of guidelines and tips for contributingto the TinaCMS and its packages. Please also reference this [doc](https://github.com/tinacms/tinacms/blob/master/CONTRIBUTING.md) for the latest info on contributing.
 
+**If you have questions or need help, please post it on the [Forum](https://community.tinacms.org/).** If you are actively contributing and want to chat with the Tina Team easily, please join our [Slack](https://join.slack.com/t/tinacms/shared_invite/enQtNzgxNDY1OTA3ODI3LTNkNWEwYjQyYTA2ZDZjZGQ2YmI5Y2ZlOWVmMjlkYmYxMzVmNjM0YTk2MWM2MTIzMmMxMDg3NWIxN2EzOWQ0NDM) channel.
+
 ## How to Contribute
 
 - [Reporting Bugs](https://github.com/tinacms/tinacms/issues)
@@ -14,6 +16,7 @@ The following is a set of guidelines and tips for contributingto the TinaCMS and
 - [Writing Docs, Guides, or Blog Posts](https://github.com/tinacms/tinacms-site)
 - Voluntering for User Testing
 - [Adding features, fixing bugs etc.](https://github.com/tinacms/tinacms/issues)
+- [Answer questions in the Tina Forum](https://community.tinacms.org/)
 - Tackle a [good-first-issue](https://github.com/tinacms/tinacms/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)!
 
 ## Contributing Code

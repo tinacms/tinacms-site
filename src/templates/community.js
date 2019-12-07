@@ -7,7 +7,7 @@ import { remarkForm } from 'gatsby-tinacms-remark'
 import IndexLayout from 'layouts'
 import { Heading, Paragraph } from 'components/foundations'
 import Button from 'components/foundations/Button'
-import { TwitterIcon, GithubIcon, SlackIcon } from 'components/foundations/icons'
+import { TwitterIcon, GithubIcon, ForumIcon } from 'components/foundations/icons'
 import { colors, space, breakpoints } from 'utils/variables'
 import { EmailForm } from 'components/foundations'
 
@@ -49,10 +49,10 @@ function CommunityTemplate({ data }) {
             <span className="dotted-line" />
           </SocialItem>
           <SocialItem>
-            <a href={`${metadata.social.slack}`} target="_blank" rel="noopener noreferrer">
-              <SlackIcon color={`${colors.hunterOrange}`} />
+            <a href={`${metadata.social.forum}`} target="_blank" rel="noopener noreferrer">
+            <ForumIcon color={`${colors.hunterOrange}`} />
               <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
-                Slack us
+                Ask us
               </Heading>
             </a>
           </SocialItem>
@@ -117,6 +117,7 @@ export const query = graphql`
         social {
           twitter
           github
+          forum
           slack
         }
       }
