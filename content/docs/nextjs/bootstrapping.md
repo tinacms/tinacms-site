@@ -28,7 +28,7 @@ class MyApp extends App {
 export default MyApp
 ```
 
-From here, install `tinacms` and `react-tinacms`. Also install peer dependencies `styled-components` and `moment`:
+From here, install `tinacms`. Also install peer dependencies `styled-components` and `moment`:
 
 ```bash
 npm install tinacms styled-components moment
