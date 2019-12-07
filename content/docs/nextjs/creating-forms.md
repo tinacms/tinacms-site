@@ -56,7 +56,7 @@ To add forms to the Tina sidebar, we'll use the `useLocalForm` hook inside our p
 // /pages/[slug].js
 
 import * as React from 'react'
-import { useCMS, useLocalForm } from 'react-tinacms'
+import { useCMS, useLocalForm } from 'tinacms'
 
 export default function Page(props) {
   // grab the instance of the cms to access the registered git API
@@ -120,13 +120,13 @@ Page.getInitialProps = function(ctx) {
 
 At this point, we have successfully set up a form for our content that will commit to git and dynamically update the page as we change the data. However, you may have a use case where you want to update the file contents immediately instead of waiting for the content to be saved. For example, if you are doing some server-side transformation in `getInitialProps` that you don't want to re-implement on the client side, you might prefer to save updates to the source content files and rely on hot reloading to render dynamic changes.
 
-In this case, you can use another hook provided by `react-tinacms` called `useWatchFormValues`. `useWatchFormValues` receives a form object (returned by `useLocalForm`) and a callback function to invoke when the form is changed. The code below demonstrates using the git API to write contents to the source file in response to form changes:
+In this case, you can use another hook provided by `tinacms` called `useWatchFormValues`. `useWatchFormValues` receives a form object (returned by `useLocalForm`) and a callback function to invoke when the form is changed. The code below demonstrates using the git API to write contents to the source file in response to form changes:
 
 ```javascript
 // /pages/[slug].js
 
 import * as React from 'react'
-import { useCMS, useLocalForm, useWatchFormValues } from 'react-tinacms'
+import { useCMS, useLocalForm, useWatchFormValues } from 'tinacms'
 
 export default function Page(props) {
   // grab the instance of the cms to access the registered git API
@@ -146,7 +146,7 @@ export default function Page(props) {
     fields: [
       {
         name: 'title',
-        label: 'TItle',
+        label: 'Title',
         component: 'text',
       },
     ],
