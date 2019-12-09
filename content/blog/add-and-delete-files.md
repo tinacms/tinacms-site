@@ -2,7 +2,7 @@
 title: How to Add and Delete Files with TinaCMS
 date: '2019-12-10T07:00:00.000Z'
 author: Kendall Strautman
-draft: true
+draft: false
 consumes:
   - file: /packages/@tinacms/api-git/src/server.ts
     details: Uses tina-git-server
