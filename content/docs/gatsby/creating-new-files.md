@@ -17,6 +17,7 @@ Currently, Tina provides `content-creator` plugins for both markdown and JSON fi
 ![content-creator-plugin-tinacms](/img/content-creator-ex.jpg)
 
 ### General steps
+
 <br>
 
 1. Add a `content-creator` plugin
@@ -35,7 +36,8 @@ Currently, Tina provides `content-creator` plugins for both markdown and JSON fi
 There are two `content-creator` plugins to use with Gatsby.
 
 - `RemarkCreatorPlugin`: Constructs a `content-creator` plugin for markdown files.
-``` javascript
+
+```javascript
 interface RemarkCreatorPlugin{
      label: string
      fields: Field[]
@@ -44,13 +46,15 @@ interface RemarkCreatorPlugin{
      body?(form: any): Promise<string>
 }
 ```
+
 - `JsonCreatorPlugin`: Contstructs a `content-creator` plugin for JSON files.
-``` typescript
+
+```typescript
 interface JsonCreatorPlugin {
-     label: string
-     fields: Field[]
-     filename(form: any): Promise<string>
-     data?(form: any): Promise<any>
+  label: string
+  fields: Field[]
+  filename(form: any): Promise<string>
+  data?(form: any): Promise<any>
 }
 ```
 
@@ -81,8 +85,8 @@ const CreatePostPlugin = new RemarkCreatorPlugin({
   ],
 })
 ```
-<tip>
-The `createRemarkButton` function is deprecated as of `gatsby-tinacms-remark: 0.4.0`.
+
+<tip> The `createRemarkButton` function is deprecated as of `gatsby-tinacms-remark: 0.4.0`.
 This is a function that served the same purpose as the `RemarkCreatorPlugin` class. Below is an example of `createRemarkButton` in use.
 </tip>
 
@@ -90,16 +94,16 @@ This is a function that served the same purpose as the `RemarkCreatorPlugin` cla
 import { createRemarkButton } from 'gatsby-tinacms-remark'
 
 /*
-** Deprecated — gatsby-tinacms-remark: 0.4.0
-** in favor of RemarkCreatorPlugin class
-*/
+ ** Deprecated — gatsby-tinacms-remark: 0.4.0
+ ** in favor of RemarkCreatorPlugin class
+ */
 const CreatePostPlugin = createRemarkButton({
   label: 'Create Post',
   filename: form => {
     return form.filename
   },
   fields: [
-   //...
+    //...
   ],
 })
 ```
@@ -146,17 +150,22 @@ Now that we've created the `content-creator` plugin, we need to add it to the si
 
 In this example, we will add the button to the Tina sidebar when visiting the blog index page. There are 3 steps involved:
 
-1. Import `RemarkCreatorPlugin` and `withPlugin`
-2. Create the `content-creator` plugin
-3. Add the plugin to the component
+1. Install `tinacms`
+2. Import `RemarkCreatorPlugin` and `withPlugin`
+3. Create the `content-creator` plugin
+4. Add the plugin to the component
 
-_NOTE: No changes need to be made to the_ `_BlogIndex_` _component itself._
+First, if you haven't already, install the `tinacms` package.
+
+```bash
+$ yarn add tinacms || npm install --save tinacms
+```
 
 **Example: src/pages/index.js**
 
 ```jsx
 // 1. Import `RemarkCreatorPlugin` and `withPlugin`
-import { withPlugin } from 'react-tinacms'
+import { withPlugin } from 'tinacms'
 import { RemarkCreatorPlugin } from 'gatsby-tinacms-remark'
 
 // Note: this is just an example index component.
@@ -208,6 +217,8 @@ const CreatePostPlugin = new RemarkCreatorPlugin({
 // 3. Add the plugin to the component
 export default withPlugin(BlogIndex, CreatePostPlugin)
 ```
+
+<tip>NOTE: No changes need to be made to the `BlogIndex` component itself.</tip>
 
 ### Creating Content
 
@@ -314,6 +325,7 @@ const CreatePostPlugin = new RemarkCreatorPlugin({
   body: form => `This is a new blog post. Please write some content.`,
 })
 ```
+
 <br>
 
 # Deleting Files
@@ -322,18 +334,17 @@ When you need to provide the option of deleting files in a Gatsby site, the conf
 
 Head to the template file where you may have a Tina form setup. Read more on setting up forms for content editing with [remark](https://tinacms.org/docs/gatsby/markdown) or [JSON](https://tinacms.org/docs/gatsby/json). First you'll need to import the `DeleteAction` from `gatsby-tinacms-remark`. Then, in your form options object just before the field definitions, add the action.
 
-``` javascript
-
+```javascript
 import { remarkForm, DeleteAction } from 'gatsby-tinacms-remark'
 
 const BlogTemplateOptions = {
   actions: [DeleteAction],
   fields: [
     //...
-  ]
+  ],
 }
-
 ```
+
 These form options then get passed to the `RemarkForm` higher-order component, as seen in this [example](https://tinacms.org/docs/gatsby/markdown#example-srctemplatesblog-postjs). With the `DeleteAction` now passed to the form, you'll be able to access it via the three-dot icon in the lower right-hand corner of the sidebar.
 
 ![tinacms-delete-action-example](/img/delete-action-ex.png)
