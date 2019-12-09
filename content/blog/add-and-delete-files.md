@@ -1,6 +1,6 @@
 ---
-title: How to Add and Delete Files with Tina
-date: '2019-12-09T07:00:00.000Z'
+title: How to Add and Delete Files with TinaCMS
+date: '2019-12-10T07:00:00.000Z'
 author: Kendall Strautman
 draft: true
 consumes:
@@ -8,25 +8,23 @@ consumes:
     details: Uses tina-git-server
 ---
 
-Creating and deleting content — two fundamental sides to the coin of content management. This article will cover how to set up this functionality with Tina.
+[Creating](https://tinacms.org/blog/add-and-delete-files/#creating-new-files) and [deleting](https://tinacms.org/blog/add-and-delete-files/#deleting-files) content — two fundamental sides of the CMS coin. This article will cover how to set up this functionality on a [Gatsby](https://www.gatsbyjs.org/) site with Tina. But first, some overview.
 
-To [create](https://tinacms.org/blog/add-and-delete-files#creating-new-files) a new file, we will use a `content-creator` plugin. To [delete](https://tinacms.org/blog/add-and-delete-files/#deleting-files) files, we will use a `form action`.
+![TODO GIF HERE ADDING NEW POST]()
 
-![GIF HERE ADDING NEW POST]()
+### Tina Overview — sidebar, forms, plugins
 
-### Tina Overview: sidebar 🦁, forms 🐯, plugins 🐻 — oh my
-
-When you install Tina, you immediately get access to a [‘sidebar’](https://tinacms.org/docs/concepts/sidebar). This sidebar is the main interface for using Tina to edit and manage content.
+When you install Tina, you immediately get access to a [‘sidebar’](https://tinacms.org/docs/concepts/sidebar). This sidebar is the main interface for editing and managing content with Tina
 
 To make content editable on your site, you need to register a [form](https://tinacms.org/docs/concepts/forms) to Tina. Forms appear in the sidebar, displaying [fields](https://tinacms.org/docs/concepts/fields) where you can edit content on the page.
 
-[Plugins](https://tinacms.org/docs/concepts/plugins) allow for extending the functionality of the core CMS. Behind the scenes, plugins do some big work with Tina. They register forms, create new screen views, and allow us to create new content. If you're interested to learn more, read this post on Tina's [dynamic plugin system](https://community.tinacms.org/t/dynamic-plugins-in-tinacms/37).
+[Plugins](https://tinacms.org/docs/concepts/plugins) extend the functionality of the core CMS. Behind the scenes, plugins do some big work with Tina. They register forms, create new screen views, and allow us to add new content. If you're interested to learn more, read this post on Tina's [dynamic plugin system](https://tinacms.org/blog/dynamic-plugin-system/).
 
 ## Creating New Files
 
 ### The Steps 🚶‍♀️
 
-These steps will be our journey-map for setting up content-creation functionality.
+These steps will be our journey-map for setting up content-creation functionality in a [Gatsby](https://www.gatsbyjs.org/) website. They follow along with the [documentation](https://tinacms.org/docs/gatsby/creating-new-files) closely.
 1. [Set-up a `content-creator` plugin](https://tinacms.org/blog/add-and-delete-files#step-1-set-up-a-content-creator-plugin)
 2. [Register the plugin with Tina](https://tinacms.org/blog/add-and-delete-files#2-register-the-plugin-with-the-sidebar)
 3. [Customize the `create-form`](https://tinacms.org/blog/add-and-delete-files#3-customize-the-create-form)
@@ -46,9 +44,13 @@ If you always want to be able to create new blogs, you'll register the plugin on
 
 ## Step 1: Set-up a content-creator plugin
 
-Okay, let’s get into it. In this step we are going to creatively create a `content-creator` plugin 👩‍🎨. There are different plugins creating markdown or JSON files. We’ll go with markdown in this example. Feel free to read more on using the `JsonCreatorPlugin` in the documentation.
+Okay, let’s get into it. In this step we are going to create a `content-creator` plugin 👩‍🎨.
+
+There are different plugins for creating new markdown or JSON files. In this tutorial, we'll use `RemarkCreatorPlugin` for markdown files. Feel free to read about the `JsonCreatorPlugin` in the [documentation](https://tinacms.org/docs/gatsby/creating-new-files#1-add-content-creator-plugin).
 
 Head to the component file where you want to add this plugin. This example will use the `Layout` component. This way, **the ability to create new posts is always available to the editor.**
+
+The example below shows how to create an instance of a `RemarkCreatorPlugin`. The basic information the plugin needs is a label, filename, and fields array.
 
 ``` javascript
 
@@ -56,26 +58,35 @@ Head to the component file where you want to add this plugin. This example will 
 ** Layout.js
 */
 
-// import RemarkCreatorPlugin to construct a `content-creator` plugin
+/*
+** 1. import RemarkCreatorPlugin to
+**    construct a `content-creator` plugin.
+*/
 import { RemarkCreatorPlugin } from 'gatsby-tinacms-remark'
 
-// instantiate RemarkCreatorPlugin
+/*
+** 2. instantiate RemarkCreatorPlugin with
+**    label, filename, and fields.
+*/
 const CreatePostPlugin = new RemarkCreatorPlugin({
 
   /*
-  ** A simple action label displayed when editors
+  ** LABEL: A simple action label displayed when editors
   ** interact with the + button in the sidebar.
   */
   label: 'New Blog Post',
 
-  // A function whose return value should be the path to the new file.
+  /*
+  ** FILENAME: A function whose return value
+  ** should be the path to the new file.
+  */
   filename: form => {
     return form.filename
   },
 
   /*
-  ** An array of field objects defining the shape
-  ** of the form to fill out when creating a new file
+  ** FIELDS: An array of field objects defining the shape
+  ** of the form to fill out when creating a new file.
   */
   fields: [
     {
@@ -98,26 +109,35 @@ There are many ways you could set up the return value for the `filename`. A help
 const CreatePostPlugin = new RemarkCreatorPlugin({
    //...
   filename: form => {
-    let slug = form.title.replace(/\s+/, '-').toLowerCase()
+    // 'form' holds the data inputted by the 'create-form'
+    const slug = form.title.replace(/\s+/, '-').toLowerCase()
 
     return `content/blog/${slug}.md`
   },
 })
 ```
 
-Notice how data submitted by the `create-form` is being used. When a new file is created, you can have the editor enter a title, and then all the **`create-form` data is then passed to the `filename` function**.
+Notice how data submitted by the `create-form` is being used. When a new file is created, you can have the editor enter a title, and then all the **`create-form` data is passed to the `filename` function**.
 
-Formatting the `filename` depends on the structure of your project. Pick a simple solution that makes sense to you. Checkout more examples [here](https://tinacms.org/docs/gatsby/creating-new-files#4-formatting-the-filename--path).
+You can use the data from `create-form` to creatively generate new file paths or populate default data (more on that later). Overall, formatting the `filename` depends on the structure of your project. Pick a simple solution that makes sense to you or checkout more examples [here](https://tinacms.org/docs/gatsby/creating-new-files#4-formatting-the-filename--path).
 
 ## 2. Register the plugin with the sidebar
 
-In the previous step, we created the plugin, now we need to actually add it to the sidebar. Import `withPlugin` from `react-tinacms`; this is a [higher-order component](https://reactjs.org/docs/higher-order-components.html) for adding plugins to the cms.
+In the previous step, we created the plugin, now we actually need to add it to the sidebar (and cms).
 
-Export the component and plugin using `withPlugin` and you should now be able to add new posts from the Tina sidebar. The location of the new files will be based on the return value from the `filename` property.
+If you haven't already, install the `tinacms` package.
+
+``` bash
+$ yarn add tinacms || npm install tinacms
+```
+
+Then import `withPlugin` from `tinacms`. `withPlugin` is a [higher-order component](https://reactjs.org/docs/higher-order-components.html) used for adding plugins to the CMS.
+
+Export the component and plugin using `withPlugin` and you should now be able to add new posts from the Tina sidebar. The location of the new files will be based on the return value from the `filename` function.
 
 ``` javascript
-// 1. import withPlugin
-import { withPlugin } from 'react-tinacms'
+// 1. Import withPlugin
+import { withPlugin } from 'tinacms'
 import { RemarkCreatorPlugin } from 'gatsby-tinacms-remark'
 
 function Layout(props) {
@@ -129,28 +149,30 @@ function Layout(props) {
     )
   }
 
-  // 2. create instance of `RemarkCreatorPlugin`
-  const CreateBlogPlugin = new RemarkCreatorPlugin( {
-    label: 'Add New Blog',
-    filename: name => {
-      let slug = name.title.replace(/\s+/g, '-').toLowerCase()
-      return `content/posts/${slug}.md`
+// 2. Create instance of `RemarkCreatorPlugin`
+const CreateBlogPlugin = new RemarkCreatorPlugin( {
+  label: 'Add New Blog',
+  filename: name => {
+    const slug = name.title.replace(/\s+/g, '-').toLowerCase()
+    return `content/posts/${slug}.md`
+  },
+  fields: [
+    {
+      label: 'Title',
+      name: 'title',
+      component: 'text',
+      required: true
     },
-    fields: [
-      {
-        label: 'Title',
-        name: 'title',
-        component: 'text',
-        required: true
-      },
-    ],
-  })
+  ],
+})
 
-// 3. export the component & `content-creator` plugin
+// 3. Export the component & `content-creator` plugin
 export default withPlugin(Layout, CreateBlogPlugin)
 ```
 
-Start up your development server and you’ll see a blue plus (+) icon in the top menu in the sidebar. Click it and you’ll see the `label` you set in your plugin configuration. Try to create a new file! See what happens.
+Start up your development server (`gatsby develop`) and you should see a blue plus (+) icon in the top menu of the sidebar. Click it and you’ll see the `label` you set in your plugin configuration. Try to create a new file! See what happens.
+
+![TODO add gif here??]()
 
 <tip>**Troubleshooting Tip:** If you don't see the icon, check if the component where you added the plugin is actively rendered.</tip>
 
@@ -166,7 +188,7 @@ const CreatePostPlugin = new RemarkCreatorPlugin({
       name: 'title',
       component: 'text',
       label: 'Title',
-      description: 'The title of your new post.',
+      description: 'The title of your new post',
       required: true
     },
     {
@@ -176,35 +198,36 @@ const CreatePostPlugin = new RemarkCreatorPlugin({
      description: 'The default will be today'
    },
    {
-     description: 'Who wrote this, yo?',
      name: 'author',
-     label: 'Author',
      component: 'text'
+     label: 'Author',
+     description: 'Who wrote this?',
    }
   ],
   filename: form => {
     const slug = form.title.replace(/\s+/, '-').toLowerCase()
-
     return `content/blog/${slug}.md`
   },
 })
 
 ```
-Notice on the `title` field the required property. Use this to ensure you get all the required data necessary for creating the new file.
+Notice the use of a `required` property on the `title` field. Use this to ensure you get all the required data necessary for creating the new file.
 
-Learn about all the default [fields](https://tinacms.org/docs/concepts/fields#field-types) to choose from here. If you’d like to create a custom field, read more on that [here](https://tinacms.org/docs/fields/custom-fields).
+Learn about the default [fields](https://tinacms.org/docs/concepts/fields#field-types) to choose from in the documentation. If you're interested in creating a custom field, read more on that [here](https://tinacms.org/docs/fields/custom-fields).
 
 ## 4. Configure Defaults
 
-`RemarkCreatorPlugin` can also be given additional information to add default data to the newly created files. For markdown, we can add default frontmatter values and a markdown body.
+`RemarkCreatorPlugin` can take additional information to populate default data into newly created files. For markdown, we can add default frontmatter values and a markdown body — see the example below.
 
 ``` javascript
 const CreateBlogButton = new RemarkCreatorPlugin( {
  label: 'Add New Post',
+
  filename: name => {
      const slug = name.title.replace(/\s+/g, '-').toLowerCase()
      return `content/posts/${slug}.md`
  },
+
  fields: [
    {
      label: 'Title',
@@ -225,26 +248,33 @@ const CreateBlogButton = new RemarkCreatorPlugin( {
      component: 'text'
    }
  ],
- // add default frontmatter
+
+ /*
+ ** 1. Add default frontmatter with data inputted
+ **    through fields in the `create-form`
+ */
  frontmatter: postInfo => ({
    title: postInfo.title,
    date: postInfo.date ? postInfo.date : new Date(),
    author: postInfo.author ? postInfo.author: ‘Kurt Vonnegut’
  }),
- // add a default markdown body
+
+ // 2. Add a default markdown body
  body: postInfo => `New post, who dis?`
 })
 ```
-Both the frontmatter and body functions receive the data from the `create-form`. Use the inputted values to populate the new file, or setup defaults if nothing was entered.
+Both the frontmatter and body functions receive the data captured by fields in the `create-form`. Use the inputted values to populate the new file, or setup defaults if nothing was entered.
 
 ## Deleting Files
 
-With the power to create, comes the power to delete. I promise you this step is much simpler.
+With the power to create, comes the power to delete 🧙‍♀️. I promise you this step is much simpler.
 
-Instead of adding a ‘delete’ plugin, we simply need to pass a `delete action` to the main form options.
-Head to a file where you have a Tina form configured in your project. If you don’t have a Tina form configured in your project, learn more about creating forms with Tina here.
+Instead of adding a ‘delete’ plugin, we simply need to pass a `delete-action` to the main form options.
+Head to a file where you have a Tina form configured in your project. This will typically be a template file that generates multiple posts, casestudies, etc. If you don’t have a Tina form configured in your project, learn more about creating forms with Gatsby+Tina [here](https://tinacms.org/docs/gatsby/manual-setup).
 
-Here’s is an example blog template using markdown with Tina configured:
+You don't want to give the editors the power to delete files that they shouldn't. So think about where you want this action to be available. For something like a blog, it makes sense to add the `delete-action` to a blog template form. But it might not make sense to add the `delete-action` to a form that edits global site configuration, for example.
+
+Below is an example blog template with the `delete-action` added:
 ``` javascript
 // 1. Import `DeleteAction`
 import { remarkForm, DeleteAction } from 'gatsby-tinacms-remark'
@@ -279,8 +309,16 @@ let BlogFormOptions = {
 
 export default remarkForm(BlogTemplate, BlogForm)
 ```
-Import the `DeleteAction` from `gatsby-tinacms-remark` or `gatsby-tinacms-json`, depending on your filetype. On your form options definition, add the action and that’s it! You can now delete the file you’re working on by clicking the three dot icon near the save button.
+You can import the `DeleteAction` from `gatsby-tinacms-remark` or `gatsby-tinacms-json`, depending on your filetype. Then on your form options definition, add the action and that’s it!
 
-**ADD CONCLUSION** -- in general feels way to long and just like a verbatim version of the docs... 🤷🏻‍♀️
+You can now access this `delete-action` via the three-dot icon near the save button. Test it out! But make sure you don't delete a file that you need or can easily restore it if you do 🧞‍♂️.
+
+## Happy Creating (and Deleting)! 👩‍🎤
+
+Hopefully this tutorial gave you some insight into setting up two core bits of CMS functionality with Tina + Gatsby.
+
+If you run into trouble or have any questions, head over to the [Tina Forum](https://community.tinacms.org/) for help. Stoked on TinaCMS? Please ⭐️ us on [Github](https://github.com/tinacms/tinacms) or [Tweet us](https://twitter.com/Tina_cms) 🐦 to show-off your Tina projects.
+
+
 
 
