@@ -10,7 +10,7 @@ consumes:
 
 [Creating](https://tinacms.org/blog/add-and-delete-files/#creating-new-files) and [deleting](https://tinacms.org/blog/add-and-delete-files/#deleting-files) content — two fundamental sides of the CMS coin. This article will cover how to set up this functionality with TinaCMS on a [Gatsby](https://www.gatsbyjs.org/) site. But first, some overview.
 
-![tinacms-create-content-form](/img/content-creator-ex.jpg)
+![tinacms-add-new-file-gif](/gif/add-new-blog.gif)
 
 ### Tina Overview — sidebar, forms, plugins
 
@@ -172,11 +172,11 @@ export default withPlugin(Layout, CreateBlogPlugin)
 
 Start up your development server (`gatsby develop`) and you should see a blue plus (+) icon in the top menu of the sidebar. Click it and you’ll see the `label` you set in your plugin configuration. Try to create a new file! See what happens.
 
-![tinacms-add-new-file-gif](/gif/add-new-blog.gif)
-
 <tip>**Troubleshooting Tip:** If you don't see the icon, check if the component where you added the plugin is actively rendered.</tip>
 
 ## 3. Customize The Create Form
+
+![tinacms-create-content-form](/img/content-creator-ex.jpg)
 
 In our initial example, the `create-form` only captured a title. We can add more fields to capture data that will populate the new file, such as the date and author.
 
