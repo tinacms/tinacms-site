@@ -139,7 +139,7 @@ import { RemarkForm } from 'gatsby-tinacms-remark'
 class Title extends React.Component {
   render() {
     return <StaticQuery
-              // 3. add ...TinaRemark fragment to query
+              // 2. add ...TinaRemark fragment to query
               query ={graphql`
                 query TitleQuery {
                   markdownRemark(fields: {slug: {eq: "song-of-myself"}}) {
