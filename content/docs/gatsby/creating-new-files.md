@@ -338,7 +338,7 @@ Head to the template file where you may have a Tina form setup. Read more on set
 import { remarkForm, DeleteAction } from 'gatsby-tinacms-remark'
 
 const BlogTemplateOptions = {
-  actions: [DeleteAction],
+  actions: [ DeleteAction ],
   fields: [
     //...
   ],
