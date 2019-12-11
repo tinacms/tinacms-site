@@ -7,7 +7,7 @@ next: /docs/gatsby/inline-editing
 
 This doc explains how to add custom field plugins to a Gatsby site.
 
-##1. Registering an Email Field
+## 1. Registering an Email Field
 
 In this example we'll create a simple email field for our Gatsby site. Besides the required `name`, we also want the email field definition to accept a `label` and a `description`.
 
@@ -34,7 +34,7 @@ export function EmailField({ input, meta, field }) {
 }
 ```
 
-Open your `gatsby-browser.js` and create an `onClientEntry`. In this function, we'll use the `cms.forms.addFieldPlugin` method to register the `EmailField`.
+Open your `gatsby-browser.js` and create an `onClientEntry`. In this function, we'll use the `cms.fields.add` method to register the `EmailField`.
 
 **gatsby-browser.js**
 
@@ -86,7 +86,7 @@ If the value is invalid, then return the error message to be displayed.
 import { EmailField } from './src/components/EmailField'
 
 export const onClientEntry = () => {
-  window.tinacms.forms.addFieldPlugin({
+  window.tinacms.fields.add({
     name: 'email',
     Component: EmailField,
     validate(value, allValues, meta, field) {

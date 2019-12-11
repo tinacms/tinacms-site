@@ -1,5 +1,12 @@
 ---
 title: Creating Custom Fields
+prev: /docs/fields/blocks
+next: null
+consumes:
+  - file: /packages/@tinacms/core/src/plugins.ts
+    details: Uses the add method from plugin manager
+  - file: /packages/@tinacms/form-builder/src/field-plugin.tsx
+    details: Shoes the field plugin interface
 ---
 
 There are two ways to create custom fields with Tina:
@@ -56,6 +63,20 @@ The optional `validate` function let's you define how you 're
 - `meta`: The form metadata for this field
 - `field`: The field's configuration
 
+### Registering the plugin
+
+```javascript
+import { MapPicker, validateMap } from 'cms-field-my-map-picker'
+
+let cms = new CMS()
+
+cms.fields.add({
+  name: 'map',
+  Component: MapPicker,
+  validate: validateMap,
+})
+```
+
 ### Example
 
 Here is an example of a simple text field plugin. The `Component` renders the label, the input, and the errors for the field.
@@ -65,7 +86,7 @@ import { CMS } from '@tinacms/core'
 
 let cms = new CMS()
 
-cms.forms.addFieldPlugin({
+cms.fields.add({
   name: 'text',
   Component({ input, meta, field }) {
     return (
