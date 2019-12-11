@@ -313,7 +313,7 @@ Tina's [remark hook or components](http://tinacms.org/docs/gatsby/markdown#creat
 
 You can pass additional configuration options to customize the form. The following properties are accepted:
 
-- `label`: A optional label for the form that will render in a list if there are multiple forms.
+- `label`: A label for the form that will render in a list if there are multiple forms. This will default to the name of the component.
 - `actions`: A list of form actions, such as [`DeleteAction`](https://tinacms.org/docs/gatsby/creating-new-files#deleting-files).
 - `fields`: A list of field definitions
   - `name`: The path to some value in the data being edited. (e.g. `frontmatter.title`)
