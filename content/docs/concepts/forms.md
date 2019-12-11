@@ -30,7 +30,7 @@ Most of the time, you will be using predefined forms provided by Tina. If you're
 
 ## Creating Custom Forms
 
-If you want to make custom forms, they can be created by invoking the `useForm` or `useLocalForm` hooks. They are incredibly similar, the main different being that `useLocalForm` will actually register the forms as plugins, and `useForm` does not.
+If you want to make custom forms, they can be created by invoking the `useForm`, `useLocalForm`, or `useGlobalForm` hooks. They are incredibly similar, the main different being that `useLocalForm` & `useGlobalForm` will actually register the forms as plugins, and `useForm` does not.
 
 <tip>**Please note:** creating custom forms is considered an advanced usecase. It is recommended for most folks to use Tina's predefined forms mentioned above.</tip>
 
@@ -70,6 +70,23 @@ interface FormOptions {
 }
 ```
 
+### useGlobalForm
+
+```ts
+function useGlobalForm(
+  options: FormOptions,
+  watch: Partial<WatchableFormValue> = {}
+): [FormShape, Form | undefined]
+
+interface FormOptions {
+  id: any
+  label: string
+  initialValues: object
+  fields: Field[]
+  onSubmit(object): Promise<object | null>
+}
+```
+
 - `id`: Must be unique identifier.
 - `label`: The name of the form being edited.
 - `initialValues`: The initial values being edited by the form.
@@ -82,7 +99,7 @@ interface FormOptions {
 import { useLocalForm } from 'react-tinacms'
 
 function PageTemplate(props) {
-  let [someData] = useLocalForm({
+  let [ someData ] = useLocalForm({
     id: 'uid',
     label: 'someData',
     initialValues: props.data.someData,
