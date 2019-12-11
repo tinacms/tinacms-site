@@ -152,8 +152,8 @@ function Layout(props) {
 // 2. Create instance of `RemarkCreatorPlugin`
 const CreateBlogPlugin = new RemarkCreatorPlugin( {
   label: 'Add New Blog',
-  filename: name => {
-    const slug = name.title.replace(/\s+/g, '-').toLowerCase()
+  filename: form => {
+    const slug = form.title.replace(/\s+/g, '-').toLowerCase()
     return `content/posts/${slug}.md`
   },
   fields: [
@@ -223,8 +223,8 @@ Learn about the default [fields](https://tinacms.org/docs/concepts/fields#field-
 const CreateBlogButton = new RemarkCreatorPlugin( {
  label: 'Add New Post',
 
- filename: name => {
-     const slug = name.title.replace(/\s+/g, '-').toLowerCase()
+ filename: form => {
+     const slug = form.title.replace(/\s+/g, '-').toLowerCase()
      return `content/posts/${slug}.md`
  },
 
