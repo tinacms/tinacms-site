@@ -36,7 +36,7 @@ If you want to make custom forms, they can be created by invoking the `useForm`,
 
 ### useForm
 
-This custom hook creates a form without registering it to the cms.
+This custom hook creates a form without registering it to the CMS. Checkout the [`usePlugin` hook](/docs/concepts/plugins#adding-and-removing-plugins) documentation to see how to register a form to the CMS.
 
 ```typescript
 function useForm(
