@@ -3,6 +3,13 @@ title: Forms
 id: /docs/concepts/forms
 prev: /docs/concepts/sidebar
 next: /docs/concepts/fields
+consumes:
+  - file: /packages/@tinacms/core/src/cms-forms/form.ts
+    details: Shows Form Options interface
+  - file: /packages/@tinacms/react-core/src/use-form.ts
+    details: Creates custom form with useForm & useLocalForm
+  - file: /packages/tinacms/src/react-tinacms/use-form.ts
+    details: Creates custom form with useGlobalForm
 ---
 
 In Tina, **forms** are how you expose your site's content for editing.
