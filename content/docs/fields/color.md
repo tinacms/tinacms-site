@@ -2,6 +2,11 @@
 title: Color Field
 prev: /docs/fields/image
 next: /docs/fields/toggle
+consumes:
+  - file: /packages/tinacms/src/plugins/fields/ColorFieldPlugin.tsx
+    details: Documents color field plugin
+  - file: /packages/@tinacms/fields/src/ColorPicker/ColorPicker.tsx
+    details: Shows color field in use & interface
 ---
 
 The `color` field is a visual color picker. This field is used for content values that handle the rendering of color. Can be saved as RGB or hex value.
