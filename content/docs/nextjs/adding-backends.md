@@ -5,9 +5,9 @@ prev: /docs/nextjs/bootstrapping
 next: /docs/nextjs/creating-forms
 consumes:
   - file: /packages/@tinacms/api-git/src/server.ts
-    details: Demonstrates using tina-git-server
+    details: Demonstrates using Express server
   - file: /packages/@tinacms/api-git/src/router.ts
-    details: Demonstrates using tina-git-server
+    details: Demonstrates using Express server
   - file: /packages/@tinacms/api-git/src/server.ts
     details: Sets up git client to consume backend
   - file: /packages/tinacms/src/components/Tina.tsx
