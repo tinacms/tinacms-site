@@ -8,7 +8,7 @@ consumes:
     details: Explains setting sidebar position
   - file: /packages/tinacms/src/components/Tina.tsx
     details: Explains hiding sidebar in prod
-  - file: /packages/@tinacms/styles/src/Styls.tsx
+  - file: /packages/@tinacms/styles/src/Styles.tsx
     details: Shows the Theme interface
 ---
 
