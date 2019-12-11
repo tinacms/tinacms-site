@@ -38,25 +38,6 @@ interface Plugin {
   // add additional plugin-specific options
 }
 ```
-The interface for the `Field` plugin as an example:
-
-```ts
-interface FieldPlugin {
-  __type: 'field'
-  name: string
-  Component: React.FC<any>
-  type?: string
-  validate?(
-    value: any,
-    allValues: any,
-    meta: any,
-    field: Field
-  ): string | object | undefined
-  parse?: (value: any, name: string, field: Field) => any
-  format?: (value: any, name: string, field: Field) => any
-  defaultValue?: any
-}
-```
 
 ## Adding and Removing Plugins
 
