@@ -115,3 +115,5 @@ export default withPlugin( BlogIndex, postCreatorPlugin )
 ```
 
 Read more on [creating new files](https://tinacms.org/docs/gatsby/creating-new-files#2-register-plugin-to-sidebar) with `content-creator` plugins in Gatsby [here](https://tinacms.org/docs/gatsby/creating-new-files#2-register-plugin-to-sidebar).
+
+Read more on creating [custom field plugins here](https://tinacms.org/docs/fields/custom-fields).
