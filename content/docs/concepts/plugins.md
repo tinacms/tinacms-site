@@ -2,6 +2,17 @@
 title: Plugins
 id: /docs/concepts/plugins
 prev: /docs/concepts/backends
+consumes:
+  - file: /packages/@tinacms/react-core/src/use-plugin.tsx
+    details: Shows usePlugins hook in use
+  - file: /packages/@tinacms/react-core/src/with-plugin.tsx
+    details: Shows withPlugin HOC in use
+  - file: /packages/@tinacms/form-builder/src/field-plugin.tsx
+    details: Uses Field interface as an example
+  - file: /packages/@tinacms/core/src/plugins.ts
+    details: Uses Plugin interface as an example
+  - file: /packages/@tinacms/core/src/plugins.ts
+    details: Describes Plugin Manager - add / remove / all methods
 ---
 
 **Plugins** allow you to extend the functionality of the CMS. In fact, the plugin API is currently being used to add features to the core CMS, including:
