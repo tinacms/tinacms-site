@@ -3,6 +3,13 @@ title: Sidebar
 id: /docs/concepts/sidebar
 prev: /docs/getting-started/how-tina-works
 next: /docs/concepts/forms
+consumes:
+  - file: /packages/tinacms/src/components/Tina.tsx
+    details: Explains setting sidebar position
+  - file: /packages/tinacms/src/components/Tina.tsx
+    details: Explains hiding sidebar in prod
+  - file: /packages/@tinacms/styles/src/Styls.tsx
+    details: Shows the Theme interface
 ---
 
 The **sidebar** is the primary interface in Tina. It is the shell that holds [forms](/docs/concepts/forms 'Tina Concepts: Forms') and [plugins](/docs/concepts/plugins 'Tina Concepts: Plugins').
