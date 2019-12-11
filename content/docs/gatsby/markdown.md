@@ -2,6 +2,17 @@
 title: Markdown in Gatsby
 prev: /docs/gatsby/manual-setup
 next: /docs/gatsby/json
+consumes:
+  - file: /packages/gatsby-tinacms-remark/src/RemarkForm.tsx
+    details: Demonstrates use of RemarkForm
+  - file: /packages/gatsby-tinacms-remark/src/remarkFormHoc.tss
+    details: Shows how to use remarkForm HOC
+  - file: /packages/gatsby-tinacms-remark/src/useRemarkForm.tsx
+    details: Demonstrates useRemarkForm usage
+  - file: /packages/gatsby-tinacms-remark/src/remark-fragment.ts
+    details: Explains what the fragment adds
+  - file: /packages/@tinacms/core/src/cms-forms/form.ts
+    details: Explains form options interface
 ---
 
 Gatsby allows you to build sites from many different data sources. Currently Tina has plugins for editing content in [markdown](/docs/gatsby/markdown#editing-markdown-content) & [JSON](/docs/gatsby/json#editing-json-in-gatsby) files, with plans to support many more data sources.
