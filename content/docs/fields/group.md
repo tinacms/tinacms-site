@@ -2,6 +2,9 @@
 title: Group Field
 prev: /docs/fields/toggle
 next: /docs/fields/group-list
+consumes:
+  - file: /packages/tinacms/src/plugins/fields/GroupFieldPlugin.tsx
+    details: Shows group field interface and how to use
 ---
 
 The `group` field represents a group of values. This field is typically used with an array of objects within a json file or nested frontmatter values in a markdown file.

@@ -1,5 +1,10 @@
 ---
 title: Group-List Field
+prev: /docs/fields/group
+next: /docs/fields/blocks
+consumes:
+  - file: /packages/tinacms/src/plugins/fields/GroupListFieldPlugin.tsx
+    details: Shows group list interface
 ---
 
 ```typescript
