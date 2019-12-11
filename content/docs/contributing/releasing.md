@@ -3,6 +3,13 @@ title: Contribution Releases
 id: /docs/contributing/releasing
 prev: /docs/contributing/setting-up
 next: /docs/contributing/troubleshooting
+consumes:
+  - file: /RELEASE.md
+    details: 'Shares the release process, should mirror'
+  - file: /lerna.json
+    details: Uses publish command
+  - file: README.md
+    details: 'Shows crelease process, should mirror'
 ---
 
 ## Overarching Process
