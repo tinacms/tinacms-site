@@ -45,7 +45,7 @@ import { postCreatorPlugin } from "./post-creator-plugin"
 
 function BlogIndex(props) {
 
-  usePlugin(postCreatorPlugin)
+  usePlugins(postCreatorPlugin)
 
   return ( ... )
 }
