@@ -3,6 +3,11 @@ title: Manual Setup
 id: /docs/gatsby/manual-setup
 prev: /docs/gatsby/quickstart
 next: /docs/gatsby/markdown
+consumes:
+  - file: /packages/gatsby-plugin-tinacms/gatsby-browser.tsx
+    details: Depends on Tina component wrapping the root element
+  - file: /packages/gatsby-plugin-tinacms/gatsby-ssr.tsx
+    details: Depends on Tina component wrapping the root element
 ---
 
 Learn how to setup Tina on an existing Gatsby site.
