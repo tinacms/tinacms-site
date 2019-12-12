@@ -12,6 +12,10 @@ consumes:
     details: HOC depends on usePlugin to add plugin to cms.
   - file: /packages/@tinacms/react-core/src/with-plugin.tsx
     details: Shows use of withPlugin HOC.
+  - file: /packages/gatsby-tinacms-remark/src/form-actions/delete-action.tsx
+    details: Shows how to add delete action
+  - file: /packages/tinacms/src/components/CreateContent.tsx
+    details: Has image of what the create form looks like
 ---
 
 An integral aspect of content management is the ability to create new content. To create new content files with Tina, you will need to configure and register `content-creator` plugins with the cms.
@@ -342,7 +346,7 @@ Head to the template file where you may have a Tina form setup. Read more on set
 import { remarkForm, DeleteAction } from 'gatsby-tinacms-remark'
 
 const BlogTemplateOptions = {
-  actions: [DeleteAction],
+  actions: [ DeleteAction ],
   fields: [
     //...
   ],
