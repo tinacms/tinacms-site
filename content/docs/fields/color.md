@@ -39,6 +39,8 @@ const BlogPostForm = {
  - `description`: An optional description that expands on the purpose of the field or prompts a specific action.
  -  `colorFormat`: Optionally specify whether you want the color value to be a hexadecimal ('hex') or RBG value.
 
+ ## Interface
+
 ```typescript
 interface ColorConfig {
   component: 'color'

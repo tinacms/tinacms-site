@@ -67,6 +67,8 @@ const BlogPostForm = {
  - `previewSrc`: Defines the path for the src attribute on the image preview. If using gatsby-image, the path to the `childImageSharp.fluid.src` needs to be provided.
  - `uploadDir`: Defines the upload directory for the image. All of the post data is passed in, `fileRelativePath` is most useful in defining the upload directory, but you can also statically define the upload directory.
 
+## Interface
+
 ```typescript
 interface ImageConfig {
   component: 'image'
