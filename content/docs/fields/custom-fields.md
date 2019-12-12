@@ -6,7 +6,9 @@ consumes:
   - file: /packages/@tinacms/core/src/plugins.ts
     details: Uses the add method from plugin manager
   - file: /packages/@tinacms/form-builder/src/field-plugin.tsx
-    details: Shoes the field plugin interface
+    details: Shows the field plugin interface
+  - file: /packages/@tinacms/core/src/cms-forms/form.ts
+    details: Depends on Field props
 ---
 
 There are two ways to create custom fields with Tina:

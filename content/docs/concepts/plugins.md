@@ -7,8 +7,6 @@ consumes:
     details: Shows usePlugins hook in use
   - file: /packages/@tinacms/react-core/src/with-plugin.tsx
     details: Shows withPlugin HOC in use
-  - file: /packages/@tinacms/form-builder/src/field-plugin.tsx
-    details: Uses Field interface as an example
   - file: /packages/@tinacms/core/src/plugins.ts
     details: Uses Plugin interface as an example
   - file: /packages/@tinacms/core/src/plugins.ts
