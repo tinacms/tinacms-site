@@ -8,11 +8,14 @@ consumes:
     details: Demonstrates use of RemarkCreatorPlugin
   - file: /packages/gatsby-tinacms-json/src/create-json-plugin.ts
     details: Demonstrates use of jsonCreatorPlugin
+  - file: /packages/@tinacms/react-core/src/use-plugin.tsx
+    details: HOC depends on usePlugin to add plugin to cms.
+  - file: /packages/@tinacms/react-core/src/with-plugin.tsx
+    details: Shows use of withPlugin HOC.
   - file: /packages/gatsby-tinacms-remark/src/form-actions/delete-action.tsx
     details: Shows how to add delete action
   - file: /packages/tinacms/src/components/CreateContent.tsx
     details: Has image of what the create form looks like
-
 ---
 
 An integral aspect of content management is the ability to create new content. To create new content files with Tina, you will need to configure and register `content-creator` plugins with the cms.

@@ -2,6 +2,11 @@
 title: Text Area Field
 prev: /docs/fields/text
 next: /docs/fields/markdown
+consumes:
+  - file: /packages/tinacms/src/plugins/fields/TextareaFieldPlugin.tsx
+    details: Shows textarea field interface and config options
+  - file: /packages/@tinacms/fields/src/TextArea.ts
+    details: Shows textarea field interface and config options
 ---
 
 The `textarea` field represents a multi-line text input. It should be used for content values that are long strings: for example, a page description.

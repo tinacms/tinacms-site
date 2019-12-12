@@ -2,6 +2,10 @@
 title: Blocks Field
 prev: /docs/fields/group-list
 next: /docs/fields/custom-fields
+consumes:
+  - file: /packages/tinacms/src/plugins/fields/BlocksFieldPlugin.tsx
+    details: Shows blocks interface
+
 ---
 
 ```typescript

@@ -2,6 +2,11 @@
 title: Toggle Field
 prev: /docs/fields/color
 next: /docs/fields/group
+consumes:
+  - file: /packages/tinacms/src/plugins/fields/ToggleFieldPlugin.tsx
+    details: Shows toggle field interface and config options
+  - file: /packages/@tinacms/fields/src/Toggle.ts
+    details: Shows toggle field interface and config options
 ---
 
 The `toggle` field represents a true/false toggle. This field is typically used for boolean content values. You could use this to toggle a certain feature on the page on or off.

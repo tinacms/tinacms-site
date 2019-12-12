@@ -4,8 +4,14 @@ date: '2019-12-10T07:00:00.000Z'
 author: Kendall Strautman
 draft: false
 consumes:
-  - file: /packages/@tinacms/api-git/src/server.ts
-    details: Uses tina-git-server
+  - file: /packages/gatsby-tinacms-remark/src/remark-creator-plugin.ts
+    details: Demonstrates use of RemarkCreatorPlugin
+  - file: /packages/gatsby-tinacms-json/src/create-json-plugin.ts
+    details: Demonstrates use of jsonCreatorPlugin
+  - file: /packages/gatsby-tinacms-remark/src/form-actions/delete-action.tsx
+    details: Shows how to add delete action
+  - file: /packages/tinacms/src/components/CreateContent.tsx
+    details: Has image of what the create form looks like
 ---
 
 [Creating](https://tinacms.org/blog/add-and-delete-files/#creating-new-files) and [deleting](https://tinacms.org/blog/add-and-delete-files/#deleting-files) content — two fundamental sides of the CMS coin. This article will cover how to set up this functionality with TinaCMS on a [Gatsby](https://www.gatsbyjs.org/) site. But first, some overview.

@@ -3,6 +3,15 @@ title: Inline Editing
 id: inline-editing
 prev: /docs/gatsby/custom-fields
 next: null
+consumes:
+  - file: /packages/gatsby-tinacms-remark/src/remarkFormHoc.tsx
+    details: Depends on remarkForm & liveRemarkForm hoc in example
+  - file: /packages/gatsby-tinacms-remark/src/useRemarkForm.tsx
+    details: HOC examples depends on useLocalRemarkForm hook
+  - file: /packages/@tinacms/fields/src/Wysiwyg/Wysiwyg.tsx
+    details: TinaField uses Wysiwyg component for inline editing
+  - file: /packages/@tinacms/form-builder/src/Form.tsx
+    details: Depends on TinaField accepting compponent & name, shows example
 ---
 
 **Inline editing** refers to the ability to edit content directly on your site's page, as opposed to editing within the CMS sidebar.

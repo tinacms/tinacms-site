@@ -3,6 +3,13 @@ title: Sidebar
 id: /docs/concepts/sidebar
 prev: /docs/getting-started/how-tina-works
 next: /docs/concepts/forms
+consumes:
+  - file: /packages/tinacms/src/components/Tina.tsx
+    details: Explains setting sidebar position
+  - file: /packages/tinacms/src/components/Tina.tsx
+    details: Explains hiding sidebar in prod
+  - file: /packages/@tinacms/styles/src/Styles.tsx
+    details: Shows the Theme interface
 ---
 
 The **sidebar** is the primary interface in Tina. It is the shell that holds [forms](/docs/concepts/forms 'Tina Concepts: Forms') and [plugins](/docs/concepts/plugins 'Tina Concepts: Plugins').
@@ -55,7 +62,7 @@ You'll want to pass in this option to wherever the plugin is registered in the `
 // gatsby-config.js
 
 {
-  resolve: "@tinacms/gatsby-plugin-tinacms",
+  resolve: "gatsby-plugin-tinacms",
   options: {
     sidebar: {
       hidden: process.env.NODE_ENV === "production"
@@ -96,5 +103,94 @@ class MyApp extends App {
 }
 ```
 
-
 <tip>_Note:_ This is an intermediate workaround that we plan on enhancing further to extract Tina code during production builds.</tip>
+
+## Customizing the Sidebar Theme
+
+We want you to be able to mold Tina to fit your usecase, including the styling of the sidebar UI. You can override the sidebar theme by passing in your own theme object in either a `gatsby-config` file or however sidebar options are passed to Tina.
+
+``` javascript
+// gatsby-config.js
+
+const theme = require("./content/settings/theme.json")
+
+{
+  resolve: 'gatsby-plugin-tinacms',
+  options: {
+    sidebar: {
+      theme: {
+        color: {
+          primary: {
+            light: theme.color.primary,
+            medium: theme.color.primary,
+            dark: theme.color.primary,
+          },
+        },
+      },
+    },
+  },
+}
+```
+
+Below is the interface for the Tina Theme — all the properties to play with.
+
+``` typescript
+interface Theme {
+  color: {
+    primary: {
+      light: string
+      medium: string
+      dark: string
+    }
+    error: {
+      light: string
+      medium: string
+      dark: string
+    }
+    grey: {
+      0: string
+      1: string
+      2: string
+      3: string
+      4: string
+      5: string
+      6: string
+      7: string
+      8: string
+      9: string
+    }
+  }
+  radius: {
+    small: string
+    big: string
+  }
+  padding: {
+    small: string
+    big: string
+  }
+  font: {
+    size: {
+      0: string
+      1: string
+      2: string
+      3: string
+      4: string
+      5: string
+      6: string
+    }
+    weight: {
+      regular: number
+      bold: number
+    }
+  }
+  shadow: {
+    small: string
+    big: string
+  }
+  timing: {
+    short: string
+    medium: string
+    long: string
+  }
+}
+```

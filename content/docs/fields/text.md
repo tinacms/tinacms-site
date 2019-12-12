@@ -1,6 +1,11 @@
 ---
 title: Text Field
 next: /docs/fields/textarea
+consumes:
+  - file: /packages/tinacms/src/plugins/fields/TextFieldPlugin.tsx
+    details: Shows text field interface and config options
+  - file: /packages/@tinacms/fields/src/TextField.ts
+    details: Shows text field interface and config options
 ---
 
 The `text` field represents a single line text input. It should be used for content values that are short strings: for example, a page title.

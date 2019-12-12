@@ -2,6 +2,9 @@
 title: Markdown Field
 prev: /docs/fields/textarea
 next: /docs/fields/date
+consumes:
+  - file: /packages/tinacms/src/plugins/fields/MarkdownFieldPlugin.tsx
+    details: Shows markdown interface and config options
 ---
 
 The `markdown` field represents a chunk of markdown content. This field is typically used for the body of markdown files.

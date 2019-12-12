@@ -2,6 +2,12 @@
 title: JSON in Gatsby
 prev: /docs/gatsby/markdown
 next: /docs/gatsby/configure-git-plugin
+consumes:
+  - file: /packages/gatsby-tinacms-json/src/use-json-form.ts
+    details: Demonstrates use of useLocalJsonForm and JsonForm
+  - file: /packages/@tinacms/core/src/cms-forms/form.ts
+    details: Explains form options interface
+
 ---
 
 ## Editing JSON in Gatsby
@@ -225,6 +231,7 @@ When using a json form with Tina, the shape of the data will initially be create
 The `useLocalJsonForm` hook accepts an optional `config` object for overriding the default configuration. The following properties are accepted:
 
 - `label`: An optional label for the file
+- `actions`: A list of form actions, such as [DeleteAction](https://tinacms.org/docs/gatsby/creating-new-files#deleting-files)
 - `fields`: A list of field definitions
   - `name`: The path to some value in the data being edited. (e.g. `rawJson.title`)
   - `component`: The name of the React component that should be used to edit this field. The default options are: `"text"`, `"textarea"`, `"color"`.

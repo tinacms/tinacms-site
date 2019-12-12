@@ -2,6 +2,9 @@
 title: Fields
 prev: /docs/concepts/forms
 next: /docs/concepts/backends
+consumes:
+  - file: /packages/@tinacms/core/src/cms-forms/form.ts
+    details: Shows Field interface
 ---
 
 A [form](/docs/concepts/forms 'Tina Concepts: Forms') in Tina is made up of one or more **fields**.

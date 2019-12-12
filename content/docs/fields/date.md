@@ -2,6 +2,11 @@
 title: Date & Time Field
 prev: /docs/fields/markdown
 next: /docs/fields/image
+consumes:
+  - file: /packages/tinacms/src/plugins/fields/DateFieldPlugin.tsx
+    details: Documents how to use the date field plugin
+  - file: /packages/tinacms/src/plugins/fields/dateFormat.ts
+    details: References date formatting specifics
 ---
 
 The `date` field represents a date and time picker. It can be used for data values that are valid date strings.
