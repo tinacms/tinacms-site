@@ -36,7 +36,6 @@ const PageForm = {
 Of the three `block templates`, the individual `ContentBlock` might look something like this:
 
 ``` jsx
-
 /*
 **  1. Create the component that will
 **     render the editable data
@@ -66,7 +65,7 @@ export const ContentBlock = {
   ],
 }
 ```
-Think of the `block template` as similar to a [group-list](/docs/fields/group-list) definition. It gives a blueprint for any `block` of this `Content` type. The blueprint tells the `block` how to render its data, what the default state should be, and it also provides form field definitions to Tina to make the data editable.
+Think of the `block template` as similar to a [group-list](/docs/fields/group-list) definition. It gives a blueprint for any `block` of its type. The blueprint tells the `block` how to render its data, what the default state should be, and it also provides form field definitions to Tina to make the data editable.
 
 Within a single `blocks field` definition, there may be many different types of `block templates`, and many instances of each type of `block`.
 
@@ -78,7 +77,6 @@ The `blocks field` allows you to manage all of these `blocks` at once. You can r
  - `component`: The name of the React component that should be used to edit this field. Available field component types are [defined here](/docs/concepts/fields#field-types).
  - `label`: A human readable label for the field. This label displays in the sidebar and is optional. If no label is provided, the sidebar will default to the name.
  - `description`: An optional description of the field.
- - `defaultItem`: ***********TODO -- how does this Default Item work?? ****************
  - `templates`: A list of `block templates` for the `blocks field` to render.
 
  ## Block Template Options
@@ -88,6 +86,8 @@ The `blocks field` allows you to manage all of these `blocks` at once. You can r
  - `fields`: An array of fields that will render as a sub-menu for each block. The fields should map to editable content.
  - `defaultItem`: An optional function to provide the block with default data upon being created.
  - `itemProps`: An optional function that generates `props` for each group item.
+    - `key`: This property is used to optimize the rendering of lists. If rendering is causing problems, use `defaultItem` to generate a new key, as is seen in [this example](http://tinacms.org/docs/fields/group-list#definition). Feel free to reference the [React documentation](https://reactjs.org/docs/lists-and-keys.html) for more on keys and lists.
+    - `label`: A readable label for the new `block`.
 
 
 ## Interfaces
@@ -100,7 +100,6 @@ interface BlocksConfig {
   component: 'blocks'
   label?: string
   description?: string
-  defaultItem: object
   templates: {
     [key: string]: BlockTemplate
 }
@@ -113,19 +112,7 @@ interface BlockTemplate {
   itemProps?: (
     item: object
   ) => {
-    /**
-     * The `key` property used to optimize the rendering of lists.
-     *
-     * If rendering is causing problems, use `defaultItem` to
-     * generate a unique key for the item.
-     *
-     * Reference:
-     * * https://reactjs.org/docs/lists-and-keys.html
-     */
     key?: string
-    /**
-     * The label to be display on the list item.
-     */
     label?: string
   }
 }
