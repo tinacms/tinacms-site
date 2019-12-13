@@ -15,7 +15,7 @@ Use this field when you have multiple groups (with a similar shape) to edit. The
 
 ## Definition
 
-Below is an example of how a `group-list` field could be defined in a JSON form. Read more on passing in JSON form field options [here](/docs/gatsby/json#customizing-json-forms).
+Below is an example of how a `group-list` field could be defined in a JSON form. Read more on passing in JSON form field config options [here](/docs/gatsby/json#customizing-json-forms).
 
 For example, if we had a list of authors in a JSON file:
 
@@ -85,7 +85,7 @@ const formOptions = {
  - `component`: The name of the React component that should be used to edit this field. Available field component types are [defined here](/docs/concepts/fields#field-types)
  - `label`: A human readable label for the field. This label displays in the sidebar and is optional. If no label is provided, the sidebar will default to the name.
  - `description`: An optional description of the field.
- - `fields`: An array of fields that will render as a sub-menu for each group item.
+ - `fields`: An array of fields that will render as a sub-menu for each group item. The fields should map to editable content.
  - `defaultItem`: An optional function that generates `props` for each group item.
  - `itemProps`: An optional function that generates `props` for each group item.
 
