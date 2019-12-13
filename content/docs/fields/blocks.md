@@ -58,13 +58,26 @@ export const ContentBlock = {
   key: "content-block",
   defaultItem: {
     content: "",
-    center: false,
   },
   fields: [
     { name: "content", label: "Content", component: "markdown" },
   ],
 }
 ```
+
+The source data for the `ContentBlock` might look like the example below. When new blocks are added, additional `block` JSON objects will be added to the `blocks` array.:
+
+``` json
+{
+  "blocks": [
+    {
+      "content": "**Billions upon billions** are creatures of the cosmos Orion's sword cosmic fugue at the edge of forever science?",
+      "_template": "ContentBlock"
+    }
+  ]
+}
+```
+
 Think of the `block template` as similar to a [group-list](/docs/fields/group-list) definition. It gives a blueprint for any `block` of its type. The blueprint tells the `block` how to render its data, what the default state should be, and it also provides form field definitions to Tina to make the data editable.
 
 Within a single `blocks field` definition, there may be many different types of `block templates`, and many instances of each type of `block`.
