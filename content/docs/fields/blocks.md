@@ -72,7 +72,6 @@ The source data for the `ContentBlock` might look like the example below. When n
   "blocks": [
     {
       "content": "**Billions upon billions** are creatures of the cosmos Orion's sword cosmic fugue at the edge of forever science?",
-      "_template": "ContentBlock"
     }
   ]
 }
