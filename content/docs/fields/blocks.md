@@ -82,7 +82,7 @@ Think of the `block template` as similar to a [group-list](/docs/fields/group-li
 
 Within a single `blocks field` definition, there may be many different types of `block templates`, and many instances of each type of `block`.
 
-The `blocks field` allows you to manage all of these `blocks` at once. You can rearrange the order, add or delete them, and edit their individual content. It's almost like a group of [`group-lists`](/docs/fields/group-list), where the group items are their own unique components.
+The `blocks field` allows you to manage all of these `blocks` at once. You can rearrange the order, add or delete them, and edit their individual content. It's almost like a collection of [`group-lists`](/docs/fields/group-list), where each `group-list` item is it's own unique `block` component instance.
 
 ## Blocks Field Options
 
