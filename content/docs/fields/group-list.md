@@ -86,8 +86,10 @@ const formOptions = {
  - `label`: A human readable label for the field. This label displays in the sidebar and is optional. If no label is provided, the sidebar will default to the name.
  - `description`: An optional description of the field.
  - `fields`: An array of fields that will render as a sub-menu for each group item. The fields should map to editable content.
- - `defaultItem`: An optional function that generates `props` for each group item.
- - `itemProps`: An optional function that generates `props` for each group item.
+ - `defaultItem`: An optional function to provide the `group-list` item with default data upon being created.
+ - `itemProps`: An optional function that generates `props` for each group item. It takes the item as an argument.
+    - `key`: This property is used to optimize the rendering of lists. If rendering is causing problems, use `defaultItem` to generate a new key, as is seen in [this example](http://tinacms.org/docs/fields/group-list#definition). Feel free to reference the [React documentation](https://reactjs.org/docs/lists-and-keys.html) for more on keys and lists.
+    - `label`: A readable label for the new `group-list` item.
 
  ## Interface
 
@@ -103,19 +105,7 @@ interface GroupListConfig {
   itemProps?(
     item: object
   ): {
-    /**
-     * The `key` property used to optimize the rendering of lists.
-     *
-     * If rendering is causing problems, use `defaultItem` to
-     * generate a unique key for the item.
-     *
-     * Reference:
-     * * https://reactjs.org/docs/lists-and-keys.html
-     */
     key?: string
-    /**
-     * The label to be displayed on the list item.
-     */
     label?: string
   }
 }
