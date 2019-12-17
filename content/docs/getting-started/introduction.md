@@ -23,7 +23,7 @@ Tina currently supports React-based frameworks, including:
 
 To use Tina, you should have a good working knowledge of your JavaScript framework & JAMstack tools of choice.
 
-If you want to get started with some code right away, checkout the [Gatsby Quickstart](/docs/gatsby/quickstart) or [Next.js Overview](/docs/nextjs/overview).
+If you want to get started with some code right away, check out the [Gatsby Quickstart](/docs/gatsby/quickstart) or [Next.js Overview](/docs/nextjs/overview).
 
 ## Core Concepts
 
