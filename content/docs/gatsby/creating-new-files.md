@@ -18,9 +18,9 @@ consumes:
     details: Has image of what the create form looks like
 ---
 
-An integral aspect of content management is the ability to create new content. To create new content files with Tina, you will need to configure and register `content-creator` plugins with the cms.
+An integral aspect of content management is the ability to create new content. To create new content files with Tina, you will need to configure and register `content-creator` plugins with the CMS.
 
-Currently, Tina provides `content-creator` plugins for both markdown and JSON files in **Gatsby projects**. Once registered, actions from these `content-creator` plugins are accessible from the sidebar menu. If you have an idea for a new `content-creator` plugin, [consider contributing!](/docs/contributing/guidelines)
+Currently, Tina provides `content-creator` plugins for both Markdown and JSON files in **Gatsby projects**. Once registered, actions from these `content-creator` plugins are accessible from the sidebar menu. If you have an idea for a new `content-creator` plugin, [consider contributing!](/docs/contributing/guidelines)
 
 ![content-creator-plugin-tinacms](/img/content-creator-ex.jpg)
 
@@ -31,19 +31,19 @@ Currently, Tina provides `content-creator` plugins for both markdown and JSON fi
 1. Add a `content-creator` plugin
 2. Register the plugin with Tina
 3. Configure how content is created by:
-   - Formatting the filename & path
-   - Providing default data (frontmatter, markdown, or json)
+   - Formatting the filename and path
+   - Providing default data (front matter, Markdown, or JSON)
 
 ### Prerequisites
 
 - A Gatsby site [configured with Tina](/docs/gatsby/manual-setup)
-- Content editing with [markdown](/docs/gatsby/markdown) or [JSON](/docs/gatsby/json) set up
+- Content editing with [Markdown](/docs/gatsby/markdown) or [JSON](/docs/gatsby/json) set up
 
 ## 1. Add Content-Creator Plugin
 
 There are two `content-creator` plugins to use with Gatsby.
 
-- `RemarkCreatorPlugin`: Constructs a `content-creator` plugin for markdown files.
+- `RemarkCreatorPlugin`: Constructs a `content-creator` plugin for Markdown files.
 
 ```javascript
 interface RemarkCreatorPlugin{
@@ -55,7 +55,7 @@ interface RemarkCreatorPlugin{
 }
 ```
 
-- `JsonCreatorPlugin`: Contstructs a `content-creator` plugin for JSON files.
+- `JsonCreatorPlugin`: contstructs a `content-creator` plugin for JSON files.
 
 ```typescript
 interface JsonCreatorPlugin {
@@ -70,7 +70,7 @@ These classes need to be instantiated with at least these three things:
 
 - `label`: A simple action label displayed when users interact with the + button in the sidebar.
 - `filename`: A function whose return value should be the path to the new file.
-- `fields`: An array of field objects. Read more on field defitions [here](/docs/concepts/fields).
+- `fields`: An array of field objects. [Read more on field definitions](/docs/concepts/fields).
 
 **Markdown Example**
 
@@ -88,7 +88,7 @@ const CreatePostPlugin = new RemarkCreatorPlugin({
       component: 'text',
       label: 'Filename',
       placeholder: 'content/blog/hello-world/index.md',
-      description: 'The full path to the new markdown file, relative to the repository root.',
+      description: 'The full path to the new Markdown file, relative to the repository root.',
     },
   ],
 })
@@ -132,7 +132,7 @@ const CreatePostPlugin = new JsonCreatorPlugin({
       component: 'text',
       label: 'Filename',
       placeholder: 'content/data/puppies.json',
-      description: 'The full path to the new markdown file, relative to the repository root.',
+      description: 'The full path to the new Markdown file, relative to the repository root.',
     },
   ],
 })
@@ -317,7 +317,7 @@ const CreatePostPlugin = new RemarkCreatorPlugin({
 
 ## 6. Providing a Default Body
 
-The `RemarkCreatorPlugin` function can be given a `body` function that returns the default markdown body. Like the previous two functions, `body` receives the state of the form.
+The `RemarkCreatorPlugin` function can be given a `body` function that returns the default Markdown body. Like the previous two functions, `body` receives the state of the form.
 
 **Example: Title + Date**
 
@@ -340,7 +340,7 @@ const CreatePostPlugin = new RemarkCreatorPlugin({
 
 When you need to provide the option of deleting files in a Gatsby site, the config is much simpler. Instead of adding a `creator` plugin to the sidebar, all we need to do is pass a `delete action` to the form options object and the 'action' will be added to the sidebar.
 
-Head to the template file where you may have a Tina form setup. Read more on setting up forms for content editing with [remark](https://tinacms.org/docs/gatsby/markdown) or [JSON](https://tinacms.org/docs/gatsby/json). First you'll need to import the `DeleteAction` from `gatsby-tinacms-remark`. Then, in your form options object just before the field definitions, add the action.
+Head to the template file where you may have a Tina form setup. Read more on setting up forms for content editing with [remark](https://tinacms.org/docs/gatsby/markdown) or [JSON](https://tinacms.org/docs/gatsby/json). First, you'll need to import the `DeleteAction` from `gatsby-tinacms-remark`. Then, in your form options object just before the field definitions, add the action.
 
 ```javascript
 import { remarkForm, DeleteAction } from 'gatsby-tinacms-remark'

@@ -12,7 +12,7 @@ The `text` field represents a single line text input. It should be used for cont
 
 ## Definition
 
-Below is an example of how a `text` field could be defined in a Gatsby remark form. Read more on passing in form field options [here](/docs/gatsby/markdown#customizing-remark-forms).
+Below is an example of how a `text` field could be defined in a Gatsby remark form. [Read more on passing in form field options](/docs/gatsby/markdown#customizing-remark-forms).
 
 ```javascript
 const BlogPostForm = {

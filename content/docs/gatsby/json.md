@@ -20,13 +20,13 @@ Creating forms for content provided by the [`gatsby-transformer-json`](https://g
 
 **Note on top-level arrays:**
 
-_With Gatsby_, due to the way [`gatsby-transformer-json`](https://www.gatsbyjs.org/packages/gatsby-transformer-json/) handles JSON, Tina cannot accept a top-level array in the json file. For example:
+_With Gatsby_, due to the way [`gatsby-transformer-json`](https://www.gatsbyjs.org/packages/gatsby-transformer-json/) handles JSON, Tina cannot accept a top-level array in the JSON file. For example:
 
 ```json
 [{ "breakfast": "granola" }, { "lunch": "tacos" }, { "dinner": "pizza" }]
 ```
 
-If you need a top-level array of objects like above, we recommend creating separate json files for each object. If you want to keep the data in one file, we recommend creating a single top-level object with the array nested as a value. For example:
+If you need a top-level array of objects like above, we recommend creating separate JSON files for each object. If you want to keep the data in one file, we recommend creating a single top-level object with the array nested as a value. For example:
 
 ```json
 {
@@ -34,7 +34,7 @@ If you need a top-level array of objects like above, we recommend creating separ
 }
 ```
 
-If you adjust your data structure, it may affect the way you query for the file in Gatsby. Read more on the specifics of how json files are transformed to nodes in GraphQL [here](https://www.gatsbyjs.org/packages/gatsby-transformer-json/#parsing-algorithm).
+If you adjust your data structure, it may affect the way you query for the file in Gatsby. [Read more on the specifics of how JSON files are transformed to nodes in GraphQL](https://www.gatsbyjs.org/packages/gatsby-transformer-json/#parsing-algorithm).
 
 ### Installation
 

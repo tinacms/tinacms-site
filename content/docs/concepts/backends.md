@@ -20,7 +20,7 @@ Backend should be implemented as an [express router](https://expressjs.com/en/gu
 
 ## Creating a Custom Backend
 
-<tip> **Please note:** the examples below are considered advanced usecases; it is currently recommended for most folks to use the default Git-based backend.</tip>
+<tip> **Please note:** the examples below are considered advanced use-cases; it is currently recommended for most folks to use the default Git-based backend.</tip>
 
 We recommend that backends that intend to support multiple platforms be broken into two parts:
 
@@ -59,4 +59,4 @@ exports.onCreateDevServer = ({ app }) => {
 }
 ```
 
-In our client-side code, this backend API can now be accessed by making a PUT request to `/my-route-prefix/update-content`. Including a route prefix is optional, but highly recommended to prevent collisions with pages on the user's website.
+In our client-side code, this backend API can now be accessed by making a PUT request to `/my-route-prefix/update-content`. Including a route prefix is optional but highly recommended to prevent collisions with pages on the user's website.
