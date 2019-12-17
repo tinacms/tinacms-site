@@ -5,7 +5,7 @@ prev: null
 next: /docs/contributing/setting-up
 ---
 
-The following is a set of guidelines and tips for contributingto the TinaCMS and its packages. Please also reference this [doc](https://github.com/tinacms/tinacms/blob/master/CONTRIBUTING.md) for the latest info on contributing.
+The following is a set of guidelines and tips for contributing to the TinaCMS and its packages. Please also reference this [doc](https://github.com/tinacms/tinacms/blob/master/CONTRIBUTING.md) for the latest info on contributing.
 
 **If you have questions or need help, please post it on the [Forum](https://community.tinacms.org/).** If you are actively contributing and want to chat with the Tina Team easily, please join our [Slack](https://join.slack.com/t/tinacms/shared_invite/enQtNzgxNDY1OTA3ODI3LTNkNWEwYjQyYTA2ZDZjZGQ2YmI5Y2ZlOWVmMjlkYmYxMzVmNjM0YTk2MWM2MTIzMmMxMDg3NWIxN2EzOWQ0NDM) channel.
 
@@ -29,7 +29,7 @@ TinaCMS uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.
 
 ### Creating Packages
 
-Packages in Tina are organized according to thier name
+Packages in Tina are organized according to their name
 
 | Type                    | Naming Convention  | Example Path            |
 | ----------------------- | ------------------ | ----------------------- |
@@ -39,5 +39,3 @@ Packages in Tina are organized according to thier name
 | Gastby plugins          | `gatsby-tinacms-*` | `gatsby-tinacms-json`   |
 | NextJS package          | `next-tinacms-*`   | `next-tinacms-markdown` |
 | Demo Projects           | `demo-*`           | `demo-gatsby`           |
-
-
