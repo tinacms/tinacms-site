@@ -51,7 +51,7 @@ Want to add your starter? Make a [PR](/docs/contributing/guidelines) to add your
 
 - [Next.js + Tina Overview](/docs/nextjs/overview) — Get started with the documentation
 - Read an in-depth tutorial on [Using TinaCMS with Next.js](/blog/using-tinacms-with-nextjs/)
-- Checkout this sample [Next.js Markdown Blog](https://github.com/kendallstrautman/brevifolia-next-tinacms) with Tina configured for reference.
+- Check out this sample [Next.js Markdown Blog](https://github.com/kendallstrautman/brevifolia-next-tinacms) with Tina configured for reference.
 
 ## Get Involved
 
