@@ -25,15 +25,7 @@ To use Tina, you should have a good working knowledge of your JavaScript framewo
 
 If you want to get started with some code right away, checkout the [Gatsby Quickstart](/docs/gatsby/quickstart) or [Next.js Overview](/docs/nextjs/overview).
 
-## Core Concepts
-
 If you want to dive deep, start by learning more about [how Tina works](/docs/getting-started/how-tina-works) and get familiar with some core concepts.
-
- - [Sidebar](/docs/concepts/sidebar)
- - [Forms](/docs/concepts/forms)
- - [Fields](/docs/concepts/fields)
- - [Backends](/docs/concepts/backends)
- - [Plugins](/docs/concepts/plugins)
 
 ## For Gatsby
 
