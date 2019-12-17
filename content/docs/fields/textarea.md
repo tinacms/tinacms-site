@@ -14,7 +14,7 @@ The `textarea` field represents a multi-line text input. It should be used for c
 
 ## Definition
 
-Below is an example of how a `textarea` field could be defined in a Gatsby remark form. Read more on passing in form field options [here](/docs/gatsby/markdown#customizing-remark-forms).
+Below is an example of how a `textarea` field could be defined in a Gatsby remark form. [Read more on passing in form field options](/docs/gatsby/markdown#customizing-remark-forms).
 
 ```javascript
 const BlogPostForm = {

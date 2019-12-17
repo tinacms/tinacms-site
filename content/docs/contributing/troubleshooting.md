@@ -15,7 +15,7 @@ This section contains solutions to various problems you may run into when develo
 ### I pulled down changes and now my packages won't build
 
 The links between the local packages may have been broken. If this is the problem, then
-running `npm run bootstrap` shoudl fix the issue.
+running `npm run bootstrap` should fix the issue.
 
 #### Example error message
 

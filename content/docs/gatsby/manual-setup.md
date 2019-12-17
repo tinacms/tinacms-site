@@ -10,9 +10,9 @@ consumes:
     details: Depends on Tina component wrapping the root element
 ---
 
-Learn how to setup Tina on an existing Gatsby site.
+Learn how to set up Tina on an existing Gatsby site.
 
-After this guide you will have installed and added the TinaCMS sidebar to your project. However, this won't make your content editable. Go to the [next guide](/docs/gatsby/markdown) to learn how to make content editable.
+After this guide, you will have installed and added the TinaCMS sidebar to your project. However, this won't make your content editable. Go to the [next guide](/docs/gatsby/markdown) to learn how to make content editable.
 
 Assumptions: This guide assumes you have the Gatsby CLI installed, Node & a package manager.
 

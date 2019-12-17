@@ -108,7 +108,7 @@ As mentioned previously, backends in Tina are written as middleware that can be 
 
 ## Hooking up the Frontend
 
-All that's left is to configiure the CMS to consume the git API that now runs on the backend. We can do this easily with the `GitClient` class from the `@tinacms/git-client` package. To get started, install the package:
+All that's left is to configure the CMS to consume the git API that now runs on the backend. We can do this easily with the `GitClient` class from the `@tinacms/git-client` package. To get started, install the package:
 
 ```
 npm install @tinacms/git-client

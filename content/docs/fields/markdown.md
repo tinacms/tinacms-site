@@ -7,11 +7,11 @@ consumes:
     details: Shows markdown interface and config options
 ---
 
-The `markdown` field represents a chunk of markdown content. This field is typically used for the body of markdown files.
+The `markdown` field represents a chunk of Markdown content. This field is typically used for the body of Markdown files.
 
 ## Definition
 
-Below is an example of how a `markdown` field could be defined in a Gatsby remark form. Read more on passing in form field options [here](/docs/gatsby/markdown#customizing-remark-forms).
+Below is an example of how a `markdown` field could be defined in a Gatsby remark form. [Read more on passing in form field options](/docs/gatsby/markdown#customizing-remark-forms).
 
 ```javascript
 const BlogPostForm = {

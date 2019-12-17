@@ -59,7 +59,7 @@ import * as React from 'react'
 import { useCMS, useLocalForm } from 'tinacms'
 
 export default function Page(props) {
-  // grab the instance of the cms to access the registered git API
+  // grab the instance of the CMS to access the registered git API
   let cms = useCMS()
 
   // add a form to the CMS; store form data in `post`

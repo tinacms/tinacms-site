@@ -52,7 +52,7 @@ export default liveRemarkForm(Template)
 
 To facilitate inline editing, you will need to add fields into your layout using the `TinaField` component. The `TinaField`component should wrap the HTML that outputs the contents of the field it edits. When **editing mode** is activated, the content will become editable.
 
-In the following example, we wrap the `section` that renders the markdown content in a `TinaField that uses the Wysiwyg` component. Note that the field being edited by `TinaField` does **not** have to be the same as the field being rendered in its child components.
+In the following example, we wrap the `section` that renders the Markdown content in a `TinaField that uses the Wysiwyg` component. Note that the field being edited by `TinaField` does **not** have to be the same as the field being rendered in its child components.
 
 **Before**
 

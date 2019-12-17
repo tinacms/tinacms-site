@@ -13,7 +13,7 @@ The `toggle` field represents a true/false toggle. This field is typically used 
 
 ## Definition
 
-Below is an example of how a `toggle` field could be defined in a Gatsby remark form. Read more on passing in form field options [here](/docs/gatsby/markdown#customizing-remark-forms).
+Below is an example of how a `toggle` field could be defined in a Gatsby remark form. [Read more on passing in form field options](/docs/gatsby/markdown#customizing-remark-forms).
 
 ```javascript
 const BlogPostForm = {
