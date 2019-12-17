@@ -30,7 +30,7 @@ Most of the time, you will be using predefined forms provided by Tina. If you're
 
 ## Creating Custom Forms
 
-If you want to make custom forms, they can be created by invoking the `useForm`, `useLocalForm`, or `useGlobalForm` hooks. They are incredibly similar, the main different being that `useLocalForm` & `useGlobalForm` will actually register the forms as plugins, and `useForm` does not.
+If you want to make custom forms, they can be created by invoking the `useForm`, `useLocalForm`, or `useGlobalForm` hooks. They are incredibly similar, the main difference being that `useLocalForm` & `useGlobalForm` will actually register the forms as plugins, and `useForm` does not.
 
 <tip>**Please note:** creating custom forms is considered an advanced usecase. It is recommended for most folks to use Tina's predefined forms mentioned above.</tip>
 
