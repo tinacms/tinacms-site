@@ -43,7 +43,7 @@ If you want to dive deep, start by learning more about [how Tina works](/docs/ge
 **Gatsby Starters**
 - [Gatsby Blog Starter](https://github.com/tinacms/gatsby-starter-tinacms) with Tina — The classic Gatsby starter, but Tinified.
 - [Tina Grande](https://github.com/tinacms/tina-starter-grande) — A more advanced starter to showcase the power of Tina.
-- [Tina Brevifolia](https://github.com/kendallstrautman/brevifolia-gatsby-tinacms) — A markdown-based blog with minimalist design and Tina for editing.
+- [Tina Brevifolia](https://github.com/kendallstrautman/brevifolia-gatsby-tinacms) — A Markdown-based blog with minimalist design and Tina for editing.
 
 Want to add your starter? Make a [PR](/docs/contributing/guidelines) to add your Tina site to this list.
 
