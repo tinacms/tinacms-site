@@ -1,37 +1,58 @@
 ---
-title: Tina Docs
-id: index
+title: Tina is Not a CMS
+id: introduction
 prev: null
-next: /getting-started/installation
+next: /docs/getting-started/how-tina-works
 ---
 
-Tina is a lightweight but powerful toolkit for creating a site editing ui with javascript components. Tina surfaces superpowers for dev's to create, expand on and customize a simple yet intuitive ui for editing content.
+Tina is a **lightweight but powerful toolkit** for creating a content editing interface with JavaScript components. Tina surfaces superpowers for developers to create an intuitive UI for real-time content editing, built directly into their website.
 
-Tina is optimized for nextgen JAMstack tools. It is based in javascript and is extensible enough to be configured with many different frameworks. Right now we have explored using Tina with Gatsby, Create-React-App & Next.js, with plans to dive into Vue.
+## The Next Generation of Content Management
 
-![tina-gif](/img/temporary_show_tina.gif)
+![tina-gif](https://res.cloudinary.com/forestry-demo/video/upload/du_16,w_700,e_loop/v1571159974/tina-hero-demo.gif)
+
+Tina is optimized for next-gen JAMstack tools. It is written in JavaScript and easily adapted to multiple different frameworks.
+
+Tina currently supports React-based frameworks, including:
+
+- Create-React-App
+- Gatsby
+- NextJS
 
 ## Get Started
 
-Depending on your tools, there are a few different flows mapped out for using Tina with either your existing project or to play around on a starter
+To use Tina, you should have a good working knowledge of your JavaScript framework & JAMstack tools of choice.
 
-#### With Gatsby
+If you want to dive deep, start by learning more about [how Tina works](/docs/getting-started/how-tina-works) and get familiar with some core concepts. If you want to get started with some code right away, checkout the Gatsby or Next.js starters below.
 
-1. [Use the starter](/docs/gatsby/quickstart)
-2. [Add to existing site](gatsby/manual-setup)
+## Core Concepts
+ - [Sidebar](/docs/concepts/sidebar)
+ - [Forms](/docs/concepts/forms)
+ - [Fields](/docs/concepts/fields)
+ - [Backends](/docs/concepts/backends)
+ - [Plugins](/docs/concepts/plugins)
 
-#### With Create-React-App
+## For Gatsby
 
-_Coming soon_
+- [Quickstart](/docs/gatsby/quickstart) with a Tina Starter
+- [Manual Setup](/docs/gatsby/manual-setup) for an existing site
 
-#### With Next.js
+#### Gatsby Starters
 
-_Coming soon_
+- [Gatsby Blog Starter](https://github.com/tinacms/gatsby-starter-tinacms) with Tina — The classic Gatsby starter, but Tinified.
+- [Tina Grande](https://github.com/tinacms/tina-starter-grande) — A more advanced starter to showcase the power of Tina.
+- [Tina Brevifolia](https://github.com/kendallstrautman/brevifolia-gatsby-tinacms) — A markdown-based blog with minimalist design and Tina for editing.
 
-## Contributing
+Want to add your starter? Make a [PR](/docs/contributing/guidelines) to add your Tina site to this list.
 
-Want to get involved? Please visit our [Contributing]() section in our docs to learn more and get help with troubleshooting.
+## For Next.js
 
-## About
+- [Next.js + Tina Overview](/docs/nextjs/overview) — Get started with the documentation
+- [Blog: Using TinaCMS with Next.js](/blog/using-tinacms-with-nextjs/)
+- A sample [Next.js Markdown Blog](https://github.com/kendallstrautman/brevifolia-next-tinacms) with Tina configured for reference
 
-Tina started as a side project for some engineers at [Forestry.io](https://forestry.io/), what was a cool idea has turned into this site editing schema that could change the way content is edited on the web. Our vision is to...
+## Get Involved
+
+Want to help out with Tina's development? Please visit our [Contributing](/docs/contributing/guidelines) section in our docs to learn more.
+
+Looking for help with Tina, or want to stay on top of the latest developments? Checkout the [Tina Community Forum](https://community.tinacms.org/) to get answers, help, and llama-humor.
