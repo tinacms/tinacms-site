@@ -25,12 +25,7 @@ const DocsTemplate = ({ data, setIsEditing, isEditing }) => {
   const prevPage = getPageById(sectionList.edges, prev)
   const nextPage = getPageById(sectionList.edges, next)
   const sidebar = useSidebar()
-  useEffect(() => {
-    //redirect away from index.md since the introduction doc is main for now
-    if (data.markdownRemark.fileRelativePath === '/content/docs/index.md') {
-      navigate('/docs/getting-started/introduction')
-    }
-  }, [])
+
   return (
     <DocsLayout sidebarNav={sectionList}>
       <Page docsPage>
