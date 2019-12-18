@@ -31,7 +31,7 @@ If this isn't something in which you'd like to manage, you'll eventually be able
 
 ### Authorization 👤
 
-Some services (like Gatsby Previews) will allow you to password protect your environment. If you're hosting somewhere else, you likely don't want strangers accessing your site and making commits. One of the features that `Tina Teams` provides is an **authentication layer over your cloud development environment**. Users will first need to log in before accessing your cloud environment.
+Some services (like Gatsby Previews) will allow you to password-protect your environment. If you're hosting somewhere else, you likely don't want strangers accessing your site and making commits. One of the features that `Tina Teams` provides is an **authentication layer over your cloud development environment**. Users will first need to log in before accessing your cloud environment.
 
 ### User management 👨 👩
 
