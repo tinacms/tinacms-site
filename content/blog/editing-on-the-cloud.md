@@ -33,7 +33,7 @@ If this isn't something in which you'd like to manage, you'll eventually be able
 
 Some services (like Gatsby Previews) will allow you to password protect your environment. If you're hosting somewhere else, you likely don't want strangers accessing your site and making commits. One of the features that `Tina Teams` provides is an **authentication layer over your cloud development environment**. Users will first need to log in before accessing your cloud environment.
 
-### User management 👨 👩
+### User Management 👨 👩
 
 With Tina Teams, users can have **custom roles assigned to each user**, which can be referenced within your site.
 Maybe you have an external contributor who can only access a specific blog post? An editor who can create, but not delete pages? The implementation is up to you and your site's needs.
