@@ -25,7 +25,7 @@ The choice is up to you, depending on your needs!
 
 You can fire up a development environment using one of these services and have users start making commits from the cloud.
 
-If this isn't something in which you'd like to manage, you'll eventually be able to host your staging environment through us on `Tina Teams`.
+If this isn't something that you'd like to manage, you'll eventually be able to host your staging environment through us on `Tina Teams`.
 
 <tip>Depending on your use-case, hosting might be all that you'll need to have your editors editing on the cloud. Otherwise, you might consider using `Tina Teams` for some additional functionality detailed below.</tip>
 
