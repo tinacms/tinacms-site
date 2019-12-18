@@ -20,6 +20,4 @@ Installing the exporter WordPress plugin is like most other plugins. Download it
 
 ## Using the plugin
 
-## 
-
 ## Getting the content into Gatsby
