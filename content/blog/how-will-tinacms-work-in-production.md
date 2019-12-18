@@ -1,7 +1,7 @@
 ---
 title: How can my editors edit a TinaCMS site?
 date: '2019-12-17T20:09:31.626Z'
-draft: true
+draft: false
 author: James O'Halloran
 ---
 
@@ -27,7 +27,7 @@ You can fire up a development environment using one of these services and have u
 
 If this isn't something in which you'd like to manage, You'll eventually be able to host your staging environment through us on `Tina Teams`.
 
-<tip>Dependencing on your use-case, this might be all that you'll need to have your editors editing on the cloud. Otherwise, you might consider using `Tina Teams` for some additional functionality detailed below.</tip>
+<tip>Depending on your use-case, hosting might be all that you'll need to have your editors editing on the cloud. Otherwise, you might consider using `Tina Teams` for some additional functionality detailed below.</tip>
 
 ### Authorization 👤
 
