@@ -12,7 +12,7 @@ We've been teasing [Tina Teams](/teams 'Tina Teams') as the solution for this. W
 ### Overview
 
 Typically, Tina will be hidden on your live site, and will only be accessible locally, or on your **cloud development environment**.
-If your using git as your backend, you could either host your master branch on the cloud development server (and have all commits deployed to your live site), or you could host another staging branch.
+If you're using git as your backend, you could either host your master branch on the cloud development server (and have all commits deployed to your live site), or you could host another staging branch.
 
 ### Hosting ☁️
 
@@ -25,7 +25,7 @@ The choice is up to you, depending on your needs!
 
 You can fire up a development environment using one of these services and have users start making commits from the cloud.
 
-If this isn't something in which you'd like to manage, You'll eventually be able to host your staging environment through us on `Tina Teams`.
+If this isn't something in which you'd like to manage, you'll eventually be able to host your staging environment through us on `Tina Teams`.
 
 <tip>Depending on your use-case, hosting might be all that you'll need to have your editors editing on the cloud. Otherwise, you might consider using `Tina Teams` for some additional functionality detailed below.</tip>
 
@@ -36,7 +36,7 @@ Some services (like Gatsby Previews) will allow you to password protect your env
 ### User management 👨 👩
 
 With Tina Teams, users can have **custom roles assigned to each user**, which can be referenced within your site.
-Maybe you have an external contributor who can only access a specific blog post? An editor who can create, but not delete pages? The implementation is up to you, and your site's needs.
+Maybe you have an external contributor who can only access a specific blog post? An editor who can create, but not delete pages? The implementation is up to you and your site's needs.
 
 ### Commit Authoring 🗣️
 
@@ -45,11 +45,11 @@ Since users will need to authenticate with Tina Teams, we can **tie commits back
 
 ### In Summary
 
-Not all sites fit into the same box, so we're giving the flexibilty to manage your cloud development environment however makes sense for you. Running a development environment on `Gatsby Previews` without `Tina Teams` will work for some, and certain users may require deeper user management with `Tina Teams`.
+Not all sites fit into the same box, so we're giving the flexibility to manage your cloud development environment however makes sense for you. Running a development environment on `Gatsby Previews` without `Tina Teams` will work for some, and certain users may require deeper user management with `Tina Teams`.
 
 <br />
 
-We've also got some other "down the road "features planned which will make it much easier to work alongside other team members on your cloud environment: E.g Locking files when being edited by another user. Stay tuned!
+We've also got some other "down the road "features planned which will make it much easier to work alongside other team members on your cloud environment: e.g Locking files when being edited by another user. Stay tuned!
 
 <br />
 
