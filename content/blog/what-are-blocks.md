@@ -63,7 +63,7 @@ Let’s say, instead of a single name, we’re storing a list of names like this
     },
     {
       "first": "Nolan",
-      "last": "Phillips
+      "last": "Phillips"
     }
   ]
 }
