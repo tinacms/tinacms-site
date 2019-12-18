@@ -25,20 +25,22 @@ The choice is up to you, depending on your needs!
 
 You can fire up a development environment using one of these services and have users start making commits from the cloud.
 
-If this isn't something that you'd like to manage, you'll eventually be able to host your staging environment through us on `Tina Teams`.
+<tip>If this isn't something that you'd like to manage, you'll eventually be able to host your staging environment through us on `Tina Teams`.</tip>
 
-<tip>Depending on your use-case, hosting might be all that you'll need to have your editors editing on the cloud. Otherwise, you might consider using `Tina Teams` for some additional functionality detailed below.</tip>
+### So, where does Tina Teams fit in?
 
-### Authorization 👤
+Depending on your use-case, hosting might be all that you'll need to have your editors editing on the cloud. Otherwise, you might consider using `Tina Teams` for some additional functionality detailed below...
+
+##### Authorization 👤
 
 Some services (like Gatsby Previews) will allow you to password protect your environment. If you're hosting somewhere else, you likely don't want strangers accessing your site and making commits. One of the features that `Tina Teams` provides is an **authentication layer over your cloud development environment**. Users will first need to log in before accessing your cloud environment.
 
-### User Management 👨 👩
+##### User Management 👨 👩
 
 With Tina Teams, users can have **custom roles assigned to each user**, which can be referenced within your site.
 Maybe you have an external contributor who can only access a specific blog post? An editor who can create, but not delete pages? The implementation is up to you and your site's needs.
 
-### Commit Authoring 🗣️
+##### Commit Authoring 🗣️
 
 Since users will need to authenticate with Tina Teams, we can **tie commits back to the logged-in user**, so you can always find out who put that llama image in your blog post (so you can thank them, of course).
 ![tinacms-add-new-file-gif](/img/rico-replacement.jpg)
