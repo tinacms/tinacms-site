@@ -5,7 +5,7 @@ draft: true
 author: DJ Walker
 ---
 
-> There are only two hard things in Computer Science: cache invalidation and naming things.
+_"There are only two hard things in Computer Science: cache invalidation and naming things."_
 
 This axiom, [attributed to Phil Karlton](http://www.tbray.org/ongoing/When/200x/2005/12/23/UPI), resonates with anyone who has spent any amount of time working with software. The post you're currently reading is, in some ways, about the latter problem.
 
