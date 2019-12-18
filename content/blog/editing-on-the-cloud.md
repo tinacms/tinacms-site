@@ -12,7 +12,7 @@ We've been teasing [Tina Teams](/teams 'Tina Teams') as the solution for this. W
 ### Overview
 
 Typically, Tina will be hidden on your live site, and will only be accessible locally, or on your **cloud development environment**.
-If your using git as your backend, you could either host your master branch on the cloud development server (and have all commits deployed to your live site), or you could host another staging branch.
+If you're using git as your backend, you could either host your master branch on the cloud development server (and have all commits deployed to your live site), or you could host another staging branch.
 
 ### Hosting ☁️
 
