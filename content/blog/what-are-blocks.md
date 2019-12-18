@@ -86,7 +86,7 @@ Like the **Group List**, the **Blocks** structure represents multiple entities. 
 
 In practice, there are a couple use cases uniquely suited to Blocks.
 
-The primary motivation for the Blocks-style data structure was to facilitate a page builder experience. In our Tina Grande starter, a page can be strung together by adding different entities to a Blocks field, each one containing fields that configure a different part of the page.
+The primary motivation for the Blocks-style data structure was to facilitate a page builder experience. In our [Tina Grande starter](https://github.com/tinacms/tina-starter-grande), a page can be strung together by adding different entities to a Blocks field, each one containing fields that configure a different part of the page.
 
 Another way Grande makes use of Blocks is in its embedded form builder. Like the page builder, Grande approaches forms as a sequence of loosely-related, complex components (in this case, the form fields.)
 
