@@ -1,7 +1,7 @@
 ---
 title: What are Blocks?
 date: '2019-12-18T03:15:26.426Z'
-draft: true
+draft: false
 author: DJ Walker
 ---
 
