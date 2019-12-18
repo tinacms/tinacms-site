@@ -15,7 +15,7 @@ One concept that we were eager to introduce to Tina is something we refer to as 
 
 ## Simple Fields and Compound Fields
 
-The field types we’ve implemented in Tina can be broadly grouped into two categories: **simple fields** and **compound fields**. The designation for whether a field is simple or complex has to do with the kind of data that the field represents.
+The field types we’ve implemented in Tina can be broadly grouped into two categories: **simple fields** and **compound fields**. The designation for whether a field is simple or compound has to do with the kind of data that the field represents.
 
 **Simple fields** are fields for data that can be represented as a single value, like a string or number. In computer science lingo, these are referred to as [scalar values](https://softwareengineering.stackexchange.com/questions/238033/what-does-it-mean-when-data-is-scalar). An example of simple fields in Tina would be the text field, color field, or toggle. Even the [markdown WYSIWYG](/docs/fields/markdown) can be considered a simple field in spite of its complex frontend behavior because the value exported from the field is just a big block of text.
 
