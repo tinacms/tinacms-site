@@ -19,7 +19,7 @@ Nope! You'll be able to setup a **cloud development environment** for your Tina 
 
 Part of what makes Tina great is that it gives the developer control. It's important for us to extend this control into the Cloud editing experience. For this reason, we've designed it so that you can **host your cloud development environment wherever you like.**
 
-Already have a Gatsby Cloud plan?
+Already have a [Gatsby Cloud](https://www.gatsbyjs.com/cloud/) plan?
 Want to host a small site under [Heroku's](https://www.heroku.com) free tier?
 
 The choice is up to you, depending on your needs!
