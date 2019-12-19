@@ -38,7 +38,7 @@ const BlogPage = ({ data, ...props } )=> {
           <div class="prev-next">
           {!isFirst && (
             <Link to={prevPage} rel="prev">
-              <p>← Previous</p>
+              <p>← Newer</p>
             </Link>
           )}
           {!isLast && (
