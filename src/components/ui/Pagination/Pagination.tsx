@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
-import { TocItem } from 'interfaces/nodes'
+
 import { Text, Heading } from 'components/foundations'
 import { space, breakpoints, colors } from 'utils/variables'
 
