@@ -9,7 +9,7 @@ TinaCMS allows you to build live-editing functionality directly into your site. 
 
 ![tina-diagram](/img/how_tina_works_asset.png)
 
-With most JAMstack sites, there are various transformations happening which transform your editor's source content (e.g markdown) into the generated html on your live site. Because of this, Tina will usually need to be run in a live development environment.
+With most JAMstack sites, there are various transformations happening that transform your editor's source content (e.g markdown) into the generated HTML on your live site. These transformations happen either at build time or while running a development server. For Tina to give your editors a live, hot-reloading experience **that also transforms content**, it needs to be run in a _live development environment_.
 
 > So, do my editors need to run a local dev server to edit a TinaCMS site?
 
