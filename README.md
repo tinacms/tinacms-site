@@ -4,16 +4,16 @@ This extends the [Grundgesetz Skeleton](https://github.com/kata-ai/grundgesetz-s
 
 ### **Making new doc files**
 
-When creating a new file, enter the full path (not just the title) to put it in a subdir that corresponds with the table of contents. You will also need to manually add the directory(if its new) and the file to the toc.json to get it to show in the toc component. This is TBD until we get the jsonForm to work with an array of objects. 
+When creating a new file, enter the full path (not just the title) to put it in a subdir that corresponds with the table of contents. You will also need to manually add the directory(if its new) and the file to the toc.json to get it to show in the toc component. This is TBD until we get the jsonForm to work with an array of objects.
 
 ### **Front Matter Weirdness**
 
 The `next` and `prev` front matter values for the docs need to match the `id` from toc.json
 
-
 # Notes from the theme creator
 
 ## Project Structure
+
 The project structure of Grundgesetz is specifically designed for easy maintenance of documentation and the site's code.
 
 ```
@@ -111,7 +111,9 @@ Writing documentation in Gatsby is done in Markdown. Grundgesetz uses Remark to 
 
 We provide the following Markdown front matter in each documentation page.
 
-- `id` - A unique identifier representing the markdown page. This will be referenced in `toc.json` when getting the links for the navigation sidebar, as well as the `prev` and `next` items of the pagination.
+- `id` - A unique identifier representing the markdown page. This will be referenced in `toc.json` when getting the links for the navigation sidebar, as well as the `prev` and `next` items of the pagination. **Note that the ID must be unique between pages, as this will also be used to look up the table of contents.**
+- `permalink` - Optional. By default Grundgesetz will generate page paths relative to the path of the Markdown file. If you want to override the output path for a page, add this frontmatter with the **absolute** path of the output.
 - `title` - The title of the page.
+- `subtitle` - Optional. The subtitle of the page (if any)
 - `prev` - Optional. This contains the `id` of the page that appears on the "Previous Page" navigation item.
 - `next` - Optional. This contains the `id` of the page that appears on the "Next Page" navigation item.

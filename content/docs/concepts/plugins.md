@@ -13,14 +13,14 @@ consumes:
     details: Describes Plugin Manager - add / remove / all methods
 ---
 
-**Plugins** allow you to extend the functionality of the CMS. In fact, the plugin API is currently being used to add features to the core CMS, including:
+**Plugins** allow you to extend the functionality of the CMS. The plugin API is currently being used to add features to the core CMS, including:
 
 - [Form Fields](https://tinacms.org/docs/concepts/fields)
 - [Global and Local Forms](https://tinacms.org/docs/concepts/forms)
 - [Content Creator Plugins](https://tinacms.org/docs/gatsby/creating-new-files#1-add-content-creator-plugin)
 - Screen Plugins
 
-<tip>**Please note:** creating or consuming custom plugins is considered an advanced usecase. It is recommended for most folks to use Tina's predefined plugins mentioned above.</tip>
+<tip>**Please note:** creating or consuming custom plugins is considered an advanced use-case. It is recommended for most folks to use Tina's predefined plugins mentioned above.</tip>
 
 ## Defining Plugins
 
@@ -39,7 +39,7 @@ interface Plugin {
 
 ## Adding and Removing Plugins
 
-The CMS instance has a Plugin Manager that surfaces `add`,`remove` and other methods.
+The CMS instance has a Plugin Manager that surfaces `add`, `remove` and other methods.
 
 ```javascript
 cms.plugins.add({
