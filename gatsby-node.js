@@ -139,7 +139,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const blogPosts = allMarkdown.data.allMarkdownRemark.edges.filter(
     ({ node }) => node.fields.section === 'blog'
   )
-  const postsPerPage = 10
+  const postsPerPage = 8
   const numPages = Math.ceil(blogPosts.length / postsPerPage)
   console.log(Array.from({ length: numPages }))
   Array.from({ length: numPages }).forEach((_, i) => {
