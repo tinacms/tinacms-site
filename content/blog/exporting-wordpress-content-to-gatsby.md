@@ -18,11 +18,9 @@ Gatsby can include content from many sources, including from existing WordPress 
 
 Installing the exporter WordPress plugin is like most other plugins.
 
-#1 [Download the latest release](https://github.com/tinacms/wp-gatsby-exporter/releases/latest/download/wp-gatsby-exporter.zip).
-
-#2 Unzip the files into the WordPress plugins directory (usually wp-content/plugins).
-
-#3 Activate the plugin from the WordPress admin.
+1. [Download the latest release](https://github.com/tinacms/wp-gatsby-exporter/releases/latest/download/wp-gatsby-exporter.zip).
+2. Unzip the files into the WordPress plugins directory (usually wp-content/plugins).
+3. Activate the plugin from the WordPress admin.
 
 ## Using the plugin
 
@@ -33,6 +31,24 @@ The form has several options that allow you to customize the exported content so
 The plugin also provides a command to be run on the CLI using [WP-CLI](https://wp-cli.org/). This option works best for WordPress sites with a lot of content and gets around PHP limitations like timeouts. Check out more details about CLI usage in the [plugin's readme file](https://github.com/tinacms/wp-gatsby-exporter/blob/master/README.md).
 
 ## Getting exported content into Gatsby blog starter
+
+[Gatsby's blog starter](https://github.com/gatsbyjs/gatsby-starter-blog) is an easy way to see how Markdown can be used with Gatsby. Checkout the starter's [quick start guide](https://github.com/gatsbyjs/gatsby-starter-blog#-quick-start) to get it up and running.
+
+To get your exported WordPress content in place:
+
+1. Unzip the exported Markdown files into the "content/blog" directory of the starter.
+2. Place the "uploads" directory from the WordPress export in the "content" directory of the starter.
+3. Add the following under the plugins section of gatsby-config.js so that any images and uploads exported from WordPress can be found by Gatsby:
+```
+{
+  resolve: `gatsby-source-filesystem`,
+  options: {
+    path: `${__dirname}/content/uploads`,
+    name: `uploads`,
+  },
+},
+
+```
 
 ## Getting exported content into Tina Grande
 
@@ -52,3 +68,5 @@ and on the form's "Convert fields to array" we'll add (the original name of the 
 ```
 author
 ```
+
+## Next steps with your Gatsby site with TinaCMS
