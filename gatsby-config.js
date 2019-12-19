@@ -161,7 +161,8 @@ module.exports = {
       slack:
         'https://join.slack.com/t/tinacms/shared_invite/enQtNzgxNDY1OTA3ODI3LTNkNWEwYjQyYTA2ZDZjZGQ2YmI5Y2ZlOWVmMjlkYmYxMzVmNjM0YTk2MWM2MTIzMmMxMDg3NWIxN2EzOWQ0NDM',
     },
-    teamsWarning: 'Tina Teams  is the official cloud hosting service for Tina CMS , currently in early private access.',
+    teamsWarning:
+      'Tina Teams provides user management features for sites running TinaCMS in the cloud. It is currently in early private access.',
     author: {
       name: 'Resi Respati',
       url: 'https://resir014.xyz',

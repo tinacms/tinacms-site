@@ -228,12 +228,12 @@
       {
         "id": "/docs/teams/cli/contributing",
         "slug": "/docs/teams/cli/contributing",
-        "title": "Contributing"
+        "title": "CLI Contributing"
       },
       {
-        "id": "/docs/teams/cli/advanced",
-        "slug": "/docs/teams/cli/advanced",
-        "title": "Advanced Configuration"
+        "id": "/docs/teams/gatsby/introduction",
+        "slug": "/docs/teams/gatsby/introduction",
+        "title": "Teams with Gatsby"
       }
     ]
   }

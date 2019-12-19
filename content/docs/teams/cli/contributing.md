@@ -1,10 +1,11 @@
 ---
-title: Contributing
+title: CLI Contributing
 id: /docs/teams/cli/contributing
 prev: /docs/teams/cli/commands
-next: /docs/teams/cli/advanced
+next: /docs/teams/gatsby/introduction
 ---
-The Tina Teams API is closed source, however the CLI is [open-source](https://github.com/tinacms/cli "TinaCMS CLI").
+
+The Tina Teams API is closed source, however the CLI is [open-source](https://github.com/tinacms/cli 'TinaCMS CLI').
 
 ## Development
 
@@ -28,9 +29,9 @@ To access some third-party services, you will need to add a .env file. Use the .
 
 ### Creating a Github app
 
-To test the Github APP API locally, you can [create a Github app](https://github.com/settings/apps/new "Create a Github app")  
-**Homepage URL:** http://localhost:4568  
-**User authorization callback URL:** http://localhost:4568/github/callback **Setup URL:** http://localhost:4568/github/installation-callback  
+To test the Github APP API locally, you can [create a Github app](https://github.com/settings/apps/new 'Create a Github app')
+**Homepage URL:** http://localhost:4568
+**User authorization callback URL:** http://localhost:4568/github/callback **Setup URL:** http://localhost:4568/github/installation-callback
 **Redirect on update:** TRUE
 
 Then click "Generate a Private key".
