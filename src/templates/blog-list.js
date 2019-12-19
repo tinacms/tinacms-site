@@ -1,5 +1,5 @@
-import React from 'react'
-import { graphql, Link } from 'gatsby'
+import React, { useState } from 'react'
+import { graphql, Link, navigate } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import { withPlugin } from 'react-tinacms'
 import { createRemarkButton } from 'gatsby-tinacms-remark'
@@ -14,10 +14,19 @@ const BlogPage = ({ data, ...props } )=> {
   const { currentPage, numPages } = props.pageContext
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
-  const prevIndex = currentPage - 1
-  const nextIndex = currentPage + 1
   const prevPage = currentPage - 1 === 1 ? '/blog/' : `/blog/page/${(currentPage - 1).toString()}`
   const nextPage = `/blog/page/${(currentPage + 1).toString()}`
+  const [ selectValue, setSelectValue ] = useState(currentPage)
+  function handleSelectChange(e) {
+    e.preventDefault()
+    const pageNumber = e.target.value
+    setSelectValue(pageNumber)
+    console.log(pageNumber)
+    if (pageNumber === '1')
+      return navigate('/blog')
+
+    navigate(`blog/page/${pageNumber}`)
+  }
   return (
     <IndexLayout>
       <Helmet>
@@ -26,65 +35,38 @@ const BlogPage = ({ data, ...props } )=> {
       <BlogList posts={data.allMarkdownRemark.edges} />
       <FooterWrapper>
         <Pagination>
+          <div class="prev-next">
           {!isFirst && (
             <Link to={prevPage} rel="prev">
-              ← Previous
+              <p>← Previous</p>
             </Link>
           )}
-          <div class="list-numbers">
-            <ul>
-              { numPages < 5 ? Array.from({ length: numPages }, (_, i) => (
-                <li
-                  key={`pagination-number${i + 1}`}
-                  class={`${i === currentPage - 1 && 'current-li'}`}
-                >
-                  <Link
-                    to={`/blog/page/${i === 0 ? '' : i + 1}`}
-                  >
-                    {i + 1}
-                  </Link>
-                </li>
-              )) :
-                <>
-                  {!isFirst && (
-                    <>
-                      { currentPage !== 2 && <span class="page-dots">...</span>}
-                      <li key={`pagination-number${prevIndex}`}>
-                        <Link to={`/blog/${prevIndex === 1 ? '' : 'page/' + prevIndex }`}>
-                          {prevIndex.toString()}
-                        </Link>
-                      </li>
-                    </>
-                  )}
-                  <li
-                    key={`pagination-number${currentPage}`}
-                    class="current-li"
-                  >
-                    <Link
-                      to={`/blog/${currentPage === 1 ? '' : 'page/' + currentPage }`}
-                    >
-                      {currentPage.toString()}
-                    </Link>
-                  </li>
-                  {!isLast && (
-                    <>
-                      <li key={`pagination-number${nextIndex}`}>
-                        <Link to={`/blog/page/${nextIndex}`}>
-                            {nextIndex.toString()}
-                          </Link>
-                      </li>
-                      { currentPage !== numPages.length - 1 && <span class="page-dots">...</span>}
-                    </>
-                  )}
-                </>
-              }
-            </ul>
-          </div>
           {!isLast && (
             <Link to={nextPage} rel="next">
-              Next →
+              <p>Next →</p>
             </Link>
           )}
+          </div>
+          <div class="list-numbers">
+            <ul>
+              <PaginationSelect>
+                <p>Page</p>
+                  <div class="select">
+                    <select value={selectValue} onChange={handleSelectChange}>
+                      {Array.from({length: numPages}, (_, i) => (
+                        <option value={i + 1}>
+                          {i + 1}
+                        </option>
+                      ))}
+                    </select>
+                    <svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24">
+                      <path d="M11.178,19.569C11.364,19.839,11.672,20,12,20s0.636-0.161,0.822-0.431l9-13c0.212-0.306,0.236-0.704,0.063-1.033 C21.713,5.207,21.372,5,21,5H3C2.628,5,2.287,5.207,2.114,5.536C1.941,5.865,1.966,6.263,2.178,6.569L11.178,19.569z"/>
+                    </svg>
+                  </div>
+                <p> of {numPages}</p>
+              </PaginationSelect>
+            </ul>
+          </div>
         </Pagination>
       </FooterWrapper>
     </IndexLayout>
@@ -148,6 +130,16 @@ const Pagination = styled.div`
   padding: 0 32px;
   justify-content: space-between;
   align-items: center;
+  div.prev-next {
+    display: flex;
+    align-items: center;
+    p {
+      margin-right: 24px;
+    }
+  }
+  p {
+    margin-bottom: 0;
+  }
   div.list-numbers {
     display: flex;
     align-items: center;
@@ -185,4 +177,38 @@ const Pagination = styled.div`
  @media(min-width: 704px) {
    padding: 0;
  }
+`
+
+const PaginationSelect = styled.div`
+  display: flex;
+  div.select {
+    border: 1px solid ${colors.seafoam};
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 2px 5px 3px 5px;
+    margin: 0 8px;
+    position: relative;
+  }
+  select {
+    margin-right: 3px;
+    padding-right: 6px;
+    -moz-appearance: none;
+    border: medium none;
+    font-size: 18px;
+  }
+  option {
+    color: inherit;
+    padding: 8px;
+  }
+  svg {
+    width: 8px;
+    position: absolute;
+    right: 8px;
+    pointer-events: none;
+  }
+  p {
+    padding-top: 2px;
+    margin-bottom: 0;
+  }
 `
