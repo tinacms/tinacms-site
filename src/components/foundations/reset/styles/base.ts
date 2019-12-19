@@ -79,6 +79,7 @@ const base = css`
     }
   }
 
+  li,
   p {
     font-size: 18px !important;
     line-height: 1.5 !important;
