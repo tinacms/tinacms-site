@@ -98,7 +98,6 @@ exports.setFieldsOnGraphQLNodeType = ({ type }) => {
           return the opposite of the `draft` value,
           i.e. if draft = true : published = false
           */
-          console.log(frontmatter.draft)
           return !frontmatter.draft
         },
       },
@@ -140,7 +139,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   )
   const postsPerPage = 8
   const numPages = Math.ceil(blogPosts.length / postsPerPage)
-  console.log(Array.from({ length: numPages }))
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/blog` : `/blog/page/${i + 1}`,
