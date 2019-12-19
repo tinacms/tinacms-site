@@ -1,4 +1,11 @@
 # =========================
+# Project-Specific Ignores
+# =========================
+
+# Static file generated during build process
+static/consumers.json
+
+# =========================
 # Node.js-Specific Ignores
 # =========================
 

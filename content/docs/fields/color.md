@@ -2,6 +2,11 @@
 title: Color Field
 prev: /docs/fields/image
 next: /docs/fields/toggle
+consumes:
+  - file: /packages/tinacms/src/plugins/fields/ColorFieldPlugin.tsx
+    details: Documents color field plugin
+  - file: /packages/@tinacms/fields/src/ColorPicker/ColorPicker.tsx
+    details: Shows color field in use & interface
 ---
 
 The `color` field is a visual color picker. This field is used for content values that handle the rendering of color. Can be saved as RGB or hex value.
@@ -33,6 +38,8 @@ const BlogPostForm = {
  - `label`: A human readable label for the field. This label displays in the sidebar and is optional. If no label is provided, the sidebar will default to the name.
  - `description`: An optional description that expands on the purpose of the field or prompts a specific action.
  -  `colorFormat`: Optionally specify whether you want the color value to be a hexadecimal ('hex') or RBG value.
+
+ ## Interface
 
 ```typescript
 interface ColorConfig {

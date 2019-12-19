@@ -3,11 +3,16 @@ title: Manual Setup
 id: /docs/gatsby/manual-setup
 prev: /docs/gatsby/quickstart
 next: /docs/gatsby/markdown
+consumes:
+  - file: /packages/gatsby-plugin-tinacms/gatsby-browser.tsx
+    details: Depends on Tina component wrapping the root element
+  - file: /packages/gatsby-plugin-tinacms/gatsby-ssr.tsx
+    details: Depends on Tina component wrapping the root element
 ---
 
-Learn how to setup Tina on an existing Gatsby site.
+Learn how to set up Tina on an existing Gatsby site.
 
-After this guide you will have installed and added the TinaCMS sidebar to your project. However, this won't make your content editable. Go to the [next guide](/docs/gatsby/markdown) to learn how to make content editable.
+After this guide, you will have installed and added the TinaCMS sidebar to your project. However, this won't make your content editable. Go to the [next guide](/docs/gatsby/markdown) to learn how to make content editable.
 
 Assumptions: This guide assumes you have the Gatsby CLI installed, Node & a package manager.
 
@@ -16,13 +21,13 @@ Note: Don't have a site yet? Refer to the [quickstart page](/docs/gatsby/quickst
 ## Installation
 
 ```
-npm install --save gatsby-plugin-tinacms
+npm install --save gatsby-plugin-tinacms styled-components
 ```
 
 or
 
 ```
-yarn add gatsby-plugin-tinacms
+yarn add gatsby-plugin-tinacms styled-components
 ```
 
 ## Adding the Plugin

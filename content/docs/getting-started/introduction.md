@@ -23,12 +23,30 @@ Tina currently supports React-based frameworks, including:
 
 To use Tina, you should have a good working knowledge of your JavaScript framework & JAMstack tools of choice.
 
-To get a better idea of what Tina is all about, take a look at [how Tina works](/docs/getting-started/how-tina-works 'How Tina Works').
+If you want to get started with some code right away, check out the [Gatsby Quickstart](/docs/gatsby/quickstart) or [Next.js Overview](/docs/nextjs/overview).
 
-If you're itching to see what Tina can do, head over to the [Gatsby Quickstart Guide](/docs/gatsby/quickstart) to get up and running fast.
+If you want to dive deep, start by learning more about [how Tina works](/docs/getting-started/how-tina-works) and get familiar with some core concepts.
+
+## For Gatsby
+
+- [Quickstart](/docs/gatsby/quickstart) with a Tina Starter to hit the ground running.
+- [Manual Setup](/docs/gatsby/manual-setup) for adding Tina to an existing Gatsby site.
+
+**Gatsby Starters**
+- [Gatsby Blog Starter](https://github.com/tinacms/gatsby-starter-tinacms) with Tina — The classic Gatsby starter, but Tinified.
+- [Tina Grande](https://github.com/tinacms/tina-starter-grande) — A more advanced starter to showcase the power of Tina.
+- [Tina Brevifolia](https://github.com/kendallstrautman/brevifolia-gatsby-tinacms) — A Markdown-based blog with minimalist design and Tina for editing.
+
+Want to add your starter? Make a [PR](/docs/contributing/guidelines) to add your Tina site to this list.
+
+## For Next.js
+
+- [Next.js + Tina Overview](/docs/nextjs/overview) — Get started with the documentation
+- Read an in-depth tutorial on [Using TinaCMS with Next.js](/blog/using-tinacms-with-nextjs/)
+- Check out this sample [Next.js Markdown Blog](https://github.com/kendallstrautman/brevifolia-next-tinacms) with Tina configured for reference.
 
 ## Get Involved
 
 Want to help out with Tina's development? Please visit our [Contributing](/docs/contributing/guidelines) section in our docs to learn more.
 
-Looking for help with Tina, or want to stay on top of the latest developments? [Join our Slack Community](https://tinacms.slack.com 'Join the TinaCMS Slack') to chat with other Tina enthusiasts.
+Looking for help with Tina, or want to stay on top of the latest developments? Checkout the [Tina Community Forum](https://community.tinacms.org/) to get answers, help, and llama-humor.

@@ -2,9 +2,20 @@
 title: Markdown in Gatsby
 prev: /docs/gatsby/manual-setup
 next: /docs/gatsby/json
+consumes:
+  - file: /packages/gatsby-tinacms-remark/src/RemarkForm.tsx
+    details: Demonstrates use of RemarkForm
+  - file: /packages/gatsby-tinacms-remark/src/remarkFormHoc.tss
+    details: Shows how to use remarkForm HOC
+  - file: /packages/gatsby-tinacms-remark/src/useRemarkForm.tsx
+    details: Demonstrates useRemarkForm usage
+  - file: /packages/gatsby-tinacms-remark/src/remark-fragment.ts
+    details: Explains what the fragment adds
+  - file: /packages/@tinacms/core/src/cms-forms/form.ts
+    details: Explains form options interface
 ---
 
-Gatsby allows you to build sites from many different data sources. Currently Tina has plugins for editing content in [markdown](/docs/gatsby/content-editing#editing-markdown-in-gatsby) & [JSON](/docs/gatsby/content-editing#editing-json-in-gatsby) files, with plans to suppor many more data sources.
+Gatsby allows you to build sites from many different data sources. Currently Tina has plugins for editing content in [Markdown](/docs/gatsby/markdown#editing-markdown-content) & [JSON](/docs/gatsby/json#editing-json-in-gatsby) files, with plans to support many more data sources.
 
 <!-- callout -->
 
@@ -12,24 +23,20 @@ Have an idea for a Tina content editing plugin? [Consider contributing](/docs/co
 
 ## Editing Markdown in Gatsby
 
-The [`gatsby-transformer-remark`](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-remark) plugin lets us use markdown in our Gatsby sites. Two other plugins let us edit markdown with Tina:
+The [`gatsby-transformer-remark`](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-remark) plugin lets us use Markdown in our Gatsby sites. Two other plugins let us edit Markdown with Tina:
 
 - `gatsby-tinacms-remark`: Provides hooks and components for creating Remark forms.
 - `gatsby-tinacms-git`: Extends the gatsby development server to write changes to the local filesystem.
 
-### Install the Git & Markdown Packages
+## Install the Git & Markdown Packages
 
-```
-npm install --save gatsby-tinacms-remark gatsby-tinacms-git
-```
+    npm install --save gatsby-tinacms-remark gatsby-tinacms-git
 
 or
 
-```
-yarn add gatsby-tinacms-remark gatsby-tinacms-git
-```
+    yarn add gatsby-tinacms-remark gatsby-tinacms-git
 
-### Adding the Git Plugin
+## Adding the Git Plugin
 
 Open the `gatsby-config.js` file and add both plugins:
 
@@ -51,19 +58,183 @@ module.exports = {
 }
 ```
 
-### Creating Remark Forms
+## Creating Remark Forms
 
-The `remarkForm` [higher-order component](https://reactjs.org/docs/higher-order-components.html) (HOC) let's us register forms with `Tina`. In order for it to work with your template, 3 fields must be included in the `markdownRemark` query:
+There are three ways to register remark forms with the CMS, depending on the component:
 
-There are 3 steps to making a markdown file editable:
+- [`useLocalRemarkForm`](http://tinacms.org/docs/gatsby/markdown#1-the-hook-code-classlanguage-textuseremarkformremark-values-formcode) - A [React Hook](https://reactjs.org/docs/hooks-intro.html) — useful for any function component. You can use this with components that source data from a [static query](https://www.gatsbyjs.org/docs/static-query/#how-staticquery-differs-from-page-query) using Gatsby's `useStaticQuery` hook.
+- [`RemarkForm`](http://tinacms.org/docs/gatsby/markdown#2-the-render-props-component-code-classlanguage-textremarkformcode) — A [Render Props](https://reactjs.org/docs/render-props.html#use-render-props-for-cross-cutting-concerns) component — useful for any class component. Can be used with components sourcing data from a [static query](https://www.gatsbyjs.org/docs/static-query/#how-staticquery-differs-from-page-query) using Gatsby's [`StaticQuery`](https://www.gatsbyjs.org/docs/static-query/) render props component.
+- [`remarkForm`](http://tinacms.org/docs/gatsby/markdown#3-the-higher-order-component-code-classlanguage-textremarkformcode) — A [Higher-Order Component](https://reactjs.org/docs/higher-order-components.html) — useful for [page components](https://www.gatsbyjs.org/docs/recipes/#creating-pages-automatically) (function or class), that source data from a [page query](https://www.gatsbyjs.org/docs/page-query/).
+
+All of these options can only take data (transformed by `gatsby-transformer-remark`) from a `markdownRemark` query. If you need more information on using Markdown in Gatsby, refer to [this documentation](https://www.gatsbyjs.org/docs/adding-markdown-pages/).
+
+<tip>If you're adding Tina to a page component in Gatsby, skip to [`remarkForm`](http://tinacms.org/docs/gatsby/markdown#3-the-higher-order-component-remarkform).</tip>
+
+### 1. The Hook: useLocalRemarkForm
+
+This hook connects the `markdownRemark` data with Tina to be made editable. It is useful in situations where you need to edit on non-page components, or just prefer working with hooks or static queries. You can also use this hook with functional page components.
+
+#### Usage:
+
+`useLocalRemarkForm(remark, options): [values, form]`
+
+#### Arguments:
+
+- `remark`: The data returned from a Gatsby `markdownRemark` query.
+- `options`: A configuration object that can include [form options](https://tinacms.org/docs/gatsby/markdown#customizing-remark-forms) or form actions (such as the [`DeleteAction`](https://tinacms.org/docs/gatsby/creating-new-files#deleting-files))— optional.
+
+#### Return:
+
+- `[values, form]`
+  - `values`: The current values to render in the template. This has the same shape as the `markdownRemark` data.
+  - `form`: A reference to the `Form`. Most of the time you won't need to directly work with the `Form`.
+
+```javascript
+/*
+** example component --> src/components/Title.js
+*/
+
+// 1. import useLocalRemarkForm
+import { useLocalRemarkForm } from 'gatsby-tinacms-remark'
+import { useStaticQuery } from 'gatsby'
+
+const Title = (data) => {
+
+  // 2. Add required GraphQL fragment
+  const data = useStaticQuery(graphql`
+    query TitleQuery {
+      markdownRemark(fields: {slug: {eq: "song-of-myself"}}) {
+        ...TinaRemark
+        frontmatter {
+          title
+        }
+      }
+    }
+  `)
+
+  // 3. Call the hook and pass in the data
+  const [ markdownRemark ] = useLocalRemarkForm(data.markdownRemark)
+
+  return <h1>{markdownRemark.frontmatter.title}</h1>
+}
+
+export default Title
+```
+
+To use this hook, you'll first need to import it from `gatsby-tinacms-remark`. Then you'll need to add the GraphQL fragment `...TinaRemark` to your query. The fragment adds these parameters: `id`, `fileRelativePath`, `rawFrontmatter`, and `rawMarkdownBody`. Finally you'll call the hook and pass in the `markdownRemark` data.
+
+The form will populate with default text fields. To customize it, you can pass in a config options object as the second parameter. Jump ahead to learn more on [customizing the form](http://tinacms.org/docs/gatsby/markdown#customizing-remark-forms).
+
+### 2. The Render Props Component: RemarkForm
+
+`RemarkForm` is a thin wrapper around `useLocalRemarkForm`. Since React [Hooks](https://reactjs.org/docs/hooks-intro.html) are only available within [function components](https://reactjs.org/docs/components-and-props.html) you may need to use `RemarkForm` instead of calling `useLocalRemarkForm` directly when working with a [class component](https://reactjs.org/docs/components-and-props.html).
+
+#### Props:
+
+- `remark`: the data returned from a Gatsby `markdownRemark` query.
+- `render(renderProps): JSX.Element`: A function that returns JSX elements
+  - `renderProps.markdownRemark`: The current values to be displayed. This has the same shape as the `markdownRemark` data that was passed in.
+  - `renderProps.form`: A reference to the [`Form`](http://localhost:8000/docs/concepts/forms/).
+
+You can use this with both page and non-page components in Gatsby. Below is an example of using `RemarkForm` in a non-page component using [`StaticQuery`](https://www.gatsbyjs.org/docs/static-query/).
+
+```javascript
+/*
+** example component --> src/components/Title.js
+*/
+import { StaticQuery, graphql } from 'gatsby'
+
+// 1. import RemarkFrom
+import { RemarkForm } from 'gatsby-tinacms-remark'
+
+class Title extends React.Component {
+  render() {
+    return <StaticQuery
+              // 2. add ...TinaRemark fragment to query
+              query ={graphql`
+                query TitleQuery {
+                  markdownRemark(fields: {slug: {eq: "song-of-myself"}}) {
+                    ...TinaRemark
+                    frontmatter {
+                      title
+                    }
+                  }
+                }
+              `}
+              render = { data => (
+                /*
+                ** 3. Return RemarkForm, pass in the props
+                **    and then return the JSX this component
+                **    should render
+                */
+                <RemarkForm
+                  remark = {data.markdownRemark}
+                  render = {({ markdownRemark }) => {
+                    return <h1>{ markdownRemark.frontmatter.title }</h1>
+                }}
+              />)}
+            />
+  }
+}
+
+export default Title
+```
+Here is another example using `RemarkForm` with a page component:
+
+```js
+/*
+** src/templates/blog-post.js
+*/
+
+// 1. import RemarkForm
+import { RemarkForm } from '@tinacms/gatsby-tinacms-remark'
+
+class BlogPostTemplate extends React.Component {
+  render() {
+    /*
+    ** 2. Return RemarkForm, pass in markdownRemark
+    **    as props and return the jsx this component
+    **    should render
+    */
+    return (
+      <RemarkForm
+        remark={this.props.data.markdownRemark}
+        render={({ markdownRemark }) => {
+          return <h1>{markdownRemark.frontmatter.title}</h1>
+        }}
+      />
+    )
+  }
+}
+
+export default BlogPostTemplate
+
+// 3. Add ...TinaRemark fragment to query
+export const pageQuery = graphql`
+  query {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      ...TinaRemark
+      frontmatter {
+        title
+      }
+    }
+  }
+`
+```
+
+Learn how to customize the fields displayed in the form [below](/docs/gatsby/markdown#customizing-remark-forms).
+
+### 3. The Higher-Order Component: remarkForm
+
+The `remarkForm` [higher-order component](https://reactjs.org/docs/higher-order-components.html) (HOC) let's us register forms with `Tina` on Gatsby page components.
+
+There are 3 steps to making a Markdown file editable with `remarkForm`:
 
 1. Import the `remarkForm` HOC
 2. Wrap your template with `remarkForm`
-3. Add the required fields to the GraphQL query:
-   - `id`
-   - `fileRelativePath`
-   - `rawFrontmatter`
-   - `rawMarkdownBody`
+3. Add `...TinaRemark` to the GraphQL query
+
+<tip>Required fields used to be queried individually: `id`, `fileRelativePath`, `rawFrontmatter`, & `rawMarkdownBody`. The same fields are now being queried via `...TinaRemark`</tip>
 
 **Example: src/templates/blog-post.js**
 
@@ -89,16 +260,13 @@ export const pageQuery = graphql`
         date
         description
       }
-
-      fileRelativePath
-      rawFrontmatter
-      rawMarkdownBody
+      ...TinaRemark
     }
   }
 `
 ```
 
-You should now see text inputs for each of your frontmatter fields and for the markdown body. Try changing the tile and see what happens!
+You should now see text inputs for each of your front matter fields and for the Markdown body. Try changing the title and see what happens!
 
 ### Queries aliasing 'markdownRemark'
 
@@ -122,41 +290,46 @@ export const pageQuery = graphql`
 `
 ```
 
-### Editing Markdown Content
+## Editing Markdown Content
 
-With the Remark Form created, you can now edit your markdown file in the Tina sidebar. Content changes are written to the markdown files in real time. Hitting `Save` will commit those changes to your repository.
+With the Remark Form created, you can now edit your Markdown file in the Tina sidebar. The `markdown` component is [CommonMark](https://commonmark.org/help/) compatible. Content changes are written to the Markdown files in real time. Hitting `Save` will commit those changes to your repository.
 
 **Why write to disk "on change"?**
 
-This allows any `gatsby-remark-*` plugins to properly transform the data in to a remark node and
-provide a true-fidelity preview of the changes.
+This allows any `gatsby-remark-*` plugins to properly transform the data in to a remark node and provide a true-fidelity preview of the changes.
 
-### Customizing Remark Forms
+## Customizing Remark Forms
 
-The `remarkForm` HOC creates the form based on the shape of your data. This is convenient for getting started but you will want to customize the form eventually.
+Tina's [remark hook or components](http://tinacms.org/docs/gatsby/markdown#creating-remark-forms) create the form based on the shape of the data. This is convenient for getting started but you will want to customize the form eventually to make it more user friendly.
 
 **Why customize the form?**
 
 1. The default `label` for a field is it's `name`.
-1. Every field is made a `text` component.
-1. The order of fields might not be consistent.
+2. Every field is made a `text` component.
+3. The order of fields might not be consistent.
 
 **How to customize the form**
 
-The `remarkForm` function accepts an optional `config` object for overriding the default configuration of a `RemarkForm`. The following properties are accepted:
+You can pass additional configuration options to customize the form. The following properties are accepted:
 
+- `label`: A label for the form that will render in a list if there are multiple forms. This will default to the name of the component.
+- `actions`: A list of form actions, such as [`DeleteAction`](https://tinacms.org/docs/gatsby/creating-new-files#deleting-files).
 - `fields`: A list of field definitions
-  - `name`: The path to some value in the data being edited. (e.g. `rawFrontmatter.title`)
+  - `name`: The path to some value in the data being edited. (e.g. `frontmatter.title`)
   - `component`: The name of the React component that should be used to edit this field.
     The default options are: `"text"`, `"textarea"`, `"color"`.
   - `label`: A human readable label for the field.
   - `description`: An optional description that expands on the purpose of the field or prompts a specific action.
 
-_NOTE: the name of your fields should be prefixed with `"rawFrontmatter"` rather than `"frontmatter"`. The latter is the fully transformed data._
+### `remarkForm` HOC Example
 
-#### Example: src/templates/blog-post.js
+The `remarkForm` HOC and `useLocalRemarkForm` hook both accept an optional `config` object as the second argument.
 
 ```jsx
+/*
+** src/templates/blog-post.js
+*/
+
 import { remarkForm } from 'gatsby-tinacms-remark'
 
 function BlogPostTemplate(props) {
@@ -168,18 +341,19 @@ function BlogPostTemplate(props) {
   )
 }
 
-// 1. Define the form
-let BlogPostForm = {
+// 1. Define the form config
+const BlogPostForm = {
+  label: 'Blog Post',
   fields: [
     {
       label: 'Title',
-      name: 'rawFrontmatter.title',
+      name: 'frontmatter.title',
       description: 'Enter the title of the post here',
       component: 'text',
     },
     {
       label: 'Description',
-      name: 'rawFrontmatter.description',
+      name: 'frontmatter.description',
       description: 'Enter the post description',
       component: 'textarea',
     },
@@ -190,231 +364,84 @@ let BlogPostForm = {
 export default remarkForm(BlogPostTemplate, BlogPostForm)
 ```
 
-## Creating New Markdown Files
+### `useLocalRemarkForm` Hook Example
 
-Editing content is rad, but we need a way to add or create new content. This guide will go through the process of creating new markdown files. Have an idea for a new content-type that you would like to 'create' with a button in the Tina sidebar? [Consider contributing!](/docs/contributing/guidelines)
+```js
+import { useLocalRemarkForm } from 'gatsby-tinacms-remark'
 
-##Prerequisites
+function BlogPostTemplate(props) {
 
-- A Gatsby site [configured with Tina](/docs/gatsby/manual-setup)
-- [Editing markdown](/docs/gatsby/content-editing#1-editing-markdown-in-gatsby) with Tina setup
+  // 1. Define the form
+  const BlogPostForm = {
+    label: 'Blog Post',
+    fields: [
+      {
+        label: 'Title',
+        name: 'frontmatter.title',
+        description: 'Enter the title of the post here',
+        component: 'text',
+      },
+      {
+        label: 'Description',
+        name: 'frontmatter.description',
+        description: 'Enter the post description',
+        component: 'textarea',
+      },
+    ],
+  }
 
-## Creating Markdown in Gatsby
-
-In this guide you'll learn to:
-
-1. Create a `content-button` plugin
-2. Register the plugin with Tina
-3. Configure how content is created by:
-   - Formatting the filename & path
-   - Providing default front matter
-   - Providing a default body
-
-### 1. Creating Content-Button Plugins
-
-Tina uses `content-button` plugins to make creating content possible. These buttons are accessible from the sidebar menu. The `createRemarkButton` function helps us constructs `content-button` plugins for creating markdown files.
-
-**Example**
-
-```javascript
-import { createRemarkButton } from 'gatsby-tinacms-remark'
-
-const CreatePostButton = createRemarkButton({
-  label: 'Create Post',
-  fields: [
-    {
-      name: 'filename',
-      component: 'text',
-      label: 'Filename',
-      placeholder: 'content/blog/hello-world/index.md',
-      description: 'The full path to the new markdown file, relative to the repository root.',
-    },
-  ],
-  filename: form => {
-    return form.filename
-  },
-})
-```
-
-### 2. Adding the Button
-
-Now that we've created the button, we need to add it to the sidebar. The button only shows up when the component that registers it is rendered. There's many places you could add this button. You'll need to think about where you want this button to show-up.
-
-<!-- TIP -->
-
-Here are some places you may want to add the plugin:
-
-1. The Root component: it will always be available
-1. A Layout component: it will always available when that Layout is used.
-1. A Blog Index component: it will only be available when looking at the list of blog posts.
-
-**Adding the Button to the Blog Index**
-
-In this example, we will add the button to the Tina sidebar when visiting the blog index page. There are 3 steps involved:
-
-1. Import `createRemarkButton` and `withPlugin`
-2. Create the `content-button` plugin
-3. Add the plugin to the component
-
-_NOTE: No changes need to be made to the `BlogIndex` component itself._
-
-**Example: src/pages/index.js**
-
-```jsx
-// 1. Import `createRemarkButton` and `withPlugin`
-import { withPlugin } from 'react-tinacms'
-import { createRemarkButton } from 'gatsby-tinacms-remark'
-
-// Note: this is just an example index component.
-function BlogIndex(props) {
-  const { data } = props
-  const posts = data.allMarkdownRemark.edges
-
+  // 2. Pass the form as the second argument
+  const [ markdownRemark ] = useLocalRemarkForm(props.markdownRemark, BlogPostForm)
   return (
-    <Layout location={props.location}>
-      {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
-        return (
-          <div key={node.fields.slug}>
-            <h3>
-              <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                {title}
-              </Link>
-            </h3>
-            <small>{node.frontmatter.date}</small>
-            <p
-              dangerouslySetInnerHTML={{
-                __html: node.frontmatter.description || node.excerpt,
-              }}
-            />
-          </div>
-        )
-      })}
-    </Layout>
+    <>
+      <h1>{markdownRemark.frontmatter.title}</h1>
+      <p>{markdownRemark.frontmatter.description}</p>
+    </>
   )
 }
 
-// 2. Create the `content-button` plugin
-const CreatePostButton = createRemarkButton({
-  label: 'Create Post',
-  fields: [
-    {
-      name: 'filename',
-      component: 'text',
-      label: 'Filename',
-      placeholder: 'content/blog/hello-world/index.md',
-      description: 'The full path to the new markdown file, relative to the repository root.',
-    },
-  ],
-  filename: form => {
-    return form.filename
-  },
-})
-
-// 3. Add the plugin to the component
-export default withPlugin(BlogIndex, CreatePostButton)
+export default BlogPostTemplate
 ```
 
-**Creating Content**
+### `RemarkForm` Render Props Example
 
-With the plugin in place, **open TinaCMS and click the menu button** in the top-left corner. The menu panel will slide into view with the button at the top.
+For the `RemarkForm`component, you pass in the config options individually as props to the render function.
 
-Click the "Create Post" button and a modal will pop up. Enter the path to a new file relative to your repository root (e.g. `content/blog/my-new-post.md`) and then click "create". A moment later the new post will be added to your Blog Index.
+```js
+import { RemarkForm } from 'gatsby-tinacms-remark'
 
-### 3. Customizing the Create Form
+class BlogPostTemplate extends React.Component {
+  render() {
+    return (
+      <RemarkForm
+        remark={this.props.data.markdownRemark}
+        render={({ markdownRemark }) => {
+          return (
+            <>
+             <h1>{markdownRemark.frontmatter.title}</h1>
+              <p>{markdownRemark.frontmatter.description}</p>
+            </>
+          )
+        }}
+        label = 'Blog Post'
+        fields = {[
+          {
+            label: 'Title',
+            name: 'frontmatter.title',
+            description: 'Enter the title of the post here',
+            component: 'text',
+          },
+          {
+            label: 'Description',
+            name: 'frontmatter.description',
+            description: 'Enter the post description',
+            component: 'textarea',
+          },
+        ]}
+      />
+    )
+  }
+}
 
-`createRemarkButton` accepts a `fields` option, just like [Creating Forms](../using-tina/creating-forms.md) does. When using a custom create form, all callback functions will receive an object containing all form data.
-
-**Example: Create Posts in Subdirectories**
-
-```javascript
-const CreatePostButton = createRemarkButton({
-  label: 'Create Post',
-  fields: [
-    { name: 'section', label: 'Section', component: 'text', required: true },
-    { name: 'title', label: 'Title', component: 'text', required: true },
-  ],
-  filename: form => {
-    return `content/blog/${form.section}/${form.title}/index.md`
-  },
-})
-```
-
-### 4. Formatting the filename & path
-
-The `createRemarkButton` must be given a `filename` function that calculates the path of the new file from the form data.
-
-**Example 1: Hardcoded Content Directory**
-
-```javascript
-const CreatePostButton = createRemarkButton({
-  label: 'Create Post',
-  fields: [{ name: 'title', label: 'Title', component: 'text', required: true }],
-  filename: form => `content/blog/${form.title}.md`,
-})
-```
-
-**Example 2: Content as index files**
-
-```javascript
-const CreatePostButton = createRemarkButton({
-  label: 'Create Post',
-  fields: [{ name: 'title', label: 'Title', component: 'text', required: true }],
-  filename: form => `content/blog/${form.title}/index.md`,
-})
-```
-
-**Example 3: Slugify Name**
-
-```javascript
-const CreatePostButton = createRemarkButton({
-  label: 'Create Post',
-  fields: [{ name: 'title', label: 'Title', component: 'text', required: true }],
-  filename: form => {
-    let slug = form.title.replace(/\s+/, '-').toLowerCase()
-
-    return `content/blog/${slug}/index.md`
-  },
-})
-```
-
-### 5. Providing Default Front Matter
-
-The `createRemarkButton` function can be given a `frontmatter` function that returns the default front matter. Like the `filename` function, `frontmatter` receives the state of the form.
-
-**Example: Title + Date**
-
-```javascript
-const CreatePostButton = createRemarkButton({
-  label: 'Create Post',
-  fields: [{ name: 'title', label: 'Title', component: 'text', required: true }],
-  filename: form => {
-    let slug = form.title.replace(/\s+/, '-').toLowerCase()
-
-    return `content/blog/${slug}/index.md`
-  },
-  frontmatter: form => ({
-    title: form.title,
-    date: new Date(),
-  }),
-})
-```
-
-### 6. Providing a Default Body
-
-The `createRemarkButton` function can be given a `body` function that returns the default markdown body. Like the previous two functions, `body` receives the state of the form.
-
-**Example: Title + Date**
-
-```javascript
-const CreatePostButton = createRemarkButton({
-  label: 'Create Post',
-  fields: [{ name: 'title', label: 'Title', component: 'text', required: true }],
-  filename: form => {
-    let slug = form.title.replace(/\s+/, '-').toLowerCase()
-
-    return `content/blog/${slug}/index.md`
-  },
-  body: form => `This is a new blog post. Please write some content.`,
-})
+export default BlogPostTemplate
 ```

@@ -156,7 +156,8 @@ module.exports = {
     keywords: 'gatsbyjs, gatsby, react, cms, next',
     social: {
       twitter: 'https://twitter.com/tina_cms',
-      github: 'https://github.com/tinacms',
+      github: 'https://github.com/tinacms/tinacms',
+      forum: 'https://community.tinacms.org/',
       slack:
         'https://join.slack.com/t/tinacms/shared_invite/enQtNzgxNDY1OTA3ODI3LTNkNWEwYjQyYTA2ZDZjZGQ2YmI5Y2ZlOWVmMjlkYmYxMzVmNjM0YTk2MWM2MTIzMmMxMDg3NWIxN2EzOWQ0NDM',
     },

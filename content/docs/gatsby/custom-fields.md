@@ -3,11 +3,18 @@ title: Custom Fields
 id: /docs/gatsby/custom-fields
 prev: /docs/gatsby/configure-git-plugin
 next: /docs/gatsby/inline-editing
+consumes:
+  - file: /packages/@tinacms/form-builder/src/field-plugin.tsx
+    details: Depends on Field Plugin props
+  - file: /packages/@tinacms/core/src/cms-forms/form.ts
+    details: Depends on Field props
+  - file: /packages/@tinacms/core/src/plugins.ts
+    details: Depends on plugin manager methods
 ---
 
 This doc explains how to add custom field plugins to a Gatsby site.
 
-##1. Registering an Email Field
+## 1. Registering an Email Field
 
 In this example we'll create a simple email field for our Gatsby site. Besides the required `name`, we also want the email field definition to accept a `label` and a `description`.
 
@@ -15,7 +22,7 @@ First create the React component that accepts three props:
 
 - `input`: The data and callbacks necessary to make an input.
 - `meta`: Metadata about the field in the form. (e.g. `dirty`, `valid`)
-- `field`: The [field definition](../concepts/forms.md#field-definitions) for the current field.
+- `field`: The [field definition](https://tinacms.org/docs/concepts/fields#field-definition) for the current field.
 
 **src/components/EmailField.js**
 
@@ -34,16 +41,15 @@ export function EmailField({ input, meta, field }) {
 }
 ```
 
-Open your `gatsby-browser.js` and create an `onClientEntry`. In this function, we'll use the `cms.forms.addFieldPlugin` method to register the `EmailField`.
+Open your `gatsby-browser.js` and create an `onClientEntry`. In this function, we'll use the `cms.fields.add` method to register the `EmailField`.
 
 **gatsby-browser.js**
 
 ```javascript
-import { cms } from 'gatsby-plugin-tinacms'
 import { EmailField } from './src/components/EmailField'
 
 export const onClientEntry = () => {
-  cms.fields.add({
+  window.tinacms.fields.add({
     name: 'email',
     Component: EmailField,
   })
@@ -84,11 +90,10 @@ If the value is invalid, then return the error message to be displayed.
 **gatsby-browser.js**
 
 ```javascript
-import { cms } from 'gatsby-plugin-tinacms'
 import { EmailField } from './src/components/EmailField'
 
 export const onClientEntry = () => {
-  cms.forms.addFieldPlugin({
+  window.tinacms.fields.add({
     name: 'email',
     Component: EmailField,
     validate(value, allValues, meta, field) {

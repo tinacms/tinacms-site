@@ -3,6 +3,13 @@ id: /docs/contributing/setting-up
 title: Contribution Set-up
 prev: /docs/contributing/guidelines
 next: /docs/contributing/troubleshooting
+consumes:
+  - file: /package.json
+    details: Uses scripts for local dev
+  - file: /lerna.json
+    details: Uses the `run` script
+  - file: README.md
+    details: Shows commands, how to get started
 ---
 
 ## Development
@@ -10,7 +17,7 @@ next: /docs/contributing/troubleshooting
 To get started:
 
 ```bash
-git clone git@github.com:tinacms/tinacms.git
+git clone https://github.com/tinacms/tinacms.git
 cd tinacms
 npm install
 npm run bootstrap

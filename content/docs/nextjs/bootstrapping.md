@@ -3,6 +3,11 @@ title: Bootstrapping
 id: /docs/nextjs/bootstrapping
 prev: /docs/nextjs/overview
 next: /docs/nextjs/adding-backends
+consumes:
+  - file: /packages/tinacms/src/components/Tina.tsx
+    details: Shows wrapping Next.js app with Tina component
+  - file: /packages/tinacms/src/tina-cms.tsx
+    details: Creates cms instance with TinaCMS
 ---
 
 ## Adding the Tina Provider
@@ -23,13 +28,11 @@ class MyApp extends App {
 export default MyApp
 ```
 
-From here, install `tinacms` and `react-tinacms`:
+From here, install `tinacms`. Also install peer dependencies `styled-components` and `moment`:
 
 ```bash
-npm install tinacms react-tinacms@canary
+npm install tinacms styled-components moment
 ```
-
-Note that, for the time being, we need to use the **canary** release of `react-tinacms`.
 
 After installing `tinacms`, we need to create an instance of the CMS and pass it through to our pages via the `Tina` component. Our new App class will look like this:
 

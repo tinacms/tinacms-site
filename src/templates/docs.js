@@ -28,12 +28,7 @@ const DocsTemplate = ({ data, setIsEditing, isEditing }) => {
   const sidebar = useSidebar()
 
   const isTeamsSection = data.markdownRemark.fileRelativePath.startsWith('/content/docs/teams')
-  useEffect(() => {
-    //redirect away from index.md since the introduction doc is main for now
-    if (data.markdownRemark.fileRelativePath === '/content/docs/index.md') {
-      navigate('/docs/getting-started/introduction')
-    }
-  }, [])
+
   return (
     <DocsLayout sidebarNav={sectionList}>
       <Page docsPage>

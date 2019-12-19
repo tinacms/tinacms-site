@@ -29,11 +29,10 @@
 } */
 
 @font-face {
-	font-family: 'tuner-regular';
-	font-style: normal;
-	font-weight: regular;
-	font-display: swap;
-	src: url('tunerweb-regular.eot') format('embedded-opentype');
-	src: url('tunerweb-regular.eot?#iefix') format('embedded-opentype'),
-				url('tunerweb-regular.woff') format('woff');
+  font-family: 'tuner-regular';
+  font-style: normal;
+  font-weight: regular;
+  font-display: fallback;
+  src: url('tunerweb-regular.eot') format('embedded-opentype');
+  src: url('tunerweb-regular.eot?#iefix') format('embedded-opentype'), url('tunerweb-regular.woff') format('woff');
 }

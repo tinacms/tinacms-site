@@ -3,6 +3,15 @@ title: Inline Editing
 id: inline-editing
 prev: /docs/gatsby/custom-fields
 next: null
+consumes:
+  - file: /packages/gatsby-tinacms-remark/src/remarkFormHoc.tsx
+    details: Depends on remarkForm & liveRemarkForm hoc in example
+  - file: /packages/gatsby-tinacms-remark/src/useRemarkForm.tsx
+    details: HOC examples depends on useLocalRemarkForm hook
+  - file: /packages/@tinacms/fields/src/Wysiwyg/Wysiwyg.tsx
+    details: TinaField uses Wysiwyg component for inline editing
+  - file: /packages/@tinacms/form-builder/src/Form.tsx
+    details: Depends on TinaField accepting compponent & name, shows example
 ---
 
 **Inline editing** refers to the ability to edit content directly on your site's page, as opposed to editing within the CMS sidebar.
@@ -13,7 +22,7 @@ Creating an inline editing experience for Remark content only requires a few ext
 
 ### 1. Replace remarkForm with liveRemarkForm
 
-If you followed the [editing markdown in Gatsby](/docs/gatsby/content-editing.md#editing-markdown-in-gatsby) guide, you used the `remarkForm` function to attach the CMS to your page template. Once you've added some inline fields into your template, all you have to do is replace the call to `remarkForm` with a call to `liveRemarkForm`
+If you followed the [editing markdown in Gatsby](/docs/gatsby/markdown#editing-markdown-content) guide, you used the `remarkForm` function to attach the CMS to your page template. Once you've added some inline fields into your template, all you have to do is replace the call to `remarkForm` with a call to `liveRemarkForm`
 
 **Before**
 
@@ -43,7 +52,7 @@ export default liveRemarkForm(Template)
 
 To facilitate inline editing, you will need to add fields into your layout using the `TinaField` component. The `TinaField`component should wrap the HTML that outputs the contents of the field it edits. When **editing mode** is activated, the content will become editable.
 
-In the following example, we wrap the `section` that renders the markdown content in a `TinaField that uses the Wysiwyg` component. Note that the field being edited by `TinaField` does **not** have to be the same as the field being rendered in its child components.
+In the following example, we wrap the `section` that renders the Markdown content in a `TinaField that uses the Wysiwyg` component. Note that the field being edited by `TinaField` does **not** have to be the same as the field being rendered in its child components.
 
 **Before**
 

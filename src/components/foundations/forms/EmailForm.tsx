@@ -121,12 +121,14 @@ const StyledForm = styled('form')<StyledFormProps>`
     padding: 0 16px;
     margin-top: ${space.xSmallDesktop}px;
     transition: all 85ms ease-out;
-    font-family: 'tuner-regular';
+    font-family: 'tuner-regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+      'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     font-size: 16px;
     ::placeholder {
       color: ${p => p.textColor};
       opacity: 1;
-      font-family: 'tuner-regular';
+      font-family: 'tuner-regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+        'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
       font-size: 16px;
       transition: opacity 200ms ease;
     }

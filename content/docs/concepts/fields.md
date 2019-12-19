@@ -2,6 +2,9 @@
 title: Fields
 prev: /docs/concepts/forms
 next: /docs/concepts/backends
+consumes:
+  - file: /packages/@tinacms/core/src/cms-forms/form.ts
+    details: Shows Field interface
 ---
 
 A [form](/docs/concepts/forms 'Tina Concepts: Forms') in Tina is made up of one or more **fields**.
@@ -24,8 +27,8 @@ interface Field {
 
 - `name`: The form key of the field. The field's name should correspond to its key in the content source.
 - `label`: _(Optional)_ A human-readable label to display above the field.
-- `description`: _(Optional)_ A description that will appear below the field. Could be used to explain how the field data is used.
-- `component`: Either a React component that renders the field, or a string containing the ID of a built-in field type or custom field plugin
+- `description`: _(Optional)_ A description that will appear below the field. It could be used to explain how the field data is used.
+- `component`: Either a React component that renders the field or a string containing the ID of a built-in field type or custom field plugin
 - `defaultValue`: _(Optional)_ This value will be inserted into the field if no value is set.
 
 ## Field Types
@@ -43,4 +46,4 @@ Checkout the interfaces for each field type below.
 - [Group List](/docs/fields/group-list)
 - [Blocks](/docs/fields/blocks)
 
-Learn how to incorporate Tina's built-in field types into your [ Gatsby remark forms](/docs/gatsby/markdown#customizing-remark-forms).
+Learn how to incorporate Tina's built-in field types into your [Gatsby remark forms](/docs/gatsby/markdown#customizing-remark-forms).

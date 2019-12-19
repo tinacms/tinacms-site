@@ -133,6 +133,11 @@
         "title": "Using JSON Files"
       },
       {
+        "id": "/docs/gatsby/creating-new-files",
+        "slug": "/docs/gatsby/creating-new-files",
+        "title": "Creating New Files"
+      },
+      {
         "id": "/docs/gatsby/configure-git-plugin",
         "slug": "/docs/gatsby/configure-git-plugin",
         "title": "Configure Git plugin"
