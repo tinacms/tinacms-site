@@ -7,7 +7,7 @@ next: /docs/teams/cli/commands
 
 The Tina CLI can be used to deploy / manage your site on Tina's hosted environment. Tina Teams pairs nicely with [Tina CMS](https://github.com/tinacms/tinacms) so that editors can edit sites from a live URL without having to pull anything down to a local dev environment.
 
-You can add repos to Tina, and deploy multiple branches for each repo. Each deployed branch allows your team to edit a version of your site via a unique public URL.
+You can add sites to Tina, and deploy multiple branches for each repo. Each deployed branch allows your team to edit a version of your site via a unique public URL.
 
 ## Limitations
 
