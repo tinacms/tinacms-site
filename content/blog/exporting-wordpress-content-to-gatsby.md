@@ -35,3 +35,20 @@ The plugin also provides a command to be run on the CLI using [WP-CLI](https://w
 ## Getting exported content into Gatsby blog starter
 
 ## Getting exported content into Tina Grande
+
+[Tina Grande](https://github.com/tinacms/tina-starter-grande) is a beautiful Gatsby starter that includes TinaCMS for real-time editing.
+
+With a few easy export customizations we can get our WordPress content into Tina Grande and fully editable.
+
+Tina Grande uses an "authors" frontmatter field that expects a list of authors, so we'll need to tell the exporter plugin to restructure our WordPress content to accommodate that. Tina Grande also uses the "path" field so we'll switch the label of the field that's exported from WordPress.
+
+On the exporter form's "Change field name" we'll add:
+```
+author,authors
+permalink
+```
+
+and on the form's "Convert fields to array" we'll add (the original name of the authors remapped field):
+```
+author
+```
