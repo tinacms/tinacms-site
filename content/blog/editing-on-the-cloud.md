@@ -34,7 +34,7 @@ Depending on your use-case, hosting might be all that you'll need to have your e
 
 ##### Authorization 👤
 
-Some services (like Gatsby Previews) will allow you to password protect your environment. If you're hosting somewhere else, you likely don't want strangers accessing your site and making commits. One of the features that `Tina Teams` provides is an **authentication layer over your cloud development environment**. Users will first need to log in before accessing your cloud environment.
+Some services (like Gatsby Cloud) will allow you to password protect your environment. If you're hosting somewhere else, you likely don't want strangers accessing your site and making commits. One of the features that `Tina Teams` provides is an **authentication layer over your cloud development environment**. Users will first need to log in before accessing your cloud environment.
 
 ##### User Management 👨 👩
 
@@ -48,7 +48,7 @@ Since users will need to authenticate with Tina Teams, we can **tie commits back
 
 ### In Summary
 
-Not all sites fit into the same box, so we're giving the flexibility to manage your **cloud development environment** however makes sense for you. Running a development environment on `Gatsby Previews` without `Tina Teams` will work for some, and certain users may require deeper user management with `Tina Teams`. We'll soon be posting examples of how to host your cloud development environment on additional services as well.
+Not all sites fit into the same box, so we're giving the flexibility to manage your **cloud development environment** however makes sense for you. Running a development environment on `Gatsby Cloud` without `Tina Teams` will work for some, and certain users may require deeper user management with `Tina Teams`. We'll soon be posting examples of how to host your cloud development environment on additional services as well.
 
 <br />
 
