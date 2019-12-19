@@ -39,24 +39,25 @@ Required in order to perform most actions within the CLI.
 
 List any sites that the logged-in user has access to.
 
+#### Options
+
+      --dns_name [dns_name]  Specify a site to use instead of prompting within the next step (optional)
+
 ### tina sites:info \[options\]
 
 Describe a given site in Tina
 
 #### Options
 
-      -url, --ssh_url <ssh_url>  Specify a site to use instead of using the site from the current context (optional)
+      -url, --ssh_url <ssh_url>  Specify a site to use instead of prompting from a select list (optional)
 
 ### tina sites:add
 
-Add a site into Tina, based on the site context that this command is run from.
-
-Each site can multiple branches.
+Add a site into Tina
 
 ### tina sites:remove
 
 Remove a site from Tina.
-This will remove the site from Tina based on the repository context that this command is run from.
 
 ### tina users \[options\]
 
