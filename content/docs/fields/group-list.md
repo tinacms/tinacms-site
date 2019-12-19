@@ -7,7 +7,7 @@ consumes:
     details: Shows group list interface
 ---
 
-The `group-list` field represents a 'list' of [group](/docs/fields/group) fields. This field is typically used with an array of objects within a JSON file or nested frontmatter values in a markdown file.
+The `group-list` field represents a 'list' of [group](/docs/fields/group) fields. This field is typically used with an array of objects within a JSON file or nested front matter values in a Markdown file.
 
 Use this field when you have multiple groups (with a similar shape) to edit. The groups will appear in a list where you can add and delete group items. You can then click into a group item to edit it's properties via additional fields.
 
