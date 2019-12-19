@@ -61,7 +61,7 @@ Tina Grande uses an "authors" frontmatter field that expects a list of authors, 
 On the exporter form's "Change field name" we'll add:
 ```
 author,authors
-permalink
+permalink,path
 ```
 
 and on the form's "Convert fields to array" we'll add (the original name of the authors remapped field):
