@@ -5,29 +5,30 @@ draft: false
 author: James O'Halloran
 ---
 
-One of the main draws of Tina is that it can give your editors an incredible user experience tailored to their use-case. That being said, it wouldn't be an ideal solution if each editor needed to run their own local development server.
+Tina is a toolkit for building a content editing interface directly into your site. Tina differs from traditional CMS's (e.g Forestry, NetlifyCMS, Contentful) which simply allow you to edit your site's content and are relatively detached from your site's code. Having Tina sit in between your content and your site's template gives editors an amazing realtime editing experience where they can navigate to any area of the site, start making changes, and immedietly see these changes reflected within the site.
 
-We've been teasing [Tina Teams](/teams 'Tina Teams') as the solution for this. While `Tina Teams` isn't quite ready yet, we'd like to shed some light on how editors can edit on the cloud and where `Tina Teams` fits in.
+![tina-diagram](/img/how_tina_works_asset.png)
 
-### Overview
+In most static sites, there are various transformations happening which transform your editor's source content (e.g markdown) into the generated html on your live site. Because of this, Tina will usually need to be run in a live development environment.
 
-Typically, Tina will be hidden on your live site, and will only be accessible locally, or on your **cloud development environment**.
-If you're using git as your backend, you could either host your master branch on the cloud development server (and have all commits deployed to your live site), or you could host another staging branch.
+> So, do my editors need to run a local dev server to edit a TinaCMS site?
 
-### Hosting ☁️
+Nope! You'll be able to setup a **cloud development environment** for your Tina site, and optionally use Tina Teams for some extended collaboration features.
 
-Part of what makes Tina great is that it gives the developer control. It's important for us to extend this control into the Cloud editing experience. For this reason, we've designed it so that you can **host your development environment wherever you like.**
+### Hosting Your Cloud Development Environment ☁️
+
+Part of what makes Tina great is that it gives the developer control. It's important for us to extend this control into the Cloud editing experience. For this reason, we've designed it so that you can **host your cloud development environment wherever you like.**
 
 Already have a Gatsby Cloud plan?
 Want to host a small site under Heroku's free tier?
 
 The choice is up to you, depending on your needs!
 
-You can fire up a development environment using one of these services and have users start making commits from the cloud.
+You can fire up a **cloud development environment** using one of these services and have users start making commits.
 
-<tip>If this isn't something that you'd like to manage, you'll eventually be able to host your staging environment through us on `Tina Teams`.</tip>
+<tip>If you're using git as your backend, you many choose to host your master branch on the cloud development server (and have all commits deployed to your live site), or you can host a separate staging branch.</tip>
 
-### So, where does Tina Teams fit in?
+### Tina Teams
 
 Depending on your use-case, hosting might be all that you'll need to have your editors editing on the cloud. Otherwise, you might consider using `Tina Teams` for some additional functionality detailed below...
 
@@ -47,7 +48,7 @@ Since users will need to authenticate with Tina Teams, we can **tie commits back
 
 ### In Summary
 
-Not all sites fit into the same box, so we're giving the flexibility to manage your cloud development environment however makes sense for you. Running a development environment on `Gatsby Previews` without `Tina Teams` will work for some, and certain users may require deeper user management with `Tina Teams`. We'll soon be posting examples of how to host your cloud development environment on additional services as well.
+Not all sites fit into the same box, so we're giving the flexibility to manage your **cloud development environment** however makes sense for you. Running a development environment on `Gatsby Previews` without `Tina Teams` will work for some, and certain users may require deeper user management with `Tina Teams`. We'll soon be posting examples of how to host your cloud development environment on additional services as well.
 
 <br />
 

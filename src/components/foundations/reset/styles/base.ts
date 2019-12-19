@@ -50,6 +50,14 @@ const base = css`
     }
   }
 
+  blockquote {
+    border-left-style: solid;
+    border-left-width: 3px;
+    border-left-color: ${colors.mintChocoChip};
+    padding-left: 10px;
+    font-style: italic;
+  }
+
   p img,
   .gatsby-resp-iframe-wrapper {
     margin: 30px auto;
