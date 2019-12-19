@@ -3,7 +3,6 @@
 const fs = require('fs')
 const path = require('path')
 const { GraphQLBoolean } = require('gatsby/graphql')
-const { createFilePath } = require("gatsby-source-filesystem")
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
