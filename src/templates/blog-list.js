@@ -14,8 +14,10 @@ const BlogPage = ({ data, ...props } )=> {
   const { currentPage, numPages } = props.pageContext
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
-  const prevPage = currentPage - 1 === 1 ? '/blog/' : `/blog/${(currentPage - 1).toString()}`
-  const nextPage = `/blog/${(currentPage + 1).toString()}`
+  const prevIndex = currentPage - 1
+  const nextIndex = currentPage + 1
+  const prevPage = currentPage - 1 === 1 ? '/blog/' : `/blog/page/${(currentPage - 1).toString()}`
+  const nextPage = `/blog/page/${(currentPage + 1).toString()}`
   return (
     <IndexLayout>
       <Helmet>
@@ -31,18 +33,51 @@ const BlogPage = ({ data, ...props } )=> {
           )}
           <div class="list-numbers">
             <ul>
-              {Array.from({ length: numPages }, (_, i) => (
+              { numPages < 5 ? Array.from({ length: numPages }, (_, i) => (
                 <li
                   key={`pagination-number${i + 1}`}
                   class={`${i === currentPage - 1 && 'current-li'}`}
                 >
                   <Link
-                    to={`/blog/${i === 0 ? '' : i + 1}`}
+                    to={`/blog/page/${i === 0 ? '' : i + 1}`}
                   >
                     {i + 1}
                   </Link>
                 </li>
-              ))}
+              )) :
+                <>
+                  {!isFirst && (
+                    <>
+                      { currentPage !== 2 && <span class="page-dots">...</span>}
+                      <li key={`pagination-number${prevIndex}`}>
+                        <Link to={`/blog/${prevIndex === 1 ? '' : 'page/' + prevIndex }`}>
+                          {prevIndex.toString()}
+                        </Link>
+                      </li>
+                    </>
+                  )}
+                  <li
+                    key={`pagination-number${currentPage}`}
+                    class="current-li"
+                  >
+                    <Link
+                      to={`/blog/${currentPage === 1 ? '' : 'page/' + currentPage }`}
+                    >
+                      {currentPage.toString()}
+                    </Link>
+                  </li>
+                  {!isLast && (
+                    <>
+                      <li key={`pagination-number${nextIndex}`}>
+                        <Link to={`/blog/page/${nextIndex}`}>
+                            {nextIndex.toString()}
+                          </Link>
+                      </li>
+                      { currentPage !== numPages.length - 1 && <span class="page-dots">...</span>}
+                    </>
+                  )}
+                </>
+              }
             </ul>
           </div>
           {!isLast && (
@@ -124,15 +159,26 @@ const Pagination = styled.div`
   padding: 0;
   margin: 0;
   li {
-    margin-right: 8px;
     padding: 3px 8px 6px 8px;
     border-radius: 5px;
+    margin-right: 8px;
+    a {
+      text-decoration: none;
+    }
+  }
+
+  li:first-of-type {
+    margin-left: 8px;
+  }
+
+  span.page-dots {
+    align-self: flex-end;
+    padding-bottom: 6px;
+    color: rgba(0,0,0,0.3);
   }
   li.current-li {
-    background-color: ${colors.mintChocoChip};
     a {
       color: ${colors.hunterOrange};
-      text-decoration-color: ${colors.hunterOrange};
     }
   }
  }
