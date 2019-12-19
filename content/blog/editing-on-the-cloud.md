@@ -5,11 +5,11 @@ draft: false
 author: James O'Halloran
 ---
 
-Tina is a toolkit for building a content editing interface directly into your site. Tina differs from traditional CMS's (e.g Forestry, NetlifyCMS, Contentful) which simply allow you to edit your site's content and are relatively detached from your site's code. Having Tina sit in between your content and your site's template gives editors an amazing realtime editing experience where they can navigate to any area of the site, start making changes, and immedietly see these changes reflected within the site.
+TinaCMS allows you to build live-editing functionality directly into your site. Tina differs from other headless CMS's (e.g [Forestry.io](https://Forestry.io), [NetlifyCMS](https://NetlifyCMS.org), [Contentful](https://contentful.com)) which simply allow you to edit your site's content and are relatively detached from your site's code. Having Tina sit in between your content and your site's template gives editors an amazing real-time editing experience where they can navigate to any area of the site, start making changes, and immediately see these changes reflected within the site.
 
 ![tina-diagram](/img/how_tina_works_asset.png)
 
-In most static sites, there are various transformations happening which transform your editor's source content (e.g markdown) into the generated html on your live site. Because of this, Tina will usually need to be run in a live development environment.
+With most JAMstack sites, there are various transformations happening which transform your editor's source content (e.g markdown) into the generated html on your live site. Because of this, Tina will usually need to be run in a live development environment.
 
 > So, do my editors need to run a local dev server to edit a TinaCMS site?
 
@@ -26,7 +26,7 @@ The choice is up to you, depending on your needs!
 
 You can fire up a **cloud development environment** using one of these services and have users start making commits.
 
-<tip>If you're using git as your backend, you many choose to host your master branch on the cloud development server (and have all commits deployed to your live site), or you can host a separate staging branch.</tip>
+<tip>If you're using git as your backend, you may choose to host your master branch on the cloud development server (and have all commits deployed to your live site), or you can host a separate staging branch.</tip>
 
 ### Tina Teams
 
