@@ -17,7 +17,7 @@ consumes:
 To get started:
 
 ```bash
-git clone git@github.com:tinacms/tinacms.git
+git clone https://github.com/tinacms/tinacms.git
 cd tinacms
 npm install
 npm run bootstrap
