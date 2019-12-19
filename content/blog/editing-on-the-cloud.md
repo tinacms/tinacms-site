@@ -13,7 +13,7 @@ With most JAMstack sites, there are various transformations happening which tran
 
 > So, do my editors need to run a local dev server to edit a TinaCMS site?
 
-Nope! You'll be able to setup a **cloud development environment** for your Tina site, and optionally use Tina Teams for some extended collaboration features.
+Nope! You'll be able to setup a **cloud development environment** for your Tina site, and optionally use [Tina Teams](https://tinacms.org/teams) for some extended collaboration features.
 
 ### Hosting Your Cloud Development Environment ☁️
 
