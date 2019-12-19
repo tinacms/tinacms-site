@@ -7,7 +7,7 @@ import { remarkForm } from 'gatsby-tinacms-remark'
 import IndexLayout from 'layouts'
 import { Heading, Paragraph } from 'components/foundations'
 import Button from 'components/foundations/Button'
-import { TwitterIcon, GithubIcon, ForumIcon } from 'components/foundations/icons'
+import { TwitterIcon, GithubIcon, ForumIcon, SlackIcon } from 'components/foundations/icons'
 import { colors, space, breakpoints } from 'utils/variables'
 import { EmailForm } from 'components/foundations'
 
@@ -49,6 +49,15 @@ function CommunityTemplate({ data }) {
             <span className="dotted-line" />
           </SocialItem>
           <SocialItem>
+            <a href={`${metadata.social.slack}`} target="_blank" rel="noopener noreferrer">
+              <SlackIcon color={`${colors.hunterOrange}`} />
+              <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
+                Slack us
+              </Heading>
+            </a>
+            <span className="dotted-line" />
+          </SocialItem>
+          <SocialItem>
             <a href={`${metadata.social.forum}`} target="_blank" rel="noopener noreferrer">
             <ForumIcon color={`${colors.hunterOrange}`} />
               <Heading as="h5" size="label" color={`${colors.hunterOrange}`}>
@@ -65,7 +74,7 @@ function CommunityTemplate({ data }) {
             <Heading as="h2" size="h2" color={`${colors.hunterOrange}`}>
               {frontmatter.supporting_headline}
             </Heading>
-            <Paragraph>{frontmatter.supporting_body}</Paragraph>
+            <Paragraph dangerouslySetInnerHTML={ {__html: frontmatter.supporting_body }}/>
             <span id="buttons">
               <Button
                 to="/docs/contributing/guidelines"
@@ -242,17 +251,20 @@ export const HeroSection = styled('section')`
 
 const SocialSection = styled('section')`
   display: grid;
-  grid-template-rows: repeat(3, auto);
+  grid-template-rows: repeat(4, auto);
   grid-row-gap: 22px;
   justify-content: center;
   margin: 145px 0 65px 0;
   @media (min-width: ${breakpoints.md}px) {
     margin-top: 260px;
     grid-template-rows: unset;
-    grid-template-columns: repeat(3, auto);
-    grid-column-gap: 38px;
-    width: 600px;
+    grid-template-columns: repeat(4, auto);
+    grid-column-gap: 20px;
+    width: 700px;
     margin: 260px auto 165px auto;
+  }
+  @media(min-width: ${breakpoints.lg}px) {
+    grid-column-gap: 32px;
   }
 `
 
@@ -308,7 +320,12 @@ const SocialItem = styled('div')`
       border-left: unset;
       border-top: 3px dotted ${colors.hunterOrange};
       padding-bottom: 8px;
-      margin-left: 38px;
+      margin-left: 20px;
+    }
+  }
+  @media(min-width: ${breakpoints.lg}px) {
+    span.dotted-line {
+      margin-left: 32px;
     }
   }
 `
