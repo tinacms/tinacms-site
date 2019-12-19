@@ -43,7 +43,7 @@ const BlogPage = ({ data, ...props } )=> {
           )}
           {!isLast && (
             <Link to={nextPage} rel="next">
-              <p>Next →</p>
+              <p>Older →</p>
             </Link>
           )}
           </div>
