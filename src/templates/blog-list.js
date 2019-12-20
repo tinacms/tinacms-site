@@ -199,6 +199,7 @@ const PaginationSelect = styled.div`
   option {
     color: inherit;
     padding: 8px;
+    font-family: sans-serif;
   }
   svg {
     width: 8px;
