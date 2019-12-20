@@ -7,13 +7,13 @@ author: James O'Halloran
 
 We've [recently written](/blog/editing-on-the-cloud/ 'TinaCMS on the cloud') about how TinaCMS will work on the cloud. Gatsby Cloud offers a great way for editors to edit TinaCMS sites, without having to run a local development environment.
 
-Since Gatsby Cloud is built from the ground-up specifically for Gatsby sites, it takes advantage of parallelizing tasks & build-artifact caching to make things fast ⚡
+Since Gatsby Cloud is built from the ground up specifically for Gatsby sites, it takes advantage of parallelizing tasks & build-artifact caching to make things fast ⚡
 
 So, let's do this! 🕺
 
 ## Deploying a site on Gatsby Cloud 🚀
 
-Deploying a cloud preview with Gatsby Cloud can be done in just a few clicks, once you've created an account, you can just connect your repository, enter some build information (your site's root directory, environment variables)
+Deploying a cloud preview with Gatsby Cloud can be done in just a few clicks. Once you've created an account, you can just connect your repository, enter some build information (your site's root directory and environment variables).
 
 And tada! ✨ Your site's preview should be live within a few clicks! Any commits we make going forward will automatically trigger a rebuild in your Gatsby Cloud environment.
 
@@ -21,7 +21,7 @@ Now that your **cloud development environment is live**, there's some extra conf
 
 ## Make your site private 🔒
 
-We don't want any stranger making commits from our cloud development environment, so one of the first things we will want to do is make this environment private. This can be toggled within the `Access Control` section of the Gatsby Cloud `Site Settings`
+We don't want any stranger making commits from our cloud development environment, so one of the first things we will want to do is make this environment private. This can be toggled within the **Access Control** section of the Gatsby Cloud **Site Settings**
 
 ## Configuring git for cloud commits ✔️
 
