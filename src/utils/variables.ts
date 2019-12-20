@@ -12,7 +12,7 @@ export const colors = {
   lightPurple: '#302454',
   darkPurple: '#241748',
   grey: '#595959',
-  darkGrey: "#404040",
+  darkGrey: '#404040',
 
   // Blue
   /** Blue01 - Glitter */
@@ -351,7 +351,7 @@ export const dimensions = {
     sidebar: {
       sm: 240,
       md: 280,
-      lg: 200,
+      lg: 225,
     },
     containerPadding: space.lg,
   },

@@ -62,7 +62,7 @@ const WrapperInner = styled('nav')`
   margin-top: ${dimensions.heights.header}px;
 
   @media (min-width: ${breakpoints.lg}px) {
-    width: 200px;
+    width: ${dimensions.widths.sidebar.lg}px;
     overflow: none;
   }
 `
