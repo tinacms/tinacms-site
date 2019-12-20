@@ -38,12 +38,12 @@ const BlogPage = ({ data, ...props } )=> {
           <div class="prev-next">
           {!isFirst && (
             <Link to={prevPage} rel="prev">
-              <p>← Previous</p>
+              <p>← Newer</p>
             </Link>
           )}
           {!isLast && (
             <Link to={nextPage} rel="next">
-              <p>Next →</p>
+              <p>Older →</p>
             </Link>
           )}
           </div>
@@ -52,9 +52,9 @@ const BlogPage = ({ data, ...props } )=> {
               <PaginationSelect>
                 <p>Page</p>
                   <div class="select">
-                    <select value={selectValue} onChange={handleSelectChange}>
+                    <select aria-label="Pagination Dropdown" value={selectValue} onChange={handleSelectChange}>
                       {Array.from({length: numPages}, (_, i) => (
-                        <option value={i + 1}>
+                        <option arial-label="Goto Page {i + 1}" value={i + 1}>
                           {i + 1}
                         </option>
                       ))}
