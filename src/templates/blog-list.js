@@ -193,6 +193,7 @@ const PaginationSelect = styled.div`
     margin-right: 3px;
     padding-right: 6px;
     -moz-appearance: none;
+    -webkit-appearance: none;
     border: medium none;
     font-size: 18px;
   }
@@ -204,7 +205,7 @@ const PaginationSelect = styled.div`
   svg {
     width: 8px;
     position: absolute;
-    right: 8px;
+    right: 6px;
     pointer-events: none;
   }
   p {
