@@ -52,7 +52,7 @@ const BlogPage = ({ data, ...props } )=> {
               <PaginationSelect>
                 <p>Page</p>
                   <div class="select">
-                    <select value={selectValue} onChange={handleSelectChange}>
+                    <select aria-label="Pagination Dropdown" value={selectValue} onChange={handleSelectChange}>
                       {Array.from({length: numPages}, (_, i) => (
                         <option value={i + 1}>
                           {i + 1}
