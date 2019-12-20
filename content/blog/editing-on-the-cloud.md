@@ -1,7 +1,7 @@
 ---
 title: How can my editors edit a TinaCMS site?
 date: '2019-12-23T10:00:00.000Z'
-draft: false
+draft: true
 author: James O'Halloran
 ---
 
