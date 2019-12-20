@@ -21,7 +21,6 @@ const BlogPage = ({ data, ...props } )=> {
     e.preventDefault()
     const pageNumber = e.target.value
     setSelectValue(pageNumber)
-    console.log(pageNumber)
     if (pageNumber === '1')
       return navigate('/blog')
 
@@ -54,7 +53,7 @@ const BlogPage = ({ data, ...props } )=> {
                   <div class="select">
                     <select aria-label="Pagination Dropdown" value={selectValue} onChange={handleSelectChange}>
                       {Array.from({length: numPages}, (_, i) => (
-                        <option arial-label="Goto Page {i + 1}" value={i + 1}>
+                        <option arial-label={`Go to Page ${i + 1}`} aria-current={i + 1 === currentPage ? true : false} value={i + 1}>
                           {i + 1}
                         </option>
                       ))}
