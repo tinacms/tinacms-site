@@ -14,7 +14,7 @@ The `textarea` field represents a multi-line text input. It should be used for c
 
 ## Definition
 
-Below is an example of how a `textarea` field could be defined in a Gatsby remark form. Read more on passing in form field options [here](/docs/gatsby/markdown#customizing-remark-forms).
+Below is an example of how a `textarea` field could be defined in a Gatsby remark form. [Read more on passing in form field options](/docs/gatsby/markdown#customizing-remark-forms).
 
 ```javascript
 const BlogPostForm = {
@@ -36,6 +36,8 @@ const BlogPostForm = {
  - `component`: The name of the React component that should be used to edit this field. Available field component types are [defined here](/docs/concepts/fields#field-types)
  - `label`: A human readable label for the field. This label displays in the sidebar and is optional. If no label is provided, the sidebar will default to the name.
  - `description`: An optional description that expands on the purpose of the field or prompts a specific action.
+
+## Interface
 
 ```typescript
 interface TextareaConfig {

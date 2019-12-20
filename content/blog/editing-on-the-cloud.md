@@ -1,55 +1,58 @@
 ---
 title: How can my editors edit a TinaCMS site?
-date: '2019-12-17T20:09:31.626Z'
-draft: false
+date: '2019-12-23T10:00:00.000Z'
+draft: true
 author: James O'Halloran
 ---
 
-One of the main draws of Tina is that it can give your editors an incredible user experience tailored to their use-case. That being said, it wouldn't be an ideal solution if each editor needed to run their own local development server.
+TinaCMS allows you to build live-editing functionality directly into your site. Tina differs from other headless CMS's (e.g [Forestry.io](https://Forestry.io), [NetlifyCMS](https://NetlifyCMS.org), [Contentful](https://contentful.com)) which simply allow you to edit your site's content and are relatively detached from your site's code. Having Tina sit in between your content and your site's template gives editors an amazing real-time editing experience where they can navigate to any area of the site, start making changes, and immediately see these changes reflected within the site.
 
-We've been teasing [Tina Teams](/teams 'Tina Teams') as the solution for this. While `Tina Teams` isn't quite ready yet, we'd like to shed some light on how editors can edit on the cloud and where `Tina Teams` fits in.
+![tina-diagram](/img/how_tina_works_asset.png)
 
-### Overview
+With most JAMstack sites, there are various transformations happening that transform your editor's source content (e.g markdown) into the generated HTML on your live site. These transformations happen either at build time or while running a development server. For Tina to give your editors a live, hot-reloading experience **that also transforms content**, it needs to be run in a _live development environment_.
 
-Typically, Tina will be hidden on your live site, and will only be accessible locally, or on your **cloud development environment**.
-If you're using git as your backend, you could either host your master branch on the cloud development server (and have all commits deployed to your live site), or you could host another staging branch.
+> So, do my editors need to run a local dev server to edit a TinaCMS site?
 
-### Hosting ☁️
+Nope! You'll be able to setup a **cloud editing environment** for your Tina site, and optionally use [Tina Teams](https://tinacms.org/teams) for some extended collaboration features.
 
-Part of what makes Tina great is that it gives the developer control. It's important for us to extend this control into the Cloud editing experience. For this reason, we've designed it so that you can **host your development environment wherever you like.**
+### Hosting Your Cloud Editing Environment ☁️
 
-Already have a Gatsby Cloud plan?
-Want to host a small site under Heroku's free tier?
+Part of what makes Tina great is that it gives the developer control. It's important for us to extend this control into the Cloud editing experience. For this reason, we've designed it so that you can **host your cloud editing environment wherever you like.**
 
-The choice is up to you, depending on your needs!
+Already have a [Gatsby Cloud](https://www.gatsbyjs.com/cloud/) plan?
+Want to host a small site under [Heroku's](https://www.heroku.com) free tier?
 
-You can fire up a development environment using one of these services and have users start making commits from the cloud.
+The choice is up to you!
 
-If this isn't something in which you'd like to manage, you'll eventually be able to host your staging environment through us on `Tina Teams`.
+You can fire up a **cloud editing environment** using one of these services and have users start making commits.
 
-<tip>Depending on your use-case, hosting might be all that you'll need to have your editors editing on the cloud. Otherwise, you might consider using `Tina Teams` for some additional functionality detailed below.</tip>
+<tip>If you're using git as your backend, you may choose to host your master branch on the cloud editing environment (and have all commits deployed to your live site), or you can host a separate staging branch.</tip>
 
-### Authorization 👤
+### Tina Teams
 
-Some services (like Gatsby Previews) will allow you to password-protect your environment. If you're hosting somewhere else, you likely don't want strangers accessing your site and making commits. One of the features that `Tina Teams` provides is an **authentication layer over your cloud development environment**. Users will first need to log in before accessing your cloud environment.
+Depending on your use case, hosting might be all that you'll need to have your editors editing on the cloud. Otherwise, you might consider using **Tina Teams** for some additional functionality detailed below...
 
-### User management 👨 👩
+##### Authorization 👤
+
+Some services (like Gatsby Cloud) will allow you to password protect your environment. If you're hosting somewhere else, you likely don't want strangers accessing your site and making commits. One of the features that **Tina Teams** provides is an _authentication layer over your cloud editing environment_. Users will first need to log in before accessing your cloud environment.
+
+##### User Management 👨 👩
 
 With Tina Teams, users can have **custom roles assigned to each user**, which can be referenced within your site.
-Maybe you have an external contributor who can only access a specific blog post? An editor who can create, but not delete pages? The implementation is up to you and your site's needs.
+Have an external contributor who can only access a specific blog post? How about an editor who can create, but not delete pages? The implementation is up to you and your site's needs.
 
-### Commit Authoring 🗣️
+##### Commit Authoring 🗣️
 
 Since users will need to authenticate with Tina Teams, we can **tie commits back to the logged-in user**, so you can always find out who put that llama image in your blog post (so you can thank them, of course).
 ![tinacms-add-new-file-gif](/img/rico-replacement.jpg)
 
 ### In Summary
 
-Not all sites fit into the same box, so we're giving the flexibility to manage your cloud development environment however makes sense for you. Running a development environment on `Gatsby Previews` without `Tina Teams` will work for some, and certain users may require deeper user management with `Tina Teams`.
+Not all sites fit into the same box, so we're giving you the flexibility to manage your cloud development environment in any way that makes sense for you. Running a development environment on **Gatsby Cloud** without **Tina Teams** will work for some, and certain users may require deeper user management with **Tina Teams**. We'll soon be posting examples of how to host your cloud editing environment on additional services as well..
 
 <br />
 
-We've also got some other "down the road "features planned which will make it much easier to work alongside other team members on your cloud environment: e.g Locking files when being edited by another user. Stay tuned!
+We've also got some other "down the road" features planned which will make it much easier to work alongside other team members on your cloud environment, such as locking files when being edited by another user. Stay tuned!
 
 <br />
 
@@ -57,4 +60,4 @@ We've also got some other "down the road "features planned which will make it mu
 
 <br />
 
-Thanks for reading! We're going to have some examples soon detailing how to host your cloud development environment on a few different services. You can also sign up for our [Tina Teams Beta](http://tinacms.org/teams) to try it out early!
+Thanks for reading! If you think Tina Teams might be a fit, you can sign up for our [Tina Teams Beta](http://tinacms.org/teams) to try it out early!

@@ -15,7 +15,7 @@ consumes:
     details: Explains form options interface
 ---
 
-Gatsby allows you to build sites from many different data sources. Currently Tina has plugins for editing content in [markdown](/docs/gatsby/markdown#editing-markdown-content) & [JSON](/docs/gatsby/json#editing-json-in-gatsby) files, with plans to support many more data sources.
+Gatsby allows you to build sites from many different data sources. Currently Tina has plugins for editing content in [Markdown](/docs/gatsby/markdown#editing-markdown-content) & [JSON](/docs/gatsby/json#editing-json-in-gatsby) files, with plans to support many more data sources.
 
 <!-- callout -->
 
@@ -23,7 +23,7 @@ Have an idea for a Tina content editing plugin? [Consider contributing](/docs/co
 
 ## Editing Markdown in Gatsby
 
-The [`gatsby-transformer-remark`](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-remark) plugin lets us use markdown in our Gatsby sites. Two other plugins let us edit markdown with Tina:
+The [`gatsby-transformer-remark`](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-remark) plugin lets us use Markdown in our Gatsby sites. Two other plugins let us edit Markdown with Tina:
 
 - `gatsby-tinacms-remark`: Provides hooks and components for creating Remark forms.
 - `gatsby-tinacms-git`: Extends the gatsby development server to write changes to the local filesystem.
@@ -66,7 +66,7 @@ There are three ways to register remark forms with the CMS, depending on the com
 - [`RemarkForm`](http://tinacms.org/docs/gatsby/markdown#2-the-render-props-component-code-classlanguage-textremarkformcode) — A [Render Props](https://reactjs.org/docs/render-props.html#use-render-props-for-cross-cutting-concerns) component — useful for any class component. Can be used with components sourcing data from a [static query](https://www.gatsbyjs.org/docs/static-query/#how-staticquery-differs-from-page-query) using Gatsby's [`StaticQuery`](https://www.gatsbyjs.org/docs/static-query/) render props component.
 - [`remarkForm`](http://tinacms.org/docs/gatsby/markdown#3-the-higher-order-component-code-classlanguage-textremarkformcode) — A [Higher-Order Component](https://reactjs.org/docs/higher-order-components.html) — useful for [page components](https://www.gatsbyjs.org/docs/recipes/#creating-pages-automatically) (function or class), that source data from a [page query](https://www.gatsbyjs.org/docs/page-query/).
 
-All of these options can only take data (transformed by `gatsby-transformer-remark`) from a `markdownRemark` query. If you need more information on using markdown in Gatsby, refer to [this documentation](https://www.gatsbyjs.org/docs/adding-markdown-pages/).
+All of these options can only take data (transformed by `gatsby-transformer-remark`) from a `markdownRemark` query. If you need more information on using Markdown in Gatsby, refer to [this documentation](https://www.gatsbyjs.org/docs/adding-markdown-pages/).
 
 <tip>If you're adding Tina to a page component in Gatsby, skip to [`remarkForm`](http://tinacms.org/docs/gatsby/markdown#3-the-higher-order-component-remarkform).</tip>
 
@@ -98,9 +98,9 @@ This hook connects the `markdownRemark` data with Tina to be made editable. It i
 import { useLocalRemarkForm } from 'gatsby-tinacms-remark'
 import { useStaticQuery } from 'gatsby'
 
-conts Title = (data) => {
+const Title = (data) => {
 
-  // 2. Add required graphql fragment
+  // 2. Add required GraphQL fragment
   const data = useStaticQuery(graphql`
     query TitleQuery {
       markdownRemark(fields: {slug: {eq: "song-of-myself"}}) {
@@ -164,7 +164,7 @@ class Title extends React.Component {
               render = { data => (
                 /*
                 ** 3. Return RemarkForm, pass in the props
-                **    and then return the jsx this component
+                **    and then return the JSX this component
                 **    should render
                 */
                 <RemarkForm
@@ -222,13 +222,13 @@ export const pageQuery = graphql`
 `
 ```
 
-Learn how to customize the fields displayed in the form [below](http://tinacms.org/docs/gatsby/markdown#customizing-remark-forms).
+Learn how to customize the fields displayed in the form [below](/docs/gatsby/markdown#customizing-remark-forms).
 
 ### 3. The Higher-Order Component: remarkForm
 
 The `remarkForm` [higher-order component](https://reactjs.org/docs/higher-order-components.html) (HOC) let's us register forms with `Tina` on Gatsby page components.
 
-There are 3 steps to making a markdown file editable with `remarkForm`:
+There are 3 steps to making a Markdown file editable with `remarkForm`:
 
 1. Import the `remarkForm` HOC
 2. Wrap your template with `remarkForm`
@@ -266,7 +266,7 @@ export const pageQuery = graphql`
 `
 ```
 
-You should now see text inputs for each of your frontmatter fields and for the markdown body. Try changing the title and see what happens!
+You should now see text inputs for each of your front matter fields and for the Markdown body. Try changing the title and see what happens!
 
 ### Queries aliasing 'markdownRemark'
 
@@ -292,12 +292,11 @@ export const pageQuery = graphql`
 
 ## Editing Markdown Content
 
-With the Remark Form created, you can now edit your markdown file in the Tina sidebar. The `markdown` component is [commonmark](https://commonmark.org/help/) compatible. Content changes are written to the markdown files in real time. Hitting `Save` will commit those changes to your repository.
+With the Remark Form created, you can now edit your Markdown file in the Tina sidebar. The `markdown` component is [CommonMark](https://commonmark.org/help/) compatible. Content changes are written to the Markdown files in real time. Hitting `Save` will commit those changes to your repository.
 
 **Why write to disk "on change"?**
 
-This allows any `gatsby-remark-*` plugins to properly transform the data in to a remark node and
-provide a true-fidelity preview of the changes.
+This allows any `gatsby-remark-*` plugins to properly transform the data in to a remark node and provide a true-fidelity preview of the changes.
 
 ## Customizing Remark Forms
 
@@ -446,5 +445,3 @@ class BlogPostTemplate extends React.Component {
 
 export default BlogPostTemplate
 ```
-
-
