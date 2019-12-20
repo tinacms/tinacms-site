@@ -98,7 +98,6 @@ exports.setFieldsOnGraphQLNodeType = ({ type }) => {
           return the opposite of the `draft` value,
           i.e. if draft = true : published = false
           */
-          console.log(frontmatter.draft)
           return !frontmatter.draft
         },
       },
@@ -107,7 +106,7 @@ exports.setFieldsOnGraphQLNodeType = ({ type }) => {
   return {}
 }
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   await generateConsumerMatrix(graphql)
 
   const { createPage } = actions
@@ -131,13 +130,33 @@ exports.createPages = async ({ graphql, actions }) => {
 
   if (allMarkdown.errors) {
     console.error(allMarkdown.errors)
-    throw new Error(allMarkdown.errors)
+    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    return
   }
+
+  const blogPosts = allMarkdown.data.allMarkdownRemark.edges.filter(
+    ({ node }) => node.fields.section === 'blog'
+  )
+  const postsPerPage = 8
+  const numPages = Math.ceil(blogPosts.length / postsPerPage)
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/blog` : `/blog/page/${i + 1}`,
+      component: path.resolve("./src/templates/blog-list.js"),
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1,
+      },
+    })
+  })
 
   allMarkdown.data.allMarkdownRemark.edges.forEach(({ node }) => {
     const { slug, layout, section } = node.fields
     // if unpublished return, to prevent the page from being created
     if (!node.published) return
+
     // otherwise, create the `published` page
     createPage({
       path: slug,
