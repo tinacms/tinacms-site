@@ -44,9 +44,9 @@ If you want the author to be based off of the logged-in user instead of a static
 
 ### `SSH_KEY` 🔑
 
-The `SSH_KEY` is a private key that allows write access to your git repo. We'll need to add the public key to the repo under Deploy Keys in "Settings" and **enable write access.** The `SSH_KEY` needs to be **Base64 encoded** before it's added to Gatsby Cloud; we can encode a local key (named id_rsa in this case) by running:
+The `SSH_KEY` is a private key that allows write access to your git repo. We'll need to add the public key to the repo under Deploy Keys in "Settings" and **enable write access.** The `SSH_KEY` needs to be **Base64 encoded** before it's added to Gatsby Cloud; we can encode a local key (named id_rsa in this case) by running the following in your terminal:
 
-`cat ./.ssh/id_rsa | base64`
+`$ cat ./.ssh/id_rsa | base64`
 
 <tip>
 After you update any environment variables, you will need to rebuild your Gatsby Cloud site for them to take effect.
@@ -58,7 +58,7 @@ When it's time to get our editors editing a Tina site on a cloud editing environ
 
 ## Happy Cloud Editing! ☁️
 
-Hopefully this gets you started editing **your Gatsby site on the cloud.**
+Hopefully this gets you started editing **your Gatsby site with Tina on the cloud.**
 
 We'll continue to detail how to host cloud editing environments on a few different services. You can also sign up for our [Tina Teams Beta](http://tinacms.org/teams) to try out some extended team features!
 
