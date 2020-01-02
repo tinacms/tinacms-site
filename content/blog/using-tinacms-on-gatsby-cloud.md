@@ -11,14 +11,14 @@ Since Gatsby Cloud is built from the ground up specifically for Gatsby sites, it
 
 So, let's do this! 🕺
 
-## Deploying a Editing Environment on Gatsby Cloud 🚀
+## Deploying a Preview on Gatsby Cloud 🚀
 
-Deploying a cloud editing environment with Gatsby Cloud can be done in just a few clicks. Once we've [created an account](https://www.gatsbyjs.com/cloud/ 'Gatsby Cloud'), we can connect the site's repository and enter some build information (the site's root directory and environment variables).
+Deploying a preview with Gatsby Cloud can be done in just a few clicks. Once we've [created an account](https://www.gatsbyjs.com/cloud/ 'Gatsby Cloud'), we can connect the site's repository and enter some build information (the site's root directory and environment variables).
 
 And tada! ✨ Our site's preview should be live! Any commits we make to the repo going forward will automatically trigger a rebuild of our Gatsby preview.
 
 <tip>
-Note: This environment will act our site's "preview" or "cloud editing environment" and not our production site. Your production site should be built and deployed separately.
+Note: This preview will act as our "Cloud Editing Environment" and not our production site. Your production site should be built and deployed separately.
 </tip>
 
 Now that our **preview is live**, there's some extra configuration that we'll want to do to have Tina work smoothly on the cloud.
