@@ -5,19 +5,19 @@ author: Thomas Weibenfalk
 draft: false
 ---
 
-###Introduction
 Supercharge your static site with real time content editing!
 In this post I will explore the three different methods Tina offers to edit markdown on your Gatsby site. You’ll learn how to setup Tina with both Page Queries and Static Queries.
 
 This post will not cover the basic, initially, setup of Tina that is needed. For a full documentation on how to initially setup Tina with Gatsby and Markdown files visit the official [docs](https://tinacms.org/docs/gatsby/manual-setup).
 
-###What’s the deal with page queries and static queries?
+## What’s the deal with page queries and static queries?
+
 Before we dive down into editing markdown with Tina we have to understand how Gatsby handles querying data with GraphQL. You can source data from almost anywhere in Gatsby. In our case we’re using markdown. When you build your site, Gatsby creates a GraphQL schema for all the data. Then you use GraphQL in your React components to query your sourced data. If you don’t know about GraphQL you can read more [here](https://graphql.org/learn/).
 
 Gatsby allows you to query your data in two ways; Page Queries and Static Queries.
 Since the release of the React Hooks API and the useStaticQuery hook in Gatsby it is very easy to query your data. There are cases when you can’t use a Static Query though. First let’s explore the differences. As usual you can find more information in the excellent Gatsby [documentation](https://www.gatsbyjs.org/docs/static-vs-normal-queries/).
 
-The two main differences are:
+### The two main differences are:
 
 - Page queries can accept GraphQL variables. Static queries can’t.
 
@@ -29,12 +29,13 @@ I use static queries as much as possible because I love the hooks API and the ea
 
 Another great thing with static queries is that you can grab the data in the component that needs the data. That prevents prop drilling and your data is more tightly coupled to the component where it is used. The infamous prop drilling in React is when you have to pass down data via props to components deep down in the component tree. Read more on prop drilling in [this](https://kentcdodds.com/blog/prop-drilling) excellent blog post from Kent C Dodds.
 
-###React overview
+## React overview
+
 As we’ve learned Gatsby has two types of queries; Page queries and Static queries. So we have to choose which one is suitable for our needs.
 
 In addition to this, React also offers a couple of options for us to choose from. You can either create your component as a class or a functional component. Prior to the React Hooks API, you had to use class components to have state in your components. Now, with hooks, you can do this with functional components.
 
-###Three ways to edit markdown with Tina
+## Three ways to edit markdown with Tina
 Tina provides methods for editing markdown with both class and functional components in React. We also know that we can have both page queries and static queries in our Gatsby components. So we have to choose the most suitable approach for us. Tina gives us three different approaches as described below.
 
 - **useLocalRemarkForm** - A React Hook that is intended for functional components that source data from a static query using Gatsby’s useStaticQuery.
@@ -45,7 +46,7 @@ Tina provides methods for editing markdown with both class and functional compon
 
 If you want to read more about the three different approaches you can visit the TinaCMS docs [here](https://tinacms.org/docs/gatsby/markdown).
 
-###remarkForm - How to use it and why it won’t work with static queries.
+### remarkForm - How to use it and why it won’t work with static queries.
 First … Let’s dive into how to hook up TinaCMS with a page query.
 The remarkForm Component in TinaCMS is a [Higher Order Component](https://reactjs.org/docs/higher-order-components.html), a HOC in short. This means that it is a function that takes in another component and will return a new component that has added functionality to it. If you’re not familiar with HOC:s I suggest you do some googling around and read more about it. They are concidered “advanced usage” in the React world.
 
@@ -93,7 +94,8 @@ Easy enough isn’t it? Just three small steps and you’ll have a beautiful sid
 
 But what if you want to use a Static query and not a Page query?
 
-###useLocalRemarkForm to the rescue!
+### useLocalRemarkForm to the rescue!
+
 We’ve learned that the remarkForm HOC won’t work on static queries. So we’ll have to find another solution to hook up our useStaticQuery data with TinaCMS.
 
 Great news! remarkForm uses a hook that is called useLocalRemarkForm internally. So RemarkForm is really just a “wrapper” for the useLocalRemarkForm hook. The remarkForm component takes in a component as an argument, calls useLocalRemarkForm with the page query data and returns a new component with the query data and TinaCMS connected to it. That’s all that it does! Therefore we can use the useLocalRemarkForm hook directly ourselves, without using the remarkForm HOC. Please note that you can of course use the useLocalRemarkForm hook on Page queries.
@@ -147,7 +149,8 @@ const [markdownRemark] = useLocalRemarkForm(heroData.markdownRemark)
 
 It is ES6 destructuring of the array I’m doing here. As we get an array with two elements back I’m destructuring out the first element (which is our data) and name it markdownRemark. You can name it whatever you want.
 
-###RemarkForm - The Render Prop Component
+### RemarkForm - The Render Prop Component
+
 You can’t use React Hooks on class components. That’s why Tina provides a RemarkForm component which uses the render prop pattern. You can read more about render props in the official [React docs](https://reactjs.org/docs/render-props.html). Note the naming here! This one has a capital “R” which is different from the HOC. This component works with both page- and static queries. I will show how to use it with a page query below. If you want to learn more about the render prop component and how to use it with a static query you can visit the official [Tina docs](https://tinacms.org/docs/gatsby/markdown).
 
 First, take a look at below example:
@@ -203,25 +206,21 @@ Ok, yet again, let’s see what’s happening here.
 
 This is it. Three ways of using Tina for editing frontmatter files in Gatsby.
 
-###Conclusion and next steps
+## Next steps
+
 In this post we learned about how to setup Tina with both Static queries and Page queries in Gatsby. We also learned about three different ways to edit markdown with Tina. This is just the basics to get you started. If you like Tina and want to learn more you should checkout the [Tina official docs](https://tinacms.org/docs/). There’s a lot more stuff to read there and some interesting use cases. For example you can learn how to apply inline editing and also how to customize the form fields in the Tina sidebar.
 
 Tina is a great addition to the React ecosystem and static site generators like Gatsby. It gives your site a pleasant and easy way to edit and interact with your content.
 I’m thrilled to see how big TinaCMS will be and what it can do as it evolves!
 
-###More reading and learning
-Tina Official Documentation: https://tinacms.org/docs/
+## More reading and learning
 
-Tina Community: https://community.tinacms.org/
+[Tina Official Documentation](https://tinacms.org/docs/)
 
-Tina on Twitter: @tina_cms
+[Tina Community](https://community.tinacms.org/)
+
+Tina on Twitter: [@tina_cms](https://twitter.com/tina_cms)
 
 ---
 
-Youtube tutorial by Weibenfalk: https://www.youtube.com/watch?v=eZWJ9ZtF61A&t=265s
-
-Weibenfalk on Twitter: @weibenfalk
-
-Weibenfalk on Youtube: https://www.youtube.com/c/weibenfalk
-
-Weibenfalk web: https://www.weibenfalk.com
+Watch my tutorial for [Tina & Gatsby](https://www.youtube.com/watch?v=eZWJ9ZtF61A&t=265s). Also catch me on Twitter — [@weibenfalk](https://twitter.com/weibenfalk), [Youtube](https://www.youtube.com/c/weibenfalk), or on my [website](https://www.weibenfalk.com).
