@@ -1,7 +1,7 @@
 ---
 title: Using TinaCMS on Gatsby Cloud
 date: '2020-01-02T12:00:00.000Z'
-draft: true
+draft: false
 author: James O'Halloran
 ---
 
