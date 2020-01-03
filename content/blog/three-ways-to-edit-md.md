@@ -11,55 +11,69 @@ consumes:
   - file: /packages/gatsby-tinacms-remark/src/useRemarkForm.tsx
     details: Demonstrates useLocalRemarkForm usage
 ---
+\**Supercharge your static site with real time content editing!**🚀
+In this post I will explore _the three different methods_ Tina offers to edit Markdown on your Gatsby site. You’ll learn how to setup Tina with both Page Queries and Static Queries.
 
-Supercharge your static site with real time content editing!
-In this post I will explore the three different methods Tina offers to edit Markdown on your Gatsby site. You’ll learn how to setup Tina with both Page Queries and Static Queries.
-
+<tip>
 This post will not cover the basics of using Tina with Gatsby. Please reference the [documentation](https://tinacms.org/docs/gatsby/manual-setup) on how to initially setup Tina with Gatsby.
+</tip>
 
 ## What’s the deal with Page Queries and Static Queries?
 
-Before we dive down into editing Markdown with Tina we have to understand how Gatsby handles querying data with GraphQL. You can source data from almost anywhere in Gatsby. In our case we’re using Markdown. When you build your site, Gatsby creates a GraphQL schema for all the data. Then you use [GraphQL](https://graphql.org/learn/) in your React components to query your sourced data.
+Before we dive down into editing Markdown with Tina we have to understand how Gatsby handles querying data with GraphQL. You can source data from almost anywhere in Gatsby. In our case we’re using _Markdown_. When you build your site, Gatsby creates a GraphQL schema for all the data. Then you use [GraphQL](https://graphql.org/learn/) in your React components to query your sourced data.
 
-Gatsby allows you to query your data in two ways; Page Queries and Static Queries.
-Since the release of the [React Hooks API](https://reactjs.org/docs/hooks-intro.html) and the [`useStaticQuery` hook](https://www.gatsbyjs.org/docs/use-static-query/) in Gatsby, it is very easy to query your data. There are cases when you can’t use a Static Query though. First let’s explore the differences. As usual you can find more information in the excellent Gatsby [documentation](https://www.gatsbyjs.org/docs/static-vs-normal-queries/).
+Gatsby allows you to query your data in two ways; _Page Queries and Static Queries_.
+Since the release of the [React Hooks API](https://reactjs.org/docs/hooks-intro.html) and the `[useStaticQuery](https://www.gatsbyjs.org/docs/use-static-query/)`[ hook](https://www.gatsbyjs.org/docs/use-static-query/) in Gatsby, it is very easy to query your data. There are cases when you can’t use a Static Query though. First let’s explore the differences.
+
+<tip>
+Tip! As usual you can find more information in the excellent Gatsby [documentation](https://www.gatsbyjs.org/docs/static-vs-normal-queries/).
+</tip>
 
 ### The two main differences are:
 
-- Page Queries can accept GraphQL variables. Static Queries can’t.
-
-- Page Queries can only be added on page components. Static Queries can be used in all components.
+* Page Queries can accept GraphQL variables. Static Queries can’t.
+* Page Queries can only be added on page components. Static Queries can be used in all components.
 
 So, why can’t we use GraphQL variables in a Static Query? The reason for that is a Static Query doesn’t have access to the page context like a Page Query does. The result is that a Static Query won’t be able to access variables that are defined in the page context. You can define the page context in your `gatsby-node.js` file in your `createPage` function. Here you can supply your page with different variables that will get injected to your page on build time.
 
-I use Static Queries as much as possible because I love the hooks API and the ease of composition possibilities it brings. For example you can create custom hooks and reuse them in multiple components. Let’s say that you have a graphQL query that grabs metadata that you want on multiple pages. Create a custom React hook with the `useStaticQuery` Gatsby hook inside of it. Then you can use your own custom hook wherever you want and always easily get that data into your component. When you need to have variables in your component, you have to use a Page Query. Page Queries cannot be used with the hooks api and have to be unique and attached to the specific page component.
+I use Static Queries as much as possible because I love the hooks API and the ease of composition possibilities it brings. For example you can create _custom hooks and reuse them in multiple components_.
 
-Another great thing with Static Queries is that you can grab the data in the component that needs the data. That prevents prop drilling and your data is more tightly coupled to the component where it is used. The infamous [prop drilling](https://kentcdodds.com/blog/prop-drilling) in React is when you have to pass down data via props to components deep down in the component tree.
+Let’s say that you have a graphQL query that grabs metadata that you want on multiple pages. Create a custom React hook with the `useStaticQuery` Gatsby hook inside of it. Then you can use your own custom hook wherever you want and always easily get that data into your component. When you need to have variables in your component, you have to use a Page Query. Page Queries cannot be used with the hooks api and have to be unique and attached to the specific page component.
+
+Another great thing with Static Queries is that you can grab the data in the component that needs the data. That prevents _prop drilling_ and your data is more tightly coupled to the component where it is used.
+
+<tip>
+The infamous [prop drilling](https://kentcdodds.com/blog/prop-drilling) in React is when you have to pass down data via props to components deep down in the component tree.
+</tip>
 
 ## React overview
 
-As we’ve learned, Gatsby has two types of queries: Page Queries and Static Queries. So we have to choose which one is suitable for our needs.
+As we’ve learned, Gatsby has two types of queries: _Page Queries and Static Queries_. So we have to choose which one is suitable for our needs.
 
-In addition to this, React also offers a couple of options for us to choose from. You can either create your component as a [class or a functional component](https://reactjs.org/docs/components-and-props.html). Prior to the React Hooks API, you had to use class components to have state in your components. Now with hooks, you can do this with functional components.
+In addition to this, React also offers a couple of options for us to choose from. You can either create your component as a [class or a functional component](https://reactjs.org/docs/components-and-props.html). Prior to the React Hooks API, you had to use class components to have state in your components. Now with hooks, you can do this with functional components.🥰
 
 ## Three ways to edit markdown with Tina
 
-Tina provides methods for editing Markdown with both class and functional components in React. We also know that we can have both Page Queries and Static Queries in our Gatsby components. So we have to choose the most suitable approach for us. Tina gives us three different approaches as described below.
+Tina provides methods for editing Markdown with both class and functional components in React. We also know that we can have both Page Queries and Static Queries in our Gatsby components. So we have to choose the most suitable approach for us. Tina gives us **three different approaches** as described below.
 
-- **useLocalRemarkForm** - A React Hook that is intended for functional components that source data from a Static Query using Gatsby’s `useStaticQuery`.
+* **useLocalRemarkForm** - A React Hook that is intended for functional components that source data from a Static Query using Gatsby’s `useStaticQuery`.
+* **RemarkForm** - [A Render Props Component](https://reactjs.org/docs/render-props.html) that you can use in class components that source data from a Static Query using Gatsby’s `StaticQuery` render props component.
+* **remarkForm** - [A Higher Order Component](https://reactjs.org/docs/higher-order-components.html). Please note the subtle difference here! The only difference in naming from the render props component is the lowercase “r”. The `remarkForm` component is used when you source data from a Page Query in Gatsby.
 
-- **RemarkForm** - [A Render Props Component](https://reactjs.org/docs/render-props.html) that you can use in class components that source data from a Static Query using Gatsby’s `StaticQuery` render props component.
-
-- **remarkForm** - [A Higher Order Component](https://reactjs.org/docs/higher-order-components.html). Please note the subtle difference here! The only difference in naming from the render props component is the lowercase “r”. The `remarkForm` component is used when you source data from a Page Query in Gatsby.
-
-If you want to read more about the three different approaches you can visit the [TinaCMS docs](https://tinacms.org/docs/gatsby/markdown).
+<tip>
+Tip! If you want to read more about the three different approaches you can visit the [TinaCMS docs](https://tinacms.org/docs/gatsby/markdown).
+</tip>
 
 ### remarkForm - How to use it and why it won’t work with Static Queries.
 
 First … Let’s dive into how to hook up TinaCMS with a Page Query.
-The `remarkForm` Component in TinaCMS is a [Higher Order Component](https://reactjs.org/docs/higher-order-components.html), a HOC in short. This means that it is a function that takes in another component and will return a new component that has added functionality to it. If you’re not familiar with HOC:s I suggest you do some googling around and read more about it. They are considered “advanced usage” in the React world.
+The `remarkForm` Component in TinaCMS is a [Higher Order Component](https://reactjs.org/docs/higher-order-components.html), a HOC in short. This means that it is a function that takes in another component and will return a new component that has added functionality to it.
 
-So … the `remarkForm` component wants another component as an argument and is intended for Page Queries. A Page Query injects the data as a prop to the component and we access the data from this prop. With a `useStaticQuery` hook the the data is collected in a variable, that you choose, inside the component itself. That means if you're using the `useStaticQuery` hook in Gatsby you won’t have a component to give the `remarkForm` HOC. Bummer! 😞That’s why you can only use the `remarkForm` component on Page Queries.
+<tip>
+If you’re not familiar with HOC:s I suggest you do some googling around and read more about it. They are considered “advanced usage” in the React world.
+</tip>
+
+So … the `remarkForm` component wants another component as an argument and is intended for Page Queries. A Page Query injects the data as a prop to the component and we access the data from this prop. With a `useStaticQuery` hook the the data is collected in a variable, that you choose, inside the component itself. That means if you're using the `useStaticQuery` hook in Gatsby you won’t have a component to give the `remarkForm` HOC. Bummer!😞 That’s why you can only use the `remarkForm` component on Page Queries.
 
 So how do you use this component with a Page Query in Gatsby? First, check out the fictive Star Wars component below. It will show the three steps needed to hook everything up:
 
@@ -91,9 +105,9 @@ export const pageQuery = graphql`
 `
 ```
 
-The above code is a component that displays information about Star Wars movies. For now, it just displays a header though. But it could also display the release date and the crawl text in the intro to the film as we’re specifying those fields in the GraphQL query. But that’s another story in a galaxy far far away ...
+The above code is a component that displays information about Star Wars movies. For now, it just displays a header though. But it could also display the release date and the crawl text in the intro to the film as we’re specifying those fields in the GraphQL query. But that’s another story in a galaxy far far away ... ⭐
 
-The first step in this example is to import the `remarkForm` hook from the Gatsby plugin ‘gatsby-tinacms-remark’. This is the plugin that makes TinaCMS work with Markdown files.
+The first step in this example is to import the `remarkForm` hook from the Gatsby plugin ‘gatsby-tinacms-remark’. This is the plugin that _makes TinaCMS work with Markdown files_.
 
 There’s no need to do any additions to the code inside of the component itself. It could be any component, structured in the way you want it. The only thing you have to do with the component itself is to wrap your component with the `remarkForm` HOC when you export it.
 
@@ -107,7 +121,7 @@ But what if you want to use a Static Query and not a Page Query?
 
 We’ve learned that the `remarkForm` HOC won’t work on Static Queries. So we’ll have to find another solution to hook up our `useStaticQuery` data with TinaCMS.
 
-Great news! `remarkForm` uses a hook that is called `useLocalRemarkForm` internally. So `RemarkForm` is really just a “wrapper” for the `useLocalRemarkForm` hook.
+Great news! `remarkForm` uses a hook that is called `useLocalRemarkForm` internally. So `RemarkForm` is really just a “wrapper” for the `useLocalRemarkForm` hook.👀
 
 The `remarkForm` component takes in a component as an argument, calls `useLocalRemarkForm` with the Page Query data and returns a new component with the query data and TinaCMS connected to it. That’s all that it does! Therefore we can use the `useLocalRemarkForm` hook directly ourselves, without using the remarkForm HOC. Great news is that you can also use the `useLocalRemarkForm` hook on Page Queries.
 
@@ -141,7 +155,6 @@ const StarWarsMovie = () => {
 }
 
 export default StarWarsMovie;
-
 ```
 
 This is just an example component illustrating how `useLocalRemarkForm` works. In the real world it would not be an optimal solution using a Static Query for this. That’s because, as you can see, you can’t use variables inside the `useStaticQuery` hook to make it dynamic. You have to hardcode the movie id. So this query will work for that specific movie only, which is no good.
@@ -215,11 +228,11 @@ Ok, yet again, let’s see what’s happening here:
    This is a function that will be called by the `RemarkForm` component. And this is a render prop! `RemarkForm` will hook up Tina for editing the data and then render whatever is specified in the render prop function.
 3. Just as before we have to add the `...TinaRemark` fragment to the Page Query.
 
-This is it. Three ways of using Tina for editing frontmatter files in Gatsby.
+**This is it**. Three ways of using Tina for editing frontmatter files in Gatsby.
 
 ## Next steps
 
-In this post we learned about how to setup Tina with both Static Queries and Page Queries in Gatsby. We also learned about three different ways to edit markdown with Tina. This is just the basics to get you started. If you like Tina and want to learn more you should checkout the [Tina official docs](https://tinacms.org/docs/). There’s a lot more stuff to read there and some interesting use cases. For example you can learn how to apply [inline editing](https://tinacms.org/docs/gatsby/inline-editing) and also how to [customize the form fields](https://tinacms.org/docs/gatsby/markdown#customizing-remark-forms) in the Tina sidebar.
+In this post we learned about how to _setup Tina with both Static Queries and Page Queries in Gatsby_. We also learned about three different ways to edit markdown with Tina. This is just the basics to get you started. If you like Tina and want to learn more you should checkout the [Tina official docs](https://tinacms.org/docs/). There’s a lot more stuff to read there and some interesting use cases. For example you can learn how to apply [inline editing](https://tinacms.org/docs/gatsby/inline-editing) and also how to [customize the form fields](https://tinacms.org/docs/gatsby/markdown#customizing-remark-forms) in the Tina sidebar.
 
 Tina is a great addition to the React ecosystem and static site generators like Gatsby. It gives your site a pleasant and easy way to edit and interact with your content.
 I’m thrilled to see how big TinaCMS will be and what it can do as it evolves!
@@ -232,6 +245,6 @@ I’m thrilled to see how big TinaCMS will be and what it can do as it evolves!
 
 Tina on Twitter: [@tina_cms](https://twitter.com/tina_cms)
 
----
+***
 
 Watch my tutorial for [Tina & Gatsby](https://www.youtube.com/watch?v=eZWJ9ZtF61A&t=265s). Also catch me on Twitter — [@weibenfalk](https://twitter.com/weibenfalk), [Youtube](https://www.youtube.com/c/weibenfalk), or on my [website](https://www.weibenfalk.com).
