@@ -36,7 +36,7 @@ Tip! As usual you can find more information in the excellent Gatsby [documentati
 
 So, why can’t we use GraphQL variables in a Static Query? The reason for that is a Static Query doesn’t have access to the page context like a Page Query does. The result is that a Static Query won’t be able to access variables that are defined in the page context. You can define the page context in your `gatsby-node.js` file in your `createPage` function. Here you can supply your page with different variables that will get injected to your page on build time.
 
-<tip>I use Static Queries as much as possible because I love the hooks API and the ease of composition possibilities it brings. For example you can create _custom hooks and reuse them in multiple components_.</tip>
+<tip>I use Static Queries as much as possible because I love the hooks API and the ease of composition possibilities it brings. For example you can create custom hooks and reuse them in multiple components.</tip>
 
 Let’s say that you have a graphQL query that grabs metadata that you want on multiple pages. Create a custom React hook with the `useStaticQuery` Gatsby hook inside of it. Then you can use your own custom hook wherever you want and always easily get that data into your component. When you need to have variables in your component, you have to use a Page Query. Page Queries cannot be used with the hooks api and have to be unique and attached to the specific page component.
 
