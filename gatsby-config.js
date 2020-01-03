@@ -8,7 +8,9 @@ const dummyMailchimpEndpoint =
 const plugins = [
   {
     resolve: 'gatsby-plugin-feed',
+    language: 'english',
     options: {
+      feed_url: "https://tinacms.org/rss.xml",
       query: `
         {
           site {
