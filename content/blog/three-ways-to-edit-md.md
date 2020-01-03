@@ -11,7 +11,9 @@ consumes:
   - file: /packages/gatsby-tinacms-remark/src/useRemarkForm.tsx
     details: Demonstrates useLocalRemarkForm usage
 ---
-**Supercharge your static site with real time content editing!**🚀In this post I will explore _the three different methods_ Tina offers to edit Markdown on your Gatsby site. You’ll learn how to setup Tina with both Page Queries and Static Queries.
+**Supercharge your static site with real time content editing!**🚀
+
+In this post I will explore _the three different methods_ Tina offers to edit Markdown on your Gatsby site. You’ll learn how to setup Tina with both Page Queries and Static Queries.
 
 <tip>
 This post will not cover the basics of using Tina with Gatsby. Please reference the [documentation](https://tinacms.org/docs/gatsby/manual-setup) on how to initially setup Tina with Gatsby.
