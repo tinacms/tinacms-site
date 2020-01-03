@@ -69,14 +69,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       node,
       value: parent.absolutePath.replace(pathRoot, ''),
     })
-    //   // console.log(getNode(node.parent))
-    //   const { relativePath } = getNode(node.parent)
-    //   console.log(relativePath)
-    //   createNodeField({
-    //     node,
-    //     name: 'fileRelativePath',
-    //     value: relativePath
-    //   })
   }
 }
 
