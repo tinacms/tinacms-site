@@ -94,6 +94,17 @@ exports.setFieldsOnGraphQLNodeType = ({ type }) => {
           if (process.env.NODE_ENV !== 'production') {
             return true
           }
+
+          /*
+          * If the blog post is dated
+          * in the future don't publish
+          */
+          const currentDate = new Date();
+          const postDate = new Date(frontmatter.date)
+          if ( frontmatter.date !== undefined && postDate > currentDate ) {
+           return false
+          }
+
           /*
           return the opposite of the `draft` value,
           i.e. if draft = true : published = false
