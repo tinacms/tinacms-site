@@ -1,8 +1,13 @@
 ---
 title: Using TinaCMS on Gatsby Cloud
-date: '2020-01-02T12:00:00.000Z'
+date: '2020-01-03T12:00:00.000Z'
 draft: false
 author: James O'Halloran
+consumes:
+  - file: /packages/@tinacms/api-git/src/server.ts
+    details: Explains configuring git-specific environment variables to manually set author and ssh-key
+  - file: /packages/@tinacms/gatsby-tinacms-git/index.ts
+    details: Explains configuring git-specific environment variables to manually set author and ssh-key
 ---
 
 We've [recently written](/blog/editing-on-the-cloud/ 'TinaCMS on the cloud') about how TinaCMS will work on the cloud. Gatsby Cloud offers a great way for editors to edit TinaCMS sites, without having to run a local development environment.
