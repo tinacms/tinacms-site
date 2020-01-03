@@ -121,7 +121,7 @@ But what if you want to use a Static Query and not a Page Query?
 
 We’ve learned that the `remarkForm` HOC won’t work on Static Queries. So we’ll have to find another solution to hook up our `useStaticQuery` data with TinaCMS.
 
-Great news! `remarkForm` uses a hook that is called `useLocalRemarkForm` internally. So `RemarkForm` is really just a “wrapper” for the `useLocalRemarkForm` hook.👀
+**Great news!** `remarkForm` uses a hook that is called `useLocalRemarkForm` internally. So `RemarkForm` is really just a “wrapper” for the `useLocalRemarkForm` hook.👀
 
 The `remarkForm` component takes in a component as an argument, calls `useLocalRemarkForm` with the Page Query data and returns a new component with the query data and TinaCMS connected to it. That’s all that it does! Therefore we can use the `useLocalRemarkForm` hook directly ourselves, without using the remarkForm HOC. Great news is that you can also use the `useLocalRemarkForm` hook on Page Queries.
 
