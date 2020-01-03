@@ -34,6 +34,7 @@
     "gatsby-plugin-algolia": "^0.3.4",
     "gatsby-plugin-canonical-urls": "^2.0.13",
     "gatsby-plugin-catch-links": "^2.0.15",
+    "gatsby-plugin-feed": "^2.3.25",
     "gatsby-plugin-google-tagmanager": "^2.1.12",
     "gatsby-plugin-mailchimp": "^5.1.2",
     "gatsby-plugin-manifest": "^2.2.20",
