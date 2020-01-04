@@ -8,7 +8,9 @@ const dummyMailchimpEndpoint =
 const plugins = [
   {
     resolve: 'gatsby-plugin-feed',
+    language: 'english',
     options: {
+      feed_url: "https://tinacms.org/rss.xml",
       query: `
         {
           site {
@@ -28,7 +30,7 @@ const plugins = [
               return Object.assign({}, edge.node.frontmatter, {
                 description: edge.node.excerpt,
                 date: edge.node.frontmatter.date,
-                url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                url: site.siteMetadata.siteUrl + edge.node.fields.slug.replace(/[\u{0080}-\u{FFFF}]/gu,""),
               })
             })
           },
