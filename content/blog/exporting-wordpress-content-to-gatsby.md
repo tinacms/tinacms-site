@@ -10,7 +10,7 @@ It's true that WordPress powers a large portion of sites on the web. But there a
 
 Gatsby provides the intrinsic benefits of traditional static site generators like increased security, improved performance, and lower maintenance overhead. It also tackles modern problems like enhanced offline browsing and progressive image loading.
 
-<figure><img alt="Gatsby vs WordPress comparison table" style="margin: auto; padding: 2rem .5rem; border: none;" src="/img/blog/gatsby-vs-wordpress.png" /><figcaption><a href="https://www.gatsbyjs.org/features/cms/gatsby-vs-drupal/">GatsbyJS vs WordPress comparison</a></figcaption></figure>
+<figure><img alt="Gatsby vs WordPress comparison table" style="margin: auto; padding: 2rem .5rem; border: none;" src="/img/blog/gatsby-vs-wordpress.png" /><figcaption><a href="https://www.gatsbyjs.org/features/cms/gatsby-vs-wordpress/">GatsbyJS vs WordPress comparison</a></figcaption></figure>
 
 Gatsby can include content from many sources, including from existing WordPress sites. If you want to decommission the WordPress site, exporting the content to Markdown will ensure it's editable in the future. That's where the WordPress to Gatsby Exporter plugin helps you.
 
