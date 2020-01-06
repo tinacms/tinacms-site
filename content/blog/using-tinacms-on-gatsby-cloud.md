@@ -55,7 +55,7 @@ If you want the author to be based off of the logged-in user instead of a static
 
 The `SSH_KEY` is a private key that allows write access to your git repo. We'll need to add the public key to the repo under Deploy Keys in "Settings" and **enable write access.** The `SSH_KEY` needs to be **Base64 encoded** before it's added to Gatsby Cloud; we can encode a local key (named id_rsa in this case) by running the following in your terminal:
 
-`$ cat ./.ssh/id_rsa | base64`
+`$ cat ~/.ssh/id_rsa | base64`
 
 <tip>
 After you update any environment variables, you will need to rebuild your Gatsby Cloud site for them to take effect.
