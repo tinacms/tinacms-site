@@ -12,7 +12,7 @@ Tina Teams functionality can be added to a Gatsby site with the `gatsby-tinacms-
 
 or
 
-    yarn add gatsby-tinacms-remark gatsby-tinacms-git
+    yarn add gatsby-tinacms-teams
 
 ## Adding the Teams Plugin
 
