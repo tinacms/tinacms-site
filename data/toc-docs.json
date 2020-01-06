@@ -203,6 +203,11 @@
         "id": "/docs/contributing/troubleshooting",
         "slug": "/docs/contributing/troubleshooting",
         "title": "Troubleshooting"
+      },
+      {
+        "id": "/docs/contributing/style-guide",
+        "slug": "/docs/contributing/style-guide",
+        "title": "Style Guide"
       }
     ]
   },

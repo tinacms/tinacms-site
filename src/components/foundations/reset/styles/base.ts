@@ -50,6 +50,50 @@ const base = css`
     }
   }
 
+  blockquote {
+    position: relative;
+    font-size: 1.4rem;
+    background-color: ${colors.seafoam};
+    margin: 1.5rem 0;
+    font-style: italic;
+    padding: 1.5rem 3.5rem;
+    border: 1px solid ${colors.mintChocoChip};
+    border-radius: 3px;
+    overflow: hidden;
+
+    &:before {
+      content: '“';
+      display: block;
+      position: absolute;
+      top: -1.5rem;
+      left: -1.5rem;
+      font-weight: bold;
+      font-size: 8em;
+      line-height: 1;
+      color: ${colors.mintChocoChip};
+      opacity: 0.5;
+    }
+
+    &:after {
+      content: '“';
+      display: block;
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      font-weight: bold;
+      font-size: 8em;
+      line-height: 1;
+      color: ${colors.mintChocoChip};
+      opacity: 0.5;
+      transform: rotate(180deg);
+    }
+
+    p {
+      margin: 0 !important;
+      font-size: 1em !important;
+    }
+  }
+
   p img,
   .gatsby-resp-iframe-wrapper {
     margin: 30px auto;

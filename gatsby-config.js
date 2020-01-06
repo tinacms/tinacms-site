@@ -7,6 +7,59 @@ const dummyMailchimpEndpoint =
 
 const plugins = [
   {
+    resolve: 'gatsby-plugin-feed',
+    language: 'english',
+    options: {
+      feed_url: 'https://tinacms.org/rss.xml',
+      query: `
+        {
+          site {
+            siteMetadata {
+              title
+              description
+              siteUrl
+              site_url: siteUrl
+            }
+          }
+        }
+      `,
+      feeds: [
+        {
+          serialize: ({ query: { site, allMarkdownRemark } }) => {
+            return allMarkdownRemark.edges.map(edge => {
+              return Object.assign({}, edge.node.frontmatter, {
+                description: edge.node.excerpt,
+                date: edge.node.frontmatter.date,
+                url: site.siteMetadata.siteUrl + edge.node.fields.slug.replace(/[\u{0080}-\u{FFFF}]/gu, ''),
+              })
+            })
+          },
+          query: `{
+            allMarkdownRemark(
+              sort: { fields: [frontmatter___date], order: DESC }
+              filter: { published: {eq: true}, fileRelativePath: { glob: "/content/blog/**/*.md" } }
+            ) {
+              edges {
+                node {
+                  frontmatter {
+                    title
+                    date(formatString: "MMMM DD, YYYY")
+                  }
+                  excerpt(format: PLAIN, pruneLength: 150, truncate: true)
+                  fields {
+                    slug
+                  }
+                }
+              }
+            }
+          }`,
+          output: '/rss.xml',
+          title: 'TinaCMS Blog RSS Feed',
+        },
+      ],
+    },
+  },
+  {
     resolve: 'gatsby-plugin-mailchimp',
     options: {
       endpoint: process.env.NODE_ENV === 'production' ? process.env.MAILCHIMP_ENDPOINT : dummyMailchimpEndpoint,

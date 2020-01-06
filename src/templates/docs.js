@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { graphql, navigate } from 'gatsby'
+import React from 'react'
+import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import { getPageById } from 'utils/helpers'
 import { TinaField } from '@tinacms/form-builder'
