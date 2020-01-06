@@ -38,7 +38,7 @@ So, why can’t we use GraphQL variables in a Static Query? The reason for that 
 
 <tip>I use Static Queries as much as possible because I love the hooks API and the ease of composition possibilities it brings. For example, you can create custom hooks and reuse them in multiple components.</tip>
 
-Let’s say that you have a graphQL query that grabs metadata that you want on multiple pages. Create a custom React hook with the `useStaticQuery` Gatsby hook inside of it. Then you can use your custom hook wherever you want and always easily get that data into your component. When you need to have variables in your component, you have to use a Page Query. Page Queries cannot be used with the hooks API and have to be unique and attached to the specific page component.
+Let’s say that you have a GraphQL query that grabs metadata that you want on multiple pages. Create a custom React hook with the `useStaticQuery` Gatsby hook inside of it. Then you can use your custom hook wherever you want and always easily get that data into your component. When you need to have variables in your component, you have to use a Page Query. Page Queries cannot be used with the hooks API and have to be unique and attached to the specific page component.
 
 Another great thing with Static Queries is that you can grab the data in the component that needs the data. That prevents _prop drilling_ and your data is more tightly coupled to the component where it is used.
 
@@ -48,9 +48,8 @@ The infamous <a href="https://kentcdodds.com/blog/prop-drilling"><b>prop drillin
 
 ## React overview
 
-As we’ve learned, Gatsby has two types of queries: _Page Queries and Static Queries_. So we have to choose which one is suitable for our needs.
 
-In addition to this, React also offers a couple of options for us to choose from. You can either create your component as a [class or a functional component](https://reactjs.org/docs/components-and-props.html). Before the React Hooks API, you had to use class components to have state in your components. Now with hooks, you can do this with functional components.🥰
+For getting data, we can use Gatsby's query options. For structuring our components, React also offers a couple of options. You can either create your component as a [class or a functional component](https://reactjs.org/docs/components-and-props.html). Before the React Hooks API, you had to use class components to have state in your components. Now with hooks, you can do this with functional components.🥰
 
 ## Three ways to edit markdown with Tina
 
