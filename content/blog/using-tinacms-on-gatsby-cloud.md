@@ -35,7 +35,7 @@ We don't want just any stranger making commits from our cloud editing environmen
 ## Configuring Git for Cloud Commits ✔️
 
 <tip>
-If you are using the gatsby-tinacms-git plugin, make sure to use version: 0.2.16-canary.0 or later!
+If you are using the gatsby-tinacms-git plugin, make sure to use version: 0.2.16-canary.0 or later! It's simple to setup, just need to run `yarn add gatsby-tinacms-git@canary` until this version reaches a full release.
 </tip>
 
 To get Tina working in Gatsby Cloud, we'll need to configure a few environment variables in our **Gatsby Cloud site settings**:
