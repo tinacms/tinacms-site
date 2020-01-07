@@ -12,7 +12,7 @@ consumes:
     details: Demonstrates useLocalRemarkForm usage
 ---
 
-**Supercharge your static site with real-time content editing!**🚀
+**Supercharge your static site with real-time content editing!** 🚀
 
 In this post, I will explore _the three different methods_ Tina offers to edit Markdown on your Gatsby site. You’ll learn how to set up Tina with both Page Queries and Static Queries.
 
@@ -44,7 +44,7 @@ For getting data, we can use Gatsby's query options. For structuring our compone
 
 ## Three ways to edit markdown with Tina
 
-Given all the options for creating components and souring data in Gatsby, we have to choose the most suitable approach for the project. Tina can work with all of these options, providing **three different approaches** for editing Markdown with Gatsby as described below.
+Given all the options for creating components and sourcing data in Gatsby, we have to choose the most suitable approach for the project. Tina can work with all of these options, providing **three different approaches** for editing Markdown with Gatsby as described below.
 
 - **remarkForm** - A [Higher Order Component](https://reactjs.org/docs/higher-order-components.html) used when you source data from a Page Query in Gatsby. This component can be utilized with both functional and class components. Please note the subtle difference here! The only difference in naming from the render props component is the lowercase “r”.
 - **useLocalRemarkForm** - A [React Hook](https://reactjs.org/docs/hooks-overview.html) that is intended for functional components sourcing data from either a Static or a Page Query. If the component is sourcing static data, Gatsby's `useStaticQuery` hook would be called.
@@ -93,7 +93,7 @@ export const pageQuery = graphql`
 
 The above code is a component that displays information about Star Wars movies. For now, it just displays a title, but it could also display the release date and the crawl text in the intro to the film. But that’s another story in a galaxy far far away ... ⭐
 
-The first step in this example is to import the `remarkForm` hook from the Gatsby plugin ‘gatsby-tinacms-remark’. This is the plugin that _makes TinaCMS work with Markdown files_.
+The first step in this example is to import the `remarkForm` hook from the Gatsby plugin `gatsby-tinacms-remark`. This is the plugin that _makes TinaCMS work with Markdown files_.
 
 There’s no need to do any additions to the code inside of the component itself. It could be any component — functional or class — structured in the way you want it. The only thing you have to do with the component itself is to wrap your component with the `remarkForm` HOC when you export it.
 
