@@ -109,16 +109,18 @@ _But what if you want to use a Static Query and not a Page Query?_
 
 ### useLocalRemarkForm to the rescue!
 
-We’ve learned that the `remarkForm` HOC won’t work on Static Queries. So we’ll have to find another solution to hook up our `useStaticQuery` data with TinaCMS.
+We’ve learned that the `remarkForm` HOC won’t work on Static Queries. So we’ll have to find another solution for using Static Queries with TinaCMS.
 
-**Great news!** `remarkForm` uses a hook that is called `useLocalRemarkForm` internally. So `RemarkForm` is just a “wrapper” for the `useLocalRemarkForm` hook.👀
+**Great news!** 
 
-The `remarkForm` component takes in a component as an argument, calls `useLocalRemarkForm` with the Page Query data and returns a new component with the query data and TinaCMS connected to it. That’s all that it does! Therefore we can use the `useLocalRemarkForm` hook directly ourselves, without using the remarkForm HOC. The good news is that you can also use the `useLocalRemarkForm` hook on Page Queries.
+The `remarkForm` component is essentially a "wrapper" for the `useLocalRemarkForm` hook. 👀 It takes in a component as an argument, calls `useLocalRemarkForm` with the Page Query data and returns a new component with the query data and TinaCMS connected to it. 
 
-As before … Take a look at the code example below first. For the sake of the simplicity in this post, I’ve left out code that shows the image. So it just displays a header now.
+We can use the `useLocalRemarkForm` hook directly, without using the `remarkForm` HOC. This can be useful with Static Queries or if we just prefer working with hooks!
+
+Take a look at the code example below to get an idea of how `useLocalRemarkForm` works.
 
 ```javascript
-// 1. Import useLocalRemarkForm custom hook
+// 1. Import useLocalRemarkForm hook
 import React from ‘react’;
 import { useLocalRemarkForm } from ‘gatsby-tinacms-remark’;
 import { useStaticQuery } from ‘gatsby’;
@@ -165,7 +167,9 @@ It is an example of [ES6 destructuring](https://developer.mozilla.org/en-US/docs
 
 ### RemarkForm - The Render Prop Component
 
-You can’t use React Hooks on class components. That’s why Tina provides a `RemarkForm` component that uses the render prop pattern. You can read more about render props in the official [React docs](https://reactjs.org/docs/render-props.html). Note the naming here! his one has a capital “R” which is different from the HOC. This component works with both Page- and Static Queries. I will show how to use it with a Page Query below. If you want to learn more about the render prop component and how to use it with a Static Query you can visit the official [Tina docs](https://tinacms.org/docs/gatsby/markdown).
+You can’t use React Hooks on class components. That’s why Tina provides a [`RemarkForm`](https://tinacms.org/docs/gatsby/markdown/#2-the-render-props-component-remarkform) component that uses the [Render Props](https://reactjs.org/docs/render-props.html) pattern. 
+
+This component works with both Page and Static Queries. I will show how to use it with a Page Query below. 
 
 Take a look at below example:
 
@@ -213,16 +217,19 @@ export const pageQuery = graphql`
 Ok, yet again, let’s see what’s happening here:
 
 1. We import the `RemarkForm` component for us to use in our code.
-2. In our return statement we return the `RemarkForm` component and give it it’s predefined, and required props. The remark prop will provide `RemarkForm` with the data that we grabbed from our markdown file with our Page Query. We get this data injected into our page component in the data prop. So we pass that through. We just need the `markdownRemark` from the data object.
-   The render prop gets the JSX that we want to render. In this case, it’s only an H1 tag.
-   This is a function that will be called by the `RemarkForm` component. And this is a render prop! `RemarkForm` will hook up Tina for editing the data and then render whatever is specified in the render prop function.
+2. In our return statement we return the `RemarkForm` component and pass in it's predefined, and required props. The remark prop provides `RemarkForm` with the markdown data sourced from the Page Query. The render prop gets the JSX that we want to render through a function, or a render prop. `RemarkForm` will hook up Tina for editing the data and then render whatever is specified in the render prop function.
 3. Just as before we have to add the `...TinaRemark` fragment to the Page Query.
 
-**This is it**. Three ways of using Tina for editing frontmatter files in Gatsby.
 
 ## Next steps
 
-In this post, we learned about how to _set up Tina with both Static Queries and Page Queries in Gatsby_. We also learned about three different ways to edit markdown with Tina. This is just the basics to get you started. If you like Tina and want to learn more you should check out the [Tina official docs](https://tinacms.org/docs/). There’s a lot more stuff to read there and some interesting use cases. For example, you can learn how to apply [inline editing](https://tinacms.org/docs/gatsby/inline-editing) and also how to [customize the form fields](https://tinacms.org/docs/gatsby/markdown#customizing-remark-forms) in the Tina sidebar.
+**That's it**! Three ways of using Tina for editing Markdown files in Gatsby. 🎉
+
+In this post, we learned about how to _set up Tina with both Static Queries and Page Queries in Gatsby_. We also learned about three different ways to edit markdown with Tina depending on your type of React component. 
+
+This is just the basics to get you started. If you like Tina and want to learn more you should check out the [official docs](https://tinacms.org/docs/). There’s a lot more stuff to read there and some interesting use cases. 
+
+For example, you can learn how to apply [inline editing](https://tinacms.org/docs/gatsby/inline-editing) and also how to [customize the form fields](https://tinacms.org/docs/gatsby/markdown#customizing-remark-forms) in the Tina sidebar.
 
 Tina is a great addition to the React ecosystem and static site generators like Gatsby. It gives your site a pleasant and easy way to edit and interact with your content.
 I’m thrilled to see how big TinaCMS will be and what it can do as it evolves!
