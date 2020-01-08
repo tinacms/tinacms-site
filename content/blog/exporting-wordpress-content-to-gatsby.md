@@ -4,7 +4,7 @@ date: '2019-12-19T00:00:00.000Z'
 draft: false
 author: Mitch MacKenzie
 ---
-Say hello to the [WordPress to Gatsby Exporter](https://github.com/tinacms/wp-gatsby-exporter)! It's a WordPress plugin to export posts, pages, and other content from WordPress to Markdown.
+Say hello to the [WordPress to Gatsby Exporter](https://github.com/tinacms/wp-gatsby-markdown-exporter)! It's a WordPress plugin to export posts, pages, and other content from WordPress to Markdown.
 
 It's true that WordPress powers a large portion of sites on the web. But there are many cases where a modern static site generator like [GatsbyJS](https://www.gatsbyjs.org/) can be better suited to build a website. Add TinaCMS into the mix for real-time editing and you get a modern website that developers and content creators will enjoy.
 
@@ -18,7 +18,7 @@ Gatsby can include content from many sources, including from existing WordPress 
 
 Installing the exporter WordPress plugin is like most other plugins.
 
-1. [Download the latest release](https://github.com/tinacms/wp-gatsby-exporter/releases/latest/download/wp-gatsby-exporter.zip).
+1. [Download the latest release](https://github.com/tinacms/wp-gatsby-markdown-exporter/releases/latest/download/wp-gatsby-markdown-exporter.zip).
 2. Unzip the files into the WordPress plugins directory (usually wp-content/plugins).
 3. Activate the plugin from the WordPress admin.
 
@@ -26,15 +26,15 @@ Installing the exporter WordPress plugin is like most other plugins.
 
 Just click "Export to Gatsby" in the WordPress admin sidebar and that will bring you to a form to download a Zip file of the site's content.
 
-The form has several options that allow you to customize the exported content so that it fits into your Gatsby website. We've tried to create sensible default options so that you can try clicking "Download Zip File" to get started quickly. Exporting content to a new system is usually an iterative process so you may need to tweak the export options and try a few times before getting it right.
+The form has several options that allow you to customize the exported content so that it fits into a Gatsby website. We've tried to create sensible default options so that you can try clicking "Download Zip File" to get started quickly. Exporting content to a new system is usually an iterative process so you may need to tweak the export options and try a few times before getting it right.
 
-The plugin also provides a command to be run on the CLI using [WP-CLI](https://wp-cli.org/). This option works best for WordPress sites with a lot of content and gets around PHP limitations like timeouts. Check out more details about CLI usage in the [plugin's readme file](https://github.com/tinacms/wp-gatsby-exporter/blob/master/README.md).
+The plugin also provides a command to be run on the CLI using [WP-CLI](https://wp-cli.org/). This option works best for WordPress sites with a lot of content and gets around PHP limitations like timeouts. Check out more details about CLI usage in the [plugin's readme file](https://github.com/tinacms/wp-gatsby-markdown-exporter/blob/master/README.md).
 
 ## Getting exported content into Gatsby blog starter
 
 [Gatsby's blog starter](https://github.com/gatsbyjs/gatsby-starter-blog) is an easy way to see how Markdown can be used with Gatsby. Checkout the starter's [quick start guide](https://github.com/gatsbyjs/gatsby-starter-blog#-quick-start) to get it up and running.
 
-To get your exported WordPress content in place:
+To get our exported WordPress content in place:
 
 1. Unzip the exported Markdown files into the "content/blog" directory of the starter.
 2. Place the "uploads" directory from the WordPress export in the "content" directory of the starter.
@@ -52,7 +52,7 @@ To get your exported WordPress content in place:
 
 ## Getting exported content into Tina Grande
 
-[Tina Grande](https://github.com/tinacms/tina-starter-grande) is a beautiful Gatsby starter that includes TinaCMS for real-time editing.
+[Tina Grande](https://github.com/tinacms/tina-starter-grande) is a beautiful Gatsby starter that includes TinaCMS for real-time content editing.
 
 With a few easy export customizations we can get our WordPress content into Tina Grande and fully editable.
 
@@ -69,4 +69,3 @@ and on the form's "Convert fields to array" we'll add (the original name of the 
 author
 ```
 
-## Next steps with your Gatsby site with TinaCMS
