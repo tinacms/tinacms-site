@@ -39,16 +39,15 @@ To get our exported WordPress content in place:
 1. Unzip the exported Markdown files into the "content/blog" directory of the starter.
 2. Place the "uploads" directory from the WordPress export in the "content" directory of the starter.
 3. Add the following under the plugins section of gatsby-config.js so that any images and uploads exported from WordPress can be found by Gatsby:
-```
-{
-  resolve: `gatsby-source-filesystem`,
-  options: {
-    path: `${__dirname}/content/uploads`,
-    name: `uploads`,
-  },
-},
 
-```
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/uploads`,
+        name: `uploads`,
+      },
+    },
+    
 
 ## Getting exported content into Tina Grande
 
@@ -59,13 +58,10 @@ With a few easy export customizations we can get our WordPress content into Tina
 Tina Grande uses an "authors" frontmatter field that expects a list of authors, so we'll need to tell the exporter plugin to restructure our WordPress content to accommodate that. Tina Grande also uses the "path" field so we'll switch the label of the field that's exported from WordPress.
 
 On the exporter form's "Change field name" we'll add:
-```
-author,authors
-permalink,path
-```
+
+    author,authors
+    permalink,path
 
 and on the form's "Convert fields to array" we'll add (the original name of the authors remapped field):
-```
-author
-```
 
+    author
