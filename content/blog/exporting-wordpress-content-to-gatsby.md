@@ -6,13 +6,13 @@ author: Mitch MacKenzie
 ---
 Say hello to the [WordPress to Gatsby Exporter](https://github.com/tinacms/wp-gatsby-markdown-exporter)! It's a WordPress plugin to export posts, pages, and other content from WordPress to Markdown.
 
-It's true that WordPress powers a large portion of sites on the web. But there are many cases where a modern static site generator like [GatsbyJS](https://www.gatsbyjs.org/) can be better suited to build a website. Add TinaCMS into the mix for real-time editing and you get a modern website that developers and content creators will enjoy.
+It's true that WordPress powers a large portion of sites on the web. But there are many cases where a modern static site generator like [GatsbyJS](https://www.gatsbyjs.org/) can be better suited to build a website. Add TinaCMS into the mix for real-time editing and we get a modern website that developers and content creators will enjoy.
 
 Gatsby provides the intrinsic benefits of traditional static site generators like increased security, improved performance, and lower maintenance overhead. It also tackles modern problems like enhanced offline browsing and progressive image loading.
 
 <figure><img alt="Gatsby vs WordPress comparison table" style="margin: auto; padding: 2rem .5rem; border: none;" src="/img/blog/gatsby-vs-wordpress.png" /><figcaption><a href="https://www.gatsbyjs.org/features/cms/gatsby-vs-wordpress/">GatsbyJS vs WordPress comparison</a></figcaption></figure>
 
-Gatsby can include content from many sources, including from existing WordPress sites. If you want to decommission the WordPress site, exporting the content to Markdown will ensure it's editable in the future. That's where the WordPress to Gatsby Exporter plugin helps you.
+Gatsby can include content from many sources, including from existing WordPress sites. If we want to decommission the WordPress site, exporting the content to Markdown will ensure it's editable in the future. That's where the WordPress to Gatsby Exporter plugin helps us.
 
 ## Installing the exporter plugin
 
@@ -24,9 +24,9 @@ Installing the exporter WordPress plugin is like most other plugins.
 
 ## Using the plugin
 
-Just click "Export to Gatsby" in the WordPress admin sidebar and that will bring you to a form to download a Zip file of the site's content.
+Clicking "Export to Gatsby" in the WordPress admin sidebar and that will bring us to a form to download a Zip file of the site's content.
 
-The form has several options that allow you to customize the exported content so that it fits into a Gatsby website. We've tried to create sensible default options so that you can try clicking "Download Zip File" to get started quickly. Exporting content to a new system is usually an iterative process so you may need to tweak the export options and try a few times before getting it right.
+The form has several options that allow us to customize the exported content so that it fits into a Gatsby website. We've tried to create sensible default options so that we can try clicking "Download Zip File" to get started quickly. Exporting content to a new system is usually an iterative process so we may need to tweak the export options and try a few times before getting it right.
 
 The plugin also provides a command to be run on the CLI using [WP-CLI](https://wp-cli.org/). This option works best for WordPress sites with a lot of content and gets around PHP limitations like timeouts. Check out more details about CLI usage in the [plugin's readme file](https://github.com/tinacms/wp-gatsby-markdown-exporter/blob/master/README.md).
 
