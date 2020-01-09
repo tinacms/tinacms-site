@@ -1,6 +1,6 @@
 ---
 title: 3 ways to edit Markdown with Tina + Gatsby
-date: '2020-01-02T07:00:00.000Z'
+date: '2020-01-09T07:00:00.000Z'
 author: Thomas Weibenfalk
 draft: false
 consumes:
