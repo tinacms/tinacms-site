@@ -231,12 +231,4 @@ I’m thrilled to see how big TinaCMS will be and what it can do as it evolves!
 
 ## More reading and learning
 
-[Tina Official Documentation](https://tinacms.org/docs/)
-
-[Tina Community](https://community.tinacms.org/)
-
-Tina on Twitter: [@tina_cms](https://twitter.com/tina_cms)
-
----
-
 Watch my tutorial for [Tina & Gatsby](https://www.youtube.com/watch?v=eZWJ9ZtF61A&t=265s). Also catch me on Twitter — [@weibenfalk](https://twitter.com/weibenfalk), [Youtube](https://www.youtube.com/c/weibenfalk), or on my [website](https://www.weibenfalk.com).
