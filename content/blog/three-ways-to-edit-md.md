@@ -42,7 +42,7 @@ Another great thing with Static Queries is that you can grab the data in the com
 
 For getting data, we can use Gatsby's query options. For structuring our components, React also offers a couple of options. You can either create your component as a [class or a functional component](https://reactjs.org/docs/components-and-props.html). Before the React Hooks API, you had to use class components to have state in your components. Now with hooks, you can do this with functional components.🥰
 
-## Three ways to edit markdown with Tina
+## Three ways to edit Markdown with Tina
 
 Given all the options for creating components and sourcing data in Gatsby, we have to choose the most suitable approach for the project. Tina can work with all of these options, providing [**three different approaches**](https://tinacms.org/docs/gatsby/markdown#creating-remark-forms) for editing Markdown with Gatsby as described below.
 
@@ -213,14 +213,14 @@ export const pageQuery = graphql`
 Ok, yet again, let’s see what’s happening here:
 
 1. We import the `RemarkForm` component for us to use in our code.
-2. In our return statement we return the `RemarkForm` component and pass in it's predefined, and required props. The remark prop provides `RemarkForm` with the markdown data sourced from the Page Query. The render prop gets the JSX that we want to render through a function, or a render prop. `RemarkForm` will hook up Tina for editing the data and then render whatever is specified in the render prop function.
+2. In our return statement we return the `RemarkForm` component and pass in it's predefined, and required props. The remark prop provides `RemarkForm` with the Markdown data sourced from the Page Query. The render prop gets the JSX that we want to render through a function, or a render prop. `RemarkForm` will hook up Tina for editing the data and then render whatever is specified in the render prop function.
 3. Just as before we have to add the `...TinaRemark` fragment to the Page Query.
 
 ## Next steps
 
 **That's it**! Three ways of using Tina for editing Markdown files in Gatsby. 🎉
 
-In this post, we learned about how to _set up Tina with both Static Queries and Page Queries in Gatsby_. We also learned about three different ways to edit markdown with Tina depending on your type of React component.
+In this post, we learned about how to _set up Tina with both Static Queries and Page Queries in Gatsby_. We also learned about three different ways to edit Markdown with Tina depending on your type of React component.
 
 This is just the basics to get you started. If you like Tina and want to learn more you should check out the [official docs](https://tinacms.org/docs/). There’s a lot more stuff to read there and some interesting use cases.
 
