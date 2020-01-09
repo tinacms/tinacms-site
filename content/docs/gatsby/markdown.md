@@ -11,7 +11,7 @@ consumes:
     details: Demonstrates useRemarkForm usage
   - file: /packages/gatsby-tinacms-remark/src/remark-fragment.ts
     details: Explains what the fragment adds
-  - file: /packages/@tinacms/core/src/cms-forms/form.ts
+  - file: /packages/@tinacms/forms/src/form.ts
     details: Explains form options interface
 ---
 
@@ -91,19 +91,18 @@ This hook connects the `markdownRemark` data with Tina to be made editable. It i
 
 ```javascript
 /*
-** example component --> src/components/Title.js
-*/
+ ** example component --> src/components/Title.js
+ */
 
 // 1. import useLocalRemarkForm
 import { useLocalRemarkForm } from 'gatsby-tinacms-remark'
 import { useStaticQuery } from 'gatsby'
 
-const Title = (data) => {
-
+const Title = data => {
   // 2. Add required GraphQL fragment
   const data = useStaticQuery(graphql`
     query TitleQuery {
-      markdownRemark(fields: {slug: {eq: "song-of-myself"}}) {
+      markdownRemark(fields: { slug: { eq: "song-of-myself" } }) {
         ...TinaRemark
         frontmatter {
           title
@@ -113,7 +112,7 @@ const Title = (data) => {
   `)
 
   // 3. Call the hook and pass in the data
-  const [ markdownRemark ] = useLocalRemarkForm(data.markdownRemark)
+  const [markdownRemark] = useLocalRemarkForm(data.markdownRemark)
 
   return <h1>{markdownRemark.frontmatter.title}</h1>
 }
@@ -140,8 +139,8 @@ You can use this with both page and non-page components in Gatsby. Below is an e
 
 ```javascript
 /*
-** example component --> src/components/Title.js
-*/
+ ** example component --> src/components/Title.js
+ */
 import { StaticQuery, graphql } from 'gatsby'
 
 // 1. import RemarkFrom
@@ -149,42 +148,46 @@ import { RemarkForm } from 'gatsby-tinacms-remark'
 
 class Title extends React.Component {
   render() {
-    return <StaticQuery
-              // 2. add ...TinaRemark fragment to query
-              query ={graphql`
-                query TitleQuery {
-                  markdownRemark(fields: {slug: {eq: "song-of-myself"}}) {
-                    ...TinaRemark
-                    frontmatter {
-                      title
-                    }
-                  }
-                }
-              `}
-              render = { data => (
-                /*
-                ** 3. Return RemarkForm, pass in the props
-                **    and then return the JSX this component
-                **    should render
-                */
-                <RemarkForm
-                  remark = {data.markdownRemark}
-                  render = {({ markdownRemark }) => {
-                    return <h1>{ markdownRemark.frontmatter.title }</h1>
-                }}
-              />)}
-            />
+    return (
+      <StaticQuery
+        // 2. add ...TinaRemark fragment to query
+        query={graphql`
+          query TitleQuery {
+            markdownRemark(fields: { slug: { eq: "song-of-myself" } }) {
+              ...TinaRemark
+              frontmatter {
+                title
+              }
+            }
+          }
+        `}
+        render={data => (
+          /*
+           ** 3. Return RemarkForm, pass in the props
+           **    and then return the JSX this component
+           **    should render
+           */
+          <RemarkForm
+            remark={data.markdownRemark}
+            render={({ markdownRemark }) => {
+              return <h1>{markdownRemark.frontmatter.title}</h1>
+            }}
+          />
+        )}
+      />
+    )
   }
 }
 
 export default Title
 ```
+
 Here is another example using `RemarkForm` with a page component:
 
 ```js
 /*
-** src/templates/blog-post.js
-*/
+ ** src/templates/blog-post.js
+ */
 
 // 1. import RemarkForm
 import { RemarkForm } from '@tinacms/gatsby-tinacms-remark'
@@ -192,10 +195,10 @@ import { RemarkForm } from '@tinacms/gatsby-tinacms-remark'
 class BlogPostTemplate extends React.Component {
   render() {
     /*
-    ** 2. Return RemarkForm, pass in markdownRemark
-    **    as props and return the jsx this component
-    **    should render
-    */
+     ** 2. Return RemarkForm, pass in markdownRemark
+     **    as props and return the jsx this component
+     **    should render
+     */
     return (
       <RemarkForm
         remark={this.props.data.markdownRemark}
@@ -327,8 +330,8 @@ The `remarkForm` HOC and `useLocalRemarkForm` hook both accept an optional `conf
 
 ```jsx
 /*
-** src/templates/blog-post.js
-*/
+ ** src/templates/blog-post.js
+ */
 
 import { remarkForm } from 'gatsby-tinacms-remark'
 
@@ -370,7 +373,6 @@ export default remarkForm(BlogPostTemplate, BlogPostForm)
 import { useLocalRemarkForm } from 'gatsby-tinacms-remark'
 
 function BlogPostTemplate(props) {
-
   // 1. Define the form
   const BlogPostForm = {
     label: 'Blog Post',
@@ -391,7 +393,7 @@ function BlogPostTemplate(props) {
   }
 
   // 2. Pass the form as the second argument
-  const [ markdownRemark ] = useLocalRemarkForm(props.markdownRemark, BlogPostForm)
+  const [markdownRemark] = useLocalRemarkForm(props.markdownRemark, BlogPostForm)
   return (
     <>
       <h1>{markdownRemark.frontmatter.title}</h1>
@@ -418,13 +420,13 @@ class BlogPostTemplate extends React.Component {
         render={({ markdownRemark }) => {
           return (
             <>
-             <h1>{markdownRemark.frontmatter.title}</h1>
+              <h1>{markdownRemark.frontmatter.title}</h1>
               <p>{markdownRemark.frontmatter.description}</p>
             </>
           )
         }}
-        label = 'Blog Post'
-        fields = {[
+        label="Blog Post"
+        fields={[
           {
             label: 'Title',
             name: 'frontmatter.title',

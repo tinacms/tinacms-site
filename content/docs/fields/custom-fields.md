@@ -7,7 +7,7 @@ consumes:
     details: Uses the add method from plugin manager
   - file: /packages/@tinacms/form-builder/src/field-plugin.tsx
     details: Shows the field plugin interface
-  - file: /packages/@tinacms/core/src/cms-forms/form.ts
+  - file: /packages/@tinacms/forms/src/form.ts
     details: Depends on Field props
 ---
 
@@ -36,18 +36,13 @@ A field plugin is a JavaScript object with three properties:
 
 **Interface**
 
-``` typescript
+```typescript
 interface FieldPlugin {
   __type: 'field'
   name: string
   Component: React.FC<any>
   type?: string
-  validate?(
-    value: any,
-    allValues: any,
-    meta: any,
-    field: Field
-  ): string | object | undefined
+  validate?(value: any, allValues: any, meta: any, field: Field): string | object | undefined
   parse?: (value: any, name: string, field: Field) => any
   format?: (value: any, name: string, field: Field) => any
   defaultValue?: any

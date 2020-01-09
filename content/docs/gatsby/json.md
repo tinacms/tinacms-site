@@ -5,9 +5,8 @@ next: /docs/gatsby/configure-git-plugin
 consumes:
   - file: /packages/gatsby-tinacms-json/src/use-json-form.ts
     details: Demonstrates use of useLocalJsonForm and JsonForm
-  - file: /packages/@tinacms/core/src/cms-forms/form.ts
+  - file: /packages/@tinacms/forms/src/form.ts
     details: Explains form options interface
-
 ---
 
 ## Editing JSON in Gatsby
@@ -205,7 +204,6 @@ useGlobalJsonForm(data): [values, form]
 **Example**
 
 ```jsx
-
 import { useGlobalJsonForm } from 'gatsby-tinacms-json'
 
 function DataTemplate(props) {
@@ -214,6 +212,7 @@ function DataTemplate(props) {
   return <h1>{data.siteName}</h1>
 }
 ```
+
 You can essentially treat `useGlobalJsonForm` and `useLocalJsonForm` as interchangeable. You would choose to use either one depending on the type of content you want to edit and whether you want this editing capacity to be available sitewide, or contextually based on the page. Try switching between a local and global form and see how they behave differently in the sidebar.
 
 ## Customizing Json Forms

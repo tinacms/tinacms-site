@@ -4,7 +4,7 @@ id: /docs/concepts/forms
 prev: /docs/concepts/sidebar
 next: /docs/concepts/fields
 consumes:
-  - file: /packages/@tinacms/core/src/cms-forms/form.ts
+  - file: /packages/@tinacms/forms/src/form.ts
     details: Shows Form Options interface
   - file: /packages/@tinacms/react-core/src/use-form.ts
     details: Creates custom form with useForm & useLocalForm
@@ -39,10 +39,7 @@ If you want to make custom forms, they can be created by invoking the `useForm`,
 This custom hook creates a form without registering it to the CMS. Check out the [`usePlugin` hook](/docs/concepts/plugins#adding-and-removing-plugins) documentation to see how to register a form to the CMS.
 
 ```typescript
-function useForm(
-  options: FormOptions,
-  watch: Partial<WatchableFormValue> = {}
-): [object, Form | undefined]
+function useForm(options: FormOptions, watch: Partial<WatchableFormValue> = {}): [object, Form | undefined]
 
 interface FormOptions {
   id: any
@@ -56,10 +53,7 @@ interface FormOptions {
 ### useLocalForm
 
 ```typescript
-function useLocalForm(
-  options: FormOptions,
-  watch: Partial<WatchableFormValue> = {}
-): [object, Form | undefined]
+function useLocalForm(options: FormOptions, watch: Partial<WatchableFormValue> = {}): [object, Form | undefined]
 
 interface FormOptions {
   id: any
@@ -73,10 +67,7 @@ interface FormOptions {
 ### useGlobalForm
 
 ```ts
-function useGlobalForm(
-  options: FormOptions,
-  watch: Partial<WatchableFormValue> = {}
-): [FormShape, Form | undefined]
+function useGlobalForm(options: FormOptions, watch: Partial<WatchableFormValue> = {}): [FormShape, Form | undefined]
 
 interface FormOptions {
   id: any
@@ -99,7 +90,7 @@ interface FormOptions {
 import { useLocalForm } from 'react-tinacms'
 
 function PageTemplate(props) {
-  let [ someData ] = useLocalForm({
+  let [someData] = useLocalForm({
     id: 'uid',
     label: 'someData',
     initialValues: props.data.someData,
@@ -116,4 +107,5 @@ function PageTemplate(props) {
   )
 }
 ```
+
 <tip>Update react-tinacms version:0.9.0: The previous hook `useCMSForm` used to create custom forms is now the same as `useLocalForm`</tip>
