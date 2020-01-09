@@ -7,6 +7,8 @@ next: /docs/teams/cli/commands
 
 The Tina CLI can be used to setup your **cloud development ennvironment** with Tina Teams, and manage its users. Tina Teams pairs nicely with [Tina CMS](https://github.com/tinacms/tinacms) so that editors can edit sites from a live URL without having to pull anything down to a local dev environment.
 
+<tip>Before you can add a **Cloud Editing Environment** to Tina Teams, it needs to be hosted somewhere. Check out [this post](/blog/using-tinacms-on-gatsby-cloud) for an example where we host our Cloud Editing Environment on **Gatsby Cloud**</tip>
+
 ## Limitations
 
 - Currently only supports repositories stored on Github (Gitlab support to come)
@@ -20,12 +22,6 @@ Npm:
 Yarn:
 
 `yarn global add @tinacms/tina-cli`
-
-Then you can run the init command within a repository context:
-
-`tina init`
-
-..And that's it! (You can also run the individual steps below instead of `tina init`)
 
 ## Usage
 
