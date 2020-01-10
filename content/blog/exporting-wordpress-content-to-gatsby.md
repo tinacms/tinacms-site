@@ -12,7 +12,7 @@ Gatsby provides the common benefits of traditional static site generators like i
 
 Gatsby can include content from many sources, including from existing WordPress sites. If we want to decommission a WordPress site, exporting the content to Markdown will ensure it's editable in the future (Markdown is a way of formatting content that's widely used by static website generators).
 
-That's where the WP to Gatsby Markdown Exporter plugin helps us.
+That's where the WP Gatsby Markdown Exporter plugin helps us.
 
 ## Installing the exporter plugin
 
@@ -26,9 +26,9 @@ Installing the exporter WordPress plugin is like most other plugins.
 
 ![WP Gatsby Markdown Exporter plugin screenshot](/img/blog/wp-gatsby-markdown-exporter-screenshot.png)
 
-Clicking "Export to Gatsby" in the WordPress admin sidebar and that will bring us to a form to download a Zip file of the site's content.
+Clicking "Export to Gatsby" in the WordPress admin sidebar will bring us to a form to download a Zip file of the site's content.
 
-The form has several options that allow us to customize the exported content so that it fits into a Gatsby website. We've tried to create sensible default options to get started quickly.
+The form has several options that allow us to customize the exported content so that it fits into a Gatsby website.
 
 Exporting content to a new system is usually an iterative process so we may need to tweak the export options and try a few times before getting it right.
 
@@ -51,6 +51,10 @@ To get our exported WordPress content in place:
             name: `uploads`,
           },
         },
+
+Then running `gatsby develop` or `gatsby build` will show the newly exported content in Gatsby.
+
+If we're building a more complex site though, Tina Grande may be the next starter to try. 
 
 ## Getting exported content into Tina Grande
 
