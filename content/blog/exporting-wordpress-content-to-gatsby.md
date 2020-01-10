@@ -1,18 +1,16 @@
 ---
 title: Export WordPress Content to Markdown and Gatsby
-date: '2019-12-19T00:00:00.000Z'
+date: '2020-01-13T00:00:00.000Z'
 draft: false
 author: Mitch MacKenzie
 ---
-Say hello to the [WordPress to Gatsby Exporter](https://github.com/tinacms/wp-gatsby-markdown-exporter)! It's a WordPress plugin to export posts, pages, and other content from WordPress to Markdown.
+Say hello to the [WordPress to Gatsby Markdown Exporter](https://github.com/tinacms/wp-gatsby-markdown-exporter)! It's a WordPress plugin to export posts, pages, and other content from WordPress to Markdown.
 
-It's true that WordPress powers a large portion of sites on the web. But there are many cases where a modern static site generator like [GatsbyJS](https://www.gatsbyjs.org/) can be better suited to build a website. Add TinaCMS into the mix for real-time editing and we get a modern website that developers and content creators will enjoy.
+WordPress powers a large portion of sites on the web. But there are cases where a modern static site generator like [GatsbyJS](https://www.gatsbyjs.org/) can be better suited for the requirements of a website. Add TinaCMS into the mix for real-time editing and we get a modern website that developers and content creators will enjoy.
 
-Gatsby provides the intrinsic benefits of traditional static site generators like increased security, improved performance, and lower maintenance overhead. It also tackles modern problems like enhanced offline browsing and progressive image loading.
+Gatsby provides the common benefits of traditional static site generators like increased security, improved performance, and lower maintenance overhead. It also tackles modern problems like enhanced offline browsing and progressive image loading.
 
-<figure><img alt="Gatsby vs WordPress comparison table" style="margin: auto; padding: 2rem .5rem; border: none;" src="/img/blog/gatsby-vs-wordpress.png" /><figcaption><a href="https://www.gatsbyjs.org/features/cms/gatsby-vs-wordpress/">GatsbyJS vs WordPress comparison</a></figcaption></figure>
-
-Gatsby can include content from many sources, including from existing WordPress sites. If we want to decommission the WordPress site, exporting the content to Markdown will ensure it's editable in the future. That's where the WordPress to Gatsby Exporter plugin helps us.
+Gatsby can include content from many sources, including from existing WordPress sites. If we want to decommission a WordPress site, exporting the content to Markdown will ensure it's editable in the future. That's where the WordPress to Gatsby Exporter plugin helps us.
 
 ## Installing the exporter plugin
 
@@ -23,6 +21,8 @@ Installing the exporter WordPress plugin is like most other plugins.
 3. Activate the plugin from the WordPress admin.
 
 ## Using the plugin
+
+![WP Gatsby Markdown Exporter plugin screenshot](/img/blog/wp-gatsby-markdown-exporter-screenshot.png)
 
 Clicking "Export to Gatsby" in the WordPress admin sidebar and that will bring us to a form to download a Zip file of the site's content.
 
@@ -40,14 +40,13 @@ To get our exported WordPress content in place:
 2. Place the "uploads" directory from the WordPress export in the "content" directory of the starter.
 3. Add the following under the plugins section of gatsby-config.js so that any images and uploads exported from WordPress can be found by Gatsby:
 
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/uploads`,
-        name: `uploads`,
-      },
-    },
-    
+        {
+          resolve: `gatsby-source-filesystem`,
+          options: {
+            path: `${__dirname}/content/uploads`,
+            name: `uploads`,
+          },
+        },
 
 ## Getting exported content into Tina Grande
 
@@ -65,3 +64,5 @@ On the exporter form's "Change field name" we'll add:
 and on the form's "Convert fields to array" we'll add (the original name of the authors remapped field):
 
     author
+
+![WP Gatsby Markdown Exporter config for Tina Grande](/img/blog/tina-grande-wp-export.png)
