@@ -62,7 +62,7 @@ If we're building a more complex site though, Tina Grande may be the next starte
 
 With a few easy export customizations we can get our WordPress content into Tina Grande and fully editable.
 
-Tina Grande uses an "authors" frontmatter field that expects a list of authors, so we'll need to tell the exporter plugin to restructure our WordPress content to accommodate that. Tina Grande also uses the "path" field so we'll switch the label of the field that's exported from WordPress.
+Tina Grande uses an `authors` frontmatter field that expects a list of authors, so we'll need to tell the exporter plugin to restructure our WordPress content to accommodate that. Tina Grande also uses the `path` field so we'll switch the label of the field that's exported from WordPress.
 
 On the exporter form's "Change field name" we'll add:
 
