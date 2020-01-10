@@ -6,7 +6,7 @@ author: Mitch MacKenzie
 ---
 Say hello to the [WordPress to Gatsby Markdown Exporter](https://github.com/tinacms/wp-gatsby-markdown-exporter)! It's a WordPress plugin to export posts, pages, and other content from WordPress to Markdown.
 
-A modern static site generator like [GatsbyJS](https://www.gatsbyjs.org/) can be be a great alternative to power a website that was previously built with WordPress. Add TinaCMS into the mix for real-time editing and we get a modern website that developers and content creators will enjoy.
+A modern static site generator like [GatsbyJS](https://www.gatsbyjs.org/) can be a great alternative to power a website that was previously built with WordPress. Add TinaCMS into the mix for real-time editing and we get a modern website that developers and content creators will enjoy.
 
 Gatsby provides the common benefits of traditional static site generators like increased security, improved performance, and lower maintenance overhead. It also tackles modern problems like enhanced offline browsing and progressive image loading.
 
