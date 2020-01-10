@@ -10,7 +10,7 @@ A modern static site generator like [GatsbyJS](https://www.gatsbyjs.org/) can be
 
 Gatsby provides the common benefits of traditional static site generators like increased security, improved performance, and lower maintenance overhead. It also tackles modern problems like enhanced offline browsing and progressive image loading.
 
-Gatsby can include content from many sources, including from existing WordPress sites. If we want to decommission a WordPress site, exporting the content to Markdown will ensure it's editable in the future (Markdown is a way of formatting content that's widely used by static website generators).
+Gatsby can include content from many sources, including existing WordPress sites. If we want to decommission a WordPress site, exporting the content to Markdown will ensure it's editable in the future (Markdown is a way of formatting content that's widely used by static website generators).
 
 That's where the WP Gatsby Markdown Exporter plugin helps us.
 
