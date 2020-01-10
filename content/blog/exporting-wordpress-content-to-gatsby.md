@@ -18,6 +18,10 @@ That's where the WP Gatsby Markdown Exporter plugin helps us.
 
 Installing the exporter WordPress plugin is like most other plugins.
 
+The plugin is released on WordPress.org so it can be installed through the WordPress admin by searching for "WP Gatsby Markdown Exporter" on the "Add Plugins" page.
+
+Or to install manually:
+
 1. [Download the latest release](https://github.com/tinacms/wp-gatsby-markdown-exporter/releases/latest/download/wp-gatsby-markdown-exporter.zip).
 2. Unzip the files into the WordPress plugins directory (usually wp-content/plugins).
 3. Activate the plugin from the WordPress admin.
