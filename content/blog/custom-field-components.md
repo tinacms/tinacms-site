@@ -118,7 +118,7 @@ To create a custom input field, we need to make a **React component that takes i
 
 ``` js
 // An example of a custom range field component
-function rangeInput(props) {
+function RangeInput(props) {
    return (
      <>
        <div>
@@ -171,7 +171,7 @@ Now that the custom input field is set up, we need to add the `image_saturation`
 
 For our example, let's say we have a local JSON file called `About.json`. This file contains the data used in the _About Me_ page. In it we can add the `image_saturation` value.
 
-The value can be any integer or floating point number that exists between the range defined in our `rangeInput` component above — 0 to 10, with a step of 0.1 (meaning each 'slide step' of the range increments or decrements the value by 0.1). As a saturation value, **zero would be totally grayscale** or no color, so we can fill in something like 3 to get a more 'normal' look.
+The value can be any integer or floating point number that exists between the range defined in our `RangeInput` component above — 0 to 10, with a step of 0.1 (meaning each 'slide step' of the range increments or decrements the value by 0.1). As a saturation value, **zero would be totally grayscale** or no color, so we can fill in something like 3 to get a more 'normal' look.
 
 ``` JSON
 {
@@ -183,13 +183,13 @@ The value can be any integer or floating point number that exists between the ra
 ```
 <tip> If you’re using Gatsby, you will **need to update your GraphQL query** to get this new data. Add the `image_saturation` field to your query.</tip>
 
-So now we have a source value that can be connected to the custom input field. This way, **Tina can update the value in the source file** in sync with the changes picked up by the `rangeInput` component.
+So now we have a source value that can be connected to the custom input field. This way, **Tina can update the value in the source file** in sync with the changes picked up by the `RangeInput` component.
 
 ### 3. Add the custom field to a Tina Form
 
 How about we wire up this custom field to Tina? 🎊
 
-In this step, we need to create the custom field definition and pass in the `rangeInput` component inline. We'll go back to our _About Me_ page [form options](https://tinacms.org/docs/gatsby/json#customizing-json-forms):
+In this step, we need to create the custom field definition and pass in the `RangeInput` component inline. We'll go back to our _About Me_ page [form options](https://tinacms.org/docs/gatsby/json#customizing-json-forms):
 
 ``` js
 const formOptions = {
@@ -213,7 +213,7 @@ const formOptions = {
      {
        label: "Image Saturation",
        name: "rawJson.image_saturation",
-       component: rangeInput,
+       component: RangeInput,
      },
      {
        label:"Color",
@@ -225,7 +225,7 @@ const formOptions = {
  }
 ```
 
-Now if you start the development server, you should see the custom `rangeInput` field in the sidebar. And if you slide it, you should see the value updating in `About.json`.
+Now if you start the development server, you should see the custom `RangeInput` field in the sidebar. And if you slide it, you should see the value updating in `About.json`.
 
 ### 4. Dynamically set the CSS filter
 
@@ -284,7 +284,7 @@ Some other examples of _CSS-in-JS_ frameworks you could use would be [styled-com
 
 ### Next Steps
 
-A good next step would be _adding styles to the custom `rangeInput` component_. You could use [`@tinacms/styles`](https://github.com/tinacms/tinacms/blob/master/packages/%40tinacms/styles/src/Styles.tsx) to fit the vibe of other Tina fields ✌️. Or you could go wild and spice up the sidebar in your own way 🤠.
+A good next step would be _adding styles to the custom `RangeInput` component_. You could use [`@tinacms/styles`](https://github.com/tinacms/tinacms/blob/master/packages/%40tinacms/styles/src/Styles.tsx) to fit the vibe of other Tina fields ✌️. Or you could go wild and spice up the sidebar in your own way 🤠.
 
 If we wanted to reuse this component throughout the site, **we could take a step further and make it into a [Field Plugin](https://tinacms.org/docs/fields/custom-fields#2-creating-field-plugins)**. Stay tuned for a follow-up post that dives into creating custom Field Plugins, or swing by the [docs](https://tinacms.org/docs/fields/custom-fields#2-creating-field-plugins) to get a head start.
 
