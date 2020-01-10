@@ -30,7 +30,7 @@ There are some advantages to creating a plugin versus an inline field — the ma
 
 ## Creating a custom inline field
 
-Say we have a [Tina Form](https://tinacms.org/docs/concepts/forms) set up for an _About Me_ page.
+Say we have a [Tina Form](https://tinacms.org/docs/concepts/forms) set up for an _About Me_ page:
 
 ``` js
  const formOptions = {
@@ -91,7 +91,7 @@ const formOptions = {
 
 _Pretty cool huh?_ 🤩
 
-Notice how in all of the other field objects, the `component` property is referencing a Tina field plugin, whereas **in our custom inline field, we are only passing in a React component.**
+Notice how in all of the other field objects, the `component` property is referencing a Tina field plugin, whereas **with our custom inline field, we are only passing in a React component.**
 
 ![IMG HERE]()
 
@@ -99,7 +99,7 @@ Now this example component is super simple — a glorified label. This type of c
 
 ## Custom Range Slider 🎨
 
-Say we had an image on the _About Page_ and we wanted to be able to control some [CSS filters](https://css-tricks.com/almanac/properties/f/filter/) on that image. The pen below shows all the CSS filters we have to play with.
+Say we had an image on the _About Me_ page and we wanted to be able to control some [CSS filters](https://css-tricks.com/almanac/properties/f/filter/) on that image. The pen below shows all the CSS filters we have to play with.
 
 <br>
 
@@ -284,12 +284,12 @@ Some other examples of _CSS-in-JS_ frameworks you could use would be [styled-com
 
 ### Next Steps
 
-A solid next step could be _adding styles to the custom `rangeInput` component_. You could use [`@tinacms/styles`](https://github.com/tinacms/tinacms/blob/master/packages/%40tinacms/styles/src/Styles.tsx) to fit the vibe of other Tina fields ✌️. Or you could go wild and spice up the sidebar in your own way 🤠.
+A good next step would be _adding styles to the custom `rangeInput` component_. You could use [`@tinacms/styles`](https://github.com/tinacms/tinacms/blob/master/packages/%40tinacms/styles/src/Styles.tsx) to fit the vibe of other Tina fields ✌️. Or you could go wild and spice up the sidebar in your own way 🤠.
 
 If we wanted to reuse this component throughout the site, **we could take a step further and make it into a [Field Plugin](https://tinacms.org/docs/fields/custom-fields#2-creating-field-plugins)**. Stay tuned for a follow-up post that dives into creating custom Field Plugins, or swing by the [docs](https://tinacms.org/docs/fields/custom-fields#2-creating-field-plugins) to get a head start.
 
-### Takeaways
+### Takeaways 🕺🏻
 
 Making custom field components for TinaCMS is incredibly exciting! Hopefully this post got your creative gears turning on the numerous variables to tinker with in the content editing experience.
 
-I think the biggest takeaway from this short exploration of custom fields is that **you can put any React component into the sidebar**. This flexibility is very powerful; it opens the door for you to custom-tune the editing controls for a project depending on its unique needs. And while creating custom components may not be necessary all the time, simply knowing it’s an option is reassuring, if not inspiring 🦚.
+I think the biggest takeaway from this short exploration of custom fields is that **you can put any React component into the sidebar**. This flexibility is very powerful; it opens the door for you to custom-tune the editing controls for a project depending on its unique needs. And while creating custom components may not be necessary all the time, simply knowing it’s an option is reassuring, if not inspiring.
