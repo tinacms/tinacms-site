@@ -18,7 +18,13 @@ This post will refer to some core TinaCMS concepts such as [forms](https://tinac
 
 Tina was intended to be fully customizable and extensible. Creating **custom fields can provide finite control** over the sidebar configuration and styling, along with implementing unique field functionality.
 
-![GIF HERE?]()
+<br>
+
+![saturation-custom-field-gif](/gif/saturate-custom-field.gif)
+
+<br>
+
+<tip> Want to jump ahead? Feel free to check out a **finished version of the custom range field** outlined below in [this repo](https://github.com/kendallstrautman/llama-filters), or take a peak at a more complex [_Authors_ field plugin](https://github.com/tinacms/tina-starter-grande/blob/master/src/fields/authors.js) in the Tina Grande repo.</tip>
 
 ## Two Methods, Let’s start simple
 
@@ -87,13 +93,11 @@ const formOptions = {
  }
 ```
 
-
-
 _Pretty cool huh?_ 🤩
 
 Notice how in all of the other field objects, the `component` property is referencing a Tina field plugin, whereas **with our custom inline field, we are only passing in a React component.**
 
-![IMG HERE]()
+![Custom Inline Field In Sidbar](/img/blog/custom-field-sidebar.png)
 
 Now this example component is super simple — a glorified label. This type of component can be helpful with organizing or customizing the sidebar, but _we can go further and pass in more complex fields_.
 
@@ -122,7 +126,7 @@ function RangeInput(props) {
    return (
      <>
        <div>
-         <label for="saturation">Image Saturation</label>
+         <label htmlFor="saturation">Image Saturation</label>
        </div>
        <div>
          <input
@@ -244,7 +248,7 @@ function AboutMe(props) {
   const [data] = useLocalJsonForm(props.data, formOptions)
   return (
     <Layout bgColor={data.rawJson.background_color}>
-      <section className="info_blurb">
+      <section>
         <h1>Hi 👩‍🎤 my name is {data.rawJson.name}</h1>
         <p>Currently gallivanting around {data.rawJson.hometown}</p>
 
@@ -256,23 +260,9 @@ function AboutMe(props) {
 
         {/* Pass in the image_saturation value 🖍 */}
         img {
-          filter: saturate(${data.rawJson.image_saturation})
+          filter: saturate(${data.rawJson.image_saturation});
         }
 
-        .info_blurb {
-          max-width: 800px;
-          padding: 1.5rem 1.25rem;
-        }
-        @media (min-width: 768px) {
-          .info_blurb {
-            padding: 2rem;
-          }
-        }
-        @media (min-width: 1440px) {
-          .info_blurb {
-            padding: 3rem;
-          }
-        }
       `}</style>
     </Layout>
   )
@@ -287,6 +277,8 @@ Some other examples of _CSS-in-JS_ frameworks you could use would be [styled-com
 A good next step would be _adding styles to the custom `RangeInput` component_. You could use [`@tinacms/styles`](https://github.com/tinacms/tinacms/blob/master/packages/%40tinacms/styles/src/Styles.tsx) to fit the vibe of other Tina fields ✌️. Or you could go wild and spice up the sidebar in your own way 🤠.
 
 If we wanted to reuse this component throughout the site, **we could take a step further and make it into a [Field Plugin](https://tinacms.org/docs/fields/custom-fields#2-creating-field-plugins)**. Stay tuned for a follow-up post that dives into creating custom Field Plugins, or swing by the [docs](https://tinacms.org/docs/fields/custom-fields#2-creating-field-plugins) to get a head start.
+
+<tip>Feel free to check out a **finished version of this custom range field** in [this repo](https://github.com/kendallstrautman/llama-filters), or take a peak at a more complex [_Authors_ field plugin](https://github.com/tinacms/tina-starter-grande/blob/master/src/fields/authors.js) in the Tina Grande repo.</tip>
 
 ### Takeaways 🕺🏻
 
