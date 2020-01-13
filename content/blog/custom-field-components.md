@@ -118,7 +118,7 @@ We can create a custom input field to provide editing control over these visual 
 
 ### 1. Create the input field component
 
-To create a custom input field, we need to make a **React component that takes input and updates data when the input is altered**. For this example, we are going to make an [range input field](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range) that handles the state of the saturation value and updates that state whenever the range control is slid.
+To create a custom input field, we need to make a **React component that takes input and updates data when the input is altered**. For this example, we are going to make a [range input field](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range) that handles the state of the saturation value and updates that state whenever the range control is slid.
 
 ``` js
 // An example of a custom range field component
