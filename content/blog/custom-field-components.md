@@ -28,7 +28,7 @@ Tina was intended to be fully customizable and extensible. Creating **custom fie
 
 ## Two Methods, Let’s start simple
 
-There are two ways to add [custom fields](https://tinacms.org/docs/fields/custom-fields) to Tina. The first approach involves _defining a React component and passing it into the `component` property_ of a field definition. The Tina Team refers to this as an **inline field component.** This option more straightforward; it will be the method of focus in this post.
+There are two ways to add [custom fields](https://tinacms.org/docs/fields/custom-fields) to Tina. The first approach involves _defining a React component and passing it into the `component` property_ of a field definition. The Tina Team refers to this as an **inline field component.** This option is more straightforward; it will be the method of focus in this post.
 
 The second approach involves defining a custom component, then registering that component as a [field plugin](https://tinacms.org/docs/fields/custom-fields#2-creating-field-plugins) with the CMS. All the [core fields](https://tinacms.org/docs/concepts/fields) provided by Tina are set up as plugins.
 
