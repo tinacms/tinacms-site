@@ -28,7 +28,7 @@ Tina was intended to be fully customizable and extensible. Creating **custom fie
 
 ## Two Methods, Let’s start simple
 
-There are two ways to add [custom fields](https://tinacms.org/docs/fields/custom-fields) to Tina. The first approach involves _defining a React component and passing it into the `component` property_ of a field definition. The Tina Team refers to this as an **inline field component.** This option more straightforward; it will be the method of focus in this post.
+There are two ways to add [custom fields](https://tinacms.org/docs/fields/custom-fields) to Tina. The first approach involves _defining a React component and passing it into the `component` property_ of a field definition. The Tina Team refers to this as an **inline field component.** This option is more straightforward; it will be the method of focus in this post.
 
 The second approach involves defining a custom component, then registering that component as a [field plugin](https://tinacms.org/docs/fields/custom-fields#2-creating-field-plugins) with the CMS. All the [core fields](https://tinacms.org/docs/concepts/fields) provided by Tina are set up as plugins.
 
@@ -45,12 +45,12 @@ Say we have a [Tina Form](https://tinacms.org/docs/concepts/forms) set up for an
      {
        label: "Name",
        name: "rawJson.name",
-       component: text,
+       component: "text",
      },
      {
        label: "Hometown",
        name: "rawJson.hometown",
-       component: text,
+       component: "text",
      },
      {
        label:"Color",
@@ -118,7 +118,7 @@ We can create a custom input field to provide editing control over these visual 
 
 ### 1. Create the input field component
 
-To create a custom input field, we need to make a **React component that takes input and updates data when the input is altered**. For this example, we are going to make an [range input field](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range) that handles the state of the saturation value and updates that state whenever the range control is slid.
+To create a custom input field, we need to make a **React component that takes input and updates data when the input is altered**. For this example, we are going to make a [range input field](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range) that handles the state of the saturation value and updates that state whenever the range control is slid.
 
 ``` js
 // An example of a custom range field component
