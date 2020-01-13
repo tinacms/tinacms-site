@@ -8,11 +8,11 @@ consumes:
     details: null
 ---
 
-Form fields are the bread and butter of any CMS. While Tina provides a solid collection of fields 'out-of-the-box', you can also create your own. This post will show you the basic concepts of how to create custom field components and register them to the Tina sidebar.
+Form fields are the bread and butter of any CMS. While Tina provides a solid collection of fields 'out-of-the-box', you can also create your own. This post will show you the basic concepts of how to create custom field components and using them to the Tina sidebar.
 
 **Prerequisites 👩‍🏫**
 
-This post will refer to some core TinaCMS concepts such as [forms](https://tinacms.org/docs/concepts/forms), the [sidebar](https://tinacms.org/docs/concepts/sidebar), and [fields](https://tinacms.org/docs/concepts/fields). It will be helpful to have some basic working knowledge of [**how TinaCMS works**](https://tinacms.org/docs/getting-started/how-tina-works) before reading. Feel free to refer to the [documentation](https://tinacms.org/docs/getting-started/introduction) or read a post on using Tina with [Gatsby](https://www.gatsbyjs.org/blog/2019-12-20-integrate-tinacms-with-your-gatsby-website/) or [Next.js](https://tinacms.org/blog/using-tinacms-with-nextjs/) to get familiar.
+Throughout the post, I'll refer to a few core TinaCMS concepts such as [forms](https://tinacms.org/docs/concepts/forms), the [sidebar](https://tinacms.org/docs/concepts/sidebar), and [fields](https://tinacms.org/docs/concepts/fields). It will be helpful to have some basic working knowledge of [**how TinaCMS works**](https://tinacms.org/docs/getting-started/how-tina-works) before reading. Feel free to refer to the [documentation](https://tinacms.org/docs/getting-started/introduction) or read a post on using Tina with [Gatsby](https://www.gatsbyjs.org/blog/2019-12-20-integrate-tinacms-with-your-gatsby-website/) or [Next.js](https://tinacms.org/blog/using-tinacms-with-nextjs/) to get familiar.
 
 ## Why would you create a custom field?
 
@@ -24,7 +24,7 @@ Tina was intended to be fully customizable and extensible. Creating **custom fie
 
 <br>
 
-<tip> Want to jump ahead? Feel free to check out a **finished version of the custom range field** outlined below in [this repo](https://github.com/kendallstrautman/llama-filters), or take a peak at a more complex [_Authors_ field plugin](https://github.com/tinacms/tina-starter-grande/blob/master/src/fields/authors.js) in the Tina Grande repo.</tip>
+<tip> Want to jump ahead? Feel free to check out a **finished version of the custom range input field** seen in the gif above in [this repo](https://github.com/kendallstrautman/llama-filters), or take a peak at a more complex [_Authors_ field plugin](https://github.com/tinacms/tina-starter-grande/blob/master/src/fields/authors.js) in the Tina Grande repo.</tip>
 
 ## Two Methods, Let’s start simple
 
@@ -32,7 +32,7 @@ There are two ways to add [custom fields](https://tinacms.org/docs/fields/custom
 
 The second approach involves defining a custom component, then registering that component as a [field plugin](https://tinacms.org/docs/fields/custom-fields#2-creating-field-plugins) with the CMS. All the [core fields](https://tinacms.org/docs/concepts/fields) provided by Tina are set up as plugins.
 
-There are some advantages to creating a plugin versus an inline field — the main points being reusability and access to additional functions for parsing, validation etc. But **for simpler cases** when you need a custom field in say just one form or don’t necessarily need validation, a custom inline field will do just fine 👌.
+There are some advantages to creating a plugin versus an inline field — the main points being reusability and access to additional functions for parsing, validation etc. But **for simpler cases**, when you need a custom field in say just one form or don’t necessarily need validation, an inline field component will do just fine 👌.
 
 ## Creating a custom inline field
 
@@ -44,17 +44,17 @@ Say we have a [Tina Form](https://tinacms.org/docs/concepts/forms) set up for an
    fields: [
      {
        label: "Name",
-       name: "rawJson.name",
+       name: "name",
        component: "text",
      },
      {
        label: "Hometown",
-       name: "rawJson.hometown",
+       name: "hometown",
        component: "text",
      },
      {
        label:"Color",
-       name:"rawJson.background_color",
+       name:"background_color",
        description: "Background Color",
        component: "color"
      },
@@ -70,12 +70,12 @@ const formOptions = {
    fields: [
      {
        label: "Name",
-       name: "rawJson.name",
+       name: "name",
        component: "text",
      },
      {
        label: "Hometown",
-       name: "rawJson.hometown",
+       name: "hometown",
        component: "text",
      },
      // This is our custom inline field 👀
@@ -85,7 +85,7 @@ const formOptions = {
      },
      {
        label:"Color",
-       name:"rawJson.background_color",
+       name:"background_color",
        description: "Background Color",
        component: "color"
      },
@@ -201,12 +201,12 @@ const formOptions = {
    fields: [
      {
        label: "Name",
-       name: "rawJson.name",
+       name: "name",
        component: "text",
      },
      {
        label: "Hometown",
-       name: "rawJson.hometown",
+       name: "hometown",
        component: "text",
      },
      {
@@ -216,12 +216,12 @@ const formOptions = {
      // Pass the custom inline field into `component`
      {
        label: "Image Saturation",
-       name: "rawJson.image_saturation",
+       name: "image_saturation",
        component: RangeInput,
      },
      {
        label:"Color",
-       name:"rawJson.background_color",
+       name:"background_color",
        description: "Background Color",
        component: "color"
      },
@@ -247,10 +247,10 @@ import { useLocalJsonForm } from "next-tinacms-json";
 function AboutMe(props) {
   const [data] = useLocalJsonForm(props.data, formOptions)
   return (
-    <Layout bgColor={data.rawJson.background_color}>
+    <Layout bgColor={data.background_color}>
       <section>
-        <h1>Hi 👩‍🎤 my name is {data.rawJson.name}</h1>
-        <p>Currently gallivanting around {data.rawJson.hometown}</p>
+        <h1>Hi 👩‍🎤 my name is {data.name}</h1>
+        <p>Currently gallivanting around {data.hometown}</p>
 
         {/* Here is the image that will get the treatment 🖼 */}
         <img alt="random-unsplash" src="https://source.unsplash.com/random/800x600" />
@@ -260,7 +260,7 @@ function AboutMe(props) {
 
         {/* Pass in the image_saturation value 🖍 */}
         img {
-          filter: saturate(${data.rawJson.image_saturation});
+          filter: saturate(${data.image_saturation});
         }
 
       `}</style>
