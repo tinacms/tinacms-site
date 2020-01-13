@@ -154,7 +154,7 @@ For some background knowledge, the `pages` directory is special in Next.js. Each
 
 This is awesome for static pages, but we'd like to have a single template from which all blog posts will be built, sourcing the different data from each markdown file. This means we need some sort of dynamic routing, such that unique blog posts utilizing the same template have ‘pretty’ urls and their own individual pages.
 
-[Dynamic routes](https://nextjs.org/docs#dynamic-routing) in Next.js are identified by **square brackets** `[]` in the filename. Within these brackets we can pass a query parameter to the page component. For example, let’s create a new folder within `src/posts` called `blog`, then add a new file within that blog folder `[slug].js`, we can use whatever is passed as this `slug` parameter to dynamically access data. So if we visit `http://localhost:3000/blog/julius-caesar`, whatever is returned from the `[slug].js` page component will render, and will have access to that ‘slug’ query parameter, i.e. ‘julius-caesar’.
+[Dynamic routes](https://nextjs.org/docs#dynamic-routing) in Next.js are identified by **square brackets** `[]` in the filename. Within these brackets we can pass a query parameter to the page component. For example, let’s create a new folder within `src/pages` called `blog`, then add a new file within that blog folder `[slug].js`, we can use whatever is passed as this `slug` parameter to dynamically access data. So if we visit `http://localhost:3000/blog/julius-caesar`, whatever is returned from the `[slug].js` page component will render, and will have access to that ‘slug’ query parameter, i.e. ‘julius-caesar’.
 
 ### Get Markdown Data For the Blog Template
 
