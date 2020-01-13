@@ -322,10 +322,10 @@ function AboutMe(props) {
       <section>
         <h1>Hi 👩‍🎤 my name is {data.name}</h1>
         <p>Currently gallivanting around {data.hometown}</p>
-        {/* This is the image that will get the treatment 🖼 */}
+        {/* This is the image that will get the treatment */}
         <img alt="random-unsplash" src="https://source.unsplash.com/random/800x600" />
       </section>
-      {/* Pass in the image_saturation value 🖍 */}
+      {/* Pass in the image_saturation value */}
       <style jsx>{`
         img {
           filter: saturate(${data.image_saturation});
@@ -337,7 +337,7 @@ function AboutMe(props) {
 
 ```
 
-Some other examples of _CSS-in-JS_ frameworks you could use would be [styled-components](https://www.styled-components.com/)  💅 or [emotion.js](https://emotion.sh/docs/introduction) 👩‍🎤. Note that the above implementation for these alternative frameworks this will be slightly different.
+Some other examples of _CSS-in-JS_ frameworks you could use would be [styled-components](https://www.styled-components.com/) or [emotion.js](https://emotion.sh/docs/introduction). Note that the above implementation for these alternative frameworks this will be slightly different.
 
 ### Next Steps
 
