@@ -16,7 +16,7 @@ Throughout the post, I'll refer to a few core TinaCMS concepts such as [forms](h
 
 ## Why would you create a custom field?
 
-Tina was intended to be fully customizable and extensible. Creating **custom fields can provide finite control** over the sidebar configuration and styling, along with implementing unique field functionality.
+Tina was intended to be fully customizable and extensible. Creating **custom fields can provide precise control** over the sidebar configuration and styling, along with implementing unique field functionality.
 
 <br>
 
@@ -37,6 +37,8 @@ There are some advantages to creating a plugin versus an inline field — the ma
 ## Creating a custom inline field
 
 Say we have a [Tina Form](https://tinacms.org/docs/concepts/forms) set up for an _About Me_ page:
+
+<tip>_Note:_ The examples below will be referencing a Next.js setup, but this approach can be applied to Gatsby as well.</tip>
 
 ``` js
  const formOptions = {
@@ -97,7 +99,7 @@ _Pretty cool huh?_ 🤩
 
 Notice how in all of the other field objects, the `component` property is referencing a Tina field plugin, whereas **with our custom inline field, we are only passing in a React component.**
 
-![Custom Inline Field In Sidbar](/img/blog/custom-field-sidebar.png)
+![Custom Inline Field In Sidbar](/img/blog/custom-field-inline.png)
 
 Now this example component is super simple — a glorified label. This type of component can be helpful with organizing or customizing the sidebar, but _we can go further and pass in more complex fields_.
 
@@ -168,16 +170,85 @@ When the custom field is registered with Tina, this **input object** is passed i
 
 The [react-final-form documentation](https://final-form.org/docs/react-final-form/api/Field#3-connect-the-callbacks-to-your-input) describes the `input` and `meta` props incredibly well. When creating custom fields, you'll typically be accessing the `field` and `input` props.
 
+#### Where should the custom field live?
+
+As we saw in the first example, we can pass in the custom field component directly via the `component` property — `component: () => <p>Hi<p>`. But when we are creating more complex fields, we will most likely want to extract the field into its own function.
+
+In the example above, `RangeInput` could be defined alongside the `AboutMe` component where the Tina form is set up:
+
+```js
+/*
+** Custom field defined alongside
+** component using a Tina Form
+*/
+import { useLocalJsonForm, JsonFile } from "next-tinacms-json";
+
+export default function AboutMe(props) {
+  // Tina Form config
+  const [data] = useLocalJsonForm(props.data, formOptions)
+  return (
+    //...
+  )
+}
+
+function RangeInput(props) {
+  //...
+}
+
+const formOptions = {
+  /*
+  ** RangeInput will be referenced
+  ** in the custom field definition
+  */
+}
+
+AboutMe.getInitialProps = async function() {
+  //...
+}
+```
+
+It could also be defined in its own file and imported into the file where the Tina form options are configured:
+
+``` js
+/*
+** Custom field definition kept in
+** separate file and imported
+*/
+import { useLocalJsonForm, JsonFile } from "next-tinacms-json";
+import RangeInput from '../components/RangeInput';
+
+export default function AboutMe(props) {
+  // Tina Form config
+  const [data] = useLocalJsonForm(props.data, formOptions)
+  return (
+    //...
+  )
+}
+
+const formOptions = {
+  /*
+  ** RangeInput will be referenced
+  ** in the custom field definition
+  */
+}
+
+AboutMe.getInitialProps = async function() {
+  //...
+}
+```
+
+As with many things in development, the answer **depends on your usecase** 😉. Feel free to reference this [demo repo](https://github.com/kendallstrautman/llama-filters) to see a working example structure for Next.js.
 
 ### 2. Add the value to the source data
 
-Now that the custom input field is set up, we need to add the `image_saturation` value to our source data. The source data could be a Markdown or JSON file. If you already have a Tina Form set up, it should be linked with a data source, so head to that file.
+Now that the custom input field is defined, we need to add the `image_saturation` value to our source data. The source data could be a Markdown or JSON file. If you already have a Tina Form set up, it should be linked with a data source, so head to that file.
 
-For our example, let's say we have a local JSON file called `About.json`. This file contains the data used in the _About Me_ page. In it we can add the `image_saturation` value.
+For our example, let's say we have a local JSON file called `about.json`. This file contains the data used in the _About Me_ page. In it we can add the `image_saturation` value.
 
 The value can be any integer or floating point number that exists between the range defined in our `RangeInput` component above — 0 to 10, with a step of 0.1 (meaning each 'slide step' of the range increments or decrements the value by 0.1). As a saturation value, **zero would be totally grayscale** or no color, so we can fill in something like 3 to get a more 'normal' look.
 
 ``` JSON
+// Example About Me Page source data --> about.json
 {
  “name”: “Koba Weasley”,
  “hometown”: “Bend, Oregon”,
@@ -229,18 +300,18 @@ const formOptions = {
  }
 ```
 
-Now if you start the development server, you should see the custom `RangeInput` field in the sidebar. And if you slide it, you should see the value updating in `About.json`.
+Now if you start the development server, you should see the custom `RangeInput` field in the sidebar. And if you slide it, you should see the value updating in `about.json`.
 
 ### 4. Dynamically set the CSS filter
 
  As you can see, the custom field component is wired up, but we haven’t connected the _saturation value_ with a CSS filter to actually see an effect on the image.
 
-In order to do this, you’ll need to be using a [CSS-in-JS](https://css-tricks.com/bridging-the-gap-between-css-and-javascript-css-in-js/) framework so we can dynamically update the filter values through the component props. If you’re using Next.js, `styled-jsx` is great and it works out of the box with Next.js. Below is an example of the _saturation value_ being connected to the CSS filter with `styled-jsx`:
+In order to do this, you’ll need to be using a [CSS-in-JS](https://css-tricks.com/bridging-the-gap-between-css-and-javascript-css-in-js/) framework so we can dynamically update the filter values through the component props. If you’re using Next.js, `styled-jsx` works out-of-the-box and is pretty fantastic. Below is an example of the _saturation value_ being connected to the CSS filter with `styled-jsx`:
 
 ``` js
 /*
-**  This is an example component
-**  for the About Me page in Next.js
+**  Example component for the
+**  About Me page in Next.js
 */
 import { useLocalJsonForm } from "next-tinacms-json";
 
@@ -251,18 +322,14 @@ function AboutMe(props) {
       <section>
         <h1>Hi 👩‍🎤 my name is {data.name}</h1>
         <p>Currently gallivanting around {data.hometown}</p>
-
-        {/* Here is the image that will get the treatment 🖼 */}
+        {/* This is the image that will get the treatment 🖼 */}
         <img alt="random-unsplash" src="https://source.unsplash.com/random/800x600" />
-
       </section>
+      {/* Pass in the image_saturation value 🖍 */}
       <style jsx>{`
-
-        {/* Pass in the image_saturation value 🖍 */}
         img {
           filter: saturate(${data.image_saturation});
         }
-
       `}</style>
     </Layout>
   )
