@@ -4,8 +4,14 @@ date: '2020-01-20T07:00:00.000Z'
 author: Kendall Strautman
 draft: false
 consumes:
-  - file: null
-    details: null
+  - file: /packages/next-tinacms-json/src/use-local-json-form.ts
+    details: Example shows useLocalJsonForm in use
+  - file: /packages/next-tinacms-json/src/use-json-form.ts
+    details: Example shows useLocalJsonForm in use
+  - file: /packages/@tinacms/forms/src/form.ts
+    details: Depends on the Field interface
+  - file: /packages/@tinacms/form-builder/src/field-plugin.tsx
+    details: Depends on the FieldPlugin interface
 ---
 
 Form fields are the bread and butter of any CMS. While Tina provides a solid collection of fields 'out-of-the-box', you can also create your own. This post will show you the basic concepts of how to create custom field components and using them to the Tina sidebar.
