@@ -45,7 +45,7 @@ Say we have a [Tina Form](https://tinacms.org/docs/concepts/forms) set up for an
      {
        label: "Name",
        name: "rawJson.name",
-       component: text,
+       component: "text",
      },
      {
        label: "Hometown",
