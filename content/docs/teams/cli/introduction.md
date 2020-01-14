@@ -1,7 +1,7 @@
 ---
 title: Tina CLI
 id: /docs/teams/cli/introduction
-prev: /docs/teams/introduction
+prev: /docs/teams/gatsby/introduction
 next: /docs/teams/cli/commands
 ---
 

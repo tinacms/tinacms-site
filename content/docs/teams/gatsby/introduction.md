@@ -1,7 +1,8 @@
 ---
 title: Tina With Gatsby
-id: /docs/teams/cli/introduction
-prev: /docs/teams/cli/contributing
+id: /docs/teams/gatsby/introduction
+prev: /docs/teams/introduction
+next: /docs/teams/cli/introduction
 ---
 
 Tina Teams functionality can be added to a Gatsby site with the `gatsby-tinacms-teams` plugin.
@@ -47,17 +48,19 @@ Teams authentication is enabled/disabled with the `REQUIRE_AUTH` environment var
 }
 ```
 
-Alternatively, you can use .env files:
+Alternatively, you can use .env files (as long as your site supports it).
 
-**.env.staging**
+**.env**
 
 ```
 REQUIRE_AUTH=true
 ```
 
-You will also need to set the `TINA_TEAMS_NAMESPACE` environment variable. This will be the email of the user who owns this site within Tina Teams.
+<tip>
+If you are hosting on a service like Heroku or Gatsby Cloud, these environment variables can be added through the host provider's UI.
+</tip>
 
-<tip>You can use the [Tina CLI](/docs/teams/cli/commands 'Tina CLI') to add a site to Tina Teams, or check who owns a site</tip>
+You will also need to set the `TINA_TEAMS_NAMESPACE` environment variable. This will be the email of the user who created this site within Tina Teams.
 
 ## Configuring Git for Cloud Commits
 

@@ -2,7 +2,6 @@
 title: CLI Contributing
 id: /docs/teams/cli/contributing
 prev: /docs/teams/cli/commands
-next: /docs/teams/gatsby/introduction
 ---
 
 The Tina Teams API is closed source, however the CLI is [open-source](https://github.com/tinacms/cli 'TinaCMS CLI').

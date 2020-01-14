@@ -221,6 +221,11 @@
         "title": "Introduction"
       },
       {
+        "id": "/docs/teams/gatsby/introduction",
+        "slug": "/docs/teams/gatsby/introduction",
+        "title": "Teams with Gatsby"
+      },
+      {
         "id": "/docs/teams/cli/introduction",
         "slug": "/docs/teams/cli/introduction",
         "title": "CLI"
@@ -234,11 +239,6 @@
         "id": "/docs/teams/cli/contributing",
         "slug": "/docs/teams/cli/contributing",
         "title": "CLI Contributing"
-      },
-      {
-        "id": "/docs/teams/gatsby/introduction",
-        "slug": "/docs/teams/gatsby/introduction",
-        "title": "Teams with Gatsby"
       }
     ]
   }
