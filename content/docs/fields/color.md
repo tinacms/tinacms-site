@@ -11,6 +11,7 @@ consumes:
 
 The `color` field is a visual color picker. This field is used for content values that handle the rendering of color. Can be saved as RGB or hex value.
 
+![tinacms-color-field](/fields/color.jpg)
 
 ## Definition
 
