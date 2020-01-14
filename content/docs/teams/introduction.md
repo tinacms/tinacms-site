@@ -23,7 +23,7 @@ Check out our guide to [setting up a cloud editing environment](/blog/using-tina
 
 Now that our cloud editing environment is live, we will want to manage who can access this environment. We also need a way to identify each user so that we can attribute saves made through TinaCMS with it's author.
 
-E.g: If i am using the **gatsby-tinacms-git** plugin, when a user hits "save" it will create a commit with the author set to the logged-in user.
+i.e.: If i am using the **gatsby-tinacms-git** plugin, when a user hits "save" it will create a commit with the author set to the logged-in user.
 ![tinacms-add-new-file-gif](/img/commit_author_scott.png)
 
 [Add the teams plugin to a Gatsby site](/docs/teams/gatsby/introduction)
