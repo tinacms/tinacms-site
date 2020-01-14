@@ -73,6 +73,7 @@ const plugins = [
         hidden: process.env.NODE_ENV === 'production',
       },
       plugins: [
+        'gatsby-tinacms-teams',
         'gatsby-tinacms-json',
         'gatsby-tinacms-remark',
         {
