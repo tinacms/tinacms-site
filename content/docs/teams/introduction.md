@@ -5,8 +5,7 @@ prev: null
 next: /docs/teams/cli/introduction
 ---
 
-When teams are editing a site with TinaCMS, typically a **cloud editing environment** with TinaCMS be hosted somewhere (so that editors do not need to install the site in a local development environment).
+When it's time to get your editors editing a TinaCMS site, you will likely want to setup a **cloud editing environment** so that editors can edit the site's content from the cloud. The **cloud editing environment** is separate from your production site. It is a staging environment which runs your site in dev mode, in which TinaCMS will be accesible.
 
-Tina Teams adds user management features on top of sites running TinaCMS in the cloud. Tina Teams is currently in [closed beta](/teams 'Tina Teams Signup').
-
-Interaction with Tina Teams' environments is performed through the [Tina CLI](/docs/teams/cli/introduction 'Tina CLI').
+Once a cloud editing environment has been setup for your site, **Tina Teams** can be used to manage which users can access the **cloud editing environment**.
+Interaction with Tina Teams is performed through the [Tina CLI](/docs/teams/cli/introduction 'Tina CLI').
