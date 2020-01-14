@@ -47,7 +47,8 @@ const BlogPostForm = {
  - `label`: A human readable label for the field. This label displays in the sidebar and is optional. If no label is provided, the sidebar will default to the name.
  - `description`: An optional description that expands on the purpose of the field or prompts a specific action.
  -  `colorFormat`: Optionally specify whether you want the color value to be a hexadecimal ('hex') or RBG value.
- - `colors`: An array of 'swatch' values that will either display as options below the "sketch" widget, or will serve as swatch options for the "block" widget.
+ - `colors`: An array of 'swatch' values that will either display as options below the "sketch" widget, or will serve as swatch options for the "block" widget. If no colors are passed, a set of default colors will render, ROYGBIV style.
+ - `widget`: An optional string indicating whether the "sketch" or "block" widget should render. This will default to "sketch" if no value is passed.
 
  ## Interface
 
@@ -58,7 +59,7 @@ interface ColorConfig {
   label?: string
   description?: string
   colorFormat?: 'hex' | 'rgb' // Defaults to "hex"
-  colors?: string[] // Defaults to a predefined swatch set
+  colors?: string[]
   widget?:  "sketch" | "block" // Defaults to "sketch"
 }
 ```
