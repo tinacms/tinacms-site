@@ -70,7 +70,7 @@ If you are using the gatsby-tinacms-git plugin, make sure to use version: 0.2.16
 
 To get **gatsby-tinacms-git** working in the cloud, we'll need to add a SSH_KEY environment variable:
 
-**.env.staging**
+**.env**
 
 ```
 SSH_KEY=KS0eLS4CRTTdJTi...
