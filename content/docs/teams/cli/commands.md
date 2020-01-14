@@ -27,7 +27,6 @@ This will describe how to use all the commands in the `sites` context
 - [tina users:remove](#tina-usersremove-email) - Removes a user from a site.
 - [tina users:roles:add](#tina-usersrolesremove-email-roles) - Adds a list of roles onto a user for a site.
 - [tina users:roles:remove](#tina-usersrolesremove-email-roles) - Removes a list of roles from a user on a site.
-- [tina serve](#tina-serve-options--tina-server-options) - (Beta) Allows you to self-host a development version of your site behind authentication.
 
 ### tina login
 
@@ -134,21 +133,3 @@ Remove a list of comma-separated roles from a user for a site
 
     [email] Specify a user's email to use instead of prompting from a select list (optional)
     [roles] Specify a comma separated list of roles instead of prompting (optional)
-
-### tina serve \[options\] | tina server \[options\]
-
-(Beta) Allows you to self-host a development version of your site behind an authentication layer.
-
-Sets up a reverse-proxy on your site.
-
-#### Options
-
-    -p, --port <port> Specify a port to listen on
-    -u, --proxyurl <proxyurl> Specify the url to proxy
-    -s, --secure <secure> http or https
-    --auth_client_secret <auth_client_secret> auth client secret
-    --auth_endpoint <auth_endpoint> auth endpoint
-    --token_endpoint <token_endpoint> token endpoint
-    --audience <audience> auth audience
-    --jwks_uri <jwks_uri> jwks uri
-    --host <host> The hostname where your site will be available
