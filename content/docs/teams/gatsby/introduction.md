@@ -64,6 +64,10 @@ You will also need to set the `TINA_TEAMS_NAMESPACE` environment variable. This 
 
 ## Configuring Git for Cloud Commits
 
+<tip>	
+If you are using the gatsby-tinacms-git plugin, make sure to use version: 0.2.16 or later!	
+</tip>
+
 To get **gatsby-tinacms-git** working in the cloud, we'll need to add a SSH_KEY environment variable:
 
 **.env**
