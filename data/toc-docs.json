@@ -239,6 +239,11 @@
         "id": "/docs/teams/cli/contributing",
         "slug": "/docs/teams/cli/contributing",
         "title": "CLI Contributing"
+      },
+      {
+        "id": "/docs/teams/troubleshooting",
+        "slug": "/docs/teams/troubleshooting",
+        "title": "Troubleshooting"
       }
     ]
   }
