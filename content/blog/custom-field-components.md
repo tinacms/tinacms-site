@@ -14,7 +14,7 @@ consumes:
     details: Depends on the FieldPlugin interface
 ---
 
-Form fields are the bread and butter of any CMS. While Tina provides a solid collection of fields 'out-of-the-box', you can also create your own. This post will show you the basic concepts of how to create custom field components and using them to the Tina sidebar.
+Form fields are the bread and butter of any CMS. While Tina provides a solid collection of fields 'out-of-the-box', you can also create your own. This post will show you the basic concepts of how to create custom field components and use them in the Tina sidebar.
 
 **Prerequisites 👩‍🏫**
 
