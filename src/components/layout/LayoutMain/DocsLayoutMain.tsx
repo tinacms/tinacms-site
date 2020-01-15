@@ -95,6 +95,42 @@ const HomepageLink = styled(Link)<FontSizeProps>`
   }
 `
 
+const HeaderCta = styled.div`
+  margin-left: ${space.sm}px;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  a {
+    margin-left: 20px;
+    flex: 0 0 auto;
+  }
+  .github {
+    display: inline-block;
+    width: 35px;
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      transform: translate3d(-1px, -2px, 2px);
+      transition: transform 150ms ease-out;
+    }
+    &:focus,
+    &:active {
+      outline: none;
+    }
+    &:active {
+      filter: none;
+    }
+  }
+  svg {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    position: relative;
+    display: block;
+  }
+`
+
 const DocsLayoutMain: React.SFC<DocsLayoutMainProps> = ({ children, title, className, headerMenus }) => {
   const { state, dispatch } = React.useContext(NavigationContext)
 
@@ -143,6 +179,15 @@ const DocsLayoutMain: React.SFC<DocsLayoutMainProps> = ({ children, title, class
               })}
           </DocumentationMenu>
           <Search collapse indices={searchIndices} />
+          <HeaderCta>
+              <iframe
+                src="https://ghbtns.com/github-btn.html?user=tinacms&repo=tinacms&type=star&count=true&size=large"
+                frameborder="0"
+                scrolling="0"
+                width="160px"
+                height="30px"
+              ></iframe>
+          </HeaderCta>
         </HeaderInner>
       </Header>
       <SkipNavContent>{children}</SkipNavContent>

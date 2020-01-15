@@ -11,6 +11,8 @@ consumes:
 
 The `image` field is used for content values that point to an image used on the page. This field allows you to upload new images by via dragging or selection in Finder. Note this field does not handle any images included in the Markdown body, those would be handled by the [markdown](docs/fields/markdown) component.
 
+![tinacms-image-field](/fields/image.png)
+
 ## Definition
 
 Below is an example of how a `image` field could be defined in a Gatsby remark form. Read more on passing in form field options [here](/docs/gatsby/markdown#customizing-remark-forms).
