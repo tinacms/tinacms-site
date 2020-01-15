@@ -5,7 +5,7 @@ prev: /docs/teams/gatsby/introduction
 next: /docs/teams/cli/commands
 ---
 
-The Tina CLI can be used to setup your **cloud development ennvironment** with Tina Teams, and manage its users. Tina Teams pairs nicely with [Tina CMS](https://github.com/tinacms/tinacms) so that editors can edit sites from a live URL without having to pull anything down to a local dev environment.
+The Tina CLI can be used to setup your **cloud editing environment** with Tina Teams, and manage its users. Tina Teams pairs nicely with [Tina CMS](https://github.com/tinacms/tinacms) so that editors can edit sites from a live URL without having to pull anything down to a local dev environment.
 
 <tip>Before you can add a **Cloud Editing Environment** to Tina Teams, it needs to be hosted somewhere. Check out [this post](/blog/using-tinacms-on-gatsby-cloud) for an example where we host our Cloud Editing Environment on **Gatsby Cloud**</tip>
 
