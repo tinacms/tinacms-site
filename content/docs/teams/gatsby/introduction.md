@@ -77,3 +77,7 @@ SSH_KEY=KS0eLS4CRTTdJTi...
 The `SSH_KEY` is a private key that allows write access to your git repo. We'll need to add the public key to the repo under Deploy Keys in "Settings" and **enable write access.** The `SSH_KEY` needs to be **Base64 encoded**; we can encode a local key (named id_rsa in this case) by running the following in your terminal:
 
 `$ cat ~/.ssh/id_rsa | base64`
+
+## Limitations
+
+The Tina Teams plugin will put the site behind an authentication layer, however Gatsby's **/graphql** endpoint may still be accessible. If this is an issue for your site, we suggest password-protecting your environment through your hosting provider. 
