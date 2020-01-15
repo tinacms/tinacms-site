@@ -17,7 +17,7 @@ or
 
 ## Adding the Teams Plugin
 
-Open the `gatsby-config.js` file and add the plugins:
+Open the `gatsby-config.js` file and add the **gatsby-tinacms-teams** plugin. It should be the first child plugin of **gatsby-plugin-tinacms**
 
 ```JavaScript
 module.exports = {
