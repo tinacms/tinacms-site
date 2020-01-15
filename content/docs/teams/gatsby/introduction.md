@@ -118,4 +118,4 @@ Note that Base64 encoding the key DOES NOT make it safe to make public!! We are 
 
 ## Limitations
 
-The Tina Teams plugin will put the site behind an authentication layer, however Gatsby's **/graphql** endpoint may still be accessible. If this is an issue for your site, we suggest password-protecting your environment through your hosting provider.
+The Tina Teams plugin will put your cloud editing environment behind an authentication layer, however Gatsby's **/graphql** endpoint may still be accessible. If this is an issue for your site, we suggest password-protecting your environment through your hosting provider.
