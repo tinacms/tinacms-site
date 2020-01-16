@@ -448,7 +448,7 @@ class BlogPostTemplate extends React.Component {
 export default BlogPostTemplate
 ```
 
-## Adding Default or Dummy Values
+## Avoiding Errors Caused by Empty Fields
 
 **The Problem**
 
