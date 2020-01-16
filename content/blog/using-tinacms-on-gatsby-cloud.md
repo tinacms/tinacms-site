@@ -35,7 +35,7 @@ We don't want just any stranger making commits from our cloud editing environmen
 ## Configuring Git for Cloud Commits ✔️
 
 <tip>
-If you are using the gatsby-tinacms-git plugin, make sure to use version: 0.2.16-canary.0 or later! 
+If you are using the gatsby-tinacms-git plugin, make sure to use version: 0.2.16-canary.0 or later!
 </tip>
 
 To set up for canary, run `yarn add gatsby-tinacms-git@canary` until this version reaches a full release.
@@ -55,12 +55,42 @@ If you want the author to be based off of the logged-in user instead of a static
 
 ### `SSH_KEY` 🔑
 
-The `SSH_KEY` is a private key that allows write access to your git repo. We'll need to add the public key to the repo under Deploy Keys in "Settings" and **enable write access.** The `SSH_KEY` needs to be **Base64 encoded** before it's added to Gatsby Cloud; we can encode a local key (named id_rsa in this case) by running the following in your terminal:
+The `SSH_KEY` is a private key that allows write access to your git repo from our cloud editing environment.
 
-`$ cat ~/.ssh/id_rsa | base64`
+Let's start by creating a new keypair using the following command. (Make a note of your key path/name, and when prompted for a password leave it blank)
+
+```
+$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+This should have created a **private key**, and a **public key**. We'll need to add the **public key** to your site's repo within your Git provider (Github, Gitlab, Bitbucket etc). In Github, This can be done in "Settings" > "Deploy Keys". Make sure to **enable write access.**
+
+We can log out our public key by running the following command in your terminal:
+
+```
+$ cat ~/.ssh/your_key_name.pub
+```
+
+Now let's add the **private key** to Gatsby Cloud.
+
+The **private key** will need to be be **Base64 encoded** and added to Gatsby Cloud as an environment variable.
+
+We can encode and log our **private key** by running the following command in your terminal:
+
+```
+$ cat ~/.ssh/your_key_name | base64
+```
+
+Let's add this as an environment variable within Gatsby Cloud:
+
+```
+SSH_KEY: [value logged out above]
+```
+
+Now after you trigger a rebuild, it should be able to commit to your repository!
 
 <tip>
-After you update any environment variables, you will need to rebuild your Gatsby Cloud site for them to take effect.
+Note that Base64 encoding the key DOES NOT make it safe to make public!! We are Base64 encoding the key only to avoid formatting issues when using it as an environment variable.
 </tip>
 
 ## Site Configuration 🔨
