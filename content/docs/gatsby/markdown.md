@@ -28,6 +28,8 @@ The [`gatsby-transformer-remark`](https://github.com/gatsbyjs/gatsby/tree/master
 - `gatsby-tinacms-remark`: Provides hooks and components for creating Remark forms.
 - `gatsby-tinacms-git`: Extends the gatsby development server to write changes to the local filesystem.
 
+<tip>This guide assumes your Gatsby site is already setup to use Markdown. Check out the [Gatsby Docs](https://www.gatsbyjs.org/docs/adding-markdown-pages/) to learn how to use Markdown in your site.</tip>
+
 ## Install the Git & Markdown Packages
 
     npm install --save gatsby-tinacms-remark gatsby-tinacms-git
