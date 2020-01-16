@@ -457,7 +457,6 @@ This may not be a problem if you have a query that is running over numerous file
 
 However, if you have a single source file for a page, you will run into issues because this is the only instance of the data shape. If the value is deleted, then GraphQL doesn't know what field it's querying.
 
-**The Workaround**
 
 To work around this, we need to create either a dummy file or manually override the parse value in the field object by passing in an empty string.
 
