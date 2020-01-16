@@ -237,7 +237,7 @@ The `useLocalJsonForm` hook accepts an optional `config` object for overriding t
   - `label`: A human readable label for the field.
   - `description`: An optional description that expands on the purpose of the field or prompts a specific action.
 
-<tip> _Note:_ there may be additional properties specific to each field, but the above are the rudimentary properties of every field. Check the `Fields` section of the docs for particulars on the properties for each field.</tip>
+<tip> _Note:_ there may be additional properties specific to each field, but the above are the rudimentary properties of every field. Check the **Fields** section of the docs for particulars on the properties for each field.</tip>
 
 ```js
 import { useLocalJsonForm } from 'gatsby-tinacms-json'
