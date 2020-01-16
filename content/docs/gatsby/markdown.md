@@ -485,5 +485,5 @@ This option will provide an empty string if no value exists, so the frontmatter 
 
 ### Option 2: Creating a Dummy File
 
-This second option involves **creating a 'dummy' source file** with the same shape of data in your 'real' source files, but filled with 'dummy' values. This works best when you're using a template to generate numerous pages.
+This second option involves **creating a dummy source file** with the same shape of data in your real source files, but filled with dummy values. This works best when you're using a template to generate numerous pages.
 <tip>Check-out this approach implemented in Tina Grande: the [dummy file](https://github.com/tinacms/tina-starter-grande/blob/master/content/pages/dummy.json), the other ['real' files](https://github.com/tinacms/tina-starter-grande/tree/master/content/pages), and the [query](https://github.com/tinacms/tina-starter-grande/blob/master/src/templates/page.js#L136).</tip>
