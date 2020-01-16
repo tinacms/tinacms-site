@@ -274,4 +274,4 @@ const FormOptions = {
 
 export default Page
 ```
-<tip> _Important:_ You may need to implement default values or dummy files to avoid a GraphQL error when a field is 'empty'. [**Please read this workaround.**](https://tinacms.org/docs/gatsby/markdown#adding-default-or-dummy-values)</tip>
+<tip> _Important:_ You may need to implement default values or dummy files to avoid a GraphQL error when a field is empty. Take a look at our [empty field troubleshooting guide](https://tinacms.org/docs/gatsby/markdown#avoiding-errors-caused-by-empty-fields) for more information.</tip>
