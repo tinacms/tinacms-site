@@ -40,7 +40,7 @@ List any sites that the logged-in user has access to.
 
 #### Options
 
-      --dns_name [dns_name]  Specify a site to use instead of prompting within the next step (optional)
+      --base_url [base_url]  Specify a site to use instead of prompting within the next step (optional)
 
 ### tina sites:info \[options\]
 

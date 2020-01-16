@@ -28,11 +28,14 @@ Yarn:
 Arguments wrapped in `[]` in the command name are optional. If not provided, the user will be prompted for their values.
 E.g:
 
-#### tina sites \[dns_name\]
+#### tina sites:info \[options\]
 
     You can enter:
-    $ tina sites
-      - User will be prompted for a site's dns name
+    $ tina sites:info
+      - User will be prompted for a site's base url
 
     or:
-    $ tina sites dev.mysite.tina.io
+    $ tina sites:info --base_url dev.mysite.tina.io
+
+    You can also run:
+    $ tina sites:info --help to see the list of possible options.
