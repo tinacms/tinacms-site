@@ -17,16 +17,16 @@ This will describe how to use all the commands in the `sites` context
 
 - [tina login](#tina-login) - Log in / Create a tina account
 - [tina sites](#tina-sites) - List sites that the logged in user has access to.
-- [tina sites:info](#tina-sitesinfo) - Describe a given site in Tina
-- [tina sites:add](#tina-sitesadd) - Adds a site into tina
-- [tina sites:remove](#tina-sitesremove) - Removes a site from tina
+- [tina sites:info](#tina-sitesinfo-options) - Describe a given site in Tina
+- [tina sites:add](#tina-sitesadd-options) - Adds a site into tina
+- [tina sites:remove](#tina-sitesremove-options) - Removes a site from tina
 - [tina users](#tina-users-options) - List users on a tina site.
-- [tina users:info](#tina-usersinfo-email) - Describe a user in Tina
+- [tina users:info](#tina-usersinfo-options) - Describe a user in Tina
 - [tina users:add](#tina-usersadd-email-options) - Adds a user to a site in tina
 - [tina users:update](#tina-usersupdate-email-options) - Updates a user's access on a site.
-- [tina users:remove](#tina-usersremove-email) - Removes a user from a site.
-- [tina users:roles:add](#tina-usersrolesremove-email-roles) - Adds a list of roles onto a user for a site.
-- [tina users:roles:remove](#tina-usersrolesremove-email-roles) - Removes a list of roles from a user on a site.
+- [tina users:remove](#tina-usersremove-options) - Removes a user from a site.
+- [tina users:roles:add](#tina-usersrolesremove-options) - Adds a list of roles onto a user for a site.
+- [tina users:roles:remove](#tina-usersrolesremove-options) - Removes a list of roles from a user on a site.
 
 ### tina login
 
@@ -34,13 +34,9 @@ Log in / Create a Tina account.
 
 Required in order to perform most actions within the CLI.
 
-### tina sites
+### tina sites \[options\]
 
 List any sites that the logged-in user has access to.
-
-#### Options
-
-      --base_url [base_url]  Specify a site to use instead of prompting within the next step (optional)
 
 ### tina sites:info \[options\]
 
@@ -48,15 +44,23 @@ Describe a given site in Tina
 
 #### Options
 
-      -url, --ssh_url <ssh_url>  Specify a site to use instead of prompting from a select list (optional)
+      --site_id <site_id>  Specify a site to use (in [namespace]/[base_url] format) instead of prompting from a select list (optional)
 
-### tina sites:add
+### tina sites:add \[options\]
 
 Add a site into Tina
 
-### tina sites:remove
+#### Options
+
+      --site_id <site_id>  Specify a site to use (in [namespace]/[base_url] format) instead of prompting from a select list (optional)
+
+### tina sites:remove \[options\]
 
 Remove a site from Tina.
+
+#### Options
+
+      --site_id <site_id>  Specify a site to use (in [namespace]/[base_url] format) instead of prompting from a select list (optional)
 
 ### tina users \[options\]
 
@@ -64,51 +68,49 @@ List users on a Tina site.
 
 #### Options
 
-    -t, --type [type] type of the users to include (owner or member) - defaults to all
+    -t, --type <type> type of the users to include (owner or member) - defaults to all
 
-### tina users:info \[email\]
+### tina users:info \[options\]
 
 Describe a user on a Tina site.
 
-#### Arguments
+#### Options
 
-    [email] Specify a user's email to use instead of prompting from a select list (optional)
+    --email <email> Specify a user's email to use instead of prompting from a select list (optional)
+    --site_id <site_id>  Specify a site to use (in [namespace]/[base_url] format) instead of prompting from a select list (optional)
 
-### tina users:add \[email\] \[options\]
+### tina users:add \[options\]
 
 Add a user to a Tina site.
 
-#### Arguments
-
-    [email] Specify a user's email to use instead of prompting from a select list (optional)
-
 #### Options
 
-    -t, --type [type] type of the users to include (owner, member) - defaults to all
+    --email <email> Specify a user's email to use instead of prompting from a select list (optional)
+    --site_id <site_id>  Specify a site to use (in [namespace]/[base_url] format) instead of prompting from a select list (optional)
+    -t, --type <type> type of the users to include (owner, member) - defaults to all
     -r, --role <role> a comma separated list of roles assigned to this user.
 
-### tina users:update \[email\] \[options\]
+### tina users:update \[options\]
 
 Update a user's access on a site.
 
-#### Arguments
-
-    [email] Specify a user's email to use instead of prompting from a select list (optional)
-
 #### Options
 
-    -t, --type [type] type of the users to include (owner, member) - defaults to all
+    --email <email> Specify a user's email to use instead of prompting from a select list (optional)
+    --site_id <site_id>  Specify a site to use (in [namespace]/[base_url] format) instead of prompting from a select list (optional)
+    -t, --type <type> type of the users to include (owner, member) - defaults to all
     -r, --role <role> a comma separated list of roles assigned to this user.
 
-### tina users:remove \[email\]
+### tina users:remove \[options\]
 
 Remove a user from a site.
 
-#### Arguments
+#### Options
 
-    [email] Specify a user's email to use instead of prompting from a select list (optional)
+    --email <email> Specify a user's email to use instead of prompting from a select list (optional)
+    --site_id <site_id>  Specify a site to use (in [namespace]/[base_url] format) instead of prompting from a select list (optional)
 
-### tina users:roles:add \[email\] \[roles\]
+### tina users:roles:add \[options\]
 
 Adds a list of comma-separated roles onto a user for a site
 
@@ -116,12 +118,13 @@ Adds a list of comma-separated roles onto a user for a site
 
     tina users:roles:add tim@tina.io editor,developer
 
-#### Arguments
+#### Options
 
-    [email] Specify a user's email to use instead of prompting from a select list (optional)
-    [roles] Specify a comma separated list of roles instead of prompting (optional)
+    --email <email> Specify a user's email to use instead of prompting from a select list (optional)
+    --site_id <site_id>  Specify a site to use (in [namespace]/[base_url] format) instead of prompting from a select list (optional)
+    -r, --role <role> a comma separated list of roles assigned to this user.
 
-### tina users:roles:remove \[email\] \[roles\]
+### tina users:roles:remove \[options\]
 
 Remove a list of comma-separated roles from a user for a site
 
@@ -129,7 +132,8 @@ Remove a list of comma-separated roles from a user for a site
 
     tina users:roles:remove tim@tina.io editor,developer
 
-#### Arguments
+#### Options
 
-    [email] Specify a user's email to use instead of prompting from a select list (optional)
-    [roles] Specify a comma separated list of roles instead of prompting (optional)
+    --email <email> Specify a user's email to use instead of prompting from a select list (optional)
+    --site_id <site_id>  Specify a site to use (in [namespace]/[base_url] format) instead of prompting from a select list (optional)
+    -r, --role <role> a comma separated list of roles assigned to this user.
