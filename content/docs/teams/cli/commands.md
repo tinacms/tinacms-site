@@ -48,11 +48,13 @@ Describe a given site in Tina
 
 ### tina sites:add \[options\]
 
-Add a site into Tina
+Add a site into Tina.
 
 #### Options
 
       --site_id <site_id>  Specify a site to use (in [namespace]/[base_url] format) instead of prompting from a select list (optional)
+
+      // Your base_url might look like "[your_cloud_environment_url_1234].io" or "[your_ip]:[8888]"
 
 ### tina sites:remove \[options\]
 
