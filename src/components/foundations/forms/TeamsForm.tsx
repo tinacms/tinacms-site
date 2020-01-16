@@ -5,13 +5,14 @@ import { rgba } from 'polished'
 import { colors, breakpoints, space } from 'utils/variables'
 import { Heading } from 'components/foundations'
 
-function TeamsForm(props) {
+function TeamsForm(props: any) {
   const [firstName, setFirstName] = useState('')
   const [surname, setSurname] = useState('')
+  const [projectDetails, setProjectDetails] = useState('')
   const [email, setEmail] = useState('')
   const { hubspotFormID } = props
 
-  async function postForm(data) {
+  async function postForm(data: any) {
     if (hubspotFormID && process.env.GATSBY_HUBSPOT_PORTAL_ID) {
       const url = `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.GATSBY_HUBSPOT_PORTAL_ID}/${hubspotFormID}`
       try {
@@ -44,6 +45,9 @@ function TeamsForm(props) {
   function handleEmailChange(e: React.ChangeEvent<HTMLInputElement>) {
     setEmail(e.target.value)
   }
+  function handleProjectDetailsChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
+    setProjectDetails(e.target.value)
+  }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -60,6 +64,10 @@ function TeamsForm(props) {
         {
           name: 'email',
           value: email,
+        },
+        {
+          name: 'project-details',
+          value: projectDetails,
         },
       ],
     }
@@ -86,6 +94,17 @@ function TeamsForm(props) {
       <label>
         <p className="body">Email</p>
         <input type="text" id="email" name="email" required value={email} onChange={handleEmailChange} />
+      </label>
+      <label>
+        <p className="body">Let us know a bit more about your project</p>
+        <textarea
+          id="project-details"
+          name="project-details"
+          rows={4}
+          required
+          value={projectDetails}
+          onChange={handleProjectDetailsChange}
+        />
       </label>
       <StyledButton type="submit">
         <Heading as="h5" size="label">
@@ -114,6 +133,10 @@ const StyledForm = styled('form')`
 
   input {
     height: 40px;
+    padding: 0 16px;
+  }
+  input,
+  textarea {
     width: 100%;
     padding: 8px;
     border-radius: 4px;
@@ -127,7 +150,6 @@ const StyledForm = styled('form')`
     text-decoration: none;
     cursor: text;
     width: 100%;
-    padding: 0 16px;
     transition: all 85ms ease-out;
     font-family: 'tuner-regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
       'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
