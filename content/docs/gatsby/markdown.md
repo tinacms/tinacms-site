@@ -452,15 +452,15 @@ export default BlogPostTemplate
 
 **The Problem**
 
-If a value is 'empty' from a source file, for example an empty string, Tina will delete the entire key/value pair from the file. This will cause Gatsby to throw a GraphQL error since it's trying to query a field that doesn't exist. So if you're editing in Tina and you completely delete the text from a field, you will see this error.
+If a value is 'empty' from a source file, for example an empty string, Tina will delete the entire key/value pair from the file. This will cause Gatsby to throw a GraphQL error since it's trying to query a field that doesn't exist. So if you're editing in Tina and you completely delete the text from a field, you may see this error.
 
-This may not be a problem if you have a query that is running over numerous files with the same data shape. Let's say you have a collection of recipes, and they all have the same frontmatter data. The recipe pages are generated from a template where this query lives. If a key/value pair gets deleted from one recipe file, the query will still run since there are other files that still have the populated value.
+This may not be a problem if you have a query that is running over numerous files with a similar data shape. Let's say you have a collection of recipes, and they all have the same frontmatter data. The recipe pages are generated from a template where this query lives. If a key/value pair gets deleted from one recipe file, the query will still run since there are other files that still have the populated value.
 
 However, if you have a single source file for a page, you will run into issues because this is the only instance of the data shape. If the value is deleted, then GraphQL doesn't know what field it's querying.
 
 **The Workaround**
 
-To work around this we need to create either a dummy file or manually override the parse value in the field object by passing in an empty string.
+To work around this, we need to create either a dummy file or manually override the parse value in the field object by passing in an empty string.
 
 ### Option 1
 
@@ -475,7 +475,7 @@ fields: [
     label: "Favorite Food",
     name: "frontmatter.fav_food",
     component: "text",
-    // Pass the default empty value
+    // If there's no value, return empty string
     parse(value) {
       return value || ""
     },
@@ -483,7 +483,7 @@ fields: [
 ]
 ```
 
-This option will provide an empty string if no value exists, so the frontmatter key/value pair will not get fully deleted.
+This option will provide an empty string if no value exists, so the frontmatter key/value pair will not get fully deleted from the source file.
 
 ### Option 2
 
