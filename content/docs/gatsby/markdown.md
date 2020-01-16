@@ -460,7 +460,7 @@ However, if you have a single source file for a page, you will run into issues b
 
 To work around this, we need to create either a dummy file or manually override the parse value in the field object by passing in an empty string.
 
-### Option 1
+### Option 1: Override the parse value
 
 ``` js
 /*
