@@ -451,7 +451,7 @@ export default BlogPostTemplate
 ## Avoiding Errors Caused by Empty Fields
 
 
-If a value is 'empty' from a source file, for example an empty string, Tina will delete the entire key/value pair from the file. This will cause Gatsby to throw a GraphQL error since it's trying to query a field that doesn't exist. So if you're editing in Tina and you completely delete the text from a field, you may see this error.
+If a value is empty from a source file, for example an empty string, Tina will delete the entire key-value pair from the file. This will cause Gatsby to throw a GraphQL error, since it's trying to query a field that doesn't exist. If you're editing in Tina and you completely delete the text from a field, you may see this error.
 
 This may not be a problem if you have a query that is running over numerous files with a similar data shape. Let's say you have a collection of recipes, and they all have the same frontmatter data. The recipe pages are generated from a template where this query lives. If a key/value pair gets deleted from one recipe file, the query will still run since there are other files that still have the populated value.
 
