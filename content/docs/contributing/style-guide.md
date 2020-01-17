@@ -21,6 +21,7 @@ This document should be used as a guideline when writing documentation and blog 
   - _Example: "If **you** want to see a glimpse of what **you** can do with a blocks-based content strategy, fork Tina Grande and give it a try."_
 - Tutorial steps should use an inclusive POV ("we" over "you")
   - _Example:"**Let’s** say, instead of a single name, **we’re** storing a list of names like this:"_
+- While you don't need to follow it dogmatically, running your drafts through the [Hemingway Editor](http://hemingwayapp.com/) can help identify overly complicated prose.
 
 ## Formatting
 
@@ -36,13 +37,15 @@ This document should be used as a guideline when writing documentation and blog 
 ### Headings
 
 - Each document should have a single top-level heading. On the tinacms.org website, this is handled by the `title` front matter field.
+- Headings should follow strict hierarchy. Don't nest an `h3` directly inside an `h1` without an `h2` in between.
 - Don't nest headings more than three levels deep, inclusive of the top-level heading (`h1` > `h2` > `h3`). If you find the need to use a fourth-level heading, consider reorganizing the document or splitting it up.
 - Headings can include _italics_, but avoid **bold text** or `code tags`.
   - Use _italics_ formatting for code-like items when present in headings
+- Make an effort to capitalize titles appropriately. Check out [title.sh](https://title.sh/) for help.
 
 ### Links
 
 - Avoid using `code tags` in [links](https://tinacms.org).
-- Avoid applying additional formatting to [links](https://tinacms.org). _[Links](https://tinacms.org) appearing in emphasized text_ may be **[formatted](https://tinacms.org) appropriately**.
+- [Links](https://tinacms.org) should stand out _consistently_ from their surrounding text; avoid applying additional formatting. _[Links](https://tinacms.org) appearing within emphasized text_ may be [**formatted**](https://tinacms.org) **appropriately**.
 - Link text should flow naturally in prose and relate semantically to the link target. Basically, just don't use "[click here](https://tinacms.org)".
   - _Example: "swing by [our community forum](https://community.tinacms.org/)"_
