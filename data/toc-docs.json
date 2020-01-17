@@ -226,6 +226,11 @@
         "title": "Teams with Gatsby"
       },
       {
+        "id": "/docs/teams/next/introduction",
+        "slug": "/docs/teams/next/introduction",
+        "title": "Teams with NextJS"
+      },
+      {
         "id": "/docs/teams/cli/introduction",
         "slug": "/docs/teams/cli/introduction",
         "title": "CLI"

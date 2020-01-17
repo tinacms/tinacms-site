@@ -1,39 +1,46 @@
 ---
-title: Tina With Gatsby
-id: /docs/teams/gatsby/introduction
-prev: /docs/teams/introduction
-next: /docs/teams/next/introduction
+title: Tina With Next.js
+id: /docs/teams/next/introduction
+prev: /docs/teams/gatsby/introduction
+next: /docs/teams/cli/introduction
 ---
 
-Tina Teams functionality can be added to a Gatsby site with the `gatsby-tinacms-teams` plugin.
+This doc assumes you have first gone through [setting up a backend with Tina](/docs/nextjs/adding-backends)
+
+Tina Teams functionality can be added to a NextJS site with the `@tinacms/teams` plugin (which also requires access to cookies through the `cookie-parser` plugin).
 
 ## Install the Git & Markdown Packages
 
-    npm install --save gatsby-tinacms-teams
+    npm install @tinacms/teams cookie-parser
 
 or
 
-    yarn add gatsby-tinacms-teams
+    yarn add @tinacms/teams cookie-parser
 
 ## Adding the Teams Plugin
 
-Open the `gatsby-config.js` file and add the **gatsby-tinacms-teams** plugin. It should be the first child plugin of **gatsby-plugin-tinacms**
+Open the `server.js` file add register the `cookieParser` and `@tinacms/teams` middleware. They should be registered as high up as possible.
 
 ```JavaScript
-module.exports = {
   // ...
-  plugins: [
-    {
-      resolve: 'gatsby-plugin-tinacms',
-      options: {
-      plugins: [
-        "gatsby-tinacms-teams"
-      ]
-      },
-    },
+  const teams = require("@tinacms/teams");
+
+  app.prepare().then(() => {
+    const server = express();
+
+    server.use(cors());
+    server.use(cookieParser());
+    server.use(teams.router());
+
+    server.use("/___tina", gitApi.router());
+
+    server.all("*", (req, res) => {
+      return handle(req, res);
+    });
+
     // ...
-  ],
-}
+  })
+  // ...
 ```
 
 ## Configuration
@@ -44,7 +51,7 @@ Teams authentication is enabled/disabled with the `REQUIRE_AUTH` environment var
 
 ```
 "scripts": {
-  "auth-start": "REQUIRE_AUTH=true gatsby develop"
+  "start": "REQUIRE_AUTH=true node server.js",
 }
 ```
 
@@ -57,18 +64,14 @@ REQUIRE_AUTH=true
 ```
 
 <tip>
-If you are hosting on a service like Heroku or Gatsby Cloud, these environment variables can be added through the host provider's UI.
+If you are hosting on a service like Heroku or Render, these environment variables can be added through the host provider's UI.
 </tip>
 
 You will also need to set the `TINA_TEAMS_NAMESPACE` environment variable. This will be the email of the user who created this site within Tina Teams.
 
 ## Configuring Git for Cloud Commits
 
-<tip>
-If you are using the gatsby-tinacms-git plugin, make sure to use version: 0.2.16 or later!
-</tip>
-
-To get **gatsby-tinacms-git** working in the cloud, we'll need to add a SSH_KEY environment variable:
+To get **@tinacms/api-git** working in the cloud, we'll need to add a SSH_KEY environment variable:
 
 **.env**
 
@@ -115,7 +118,3 @@ Now after you rebuild your cloud editing environment, it should be able to commi
 <tip>
 Note that Base64 encoding the key DOES NOT make it safe to make public!! We are Base64 encoding the key only to avoid formatting issues when using it as an environment variable.
 </tip>
-
-## Limitations
-
-The Tina Teams plugin will put your cloud editing environment behind an authentication layer, however Gatsby's **/graphql** endpoint may still be accessible. If this is an issue for your site, we suggest password-protecting your environment through your hosting provider.
