@@ -96,7 +96,7 @@ function TeamsForm(props: any) {
         <input type="text" id="email" name="email" required value={email} onChange={handleEmailChange} />
       </label>
       <label>
-        <p className="body">Let us know a bit more about your project</p>
+        <p className="body">Tell us a little bit about your project</p>
         <textarea
           id="project-details"
           name="project-details"
