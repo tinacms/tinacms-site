@@ -347,7 +347,7 @@ Some other examples of awesome _CSS-in-JS_ frameworks are [styled-components](ht
 
 ### Next Steps
 
-A good next step would be _adding styles to the custom `RangeInput` component_. You could use [`@tinacms/styles`](https://github.com/tinacms/tinacms/blob/master/packages/%40tinacms/styles/src/Styles.tsx) to fit the vibe of other Tina fields ✌️. Or you could go wild and spice up the sidebar in your own way 🤠.
+A good next step would be _adding styles to the custom `RangeInput` component_. You could use [`@tinacms/styles`](https://tinacms.org/docs/fields/custom-fields#using-tina-styles) to fit the vibe of other Tina fields ✌️. Or you could go wild and spice up the sidebar in your own way 🤠.
 
 If we wanted to reuse this component throughout the site, **we could take a step further and make it into a [Field Plugin](https://tinacms.org/docs/fields/custom-fields#2-creating-field-plugins)**. Stay tuned for a follow-up post that dives into creating custom Field Plugins, or swing by the [docs](https://tinacms.org/docs/fields/custom-fields#2-creating-field-plugins) to get a head start.
 
