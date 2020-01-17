@@ -24,6 +24,7 @@ Open the `server.js` file add register the `cookieParser` and `@tinacms/teams` m
 ```JavaScript
   // ...
   const teams = require("@tinacms/teams");
+  const cookieParser = require("cookie-parser");
 
   app.prepare().then(() => {
     const server = express();
