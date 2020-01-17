@@ -28,7 +28,13 @@ i.e.: If i am using the **gatsby-tinacms-git** plugin, when a user hits "save" i
 
 [Add the teams plugin to a Gatsby site](/docs/teams/gatsby/introduction)
 
-### 3) Register your Cloud Editing Environment with Tina Teams
+[Add the teams plugin to a NextJS site](/docs/teams/next/introduction)
+
+### 3) Configure Git for cloud commits
+
+If you are using git as a backend for your TinaCMS site, we'll need to [add a bit of configuration](/docs/teams/cloud-commits) so that TinaCMS can commit from the cloud.
+
+### 4) Register your Cloud Editing Environment with Tina Teams
 
 The teams plugin (that you added in Step 2) will require users to log in before accessing the **cloud editing environment**. The plugin will first verify that the user has access to the site within Tina Teams before loading the site content.
 

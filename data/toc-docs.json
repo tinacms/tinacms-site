@@ -231,6 +231,11 @@
         "title": "Teams with NextJS"
       },
       {
+        "id": "/docs/teams/cloud-commits",
+        "slug": "/docs/teams/cloud-commits",
+        "title": "Configuring Git for Cloud Commits"
+      },
+      {
         "id": "/docs/teams/cli/introduction",
         "slug": "/docs/teams/cli/introduction",
         "title": "CLI"
