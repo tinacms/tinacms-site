@@ -222,22 +222,22 @@ const DefaultTheme = {
     },
   },
   radius: {
-    small: '0.3rem',
-    big: '1.5rem',
+    small: '5px',
+    big: '24px',
   },
   padding: {
-    small: '0.75rem',
-    big: '1.25rem',
+    small: '12px',
+    big: '20px',
   },
   font: {
     size: {
-      0: '0.6875rem', // 11px
-      1: '0.8125rem', // 13px
-      2: '0.9375rem', // 15px
-      3: '1rem', // 16px
-      4: '1.125rem', // 18px
-      5: '1.25rem', // 20px
-      6: '1.375rem', // 22px
+      0: '11px',
+      1: '13px',
+      2: '15px',
+      3: '16px',
+      4: '18px',
+      5: '20px',
+      6: '22px',
     },
     weight: {
       regular: 500,
