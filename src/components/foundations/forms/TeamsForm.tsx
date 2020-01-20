@@ -66,7 +66,7 @@ function TeamsForm(props: any) {
           value: email,
         },
         {
-          name: 'project-details',
+          name: 'project_details',
           value: projectDetails,
         },
       ],
