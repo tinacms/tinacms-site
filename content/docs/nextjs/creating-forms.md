@@ -1,15 +1,15 @@
 ---
 title: Creating Forms
-id: /docs/nextjs/bootstrapping
+id: /docs/nextjs/creating-forms
 prev: /docs/nextjs/adding-backends
-next: /docs/contributing/guidelines
+next: /docs/contributing/inline-editing
 consumes:
-  - file: /packages/@tinacms/react-core/src/use-form.ts
-    details: Demonstrates using useLocalForm on a Next.js site
-  - file: /packages/@tinacms/react-core/src/use-watch-form-values.ts
-    details: Demonstrates usage of useWatchFormValues
-  - file: /packages/react-tinacms/src/index.ts
-    details: Imports useLocalForm and useWatchFormValues from react-tinacms metapackage
+  - file: /packages/next-tinacms-json/src/use-json-form.ts
+    details: Demonstrates using useLocalJsonForm on a Next.js site
+  - file: /packages/next-tinacms-json/src/use-local-json-form.ts
+    details: Demonstrates using useLocalJsonForm on a Next.js site
+  - file: /packages/next-tinacms-json/src/use-global-json-form.ts
+    details: Demonstrates using useGlobalJsonForm on a Next.js site
 ---
 
 Let's imagine we have a Page component in our NextJS app using the dynamic route of `pages/[slug].js`. This page will get its content from a corresponding JSON file located at `posts/[slug].json`. Thus, when you visit `/hello-world`, it will display the contents of `/posts/hello-world.json`. We can set up a very simple version of this with the following code:
@@ -112,5 +112,12 @@ export default function Page({ post }) {
   )
 }
 ```
+
+### Global JSON forms
+
+There is another hook, `useGlobalJsonForm`, that registers a [Global Form](https://tinacms.org/docs/concepts/forms#local--global-forms) with the sidebar.
+
+Using this hook looks almost exactly the same as the example for `useLocalJsonForm`. This hook expects an object with the properties, `fileRelativePath` and `data`. The value of `data` should be the contents of the JSON file. The [Global Form](https://tinacms.org/docs/concepts/forms#local--global-forms) can be customized by passing in an _options_ object as the second argument.
+
 
 [More info: creating custom forms](/docs/concepts/forms#creating-custom-forms)
