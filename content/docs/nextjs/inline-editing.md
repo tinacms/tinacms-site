@@ -92,7 +92,7 @@ interface JsonFile<T = any> {
 }
 ```
 
-<tip>**Tip:** It's important that the return object for data that willbe edited by Tina is named `jsonFile`.</tip>
+<tip>**Tip:** It's important that the return object for data that will be edited by Tina is named `jsonFile`.</tip>
 
 ### 2. Add Tina Fields
 
@@ -145,7 +145,7 @@ interface TinaFieldsProps {
 
 The last step to enable inline editing is to create a way for the editor to _toggle editing states_.
 
-When your component is processed through `inlineJsonForm`, it recieves properties to facilitate this: `isEditing` and `setIsEditing`. You can create a button to handle toggling states and add it to your component.
+When your component is processed through `inlineJsonForm`, it receives properties to facilitate this: `isEditing` and `setIsEditing`. You can create a button to handle toggling states and add it to your component.
 
 ```jsx
 /*
