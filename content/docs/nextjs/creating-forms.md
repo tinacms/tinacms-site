@@ -121,10 +121,12 @@ Using this hook looks almost exactly the same as the example for `useLocalJsonFo
 
 ## Editing Markdown
 
-The `next-tinacms-markdown` package provides a similar set of methods for editing content sourced from Markdown files. These hooks work similarly, the biggest difference being whether they register [local or global](https://tinacms.org/docs/concepts/forms#local--global-forms) forms wih the CMS. They can only be used with [function components](https://reactjs.org/docs/components-and-props.html#function-and-class-components).
+The `next-tinacms-markdown` package provides a similar set of methods for editing content sourced from Markdown files.
 
 - `useLocalMarkdownForm( markdownFile, options? ):[values, form]`
 - `useGlobalMarkdownForm( markdownFile, options? ):[values, form]`
+
+These hooks work similarly, the biggest difference being whether they register [local or global](https://tinacms.org/docs/concepts/forms#local--global-forms) forms wih the CMS. They can only be used with [function components](https://reactjs.org/docs/components-and-props.html#function-and-class-components).
 
 **Arguments**
 
@@ -143,8 +145,8 @@ export interface MarkdownFile {
 
 **Return Values**
 
-- `values`: The first return value is an object containing the current values from `frontmatter` and `markdownBody`. You can use these values to render content.
-- `form`: This is a reference to the `Form` registered to the CMS. Most of the time you won't need to work directly with this value, so you won't see it used in the example.
+- `values`: An object containing the current values from `frontmatter` and `markdownBody`. You can use these values to render content.
+- `form`: A reference to the `Form` registered to the CMS. Most of the time you won't need to work directly with the `Form`, so you won't see it used in the example.
 
 ### _useLocalMarkdownForm_ In Use
 
@@ -178,14 +180,14 @@ export default function Info(props) {
   }
   /*
   ** 2. Call `useLocalMarkdownForm` and pass in the
-  **    data object returned from `getInitialProps`,
+  **    `data` object returned from `getInitialProps`,
   **    along with any form options.
   */
   const [data] = useLocalMarkdownForm(props.data, formOptions)
 
   /*
   **  3. Render content from your Markdown source file
-  **     with the `data` object.
+  **     with the returned `data` object.
   */
   return (
     <Layout>
@@ -202,6 +204,9 @@ Info.getInitialProps = async function() {
   const data = matter(infoData.default)
 
   return {
+    /*
+    ** 4. Make sure your return data matches this shape
+    */
     data: {
       fileRelativePath: `data/info.md`,
       frontmatter: data.data,
