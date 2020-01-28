@@ -32,7 +32,8 @@ import { inlineJsonForm } from 'next-tinacms-json'
 import ReactMarkdown from 'react-markdown'
 import Layout from '../components/Layout'
 
-function Index({ data }) {
+function Index({ jsonFile }) {
+  const data = jsonFile.data
   return (
     <Layout>
       <section>
@@ -108,7 +109,8 @@ import ReactMarkdown from 'react-markdown'
 import { Wysiwyg } from '@tinacms/fields'
 import { TinaField } from '@tinacms/form-builder'
 
-function Index({ data }) {
+function Index({ jsonFile }) {
+  const data = jsonFile.data
   return (
     <Layout>
       <section>
@@ -151,7 +153,8 @@ When your component is processed through `inlineJsonForm`, it receives propertie
 /*
  ** 1. Destructure the editing state props
  */
-function Index({ data, setIsEditing, isEditing }) {
+function Index({ jsonFile, setIsEditing, isEditing }) {
+  const data = jsonFile.data
   return (
     <Layout>
       <section>
