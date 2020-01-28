@@ -15,7 +15,7 @@ Creating forms for content provided by the [`gatsby-transformer-json`](https://g
 
 - `gatsby-tinacms-json`: Provides hooks and components for creating JSON forms.
 - `gatsby-tinacms-git`: Extends the gatsby dev server to write changes to the local filesystem;
-  and registers [CMS Backend](../concepts/backends.md) for saving changes to that backend.
+  and registers [CMS Backend](/docs/concepts/backends) for saving changes to that backend.
 
 **Note on top-level arrays:**
 
@@ -81,7 +81,7 @@ query MyQuery {
 
 ## Creating JSON Forms
 
-In order to edit a JSON file, you must register a form with the CMS. There are two different types of forms in Tina: global & local. Please refer to the [form concepts](../concepts/forms) doc to get clarity on the differences.
+In order to edit a JSON file, you must register a form with the CMS. There are two different types of forms in Tina: global & local. Please refer to the [form concepts](/docs/concepts/forms) doc to get clarity on the differences.
 
 #### Note: required query data
 
@@ -133,7 +133,7 @@ useLocalJsonForm(data): [values, form]
 
 - `[values, form]`
   - `values`: The current values to be displayed. This has the same shape as the `data` argument.
-  - `form`: A reference to the [CMS Form](../concepts/forms.md) object. The `form` is rarely needed in the template.
+  - `form`: A reference to the [CMS Form](/docs/concepts/forms) object. The `form` is rarely needed in the template.
 
 **src/templates/blog-post.js**
 
@@ -150,7 +150,7 @@ function DataTemplate(props) {
 ### JsonForm
 
 `JsonForm` is a [Render Props](https://reactjs.org/docs/render-props.html#use-render-props-for-cross-cutting-concerns)
-based component for accessing [CMS Forms](../concepts/forms.md).
+based component for accessing [CMS Forms](/docs/concepts/forms).
 
 This Component is a thin wrapper of `useLocalJsonForm`. Since [React Hooks](https://reactjs.org/docs/hooks-intro.html) are
 only available within Function Components you will need to use `JsonForm` if your template is Class Component.
@@ -160,7 +160,7 @@ only available within Function Components you will need to use `JsonForm` if you
 - `data`: The data returned from a Gatsby `dataJson` query.
 - `render({ data, form }): JSX.Element`: A function that returns JSX elements
   - `data`: The current values to be displayed. This has the same shape as the data in the `Json` prop.
-  - `form`: A reference to the [CMS Form](../concepts/forms.md) object. The `form` is rarely needed in the template.
+  - `form`: A reference to the [CMS Form](/docs/concepts/forms) object. The `form` is rarely needed in the template.
 
 **src/templates/blog-post.js**
 
@@ -199,7 +199,7 @@ useGlobalJsonForm(data): [values, form]
 
 - `[values, form]`
   - `values`: The current values to be displayed. This has the same shape as the `data` argument.
-  - `form`: A reference to the [CMS Form](../concepts/forms.md) object. The `form` is rarely needed in the template.
+  - `form`: A reference to the [CMS Form](/docs/concepts/forms) object. The `form` is rarely needed in the template.
 
 **Example**
 
@@ -275,3 +275,4 @@ const FormOptions = {
 export default Page
 ```
 <tip> _Important:_ You may need to implement default values or dummy files to avoid a GraphQL error when a field is empty. Take a look at our [empty field troubleshooting guide](https://tinacms.org/docs/gatsby/markdown#avoiding-errors-caused-by-empty-fields) for more information.</tip>
+
