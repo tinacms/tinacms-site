@@ -34,7 +34,7 @@ Page.getInitialProps = function(ctx) {
   return {
     post: {
       fileRelativePath: `/posts/${slug}.json`,
-      data: content,
+      data: content.default,
     },
   }
 }
@@ -85,7 +85,7 @@ Since the object we're returning from `getInitialProps` already matches the `Jso
    return {
      post: {
        fileRelativePath: `/posts/${slug}.json`,
-       data: content,
+       data: content.default,
      },
    }
  }
