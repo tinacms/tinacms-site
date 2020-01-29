@@ -72,7 +72,7 @@ export default Index
 Index.getInitialProps = async function() {
   const configData = await import(`../data/config.json`)
   return {
-    ...configData,
+    ...configData.default,
   }
 }
 ```
@@ -241,7 +241,7 @@ Index.getInitialProps = async function() {
 
   return {
     allBlogs: posts,
-    ...siteConfig,
+    ...siteConfig.default,
   }
 }
 ```
