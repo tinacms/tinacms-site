@@ -45,7 +45,7 @@ export default function GenerationXLayout(props) {
 }
 ```
 
-Like all good GenX'ers, the parent function did it's best but can't help raising children in an economy ruined by the previous generation. To help lessen the blow, the parents will at least give their children memes.
+Like all good GenX'ers, the parent function did it's best. Unfortunately it couldn't help but raise it's children in an economy ruined by the previous generation. To help lessen the blow, the parents will at least provide their children memes.
 
 To unleash memes for the kids, we'll make a screen plugin that will spread snarky, cynical humor. Let's set this up in three steps:
 
