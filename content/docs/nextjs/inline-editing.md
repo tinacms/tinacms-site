@@ -77,7 +77,7 @@ EditableIndex.getInitialProps = async function() {
      */
     jsonFile: {
       fileRelativePath: `data/index.json`,
-      data: indexData,
+      data: indexData.default,
     },
   }
 }
