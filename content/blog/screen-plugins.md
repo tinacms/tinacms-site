@@ -14,11 +14,11 @@ If you’ve worked with Tina, you may have already used a few plugins without re
 
 Another plugin worth noting is the [`ContentCreatorPlugin`](https://tinacms.org/docs/gatsby/creating-new-files/#1-add-content-creator-plugin) and it's subclasses `RemarkCreatorPlugin` and `JsonCreatorPlugin`. This plugin provides the foundation for creating new data source files.
 
-One of the more recent additions has been the [`GlobalFormPlugin`](https://tinacms.org/docs/concepts/forms#local--global-forms), which allows you to register _global forms_ to handle broad site data. When accessing a global form, **editors interact with a different ‘screen’.** The truth is, the power of this editing screen for the `GlobalFormPlugin` is derived from illuminati who created the topic of today’s blog post: the `ScreenPlugin`.
+One of the more recent additions has been the [`GlobalFormPlugin`](https://tinacms.org/docs/concepts/forms#local--global-forms), which allows you to register _global forms_ to handle broad site data. When accessing a global form, **editors interact with a different ‘screen’.** This experience is made possible because the `GlobalFormPlugin` is subclass of todays topic: the `ScreenPlugin`.
 
 ## What's that?
 
-Let’s be frank, the name `ScreenPlugin` kinda sucks but it's the best I came up with — what’s that old adage about naming things? `ViewPlugin` was another contender, but here we are. Anyways, if you have any recommendations on a better name, [let ‘em fly](https://twitter.com/ncphi).
+[Let’s be frank](https://github.com/DirtyF), the name `ScreenPlugin` isn't great, but it's the best I came up with — what’s that old adage about naming things? `ViewPlugin` was another contender, but there's a lot of conflicts there (e.g. Vue, View (as in MVC), View Components, etc.) so here we are. Anyways, if you have any recommendations on a better name, [let ‘em fly](https://twitter.com/ncphi).
 
 Beyond semantics, let’s get to functionality. The **`ScreenPlugin` has three main pieces**: a name, an icon, and a React Component.
 
