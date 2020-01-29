@@ -22,11 +22,12 @@ Beyond semantics, let’s get to functionality. The `ScreenPlugin` has three mai
 
 The name and the icon are used to list the screen plugin in the global menu.
 
-< INSERT PICTURE OF GLOBAL MENU >
+![global-menu](/img/tina-grande-global-form.jpg)
 
 When the user clicks on the menu item, it opens a screen in which the React Component is rendered. Think of a screen as an empty canvas, it provides the space to create an editing interface beyond the sidebar. There are two potential layouts for a screen plugin: `fullscreen` and `popup`.
 
-< INSERT SIDE BY SIDE IMAGES OF THE TWO LAYOUT TYPES >
+![full screen plugin](/img/blog/full-screen-plugin2.jpg)
+![popup screen plugin](/img/blog/popup-plugin.jpg)
 
 ## Let's make a basic screen plugin!
 
@@ -51,12 +52,13 @@ To unleash memes for the kids, we'll make a screen plugin that will spread snark
 3. Use that plugin in our App
 
 ```jsx
+import { usePlugin } from 'tinacms'
 import { CripplingDebt } from './boomer-legacy'
 
 const LeanMemePlugin = {
   __type: 'screen',
   name: 'Lean Memes',
-  icon: () => <div>?</div>,
+  Icon: () => <span>?</span>,
   layout: 'popup',
   Component() {
     return <img src="https://static1.thethingsimages.com/wordpress/wp-content/uploads/2018/04/baby-boomer-feat.jpg" />
@@ -70,19 +72,19 @@ export default function GenerationXLayout(props) {
 }
 ```
 
-Notice that I don't know what to do with the `icon`. That's a problem for another day. 🤷‍♂️ You could put an `svg` in there, or find a minimalist [pizza-shaped icon](https://boxicons.com/) to fill the void.
+Notice that I don't know what to do with the `Icon`. That's a problem for another day. 🤷‍♂️ You could put an `svg` in there, or find a minimalist [pizza-shaped icon](https://boxicons.com/) to fill the void.
 
 Let's see the meme screen plugin in action. Using it will add a new item to the global menu.
 
-< Q IMAGE OF GLOBAL MENU WITH OUR PLUGIN LISTED >
+![lean memes plugin global menu](/img/blog/global-menu-meme-plugin.jpg)
 
 Clicking on the menu item will open a popup modal where our Component will render.
 
-< Q IMAGE OF POPUP WITH IMAGE RENDERED >
+![lean memes screen plugin](/img/blog/lean-meme-plugin.jpg)
 
 Tada! It works. We made a meme plugin to help the kids cope with unfortunate realities of a Post-Industrial society. 👏
 
-## So what can I don with Screen Plugins?
+## So what can I do with Screen Plugins?
 
 Literally whatever you want, it's just a React Component. You could make magic 8 ball 🎱 screen plugin to help your content team decide where to order lunch. It's all deadly.
 
