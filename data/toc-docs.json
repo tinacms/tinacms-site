@@ -179,6 +179,11 @@
         "title": "Creating Forms"
       },
       {
+        "id": "/docs/nextjs/markdown",
+        "slug": "/docs/nextjs/markdown",
+        "title": "Using Markdown Files"
+      },
+      {
         "id": "/docs/nextjs/inline-editing",
         "slug": "/docs/nextjs/inline-editing",
         "title": "Inline Editing"
