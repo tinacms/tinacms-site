@@ -27,9 +27,9 @@ export default function Page({ post }) {
   )
 }
 
-Page.getInitialProps = function(ctx) {
+Page.getInitialProps = async function(ctx) {
   const { slug } = ctx.query
-  let content = require(`../posts/${slug}.json`)
+  let content = await import(`../posts/${slug}.json`)
 
   return {
     post: {
