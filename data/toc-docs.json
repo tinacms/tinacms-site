@@ -220,5 +220,51 @@
         "title": "Style Guide"
       }
     ]
+  },
+  {
+    "title": "Teams",
+    "id": "teams",
+    "items": [
+      {
+        "id": "/docs/teams/introduction",
+        "slug": "/docs/teams/introduction",
+        "title": "Introduction"
+      },
+      {
+        "id": "/docs/teams/gatsby/introduction",
+        "slug": "/docs/teams/gatsby/introduction",
+        "title": "Teams with Gatsby"
+      },
+      {
+        "id": "/docs/teams/next/introduction",
+        "slug": "/docs/teams/next/introduction",
+        "title": "Teams with NextJS"
+      },
+      {
+        "id": "/docs/teams/cloud-commits",
+        "slug": "/docs/teams/cloud-commits",
+        "title": "Configuring Git for Cloud Commits"
+      },
+      {
+        "id": "/docs/teams/cli/introduction",
+        "slug": "/docs/teams/cli/introduction",
+        "title": "CLI"
+      },
+      {
+        "id": "/docs/teams/cli/commands",
+        "slug": "/docs/teams/cli/commands",
+        "title": "CLI Commands"
+      },
+      {
+        "id": "/docs/teams/cli/contributing",
+        "slug": "/docs/teams/cli/contributing",
+        "title": "CLI Contributing"
+      },
+      {
+        "id": "/docs/teams/troubleshooting",
+        "slug": "/docs/teams/troubleshooting",
+        "title": "Troubleshooting"
+      }
+    ]
   }
 ]
